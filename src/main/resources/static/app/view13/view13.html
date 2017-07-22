@@ -1,0 +1,50 @@
+<br>
+<br>
+<br>
+
+<div ng-controller="View13Ctrl" layout="column"  layout-padding ng-cloak>
+<form name="div1">
+    <br/>
+    <md-content class="md-no-momentum" layout-padding>
+
+
+        <md-input-container class="md-icon-float md-block">
+            <!-- Use floating label instead of placeholder -->
+
+            <md-icon md-font-library="material-icons">class</md-icon>
+            <label>TIPO DE CONTRATO</label>
+            <md-select aria-label="Select 1" ng-model="contrato.tipoContrato" placeholder="Escoja el tipo de Contrato">
+                <md-option ng-value="todo.name" ng-repeat="todo in options">{{ todo.name }}</md-option>
+
+            </md-select>
+
+        </md-input-container>
+
+        <md-input-container md-no-float class="md-block">
+            <md-icon md-font-library="material-icons">style</md-icon>
+            <input ng-model="contrato.nombreContrato" type="text" placeholder="Nombre del Contrato (Obligatorio)" ng-required="true">
+        </md-input-container>
+          <div layout-gt-xs="row">
+              <div flex-gt-xs>
+                  <label>FECHA DE INICIO DE CONTRATO</label>
+                  <md-datepicker ng-model="contrato.fechaInicio" md-placeholder="Fecha Iniciación " ng-required="true"></md-datepicker>
+              </div>
+
+              <div flex-gt-xs>
+                  <label>FECHA DE FINALIZACION DE CONTRATO</label>
+                  <md-datepicker ng-model="contrato.fechaFin" md-placeholder="Fecha Iniciación " ng-required="true"></md-datepicker>
+              </div>
+          </div>
+
+
+        <section layout="row" layout-sm="column" layout-align="center center" layout-wrap>
+
+        <md-button class="md-raised md-primary" ng-click="add($event)"  >Agregar Contrato</md-button>
+        </section>
+
+    </md-content>
+</form>
+</div>
+
+
+

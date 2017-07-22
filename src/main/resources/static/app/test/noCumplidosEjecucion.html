@@ -1,0 +1,57 @@
+<md-dialog id="attribute-dialog" aria-label="Requisitos">
+    <form>
+        <md-toolbar>
+            <div class="md-toolbar-tools">
+                <h1>Control  de Archivos</h1>
+                <span flex></span>
+                <md-button class="md-icon-button" ng-click="cancel()">
+                    <md-icon md-font-library="material-icons">highlight_off</md-icon>
+                </md-button>
+            </div>
+        </md-toolbar>
+        <md-dialog-content>
+            <md-tabs md-dynamic-height md-border-bottom>
+                <md-tab label="Requisitos no subidos al aplicativo">
+                    <md-content class="md-padding">
+                        <div class="md-dialog-content">
+                            <table class="w3-table-all">
+                                <thead>
+                                <tr class="w3-light-grey w3-hover-grey">
+                                    <th>Requisito</th>
+                                    <th>Estado</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr class="w3-hover-green" ng-repeat="todo in listadoNCSP" >
+                                    <td>{{todo.descripcion}}</td>
+                                    <td><div class="w3-col" style="width:50px"><i class="w3-xxlarge fa fa-exclamation-triangle"></i></div></td>
+                                </tr>
+                                <tr class="w3-hover-green" ng-repeat="todi in listadoNCEP" >
+                                    <td>{{todi.descripcion}}</td>
+                                    <td><div class="w3-col" style="width:50px"><i class="w3-xxlarge fa fa-exclamation-triangle"></i></div></td>
+                                </tr>
+                                <tr class="w3-hover-green" ng-repeat="todi in listadoNCSE" >
+                                    <td>{{todi.descripcion}}</td>
+                                    <td><div class="w3-col" style="width:50px"><i class="w3-xxlarge fa fa-exclamation-triangle"></i></div></td>
+                                </tr>
+                                <tr class="w3-hover-green" ng-repeat="todi in listadoNCEE" >
+                                    <td>{{todi.descripcion}}</td>
+                                    <td><div class="w3-col" style="width:50px"><i class="w3-xxlarge fa fa-exclamation-triangle"></i></div></td>
+                                </tr>
+                                <tr class="w3-hover-green" ng-repeat="todi in listadoNCSF" >
+                                    <td>{{todi.descripcion}}</td>
+                                    <td><div class="w3-col" style="width:50px"><i class="w3-xxlarge fa fa-exclamation-triangle"></i></div></td>
+                                </tr>
+                                <tr class="w3-hover-green" ng-repeat="todi in listadoNCEF" >
+                                    <td>{{todi.descripcion}}</td>
+                                    <td><div class="w3-col" style="width:50px"><i class="w3-xxlarge fa fa-exclamation-triangle"></i></div></td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </md-content>
+                </md-tab>
+            </md-tabs>
+        </md-dialog-content>
+    </form>
+</md-dialog>

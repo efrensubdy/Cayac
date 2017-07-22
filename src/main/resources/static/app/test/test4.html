@@ -1,0 +1,51 @@
+<md-dialog  id="attribute-dialog" aria-label="Posibles Finalistas">
+<form>
+    <md-toolbar>
+        <div class="md-toolbar-tools">
+            <h1>Estadisticas</h1>
+            <span flex></span>
+            <md-button class="md-icon-button" ng-click="cancel()">
+                <md-icon md-font-library="material-icons">highlight_off</md-icon>
+            </md-button>
+        </div>
+    </md-toolbar>
+    <md-dialog-content>
+        <md-tabs md-dynamic-height md-border-bottom>
+            <md-tab label="Info">
+                <md-content class="md-padding">
+                    <div class="md-dialog-content">
+                        <table class="w3-table-all">
+                            <thead>
+                            <tr class="w3-light-grey w3-hover-grey">
+                                <th>Tipo</th>
+                                <th>#</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr class="w3-hover-green">
+                                <td><b>Aplicados</b> </td>
+                                <td >{{listadoAS.length +listadoAE.length}}</td>
+                            </tr>
+                            <tr class="w3-hover-green">
+                                <td><b> Cumplidos</b></td>
+                                <td >{{listadoCS.length +listadoCE.length}}</td>
+                            </tr>
+                            <tr class="w3-hover-green">
+                                <td><b>No Cumplidos</b></td>
+                                <td>{{listadoNCS.length +listadoNCE.length}}</td>
+                            </tr>
+
+                            </tbody>
+                        </table>
+                        <md-button class="md-warn md-raised md-hue-2" ng-click="agregar(listadoAS.length +listadoAE.length,listadoCS.length +listadoCE.length,listadoNCS.length +listadoNCE.length)">Grafico</md-button>
+                        <md-button class="md-warn md-raised md-hue-2" ng-click="hideGrafico()">ocultar grafico</md-button>
+                        <md-button class="md-warn md-raised md-hue-2" ng-click="agregarFinalista($event)">Agregar Finalista</md-button>
+                    </div>
+                    <div ng-show="bandera" google-chart chart="myChartObject" width="500" height="320"></div>
+
+                </md-content>
+            </md-tab>
+        </md-tabs>
+    </md-dialog-content>
+</form>
+</md-dialog>

@@ -1,0 +1,47 @@
+<br>
+<br>
+<br>
+
+<div class="w3-container">
+
+    <form  id="myForm" action="/action_page.php" class="w3-container w3-card-4 w3-light-grey w3-text-blue w3-margin">
+        <h2 class="w3-center">Consultar Contratistas </h2>
+        <div class="w3-row w3-section">
+            <div class="w3-col" style="width:50px"><i class="w3-xxlarge fa fa-search"></i></div>
+            <div class="w3-rest">
+                <input class="w3-input w3-border" type="text"  placeholder="A que contrato pertenece el contratista" name="contrato" list="contratos" ng-model="contrato">
+                <datalist id="contratos">
+                    <select name="contratos" ng-model="select">
+                        <option value="" disabled selected>Escoja El contrato al que va pertenecer su contratista</option>
+                        <option ng-repeat="todo in listado"  value="{{todo.idContrato}}" ng-model="selectedOption">{{todo.nombreContrato}}</option>
+                    </select>
+                </datalist>
+            </div>
+        </div>
+
+    </form>
+    <button class="w3-btn w3-blue" type="submit" ng-click="add($event)">Consultar </button>
+</div>
+    <div class="w3-container" ng-show="flag">
+    <h1>Gestión de Candidatos Contratistas</h1>
+    <p>En esta vista podras observar a todos sus Candidatos</p>
+
+    <table class="w3-table-all">
+        <tbody>
+        <tr class="w3-light-grey w3-hover-grey">
+            <th>  <button ng-click="sortBy('nombreEmpresa')">Nombre de Empresa</button></th>
+            <th>Gestión de Requisitos</th>
+
+
+        </tr>
+        <tr  class="w3-hover-green" ng-repeat="todo in listado2 | orderBy:propertyName:reverse">
+            <td>{{todo.nombreEmpresa}}</td>
+            <td>
+                <md-button button class="md-primary md-raised" ng-click="showAlert2($event,todo)">
+                    Detalle Empresa
+                </md-button>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>

@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html lang="en" ng-app="myApp" class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html lang="en" ng-app="myApp" class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html lang="en" ng-app="myApp" class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html lang="en" ng-app="myApp" class="no-js"> <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Cayac !!!</title>
+
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="bower_components/angular-material/angular-material.css">
+  <link rel="stylesheet" href="app.css">
+  <link rel="stylesheet" href="bower_components/bootstrap-css-only/css/bootstrap.css">
+  <link rel="stylesheet" href="https://www.w3schools.com/lib/w3.css">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
+
+</head>
+<style>
+body {font-family: "Lato", sans-serif}
+#myImg {
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+#myImg:hover {opacity: 0.7;}
+
+/* The Modal (background) */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    padding-top: 100px; /* Location of the box */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.9); /* Black w/ opacity */
+}
+
+/* Modal Content (image) */
+.modal-content {
+    margin: auto;
+    display: block;
+    width: 80%;
+    max-width: 700px;
+}
+
+/* Caption of Modal Image */
+#caption {
+    margin: auto;
+    display: block;
+    width: 80%;
+    max-width: 700px;
+    text-align: center;
+    color: #ccc;
+    padding: 10px 0;
+    height: 150px;
+}
+
+/* Add Animation */
+.modal-content, #caption {
+    -webkit-animation-name: zoom;
+    -webkit-animation-duration: 0.6s;
+    animation-name: zoom;
+    animation-duration: 0.6s;
+}
+
+@-webkit-keyframes zoom {
+    from {-webkit-transform:scale(0)}
+    to {-webkit-transform:scale(1)}
+}
+
+@keyframes zoom {
+    from {transform:scale(0)}
+    to {transform:scale(1)}
+}
+
+/* The Close Button */
+.close {
+    position: absolute;
+    top: 15px;
+    right: 35px;
+    color: #f1f1f1;
+    font-size: 40px;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.close:hover,
+.close:focus {
+    color: #bbb;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+/* 100% Image Width on Smaller Screens */
+@media only screen and (max-width: 700px){
+    .modal-content {
+        width: 100%;
+    }
+}
+</style>
+</html>
+<body>
+
+<nav id="mainNav" class="navbar navbar-inverse navbar-fixed-top affix-top">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#myNavbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand kaushan neon header-t" style="color: white" href="#">Cayac!</a>
+    </div>
+    <div class="collpase navbar-collapse " id="myNavbar">
+      <ul class="nav navbar-nav navbar-left">
+        <li><a  ng-show="bandera3"  href="#!/view4">Registrar Contratantes</a></li>
+        <li><a ng-show="bandera||bandera2" href="#!/view1">Home</a></li>
+        <li><a ng-show="bandera" href="#!/view6">Cambiar Contraseña</a></li>
+        <li><a ng-show="bandera2" href="#!/view7">Cambiar Contraseña</a></li>
+        <li><a ng-show="bandera2" href="#!/view9">Soportes Seleccion</a></li>
+        <div ng-show="bandera2" class="w3-dropdown-click">
+          <button onclick="myFunction6()" class="w3-button w3-green">Gestión de Proyecto</button>
+          <div id="dem" class="w3-dropdown-content w3-bar-block w3-card-4 w3-animate-zoom">
+            <a onclick="myFunction6()" ng-show="bandera2" href="#!/subirDocumentosEstaticos">Estaticos Ejecucion</a></li>
+            <a onclick="myFunction6()" ng-show="bandera2" href="#!/agregarActividades">Dinamicos Ejecucion</a></li>
+
+          </div>
+        </div>
+
+        <div ng-show="bandera" class="w3-dropdown-click">
+          <button onclick="myFunction()" class="w3-button w3-green">Selección</button>
+
+          <div id="demo" class="w3-dropdown-content w3-bar-block w3-card-4 w3-animate-zoom">
+            <a onclick="myFunction()" ng-show="bandera" class="example" href="#!/view3">Registrar Requisitos</a> </li>
+            <div class="w3-bar-item w3-button" onclick="myFunction3()">
+              Objeto del Proyecto <i class="fa fa-caret-down"></i></div>
+            <div id="demoAcc" class="w3-hide w3-white w3-card-4">
+              <a onclick="myFunction()" ng-show="bandera"  href="#!/view13">Registrar Proyecto</a></li>
+              <a onclick="myFunction()" ng-show="bandera"  href="#!/view15">Consultar Proyecto</a></li>
+            </div>
+
+            <a onclick="myFunction()" ng-show="bandera" class="example" href="#!/view2">Registrar Candidatos</a></li>
+            <a onclick="myFunction()"  ng-show="bandera" class="example" href="#!/view14">Consultar Candidatos</a></li>
+            <a onclick="myFunction()" ng-show="bandera" href="#!/view10">Revision de Requisitos</a> </li>
+          </div>
+        </div>
+          <div ng-show="bandera" class="w3-dropdown-click">
+          <button onclick="myFunction1()" class="w3-button w3-green">Ejecucion</button>
+          <div id="demi" class="w3-dropdown-content w3-bar-block w3-card-4 w3-animate-zoom">
+            <div class="w3-bar-item w3-button" onclick="myFunction4()">
+              Gestión Contratistas <i class="fa fa-caret-down"></i></div>
+            <div id="demoAcc2" class="w3-hide w3-white w3-card-4">
+              <a onclick="myFunction1()" ng-show="bandera" class="example" href="#!/manualRegister">Registro Manual</a></li>
+              <a onclick="myFunction1()" ng-show="bandera" class="example" href="#!/view12">Consultar Contratistas</a></li>
+            </div>
+            <a onclick="myFunction1()" ng-show="bandera" class="example" href="#!/registrarRequisitosEjecucion">Gestion de Requisitos</a> </li>
+            <div class="w3-bar-item w3-button" onclick="myFunction5()">
+              Gestión de Proyecto<i class="fa fa-caret-down"></i></div>
+            <div id="demoAcc1" class="w3-hide w3-white w3-card-4">
+              <a onclick="myFunction1()" ng-show="bandera" class="example" href="#!/ejecucionCNCE">Gestión Estatica</a> </li>
+              <a onclick="myFunction1()" ng-show="bandera" class="example" href="#!/analisisDeActividades">Gestión Dinámica</a> </li>
+            </div>
+
+
+          </div>
+        </div>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <div ng-show="bandera" class="w3-dropdown-click">
+          <button onclick="myFunction2()" class="w3-button w3-green">Reportes</button>
+          <div id="demu" class="w3-dropdown-content w3-bar-block w3-card-4 w3-animate-zoom">
+
+
+          </div>
+        </div>
+
+        <button ng-hide="bandera||bandera2||bandera3 "   onclick="window.location.href='#!/login3'" class="btn btn-success navbar-btn">Ingreso Contratista</button>
+        <button ng-hide="bandera2 || bandera || bandera3" onclick="window.location.href='#!/login2'" class="btn btn-success navbar-btn">Ingreso Contratante</button>
+        <button  ng-controller="logout" ng-show="bandera" class="btn btn-success navbar-btn"
+                 ng-click="close()" >Cerrar sesíon</button>
+        <button  ng-controller="logout" ng-show="bandera2" class="btn btn-success navbar-btn"
+                 ng-click="close2()" >Cerrar sesíon</button>
+        <button  ng-controller="logout" ng-show="bandera3" class="btn btn-success navbar-btn"
+                 ng-click="close3()" >Cerrar sesíon</button>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+
+
+
+<!--[if lt IE 7]>
+<p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+<![endif]-->
+
+<div ng-view></div>
+<footer class="w3-container w3-padding-64 w3-center w3-opacity w3-light-grey w3-xlarge">
+  <a href="https://www.facebook.com/pages/SEQ-Consultores/484704751584981?fref=ts"><i class="fa fa-facebook-official w3-hover-opacity"></i></a>
+  <i class="fa fa-instagram w3-hover-opacity"></i>
+  <i class="fa fa-snapchat w3-hover-opacity"></i>
+  <i class="fa fa-pinterest-p w3-hover-opacity"></i>
+  <i class="fa fa-twitter w3-hover-opacity"></i>
+  <i class="fa fa-linkedin w3-hover-opacity"></i>
+  <p class="w3-medium">Powered by <a href="https://www.w3schools.com/w3css/default.asp" target="_blank">w3.css</a></p>
+</footer>
+
+
+<!-- In production use:
+<script src="//ajax.googleapis.com/ajax/libs/angularjs/x.x.x/angular.min.js"></script>
+-->
+
+<script src="bower_components/angular/angular.js"></script>
+<script src="bower_components/angular-resource/angular-resource.js"></script>
+<script src="bower_components/angular-route/angular-route.js"></script>
+<script src="bower_components/angular-animate/angular-animate.js"></script>
+<script src="bower_components/angular-aria/angular-aria.js"></script>
+<script src="bower_components/angular-material/angular-material.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/ngStorage/0.3.10/ngStorage.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.0/jquery-ui.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/angular-google-chart/1.0.0-beta.1/ng-google-chart.js" type="text/javascript"></script>
+
+<!-- minified for production -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/angular-google-chart/1.0.0-beta.1/ng-google-chart.min.js" type="text/javascript"></script>
+<script src="app.js"></script>
+<script src="menu.js"></script>
+<script src="view1/view1.js"></script>
+<script src="view2/view2.js"></script>
+<script src="view3/view3.js"></script>
+<script src="view4/view4.js"></script>
+<script src="view6/view6.js"></script>
+<script src="view7/view7.js"></script>
+<script src="view9/view9.js"></script>
+<script src="view10/view10.js"></script>
+<script src="view12/view12.js"></script>
+<script src="view13/view13.js"></script>
+<script src="view14/view14.js"></script>
+<script src="view15/view15.js"></script>
+<script src="manualRegister/manualRegister.js"></script>
+<script src="registrarRequisitosEjecucion/registrarRequisitosEjecucion.js"></script>
+<script src="subirDocumentosEstaticos/subirDocumentosEstaticos.js"></script>
+<script src="ejecucionCNCE/ejecucionCNCE.js"></script>
+<script src="agregarActividades/agregarActividades.js"></script>
+<script src="analisisDeActividades/analisisDeActividades.js"></script>
+<script src="login/login.js"></script>
+<script src="test/test.js"></script>
+<script src="login2/login2.js"></script>
+<script src="login3/login3.js"></script>
+<script src="services/frabica.js"></script>
+<script src="components/version/version.js"></script>
+<script src="components/version/version-directive.js"></script>
+<script src="components/version/interpolate-filter.js"></script>
+</body>
+</html>

@@ -1,0 +1,98 @@
+<br>
+<br>
+<br>
+<form id="myForm" action="/action_page.php" class="w3-container w3-card-4 w3-light-grey w3-text-blue w3-margin">
+  <h2 class="w3-center">REGISTRO DE CONTRANTE</h2>
+
+  <div class="w3-row w3-section">
+    <div class="w3-col" style="width:50px"><i class="w3-xxlarge fa fa-user-secret"></i></div>
+    <div class="w3-rest">
+      <input class="w3-input w3-border" type="text" name="nombreContratante" id="fn" placeholder="nombre de su empresa" ng-model="nombreEmpresa">
+    </div>
+  </div>
+  <div class="w3-row w3-section">
+    <div class="w3-col" style="width:50px"><i class="w3-xxlarge fa fa-key"></i></div>
+    <div class="w3-rest">
+      <input class="w3-input w3-border" type="password" name="pasword" placeholder="Establezca su contraseña.." ng-model="password">
+    </div>
+  </div>
+  <div class="w3-row w3-section">
+    <div class="w3-col" style="width:50px"><i class="w3-xxlarge fa fa-phone"></i></div>
+    <div class="w3-rest">
+      <input class="w3-input w3-border"   name="telefono" placeholder="numero telefonico de la empresa" ng-model="telefono">
+    </div>
+  </div>
+  <div class="w3-row w3-section">
+    <div class="w3-col" style="width:50px"><i class="w3-xxlarge fa fa-envelope-o"></i></div>
+    <div class="w3-rest">
+      <input class="w3-input w3-border" type="text" name="email"  placeholder="email please.."  ng-model="email" >
+    </div>
+  </div>
+  <div class="w3-row w3-section">
+    <div class="w3-col" style="width:50px"><i class="w3-xxlarge fa fa-pencil"></i></div>
+    <div class="w3-rest">
+      <input class="w3-input w3-border" type="text"  name="departamento" list="departamento" placeholder="departamento de su empresa" ng-model="departamento">
+      <datalist id="departamento">
+        <select name="departamento" class="w3-select"  data-placeholder="departamento de la empresa"  >
+          <option value="" disabled selected>Escoja un Departamento</option>
+          <option value="Bogotá D.C">Bogotá D.C</option>
+          <option value="La Guajira">La Guajira</option>
+          <option value="Magdalena">Magdalena</option>
+          <option value="Guaviare">Guaviare</option>
+          <option value="Boyaca">Boyaca</option>
+          <option value="Valle del Cauca">Valle del Cauca</option>
+          <option value="Amazonas">Amazonas</option>
+          <option value="Meta">Meta</option>
+          <option value="Antioquia">Antioquia</option>
+          <option value="Cuaca">Cuaca</option>
+          <option value="Caldas">Caldas</option>
+          <option value="Caqueta">Caqueta</option>
+          <option value="Casanare">Casanare</option>
+          <option value="Cesar">Cesar</option>
+          <option value="Choco">Choco</option>
+          <option value="Cordoba">Cordoba</option>
+          <option value="Guanía">Guanía</option>
+          <option value="Huila">Huila</option>
+          <option value="Nariño">Nariño</option>
+          <option value="Norte de Santander">Norte de Santander</option>
+          <option value="Putumayo">Putumayo</option>
+          <option value="Quindio">Quindio</option>
+          <option value="San Andrés">San Andrés</option>
+          <option value="Santander">Santander</option>
+          <option value="Sucre">Sucre</option>
+          <option value="Tolima">Tolima</option>
+          <option value="Vaupes">Vaupes</option>
+          <option value="Vichada">Vichada</option>
+          <option value="Popayan">Popayan</option>
+        </select>
+      </datalist>
+    </div>
+  </div>
+  <div class="w3-row w3-section">
+    <div class="w3-col" style="width:50px"><i class="w3-xxlarge fa fa-building"></i></div>
+    <div class="w3-rest">
+      <input class="w3-input w3-border" type="text" name="direccion"  placeholder="Direccion de Su Empresa.."  ng-model="direccion" >
+    </div>
+  </div>
+  <div class="w3-row w3-section">
+    <div class="w3-col" style="width:50px"><i class="w3-xxlarge fa fa-male"></i></div>
+    <div class="w3-rest">
+      <input class="w3-input w3-border" type="text" name="representanteLegal"  placeholder="Representante Legal de la Empresa.."  ng-model="representanteLegal" >
+    </div>
+  </div>
+  <div class="w3-row w3-section">
+    <div class="w3-col" style="width:50px"><i class="w3-xxlarge fa fa-qq	"></i></div>
+    <div class="w3-rest">
+      <input class="w3-input w3-border" type="text"  placeholder="Código CIIU de su empresa" name="codigoCIIU" list="codigoCIIU" ng-model="codigoCIIU">
+      <datalist id="codigoCIIU">
+        <select name="codigoCIIU" ng-model="select">
+          <option value="" disabled selected>Escoja la actividad de su Empresa contratista</option>
+          <option ng-repeat="todo in listini"  value="{{todo.codigoCUU}}" ng-model="selectedActivityOption">{{todo.descripcion}}</option>
+        </select>
+      </datalist>
+    </div>
+  </div>
+  </div>
+</form>
+<button class="w3-btn-block w3-section w3-blue w3-ripple w3-padding" type="submit" ng-click="add($event)">Try it</button>
+

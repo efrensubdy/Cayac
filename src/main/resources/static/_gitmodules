@@ -1,0 +1,3 @@
+[submodule "SEQ"]
+	path = SEQ
+	url = https://github.com/efrensubdy/SEQ

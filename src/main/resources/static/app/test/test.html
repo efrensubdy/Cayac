@@ -1,0 +1,100 @@
+        <!-- HTML que se usa para vidualizar los requisitos-->
+        <md-dialog id="attribute-dialog" aria-label="Requisitos">
+            <form>
+            <md-toolbar>
+                <div class="md-toolbar-tools">
+                    <h1>Requisitos</h1>
+                    <span flex></span>
+                    <md-button class="md-icon-button" ng-click="cancel()">
+                        <md-icon md-font-library="material-icons">highlight_off</md-icon>
+                    </md-button>
+                </div>
+            </md-toolbar>
+            <md-dialog-content>
+                <md-tabs md-dynamic-height md-border-bottom>
+                    <!--Vista de Requisitos Sugeridos-->
+                    <md-tab label="Requisitos Sugeridos">
+                        <md-content class="md-padding">
+                        <div class="md-dialog-content">
+                        <table class="w3-table-all">
+                        <thead>
+                        <tr class="w3-light-grey w3-hover-grey">
+                            <th>Descripcion</th>
+                            <th>¿Aplica?<md-checkbox  aria-label="CheckboxMaster" ng-model="master" ng-click="all(master)"></md-checkbox></th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr class="w3-hover-green" ng-repeat="todo in listado2" >
+                            <td>{{todo.requisito}}</td>
+                            <td><md-checkbox  aria-label="Checkbox 1"  ng-model="selected" ng-change="display(selected, todo)">
+                            </md-checkbox></td>
+                        </tr>
+                        </tbody>
+                        </table>
+
+                        </div>
+                        <md-button class="md-warn md-raised md-hue-2" ng-click="aplicar($event)">Aplicar</md-button>
+
+                        </md-content>
+                    </md-tab>
+                    <!--Vista de Requisitos Extras-->
+                    <md-tab label="Requisitos Extras">
+                        <md-content class="md-padding">
+                            <div class="md-dialog-content">
+                                <table class="w3-table-all">
+                                    <thead>
+                                    <tr class="w3-light-grey w3-hover-grey">
+                                        <th>Descripcion</th>
+                                        <th>¿Aplica?<md-checkbox  aria-label="CheckboxMaster2" ng-model="master2" ng-click="all2(master2)"></md-checkbox></th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <tr class="w3-hover-green" ng-repeat="todo in listado3" >
+                                        <td>{{todo.descripcion}}</td>
+                                        <td><md-checkbox  aria-label="Checkbox 1" ng-model="select" ng-change="display2(select, todo)">
+                                        </md-checkbox></td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <md-button class="md-warn md-raised md-hue-2" ng-click="aplicar2($event)">Aplicar</md-button>
+                        </md-content>
+                    </md-tab>
+                    <md-tab label="Requisitos Definitivos" ng-click="consultar()">
+                        <md-content class="md-padding">
+                            <div class="md-dialog-content">
+                                <table class="w3-table-all">
+                                    <thead>
+                                    <tr class="w3-light-grey w3-hover-grey">
+                                        <th>Definitivos</th>
+                                        <th>Eliminar</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <tr class="w3-hover-green" ng-repeat="todo in list1">
+                                        <td> {{todo.descripcion}} </td>
+                                        <td><md-checkbox  aria-label="Checkbox 1" class="w3-check" type="checkbox"   ng-model="selected" ng-change="display3(selected, todo)"></md-checkbox></td>
+                                    </tr>
+                                    <tr class="w3-hover-green" ng-repeat="todo in list2">
+                                        <td>{{todo.descripcion}} </td>
+                                        <td><md-checkbox aria-label="Checkbox 1"   ng-model="select" ng-change="display4(select, todo)"></md-checkbox></td>
+
+                                    </tr>
+                                    </tbody>
+                                </table>
+                                <md-button class="md-warn md-raised md-hue-2" ng-click="eliminar($event)">Eliminar</md-button>
+                                <br>
+                                <label>Cuanto tiempo tendra su contratista para subir los documentos</label>
+                                <input type="date" placeholder="yyyy-MM-dd"  ng-model="fecha"/>
+                                <md-button class="md-warn md-raised md-hue-2" ng-click="fun($event)">Establecer</md-button>
+                                <label> LA FECHA DE ENTREGA DE LOS DOCUMENTOS ES {{objeto.fechaFin| date : "fullDate"}},
+                                    LE QUEDAN {{objeto.tiempoRestante}} PARA ENTREGAR LOS SOPORTES</label>
+
+                            </div>
+                        </md-content>
+                    </md-tab>
+
+                </md-tabs>
+            </md-dialog-content>
+            </form>
+            </md-dialog>

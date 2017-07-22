@@ -1,0 +1,103 @@
+<md-dialog id="attribute-dialog" aria-label="Requisitos">
+    <form>
+        <md-toolbar>
+            <div class="md-toolbar-tools">
+                <h1>Detalles</h1>
+                <span flex></span>
+                <md-button class="md-icon-button" ng-click="cancel()">
+                    <md-icon md-font-library="material-icons">highlight_off</md-icon>
+                </md-button>
+            </div>
+        </md-toolbar>
+        <md-dialog-content>
+            <md-tabs md-dynamic-height md-border-bottom>
+            <md-tab label="Info">
+                <md-content class="md-padding">
+                    <div class="md-dialog-content">
+                        <table class="w3-table-all">
+                            <thead>
+                            <tr class="w3-light-grey w3-hover-grey">
+                                <th>Contenido de Empresa</th>
+                                <th>Información</th>
+                            </tr>
+                            <tbody>
+                        <tr class="w3-hover-green">
+                            <td><b>Nombre de Empresa</b> </td>
+                            <td>{{client.nombreEmpresa}}</td>
+                        </tr>
+                        <tr class="w3-hover-green">
+                            <td><b> Duracion de  Contrato</b></td>
+                            <td>{{client.duracionContrato}}</td>
+                        </tr>
+                        <tr class="w3-hover-green">
+                            <td><b>NIT</b></td>
+                            <td>{{client.nit}}</td>
+                        </tr>
+                        <tr class="w3-hover-green">
+                            <td><b>codigoCIIU</b> </td>
+                            <td>{{client.codigoCIIU}}</td>
+                        </tr>
+                        <tr class="w3-hover-green">
+                            <td><b>Gerente General</b> </td>
+                            <td>{{client.nombreDeGerenteGeneral}}</td>
+                        </tr>
+                        <tr class="w3-hover-green">
+                            <td><b>Email</b> </td>
+                            <td>{{client.email}}</td>
+                        </tr>
+                        <tr class="w3-hover-green">
+                            <td><b> ARL </b> </td>
+                            <td>{{client.arl}}</td>
+                        </tr>
+                        <tr class="w3-hover-green">
+                            <td><b> Direccion </b> </td>
+                            <td>{{client.direccion}}</td>
+                        </tr>
+                        <tr class="w3-hover-green">
+                            <td><b> Departamento </b> </td>
+                            <td>{{client.departamento}}</td>
+                        </tr>
+                        <tr class="w3-hover-green">
+                            <td><b> Telefono </b> </td>
+                            <td>{{client.telefono}}</td>
+                        </tr>
+                        <tr class="w3-hover-green">
+                            <td><b> Persona Contacto </b> </td>
+                            <td>{{client.personContacto}}</td>
+                        </tr>
+                        <tr class="w3-hover-green">
+                            <td><b> Cargo Persona Contacto </b> </td>
+                            <td>{{client.cargoPersonaContacto}}</td>
+                        </tr>
+                        <tr class="w3-hover-green">
+                            <td><b> Telefono Persona Contacto </b> </td>
+                            <td>{{client.telefonoPersonaContacto}}</td>
+                        </tr>
+                        <tr class="w3-hover-green">
+                            <td><b> Email de Contacto </b> </td>
+                            <td>{{client.emailContacto}}</td>
+                        </tr>
+
+
+
+                            </tbody>
+                            </thead>
+
+                        </table>
+
+                    </div>
+
+                </md-content>
+
+
+            </md-tab>
+            </md-tabs>
+        </md-dialog-content>
+
+
+
+
+    </form>
+
+
+</md-dialog>

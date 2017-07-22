@@ -1,0 +1,106 @@
+<md-dialog  id="attribute-dialog" aria-label="Actividades">
+    <form>
+        <md-toolbar>
+            <div class="md-toolbar-tools">
+                <h1> RESUMEN DE ACTIVIDADES</h1>
+                <span flex></span>
+                <md-button class="md-icon-button" ng-click="cancel()">
+                    <md-icon md-font-library="material-icons">highlight_off</md-icon>
+                </md-button>
+            </div>
+        </md-toolbar>
+        <md-dialog-content>
+            <div >
+                <md-tabs md-dynamic-height md-border-bottom>
+                    <md-tab label="Resumen de soportes de Actividad">
+                        <md-content class="md-padding">
+                            <div class="md-dialog-content">
+                                <div>
+                                    <md-select aria-label="Select 1" ng-model="ciclo.tipoCiclo" placeholder="Escoja el ciclo al cual realizará la revisión" ng-change="tipoCiclo(ciclo.tipoCiclo)">
+                                        <md-option ng-value="todo" ng-repeat="todo in options">{{ todo.name }}</md-option>
+                                    </md-select>
+
+                                </div>
+
+                            </div>
+                            <div ng-show="banderaDeRequsitos">
+                                <md-select aria-label="Select 1" ng-model="tipoRequisitos" placeholder="Escoja el requisito para el cual agregará la actividad" ng-change="consultar(tipoRequisitos)">
+                                    <md-option ng-value="todo" ng-repeat="todo in listadoSugerido">{{ todo.descripcion }}</md-option>
+                                    <md-option ng-value="todo" ng-repeat="todo in listadoExtra">{{ todo.descripcion }}</md-option>
+
+                                </md-select>
+
+                            </div>
+                            <div>
+                            <div ng-show="banderaTable">
+                                <form class="w3-container">
+                                    <b>Filtros</b>
+                                    <md-radio-group ng-model="radio" layout="row" ng-click="filtroResponsable(radio)">
+                                        <md-radio-button ng-value="todo" ng-repeat="todo in radioOptions">{{todo.name}}</md-radio-button>
+
+                                    </md-radio-group>
+                                    <br>
+                                    <div layout-gt-sm="row" ng-show="banderaFiltroResponsable">
+                                        <md-input-container class="md-block" flex-gt-sm>
+                                            <label>Nombre</label>
+                                            <input md-maxlength="30"  ng-required="true" ng-model="responsable.name" />
+                                            <md-button class="md-warn" ng-click="filtrarResponsable(responsable.name,defActividadSugerida)">Filtrar</md-button>
+                                        </md-input-container>
+                                    </div>
+                                    <div layout-gt-sm="row" ng-show="banderaFiltroEstado">
+                                        <md-input-container class="md-block" flex-gt-sm>
+                                            <md-select aria-label="Select 1" ng-model="estado.name" placeholder="Escoja el requisito para el cual agregará la actividad">
+                                                <md-option ng-value="todo" ng-repeat="todo in estadoOptions">{{ todo.name }}</md-option>
+
+                                            </md-select>
+                                            <md-button class="md-warn" ng-click="filtrarEstado(estado.name,defActividadSugerida)">Filtrar</md-button>
+                                        </md-input-container>
+                                    </div>
+                                    <div layout-gt-xs="row" ng-show="banderaFiltroFecha">
+                                        <div flex-gt-xs>
+                                            <label>Fecha inicio de rango</label>
+                                            <md-datepicker ng-model="contrato.fechaInicio" md-placeholder="Fecha Iniciación " ng-required="true"></md-datepicker>
+                                        </div>
+
+                                        <div flex-gt-xs>
+                                            <label>Fecha de fin de rango</label>
+                                            <md-datepicker ng-model="contrato.fechaFin" md-placeholder="Fecha Iniciación " ng-required="true"></md-datepicker>
+                                        </div>
+
+                                        <div flex-gt-xs>
+                                        <md-button class="md-warn" ng-click="filtradoFecha(contrato.fechaInicio | date:'yyyy-MM-dd', contrato.fechaFin | date:'yyyy-MM-dd',defActividadSugerida)">Filtrar</md-button>
+                                        </div>
+                                    </div>
+                                    <br>
+                                    <table class="w3-table-all">
+                                        <thead>
+                                        <tr class="w3-light-grey w3-hover-grey" >
+                                            <th> <button ng-click="sortBy('nombre')">Nombre</button></th>
+                                            <th>Estado</th>
+                                            <th>Responsable</th>
+                                            <th>Soporte</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody >
+
+                                        <tr  class="w3-hover-green" ng-repeat="todo in defActividadSugerida" >
+                                            <td >{{todo.nombre}}</td>
+                                            <td>{{todo.comparacion}}</td>
+                                            <td>{{todo.responsable}}</td>
+                                            <td ng-show="{{todo.motrar}}"><div class="w3-col" style="width:50px"><a href="Repository/Contratista/{{client.id}}/{{todo.id}}Actividad{{tipoRequisitos.tipo}}.{{todo.tipo}}" download><i class="w3-xxlarge fa fa-check-square"></i></a></div>  </td>
+                                            <td ng-hide="{{todo.motrar}}"><div class="w3-col" style="width:50px"><i class="w3-xxlarge fa fa-exclamation-triangle"></i></div></td>
+
+                                        </tr>
+                                        </tbody>
+                                    </table>
+                                </form>
+
+                            </div>
+                            </div>
+                        </md-content>
+                    </md-tab>
+                </md-tabs>
+            </div>
+        </md-dialog-content>
+    </form>
+</md-dialog>

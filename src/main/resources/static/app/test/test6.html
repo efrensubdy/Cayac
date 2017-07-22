@@ -1,0 +1,191 @@
+<md-dialog id="attribute-dialog" aria-label="Requisitos Estaticos">
+    <form>
+        <md-toolbar>
+            <div class="md-toolbar-tools">
+                <h1>Requisitos Estaticos</h1>
+                <span flex></span>
+                <md-button class="md-icon-button" ng-click="cancel()">
+                    <md-icon md-font-library="material-icons">highlight_off</md-icon>
+                </md-button>
+            </div>
+        </md-toolbar>
+        <md-dialog-content>
+            <md-tabs md-dynamic-height md-border-bottom>
+                <md-tab label="Requisitos Previos al Inicio del Contrato">
+                    <md-content class="md-padding">
+                        <div class="md-dialog-content">
+                            <label>Sugeridos</label>
+                            <table class="w3-table ">
+                                <thead>
+                                <tr class="w3-light-grey w3-hover-grey">
+                                    <th>Descripcion</th>
+                                    <th>¿Aplica?<md-checkbox  aria-label="CheckboxMaster" ng-model="masterPrevioSugerido" ng-click="allPreviosSugeridos(masterPrevioSugerido)"></md-checkbox></th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr class="w3-hover-green" ng-repeat="todo in listadoPrevioSugerido" >
+                                    <td>{{todo.requisito}}</td>
+                                    <td><md-checkbox class="w3-center"  aria-label="Checkbox 1"  ng-model="previoSugerido" ng-change="agregarPrevioSugerido(previoSugerido, todo)">
+                                    </md-checkbox></td>
+                                </tr>
+                                </tbody>
+                            </table>
+                            <md-button class="md-warn md-raised md-hue-2" ng-click="aplicarPrevioSugerido($event)">Aplicar</md-button>
+                        </div>
+                            <div class="md-dialog-content">
+                            <label>Extras</label>
+                            <table class="w3-table ">
+                                <thead>
+                                <tr class="w3-light-grey w3-hover-grey">
+                                    <th>Descripcion</th>
+                                    <th>¿Aplica?<md-checkbox  aria-label="CheckboxMaster" ng-model="masterPrevioExtra" ng-click="allPreviosExtra(masterPrevioExtra)"></md-checkbox></th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr class="w3-hover-green" ng-repeat="todo in listadoPrevioExtra" >
+                                    <td>{{todo.descripcion}}</td>
+                                    <td><md-checkbox class="w3-center"  aria-label="Checkbox 1"  ng-model="previoExtras" ng-change="agregarPrevioExtra(previoExtras, todo)">
+                                    </md-checkbox></td>
+                                </tr>
+                                </tbody>
+
+                            </table>
+                                <md-button class="md-warn md-raised md-hue-2" ng-click="aplicarPrevioExtra($event)">Aplicar</md-button>
+                        </div>
+                    </md-content>
+
+                </md-tab>
+                <md-tab label="Requisitos Ejecucion del Contrato">
+                    <md-content class="md-padding">
+                        <div class="md-dialog-content">
+                            <label>Sugeridos</label>
+                            <table class="w3-table ">
+                                <thead>
+                                <tr class="w3-light-grey w3-hover-grey">
+                                    <th>Descripcion</th>
+                                    <th>¿Aplica?<md-checkbox  aria-label="CheckboxMaster" ng-model="masterEjecucionSugerido" ng-click="allEjecucionSugerido(masterEjecucionSugerido)"></md-checkbox></th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr class="w3-hover-green" ng-repeat="todo in listadoEjecucionSugerido" >
+                                    <td>{{todo.requisito}}</td>
+                                    <td><md-checkbox class="w3-center"  aria-label="Checkbox 1"  ng-model="ejecucionSugerido" ng-change="agregarEjecucionSugerido(ejecucionSugerido, todo)">
+                                    </md-checkbox></td>
+                                </tr>
+                                </tbody>
+
+                            </table>
+                            <md-button class="md-warn md-raised md-hue-2" ng-click="aplicarEjecucionSugerido($event)">Aplicar</md-button>
+                        </div>
+                            <div class="md-dialog-content">
+                            <label>Extras</label>
+                            <table class="w3-table ">
+                                <thead>
+                                <tr class="w3-light-grey w3-hover-grey">
+                                    <th>Descripcion</th>
+                                    <th>¿Aplica?<md-checkbox  aria-label="CheckboxMaster" ng-model="masterEjecucionExtra" ng-click="allEjecucionExtra(masterEjecucionExtra)"></md-checkbox></th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr class="w3-hover-green" ng-repeat="todo in listadoEjecucionExtra" >
+                                    <td>{{todo.descripcion}}</td>
+                                    <td><md-checkbox class="w3-center"  aria-label="Checkbox 1"  ng-model="ejecucionExtra" ng-change="agregarEjecucionExtra(ejecucionExtra, todo)">
+                                    </md-checkbox></td>
+                                </tr>
+                                </tbody>
+
+                            </table>
+                                <md-button class="md-warn md-raised md-hue-2" ng-click="aplicarEjecucionExtra($event)">Aplicar</md-button>
+                        </div>
+
+                    </md-content>
+
+                </md-tab>
+                <md-tab label="Requisitos Finalizacion del Contrato">
+                    <md-content class="md-padding">
+                        <div class="md-dialog-content">
+                            <label>Sugeridos</label>
+                            <table class="w3-table ">
+                                <thead>
+                                <tr class="w3-light-grey w3-hover-grey">
+                                    <th>Descripcion</th>
+                                    <th>¿Aplica?<md-checkbox  aria-label="CheckboxMaster" ng-model="masterFinalizacionSugerido" ng-click="allFinalizacionSugerido(masterFinalizacionSugerido)"></md-checkbox></th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr class="w3-hover-green" ng-repeat="todo in listadoFinalizacionSugerido" >
+                                    <td>{{todo.requisito}}</td>
+                                    <td><md-checkbox class="w3-center"  aria-label="Checkbox 1"  ng-model="finalizacionSugerido" ng-change="agregarFinalizacionSugerido(finalizacionSugerido, todo)">
+                                    </md-checkbox></td>
+                                </tr>
+                                </tbody>
+
+                            </table>
+                            <md-button class="md-warn md-raised md-hue-2" ng-click="aplicarFinalizacionSugerido($event)">Aplicar</md-button>
+                        </div>
+                            <div class="md-dialog-content">
+                            <label>Extras</label>
+                            <table class="w3-table">
+                                <thead>
+                                <tr class="w3-light-grey w3-hover-grey">
+                                    <th>Descripcion</th>
+                                    <th>¿Aplica?<md-checkbox  aria-label="CheckboxMaster" ng-model="masterFinalizacionExtra" ng-click="allFinalizacionExtra(masterFinalizacionExtra)"></md-checkbox></th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr class="w3-hover-green" ng-repeat="todo in listadoFinalizacionExtra" >
+                                    <td>{{todo.descripcion}}</td>
+                                    <td><md-checkbox class="w3-center"  aria-label="Checkbox 1"  ng-model="finalizacionExtra" ng-change="agregarFinalizacionExtra(finalizacionExtra, todo)">
+                                    </md-checkbox></td>
+                                </tr>
+                                </tbody>
+                            </table>
+                                <md-button class="md-warn md-raised md-hue-2" ng-click="aplicarFinalizacionExtra($event)">Aplicar</md-button>
+                        </div>
+
+
+                    </md-content>
+
+                </md-tab>
+                <md-tab label="Requisitos Definitivos" ng-click="consultar()">
+                    <md-content class="md-padding">
+                        <div class="md-dialog-content">
+                            <table class="w3-table-all">
+                                <thead>
+                                <tr class="w3-light-grey w3-hover-grey">
+                                    <th>Definitivos</th>
+
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr class="w3-hover-green" ng-repeat="todo in defPreviosSugeridos">
+                                    <td> {{todo.descripcion}} </td>
+
+                                </tr>
+                                <tr class="w3-hover-green" ng-repeat="todo in defPreviosExtras">
+                                    <td>{{todo.descripcion}} </td>
+                                </tr>
+                                <tr class="w3-hover-green" ng-repeat="todo in defEjecucionSugeridos">
+                                    <td>{{todo.descripcion}} </td>
+                                </tr>
+                                <tr class="w3-hover-green" ng-repeat="todo in defEjecucionExtras">
+                                    <td>{{todo.descripcion}} </td>
+                                </tr>
+                                <tr class="w3-hover-green" ng-repeat="todo in defFinalizacionSugeridos">
+                                    <td>{{todo.descripcion}} </td>
+                                </tr>
+                                <tr class="w3-hover-green" ng-repeat="todo in defFinalizacionExtras">
+                                    <td>{{todo.descripcion}} </td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </md-content>
+                </md-tab>
+
+            </md-tabs>
+
+        </md-dialog-content>
+
+    </form>
+</md-dialog>
