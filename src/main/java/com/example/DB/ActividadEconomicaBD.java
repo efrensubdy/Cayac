@@ -25,7 +25,7 @@ public class ActividadEconomicaBD {
      */
     public List<ActividadEconomica> consultarActividadesEconomicas() throws ClassNotFoundException, SQLException{
         List<ActividadEconomica> actividadEconomica = new LinkedList<>();
-        String sql ="SELECT * FROM sys.activdadeconomica";
+        String sql ="SELECT * FROM  activdadeconomica";
         PreparedStatement ps = Conexion.conection().prepareStatement(sql);
         ResultSet rs = ps.executeQuery();
         while(rs.next()){

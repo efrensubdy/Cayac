@@ -140,17 +140,27 @@ body {font-family: "Lato", sans-serif}
           <button onclick="myFunction()" class="w3-button w3-green">Selección</button>
 
           <div id="demo" class="w3-dropdown-content w3-bar-block w3-card-4 w3-animate-zoom">
-            <a onclick="myFunction()" ng-show="bandera" class="example" href="#!/view3">Registrar Requisitos</a> </li>
+            <div class="w3-bar-item w3-button" onclick="myFunction10()">
+              Gestión de Requisitos<i class="fa fa-caret-down"></i></div>
+            <div id="demoAcc4" class="w3-hide w3-white w3-card-4">
+              <a onclick="myFunction()" ng-show="bandera" class="example" href="#!/view3">Registrar Requisitos</a> </li>
+              <a onclick="myFunction()" ng-show="bandera" href="#!/view10">Revision de Requisitos</a> </li>
+            </div>
             <div class="w3-bar-item w3-button" onclick="myFunction3()">
               Objeto del Proyecto <i class="fa fa-caret-down"></i></div>
             <div id="demoAcc" class="w3-hide w3-white w3-card-4">
               <a onclick="myFunction()" ng-show="bandera"  href="#!/view13">Registrar Proyecto</a></li>
               <a onclick="myFunction()" ng-show="bandera"  href="#!/view15">Consultar Proyecto</a></li>
             </div>
+            <div class="w3-bar-item w3-button" onclick="myFunction9()">
+              Gestión de candidatos <i class="fa fa-caret-down"></i></div>
+            <div id="demoAcc3" class="w3-hide w3-white w3-card-4">
+              <a onclick="myFunction()" ng-show="bandera" class="example" href="#!/view2">Registrar Candidatos</a></li>
+              <a onclick="myFunction()"  ng-show="bandera" class="example" href="#!/view14">Consultar Candidatos</a></li>
+            </div>
 
-            <a onclick="myFunction()" ng-show="bandera" class="example" href="#!/view2">Registrar Candidatos</a></li>
-            <a onclick="myFunction()"  ng-show="bandera" class="example" href="#!/view14">Consultar Candidatos</a></li>
-            <a onclick="myFunction()" ng-show="bandera" href="#!/view10">Revision de Requisitos</a> </li>
+
+
           </div>
         </div>
           <div ng-show="bandera" class="w3-dropdown-click">

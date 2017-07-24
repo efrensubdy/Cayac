@@ -25,7 +25,7 @@ public class ArlBD {
      */
     public  void nuevarl(ARL arl)throws ClassNotFoundException,SQLException{
         consultarARLS();
-        String sql = "INSERT INTO sys.ARL(id,nameArl) VALUES(?,?)";
+        String sql = "INSERT INTO  arl(id,nameArl) VALUES(?,?)";
         Connection con =  Conexion.conection();
         arl.setId(tamañoTabla + 1);
         PreparedStatement ps = con.prepareStatement(sql);
@@ -46,7 +46,7 @@ public class ArlBD {
      */
     public List<ARL> consultarARLS() throws ClassNotFoundException, SQLException{
         List<ARL> arls = new LinkedList<>();
-        String sql ="SELECT * FROM sys.ARL";
+        String sql ="SELECT * FROM  arl";
         PreparedStatement ps = Conexion.conection().prepareStatement(sql);
         ResultSet rs = ps.executeQuery();
         while(rs.next()){

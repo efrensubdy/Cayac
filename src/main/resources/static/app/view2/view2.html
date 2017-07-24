@@ -33,18 +33,9 @@
   <div class="w3-row w3-section">
     <div class="w3-col" style="width:50px"><i class="w3-xxlarge fa fa-history"></i></div>
     <div class="w3-rest">
-      <input class="w3-input w3-border" type="text"  placeholder="Cuanto dura su contrato en meses, si es menor a un mes digite 0" name="duracion" list="duracion" ng-model="duracionContrato">
-      <datalist id="duracion">
-        <select name="duracion" class="w3-select"  data-placeholder="duracion de contrato"  >
-          <option value="" disabled selected>Escoja cero si su contrato dura menos de un mes</option>
-          <option value="0">0</option>
-          <option value="1">1</option>
-          <option value="2">2</option>
-          <option value="3">3</option>
-          <option value="4">4</option>
-          <option value="5">5</option>
-        </select>
-      </datalist>
+      <md-select aria-label="Select 1" ng-model="duracionContrato" placeholder="Numero de Duracion">
+        <md-option ng-value="todo" ng-repeat="todo in options">{{ todo.name }}</md-option>
+      </md-select>
     </div>
   </div>
   <div class="w3-row w3-section">
@@ -57,10 +48,12 @@
     <div class="w3-col" style="width:50px"><i class="w3-xxlarge fa fa-pencil"></i></div>
     <div class="w3-rest">
       <input class="w3-input w3-border" type="text"  placeholder="Código CIIU de su empresa" name="codigoCIIU" list="codigoCIIU" ng-model="codigoCIIU">
+      <button type="button" class="w3-btn w3-blue" ng-click="alertCodigo(listini,codigoCIIU)">Detalle</button>
+      <label>{{codigoSeleccionado}}</label>
       <datalist id="codigoCIIU">
         <select name="codigoCIIU" ng-model="select">
           <option value="" disabled selected>Escoja la actividad de su Empresa contratista</option>
-          <option ng-repeat="todo in listini"  value="{{todo.codigoCUU}}" ng-model="selectedActivityOption">{{todo.descripcion}}</option>
+          <option ng-repeat="todo in listini"  value="{{todo.codigoCUU}}" ng-model="selectedActivityOption">{{todo.codigoCUU}}</option>
         </select>
       </datalist>
     </div>

@@ -37,7 +37,7 @@ public class DocumentosDinamicosDB {
                 FileUtils.deleteQuietly(q);
             }
 
-            String sql = "UPDATE  sys.actprevsuger set contenido = ? , fechaEjecutada = ? , tipo =? , estado = ? where idRequisito = ? and idFinalista= ? and id= ?";
+            String sql = "UPDATE  actprevsuger set contenido = ? , fechaEjecutada = ? , tipo =? , estado = ? where idRequisito = ? and idFinalista= ? and id= ?";
             Connection con =  Conexion.conection();
             PreparedStatement ps = con.prepareStatement(sql);
             ps.setString(1,documentoPrevio.getContenido());
@@ -66,7 +66,7 @@ public class DocumentosDinamicosDB {
         if (q.isFile()) {
             FileUtils.deleteQuietly(q);
         }
-        String sql = "UPDATE  sys.actejecsug set contenido = ? , fechaEjecutada = ? , tipo =?, estado= ?  where idRequisito = ? and idFinalista= ? and id=?";
+        String sql = "UPDATE  actejecsug set contenido = ? , fechaEjecutada = ? , tipo =?, estado= ?  where idRequisito = ? and idFinalista= ? and id=?";
         Connection con =  Conexion.conection();
         PreparedStatement ps = con.prepareStatement(sql);
         ps.setString(1,documentoPrevio.getContenido());
@@ -95,7 +95,7 @@ public class DocumentosDinamicosDB {
         if (q.isFile()) {
             FileUtils.deleteQuietly(q);
         }
-        String sql = "UPDATE  sys.actfinsug set contenido = ? , fechaEjecutada = ? , tipo =?, estado=?  where idRequisito = ? and idFinalista= ? and id=?";
+        String sql = "UPDATE  actfinsug set contenido = ? , fechaEjecutada = ? , tipo =?, estado=?  where idRequisito = ? and idFinalista= ? and id=?";
         Connection con =  Conexion.conection();
         PreparedStatement ps = con.prepareStatement(sql);
         ps.setString(1,documentoPrevio.getContenido());
@@ -125,7 +125,7 @@ public class DocumentosDinamicosDB {
         if (q.isFile()) {
             FileUtils.deleteQuietly(q);
         }
-        String sql = "UPDATE  sys.actprevext set contenido = ? , fechaEjecutada = ? , tipo =?, estado= ?  where idRequisito = ? and idFinalista= ? and id= ?";
+        String sql = "UPDATE  actprevext set contenido = ? , fechaEjecutada = ? , tipo =?, estado= ?  where idRequisito = ? and idFinalista= ? and id= ?";
         Connection con =  Conexion.conection();
         PreparedStatement ps = con.prepareStatement(sql);
         ps.setString(1,documentoPrevio.getContenido());
@@ -155,7 +155,7 @@ public class DocumentosDinamicosDB {
         if (q.isFile()) {
             FileUtils.deleteQuietly(q);
         }
-        String sql = "UPDATE  sys.actejecext set contenido = ? , fechaEjecutada = ? , tipo =? , estado =? where idRequisito = ? and idFinalista= ? and id= ?";
+        String sql = "UPDATE  actejecext set contenido = ? , fechaEjecutada = ? , tipo =? , estado =? where idRequisito = ? and idFinalista= ? and id= ?";
         Connection con =  Conexion.conection();
         PreparedStatement ps = con.prepareStatement(sql);
         ps.setString(1,documentoPrevio.getContenido());
@@ -184,7 +184,7 @@ public class DocumentosDinamicosDB {
         if (q.isFile()) {
             FileUtils.deleteQuietly(q);
         }
-        String sql = "UPDATE  sys.actfinext set contenido = ? , fechaEjecutada = ? , tipo =?, estado= ?  where idRequisito = ? and idFinalista= ? and id=?";
+        String sql = "UPDATE  actfinext set contenido = ? , fechaEjecutada = ? , tipo =?, estado= ?  where idRequisito = ? and idFinalista= ? and id=?";
         Connection con =  Conexion.conection();
         PreparedStatement ps = con.prepareStatement(sql);
         ps.setString(1,documentoPrevio.getContenido());

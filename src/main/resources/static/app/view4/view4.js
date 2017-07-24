@@ -15,8 +15,11 @@ angular.module('myApp.view4', ['ngRoute'])
       //contratantes y también limpia el formulario
       $scope.listini=activity.query();
       $scope.add=function(ev){
+        console.log($scope.departamento);
+
         var contratante={"nombreEmpresa":$scope.nombreEmpresa,"telefono":$scope.telefono,"email":$scope.email,"password":$scope.password,"departamento":$scope.departamento,"direccion":$scope.direccion,"representanteLegal":$scope.representanteLegal,"codigoCIIU":$scope.codigoCIIU};
         contratantes.save(contratante);
+
           $scope.nombreEmpresa='';
           $scope.telefono='';
           $scope.email='';
@@ -39,4 +42,15 @@ angular.module('myApp.view4', ['ngRoute'])
 
 
       };
+      $scope.alertCodigo=function(item,codigoCUU){
+        var activity;
+        for(activity in item){
+           if( item[activity].codigoCUU==codigoCUU){
+                $scope.codigoSeleccionado=item[activity].descripcion
+
+           }
+
+        }
+
+      }
 }]);

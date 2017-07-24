@@ -21,7 +21,7 @@ public class RequisitosDinamicosDB {
 
     public List<Requisito> llenarRequisitosDinamicosPreviosSugeridos(int idContratante, int idCategoria) throws SQLException, ClassNotFoundException {
         List<Requisito> requisitos=new LinkedList<>();
-        String sql ="select t1.id,t1.requisito from (sys.requidinapresug as t1 ) left join sys.requidinadefpresug as t2 on t1.id=t2.idRequisito and t2.idContratante= ?\n" +
+        String sql ="select t1.id,t1.requisito from (requidinapresug as t1 ) left join requidinadefpresug as t2 on t1.id=t2.idRequisito and t2.idContratante= ?\n" +
                 "where t2.id is null and t1.idCategoria= ?";
         PreparedStatement ps = Conexion.conection().prepareStatement(sql);
         ps.setInt(1,idContratante);
@@ -39,7 +39,7 @@ public class RequisitosDinamicosDB {
     }
     public List<Requisito> llenarRequisitosDinamicosEjecucionSugeridos(int idContratante, int idCategoria) throws SQLException, ClassNotFoundException {
         List<Requisito> requisitos=new LinkedList<>();
-        String sql ="select t1.id,t1.requisito from (sys.requidinaejecsug as t1 ) left join sys.requidinadefejecsug as t2 on t1.id=t2.idRequisito and t2.idContratante= ?\n" +
+        String sql ="select t1.id,t1.requisito from (requidinaejecsug as t1 ) left join requidinadefejecsug as t2 on t1.id=t2.idRequisito and t2.idContratante= ?\n" +
                 "where t2.id is null and t1.idCategoria= ?";
         PreparedStatement ps = Conexion.conection().prepareStatement(sql);
         ps.setInt(1,idContratante);
@@ -58,7 +58,7 @@ public class RequisitosDinamicosDB {
 
     public List<Requisito> llenarRequisitosDinamicosFinalizacionSugeridos(int idContratante, int idCategoria) throws SQLException, ClassNotFoundException {
         List<Requisito> requisitos=new LinkedList<>();
-        String sql ="select t1.id,t1.requisito from (sys.requidinafinalsug as t1 ) left join sys.requidinadeffinalsug as t2 on t1.id=t2.idRequisito and t2.idContratante= ?\n" +
+        String sql ="select t1.id,t1.requisito from (requidinafinalsug as t1 ) left join requidinadeffinalsug as t2 on t1.id=t2.idRequisito and t2.idContratante= ?\n" +
                 "where t2.id is null and t1.idCategoria= ?";
         PreparedStatement ps = Conexion.conection().prepareStatement(sql);
         ps.setInt(1,idContratante);
@@ -77,7 +77,7 @@ public class RequisitosDinamicosDB {
 
     public List<RequisitoExtra> llenarRequisitosExtrasPrevios(int idContratante, int idCategoria) throws SQLException, ClassNotFoundException {
         List <RequisitoExtra> requisitosExtras=new LinkedList<>();
-        String sql ="select t1.id,t1.requisito from (sys.requidinapreex as t1) left join sys.requidinadefpreext as t2 on t1.id=t2.idRequisito and t2.idContratante= ?\n" +
+        String sql ="select t1.id,t1.requisito from (requidinapreex as t1) left join requidinadefpreext as t2 on t1.id=t2.idRequisito and t2.idContratante= ?\n" +
                 "where t2.id is null and t1.idCategoria= ?;";
         PreparedStatement ps = Conexion.conection().prepareStatement(sql);
         ps.setInt(1,idContratante);
@@ -96,7 +96,7 @@ public class RequisitosDinamicosDB {
 
     public List<RequisitoExtra> llenarRequisitosExtrasEjecucion(int idContratante, int idCategoria) throws SQLException, ClassNotFoundException {
         List <RequisitoExtra> requisitosExtras=new LinkedList<>();
-        String sql ="select t1.id,t1.requisito from (sys.requidinaejecext as t1) left join sys.requidinadefejecext as t2 on t1.id=t2.idRequisito and t2.idContratante= ?\n" +
+        String sql ="select t1.id,t1.requisito from (requidinaejecext as t1) left join requidinadefejecext as t2 on t1.id=t2.idRequisito and t2.idContratante= ?\n" +
                 "where t2.id is null and t1.idCategoria= ?";
         PreparedStatement ps = Conexion.conection().prepareStatement(sql);
         ps.setInt(1,idContratante);
@@ -115,7 +115,7 @@ public class RequisitosDinamicosDB {
 
     public List<RequisitoExtra> llenarRequisitosExtrasFinalizacion(int idContratante, int idCategoria) throws SQLException, ClassNotFoundException {
         List <RequisitoExtra> requisitosExtras=new LinkedList<>();
-        String sql ="select t1.id,t1.requisito from (sys.requidinafinalext as t1) left join sys.requidinadeffinalext as t2 on t1.id=t2.idRequisito and t2.idContratante= ?\n" +
+        String sql ="select t1.id,t1.requisito from (requidinafinalext as t1) left join requidinadeffinalext as t2 on t1.id=t2.idRequisito and t2.idContratante= ?\n" +
                 "where t2.id is null and t1.idCategoria= ?;";
         PreparedStatement ps = Conexion.conection().prepareStatement(sql);
         ps.setInt(1,idContratante);
@@ -133,7 +133,7 @@ public class RequisitosDinamicosDB {
     }
 
     public void insertarDinamicoPrevioSugerido(RequisitoObligatorio nuevoRequisitoPrevioSugerido)throws SQLException,ClassNotFoundException{
-        String sql = "INSERT INTO sys.requidinadefpresug (idContratante,idCategoria,idRequisito) VALUES(?,?,?)";
+        String sql = "INSERT INTO requidinadefpresug (idContratante,idCategoria,idRequisito) VALUES(?,?,?)";
         Connection con =  Conexion.conection();
         PreparedStatement ps = con.prepareStatement(sql);
 
@@ -148,7 +148,7 @@ public class RequisitosDinamicosDB {
 
     }
     public void insertarDinamicoPrevioExtra(RequisitoExtra nuevoRequisitoPrevioExtra)throws SQLException,ClassNotFoundException{
-        String sql = "INSERT INTO sys.requidinadefpreext(idContratante,idCategoria,idRequisito) VALUES(?,?,?)";
+        String sql = "INSERT INTO requidinadefpreext(idContratante,idCategoria,idRequisito) VALUES(?,?,?)";
         Connection con =  Conexion.conection();
         PreparedStatement ps = con.prepareStatement(sql);
         ps.setInt(1,nuevoRequisitoPrevioExtra.getIdContratante());
@@ -162,7 +162,7 @@ public class RequisitosDinamicosDB {
 
     }
     public void insertarDinamicoEjecucionSugerido(RequisitoObligatorio nuevoRequisitoEjecucionSugerido)throws SQLException,ClassNotFoundException{
-        String sql = "INSERT INTO sys.requidinadefejecsug(idContratante,idCategoria,idRequisito) VALUES(?,?,?)";
+        String sql = "INSERT INTO requidinadefejecsug(idContratante,idCategoria,idRequisito) VALUES(?,?,?)";
         Connection con =  Conexion.conection();
         PreparedStatement ps = con.prepareStatement(sql);
 
@@ -177,7 +177,7 @@ public class RequisitosDinamicosDB {
 
     }
     public void insertarDinamicoEjecucionExtra(RequisitoExtra nuevoRequisitoEjecucionExtra)throws SQLException,ClassNotFoundException{
-        String sql = "INSERT INTO sys.requidinadefejecext(idContratante,idCategoria,idRequisito) VALUES(?,?,?)";
+        String sql = "INSERT INTO requidinadefejecext(idContratante,idCategoria,idRequisito) VALUES(?,?,?)";
 
         Connection con =  Conexion.conection();
         PreparedStatement ps = con.prepareStatement(sql);
@@ -192,7 +192,7 @@ public class RequisitosDinamicosDB {
 
     }
     public void insertarDinamicoFinalizacionSugerido(RequisitoObligatorio nuevoRequisitoFinalizacionSugerido)throws SQLException,ClassNotFoundException{
-        String sql = "INSERT INTO sys.requidinadeffinalsug (idContratante,idCategoria,idRequisito) VALUES(?,?,?)";
+        String sql = "INSERT INTO requidinadeffinalsug (idContratante,idCategoria,idRequisito) VALUES(?,?,?)";
         Connection con =  Conexion.conection();
         PreparedStatement ps = con.prepareStatement(sql);
 
@@ -207,7 +207,7 @@ public class RequisitosDinamicosDB {
 
     }
     public void insertarDinamicoFinalizacionExtra(RequisitoExtra nuevoRequisitoFinalizacionExtra)throws SQLException,ClassNotFoundException{
-        String sql = "INSERT INTO sys.requidinadeffinalext(idContratante,idCategoria,idRequisito) VALUES(?,?,?)";
+        String sql = "INSERT INTO requidinadeffinalext(idContratante,idCategoria,idRequisito) VALUES(?,?,?)";
         Connection con =  Conexion.conection();
         PreparedStatement ps = con.prepareStatement(sql);
         ps.setInt(1,nuevoRequisitoFinalizacionExtra.getIdContratante());
@@ -223,7 +223,7 @@ public class RequisitosDinamicosDB {
 
     public List<RequisitoObligatorio>requisitosDinamicosPreviosDefinitivosSugeridos(int idContratante,int idCategoria)throws ClassNotFoundException, SQLException{
         List<RequisitoObligatorio>requisitoObligatorioList=new LinkedList<>();
-        String sql ="select ro.id,ro.idContratante,r.idCategoria, ro.idRequisito,r.requisito from sys.requidinadefpresug as ro inner join sys.requidinapresug as r where ro.idRequisito=r.id and ro.idContratante= ? and ro.idCategoria= ? ; ";
+        String sql ="select ro.id,ro.idContratante,r.idCategoria, ro.idRequisito,r.requisito from requidinadefpresug as ro inner join requidinapresug as r where ro.idRequisito=r.id and ro.idContratante= ? and ro.idCategoria= ? ; ";
         PreparedStatement ps = Conexion.conection().prepareStatement(sql);
         ps.setInt(1,idContratante);
         ps.setInt(2,idCategoria);
@@ -244,7 +244,7 @@ public class RequisitosDinamicosDB {
     }
     public List<RequisitoObligatorio>requisitosDinamicosEjecucionDefinitivosSugeridos(int idContratante,int idCategoria)throws ClassNotFoundException, SQLException{
         List<RequisitoObligatorio>requisitoObligatorioList=new LinkedList<>();
-        String sql ="select ro.id,ro.idContratante,r.idCategoria, ro.idRequisito,r.requisito from sys.requidinadefejecsug as ro inner join sys.requidinaejecsug as r where ro.idRequisito=r.id and ro.idContratante= ? and ro.idCategoria= ? ;";
+        String sql ="select ro.id,ro.idContratante,r.idCategoria, ro.idRequisito,r.requisito from requidinadefejecsug as ro inner join requidinaejecsug as r where ro.idRequisito=r.id and ro.idContratante= ? and ro.idCategoria= ? ;";
         PreparedStatement ps = Conexion.conection().prepareStatement(sql);
         ps.setInt(1,idContratante);
         ps.setInt(2,idCategoria);
@@ -265,7 +265,7 @@ public class RequisitosDinamicosDB {
     }
     public List<RequisitoObligatorio>requisitosDinamicosFinalizacionDefinitivosSugeridos(int idContratante,int idCategoria)throws ClassNotFoundException, SQLException{
         List<RequisitoObligatorio>requisitoObligatorioList=new LinkedList<>();
-        String sql ="select ro.id,ro.idContratante,r.idCategoria, ro.idRequisito,r.requisito from sys.requidinadeffinalsug as ro inner join sys.requidinafinalsug as r where ro.idRequisito=r.id and ro.idContratante= ? and ro.idCategoria= ? ;";
+        String sql ="select ro.id,ro.idContratante,r.idCategoria, ro.idRequisito,r.requisito from requidinadeffinalsug as ro inner join requidinafinalsug as r where ro.idRequisito=r.id and ro.idContratante= ? and ro.idCategoria= ? ;";
         PreparedStatement ps = Conexion.conection().prepareStatement(sql);
         ps.setInt(1,idContratante);
         ps.setInt(2,idCategoria);
@@ -286,7 +286,7 @@ public class RequisitosDinamicosDB {
     }
     public List<RequisitoExtra>requisitosDinamicosPreviosDefinitivosExtras(int idContratante, int idCategoria)throws ClassNotFoundException, SQLException{
         List<RequisitoExtra>requisitoExtrasList=new LinkedList<>();
-        String sql ="select ro.id,ro.idContratante,r.idCategoria, ro.idRequisito,r.requisito  from sys.requidinadefpreext as ro inner join sys.requidinapreex as r where ro.idRequisito=r.id  and ro.idContratante= ? and ro.idCategoria= ?;";
+        String sql ="select ro.id,ro.idContratante,r.idCategoria, ro.idRequisito,r.requisito  from requidinadefpreext as ro inner join requidinapreex as r where ro.idRequisito=r.id  and ro.idContratante= ? and ro.idCategoria= ?;";
         PreparedStatement ps = Conexion.conection().prepareStatement(sql);
         ps.setInt(1,idContratante);
         ps.setInt(2,idCategoria);
@@ -307,7 +307,7 @@ public class RequisitosDinamicosDB {
     }
     public List<RequisitoExtra>requisitosDinamicosEjecucionDefinitivosExtras(int idContratante, int idCategoria)throws ClassNotFoundException, SQLException{
         List<RequisitoExtra>requisitoExtrasList=new LinkedList<>();
-        String sql ="select ro.id,ro.idContratante,r.idCategoria, ro.idRequisito,r.requisito  from sys.requidinadefejecext as ro inner join sys.requidinaejecext as r where ro.idRequisito=r.id  and ro.idContratante= ? and ro.idCategoria= ?;";
+        String sql ="select ro.id,ro.idContratante,r.idCategoria, ro.idRequisito,r.requisito  from requidinadefejecext as ro inner join requidinaejecext as r where ro.idRequisito=r.id  and ro.idContratante= ? and ro.idCategoria= ?;";
         PreparedStatement ps = Conexion.conection().prepareStatement(sql);
         ps.setInt(1,idContratante);
         ps.setInt(2,idCategoria);
@@ -328,7 +328,7 @@ public class RequisitosDinamicosDB {
     }
     public List<RequisitoExtra>requisitosDinamicosFinalizacionDefinitivosExtras(int idContratante, int idCategoria)throws ClassNotFoundException, SQLException{
         List<RequisitoExtra>requisitoExtrasList=new LinkedList<>();
-        String sql ="select ro.id,ro.idContratante,r.idCategoria, ro.idRequisito,r.requisito  from sys.requidinadeffinalext as ro inner join sys.requidinafinalext as r where ro.idRequisito=r.id  and ro.idContratante= ? and ro.idCategoria= ?";
+        String sql ="select ro.id,ro.idContratante,r.idCategoria, ro.idRequisito,r.requisito  from requidinadeffinalext as ro inner join requidinafinalext as r where ro.idRequisito=r.id  and ro.idContratante= ? and ro.idCategoria= ?";
         PreparedStatement ps = Conexion.conection().prepareStatement(sql);
         ps.setInt(1,idContratante);
         ps.setInt(2,idCategoria);
@@ -349,7 +349,7 @@ public class RequisitosDinamicosDB {
     }
     public List<RequisitoObligatorio>estadoPreviosSugeridosDinamicos(int idfinalista ,int idCategoria,int idContratante)throws SQLException,ClassNotFoundException{
         List<RequisitoObligatorio>requisitoObligatoriosLisT=new LinkedList<>();
-        String sql="select rdps.id,rps.requisito,rdps.idCategoria from sys.finalista as f  inner join sys.contratista as c inner join sys.usuarios as u inner join sys.requidinadefpresug as rdps inner join sys.requidinapresug as rps  where  f.idContratista=c.idContratista and c.idContratista=u.idContratista and u.idCategoria=rdps.idCategoria and rdps.idRequisito=rps.id and u.idCategoria=? and f.idFinalista=? and rdps.idContratante= ? ;";
+        String sql="select rdps.id,rps.requisito,rdps.idCategoria from finalista as f  inner join contratista as c inner join usuarios as u inner join requidinadefpresug as rdps inner join requidinapresug as rps  where  f.idContratista=c.idContratista and c.idContratista=u.idContratista and u.idCategoria=rdps.idCategoria and rdps.idRequisito=rps.id and u.idCategoria=? and f.idFinalista=? and rdps.idContratante= ? ;";
         PreparedStatement ps=Conexion.conection().prepareStatement(sql);
         ps.setInt(1,idCategoria);
         ps.setInt(2,idfinalista);
@@ -368,7 +368,7 @@ public class RequisitosDinamicosDB {
     }
     public List<RequisitoObligatorio>estadoEjecucionSugeridosDinamicos(int idfinalista ,int idCategoria, int idContratante)throws SQLException,ClassNotFoundException{
         List<RequisitoObligatorio>requisitoObligatoriosLisT=new LinkedList<>();
-        String sql="select rdps.id,rps.requisito,rdps.idCategoria from sys.finalista as f  inner join sys.contratista as c inner join sys.usuarios as u inner join sys.requidinadefejecsug as rdps inner join sys.requidinaejecsug as rps  where  f.idContratista=c.idContratista and c.idContratista=u.idContratista and u.idCategoria=rdps.idCategoria and rdps.idRequisito=rps.id and u.idCategoria= ? and f.idFinalista= ? and rdps.idContratante= ? ;";
+        String sql="select rdps.id,rps.requisito,rdps.idCategoria from finalista as f  inner join contratista as c inner join usuarios as u inner join requidinadefejecsug as rdps inner join requidinaejecsug as rps  where  f.idContratista=c.idContratista and c.idContratista=u.idContratista and u.idCategoria=rdps.idCategoria and rdps.idRequisito=rps.id and u.idCategoria= ? and f.idFinalista= ? and rdps.idContratante= ? ;";
         PreparedStatement ps=Conexion.conection().prepareStatement(sql);
         ps.setInt(1,idCategoria);
         ps.setInt(2,idfinalista);
@@ -387,7 +387,7 @@ public class RequisitosDinamicosDB {
     }
     public List<RequisitoObligatorio>estadoFinalizacionSugeridosDinamicos(int idfinalista ,int idCategoria, int idContratante)throws SQLException,ClassNotFoundException{
         List<RequisitoObligatorio>requisitoObligatoriosLisT=new LinkedList<>();
-        String sql="select rdps.id,rps.requisito,rdps.idCategoria from sys.finalista as f  inner join sys.contratista as c inner join sys.usuarios as u inner join sys.requidinadeffinalsug as rdps inner join sys.requidinafinalsug as rps  where  f.idContratista=c.idContratista and c.idContratista=u.idContratista and u.idCategoria=rdps.idCategoria and rdps.idRequisito=rps.id and u.idCategoria= ? and f.idFinalista= ? and rdps.idContratante= ?;";
+        String sql="select rdps.id,rps.requisito,rdps.idCategoria from finalista as f  inner join contratista as c inner join usuarios as u inner join requidinadeffinalsug as rdps inner join requidinafinalsug as rps  where  f.idContratista=c.idContratista and c.idContratista=u.idContratista and u.idCategoria=rdps.idCategoria and rdps.idRequisito=rps.id and u.idCategoria= ? and f.idFinalista= ? and rdps.idContratante= ?;";
         PreparedStatement ps=Conexion.conection().prepareStatement(sql);
         ps.setInt(1,idCategoria);
         ps.setInt(2,idfinalista);
@@ -407,7 +407,7 @@ public class RequisitosDinamicosDB {
 
     public List<RequisitoExtra>estadoPreviosExtrasDinamicos(int idfinalista ,int idCategoria,int idContratante)throws SQLException,ClassNotFoundException{
         List<RequisitoExtra>requisitoObligatoriosLisT=new LinkedList<>();
-        String sql="select rdps.id,rps.requisito,rdps.idCategoria from sys.finalista as f  inner join sys.contratista as c inner join sys.usuarios as u inner join sys.requidinadefpreext as rdps inner join sys.requidinapreex as rps  where  f.idContratista=c.idContratista and c.idContratista=u.idContratista and u.idCategoria=rdps.idCategoria and rdps.idRequisito=rps.id and u.idCategoria= ? and f.idFinalista= ? and rdps.idContratante= ? ;";
+        String sql="select rdps.id,rps.requisito,rdps.idCategoria from finalista as f  inner join contratista as c inner join usuarios as u inner join requidinadefpreext as rdps inner join requidinapreex as rps  where  f.idContratista=c.idContratista and c.idContratista=u.idContratista and u.idCategoria=rdps.idCategoria and rdps.idRequisito=rps.id and u.idCategoria= ? and f.idFinalista= ? and rdps.idContratante= ? ;";
         PreparedStatement ps=Conexion.conection().prepareStatement(sql);
         ps.setInt(1,idCategoria);
         ps.setInt(2,idfinalista);
@@ -427,7 +427,7 @@ public class RequisitosDinamicosDB {
 
     public List<RequisitoExtra>estadoEjecucionExtrasDinamicos(int idfinalista ,int idCategoria,int idContratante)throws SQLException,ClassNotFoundException{
         List<RequisitoExtra>requisitoObligatoriosLisT=new LinkedList<>();
-        String sql="select rdps.id,rps.requisito,rdps.idCategoria from sys.finalista as f  inner join sys.contratista as c inner join sys.usuarios as u inner join sys.requidinadefejecext as rdps inner join sys.requidinaejecext as rps  where  f.idContratista=c.idContratista and c.idContratista=u.idContratista and u.idCategoria=rdps.idCategoria and rdps.idRequisito=rps.id and u.idCategoria= ? and f.idFinalista= ? and rdps.idContratante= ? ;";
+        String sql="select rdps.id,rps.requisito,rdps.idCategoria from finalista as f  inner join contratista as c inner join usuarios as u inner join requidinadefejecext as rdps inner join requidinaejecext as rps  where  f.idContratista=c.idContratista and c.idContratista=u.idContratista and u.idCategoria=rdps.idCategoria and rdps.idRequisito=rps.id and u.idCategoria= ? and f.idFinalista= ? and rdps.idContratante= ? ;";
         PreparedStatement ps=Conexion.conection().prepareStatement(sql);
         ps.setInt(1,idCategoria);
         ps.setInt(2,idfinalista);
@@ -446,7 +446,7 @@ public class RequisitosDinamicosDB {
     }
     public List<RequisitoExtra>estadoFinalizacionExtrasDinamicos(int idfinalista ,int idCategoria,int idContratante)throws SQLException,ClassNotFoundException{
         List<RequisitoExtra>requisitoObligatoriosLisT=new LinkedList<>();
-        String sql="select rdps.id,rps.requisito,rdps.idCategoria from sys.finalista as f  inner join sys.contratista as c inner join sys.usuarios as u inner join sys.requidinadeffinalext as rdps inner join sys.requidinafinalext as rps  where  f.idContratista=c.idContratista and c.idContratista=u.idContratista and u.idCategoria=rdps.idCategoria and rdps.idRequisito=rps.id and u.idCategoria= ? and f.idFinalista= ? and rdps.idContratante= ? ; ";
+        String sql="select rdps.id,rps.requisito,rdps.idCategoria from finalista as f  inner join contratista as c inner join usuarios as u inner join requidinadeffinalext as rdps inner join requidinafinalext as rps  where  f.idContratista=c.idContratista and c.idContratista=u.idContratista and u.idCategoria=rdps.idCategoria and rdps.idRequisito=rps.id and u.idCategoria= ? and f.idFinalista= ? and rdps.idContratante= ? ; ";
         PreparedStatement ps=Conexion.conection().prepareStatement(sql);
         ps.setInt(1,idCategoria);
         ps.setInt(2,idfinalista);

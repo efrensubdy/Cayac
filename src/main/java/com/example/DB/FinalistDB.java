@@ -36,7 +36,7 @@ public class FinalistDB {
     public void insertarFinalista(Finalista finalista)throws SQLException,ClassNotFoundException{
         java.util.Date utilDate = new Date();
         java.sql.Date date = new java.sql.Date(utilDate.getTime());
-        String sql = "INSERT INTO sys.Finalista (idContratista,fechaCreacion, fechaModificacion, estado,idContrato)   VALUES(?,?,?,?,?)";
+        String sql = "INSERT INTO Finalista (idContratista,fechaCreacion, fechaModificacion, estado,idContrato)   VALUES(?,?,?,?,?)";
         Connection con =  Conexion.conection();
         PreparedStatement ps = con.prepareStatement(sql);
         ps.setInt(1, finalista.getIdContratista());
@@ -50,7 +50,7 @@ public class FinalistDB {
     }
     public  List<Contratista> consultarNoFinalistas(int idContrante,int idContrato) throws ClassNotFoundException, SQLException{
         List<Contratista> contratistas = new LinkedList<>();
-        String sql ="select t1.idContratista,t1.nombreEmpresa,t1.nit,t1.codigoCIIU,t1.nombreGerente,t1.email,t1.arl,t1.direccion,t1.telefono,t1.duracion,t1.departamento,t1.idContratante,t1.personaContacto,t1.cargoPer,t1.telefonoCon,t1.emailContacto,t1.idContrato  FROM  sys.contratista as t1 left join sys.finalista as t2 on t1.idContratista=t2.idContratista where t2.idContratista is null  and t1.idContratante = ? and t1.idContrato = ?";
+        String sql ="select t1.idContratista,t1.nombreEmpresa,t1.nit,t1.codigoCIIU,t1.nombreGerente,t1.email,t1.arl,t1.direccion,t1.telefono,t1.duracion,t1.departamento,t1.idContratante,t1.personaContacto,t1.cargoPer,t1.telefonoCon,t1.emailContacto,t1.idContrato  FROM  contratista as t1 left join finalista as t2 on t1.idContratista=t2.idContratista where t2.idContratista is null  and t1.idContratante = ? and t1.idContrato = ?";
         PreparedStatement ps = Conexion.conection().prepareStatement(sql);
         ps.setInt(1,idContrante);
         ps.setInt(2,idContrato);
@@ -83,7 +83,7 @@ public class FinalistDB {
     }
     public  List<Contratista> consultarFinalistas(int idContrante,int idContrato) throws ClassNotFoundException, SQLException{
         List<Contratista> contratistas = new LinkedList<>();
-        String sql ="select t2.idFinalista, t1.idContratista,t1.nombreEmpresa,t1.nit,t1.codigoCIIU,t1.nombreGerente,t1.email,t1.arl,t1.direccion,t1.telefono,t1.duracion,t1.departamento,t1.idContratante,t1.personaContacto,t1.cargoPer,t1.telefonoCon,t1.emailContacto,t2.idContrato  FROM  sys.contratista as t1 left join sys.finalista as t2 on t1.idContratista=t2.idContratista where t2.idContratista is not null  and t1.idContratante = ? and t2.idContrato = ? ";
+        String sql ="select t2.idFinalista, t1.idContratista,t1.nombreEmpresa,t1.nit,t1.codigoCIIU,t1.nombreGerente,t1.email,t1.arl,t1.direccion,t1.telefono,t1.duracion,t1.departamento,t1.idContratante,t1.personaContacto,t1.cargoPer,t1.telefonoCon,t1.emailContacto,t2.idContrato  FROM  contratista as t1 left join finalista as t2 on t1.idContratista=t2.idContratista where t2.idContratista is not null  and t1.idContratante = ? and t2.idContrato = ? ";
         PreparedStatement ps = Conexion.conection().prepareStatement(sql);
         ps.setInt(1,idContrante);
         ps.setInt(2,idContrato);
@@ -128,7 +128,7 @@ public class FinalistDB {
     }
     public List<Requisito> llenarRequisitosPrevios(int idContratante,int idCategoria) throws SQLException, ClassNotFoundException {
         List<Requisito> requisitos=new LinkedList<>();
-        String sql ="select t1.idRequisitosDeEjecuionSugeridosEstaticosPrevio,t1.requisito from (sys.requisitosdeejecuionsugeridosestaticosprevio as t1 ) left join sys.requisitosdeejecuiondefsugeridosestaticosprevio as t2 on t1.idRequisitosDeEjecuionSugeridosEstaticosPrevio=t2.idRequsito and t2.idContratante= ?\n" +
+        String sql ="select t1.idRequisitosDeEjecuionSugeridosEstaticosPrevio,t1.requisito from (requisitosdeejecuionsugeridosestaticosprevio as t1 ) left join requisitosdeejecuiondefsugeridosestaticosprevio as t2 on t1.idRequisitosDeEjecuionSugeridosEstaticosPrevio=t2.idRequsito and t2.idContratante= ?\n" +
                 "where t2.idrequisitosdeejecuiondefsugeridosestaticosprevio is null and t1.idCategoria= ?;";
         PreparedStatement ps = Conexion.conection().prepareStatement(sql);
         ps.setInt(1,idContratante);
@@ -146,7 +146,7 @@ public class FinalistDB {
     }
     public List<Requisito> llenarRequisitosEjecucion(int idContratante,int idCategoria) throws SQLException, ClassNotFoundException {
         List<Requisito> requisitos=new LinkedList<>();
-        String sql ="select t1.idrequisitosdeejecuionsugeridosestaticosEjecucionActividades, t1.requisito from (sys.requisitosdeejecuionsugeridosestaticosejecucionactividades as t1 ) left join sys.requisitosdeejecuiondefsugeridosestaticosejecucionactividades as t2 on t1.idrequisitosdeejecuionsugeridosestaticosEjecucionActividades=t2.idRequisito and t2.idContratante= ?\n" +
+        String sql ="select t1.idrequisitosdeejecuionsugeridosestaticosEjecucionActividades, t1.requisito from (requisitosdeejecuionsugeridosestaticosejecucionactividades as t1 ) left join requisitosdeejecuiondefsugeridosestaticosejecucionactividades as t2 on t1.idrequisitosdeejecuionsugeridosestaticosEjecucionActividades=t2.idRequisito and t2.idContratante= ?\n" +
                 "where t2.idrequisitosdeejecuiondefsugeridosestaticosejecucionactividades is null and t1.idCategoria= ?";
         PreparedStatement ps = Conexion.conection().prepareStatement(sql);
         ps.setInt(1,idContratante);
@@ -164,7 +164,7 @@ public class FinalistDB {
     }
     public List<Requisito> llenarRequisitosfinalizacion(int idContratante,int idCategoria) throws SQLException, ClassNotFoundException {
         List<Requisito> requisitos=new LinkedList<>();
-        String sql ="select t1.idrequisitosdeejecuionsugeridosestaticosFinalizacionDeActivdades, t1.requisito from (sys.requisitosdeejecuionsugeridosestaticosfinalizaciondeactivdades as t1 ) left join sys.ejecuionsugeridosestaticosdeffinalizaciondeactivdades as t2 on t1.idrequisitosdeejecuionsugeridosestaticosFinalizacionDeActivdades=t2.idRequisito and t2.idContratante= ?\n" +
+        String sql ="select t1.idrequisitosdeejecuionsugeridosestaticosFinalizacionDeActivdades, t1.requisito from (requisitosdeejecuionsugeridosestaticosfinalizaciondeactivdades as t1 ) left join ejecuionsugeridosestaticosdeffinalizaciondeactivdades as t2 on t1.idrequisitosdeejecuionsugeridosestaticosFinalizacionDeActivdades=t2.idRequisito and t2.idContratante= ?\n" +
                 "where t2.defFinalizaactiv is null and t1.idCategoria= ?;";
         PreparedStatement ps = Conexion.conection().prepareStatement(sql);
         ps.setInt(1,idContratante);
@@ -182,7 +182,7 @@ public class FinalistDB {
     }
     public List<RequisitoExtra> llenarRequisitosExtrasPrevios(int idContratante, int idCategoria) throws SQLException, ClassNotFoundException {
         List <RequisitoExtra> requisitosExtras=new LinkedList<>();
-        String sql ="select t1.idRequisitosDeEjecuionSugeridosextrasPrevio,t1.requisito from (sys.requisitosdeejecuionextrasestaticosprevio as t1) left join sys.requisitosdeejecuiondefextrasestaticosprevio as t2 on t1.idRequisitosDeEjecuionSugeridosextrasPrevio=t2.idRequisito and t2.idContratante= ?\n" +
+        String sql ="select t1.idRequisitosDeEjecuionSugeridosextrasPrevio,t1.requisito from (requisitosdeejecuionextrasestaticosprevio as t1) left join requisitosdeejecuiondefextrasestaticosprevio as t2 on t1.idRequisitosDeEjecuionSugeridosextrasPrevio=t2.idRequisito and t2.idContratante= ?\n" +
                 "where t2.idrequisitosdeejecuiondefextrasestaticosprevio is null and t1.idCategoria= ?";
         PreparedStatement ps = Conexion.conection().prepareStatement(sql);
         ps.setInt(1,idContratante);
@@ -200,7 +200,7 @@ public class FinalistDB {
     }
     public List<RequisitoExtra> llenarRequisitosExtrasEjecucion(int idContratante, int idCategoria) throws SQLException, ClassNotFoundException {
         List <RequisitoExtra> requisitosExtras=new LinkedList<>();
-        String sql ="select t1.idrequisitosdeejecuionextrasestaticosEjecucionActividades,t1.requisito from (sys.requisitosdeejecuionextrasestaticosejecucionactividades as t1) left join sys.requisitosdeejecuionextrasdefestaticosejecucionactividades as t2 on t1.idrequisitosdeejecuionextrasestaticosEjecucionActividades=t2.idRequisito and t2.idContratante= ?\n" +
+        String sql ="select t1.idrequisitosdeejecuionextrasestaticosEjecucionActividades,t1.requisito from (requisitosdeejecuionextrasestaticosejecucionactividades as t1) left join requisitosdeejecuionextrasdefestaticosejecucionactividades as t2 on t1.idrequisitosdeejecuionextrasestaticosEjecucionActividades=t2.idRequisito and t2.idContratante= ?\n" +
                 "where t2.idrequisitosdeejecuionextrasestaticosejecucionactividades is null and t1.idCategoria= ?;";
         PreparedStatement ps = Conexion.conection().prepareStatement(sql);
         ps.setInt(1,idContratante);
@@ -218,7 +218,7 @@ public class FinalistDB {
     }
     public List<RequisitoExtra> llenarRequisitosExtrasFinalizacion(int idContratante, int idCategoria) throws SQLException, ClassNotFoundException {
         List <RequisitoExtra> requisitosExtras=new LinkedList<>();
-        String sql ="select * from (sys.requisitosdeejecuionextrasestaticosfinalizaciondeactivdades as t1) left join sys.ejecuionextrassestaticosdeffinalizaciondeactivdades as t2 on t1.idrequisitosdeejecuionextrasestaticosFinalizacionDeActivdades=t2.idRequisito and t2.idContratante= ?\n" +
+        String sql ="select * from (requisitosdeejecuionextrasestaticosfinalizaciondeactivdades as t1) left join ejecuionextrassestaticosdeffinalizaciondeactivdades as t2 on t1.idrequisitosdeejecuionextrasestaticosFinalizacionDeActivdades=t2.idRequisito and t2.idContratante= ?\n" +
                 "where t2.idejecuionextrassestaticosdeffinalizaciondeactivdades is null and t1.idCategoria= ?";
         PreparedStatement ps = Conexion.conection().prepareStatement(sql);
         ps.setInt(1,idContratante);
@@ -235,7 +235,7 @@ public class FinalistDB {
 
     }
     public void insertarPrevioSugerido(RequisitoObligatorio nuevoRequisitoPrevioSugerido)throws SQLException,ClassNotFoundException{
-        String sql = "INSERT INTO sys.requisitosdeejecuiondefsugeridosestaticosprevio (idContratante,idCategoria,idRequsito) VALUES(?,?,?)";
+        String sql = "INSERT INTO requisitosdeejecuiondefsugeridosestaticosprevio (idContratante,idCategoria,idRequsito) VALUES(?,?,?)";
         Connection con =  Conexion.conection();
         PreparedStatement ps = con.prepareStatement(sql);
 
@@ -250,7 +250,7 @@ public class FinalistDB {
 
     }
     public void insertarPrevioExtra(RequisitoExtra nuevoRequisitoPrevioExtra)throws SQLException,ClassNotFoundException{
-        String sql = "INSERT INTO sys.requisitosdeejecuiondefextrasestaticosprevio(idContratante,idCategoria,idRequisito) VALUES(?,?,?)";
+        String sql = "INSERT INTO requisitosdeejecuiondefextrasestaticosprevio(idContratante,idCategoria,idRequisito) VALUES(?,?,?)";
         Connection con =  Conexion.conection();
         PreparedStatement ps = con.prepareStatement(sql);
         ps.setInt(1,nuevoRequisitoPrevioExtra.getIdContratante());
@@ -264,7 +264,7 @@ public class FinalistDB {
 
     }
     public void insertarEjecucionSugerido(RequisitoObligatorio nuevoRequisitoEjecucionSugerido)throws SQLException,ClassNotFoundException{
-        String sql = "INSERT INTO sys.requisitosdeejecuiondefsugeridosestaticosejecucionactividades (idContratante,idCategoria,idRequisito) VALUES(?,?,?)";
+        String sql = "INSERT INTO requisitosdeejecuiondefsugeridosestaticosejecucionactividades (idContratante,idCategoria,idRequisito) VALUES(?,?,?)";
         Connection con =  Conexion.conection();
         PreparedStatement ps = con.prepareStatement(sql);
 
@@ -279,7 +279,7 @@ public class FinalistDB {
 
     }
     public void insertarEjecucionExtra(RequisitoExtra nuevoRequisitoEjecucionExtra)throws SQLException,ClassNotFoundException{
-        String sql = "INSERT INTO sys.requisitosdeejecuionextrasdefestaticosejecucionactividades(idContratante,idCategoria,idRequisito) VALUES(?,?,?)";
+        String sql = "INSERT INTO requisitosdeejecuionextrasdefestaticosejecucionactividades(idContratante,idCategoria,idRequisito) VALUES(?,?,?)";
         System.out.println("chdsbhdjfghdfg");
         Connection con =  Conexion.conection();
         PreparedStatement ps = con.prepareStatement(sql);
@@ -294,7 +294,7 @@ public class FinalistDB {
 
     }
     public void insertarFinalizacionSugerido(RequisitoObligatorio nuevoRequisitoFinalizacionSugerido)throws SQLException,ClassNotFoundException{
-        String sql = "INSERT INTO sys.ejecuionsugeridosestaticosdeffinalizaciondeactivdades (idContratante,idCategoria,idRequisito) VALUES(?,?,?)";
+        String sql = "INSERT INTO ejecuionsugeridosestaticosdeffinalizaciondeactivdades (idContratante,idCategoria,idRequisito) VALUES(?,?,?)";
         Connection con =  Conexion.conection();
         PreparedStatement ps = con.prepareStatement(sql);
 
@@ -309,7 +309,7 @@ public class FinalistDB {
 
     }
     public void insertarFinalizacionExtra(RequisitoExtra nuevoRequisitoFinalizacionExtra)throws SQLException,ClassNotFoundException{
-        String sql = "INSERT INTO sys.ejecuionextrassestaticosdeffinalizaciondeactivdades(idContratante,idCategoria,idRequisito) VALUES(?,?,?)";
+        String sql = "INSERT INTO ejecuionextrassestaticosdeffinalizaciondeactivdades(idContratante,idCategoria,idRequisito) VALUES(?,?,?)";
         Connection con =  Conexion.conection();
         PreparedStatement ps = con.prepareStatement(sql);
         ps.setInt(1,nuevoRequisitoFinalizacionExtra.getIdContratante());
@@ -325,7 +325,7 @@ public class FinalistDB {
 
     public List<RequisitoObligatorio>requisitosPreviosDefinitivosSugeridos(int idContratante,int idCategoria)throws ClassNotFoundException, SQLException{
         List<RequisitoObligatorio>requisitoObligatorioList=new LinkedList<>();
-        String sql ="select ro.idrequisitosdeejecuiondefsugeridosestaticosprevio,ro.idContratante,r.idCategoria, ro.idRequsito,r.requisito from sys.requisitosdeejecuiondefsugeridosestaticosprevio as ro inner join sys.requisitosdeejecuionsugeridosestaticosprevio as r where ro.idRequsito=r.idRequisitosDeEjecuionSugeridosEstaticosPrevio and ro.idContratante= ? and ro.idCategoria= ?; ";
+        String sql ="select ro.idrequisitosdeejecuiondefsugeridosestaticosprevio,ro.idContratante,r.idCategoria, ro.idRequsito,r.requisito from requisitosdeejecuiondefsugeridosestaticosprevio as ro inner join requisitosdeejecuionsugeridosestaticosprevio as r where ro.idRequsito=r.idRequisitosDeEjecuionSugeridosEstaticosPrevio and ro.idContratante= ? and ro.idCategoria= ?; ";
         PreparedStatement ps = Conexion.conection().prepareStatement(sql);
         ps.setInt(1,idContratante);
         ps.setInt(2,idCategoria);
@@ -346,7 +346,7 @@ public class FinalistDB {
     }
     public List<RequisitoObligatorio>requisitosEjecucionDefinitivosSugeridos(int idContratante,int idCategoria)throws ClassNotFoundException, SQLException{
         List<RequisitoObligatorio>requisitoObligatorioList=new LinkedList<>();
-        String sql ="select ro.idrequisitosdeejecuiondefsugeridosestaticosejecucionactividades,ro.idContratante,r.idCategoria, ro.idRequisito,r.requisito from sys.requisitosdeejecuiondefsugeridosestaticosejecucionactividades as ro inner join sys.requisitosdeejecuionsugeridosestaticosejecucionactividades as r where ro.idRequisito=r.idrequisitosdeejecuionsugeridosestaticosEjecucionActividades and ro.idContratante= ? and ro.idCategoria= ? ;";
+        String sql ="select ro.idrequisitosdeejecuiondefsugeridosestaticosejecucionactividades,ro.idContratante,r.idCategoria, ro.idRequisito,r.requisito from requisitosdeejecuiondefsugeridosestaticosejecucionactividades as ro inner join requisitosdeejecuionsugeridosestaticosejecucionactividades as r where ro.idRequisito=r.idrequisitosdeejecuionsugeridosestaticosEjecucionActividades and ro.idContratante= ? and ro.idCategoria= ? ;";
         PreparedStatement ps = Conexion.conection().prepareStatement(sql);
         ps.setInt(1,idContratante);
         ps.setInt(2,idCategoria);
@@ -367,7 +367,7 @@ public class FinalistDB {
     }
     public List<RequisitoObligatorio>requisitosFinalizacionDefinitivosSugeridos(int idContratante,int idCategoria)throws ClassNotFoundException, SQLException{
         List<RequisitoObligatorio>requisitoObligatorioList=new LinkedList<>();
-        String sql ="select ro.defFinalizaactiv,ro.idContratante,r.idCategoria, ro.idRequisito,r.requisito from sys.ejecuionsugeridosestaticosdeffinalizaciondeactivdades as ro inner join sys.requisitosdeejecuionsugeridosestaticosfinalizaciondeactivdades as r where ro.idRequisito=r.idrequisitosdeejecuionsugeridosestaticosFinalizacionDeActivdades and ro.idContratante= ? and ro.idCategoria= ? ;";
+        String sql ="select ro.defFinalizaactiv,ro.idContratante,r.idCategoria, ro.idRequisito,r.requisito from ejecuionsugeridosestaticosdeffinalizaciondeactivdades as ro inner join requisitosdeejecuionsugeridosestaticosfinalizaciondeactivdades as r where ro.idRequisito=r.idrequisitosdeejecuionsugeridosestaticosFinalizacionDeActivdades and ro.idContratante= ? and ro.idCategoria= ? ;";
         PreparedStatement ps = Conexion.conection().prepareStatement(sql);
         ps.setInt(1,idContratante);
         ps.setInt(2,idCategoria);
@@ -388,7 +388,7 @@ public class FinalistDB {
     }
     public List<RequisitoExtra>requisitosPreviosDefinitivosExtras(int idContratante, int idCategoria)throws ClassNotFoundException, SQLException{
         List<RequisitoExtra>requisitoExtrasList=new LinkedList<>();
-        String sql ="select ro.idrequisitosdeejecuiondefextrasestaticosprevio, ro.idContratante,ro.idCategoria, ro.idRequisito,r.requisito from sys.requisitosdeejecuiondefextrasestaticosprevio as ro inner join sys.requisitosdeejecuionextrasestaticosprevio as r where ro.idRequisito=r.idRequisitosDeEjecuionSugeridosextrasPrevio and ro.idContratante= ? and ro.idCategoria= ?;";
+        String sql ="select ro.idrequisitosdeejecuiondefextrasestaticosprevio, ro.idContratante,ro.idCategoria, ro.idRequisito,r.requisito from requisitosdeejecuiondefextrasestaticosprevio as ro inner join requisitosdeejecuionextrasestaticosprevio as r where ro.idRequisito=r.idRequisitosDeEjecuionSugeridosextrasPrevio and ro.idContratante= ? and ro.idCategoria= ?;";
         PreparedStatement ps = Conexion.conection().prepareStatement(sql);
         ps.setInt(1,idContratante);
         ps.setInt(2,idCategoria);
@@ -409,7 +409,7 @@ public class FinalistDB {
     }
     public List<RequisitoExtra>requisitosEjecucionDefinitivosExtras(int idContratante, int idCategoria)throws ClassNotFoundException, SQLException{
         List<RequisitoExtra>requisitoExtrasList=new LinkedList<>();
-        String sql ="select ro.idrequisitosdeejecuionextrasestaticosejecucionactividades, ro.idContratante,ro.idCategoria, ro.idRequisito,r.requisito from sys.requisitosdeejecuionextrasdefestaticosejecucionactividades as ro inner join sys.requisitosdeejecuionextrasestaticosejecucionactividades as r where ro.idRequisito=r.idrequisitosdeejecuionextrasestaticosEjecucionActividades and ro.idContratante= ? and ro.idCategoria= ?;";
+        String sql ="select ro.idrequisitosdeejecuionextrasestaticosejecucionactividades, ro.idContratante,ro.idCategoria, ro.idRequisito,r.requisito from requisitosdeejecuionextrasdefestaticosejecucionactividades as ro inner join requisitosdeejecuionextrasestaticosejecucionactividades as r where ro.idRequisito=r.idrequisitosdeejecuionextrasestaticosEjecucionActividades and ro.idContratante= ? and ro.idCategoria= ?;";
         PreparedStatement ps = Conexion.conection().prepareStatement(sql);
         ps.setInt(1,idContratante);
         ps.setInt(2,idCategoria);
@@ -430,7 +430,7 @@ public class FinalistDB {
     }
     public List<RequisitoExtra>requisitosFinalizacionDefinitivosExtras(int idContratante, int idCategoria)throws ClassNotFoundException, SQLException{
         List<RequisitoExtra>requisitoExtrasList=new LinkedList<>();
-        String sql ="select ro.idejecuionextrassestaticosdeffinalizaciondeactivdades, ro.idContratante,ro.idCategoria, ro.idRequisito,r.requisito from sys.ejecuionextrassestaticosdeffinalizaciondeactivdades as ro inner join sys.requisitosdeejecuionextrasestaticosfinalizaciondeactivdades as r where ro.idRequisito=r.idrequisitosdeejecuionextrasestaticosFinalizacionDeActivdades and ro.idContratante= ? and ro.idCategoria= ?";
+        String sql ="select ro.idejecuionextrassestaticosdeffinalizaciondeactivdades, ro.idContratante,ro.idCategoria, ro.idRequisito,r.requisito from ejecuionextrassestaticosdeffinalizaciondeactivdades as ro inner join requisitosdeejecuionextrasestaticosfinalizaciondeactivdades as r where ro.idRequisito=r.idrequisitosdeejecuionextrasestaticosFinalizacionDeActivdades and ro.idContratante= ? and ro.idCategoria= ?";
         PreparedStatement ps = Conexion.conection().prepareStatement(sql);
         ps.setInt(1,idContratante);
         ps.setInt(2,idCategoria);
@@ -452,7 +452,7 @@ public class FinalistDB {
 
     public List<RequisitoObligatorio>estadoDeRequisitosPreviosSugeridos(int idContratante ,int idCategoria,int idFinalista)throws SQLException,ClassNotFoundException{
         List<RequisitoObligatorio>requisitoObligatoriosLisT=new LinkedList<>();
-        String sql="select DISTINCT  re.idrequisitosdeejecuiondefsugeridosestaticosprevio,r.idRequisitosDeEjecuionSugeridosEstaticosPrevio,r.requisito,d.estado  from (sys.requisitosdeejecuiondefsugeridosestaticosprevio as re inner join sys.requisitosdeejecuionsugeridosestaticosprevio as r on  re.idRequsito =r.idRequisitosDeEjecuionSugeridosEstaticosPrevio and re.idCategoria= ? and re.idContratante= ?) left join sys.documentosestaticospreviosobli as d  on re.idCategoria= ? and d.idFinalista= ? and re.idrequisitosdeejecuiondefsugeridosestaticosprevio=d.idRequisito\n" +
+        String sql="select DISTINCT  re.idrequisitosdeejecuiondefsugeridosestaticosprevio,r.idRequisitosDeEjecuionSugeridosEstaticosPrevio,r.requisito,d.estado  from (requisitosdeejecuiondefsugeridosestaticosprevio as re inner join requisitosdeejecuionsugeridosestaticosprevio as r on  re.idRequsito =r.idRequisitosDeEjecuionSugeridosEstaticosPrevio and re.idCategoria= ? and re.idContratante= ?) left join documentosestaticospreviosobli as d  on re.idCategoria= ? and d.idFinalista= ? and re.idrequisitosdeejecuiondefsugeridosestaticosprevio=d.idRequisito\n" +
                 "where d.idFinalista is  null or d.idFinalista is not null;";
         PreparedStatement ps=Conexion.conection().prepareStatement(sql);
         ps.setInt(1,idCategoria);
@@ -479,7 +479,7 @@ public class FinalistDB {
 
     public List<RequisitoObligatorio>estadoDeRequisitosEjecucionSugeridos(int idContratante ,int idCategoria,int idFinalista)throws SQLException,ClassNotFoundException{
         List<RequisitoObligatorio>requisitoObligatoriosLisT=new LinkedList<>();
-        String sql="select DISTINCT  re.idrequisitosdeejecuiondefsugeridosestaticosejecucionactividades,r.idrequisitosdeejecuionsugeridosestaticosEjecucionActividades,r.requisito,d.estado from (sys.requisitosdeejecuiondefsugeridosestaticosejecucionactividades as re inner join sys.requisitosdeejecuionsugeridosestaticosejecucionactividades as r on  re.idRequisito =r.idrequisitosdeejecuionsugeridosestaticosEjecucionActividades and re.idCategoria= ? and re.idContratante= ?) left join sys.documentosestaticosejecsug as d  on re.idCategoria= ? and d.idFinalista =? and re.idrequisitosdeejecuiondefsugeridosestaticosejecucionactividades=d.idRequisito\n" +
+        String sql="select DISTINCT  re.idrequisitosdeejecuiondefsugeridosestaticosejecucionactividades,r.idrequisitosdeejecuionsugeridosestaticosEjecucionActividades,r.requisito,d.estado from (requisitosdeejecuiondefsugeridosestaticosejecucionactividades as re inner join requisitosdeejecuionsugeridosestaticosejecucionactividades as r on  re.idRequisito =r.idrequisitosdeejecuionsugeridosestaticosEjecucionActividades and re.idCategoria= ? and re.idContratante= ?) left join documentosestaticosejecsug as d  on re.idCategoria= ? and d.idFinalista =? and re.idrequisitosdeejecuiondefsugeridosestaticosejecucionactividades=d.idRequisito\n" +
                 "where d.idFinalista is  null or d.idFinalista is not null;";
         PreparedStatement ps=Conexion.conection().prepareStatement(sql);
         ps.setInt(1,idCategoria);
@@ -507,7 +507,7 @@ public class FinalistDB {
 
     public List<RequisitoObligatorio>estadoDeRequisitosFinalizacionSugeridos(int idContratante ,int idCategoria,int idFinalista)throws SQLException,ClassNotFoundException{
         List<RequisitoObligatorio>requisitoObligatoriosLisT=new LinkedList<>();
-        String sql="select DISTINCT  re.defFinalizaactiv,r.idrequisitosdeejecuionsugeridosestaticosFinalizacionDeActivdades,r.requisito,d.estado from (sys.ejecuionsugeridosestaticosdeffinalizaciondeactivdades as re inner join sys.requisitosdeejecuionsugeridosestaticosfinalizaciondeactivdades as r on  re.idRequisito =r.idrequisitosdeejecuionsugeridosestaticosFinalizacionDeActivdades and re.idCategoria= ? and re.idContratante= ?) left join sys.documentosestaticosfinalisug as d  on re.idCategoria= ? and d.idFinalista= ? and re.defFinalizaactiv=d.idRequisito\n" +
+        String sql="select DISTINCT  re.defFinalizaactiv,r.idrequisitosdeejecuionsugeridosestaticosFinalizacionDeActivdades,r.requisito,d.estado from (ejecuionsugeridosestaticosdeffinalizaciondeactivdades as re inner join requisitosdeejecuionsugeridosestaticosfinalizaciondeactivdades as r on  re.idRequisito =r.idrequisitosdeejecuionsugeridosestaticosFinalizacionDeActivdades and re.idCategoria= ? and re.idContratante= ?) left join documentosestaticosfinalisug as d  on re.idCategoria= ? and d.idFinalista= ? and re.defFinalizaactiv=d.idRequisito\n" +
                 "where d.idFinalista is  null or d.idFinalista is not null;";
         PreparedStatement ps=Conexion.conection().prepareStatement(sql);
         ps.setInt(1,idCategoria);
@@ -534,7 +534,7 @@ public class FinalistDB {
 
     public List<RequisitoExtra>estadoRequisitosPreviosExtras(int idContratante ,int idCategoria,int idFinalista)throws SQLException,ClassNotFoundException{
         List<RequisitoExtra>requisitosExtrasLisT=new LinkedList<>();
-        String sql="select DISTINCT  re.idrequisitosdeejecuiondefextrasestaticosprevio,r.idRequisitosDeEjecuionSugeridosextrasPrevio,r.requisito,d.estado from (sys.requisitosdeejecuiondefextrasestaticosprevio as re inner join sys.requisitosdeejecuionextrasestaticosprevio as r on  re.idRequisito =r.idRequisitosDeEjecuionSugeridosextrasPrevio and re.idCategoria= ? and re.idContratante= ?) left join sys.documentosestaticospreviosextras as d  on re.idCategoria= ? and d.idFinalista= ? and re.idRequisito=d.idRequisito\n" +
+        String sql="select DISTINCT  re.idrequisitosdeejecuiondefextrasestaticosprevio,r.idRequisitosDeEjecuionSugeridosextrasPrevio,r.requisito,d.estado from (requisitosdeejecuiondefextrasestaticosprevio as re inner join requisitosdeejecuionextrasestaticosprevio as r on  re.idRequisito =r.idRequisitosDeEjecuionSugeridosextrasPrevio and re.idCategoria= ? and re.idContratante= ?) left join documentosestaticospreviosextras as d  on re.idCategoria= ? and d.idFinalista= ? and re.idRequisito=d.idRequisito\n" +
                 "where d.idFinalista is  null or d.idFinalista is not null;";
         PreparedStatement ps=Conexion.conection().prepareStatement(sql);
         ps.setInt(1,idCategoria);
@@ -562,7 +562,7 @@ public class FinalistDB {
     }
     public List<RequisitoExtra>estadoRequisitoseEjecucionExtras(int idContratante ,int idCategoria,int idFinalista)throws SQLException,ClassNotFoundException{
         List<RequisitoExtra>requisitosExtrasLisT=new LinkedList<>();
-        String sql="select DISTINCT  re.idrequisitosdeejecuionextrasestaticosejecucionactividades,r.idrequisitosdeejecuionextrasestaticosEjecucionActividades,r.requisito,d.estado from (sys.requisitosdeejecuionextrasdefestaticosejecucionactividades as re inner join sys.requisitosdeejecuionextrasestaticosejecucionactividades as r on  re.idRequisito =r.idrequisitosdeejecuionextrasestaticosEjecucionActividades and re.idCategoria= ? and re.idContratante= ?) left join sys.documentosestaticosejecext as d  on re.idCategoria= ? and d.idFinalista= ? and re.idrequisitosdeejecuionextrasestaticosejecucionactividades=d.idRequisito\n" +
+        String sql="select DISTINCT  re.idrequisitosdeejecuionextrasestaticosejecucionactividades,r.idrequisitosdeejecuionextrasestaticosEjecucionActividades,r.requisito,d.estado from (requisitosdeejecuionextrasdefestaticosejecucionactividades as re inner join requisitosdeejecuionextrasestaticosejecucionactividades as r on  re.idRequisito =r.idrequisitosdeejecuionextrasestaticosEjecucionActividades and re.idCategoria= ? and re.idContratante= ?) left join documentosestaticosejecext as d  on re.idCategoria= ? and d.idFinalista= ? and re.idrequisitosdeejecuionextrasestaticosejecucionactividades=d.idRequisito\n" +
                 "where d.idFinalista is  null or d.idFinalista is not null;";
         PreparedStatement ps=Conexion.conection().prepareStatement(sql);
         ps.setInt(1,idCategoria);
@@ -590,7 +590,7 @@ public class FinalistDB {
     }
     public List<RequisitoExtra>estadoRequisitosFinalizacionExtras(int idContratante ,int idCategoria,int idFinalista)throws SQLException,ClassNotFoundException{
         List<RequisitoExtra>requisitosExtrasLisT=new LinkedList<>();
-        String sql="select DISTINCT  re.idejecuionextrassestaticosdeffinalizaciondeactivdades,r.idrequisitosdeejecuionextrasestaticosFinalizacionDeActivdades,r.requisito,d.estado from (sys.ejecuionextrassestaticosdeffinalizaciondeactivdades as re inner join sys.requisitosdeejecuionextrasestaticosfinalizaciondeactivdades as r on  re.idRequisito =r.idrequisitosdeejecuionextrasestaticosFinalizacionDeActivdades and re.idCategoria= ? and re.idContratante= ?) left join sys.documentosestaticosfinaliext as d  on re.idCategoria= ? and d.idFinalista= ? and re.idejecuionextrassestaticosdeffinalizaciondeactivdades=d.idRequisito\n" +
+        String sql="select DISTINCT  re.idejecuionextrassestaticosdeffinalizaciondeactivdades,r.idrequisitosdeejecuionextrasestaticosFinalizacionDeActivdades,r.requisito,d.estado from (ejecuionextrassestaticosdeffinalizaciondeactivdades as re inner join requisitosdeejecuionextrasestaticosfinalizaciondeactivdades as r on  re.idRequisito =r.idrequisitosdeejecuionextrasestaticosFinalizacionDeActivdades and re.idCategoria= ? and re.idContratante= ?) left join documentosestaticosfinaliext as d  on re.idCategoria= ? and d.idFinalista= ? and re.idejecuionextrassestaticosdeffinalizaciondeactivdades=d.idRequisito\n" +
                 "where d.idFinalista is  null or d.idFinalista is not null;";
         PreparedStatement ps=Conexion.conection().prepareStatement(sql);
         ps.setInt(1,idCategoria);

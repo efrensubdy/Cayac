@@ -20,7 +20,7 @@ public class ActividadesDB {
 
 public void agregarActividadPreviaSugerida(Actividad actividad)throws SQLException,ClassNotFoundException{
 
-    String sql = "INSERT INTO sys.actprevsuger(idRequisito,idFinalista,nombre,fechaDeEjecucion,responsable,estado) VALUES(?,?,?,?,?,?)";
+    String sql = "INSERT INTO  actprevsuger(idRequisito,idFinalista,nombre,fechaDeEjecucion,responsable,estado) VALUES(?,?,?,?,?,?)";
     Connection con =  Conexion.conection();
     PreparedStatement ps = con.prepareStatement(sql);
     ps.setInt(1,actividad.getIdRequisito());
@@ -40,7 +40,7 @@ public void agregarActividadPreviaSugerida(Actividad actividad)throws SQLExcepti
 public List<Actividad>traeactividadesPreviasSugeridas(int idFinalista,int idRequisito)throws SQLException,ClassNotFoundException{
 
     List<Actividad>actividades=new LinkedList<>();
-    String sql ="select * from sys.actprevsuger where idFinalista= ? and idRequisito = ?;";
+    String sql ="select * from  actprevsuger where idFinalista= ? and idRequisito = ?;";
     PreparedStatement ps = Conexion.conection().prepareStatement(sql);
     ps.setInt(1,idFinalista);
     ps.setInt(2,idRequisito);
@@ -81,7 +81,7 @@ public List<Actividad>traeactividadesPreviasSugeridas(int idFinalista,int idRequ
 
 
 public void agregarActividadPreviaExtra(Actividad actividad)throws SQLException,ClassNotFoundException{
-    String sql = "INSERT INTO sys.actprevext(idRequisito,idFinalista,nombre,fechaDeEjecucion,responsable,estado) VALUES(?,?,?,?,?,?)";
+    String sql = "INSERT INTO  actprevext(idRequisito,idFinalista,nombre,fechaDeEjecucion,responsable,estado) VALUES(?,?,?,?,?,?)";
     Connection con =  Conexion.conection();
     PreparedStatement ps = con.prepareStatement(sql);
     ps.setInt(1,actividad.getIdRequisito());
@@ -102,7 +102,7 @@ public void agregarActividadPreviaExtra(Actividad actividad)throws SQLException,
     public List<Actividad>traeactividadesPreviasExtras(int idFinalista , int idRequisito)throws SQLException,ClassNotFoundException{
 
         List<Actividad>actividades=new LinkedList<>();
-        String sql ="select * from sys.actprevext where idFinalista= ?  and idRequisito= ?;";
+        String sql ="select * from  actprevext where idFinalista= ?  and idRequisito= ?;";
         PreparedStatement ps = Conexion.conection().prepareStatement(sql);
         ps.setInt(1,idFinalista);
         ps.setInt(2,idRequisito);
@@ -146,7 +146,7 @@ public void agregarActividadPreviaExtra(Actividad actividad)throws SQLException,
 
     public void agregarActividadEjecucionSugerida(Actividad actividad)throws SQLException,ClassNotFoundException{
 
-    String sql = "INSERT INTO sys.actejecsug(idRequisito,idFinalista,nombre,fechaDeEjecucion,responsable,estado) VALUES(?,?,?,?,?,?)";
+    String sql = "INSERT INTO  actejecsug(idRequisito,idFinalista,nombre,fechaDeEjecucion,responsable,estado) VALUES(?,?,?,?,?,?)";
     Connection con =  Conexion.conection();
     PreparedStatement ps = con.prepareStatement(sql);
     ps.setInt(1,actividad.getIdRequisito());
@@ -168,7 +168,7 @@ public void agregarActividadPreviaExtra(Actividad actividad)throws SQLException,
     public List<Actividad>traeactividadesEjucionSugeridas(int idFinalista , int idRequisito)throws SQLException,ClassNotFoundException {
 
         List<Actividad> actividades = new LinkedList<>();
-        String sql = "select * from sys.actejecsug where idFinalista= ?  and idRequisito= ?;";
+        String sql = "select * from  actejecsug where idFinalista= ?  and idRequisito= ?;";
         PreparedStatement ps = Conexion.conection().prepareStatement(sql);
         ps.setInt(1, idFinalista);
         ps.setInt(2, idRequisito);
@@ -204,7 +204,7 @@ public void agregarActividadPreviaExtra(Actividad actividad)throws SQLException,
     }
 
 public void agregarActividadEjecucionExtra(Actividad actividad)throws SQLException,ClassNotFoundException{
-    String sql = "INSERT INTO sys.actejecext(idRequisito,idFinalista,nombre,fechaDeEjecucion,responsable,estado) VALUES(?,?,?,?,?,?)";
+    String sql = "INSERT INTO  actejecext(idRequisito,idFinalista,nombre,fechaDeEjecucion,responsable,estado) VALUES(?,?,?,?,?,?)";
     Connection con =  Conexion.conection();
     PreparedStatement ps = con.prepareStatement(sql);
     ps.setInt(1,actividad.getIdRequisito());
@@ -226,7 +226,7 @@ public void agregarActividadEjecucionExtra(Actividad actividad)throws SQLExcepti
 public List<Actividad>traeactividadesEjucionExtras(int idFinalista , int idRequisito)throws SQLException,ClassNotFoundException {
 
         List<Actividad> actividades = new LinkedList<>();
-        String sql = "select * from sys.actejecext where idFinalista= ?  and idRequisito= ?;";
+        String sql = "select * from  actejecext where idFinalista= ?  and idRequisito= ?;";
         PreparedStatement ps = Conexion.conection().prepareStatement(sql);
         ps.setInt(1, idFinalista);
         ps.setInt(2, idRequisito);
@@ -263,7 +263,7 @@ public List<Actividad>traeactividadesEjucionExtras(int idFinalista , int idRequi
 
 
 public void agregarActividadFinalizacionSugerido(Actividad actividad)throws SQLException,ClassNotFoundException{
-    String sql = "INSERT INTO sys.actfinsug(idRequisito,idFinalista,nombre,fechaDeEjecucion,responsable,estado) VALUES(?,?,?,?,?,?)";
+    String sql = "INSERT INTO  actfinsug(idRequisito,idFinalista,nombre,fechaDeEjecucion,responsable,estado) VALUES(?,?,?,?,?,?)";
     Connection con =  Conexion.conection();
     PreparedStatement ps = con.prepareStatement(sql);
     ps.setInt(1,actividad.getIdRequisito());
@@ -284,7 +284,7 @@ public void agregarActividadFinalizacionSugerido(Actividad actividad)throws SQLE
     public List<Actividad>traeactividadesFinalizacionSugeridos(int idFinalista , int idRequisito)throws SQLException,ClassNotFoundException {
 
         List<Actividad> actividades = new LinkedList<>();
-        String sql = "select * from sys.actfinsug where idFinalista= ?  and idRequisito= ?;";
+        String sql = "select * from  actfinsug where idFinalista= ?  and idRequisito= ?;";
         PreparedStatement ps = Conexion.conection().prepareStatement(sql);
         ps.setInt(1, idFinalista);
         ps.setInt(2, idRequisito);
@@ -323,7 +323,7 @@ public void agregarActividadFinalizacionSugerido(Actividad actividad)throws SQLE
 
 public void agregarActividadFinalizacionExtra(Actividad actividad)throws SQLException,ClassNotFoundException{
 
-    String sql = "INSERT INTO sys.actfinext(idRequisito,idFinalista,nombre,fechaDeEjecucion,responsable,estado) VALUES(?,?,?,?,?,?)";
+    String sql = "INSERT INTO  actfinext(idRequisito,idFinalista,nombre,fechaDeEjecucion,responsable,estado) VALUES(?,?,?,?,?,?)";
     Connection con =  Conexion.conection();
     PreparedStatement ps = con.prepareStatement(sql);
     ps.setInt(1,actividad.getIdRequisito());
@@ -344,7 +344,7 @@ public void agregarActividadFinalizacionExtra(Actividad actividad)throws SQLExce
     public List<Actividad>traeactividadesFinalizacionExtras(int idFinalista , int idRequisito)throws SQLException,ClassNotFoundException {
 
         List<Actividad> actividades = new LinkedList<>();
-        String sql = "select * from sys.actfinext where idFinalista= ?  and idRequisito= ?;";
+        String sql = "select * from  actfinext where idFinalista= ?  and idRequisito= ?;";
         PreparedStatement ps = Conexion.conection().prepareStatement(sql);
         ps.setInt(1, idFinalista);
         ps.setInt(2, idRequisito);

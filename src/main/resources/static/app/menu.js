@@ -62,8 +62,34 @@ function myFunction5() {
         x.previousElementSibling.className =
         x.previousElementSibling.className.replace(" w3-green", "");
     }
+}
+function myFunction10() {
+   var x = document.getElementById("demoAcc4");
+    if (x.className.indexOf("w3-show") == -1) {
+        x.className += " w3-show";
+        x.previousElementSibling.className += " w3-green";
+    } else {
+        x.className = x.className.replace(" w3-show", "");
+        x.previousElementSibling.className =
+        x.previousElementSibling.className.replace(" w3-green", "");
+    }
 
 }
+
+function myFunction9() {
+   var x = document.getElementById("demoAcc3");
+    if (x.className.indexOf("w3-show") == -1) {
+        x.className += " w3-show";
+        x.previousElementSibling.className += " w3-green";
+    } else {
+        x.className = x.className.replace(" w3-show", "");
+        x.previousElementSibling.className =
+        x.previousElementSibling.className.replace(" w3-green", "");
+    }
+
+}
+
+
 function myFunction6() {
     var x = document.getElementById("dem");
     if (x.className.indexOf("w3-show") == -1) {

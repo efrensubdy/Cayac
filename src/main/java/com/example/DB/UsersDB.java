@@ -33,7 +33,7 @@ public class UsersDB {
         consultarUsuariosContratante();
         consultarUsuariosContratista();
         consultarUsuariosAdiminstradores();
-        String sql = "INSERT INTO sys.Usuarios VALUES(?,?,?,?,?,?,?)";
+        String sql = "INSERT INTO usuarios VALUES(?,?,?,?,?,?,?)";
         Connection con =  Conexion.conection();
         usuario.setId(tamañoTablaContrante+ tamañoTablaContratista + tamañotablaAdmin + 1);
         PreparedStatement ps = con.prepareStatement(sql);
@@ -61,7 +61,7 @@ public class UsersDB {
         consultarUsuariosContratista();
         consultarUsuariosContratante();
         consultarUsuariosAdiminstradores();
-        String sql = "INSERT INTO sys.Usuarios VALUES(?,?,?,?,?,?,?)";
+        String sql = "INSERT INTO usuarios VALUES(?,?,?,?,?,?,?)";
         Connection con =  Conexion.conection();
         usuario.setId(tamañoTablaContrante+ tamañoTablaContratista + tamañotablaAdmin + 1);
         PreparedStatement ps = con.prepareStatement(sql);
@@ -86,7 +86,7 @@ public class UsersDB {
      */
     public List<Usuario> consultarUsuariosContratista() throws SQLException, ClassNotFoundException {
         List<Usuario> usuarios = new LinkedList<>();
-        String sql ="select con.idContratista ,con.email, con.password, u.idUsuarios,u.idCategoria,con.idContratante,con.idContrato,u.estado, u.rol from sys.usuarios as u inner join sys.contratista as con where u.idContratista=con.idContratista";
+        String sql ="select con.idContratista ,con.email, con.password, u.idUsuarios,u.idCategoria,con.idContratante,con.idContrato,u.estado, u.rol from usuarios as u inner join contratista as con where u.idContratista=con.idContratista";
         PreparedStatement ps = Conexion.conection().prepareStatement(sql);
         ResultSet rs = ps.executeQuery();
         while(rs.next()){
@@ -111,7 +111,7 @@ public class UsersDB {
     public int traerIdFinalista(int idContratista)throws SQLException,ClassNotFoundException {
 
     int a =0;
-    String sql ="select idFinalista from sys.finalista where idContratista = ? ";
+    String sql ="select idFinalista from finalista where idContratista = ? ";
     PreparedStatement ps = Conexion.conection().prepareStatement(sql);
     ps.setInt(1,idContratista);
     ResultSet rs = ps.executeQuery();
@@ -134,7 +134,7 @@ public class UsersDB {
      */
     public List<Usuario> consultarUsuariosContratante() throws SQLException, ClassNotFoundException {
         List<Usuario> usuarios = new LinkedList<>();
-        String sql ="select con.idContratante ,con.email, con.password, u.idUsuarios, u.estado,u.rol from sys.usuarios as u inner join sys.contratante as con where u.idContratante=con.idContratante";
+        String sql ="select con.idContratante ,con.email, con.password, u.idUsuarios, u.estado,u.rol from usuarios as u inner join contratante as con where u.idContratante=con.idContratante";
         PreparedStatement ps = Conexion.conection().prepareStatement(sql);
         ResultSet rs = ps.executeQuery();
         while(rs.next()){
@@ -153,7 +153,7 @@ public class UsersDB {
     }
     public List<Usuario> consultarUsuariosAdiminstradores() throws SQLException, ClassNotFoundException {
         List<Usuario> usuarios = new LinkedList<>();
-        String sql ="select con.idadministrador ,con.usuario, con.contraseña, u.idUsuarios, u.estado,u.rol from sys.usuarios as u inner join sys.administrador as con where u.idAdministrador=con.idadministrador";
+        String sql ="select con.idadministrador ,con.usuario, con.contraseña, u.idUsuarios, u.estado,u.rol from usuarios as u inner join administrador as con where u.idAdministrador=con.idadministrador";
         PreparedStatement ps = Conexion.conection().prepareStatement(sql);
         ResultSet rs = ps.executeQuery();
         while(rs.next()){
@@ -317,7 +317,7 @@ public class UsersDB {
      */
     public void llenarRequisitosPrimeravez(int idContratante,int idCategoria) throws SQLException, ClassNotFoundException {
         requisitos=new LinkedList<>();
-        String sql ="select t1.idrequisitos, t1.requisisto from (sys.requisitos as t1 ) left join sys.requisitosobligatoriossugeridos as t2 on t1.idrequisitos=t2.idRequisito and t2.idContratante= ?\n" +
+        String sql ="select t1.idrequisitos, t1.requisisto from (requisitos as t1 ) left join requisitosobligatoriossugeridos as t2 on t1.idrequisitos=t2.idRequisito and t2.idContratante= ?\n" +
                 "where t2.idRequisitosObligatorios is null and t1.idCategoria= ?;";
         PreparedStatement ps = Conexion.conection().prepareStatement(sql);
         ps.setInt(1,idContratante);
@@ -341,7 +341,7 @@ public class UsersDB {
      */
     public void llenarRequisitosExtrasPrimeravez(int idContratante, int idCategoria) throws SQLException, ClassNotFoundException {
         requisitosExtras=new LinkedList<>();
-        String sql ="select * from (sys.extras as t1) left join sys.requisitosobligatoriosextras as t2 on t1.idExtras=t2.idRequisito and t2.idContratante= ?\n" +
+        String sql ="select * from (extras as t1) left join requisitosobligatoriosextras as t2 on t1.idExtras=t2.idRequisito and t2.idContratante= ?\n" +
                 "where t2.idRequisitosObligatoriosExtras is null and t1.idCategoria= ?";
         PreparedStatement ps = Conexion.conection().prepareStatement(sql);
         ps.setInt(1,idContratante);
@@ -365,7 +365,7 @@ public class UsersDB {
      * @throws ClassNotFoundException
      */
     public void actualizarContraseñaContratante(int idContratante, String newPassword) throws SQLException, ClassNotFoundException{
-        String sql ="update sys.contratante set password = ? where idContratante =" + idContratante;
+        String sql ="update contratante set password = ? where idContratante =" + idContratante;
         PreparedStatement ps = Conexion.conection().prepareStatement(sql);
         ps.setString(1,newPassword);
         ps.executeUpdate();
@@ -380,7 +380,7 @@ public class UsersDB {
      * @throws ClassNotFoundException
      */
     public void actualizarContraseñaContratista(int idContratista, String newPassword) throws SQLException, ClassNotFoundException{
-        String sql ="update sys.contratista set password = ? where idContratista =" + idContratista;
+        String sql ="update contratista set password = ? where idContratista =" + idContratista;
         PreparedStatement ps = Conexion.conection().prepareStatement(sql);
         ps.setString(1,newPassword);
         ps.executeUpdate();
@@ -396,7 +396,7 @@ public class UsersDB {
     public void agregarRequisitoObligatorios(RequisitoObligatorio nuevoRequisitoObligatorio) throws ClassNotFoundException, SQLException{
         obtenerRequisitosObligatorios();
         System.out.println();
-        String sql = "INSERT INTO sys.requisitosobligatoriosSugeridos (idContratante,idCategoria,idRequisito) VALUES(?,?,?)";
+        String sql = "INSERT INTO requisitosobligatoriosSugeridos (idContratante,idCategoria,idRequisito) VALUES(?,?,?)";
         Connection con =  Conexion.conection();
         PreparedStatement ps = con.prepareStatement(sql);
 
@@ -409,7 +409,7 @@ public class UsersDB {
         con.close();
     }
     public void EliminarRequisitoObligatorios(int idRequisito , int idContratante) throws ClassNotFoundException, SQLException{
-        String sql = "DELETE FROM sys.requisitosobligatoriossugeridos WHERE idRequisito= ? AND idContratante= ?";
+        String sql = "DELETE FROM requisitosobligatoriossugeridos WHERE idRequisito= ? AND idContratante= ?";
         Connection con =  Conexion.conection();
         PreparedStatement ps = con.prepareStatement(sql);
         ps.setInt(1,idRequisito);
@@ -426,7 +426,7 @@ public class UsersDB {
      */
     public void agregarRequisitoExtras(RequisitoExtra nuevoRequisitoExtra) throws ClassNotFoundException, SQLException{
         obtenerRequisitosExtras();
-        String sql = "INSERT INTO sys.requisitosobligatoriosExtras(idContratante,idCategoria,idRequisito) VALUES(?,?,?)";
+        String sql = "INSERT INTO requisitosobligatoriosExtras(idContratante,idCategoria,idRequisito) VALUES(?,?,?)";
         Connection con =  Conexion.conection();
         PreparedStatement ps = con.prepareStatement(sql);
         ps.setInt(1,nuevoRequisitoExtra.getIdContratante());
@@ -442,7 +442,7 @@ public class UsersDB {
 
     public List<RequisitoObligatorio> obtenerRequisitosObligatorios()throws ClassNotFoundException,SQLException{
         List<RequisitoObligatorio>requisitoObligatorios=new LinkedList<>();
-        String sql ="SELECT * FROM sys.requisitosobligatoriosSugeridos";
+        String sql ="SELECT * FROM requisitosobligatoriosSugeridos";
         PreparedStatement ps = Conexion.conection().prepareStatement(sql);
         ResultSet rs = ps.executeQuery();
         while(rs.next()){
@@ -459,7 +459,7 @@ public class UsersDB {
         return requisitoObligatorios;
     }
     public void EliminarRequisitoObligatoriosExtra(int idRequisito , int idContratante) throws ClassNotFoundException, SQLException{
-        String sql = "DELETE FROM sys.requisitosobligatoriosExtras WHERE idRequisito= ? AND idContratante= ?";
+        String sql = "DELETE FROM requisitosobligatoriosExtras WHERE idRequisito= ? AND idContratante= ?";
         Connection con =  Conexion.conection();
         PreparedStatement ps = con.prepareStatement(sql);
         ps.setInt(1,idRequisito);
@@ -477,7 +477,7 @@ public class UsersDB {
      */
     public List<RequisitoExtra> obtenerRequisitosExtras()throws ClassNotFoundException,SQLException{
         List<RequisitoExtra>requisitosExtras=new LinkedList<>();
-        String sql ="SELECT * FROM sys.requisitosobligatoriosExtras";
+        String sql ="SELECT * FROM requisitosobligatoriosExtras";
         PreparedStatement ps = Conexion.conection().prepareStatement(sql);
         ResultSet rs = ps.executeQuery();
         while(rs.next()){
@@ -503,7 +503,7 @@ public class UsersDB {
      */
     public List<RequisitoObligatorio>requisitosObligatoriosPorContratista(int idContratante,int idCategoria)throws ClassNotFoundException, SQLException{
         List<RequisitoObligatorio>requisitoObligatorioList=new LinkedList<>();
-        String sql ="select ro.idRequisitosObligatorios,ro.idContratante,r.idCategoria, ro.idRequisito,r.requisisto from sys.requisitosobligatoriosSugeridos as ro inner join sys.requisitos as r where ro.idRequisito=r.idrequisitos and ro.idContratante= ? and ro.idCategoria= ?; ";
+        String sql ="select ro.idRequisitosObligatorios,ro.idContratante,r.idCategoria, ro.idRequisito,r.requisisto from requisitosobligatoriosSugeridos as ro inner join requisitos as r where ro.idRequisito=r.idrequisitos and ro.idContratante= ? and ro.idCategoria= ?; ";
         PreparedStatement ps = Conexion.conection().prepareStatement(sql);
         ps.setInt(1,idContratante);
         ps.setInt(2,idCategoria);
@@ -533,7 +533,7 @@ public class UsersDB {
      */
     public List<RequisitoExtra>requisitosExtrasPorContratista(int idContratante, int idCategoria)throws ClassNotFoundException, SQLException{
         List<RequisitoExtra>requisitoExtrasList=new LinkedList<>();
-        String sql ="select ro.idRequisitosObligatoriosExtras, ro.idContratante,ro.idCategoria, ro.idRequisito,r.Extrascol from sys.requisitosobligatoriosExtras as ro inner join sys.extras as r where ro.idRequisito=r.idExtras and ro.idContratante= ? and ro.idCategoria= ?";
+        String sql ="select ro.idRequisitosObligatoriosExtras, ro.idContratante,ro.idCategoria, ro.idRequisito,r.Extrascol from requisitosobligatoriosExtras as ro inner join extras as r where ro.idRequisito=r.idExtras and ro.idContratante= ? and ro.idCategoria= ?";
         PreparedStatement ps = Conexion.conection().prepareStatement(sql);
         ps.setInt(1,idContratante);
         ps.setInt(2,idCategoria);

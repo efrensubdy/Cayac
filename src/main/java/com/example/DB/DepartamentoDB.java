@@ -23,7 +23,7 @@ public class DepartamentoDB {
      */
     public List<Departamento> consultarDepartamentos() throws ClassNotFoundException, SQLException {
         List<Departamento> departamentos = new LinkedList<>();
-        String sql ="SELECT * FROM sys.departamento";
+        String sql ="SELECT * FROM departamento";
         PreparedStatement ps = Conexion.conection().prepareStatement(sql);
         ResultSet rs = ps.executeQuery();
         while(rs.next()){
@@ -48,17 +48,20 @@ public class DepartamentoDB {
      * @throws ClassNotFoundException
      */
     public int findAactivdad(String nameDpto) throws SQLException, ClassNotFoundException {
+
         List<Departamento> dpto=consultarDepartamentos();
         Departamento a=null;
         for (int i=0;i<dpto.size();i++){
+
             if(dpto.get(i).getNombreDepa().equals(nameDpto)){
                 a=dpto.get(i);
+
 
 
             }
 
         }
-        return a.getIdCiu();
+        return a.getIdDepartamento();
     }
 
 }

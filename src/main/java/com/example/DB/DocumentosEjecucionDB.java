@@ -22,7 +22,7 @@ import java.util.Date;
 public class DocumentosEjecucionDB {
     public boolean consultarRegistroDocumentoPrevioSugerido(int requisito,int idFinalista) throws SQLException, ClassNotFoundException {
     boolean flag=false;
-        String sql ="select count(*) as registro from sys.documentosestaticospreviosobli where idRequisito= ? and idFinalista=?;";
+        String sql ="select count(*) as registro from documentosestaticospreviosobli where idRequisito= ? and idFinalista=?;";
         PreparedStatement ps = Conexion.conection().prepareStatement(sql);
         ps.setInt(1,requisito);
         ps.setInt(2,idFinalista);
@@ -43,7 +43,7 @@ public class DocumentosEjecucionDB {
     }
     public boolean consultarRegistroDocumentoPrevioExtra(int requisito,int idFinalista) throws SQLException, ClassNotFoundException {
         boolean flag=false;
-        String sql ="select count(*) as registro from sys.documentosestaticospreviosextras where idRequisito= ? and idFinalista=?;";
+        String sql ="select count(*) as registro from documentosestaticospreviosextras where idRequisito= ? and idFinalista=?;";
         PreparedStatement ps = Conexion.conection().prepareStatement(sql);
         ps.setInt(1,requisito);
         ps.setInt(2,idFinalista);
@@ -65,7 +65,7 @@ public class DocumentosEjecucionDB {
 
     public boolean consultarRegistroDocumentoEjecucionSugerido(int requisito,int idFinalista) throws SQLException, ClassNotFoundException {
         boolean flag=false;
-        String sql ="select count(*) as registro from sys.documentosestaticosejecsug where idRequisito= ? and idFinalista=?;";
+        String sql ="select count(*) as registro from documentosestaticosejecsug where idRequisito= ? and idFinalista=?;";
         PreparedStatement ps = Conexion.conection().prepareStatement(sql);
         ps.setInt(1,requisito);
         ps.setInt(2,idFinalista);
@@ -86,7 +86,7 @@ public class DocumentosEjecucionDB {
     }
     public boolean consultarRegistroDocumentoEjecucionExtra(int requisito,int idFinalista) throws SQLException, ClassNotFoundException {
         boolean flag=false;
-        String sql ="select count(*) as registro from sys.documentosestaticosejecext where idRequisito= ? and idFinalista=?;";
+        String sql ="select count(*) as registro from documentosestaticosejecext where idRequisito= ? and idFinalista=?;";
         PreparedStatement ps = Conexion.conection().prepareStatement(sql);
         ps.setInt(1,requisito);
         ps.setInt(2,idFinalista);
@@ -107,7 +107,7 @@ public class DocumentosEjecucionDB {
     }
     public boolean consultarRegistroDocumentoFinalizacionSugerido(int requisito,int idFinalista) throws SQLException, ClassNotFoundException {
         boolean flag=false;
-        String sql ="select count(*) as registro from sys.documentosestaticosfinalisug where idRequisito= ? and idFinalista=?;";
+        String sql ="select count(*) as registro from documentosestaticosfinalisug where idRequisito= ? and idFinalista=?;";
         PreparedStatement ps = Conexion.conection().prepareStatement(sql);
         ps.setInt(1,requisito);
         ps.setInt(2,idFinalista);
@@ -128,7 +128,7 @@ public class DocumentosEjecucionDB {
     }
     public boolean consultarRegistroDocumentoFinalizacionExtra(int requisito,int idFinalista) throws SQLException, ClassNotFoundException {
         boolean flag=false;
-        String sql ="select count(*) as registro from sys.documentosestaticosfinaliext where idRequisito= ? and idFinalista=?;";
+        String sql ="select count(*) as registro from documentosestaticosfinaliext where idRequisito= ? and idFinalista=?;";
         PreparedStatement ps = Conexion.conection().prepareStatement(sql);
         ps.setInt(1,requisito);
         ps.setInt(2,idFinalista);
@@ -158,7 +158,7 @@ public class DocumentosEjecucionDB {
             java.sql.Date date = new java.sql.Date(utilDate.getTime());
             String fileType = getFileExtension(documentoPrevio.getFile());
             documentoPrevio.setTipo(fileType);
-            String sql = "INSERT INTO sys.documentosestaticospreviosobli (idRequisito,idFinalista,contenido,fechaCreacion,fechaActualizacion,tipo,estado) VALUES(?,?,?,?,?,?,?)";
+            String sql = "INSERT INTO documentosestaticospreviosobli (idRequisito,idFinalista,contenido,fechaCreacion,fechaActualizacion,tipo,estado) VALUES(?,?,?,?,?,?,?)";
             Connection con = Conexion.conection();
             documentoPrevio.setContenido("src/main/resources/static/app/Repository/Contratista/" + documentoPrevio.getIdContratista());
             File f=documentoPrevio.getFile();
@@ -186,7 +186,7 @@ public class DocumentosEjecucionDB {
             if (q.isFile()) {
                 FileUtils.deleteQuietly(q);
             }
-            String sql = "UPDATE  sys.documentosestaticospreviosobli set fechaActualizacion = ? where idRequisito = ? and idFinalista= ?";
+            String sql = "UPDATE  documentosestaticospreviosobli set fechaActualizacion = ? where idRequisito = ? and idFinalista= ?";
             Connection con =  Conexion.conection();
             PreparedStatement ps = con.prepareStatement(sql);
             ps.setDate(1,date);
@@ -215,7 +215,7 @@ public class DocumentosEjecucionDB {
             java.sql.Date date = new java.sql.Date(utilDate.getTime());
             String fileType = getFileExtension(documentoPrevio.getFile());
             documentoPrevio.setTipo(fileType);
-            String sql = "INSERT INTO sys.documentosestaticospreviosextras (idRequisito,idFinalista,fechaCreacion,fechaModificacion,tipo,estado,contenido) VALUES(?,?,?,?,?,?,?)";
+            String sql = "INSERT INTO documentosestaticospreviosextras (idRequisito,idFinalista,fechaCreacion,fechaModificacion,tipo,estado,contenido) VALUES(?,?,?,?,?,?,?)";
             Connection con = Conexion.conection();
             documentoPrevio.setContenido("src/main/resources/static/app/Repository/Contratista/" + documentoPrevio.getIdContratista());
             File f=documentoPrevio.getFile();
@@ -243,7 +243,7 @@ public class DocumentosEjecucionDB {
             if (q.isFile()) {
                 FileUtils.deleteQuietly(q);
             }
-            String sql = "UPDATE  sys.documentosestaticospreviosextras set fechaModificacion = ? where idRequisito = ? and idFinalista= ?";
+            String sql = "UPDATE  documentosestaticospreviosextras set fechaModificacion = ? where idRequisito = ? and idFinalista= ?";
             Connection con =  Conexion.conection();
             PreparedStatement ps = con.prepareStatement(sql);
             ps.setDate(1,date);
@@ -269,7 +269,7 @@ public class DocumentosEjecucionDB {
             java.sql.Date date = new java.sql.Date(utilDate.getTime());
             String fileType = getFileExtension(documentoEjecucion.getFile());
             documentoEjecucion.setTipo(fileType);
-            String sql = "INSERT INTO sys.documentosestaticosejecsug (idRequisito,idFinalista,fechaCreacion,fechaActualiza,tipo,estado,contenido) VALUES(?,?,?,?,?,?,?)";
+            String sql = "INSERT INTO documentosestaticosejecsug (idRequisito,idFinalista,fechaCreacion,fechaActualiza,tipo,estado,contenido) VALUES(?,?,?,?,?,?,?)";
             Connection con = Conexion.conection();
             documentoEjecucion.setContenido("src/main/resources/static/app/Repository/Contratista/" + documentoEjecucion.getIdContratista());
             File f=documentoEjecucion.getFile();
@@ -297,7 +297,7 @@ public class DocumentosEjecucionDB {
             if (q.isFile()) {
                 FileUtils.deleteQuietly(q);
             }
-            String sql = "UPDATE  sys.documentosestaticosejecsug set fechaActualiza = ? where idRequisito = ? and idFinalista= ?";
+            String sql = "UPDATE  documentosestaticosejecsug set fechaActualiza = ? where idRequisito = ? and idFinalista= ?";
             Connection con =  Conexion.conection();
             PreparedStatement ps = con.prepareStatement(sql);
             ps.setDate(1,date);
@@ -325,7 +325,7 @@ public class DocumentosEjecucionDB {
             java.sql.Date date = new java.sql.Date(utilDate.getTime());
             String fileType = getFileExtension(documentoEjecucion.getFile());
             documentoEjecucion.setTipo(fileType);
-            String sql = "INSERT INTO sys.documentosestaticosejecext (idRequisito,idFinalista,fechaCreacion,fechaModificacion,tipo,estado,contenido) VALUES(?,?,?,?,?,?,?)";
+            String sql = "INSERT INTO documentosestaticosejecext (idRequisito,idFinalista,fechaCreacion,fechaModificacion,tipo,estado,contenido) VALUES(?,?,?,?,?,?,?)";
             Connection con = Conexion.conection();
             documentoEjecucion.setContenido("src/main/resources/static/app/Repository/Contratista/" + documentoEjecucion.getIdContratista());
             File f=documentoEjecucion.getFile();
@@ -353,7 +353,7 @@ public class DocumentosEjecucionDB {
             if (q.isFile()) {
                 FileUtils.deleteQuietly(q);
             }
-            String sql = "UPDATE  sys.documentosestaticosejecext set fechaModificacion = ? where idRequisito = ? and idFinalista= ?";
+            String sql = "UPDATE  documentosestaticosejecext set fechaModificacion = ? where idRequisito = ? and idFinalista= ?";
             Connection con =  Conexion.conection();
             PreparedStatement ps = con.prepareStatement(sql);
             ps.setDate(1,date);
@@ -377,7 +377,7 @@ public class DocumentosEjecucionDB {
             java.sql.Date date = new java.sql.Date(utilDate.getTime());
             String fileType = getFileExtension(documentoFinalizacion.getFile());
             documentoFinalizacion.setTipo(fileType);
-            String sql = "INSERT INTO sys.documentosestaticosfinalisug (idRequisito,idFinalista,fechaCreacion,fechaModificacion,tipo,estado,contenido) VALUES(?,?,?,?,?,?,?)";
+            String sql = "INSERT INTO documentosestaticosfinalisug (idRequisito,idFinalista,fechaCreacion,fechaModificacion,tipo,estado,contenido) VALUES(?,?,?,?,?,?,?)";
             Connection con = Conexion.conection();
             documentoFinalizacion.setContenido("src/main/resources/static/app/Repository/Contratista/" + documentoFinalizacion.getIdContratista());
             File f=documentoFinalizacion.getFile();
@@ -405,7 +405,7 @@ public class DocumentosEjecucionDB {
             if (q.isFile()) {
                 FileUtils.deleteQuietly(q);
             }
-            String sql = "UPDATE  sys.documentosestaticosfinalisug set fechaModificacion = ? where idRequisito = ? and idFinalista= ?";
+            String sql = "UPDATE  documentosestaticosfinalisug set fechaModificacion = ? where idRequisito = ? and idFinalista= ?";
             Connection con =  Conexion.conection();
             PreparedStatement ps = con.prepareStatement(sql);
             ps.setDate(1,date);
@@ -428,7 +428,7 @@ public class DocumentosEjecucionDB {
             java.sql.Date date = new java.sql.Date(utilDate.getTime());
             String fileType = getFileExtension(documentoFinalizacion.getFile());
             documentoFinalizacion.setTipo(fileType);
-            String sql = "INSERT INTO sys.documentosestaticosfinaliext (idRequisito,idFinalista,fechaCreacion,fechaModificacion,tipo,estado,contenido) VALUES(?,?,?,?,?,?,?)";
+            String sql = "INSERT INTO documentosestaticosfinaliext (idRequisito,idFinalista,fechaCreacion,fechaModificacion,tipo,estado,contenido) VALUES(?,?,?,?,?,?,?)";
             Connection con = Conexion.conection();
             documentoFinalizacion.setContenido("src/main/resources/static/app/Repository/Contratista/" + documentoFinalizacion.getIdContratista());
             File f=documentoFinalizacion.getFile();
@@ -456,7 +456,7 @@ public class DocumentosEjecucionDB {
             if (q.isFile()) {
                 FileUtils.deleteQuietly(q);
             }
-            String sql = "UPDATE  sys.documentosestaticosfinaliext set fechaModificacion = ? where idRequisito = ? and idFinalista= ?";
+            String sql = "UPDATE  documentosestaticosfinaliext set fechaModificacion = ? where idRequisito = ? and idFinalista= ?";
             Connection con =  Conexion.conection();
             PreparedStatement ps = con.prepareStatement(sql);
             ps.setDate(1,date);

@@ -1,7 +1,7 @@
 <br>
 <br>
 <br>
-<form id="myForm" action="/action_page.php" class="w3-container w3-card-4 w3-light-grey w3-text-blue w3-margin">
+<form id="myForm"  class="w3-container w3-card-4 w3-light-grey w3-text-blue w3-margin">
   <h2 class="w3-center">REGISTRO DE CONTRANTE</h2>
 
   <div class="w3-row w3-section">
@@ -84,10 +84,12 @@
     <div class="w3-col" style="width:50px"><i class="w3-xxlarge fa fa-qq	"></i></div>
     <div class="w3-rest">
       <input class="w3-input w3-border" type="text"  placeholder="Código CIIU de su empresa" name="codigoCIIU" list="codigoCIIU" ng-model="codigoCIIU">
+      <button type="button" class="w3-btn w3-blue" ng-click="alertCodigo(listini,codigoCIIU)">Detalle</button>
+      <label>{{codigoSeleccionado}}</label>
       <datalist id="codigoCIIU">
         <select name="codigoCIIU" ng-model="select">
           <option value="" disabled selected>Escoja la actividad de su Empresa contratista</option>
-          <option ng-repeat="todo in listini"  value="{{todo.codigoCUU}}" ng-model="selectedActivityOption">{{todo.descripcion}}</option>
+          <option ng-repeat="todo in listini"  value="{{todo.codigoCUU}}" ng-model="selectedActivityOption">{{todo.codigoCUU}}</option>
         </select>
       </datalist>
     </div>

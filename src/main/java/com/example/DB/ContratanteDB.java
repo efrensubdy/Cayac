@@ -67,7 +67,7 @@ public class ContratanteDB {
         consultarContratantes();
         usersDB=new UsersDB();
         departamentoDB=new DepartamentoDB();
-        String sql = "INSERT INTO sys.Contratante VALUES(?,?,?,?,?,?,?,?,?,?,?)";
+        String sql = "INSERT INTO  contratante VALUES(?,?,?,?,?,?,?,?,?,?,?)";
         Connection con =  Conexion.conection();
         contratante.setId(tamañoTabla + 1);
         a=tamañoTabla + 1;
@@ -114,7 +114,7 @@ public class ContratanteDB {
      */
     public  List<Contratante> consultarContratantes() throws ClassNotFoundException, SQLException{
         contratantes = new LinkedList<>();
-        String sql ="SELECT * FROM sys.Contratante";
+        String sql ="SELECT * FROM  contratante";
         PreparedStatement ps = Conexion.conection().prepareStatement(sql);
         ResultSet rs = ps.executeQuery();
         while(rs.next()){
@@ -136,7 +136,7 @@ public class ContratanteDB {
         return contratantes;
     }
     public  void nuevoContrato(Contrato contrato)throws ClassNotFoundException,SQLException{
-        String sql = "INSERT INTO sys.Contrato(nombreContrato,fechaInicio,fechaFin,idContratante,tipoContrato) VALUES(?,?,?,?,?)";
+        String sql = "INSERT INTO  contrato(nombreContrato,fechaInicio,fechaFin,idContratante,tipoContrato) VALUES(?,?,?,?,?)";
         Connection con =  Conexion.conection();
         PreparedStatement ps = con.prepareStatement(sql);
         ps.setString(1,contrato.getNombreContrato());
@@ -152,7 +152,7 @@ public class ContratanteDB {
     }
     public List<Contrato> consultarContratos( int idContratante ) throws ClassNotFoundException, SQLException{
         List<Contrato> contratos = new LinkedList<>();
-        String sql ="SELECT * FROM sys.Contrato where idContratante= ?";
+        String sql ="SELECT * FROM  contrato where idContratante= ?";
         PreparedStatement ps = Conexion.conection().prepareStatement(sql);
         ps.setInt(1,idContratante);
         ResultSet rs = ps.executeQuery();
@@ -172,7 +172,7 @@ public class ContratanteDB {
     }
     public List<Contrato> consultarContratosCompletos( ) throws ClassNotFoundException, SQLException{
         List<Contrato> contratos = new LinkedList<>();
-        String sql ="SELECT * FROM sys.Contrato ;";
+        String sql ="SELECT * FROM  contrato ;";
         PreparedStatement ps = Conexion.conection().prepareStatement(sql);
         ResultSet rs = ps.executeQuery();
         while(rs.next()){
@@ -192,7 +192,7 @@ public class ContratanteDB {
 
     public List<Contrato> consultarContratosEjecucion( ) throws ClassNotFoundException, SQLException{
         List<Contrato> contratos = new LinkedList<>();
-        String sql ="select contrato.idContrato,contrato.nombreContrato,contrato.fechaInicio,contrato.fechaFin,contrato.idContratante,contrato.tipoContrato from sys.contrato left join sys.finalista on finalista.idContrato=contrato.idContrato where finalista.idContrato is  null;";
+        String sql ="select contrato.idContrato,contrato.nombreContrato,contrato.fechaInicio,contrato.fechaFin,contrato.idContratante,contrato.tipoContrato from  contrato left join  finalista on finalista.idContrato=contrato.idContrato where finalista.idContrato is  null;";
         PreparedStatement ps = Conexion.conection().prepareStatement(sql);
         ResultSet rs = ps.executeQuery();
         while(rs.next()){
@@ -229,7 +229,7 @@ public class ContratanteDB {
      List<Contrato>contratosPorFecha=new LinkedList<>();
         System.out.println(fechaInicio);
         System.out.println(fechaFin);
-        String sql ="SELECT * FROM sys.contrato \n" +
+        String sql ="SELECT * FROM  contrato \n" +
                 "WHERE NOT (fechaInicio > ? OR fechaFin < ?);";
         PreparedStatement ps = Conexion.conection().prepareStatement(sql);
         ps.setDate(1,fechaInicio);
