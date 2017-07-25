@@ -12,6 +12,60 @@ public class Contrato {
     public Date fechaFin;
     public int idContratante;
     public  String tipoContrato;
+    public String contenido;
+    public Date fechaCreacion;
+    public Date fechaActualizada;
+    public String tipo;
+    public String estado;
+    public String nombredeDocumento;
+
+    public String getContenido() {
+        return contenido;
+    }
+
+    public void setContenido(String contenido) {
+        this.contenido = contenido;
+    }
+
+    public Date getFechaCreacion() {
+        return fechaCreacion;
+    }
+
+    public void setFechaCreacion(Date fechaCreacion) {
+        this.fechaCreacion = fechaCreacion;
+    }
+
+    public Date getFechaActualizada() {
+        return fechaActualizada;
+    }
+
+    public void setFechaActualizada(Date fechaActualizada) {
+        this.fechaActualizada = fechaActualizada;
+    }
+
+    public String getTipo() {
+        return tipo;
+    }
+
+    public void setTipo(String tipo) {
+        this.tipo = tipo;
+    }
+
+    public String getEstado() {
+        return estado;
+    }
+
+    public void setEstado(String estado) {
+        this.estado = estado;
+    }
+
+    public String getNombredeDocumento() {
+        return nombredeDocumento;
+    }
+
+    public void setNombredeDocumento(String nombredeDocumento) {
+        this.nombredeDocumento = nombredeDocumento;
+    }
 
     public String getTipoContrato() {
         return tipoContrato;

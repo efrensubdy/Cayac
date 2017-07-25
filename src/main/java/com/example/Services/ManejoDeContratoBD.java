@@ -3,9 +3,11 @@ package com.example.Services;
 import com.example.Beans.AdministradorDeContratos;
 import com.example.DB.ContratanteDB;
 import com.example.Models.Contrato;
+import com.example.Models.Imagenes;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.io.IOException;
 import java.sql.Date;
 import java.sql.SQLException;
 import java.util.List;
@@ -40,5 +42,10 @@ public class ManejoDeContratoBD implements AdministradorDeContratos {
     @Override
     public Contrato obtenerContratoporNombre(int nombreContrato) throws SQLException, ClassNotFoundException {
         return contratanteDB.contratoporNombre(nombreContrato);
+    }
+
+    @Override
+    public void insertarDocumento(Imagenes imagen) throws SQLException, ClassNotFoundException, IOException {
+       contratanteDB.insertarDocumentoContrato(imagen);
     }
 }

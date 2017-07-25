@@ -67,6 +67,7 @@ angular.module('services.listFactory', ['ngRoute','ngResource'])
          .factory('contratos', function($resource) {
                        return $resource('/app/contratos/:idContratante');
                    })
+
          .factory('contratosEjecucion', function($resource) {
                                 return $resource('/app/contratos/ejecucion');
                             })

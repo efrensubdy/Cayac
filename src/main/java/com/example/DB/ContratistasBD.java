@@ -137,7 +137,6 @@ public class ContratistasBD {
         con.close();
         usersDB.nuevoUsuarioContratista(nuevoUsuario);
         int a=nuevoContratista.getId();
-        //File file = new File("C:/Users/User/Documents/Repository/"+ a);
         File file = new File("src/main/resources/static/app/Repository/Contratista/"+ a);
         if(!file.canWrite()){ // check if user have write permissions
             if(!(file.exists() && file.isDirectory())){

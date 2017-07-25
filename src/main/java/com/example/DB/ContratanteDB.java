@@ -1,10 +1,12 @@
 package com.example.DB;
 
 import com.example.Models.*;
+import org.apache.commons.io.FileUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.io.File;
+import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -208,7 +210,11 @@ public class ContratanteDB {
         ps.close();
         return contratos;
     }
+    public List<Contrato> consultarDocumentosDeContrato(){
+        List<Contrato >contratoList=new LinkedList<>();
 
+        return contratoList;
+    }
 
 
 
@@ -248,6 +254,47 @@ public class ContratanteDB {
         ps.close();
         return contratosPorFecha;
     }
+    private  String getFileExtension(File fullName) {
+        String fileName = fullName.getName();
+        int dotIndex = fileName.lastIndexOf('.');
+        return (dotIndex == -1) ? "" : fileName.substring(dotIndex + 1);
+    }
+
+
+    public void insertarDocumentoContrato(Imagenes imagen) throws SQLException, ClassNotFoundException, IOException {
+        System.out.println(imagen.getFile());
+        java.util.Date utilDate = new Date();
+        java.sql.Date date = new java.sql.Date(utilDate.getTime());
+        String fileType = getFileExtension(imagen.getFile());
+        imagen.setTipo(fileType);
+        String sql = "INSERT INTO documentosdecontrato (idContrato,contenido,fechaCreacion,fechaActualizacion,tipo,estado,nombreDeDocumento) VALUES(?,?,?,?,?,?,?)";
+        Connection con =  Conexion.conection();
+        imagen.setContenido("src/main/resources/static/app/Repository/Contratante/"+imagen.getIdContratante());
+        File f=imagen.getFile();
+        System.out.println(f.getName());
+        PreparedStatement ps=con.prepareStatement("SHOW TABLE STATUS WHERE Name = contrato ");
+        ResultSet rs=ps.executeQuery();
+        rs.next();
+        String nextid = rs.getString("Auto_increment");
+        ps = con.prepareStatement(sql);
+
+        ps.setInt(1,Integer.parseInt(nextid));
+        ps.setString(2,imagen.getContenido());
+        ps.setDate(3,date);
+        ps.setDate(4,date);
+        ps.setString(5,imagen.getTipo());
+        ps.setString(6,"s");
+        ps.setString(7,f.getName());
+        ps.execute();
+
+        ps.close();
+        con.close();
+        File q=new File("src/main/resources/static/app/Repository/Contratante/"+imagen.getIdContratante()+"/"+nextid+"."+imagen.getTipo());
+
+        FileUtils.moveFile(f,q);
+    }
+
+
 
 
 

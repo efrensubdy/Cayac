@@ -9,6 +9,25 @@ import java.io.Serializable;
 public class Imagenes implements Serializable {
     public int idContratista;
     public File file;
+    public int idContratante;
+    public int idContrato;
+
+    public int getIdContratante() {
+        return idContratante;
+    }
+
+    public void setIdContratante(int idContratante) {
+        this.idContratante = idContratante;
+    }
+
+    public int getIdContrato() {
+        return idContrato;
+    }
+
+    public void setIdContrato(int idContrato) {
+        this.idContrato = idContrato;
+    }
+
 
     public File getFile() {
         return file;

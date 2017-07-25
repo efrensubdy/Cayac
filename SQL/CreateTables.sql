@@ -64,6 +64,20 @@ CREATE TABLE `contrato` (
   CONSTRAINT `Contrato_Contratante` FOREIGN KEY (`idContratante`) REFERENCES `contratante` (`idContratante`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=INNODB DEFAULT CHARSET=utf8;
 
+CREATE TABLE `documentosdecontrato` (
+  `id` INT(11) NOT NULL AUTO_INCREMENT,
+  `idContrato` INT(11) NOT NULL,
+  `contenido` VARCHAR(45) NOT NULL,
+  `fechaCreacion` DATE NOT NULL,
+  `fechaActualizacion` DATE NOT NULL,
+  `tipo` VARCHAR(45) NOT NULL,
+  `estado` VARCHAR(45) NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `contrato_Documentos` (`idContrato`),
+  CONSTRAINT `contrato_Documentos` FOREIGN KEY (`idContrato`) REFERENCES `contrato` (`idContrato`)
+) ENGINE=INNODB DEFAULT CHARSET=utf8;
+
+
 CREATE TABLE `contratista` (
   `idContratista` INT(11) NOT NULL,
   `nombreEmpresa` VARCHAR(45) NOT NULL,
