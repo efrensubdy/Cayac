@@ -17,8 +17,8 @@ $scope.options = [
                             { id: 2, name: 'Orden de Servicio' },
 
                           ];
-var defer= $q.defer();
 
+var deferred=$q.defer();
 $scope.add=function(ev){
 
     $scope.listaDocumentos=[];
@@ -28,7 +28,7 @@ $scope.add=function(ev){
     $scope.listaDocumentos.push($scope.myFile3);
 
 
-    defer.resolve(contrato);
+    deferred.resolve(contrato);
     $scope.div1.$setPristine();
     $scope.div1.$setUntouched();
     $scope.contrato.nombreContrato='';
@@ -37,35 +37,41 @@ $scope.add=function(ev){
     $scope.contrato.fechaFin='';
 
 }
-defer.promise.then(function(object){
-            //nuevoContrato.save(object);
+deferred.promise.then(function(object){
+            nuevoContrato.save(object).$promise.then(function(){
+                  $mdDialog.show(
+                                        $mdDialog.alert()
+                                         .parent(angular.element(document.querySelector('#popupContainer')))
+                                         .clickOutsideToClose(true)
+                                         .title('Su Contrato quedo totalmente creado')
+                                         .textContent('agregue contratistas a su contrato.')
+                                         .ariaLabel('Alert Dialog Demo')
+                                         .ok('mire nuevamente!')
+                                         .targetEvent(ev)
+                                           );
+
+
+            });
+
+            console.log(object)
             console.log("hice la primera")
             return object
 
         })
         .then(function(object){
-             console.log("hice la segunda")
+            console.log(object)
+            for (var i=0;i<10;i++){
+                console.log(i);
+            }
+            console.log("hice la segunda")
 
-             //for(contratico in lista){
-               //  var uploadUrl = 'http://localhost:8080/app/contratos/documentoContrato'+ "/"+ $localStorage.contratanteLogeado.idContratante;
-                 //console.log(lista[contratico]);
-                // console.log(uploadFileToUrl);
-                  // fileUpload.uploadFileToUrl($scope.listaDocumentos[contratico], uploadUrl);
-              //}
+
              return object
         })
         .then(function(object){
+             console.log("hice la tercera")
             console.log(object)
-            $mdDialog.show(
-                        $mdDialog.alert()
-                         .parent(angular.element(document.querySelector('#popupContainer')))
-                         .clickOutsideToClose(true)
-                         .title('Su Contrato quedo totalmente creado')
-                         .textContent('agregue contratistas a su contrato.')
-                         .ariaLabel('Alert Dialog Demo')
-                         .ok('mire nuevamente!')
-                         .targetEvent(ev)
-                           );
+
 
 
         });
