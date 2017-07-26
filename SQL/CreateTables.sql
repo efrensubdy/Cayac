@@ -72,10 +72,12 @@ CREATE TABLE `documentosdecontrato` (
   `fechaActualizacion` DATE NOT NULL,
   `tipo` VARCHAR(45) NOT NULL,
   `estado` VARCHAR(45) NOT NULL,
+  `nombreDeDocumento` VARCHAR(45) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `contrato_Documentos` (`idContrato`),
   CONSTRAINT `contrato_Documentos` FOREIGN KEY (`idContrato`) REFERENCES `contrato` (`idContrato`)
 ) ENGINE=INNODB DEFAULT CHARSET=utf8;
+
 
 
 CREATE TABLE `contratista` (

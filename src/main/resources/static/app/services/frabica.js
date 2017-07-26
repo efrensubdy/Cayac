@@ -17,6 +17,26 @@ angular.module('services.listFactory', ['ngRoute','ngResource'])
                  });
              }
          }])
+      .service('contratoUpload', ['$http', function ($http) {
+                   this.uploadFileToUrl = function(list,contrato,uploadUrl){
+                       var fd = new FormData();
+                        for (var i in list) {
+                         console.log(list[i]);
+                         fd.append("file"+i,list[i]);
+                        }
+
+                       console.log("llego");
+                       console.log(list);
+                       console.log(fd);
+                       $http.post(uploadUrl, fd,{
+                           transformRequest: angular.identity,
+                           headers: {'Content-Type': undefined}
+                       })
+                       .then(function(){
+                           console.log("sirvio---------------------------------------------------------------");
+                       });
+                   }
+               }])
       .service('obtainExtension',['$http',function($http){
            this.obtainExtensionFromAPI=function(urlfromGet){
                 console.log(urlfromGet);

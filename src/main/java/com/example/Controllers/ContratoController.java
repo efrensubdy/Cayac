@@ -9,9 +9,12 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartException;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
+import org.springframework.web.multipart.MultipartResolver;
 
+import javax.servlet.http.HttpServletRequest;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -98,39 +101,23 @@ public class ContratoController {
 
     }
 
-    @RequestMapping(method = RequestMethod.POST)
-    public ResponseEntity<?> registrarContratante(@RequestBody Contrato contrato) {
+    @RequestMapping(value="{nombreContrato}/{fechaInicio}/{fechaFin}/{idContratante}/{tipoContrato}", method = RequestMethod.POST)
+    public ResponseEntity<?> registrarContrato(@PathVariable String nombreContrato,@PathVariable String fechaInicio,@PathVariable String fechaFin,@PathVariable Integer idContratante,@PathVariable String tipoContrato,
+                                               MultipartHttpServletRequest request) {
 
         ResponseEntity a;
         try {
             //obtener datos que se enviarán a través del API
-            manejoDeContratoBD.agregarContrato(contrato);
-            a = new ResponseEntity<>(HttpStatus.ACCEPTED);
-
-        } catch (Exception ex) {
-            Logger.getLogger(Controller.class.getName()).log(Level.SEVERE, null, ex);
-            return new ResponseEntity<>("Error bla bla bla", HttpStatus.NOT_FOUND);
-        }
-        return a;
-    }
-
-    @RequestMapping(path = "/documentoContrato/{idcontratante}", method = RequestMethod.POST)
-    public ResponseEntity<?> InsertarImagen(@PathVariable Integer idcontratante
-            , MultipartHttpServletRequest request) {
-
-        ResponseEntity a;
-        try {
-
+            //manejoDeContratoBD.agregarContrato(contrato);
+            //org.springframework.web.multipart.MultipartHttpServletRequest
             Iterator<String> itr = request.getFileNames();
-            while (itr.hasNext()) {
+
+            while(itr.hasNext()) {
                 String uploadedFile = itr.next();
                 MultipartFile file = request.getFile(uploadedFile);
-                File fileForDB = convert(file);
-                Imagenes imagenForDB = new Imagenes();
-                imagenForDB.setIdContratante(idcontratante);
-                imagenForDB.setFile(fileForDB);
-                System.out.println(imagenForDB.getFile().getName());
-                //manejoDeContratoBD.insertarDocumento(imagenForDB);
+                File fileForDB=convert(file);
+                String fileName = file.getOriginalFilename();
+                System.out.println("*****"+ fileName);
             }
             a = new ResponseEntity<>(HttpStatus.ACCEPTED);
 

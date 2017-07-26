@@ -10,6 +10,8 @@ angular.module('myApp.view15', ['ngRoute'])
 }])
 
 .controller('View15Ctrl', ['$localStorage','$sessionStorage','$scope','$rootScope','contratos','fechaContrato','$mdDialog','$http',function($localStorage,$sessionStorage,$scope,$rootScope,contratos,fechaContrato,$mdDialog,$http) {
+
+
 $scope.fecha={}
 $scope.listado=contratos.query({idContratante:$localStorage.contratanteLogeado.idContratante})
 $scope.nombreClick=false;
