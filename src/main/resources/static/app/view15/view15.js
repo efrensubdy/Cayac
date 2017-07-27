@@ -43,6 +43,7 @@ $scope.permisoFecha=true;
 
 
  var detalle=function(item){
+    console.log(item);
     var url = "http://localhost:8080/app/contratos/id/" + item;
           $http.get(url).then(function(response) {
                    d=response.data;

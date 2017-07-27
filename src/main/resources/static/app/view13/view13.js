@@ -18,11 +18,15 @@ $scope.options = [
                           ];
 
 
-$scope.add=function(ev){
+$scope.add=function(ev,a,b,c){
 
  $scope.listaDocumentos=[];
-   var contrato={"nombreContrato":$scope.contrato.nombreContrato,"fechaInicio":$scope.contrato.fechaInicio,"fechaFin":$scope.contrato.fechaFin,"idContratante":$localStorage.contratanteLogeado.idContratante,"tipoContrato":$scope.contrato.tipoContrato}
-   var uploadUrl = "http://localhost:8080/app/contratos/" +contrato.nombreContrato + "/" +contrato.fechaInicio + "/" +contrato.fechaFin + "/" +contrato.idContratante + "/" +contrato.tipoContrato;
+   var contrato={"nombreContrato":$scope.contrato.nombreContrato,"fechaInicio":a,"fechaFin":b,"fechaInicioActividades":c,"idContratante":$localStorage.contratanteLogeado.idContratante,"tipoContrato":$scope.contrato.tipoContrato}
+   var fechaInicio=contrato.fechaInicio.toString();
+   var fechaFin=contrato.fechaFin.toString();
+   var fechaInicioActividades=contrato.fechaInicioActividades.toString();
+
+   var uploadUrl = "http://localhost:8080/app/contratos/" + contrato.nombreContrato + "/" + fechaInicio + "/" + fechaFin + "/" + fechaInicioActividades + "/" +contrato.idContratante + "/" +contrato.tipoContrato;
 
    var file=$scope.myFile;
    var file2=$scope.myFile2;
@@ -31,17 +35,15 @@ $scope.add=function(ev){
    $scope.listaDocumentos.push($scope.myFile2);
    $scope.listaDocumentos.push($scope.myFile3);
    console.log(uploadUrl)
-   //contratoUpload.uploadFileToUrl($scope.listaDocumentos,uploadUrl);
+   contratoUpload.uploadFileToUrl($scope.listaDocumentos,uploadUrl);
 
-
-
-
-    $scope.div1.$setPristine();
-    $scope.div1.$setUntouched();
     $scope.contrato.nombreContrato='';
     $scope.contrato.fechaInicio='';
     $scope.contrato.tipoContrato='';
     $scope.contrato.fechaFin='';
+    $scope.contrato.fechaInicioDeActividades='';
+    $scope.div1.$setPristine();
+    $scope.div1.$setUntouched();
 
 }
 

@@ -9,7 +9,7 @@ angular.module('myApp.view3', ['ngRoute'])
   });
 }])
 
-.controller('View3Ctrl', ['$localStorage','$sessionStorage','requisitosEEliminar','contratantesCategoria','$rootScope','$scope','contratos', 'contratantesContrato','requisitos','extras','requisitosObligatorios','requisitosExtras','rObligatorio','rExtra','fabrica','$mdDialog','limites','requisitosOEliminar',function($localStorage,$sessionStorage,requisitosEEliminar,contratantesCategoria,$rootScope,$scope,contratos,contratantesContrato,requisitos,extras,requisitosObligatorios,requisitosExtras,rObligatorio,rExtra,fabrica,$mdDialog,limites,requisitosOEliminar) {
+.controller('View3Ctrl', ['$localStorage','$sessionStorage','requisitosEEliminar','contratantesCategoria','$rootScope','$scope','contratos', 'contratantesContrato','requisitos','extras','requisitosObligatorios','requisitosExtras','rObligatorio','rExtra','fabrica','$mdDialog','limites','requisitosOEliminar','$http',function($localStorage,$sessionStorage,requisitosEEliminar,contratantesCategoria,$rootScope,$scope,contratos,contratantesContrato,requisitos,extras,requisitosObligatorios,requisitosExtras,rObligatorio,rExtra,fabrica,$mdDialog,limites,requisitosOEliminar,$http) {
 
         $scope.flag=false;
         $scope.propertyName = 'nombreEmpresa';
@@ -30,24 +30,32 @@ angular.module('myApp.view3', ['ngRoute'])
                     $scope.banderaCategoria2=false;
                     $scope.banderaCategoria3=false;
                     $scope.banderaCategoria4=false;
+                    $scope.listado23=requisitos.query({idContratante:$localStorage.contratanteLogeado.idContratante,idCategoria:$scope.idCategoria});
+                    $scope.listado32=extras.query({idContratante:$localStorage.contratanteLogeado.idContratante,idCategoria:$scope.idCategoria});
                     break;
                 case "2":
                     $scope.banderaCategoria1=false;
                     $scope.banderaCategoria2=true;
                     $scope.banderaCategoria3=false;
                     $scope.banderaCategoria4=false;
+                    $scope.listado23=requisitos.query({idContratante:$localStorage.contratanteLogeado.idContratante,idCategoria:$scope.idCategoria});
+                    $scope.listado32=extras.query({idContratante:$localStorage.contratanteLogeado.idContratante,idCategoria:$scope.idCategoria});
                     break;
                 case "3":
                    $scope.banderaCategoria1=false;
                    $scope.banderaCategoria2=false;
                    $scope.banderaCategoria3=true;
                    $scope.banderaCategoria4=false;
+                   $scope.listado23=requisitos.query({idContratante:$localStorage.contratanteLogeado.idContratante,idCategoria:$scope.idCategoria});
+                  $scope.listado32=extras.query({idContratante:$localStorage.contratanteLogeado.idContratante,idCategoria:$scope.idCategoria});
                    break;
                 case "4":
                    $scope.banderaCategoria1=false;
                    $scope.banderaCategoria2=false;
                    $scope.banderaCategoria3=false;
                    $scope.banderaCategoria4=true;
+                   $scope.listado23=requisitos.query({idContratante:$localStorage.contratanteLogeado.idContratante,idCategoria:$scope.idCategoria});
+                   $scope.listado32=extras.query({idContratante:$localStorage.contratanteLogeado.idContratante,idCategoria:$scope.idCategoria});
                                 break;
 
             }
@@ -55,9 +63,26 @@ angular.module('myApp.view3', ['ngRoute'])
 
         }
 
-         $scope.showAlert = function(ev) {
+         $scope.showAlert = function(ev,a,b) {
                 //listado 2 sera la lista de requisitos sugeridos por el id del contratista
                 //presionadoo en la ejecucion solicitado a la fabrica requisitos
+
+                                if(a==0 && b!=0){
+                                     $rootScope.table1=false;
+                                     $rootScope.table2=true;
+                                }
+                               else if(b==0 && a!=0){
+                                    $rootScope.table2=false;
+                                    $rootScope.table1=true
+                               }
+                               else if(a!=0 && b!=0){
+                                    $rootScope.table1=true;
+                                    $rootScope.table2=true;
+                               }
+                               else{
+                                    $rootScope.table1=false;
+                                    $rootScope.table2=false;
+                               }
 
                 $rootScope.listado2=requisitos.query({idContratante:$localStorage.contratanteLogeado.idContratante,idCategoria:$scope.idCategoria});
                 $rootScope.listado3=extras.query({idContratante:$localStorage.contratanteLogeado.idContratante,idCategoria:$scope.idCategoria});
@@ -87,10 +112,25 @@ angular.module('myApp.view3', ['ngRoute'])
             $scope.listadoAllSugerido=[];
             $scope.listadoAllExtra=[];
             var d;
-            $scope.listado2=$rootScope.listado2;
+            $scope.table1=$rootScope.table1;
+            $scope.table2=$rootScope.table2;
 
+            $scope.listado2=$rootScope.listado2;
             $scope.listado3=$rootScope.listado3;
+            var url= "http://localhost:8080/app/limites/"+$localStorage.contratanteLogeado.idContratante+"/"+$rootScope.idCategoria ;
+              $http.get(url).then(function(response) {
+                   if(response.data.flag){
+                            $scope.objeto=response.data;
+
+                            }
+                                                                 return response.data;
+              })
+
+
+
+
             //funcion que esconde el dialogo
+
             $scope.hide = function() {
               $mdDialog.hide();
             };
@@ -195,17 +235,17 @@ angular.module('myApp.view3', ['ngRoute'])
                 console.log("entre a all sugeridos")
                 agregarBaseDatosSugeridos($scope.listadoAllSugerido);
                 }
-                $mdDialog.show(
-                                       $mdDialog.alert()
-                                       .parent(angular.element(document.querySelector('#popupContainer')))
-                                       .clickOutsideToClose(true)
-                                       .title('Estos seran permanentes')
-                                       .textContent('el contratista deberá cumplir esto.')
-                                       .ariaLabel('Alert Dialog Demo')
-                                       .ok('mire sus definitivos!')
-                                       .targetEvent(ev)
-                                   );
 
+                $mdDialog.show({
+                                      //Controlador del mensajes con operaciones definido en la parte de abajo
+                                      controller: DialogController2,
+                                     // permite la comunicacion con el html que despliega el boton requisitos
+                                     templateUrl: 'test/definitivosSeleccion.html',
+                                      parent: angular.element(document.body),
+                                      targetEvent: ev,
+                                      clickOutsideToClose:true,
+                                      fullscreen: $scope.customFullscreen // Only for -xs, -sm breakpoints.
+                                      })
 
            };
            $scope.aplicar2=function(ev){
@@ -219,16 +259,16 @@ angular.module('myApp.view3', ['ngRoute'])
                            console.log("entre a ALL extras")
                            agregarBaseExtras($scope.listadoAllExtra);
                            }
-                           $mdDialog.show(
-                                                  $mdDialog.alert()
-                                                  .parent(angular.element(document.querySelector('#popupContainer')))
-                                                  .clickOutsideToClose(true)
-                                                  .title('Estos seran permanentes')
-                                                  .textContent('el contratista deberá cumplir esto.')
-                                                  .ariaLabel('Alert Dialog Demo')
-                                                  .ok('mire sus definitivos!')
-                                                  .targetEvent(ev)
-                                              );
+                           $mdDialog.show({
+                                                                 //Controlador del mensajes con operaciones definido en la parte de abajo
+                                                                 controller: DialogController2,
+                                                                // permite la comunicacion con el html que despliega el boton requisitos
+                                                                templateUrl: 'test/definitivosSeleccion.html',
+                                                                 parent: angular.element(document.body),
+                                                                 targetEvent: ev,
+                                                                 clickOutsideToClose:true,
+                                                                 fullscreen: $scope.customFullscreen // Only for -xs, -sm breakpoints.
+                                                                 })
 
 
            };
@@ -243,6 +283,10 @@ angular.module('myApp.view3', ['ngRoute'])
                     requisitosObligatorios.save(requisitoObligatorio);
 
                 }
+
+
+
+
 
 
            }
@@ -277,9 +321,8 @@ angular.module('myApp.view3', ['ngRoute'])
            $scope.consultar = function(){
                       $scope.list1=rObligatorio.query({idContratante:$localStorage.contratanteLogeado.idContratante,idCategoria:$rootScope.idCategoria});
                       $scope.list2=rExtra.query({idContratante:$localStorage.contratanteLogeado.idContratante,idCategoria:$rootScope.idCategoria});
-                      $scope.today=new Date();
-                      $rootScope.varu=$scope.today
-                      q($localStorage.contratanteLogeado.idContratante,$rootScope.idCategoria);
+
+
                       };
             $scope.fun=function(ev){
                     e(ev);
@@ -303,15 +346,28 @@ angular.module('myApp.view3', ['ngRoute'])
                               }
 
 
-            var q=function(idContratante, idCategoria){
-             var url= "http://localhost:8080/app/limites/"+idContratante+"/"+idCategoria ;
-             $http.get(url).then(function(response) {
-                           if(response.data.flag){
-                          $scope.objeto=response.data;
-                           }
-                           return response.data;
-                        })
-                }
+
+
+      }
+      function DialogController2($scope, $mdDialog, $rootScope,$http){
+        $scope.list1=rObligatorio.query({idContratante:$localStorage.contratanteLogeado.idContratante,idCategoria:$rootScope.idCategoria});
+        $scope.list2=rExtra.query({idContratante:$localStorage.contratanteLogeado.idContratante,idCategoria:$rootScope.idCategoria});
+                        $scope.hide = function() {
+                          $mdDialog.hide();
+                        };
+                        //funcion para cerral el mensaje
+                        $scope.cancel = function() {
+                          $mdDialog.cancel();
+                        };
+
+                        $scope.consultar = function(){
+                             $scope.list1=rObligatorio.query({idContratante:$localStorage.contratanteLogeado.idContratante,idCategoria:$rootScope.idCategoria});
+                             $scope.list2=rExtra.query({idContratante:$localStorage.contratanteLogeado.idContratante,idCategoria:$rootScope.idCategoria});
+
+
+                                              };
+
+
 
       }
 

@@ -20,7 +20,7 @@ angular.module('myApp.view14', ['ngRoute'])
               $scope.propertyName = propertyName;
             };
  $scope.add=function(ev){
- consol
+
  $scope.listado2=pFinales.query({idContratante:$localStorage.contratanteLogeado.idContratante,idContrato:$scope.contrato})
  $scope.flag=true;
 

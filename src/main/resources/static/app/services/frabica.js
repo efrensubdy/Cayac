@@ -18,7 +18,7 @@ angular.module('services.listFactory', ['ngRoute','ngResource'])
              }
          }])
       .service('contratoUpload', ['$http', function ($http) {
-                   this.uploadFileToUrl = function(list,contrato,uploadUrl){
+                   this.uploadFileToUrl = function(list,uploadUrl){
                        var fd = new FormData();
                         for (var i in list) {
                          console.log(list[i]);
@@ -26,8 +26,6 @@ angular.module('services.listFactory', ['ngRoute','ngResource'])
                         }
 
                        console.log("llego");
-                       console.log(list);
-                       console.log(fd);
                        $http.post(uploadUrl, fd,{
                            transformRequest: angular.identity,
                            headers: {'Content-Type': undefined}

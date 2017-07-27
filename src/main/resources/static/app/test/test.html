@@ -13,9 +13,21 @@
             <md-dialog-content>
                 <md-tabs md-dynamic-height md-border-bottom>
                     <!--Vista de Requisitos Sugeridos-->
+                    <md-tab label="Fecha de Cargue">
+                        <md-content >
+                            <div class="md-dialog-content">
+                                <label>Cuanto tiempo tendra su contratista para subir los documentos</label>
+                                <input type="date" placeholder="yyyy-MM-dd"  ng-model="fecha"/>
+                                <md-button class="md-warn md-raised md-hue-2" ng-click="fun($event)">Establecer</md-button>
+                                <label> LA FECHA DE ENTREGA DE LOS DOCUMENTOS ES {{objeto.fechaFin| date : "fullDate"}},
+                                    LE QUEDAN {{objeto.tiempoRestante}} PARA ENTREGAR LOS SOPORTES</label>
+                                <br>
+                            </div>
+                        </md-content>
+                    </md-tab>
                     <md-tab label="Requisitos Sugeridos">
                         <md-content class="md-padding">
-                        <div class="md-dialog-content">
+                        <div class="md-dialog-content" ng-show="table1">
                         <table class="w3-table-all">
                         <thead>
                         <tr class="w3-light-grey w3-hover-grey">
@@ -32,6 +44,16 @@
                         </tbody>
                         </table>
 
+
+
+                        </div>
+                        <div class="md-dialog-content" ng-show="!table1">
+                            <div flex>
+                            <label>Usted ya ha Aplicado todos los requisitos</label>
+                                <md-button class="md-icon-button" ng-click="cancel()">
+                                    <md-icon md-font-library="material-icons">check_circle</md-icon>
+                                </md-button>
+                            </div>
                         </div>
                         <md-button class="md-warn md-raised md-hue-2" ng-click="aplicar($event)">Aplicar</md-button>
 
@@ -40,7 +62,7 @@
                     <!--Vista de Requisitos Extras-->
                     <md-tab label="Requisitos Extras">
                         <md-content class="md-padding">
-                            <div class="md-dialog-content">
+                            <div class="md-dialog-content" ng-show="table2">
                                 <table class="w3-table-all">
                                     <thead>
                                     <tr class="w3-light-grey w3-hover-grey">
@@ -57,40 +79,15 @@
                                     </tbody>
                                 </table>
                             </div>
-                            <md-button class="md-warn md-raised md-hue-2" ng-click="aplicar2($event)">Aplicar</md-button>
-                        </md-content>
-                    </md-tab>
-                    <md-tab label="Requisitos Definitivos" ng-click="consultar()">
-                        <md-content class="md-padding">
-                            <div class="md-dialog-content">
-                                <table class="w3-table-all">
-                                    <thead>
-                                    <tr class="w3-light-grey w3-hover-grey">
-                                        <th>Definitivos</th>
-                                        <th>Eliminar</th>
-                                    </tr>
-                                    </thead>
-                                    <tbody>
-                                    <tr class="w3-hover-green" ng-repeat="todo in list1">
-                                        <td> {{todo.descripcion}} </td>
-                                        <td><md-checkbox  aria-label="Checkbox 1" class="w3-check" type="checkbox"   ng-model="selected" ng-change="display3(selected, todo)"></md-checkbox></td>
-                                    </tr>
-                                    <tr class="w3-hover-green" ng-repeat="todo in list2">
-                                        <td>{{todo.descripcion}} </td>
-                                        <td><md-checkbox aria-label="Checkbox 1"   ng-model="select" ng-change="display4(select, todo)"></md-checkbox></td>
-
-                                    </tr>
-                                    </tbody>
-                                </table>
-                                <md-button class="md-warn md-raised md-hue-2" ng-click="eliminar($event)">Eliminar</md-button>
-                                <br>
-                                <label>Cuanto tiempo tendra su contratista para subir los documentos</label>
-                                <input type="date" placeholder="yyyy-MM-dd"  ng-model="fecha"/>
-                                <md-button class="md-warn md-raised md-hue-2" ng-click="fun($event)">Establecer</md-button>
-                                <label> LA FECHA DE ENTREGA DE LOS DOCUMENTOS ES {{objeto.fechaFin| date : "fullDate"}},
-                                    LE QUEDAN {{objeto.tiempoRestante}} PARA ENTREGAR LOS SOPORTES</label>
-
+                            <div class="md-dialog-content" ng-show="!table2">
+                                <div flex>
+                                    <label>Usted ya ha Aplicado todos los requisitos</label>
+                                    <md-button class="md-icon-button" ng-click="cancel()">
+                                        <md-icon md-font-library="material-icons">check_circle</md-icon>
+                                    </md-button>
+                                </div>
                             </div>
+                            <md-button class="md-warn md-raised md-hue-2" ng-click="aplicar2($event)">Aplicar</md-button>
                         </md-content>
                     </md-tab>
 

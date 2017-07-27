@@ -46,12 +46,18 @@
                   <label>FECHA DE FINALIZACION DE CONTRATO</label>
                   <md-datepicker  ng-model="contrato.fechaFin" md-placeholder="Fecha Iniciación " ng-required="true"></md-datepicker>
               </div>
+
+              <div flex-gt-xs>
+                  <label>FECHA DE INICIO DE ACTIVIDADES</label>
+                  <md-datepicker  ng-model="contrato.fechaInicioDeActividades" md-placeholder="Fecha Iniciación " ng-required="true"></md-datepicker>
+              </div>
+
           </div>
 
 
         <section layout="row" layout-sm="column" layout-align="center center" layout-wrap>
 
-        <md-button class="md-raised md-primary" ng-click="add($event)"  >Agregar Contrato</md-button>
+        <md-button class="md-raised md-primary" ng-click="add($event,contrato.fechaInicio | date:'yyyy-MM-dd',contrato.fechaFin | date:'yyyy-MM-dd',contrato.fechaInicioDeActividades | date:'yyyy-MM-dd')"  >Agregar Contrato</md-button>
         </section>
 
     </md-content>

@@ -20,7 +20,7 @@ public class ManejoDeContratoBD implements AdministradorDeContratos {
     @Autowired
     public ContratanteDB contratanteDB;
     @Override
-    public void agregarContrato(Contrato contrato) throws SQLException, ClassNotFoundException {
+    public void agregarContrato(Contrato contrato) throws SQLException, ClassNotFoundException,IOException {
         contratanteDB.nuevoContrato(contrato);
     }
 
@@ -46,6 +46,6 @@ public class ManejoDeContratoBD implements AdministradorDeContratos {
 
     @Override
     public void insertarDocumento(Imagenes imagen) throws SQLException, ClassNotFoundException, IOException {
-       contratanteDB.insertarDocumentoContrato(imagen);
+
     }
 }

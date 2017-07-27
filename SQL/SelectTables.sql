@@ -8,40 +8,41 @@ SELECT * FROM departamento;
 SELECT * FROM contratista;
 SELECT * FROM contratante;
 SELECT * FROM contrato;
-DELETE FROM contrato WHERE idContrato=3;
 SELECT * FROM usuarios;
 SELECT * FROM categoria;
 SELECT * FROM requisitos;
 SELECT *  FROM extras;
 SELECT * FROM requisitosobligatoriosExtras;
 SELECT *  FROM requisitosobligatoriossugeridos;
+SELECT * FROM fechalimite;
+DELETE FROM fechalimite WHERE idContratante=1;
 SELECT *  FROM imagenes;
 SELECT *  FROM documentos;
 SELECT * FROM finalista;
-select *  from ejecuionextrassestaticosdeffinalizaciondeactivdades;
-select *  from ejecuionsugeridosestaticosdeffinalizaciondeactivdades;
-select *  from requisitosdeejecuionextrasdefestaticosejecucionactividades;
-select *  from requisitosdeejecuiondefsugeridosestaticosejecucionactividades;
-select *  from requisitosdeejecuiondefextrasestaticosprevio;
-select *  from requisitosdeejecuiondefsugeridosestaticosprevio;
-select *  from requisitosdeejecuionsugeridosestaticosfinalizaciondeactivdades;
-select *  from requisitosdeejecuionsugeridosestaticosejecucionactividades;
-select *  from requisitosdeejecuionsugeridosestaticosprevio;
-select *  from documentosestaticospreviosobli;
-select * from finalista;
+SELECT *  FROM ejecuionextrassestaticosdeffinalizaciondeactivdades;
+SELECT *  FROM ejecuionsugeridosestaticosdeffinalizaciondeactivdades;
+SELECT *  FROM requisitosdeejecuionextrasdefestaticosejecucionactividades;
+SELECT *  FROM requisitosdeejecuiondefsugeridosestaticosejecucionactividades;
+SELECT *  FROM requisitosdeejecuiondefextrasestaticosprevio;
+SELECT *  FROM requisitosdeejecuiondefsugeridosestaticosprevio;
+SELECT *  FROM requisitosdeejecuionsugeridosestaticosfinalizaciondeactivdades;
+SELECT *  FROM requisitosdeejecuionsugeridosestaticosejecucionactividades;
+SELECT *  FROM requisitosdeejecuionsugeridosestaticosprevio;
+SELECT *  FROM documentosestaticospreviosobli;
+SELECT * FROM finalista;
 
 
 
-select * from requidinadeffinalsug as re inner join requidinafinalsug as r  where re.idRequisito=r.id ;
+SELECT * FROM requidinadeffinalsug AS re INNER JOIN requidinafinalsug AS r  WHERE re.idRequisito=r.id ;
 
-select  * from sys.actprevsuger;
-select  * from sys.actprevext;
-select * from sys.actejecsug;
-select * from sys.actejecext;
-select * from sys.actfinsug;
-select * from sys.actfinext;
+SELECT  * FROM sys.actprevsuger;
+SELECT  * FROM sys.actprevext;
+SELECT * FROM sys.actejecsug;
+SELECT * FROM sys.actejecext;
+SELECT * FROM sys.actfinsug;
+SELECT * FROM sys.actfinext;
 
-
+delete from contrato where idContrato=21;
 -- llenar requisitos previos sugeridos --
 select t1.idRequisitosDeEjecuionSugeridosEstaticosPrevio,t1.requisito from (sys.requisitosdeejecuionsugeridosestaticosprevio as t1 ) left join sys.requisitosdeejecuiondefsugeridosestaticosprevio as t2 on t1.idRequisitosDeEjecuionSugeridosEstaticosPrevio=t2.idRequsito and t2.idContratante= 1
 where t2.idrequisitosdeejecuiondefsugeridosestaticosprevio is null and t1.idCategoria= 1;

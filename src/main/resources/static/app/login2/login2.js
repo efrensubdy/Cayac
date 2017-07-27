@@ -18,7 +18,7 @@ angular.module('myApp.login2', ['ngRoute'])
       var p=function(){
 
         if ($localStorage.contratanteLogeado.estado && $localStorage.contratanteLogeado.rol =="Contratante"){
-             console.log($localStorage.contratanteLogeado);
+
              $rootScope.bandera =$localStorage.contratanteLogeado.estado ;
              $rootScope.idContratante=$localStorage.contratanteLogeado.idContratante;
 
@@ -26,7 +26,7 @@ angular.module('myApp.login2', ['ngRoute'])
 
         }
         else if ($localStorage.contratanteLogeado.estado && $localStorage.contratanteLogeado.rol =="administrador"){
-                     console.log($localStorage.contratanteLogeado);
+
                      console.log("entre a admin")
                      $rootScope.bandera3 =$localStorage.contratanteLogeado.estado ;
 

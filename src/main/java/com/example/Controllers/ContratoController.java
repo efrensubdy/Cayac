@@ -21,6 +21,8 @@ import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Iterator;
+import java.util.LinkedList;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -101,8 +103,8 @@ public class ContratoController {
 
     }
 
-    @RequestMapping(value="{nombreContrato}/{fechaInicio}/{fechaFin}/{idContratante}/{tipoContrato}", method = RequestMethod.POST)
-    public ResponseEntity<?> registrarContrato(@PathVariable String nombreContrato,@PathVariable String fechaInicio,@PathVariable String fechaFin,@PathVariable Integer idContratante,@PathVariable String tipoContrato,
+    @RequestMapping(value="{nombreContrato}/{fechaInicio}/{fechaFin}/{fechaInicioActividades}/{idContratante}/{tipoContrato}", method = RequestMethod.POST)
+    public ResponseEntity<?> registrarContrato(@PathVariable String nombreContrato,@PathVariable String fechaInicio,@PathVariable String fechaFin,@PathVariable String fechaInicioActividades ,@PathVariable Integer idContratante,@PathVariable String tipoContrato,
                                                MultipartHttpServletRequest request) {
 
         ResponseEntity a;
@@ -111,14 +113,33 @@ public class ContratoController {
             //manejoDeContratoBD.agregarContrato(contrato);
             //org.springframework.web.multipart.MultipartHttpServletRequest
             Iterator<String> itr = request.getFileNames();
-
+            Contrato nuevoContrato=new Contrato();
+            nuevoContrato.setNombreContrato(nombreContrato);
+            nuevoContrato.setTipoContrato(tipoContrato);
+            nuevoContrato.setIdContratante(idContratante);
+            SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
+            Date parsed = formatter.parse(fechaInicio);
+            Date parsed2 = (formatter.parse(fechaFin));
+            Date parsed3=formatter.parse(fechaInicioActividades);
+            java.sql.Date sqlInicio = new java.sql.Date(parsed.getTime());
+            java.sql.Date sqlFin = new java.sql.Date(parsed2.getTime());
+            java.sql.Date sqlInicioDeActividades= new java.sql.Date(parsed3.getTime());
+            nuevoContrato.setFechaInicio(sqlInicio);
+            nuevoContrato.setFechaFin(sqlFin);
+            nuevoContrato.setFecheDeInicioActividades(sqlInicioDeActividades);
+            List<File>archivos=new LinkedList<>();
+            nuevoContrato.setArchivos(archivos);
             while(itr.hasNext()) {
                 String uploadedFile = itr.next();
                 MultipartFile file = request.getFile(uploadedFile);
                 File fileForDB=convert(file);
-                String fileName = file.getOriginalFilename();
-                System.out.println("*****"+ fileName);
+                nuevoContrato.getArchivos().add(fileForDB);
+                String fileName = fileForDB.getName();
+
+
+
             }
+            manejoDeContratoBD.agregarContrato(nuevoContrato);
             a = new ResponseEntity<>(HttpStatus.ACCEPTED);
 
         } catch (Exception ex) {

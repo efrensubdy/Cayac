@@ -52,32 +52,6 @@ CREATE TABLE `contratante` (
   CONSTRAINT `contra_AcTI` FOREIGN KEY (`codigoCIIU`) REFERENCES `activdadeconomica` (`codigoCIIU`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=INNODB DEFAULT CHARSET=utf8;
 
-CREATE TABLE `contrato` (
-  `idContrato` INT(11) NOT NULL AUTO_INCREMENT,
-  `nombreContrato` VARCHAR(45) NOT NULL,
-  `fechaInicio` DATE NOT NULL,
-  `fechaFin` DATE NOT NULL,
-  `idContratante` INT(11) NOT NULL,
-  `tipoContrato` VARCHAR(45) NOT NULL,
-  PRIMARY KEY (`idContrato`),
-  KEY `Contrato_Contratante_idx` (`idContratante`),
-  CONSTRAINT `Contrato_Contratante` FOREIGN KEY (`idContratante`) REFERENCES `contratante` (`idContratante`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=INNODB DEFAULT CHARSET=utf8;
-
-CREATE TABLE `documentosdecontrato` (
-  `id` INT(11) NOT NULL AUTO_INCREMENT,
-  `idContrato` INT(11) NOT NULL,
-  `contenido` VARCHAR(45) NOT NULL,
-  `fechaCreacion` DATE NOT NULL,
-  `fechaActualizacion` DATE NOT NULL,
-  `tipo` VARCHAR(45) NOT NULL,
-  `estado` VARCHAR(45) NOT NULL,
-  `nombreDeDocumento` VARCHAR(45) NOT NULL,
-  PRIMARY KEY (`id`),
-  KEY `contrato_Documentos` (`idContrato`),
-  CONSTRAINT `contrato_Documentos` FOREIGN KEY (`idContrato`) REFERENCES `contrato` (`idContrato`)
-) ENGINE=INNODB DEFAULT CHARSET=utf8;
-
 
 
 CREATE TABLE `contratista` (
@@ -114,9 +88,38 @@ CREATE TABLE `contratista` (
   CONSTRAINT `fk_Contratista_Departamento` FOREIGN KEY (`departamento`) REFERENCES `departamento` (`idDepartamento`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=INNODB DEFAULT CHARSET=utf8;
 
+CREATE TABLE `finalista` (
+  `idFinalista` INT(11) NOT NULL AUTO_INCREMENT,
+  `idContratista` INT(11) NOT NULL,
+  `fechaCreacion` DATE NOT NULL,
+  `fechaModificacion` DATE NOT NULL,
+  `estado` VARCHAR(45) NOT NULL,
+  PRIMARY KEY (`idFinalista`),
+  KEY `Finalista_Contratista_idx` (`idContratista`),
+  CONSTRAINT `Finalista_Contratista` FOREIGN KEY (`idContratista`) REFERENCES `contratista` (`idContratista`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=INNODB DEFAULT CHARSET=utf8;
 
-
-
+CREATE TABLE `contrato` (
+  `idContrato` INT(11) NOT NULL AUTO_INCREMENT,
+  `nombreContrato` VARCHAR(45) NOT NULL,
+  `fechaInicio` DATE NOT NULL,
+  `fechaFin` DATE NOT NULL,
+  `idContratante` INT(11) NOT NULL,
+  `tipoContrato` VARCHAR(45) NOT NULL,
+  `rut` VARCHAR(100) NOT NULL,
+  `camaraDeComercio` VARCHAR(100) NOT NULL,
+  `cc` VARCHAR(100) NOT NULL,
+  `fechaInicioActivdades` DATE NOT NULL,
+  `idFinalista` INT(11) DEFAULT NULL,
+  `tipo1` VARCHAR(45) NOT NULL,
+  `tipo2` VARCHAR(45) NOT NULL,
+  `tipo3` VARCHAR(45) NOT NULL,
+  PRIMARY KEY (`idContrato`),
+  UNIQUE KEY `FinalistaUnico` (`idFinalista`),
+  KEY `Contrato_Contratante_idx` (`idContratante`),
+  CONSTRAINT `Contrato_Contratante` FOREIGN KEY (`idContratante`) REFERENCES `contratante` (`idContratante`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `Contrato_Finalista` FOREIGN KEY (`idFinalista`) REFERENCES `finalista` (`idFinalista`)
+) ENGINE=INNODB AUTO_INCREMENT=25 DEFAULT CHARSET=utf8;
 
 CREATE TABLE `categoria` (
   `idCategoria` INT(11) NOT NULL,
@@ -237,19 +240,7 @@ CREATE TABLE `documentos` (
   CONSTRAINT `documento_requisito` FOREIGN KEY (`idRequisitoSugerido`) REFERENCES `requisitosobligatoriosextras` (`idRequisitosObligatoriosExtras`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=INNODB DEFAULT CHARSET=utf8;
 
-CREATE TABLE `finalista` (
-  `idFinalista` INT(11) NOT NULL AUTO_INCREMENT,
-  `idContratista` INT(11) NOT NULL,
-  `fechaCreacion` DATE NOT NULL,
-  `fechaModificacion` DATE NOT NULL,
-  `estado` VARCHAR(45) NOT NULL,
-  `idContrato` INT(11) NOT NULL,
-  PRIMARY KEY (`idFinalista`,`idContratista`,`fechaCreacion`),
-  UNIQUE KEY `idContrato_UNIQUE` (`idContrato`),
-  KEY `Finalista_Contratista_idx` (`idContratista`),
-  CONSTRAINT `Finalista_Contratista` FOREIGN KEY (`idContratista`) REFERENCES `contratista` (`idContratista`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  CONSTRAINT `finalista_ContratoUnico` FOREIGN KEY (`idContrato`) REFERENCES `contrato` (`idContrato`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=INNODB DEFAULT CHARSET=utf8;
+
 
 CREATE TABLE `requisitosdeejecuionsugeridosestaticosprevio` (
   `idRequisitosDeEjecuionSugeridosEstaticosPrevio` INT(11) NOT NULL AUTO_INCREMENT,

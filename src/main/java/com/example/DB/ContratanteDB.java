@@ -137,8 +137,9 @@ public class ContratanteDB {
         tamañoTabla=contratantes.size();
         return contratantes;
     }
-    public  void nuevoContrato(Contrato contrato)throws ClassNotFoundException,SQLException{
-        String sql = "INSERT INTO  contrato(nombreContrato,fechaInicio,fechaFin,idContratante,tipoContrato) VALUES(?,?,?,?,?)";
+    public  void nuevoContrato(Contrato contrato) throws ClassNotFoundException, SQLException, IOException {
+        String sql = "INSERT INTO  contrato(nombreContrato,fechaInicio,fechaFin,idContratante,tipoContrato,rut,camaraDeComercio,cc,fechaInicioActivdades,idFinalista,tipo1,tipo2,tipo3) VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?)";
+        String contenido="Repository/Contratante/" + contrato.getIdContratante();
         Connection con =  Conexion.conection();
         PreparedStatement ps = con.prepareStatement(sql);
         ps.setString(1,contrato.getNombreContrato());
@@ -146,9 +147,43 @@ public class ContratanteDB {
         ps.setDate(3,contrato.getFechaFin());
         ps.setInt(4,contrato.getIdContratante());
         ps.setString(5,contrato.getTipoContrato());
+        ps.setString(6,contenido);
+        ps.setString(7,contenido);
+        ps.setString(8,contenido);
+        ps.setDate(9,contrato.getFecheDeInicioActividades());
+        ps.setNull(10,java.sql.Types.INTEGER);
+        ps.setString(11,getFileExtension(contrato.getArchivos().get(0)));
+        ps.setString(12,getFileExtension(contrato.getArchivos().get(1)));
+        ps.setString(13,getFileExtension(contrato.getArchivos().get(2)));
         ps.execute();
         ps.close();
         con.close();
+        int cont=0;
+        for (File f :contrato.getArchivos()){
+            String type=getFileExtension(f);
+            File q;
+            cont ++;
+            switch(cont){
+
+                case 1:
+                q=new File("src/main/resources/static/app/Repository/Contratante/"+contrato.getIdContratante() + "/cedulaDeRepresentante" + contrato.getNombreContrato() +contrato.getFechaInicio() + "."+ type);
+                FileUtils.moveFile(f,q);
+                break;
+                case 2:
+                q=new File("src/main/resources/static/app/Repository/Contratante/"+contrato.getIdContratante() + "/rut" + contrato.getNombreContrato() +contrato.getFechaInicio()  + "."+ type)  ;
+                FileUtils.moveFile(f,q);
+                break;
+                case 3:
+                q=new File("src/main/resources/static/app/Repository/Contratante/"+contrato.getIdContratante() + "/camaraDeComercio" + contrato.getNombreContrato() +contrato.getFechaInicio() + "."+ type) ;
+                FileUtils.moveFile(f,q);
+                break;
+
+            }
+
+
+
+
+        }
 
 
     }
@@ -185,6 +220,9 @@ public class ContratanteDB {
             nuevoContrato.setFechaFin(rs.getDate("fechaFin"));
             nuevoContrato.setIdContratante(rs.getInt("idContratante"));
             nuevoContrato.setTipoContrato(rs.getString("tipoContrato"));
+            nuevoContrato.setTipo(rs.getString("tipo1"));
+            nuevoContrato.setTipo(rs.getString("tipo2"));
+            nuevoContrato.setTipo(rs.getString("tipo3"));
             contratos.add(nuevoContrato);
         }
         ps.close();
@@ -205,6 +243,8 @@ public class ContratanteDB {
             nuevoContrato.setFechaFin(rs.getDate("fechaFin"));
             nuevoContrato.setIdContratante(rs.getInt("idContratante"));
             nuevoContrato.setTipoContrato(rs.getString("tipoContrato"));
+
+
             contratos.add(nuevoContrato);
         }
         ps.close();
@@ -233,10 +273,8 @@ public class ContratanteDB {
     }
     public List<Contrato>contratosPorFecha(java.sql.Date fechaInicio, java.sql.Date fechaFin)throws SQLException,ClassNotFoundException{
      List<Contrato>contratosPorFecha=new LinkedList<>();
-        System.out.println(fechaInicio);
-        System.out.println(fechaFin);
         String sql ="SELECT * FROM  contrato \n" +
-                "WHERE NOT (fechaInicio > ? OR fechaFin < ?);";
+                "WHERE (fechaInicio > ? OR fechaFin < ?);";
         PreparedStatement ps = Conexion.conection().prepareStatement(sql);
         ps.setDate(1,fechaInicio);
         ps.setDate(2,fechaFin);
@@ -249,6 +287,9 @@ public class ContratanteDB {
             nuevoContrato.setFechaFin(rs.getDate("fechaFin"));
             nuevoContrato.setIdContratante(rs.getInt("idContratante"));
             nuevoContrato.setTipoContrato(rs.getString("tipoContrato"));
+            nuevoContrato.setTipo(rs.getString("tipo1"));
+            nuevoContrato.setTipo(rs.getString("tipo2"));
+            nuevoContrato.setTipo(rs.getString("tipo3"));
             contratosPorFecha.add(nuevoContrato);
         }
         ps.close();
@@ -261,38 +302,6 @@ public class ContratanteDB {
     }
 
 
-    public void insertarDocumentoContrato(Imagenes imagen) throws SQLException, ClassNotFoundException, IOException {
-        System.out.println(imagen.getFile());
-        java.util.Date utilDate = new Date();
-        java.sql.Date date = new java.sql.Date(utilDate.getTime());
-        String fileType = getFileExtension(imagen.getFile());
-        imagen.setTipo(fileType);
-        String sql = "INSERT INTO documentosdecontrato (idContrato,contenido,fechaCreacion,fechaActualizacion,tipo,estado,nombreDeDocumento) VALUES(?,?,?,?,?,?,?)";
-        Connection con =  Conexion.conection();
-        imagen.setContenido("src/main/resources/static/app/Repository/Contratante/"+imagen.getIdContratante());
-        File f=imagen.getFile();
-        System.out.println(f.getName());
-        PreparedStatement ps=con.prepareStatement("SHOW TABLE STATUS WHERE Name = contrato ");
-        ResultSet rs=ps.executeQuery();
-        rs.next();
-        String nextid = rs.getString("Auto_increment");
-        ps = con.prepareStatement(sql);
-
-        ps.setInt(1,Integer.parseInt(nextid));
-        ps.setString(2,imagen.getContenido());
-        ps.setDate(3,date);
-        ps.setDate(4,date);
-        ps.setString(5,imagen.getTipo());
-        ps.setString(6,"s");
-        ps.setString(7,f.getName());
-        ps.execute();
-
-        ps.close();
-        con.close();
-        File q=new File("src/main/resources/static/app/Repository/Contratante/"+imagen.getIdContratante()+"/"+nextid+"."+imagen.getTipo());
-
-        FileUtils.moveFile(f,q);
-    }
 
 
 

@@ -57,11 +57,18 @@
                 <th>Nombre de Contrato</th>
                 <th>Fecha Inicio</th>
                 <th>Fecha Fin</th>
+                <th>Camara de Comercio</th>
+                <th>Cedula de Representante</th>
+                <th>Rut</th>
             </tr>
             <tr   class="w3-hover-green">
                 <td>{{e.nombreContrato}}</td>
                 <td>{{e.fechaInicio}}</td>
                 <td>{{e.fechaFin}}</td>
+                <td><div class="w3-col" style="width:50px"><a href="Repository/Contratante/{{e.idContratante}}/camaraDeComercio{{e.nombreContrato}}{{e.fechaInicio}}.{{e.tipo}}" download><i class="w3-xxlarge fa fa-check-square"></i></a></div>  </td>
+                <td><div class="w3-col" style="width:50px"><a href="Repository/Contratante/{{e.idContratante}}/cedulaDeRepresentante{{e.nombreContrato}}{{e.fechaInicio}}.{{e.tipo2}}" download><i class="w3-xxlarge fa fa-check-square"></i></a></div>  </td>
+                <td><div class="w3-col" style="width:50px"><a href="Repository/Contratante/{{e.idContratante}}/rut{{e.nombreContrato}}{{e.fechaInicio}}.{{e.tipo3}}" download><i class="w3-xxlarge fa fa-check-square"></i></a></div>  </td>
+
             </tr>
             </tbody>
         </table>
@@ -73,11 +80,18 @@
             <th>Nombre de Empresa</th>
             <th>Fecha Inicio</th>
             <th>Fecha Fin</th>
+            <th>Camara de Comercio</th>
+            <th>Cedula de Representante</th>
+            <th>Rut</th>
         </tr>
         <tr  ng-repeat="todo in listado" class="w3-hover-green">
             <td>{{todo.nombreContrato}}</td>
             <td>{{todo.fechaInicio}}</td>
             <td>{{todo.fechaFin}}</td>
+            <td><div class="w3-col" style="width:50px"><a href="Repository/Contratante/{{todo.idContratante}}/camaraDeComercio{{todo.nombreContrato}}{{todo.fechaInicio}}.{{e.tipo}}" download><i class="w3-xxlarge fa fa-check-square"></i></a></div>  </td>
+            <td><div class="w3-col" style="width:50px"><a href="Repository/Contratante/{{todo.idContratante}}/cedulaDeRepresentante{{todo.nombreContrato}}{{todo.fechaInicio}}.{{e.tipo2}}" download><i class="w3-xxlarge fa fa-check-square"></i></a></div>  </td>
+            <td><div class="w3-col" style="width:50px"><a href="Repository/Contratante/{{todo.idContratante}}/rut{{todo.nombreContrato}}{{todo.fechaInicio}}.{{todo.tipo3}}" download><i class="w3-xxlarge fa fa-check-square"></i></a></div>  </td>
+
         </tr>
         </tbody>
     </table>

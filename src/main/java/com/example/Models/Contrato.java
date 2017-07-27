@@ -1,6 +1,8 @@
 package com.example.Models;
 
+import java.io.File;
 import java.sql.Date;
+import java.util.List;
 
 /**
  * Created by HSEQ on 13/06/2017.
@@ -17,8 +19,55 @@ public class Contrato {
     public Date fechaActualizada;
     public String tipo;
     public String estado;
-    public String nombredeDocumento;
+    public String tipo2;
+    public String tipo3;
 
+    public String getTipo2() {
+        return tipo2;
+    }
+
+    public void setTipo2(String tipo2) {
+        this.tipo2 = tipo2;
+    }
+
+    public String getTipo3() {
+        return tipo3;
+    }
+
+    public void setTipo3(String tipo3) {
+        this.tipo3 = tipo3;
+    }
+
+    public Date getFecheDeInicioActividades() {
+        return fecheDeInicioActividades;
+    }
+
+    public void setFecheDeInicioActividades(Date fecheDeInicioActividades) {
+        this.fecheDeInicioActividades = fecheDeInicioActividades;
+    }
+
+    public int getIdFinalista() {
+        return idFinalista;
+    }
+
+    public void setIdFinalista(int idFinalista) {
+        this.idFinalista = idFinalista;
+    }
+
+    public String nombredeDocumento;
+    public List<File>archivos;
+    public Date fecheDeInicioActividades;
+    public int idFinalista;
+    public List<File> getArchivos() {
+        return archivos;
+    }
+
+    public void setArchivos(List<File> archivos) {
+        this.archivos = archivos;
+    }
+    public void addArchivos(File f){
+        archivos.add(f);
+    }
     public String getContenido() {
         return contenido;
     }

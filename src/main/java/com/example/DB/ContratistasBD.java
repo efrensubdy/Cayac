@@ -861,13 +861,9 @@ public class ContratistasBD {
                  java.sql.Date date = new java.sql.Date(utilDate.getTime());
                  fecha.setTiempoRestante(getTimeDiff(date,fecha.getFechaFin()));
                  if(date==fecha.getFechaFin()){
-                     System.out.println(date);
-                     System.out.println(fecha.getFechaFin());
                      fecha.setEstado(false);
                  }
                  else{
-                     System.out.println(date);
-                     System.out.println(fecha.getFechaFin());
                      fecha.setEstado(true);
 
                  }
@@ -895,7 +891,7 @@ public class ContratistasBD {
 
     public void InsertarFechaLimite(FechaLimite fechaLimite)throws SQLException,ClassNotFoundException{
         registroTableFechaLimite();
-        Boolean filtro=consultarRegistroDeFecha(fechaLimite.getIdContrato(),fechaLimite.getIdCategoria());
+        Boolean filtro=consultarRegistroDeFecha(fechaLimite.getIdContratante(),fechaLimite.getIdCategoria());
         if(!filtro) {
             String sql = "INSERT INTO fechalimite VALUES(?,?,?,?)";
             Connection con = Conexion.conection();
@@ -910,7 +906,7 @@ public class ContratistasBD {
             con.close();
         }
         else{
-            String sql = "UPDATE  fechaLimite set fechaLimite = ? where idContrato= ? and idCategoria";
+            String sql = "UPDATE  fechalimite set fechaLimite = ? where idContratante = ? and idCategoria = ?";
             Connection con = Conexion.conection();
             PreparedStatement ps = con.prepareStatement(sql);
             ps.setDate(1,fechaLimite.getFechaFin());
