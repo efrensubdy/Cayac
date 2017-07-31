@@ -51,6 +51,7 @@ $qProvider.errorOnUnhandledRejections(false);
    else if("undefined" === typeof $localStorage.contratanteLogeado && "undefined" !== typeof $localStorage.userLogeado ){
 
         $rootScope.bandera2 = $localStorage.userLogeado.estado;
+        $rootScope.banderaEjecucion=$localStorage.userLogeado.finalista;
         $rootScope.bandera=false;
         $rootScope.bandera3=false;
    }

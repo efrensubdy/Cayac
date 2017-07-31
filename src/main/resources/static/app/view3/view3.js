@@ -9,7 +9,7 @@ angular.module('myApp.view3', ['ngRoute'])
   });
 }])
 
-.controller('View3Ctrl', ['$localStorage','$sessionStorage','requisitosEEliminar','contratantesCategoria','$rootScope','$scope','contratos', 'contratantesContrato','requisitos','extras','requisitosObligatorios','requisitosExtras','rObligatorio','rExtra','fabrica','$mdDialog','limites','requisitosOEliminar','$http',function($localStorage,$sessionStorage,requisitosEEliminar,contratantesCategoria,$rootScope,$scope,contratos,contratantesContrato,requisitos,extras,requisitosObligatorios,requisitosExtras,rObligatorio,rExtra,fabrica,$mdDialog,limites,requisitosOEliminar,$http) {
+.controller('View3Ctrl', ['$localStorage','$sessionStorage','requisitosEEliminar','contratantesCategoria','$rootScope','$scope','contratos', 'contratantesContrato','requisitos','extras','requisitosObligatorios','requisitosExtras','rObligatorio','rExtra','fabrica','$mdDialog','limites','requisitosOEliminar','$http','fechaLimiteContratante',function($localStorage,$sessionStorage,requisitosEEliminar,contratantesCategoria,$rootScope,$scope,contratos,contratantesContrato,requisitos,extras,requisitosObligatorios,requisitosExtras,rObligatorio,rExtra,fabrica,$mdDialog,limites,requisitosOEliminar,$http,fechaLimiteContratante) {
 
         $scope.flag=false;
         $scope.propertyName = 'nombreEmpresa';
@@ -20,24 +20,28 @@ angular.module('myApp.view3', ['ngRoute'])
         };
         $scope.listado23=[];
         $scope.listado32=[];
+         $scope.fechas=[];
         $scope.banderaCategoria1=false;
         $scope.banderaCategoria2=false;
         $scope.banderaCategoria3=false;
         $scope.banderaCategoria4=false;
+        $scope.fechas=fechaLimiteContratante.query({idContratante:$localStorage.contratanteLogeado.idContratante})
+        $scope.function1=function(list){
 
-        $scope.function1=function(){
             switch ($scope.idCategoria) {
                 case "1":
                     $scope.banderaCategoria1=true;
                     $scope.banderaCategoria2=false;
                     $scope.banderaCategoria3=false;
                     $scope.banderaCategoria4=false;
+
                     break;
                 case "2":
                     $scope.banderaCategoria1=false;
                     $scope.banderaCategoria2=true;
                     $scope.banderaCategoria3=false;
                     $scope.banderaCategoria4=false;
+
 
                     break;
                 case "3":
@@ -46,6 +50,7 @@ angular.module('myApp.view3', ['ngRoute'])
                    $scope.banderaCategoria3=true;
                    $scope.banderaCategoria4=false;
 
+
                    break;
                 case "4":
                    $scope.banderaCategoria1=false;
@@ -53,32 +58,33 @@ angular.module('myApp.view3', ['ngRoute'])
                    $scope.banderaCategoria3=false;
                    $scope.banderaCategoria4=true;
 
+
                                 break;
 
 
 
             }
+            var x;
+            for (x in list){
+                if(x<=3){
+                    if(list[x].idCategoria==$scope.idCategoria){
+                        $rootScope.fecha=list[x];
+                    }
+                }
+            }
+
             $scope.listado23=requisitos.query({idContratante:$localStorage.contratanteLogeado.idContratante,idCategoria:$scope.idCategoria});
             $scope.listado32=extras.query({idContratante:$localStorage.contratanteLogeado.idContratante,idCategoria:$scope.idCategoria});
+
 
         }
 
          $scope.showAlert = function(ev,a,b) {
                 //listado 2 sera la lista de requisitos sugeridos por el id del contratista
                 //presionadoo en la ejecucion solicitado a la fabrica requisitos
-                var url= "http://localhost:8080/app/limites/"+$localStorage.contratanteLogeado.idContratante+"/"+$scope.idCategoria ;
-                $http.get(url).then(function(response) {
-                                                   if(response.data.flag){
-                                                            $scope.objeto=response.data;
 
-                                                            }
-                                                                                                 return response.data;
-                )
                  $rootScope.listado2=requisitos.query({idContratante:$localStorage.contratanteLogeado.idContratante,idCategoria:$scope.idCategoria});
                  $rootScope.listado3=extras.query({idContratante:$localStorage.contratanteLogeado.idContratante,idCategoria:$scope.idCategoria});
-
-                               console.log(a);
-                                console.log(b);
                                 if(a==0 && b!=0){
                                      $rootScope.table1=false;
                                      $rootScope.table2=true;
@@ -96,10 +102,14 @@ angular.module('myApp.view3', ['ngRoute'])
                                     $rootScope.table2=false;
                                }
 
+
                 $rootScope.idCategoria=$scope.idCategoria;
+
                 //listado 3 sera la lista de requisitos extras por el id del contratista
                  //presionadoo en la ejecucion  a la fabrica extras
-                //$rootScope.idTemp=client.id;
+
+               // $rootScope.objeto=$scope.objeto;
+               // console.log($rootScope.objeto);
                 $mdDialog.show({
                       //Controlador del mensajes con operaciones definido en la parte de abajo
                       controller: DialogController,
@@ -117,8 +127,20 @@ angular.module('myApp.view3', ['ngRoute'])
               };
 
 
+
          function DialogController($scope, $mdDialog, $rootScope,$http) {
             // se obtienen ambas listas
+
+           $scope.objeto=$rootScope.fecha;
+
+
+            if ($scope.objeto.estado){
+                 $scope.banderaFecha=true;
+            }
+            else{
+                 $scope.banderaFecha=false;
+            }
+
             $scope.listadoSugerido=[];
             $scope.listadoExtra=[];
             $scope.listadoAllSugerido=[];
@@ -127,8 +149,13 @@ angular.module('myApp.view3', ['ngRoute'])
             $scope.table2=$rootScope.table2;
            $scope.listado2= requisitos.query({idContratante:$localStorage.contratanteLogeado.idContratante,idCategoria:$rootScope.idCategoria});
            $scope.listado3= extras.query({idContratante:$localStorage.contratanteLogeado.idContratante,idCategoria:$rootScope.idCategoria});
-            //funcion que esconde el dialogo
 
+            //funcion que esconde el dialogo
+            $scope.hideMessage1=function(){
+                $scope.mensajillo=false;
+                $scope.mensajillo2=false;
+
+            }
             $scope.hide = function() {
               $mdDialog.hide();
             };
@@ -136,6 +163,23 @@ angular.module('myApp.view3', ['ngRoute'])
             $scope.cancel = function() {
               $mdDialog.cancel();
             };
+            $scope.show=function(ev){
+                    $mdDialog.show({
+                                                  //Controlador del mensajes con operaciones definido en la parte de abajo
+                               controller: DialogController2,
+                                                 // permite la comunicacion con el html que despliega el boton requisitos
+                               templateUrl: 'test/definitivosSeleccion.html',
+                               parent: angular.element(document.body),
+                               targetEvent: ev,
+                               clickOutsideToClose:true,
+                               fullscreen: $scope.customFullscreen // Only for -xs, -sm breakpoints.
+                                                  })
+
+
+
+
+                }
+
             function containsObject(obj, list) {
                                var i;
                                for (i = 0; i < list.length; i++) {
@@ -214,21 +258,37 @@ angular.module('myApp.view3', ['ngRoute'])
                 if(a>b){
                 console.log("entre a sugeridos")
                 agregarBaseDatosSugeridos($scope.listadoSugerido);
+                $mdDialog.show({
+
+                                                   controller: DialogController3,
+                                                                     // permite la comunicacion con el html que despliega el boton requisitos
+                                                   templateUrl: 'test/mensajeDeConfirmacion.html',
+                                                   parent: angular.element(document.body),
+                                                   targetEvent: ev,
+                                                   clickOutsideToClose:true,
+                                                   fullscreen: $scope.customFullscreen // Only for -xs, -sm breakpoints.
+                                                                      })
+
+                $scope.mensajillo=false;
+                }
+                else if(a==0 && b==0){
+                 $scope.mensajillo=true;
                 }
                 else{
                 console.log("entre a all sugeridos")
                 agregarBaseDatosSugeridos($scope.listadoAllSugerido);
-                }
-                 $mdDialog.show({
+                $mdDialog.show({
 
-                                   controller: DialogController3,
-                                                     // permite la comunicacion con el html que despliega el boton requisitos
-                                   templateUrl: 'test/mensajeDeConfirmacion.html',
-                                   parent: angular.element(document.body),
-                                   targetEvent: ev,
-                                   clickOutsideToClose:true,
-                                   fullscreen: $scope.customFullscreen // Only for -xs, -sm breakpoints.
-                                                      })
+                                                   controller: DialogController3,
+                                                                     // permite la comunicacion con el html que despliega el boton requisitos
+                                                   templateUrl: 'test/mensajeDeConfirmacion.html',
+                                                   parent: angular.element(document.body),
+                                                   targetEvent: ev,
+                                                   clickOutsideToClose:true,
+                                                   fullscreen: $scope.customFullscreen // Only for -xs, -sm breakpoints.
+                                                                      })
+                $scope.mensajillo=false;
+                }
 
 
 
@@ -240,21 +300,35 @@ angular.module('myApp.view3', ['ngRoute'])
                            if(a>b){
                             console.log("entre a extras")
                            agregarBaseExtras($scope.listadoExtra);
+                           $mdDialog.show({
+                                               //Controlador del mensajes con operaciones definido en la parte de abajo
+                                                controller: DialogController3,
+                                                 // permite la comunicacion con el html que despliega el boton requisitos
+                                                 templateUrl: 'test/mensajeDeConfirmacion.html',
+                                                                         parent: angular.element(document.body),
+                                                                         targetEvent: ev,
+                                                                         clickOutsideToClose:true,
+                                                                         fullscreen: $scope.customFullscreen // Only for -xs, -sm breakpoints.
+                                                                                            })
+                           }
+                           else if(a==0 && b==0){
+                           $scope.mensajillo2=true;
                            }
                            else{
                            console.log("entre a ALL extras")
                            agregarBaseExtras($scope.listadoAllExtra);
+                           $mdDialog.show({
+                                                                         //Controlador del mensajes con operaciones definido en la parte de abajo
+                                                                         controller: DialogController3,
+                                                                         // permite la comunicacion con el html que despliega el boton requisitos
+                                                                         templateUrl: 'test/mensajeDeConfirmacion.html',
+                                                                         parent: angular.element(document.body),
+                                                                         targetEvent: ev,
+                                                                         clickOutsideToClose:true,
+                                                                         fullscreen: $scope.customFullscreen // Only for -xs, -sm breakpoints.
+                                                                                            })
                            }
-             $mdDialog.show({
-                                              //Controlador del mensajes con operaciones definido en la parte de abajo
-                                              controller: DialogController3,
-                                              // permite la comunicacion con el html que despliega el boton requisitos
-                                              templateUrl: 'test/mensajeDeConfirmacion.html',
-                                              parent: angular.element(document.body),
-                                              targetEvent: ev,
-                                              clickOutsideToClose:true,
-                                              fullscreen: $scope.customFullscreen // Only for -xs, -sm breakpoints.
-                                                                 })
+
 
 
            };
@@ -314,7 +388,6 @@ angular.module('myApp.view3', ['ngRoute'])
                                                                    );
 
                               }
-
 
 
 

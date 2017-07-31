@@ -18,11 +18,12 @@ angular.module('myApp.view9', ['ngRoute'])
                                     $scope.objeto=response.data;
                                      if ($scope.objeto.estado==true){
                                                 $scope.mostrar=true;
-
+                                                $scope.banderaFecha=true;
 
                                             }
                                             else{
                                                 $scope.mostrar=false;
+                                                $scope.banderaFecha=false;
 
                                             }
                                      }

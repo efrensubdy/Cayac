@@ -18,6 +18,7 @@ import java.util.List;
 public interface AdministradorDeContratistas {
     public void registrarContratista(Contratista con) throws SQLException, ClassNotFoundException, IOException;
     public FechaLimite getFechaPorContratista(int idContrato,int idCategoria)throws SQLException,ClassNotFoundException;
+    public List<FechaLimite>fechasContratante(int idContratante)throws SQLException,ClassNotFoundException;
     public List<Contratista> obtenerContratistas() throws SQLException, ClassNotFoundException;
     public void registrarImagen(Imagenes imagen)throws SQLException, ClassNotFoundException, IOException;
     public void registrarDocumento(Documento documento)throws SQLException, ClassNotFoundException, IOException;

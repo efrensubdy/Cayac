@@ -34,6 +34,21 @@ public class LimitController {
         }
         return a;
     }
+    @RequestMapping(value="limit/{idContratante}" ,method = RequestMethod.GET)
+    public ResponseEntity<?> fechalimite(@PathVariable int idContratante){
+
+        ResponseEntity a;
+        try {
+            //obtener datos que se enviarán a través del API
+
+            a = new ResponseEntity<>(manejoDeContratistasBD.fechasContratante(idContratante), HttpStatus.ACCEPTED);
+
+        } catch (Exception ex) {
+            Logger.getLogger(Controller.class.getName()).log(Level.SEVERE, null, ex);
+            return new ResponseEntity<>("Error bla bla bla",HttpStatus.NOT_FOUND);
+        }
+        return a;
+    }
     @RequestMapping(method = RequestMethod.POST)
     public ResponseEntity<?>registrarFechaLimite(@RequestBody FechaLimite fechaLimite){
 

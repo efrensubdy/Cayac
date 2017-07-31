@@ -36,6 +36,11 @@ public class ManejoDeContratistasBD implements AdministradorDeContratistas {
         return contratistasBD.obtenerFechaDeContratista(idContrato, idCategoria);
     }
 
+    @Override
+    public List<FechaLimite> fechasContratante(int idContratante) throws SQLException, ClassNotFoundException {
+        return contratistasBD.FechaLimite(idContratante);
+    }
+
 
     @Override
     public List<Contratista> obtenerContratistas() throws SQLException, ClassNotFoundException {

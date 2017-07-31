@@ -840,6 +840,38 @@ public class ContratistasBD {
         ps.close();
         return fechaLimiteList;
     }
+    public  List<FechaLimite>FechaLimite(int idContratante)throws SQLException,ClassNotFoundException{
+        List<FechaLimite>fechaLimiteList=new LinkedList<>();
+        String sql ="SELECT * FROM fechalimite where idContratante = ?";
+        PreparedStatement ps = Conexion.conection().prepareStatement(sql);
+        ps.setInt(1,idContratante);
+        ResultSet rs = ps.executeQuery();
+        java.util.Date utilDate = new Date();
+        java.sql.Date date = new java.sql.Date(utilDate.getTime());
+        while(rs.next()){
+            FechaLimite fechaLimite=new FechaLimite();
+            fechaLimite.setId(rs.getInt("idfechalimite"));
+            fechaLimite.setFechaFin(rs.getDate("fechaLimite"));
+            fechaLimite.setIdContratante(rs.getInt("idContratante"));
+            fechaLimite.setIdCategoria(rs.getInt("idCategoria"));
+            fechaLimite.setFlag(true);
+
+            if(date==fechaLimite.getFechaFin()||date.after(fechaLimite.getFechaFin())){
+                fechaLimite.setEstado(false);
+                fechaLimite.setTiempoRestante("NO QUEDA TIEMPO");
+            }
+            else{
+                fechaLimite.setEstado(true);
+                fechaLimite.setTiempoRestante(getTimeDiff(date,fechaLimite.getFechaFin()));
+            }
+
+            fechaLimiteList.add(fechaLimite);
+        }
+        tamañoTablaFechaLimite=fechaLimiteList.size();
+        ps.close();
+        return fechaLimiteList;
+    }
+
 
     /**
      * OBTIENE LA FECHA DE SUBIR REPORTES
@@ -853,28 +885,29 @@ public class ContratistasBD {
      FechaLimite fecha=new FechaLimite();
      List<FechaLimite>fechaLimiteList=registroTableFechaLimite();
      for(FechaLimite fechaLimite: fechaLimiteList) {
+
          if (fechaLimite.getIdContratante()==idContratante && fechaLimite.getIdCategoria()==idCategoria){
+
              fecha= fechaLimite;
+
              if(consultarRegistroDeFecha(idContratante, idCategoria)){
+
                  fecha.setFlag(true);
                  java.util.Date utilDate = new Date();
                  java.sql.Date date = new java.sql.Date(utilDate.getTime());
                  fecha.setTiempoRestante(getTimeDiff(date,fecha.getFechaFin()));
-                 if(date==fecha.getFechaFin()){
+                 if(date==fecha.getFechaFin()||date.after(fecha.getFechaFin())){
                      fecha.setEstado(false);
                  }
                  else{
                      fecha.setEstado(true);
 
                  }
+
              }
              else{
                  fecha.setFlag(false);
              }
-         }
-         else{
-             fecha=new FechaLimite();
-
          }
 
      }

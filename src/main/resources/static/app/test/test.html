@@ -13,19 +13,21 @@
             <md-dialog-content>
                 <md-tabs md-dynamic-height md-border-bottom>
                     <!--Vista de Requisitos Sugeridos-->
-                    <md-tab label="Fecha de Cargue">
+                    <md-tab label="Fecha de Cargue" ng-click="hideMessage1()">
                         <md-content >
                             <div class="md-dialog-content">
                                 <label>Cuanto tiempo tendra su contratista para subir los documentos</label>
                                 <input type="date" placeholder="yyyy-MM-dd"  ng-model="fecha"/>
                                 <md-button class="md-warn md-raised md-hue-2" ng-click="fun($event)">Establecer</md-button>
-                                <label ng-controller="View3Ctrl"> LA FECHA DE ENTREGA DE LOS DOCUMENTOS ES {{objeto.fechaFin| date : "fullDate"}},
+                                <label ng-show="banderaFecha" ng-controller="View3Ctrl"> LA FECHA DE ENTREGA DE LOS DOCUMENTOS ES {{objeto.fechaFin| date : "fullDate"}},
                                     LE QUEDAN {{objeto.tiempoRestante}} PARA ENTREGAR LOS SOPORTES</label>
+                                <label ng-show="!banderaFecha" ng-controller="View3Ctrl"> LA FECHA ESTABLECIDA YA PASO</label>
                                 <br>
                             </div>
+
                         </md-content>
                     </md-tab>
-                    <md-tab label="Requisitos Sugeridos">
+                    <md-tab label="Requisitos Sugeridos" ng-click="hideMessage1()">
                         <md-content class="md-padding">
                         <div class="md-dialog-content" ng-show="table1">
                         <table class="w3-table-all">
@@ -45,12 +47,18 @@
                         </table>
 
                             <md-button class="md-warn md-raised md-hue-2" ng-click="aplicar($event)">Aplicar</md-button>
+                            <br>
+                            <div ng-show="mensajillo">
+                               <label>DEBE SELECCIONAR AL MENOS UN REQUISITO</label>
+
+                            </div>
+
 
                         </div>
                         <div class="md-dialog-content" ng-show="!table1">
                             <div flex>
                             <label>Usted ya ha Aplicado todos los requisitos</label>
-                                <md-button class="md-warn md-raised md-hue-2" ng-click="aplicar($event)">
+                                <md-button class="md-warn md-raised md-hue-2" ng-click="show($event)">
                                    ver definitivos
                                 </md-button>
                                 <div class="w3-col" style="width:50px"><i class="w3-xxlarge fa fa-flag-checkered"></i></div>
@@ -61,7 +69,7 @@
                         </md-content>
                     </md-tab>
                     <!--Vista de Requisitos Extras-->
-                    <md-tab label="Requisitos Extras">
+                    <md-tab label="Requisitos Extras" ng-click="hideMessage1()">
                         <md-content class="md-padding">
                             <div class="md-dialog-content" ng-show="table2">
                                 <table class="w3-table-all">
@@ -80,11 +88,16 @@
                                     </tbody>
                                 </table>
                                 <md-button class="md-warn md-raised md-hue-2" ng-click="aplicar2($event)">Aplicar</md-button>
+                                <br>
+                                <div ng-show="mensajillo2">
+                                    <label>DEBE SELECCIONAR AL MENOS UN REQUISITO</label>
+
+                                </div>
                             </div>
                             <div class="md-dialog-content" ng-show="!table2">
                                 <div flex>
                                     <label>Usted ya ha Aplicado todos los requisitos</label>
-                                    <md-button class="md-warn md-raised md-hue-2" ng-click="aplicar($event)">
+                                    <md-button class="md-warn md-raised md-hue-2" ng-click="show($event)">
                                         ver definitivos
                                     </md-button>
                                     <div class="w3-col" style="width:50px"><i class="w3-xxlarge fa fa-flag-checkered"></i></div>

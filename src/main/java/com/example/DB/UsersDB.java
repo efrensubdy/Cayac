@@ -99,6 +99,13 @@ public class UsersDB {
             u.setIdContratante(rs.getInt("idContratante"));
             u.setIdContrato(rs.getInt("idContrato"));
             u.setIdFinalista(traerIdFinalista(rs.getInt("idContratista")));
+            if(u.getIdFinalista()==0){
+              u.setFinalista(false);
+            }
+            else{
+
+                u.setFinalista(true);
+            }
             u.setEstadoDatabase(rs.getString("estado"));
             u.setRol(rs.getString("rol"));
             usuarios.add(u);

@@ -6,8 +6,9 @@
 </head>
 
 <h1 class="w3-center">SUBA AQUÍ EL SOPORTE DE REQUISITOS APLICADOS POR SU CONTRATANTE</h1>
-<label class="w3-center"> LA FECHA DE ENTREGA DE LOS DOCUMENTOS ES {{objeto.fechaFin| date : "fullDate"}},
+<label ng-show="banderaFecha"  class="w3-center"> LA FECHA DE ENTREGA DE LOS DOCUMENTOS ES {{objeto.fechaFin| date : "fullDate"}},
     LE QUEDAN {{objeto.tiempoRestante}} PARA ENTREGAR LOS SOPORTES</label>
+<label ng-show="!banderaFecha">SU FECHA DE SUBIR SOPORTES YA PASO CONTACTESE CON SU CONTRATANTE</label>
 <form class="w3-container" ng-show="mostrar">
     <table class="w3-table-all"  ng-controller="View9Ctrl">
         <thead>

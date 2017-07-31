@@ -17,6 +17,15 @@ public class Usuario {
     public String estadoDatabase;
     public String rol;
     public int idAdministrador;
+    public boolean isFinalista;
+
+    public boolean isFinalista() {
+        return isFinalista;
+    }
+
+    public void setFinalista(boolean finalista) {
+        isFinalista = finalista;
+    }
 
     public int getIdAdministrador() {
         return idAdministrador;

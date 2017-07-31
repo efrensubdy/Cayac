@@ -425,7 +425,9 @@ angular.module('services.listFactory', ['ngRoute','ngResource'])
                                                      return $resource('/app/limites/:id');
                                                                            })
        //Esta fabrica agrega a los finalistas
-
+       .factory('fechaLimiteContratante', function($resource) {
+                                                            return $resource('/app/limites/limit/:idContratante');
+                                                                                  })
        .factory('finalistas', function($resource) {
                    return $resource('/app/finalista/:id');
                })

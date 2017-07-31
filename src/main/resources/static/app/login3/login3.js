@@ -21,6 +21,7 @@ angular.module('myApp.login3', ['ngRoute'])
                          $rootScope.idContratista=$localStorage.userLogeado.idContratista;
                          $scope.$storage = $localStorage;
                          $rootScope.email=$scope.email;
+
                          $location.path("/view1");
 
 
@@ -50,6 +51,7 @@ angular.module('myApp.login3', ['ngRoute'])
       var url2="http://localhost:8080/app/login/contratista/categoria/" + $scope.email +"/" + $scope.password;
            $http.get(url2).then(function(response){
                                  t=response.data;
+                                 console.log(t);
                                  $localStorage.userLogeado=t;
                               return response.data;
                         }).then(w);
