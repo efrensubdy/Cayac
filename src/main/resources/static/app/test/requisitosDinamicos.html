@@ -11,7 +11,7 @@
         </md-toolbar>
         <md-dialog-content>
             <md-tabs md-dynamic-height md-border-bottom>
-                <md-tab label="Requisitos Previos al Inicio del Contrato">
+                <md-tab label="Previos al Inicio del Contrato">
                     <md-content class="md-padding">
                         <div class="md-dialog-content">
                             <label>Sugeridos</label>
@@ -31,6 +31,9 @@
                                 </tbody>
                             </table>
                             <md-button class="md-warn md-raised md-hue-2" ng-click="aplicarDinamiooPrevioSugerido($event)">Aplicar</md-button>
+                            <div ng-show="mensajillo1">
+                                <label>DEBE SELECCIONAR AL MENOS UN REQUISITO</label>
+                            </div>
                         </div>
                         <div class="md-dialog-content">
                             <label>Extras</label>
@@ -51,6 +54,9 @@
 
                             </table>
                             <md-button class="md-warn md-raised md-hue-2" ng-click="aplicarDinamicoPrevioExtra($event)">Aplicar</md-button>
+                            <div ng-show="mensajillo2">
+                                <label>DEBE SELECCIONAR AL MENOS UN REQUISITO</label>
+                            </div>
                         </div>
                     </md-content>
 
@@ -76,6 +82,9 @@
 
                             </table>
                             <md-button class="md-warn md-raised md-hue-2" ng-click="aplicarDinamicoEjecucionSugerido($event)">Aplicar</md-button>
+                            <div ng-show="mensajillo3">
+                                <label>DEBE SELECCIONAR AL MENOS UN REQUISITO</label>
+                            </div>
                         </div>
                         <div class="md-dialog-content">
                             <label>Extras</label>
@@ -96,6 +105,9 @@
 
                             </table>
                             <md-button class="md-warn md-raised md-hue-2" ng-click="aplicarDinamicoEjecucionExtra($event)">Aplicar</md-button>
+                            <div ng-show="mensajillo4">
+                                <label>DEBE SELECCIONAR AL MENOS UN REQUISITO</label>
+                            </div>
                         </div>
 
                     </md-content>
@@ -122,6 +134,9 @@
 
                             </table>
                             <md-button class="md-warn md-raised md-hue-2" ng-click="aplicarDinamicoFinalizacionSugerido($event)">Aplicar</md-button>
+                            <div ng-show="mensajillo5">
+                                <label>DEBE SELECCIONAR AL MENOS UN REQUISITO</label>
+                            </div>
                         </div>
                         <div class="md-dialog-content">
                             <label>Extras</label>
@@ -141,50 +156,15 @@
                                 </tbody>
                             </table>
                             <md-button class="md-warn md-raised md-hue-2" ng-click="aplicarDinamicoFinalizacionExtra($event)">Aplicar</md-button>
+                            <div ng-show="mensajillo6">
+                                <label>DEBE SELECCIONAR AL MENOS UN REQUISITO</label>
+                            </div>
                         </div>
 
 
                     </md-content>
 
                 </md-tab>
-                <md-tab label="Requisitos Definitivos" ng-click="consultar()">
-                    <md-content class="md-padding">
-                        <div class="md-dialog-content">
-                            <table class="w3-table-all">
-                                <thead>
-                                <tr class="w3-light-grey w3-hover-grey">
-                                    <th>Definitivos</th>
-
-                                </tr>
-                                </thead>
-                                <tbody>
-                                <tr class="w3-hover-green" ng-repeat="todo in defPreviosSugeridos">
-                                    <td> {{todo.descripcion}} </td>
-
-                                </tr>
-                                <tr class="w3-hover-green" ng-repeat="todo in defPreviosExtras">
-                                    <td>{{todo.descripcion}} </td>
-                                </tr>
-                                <tr class="w3-hover-green" ng-repeat="todo in defEjecucionSugeridos">
-                                    <td>{{todo.descripcion}} </td>
-                                </tr>
-                                <tr class="w3-hover-green" ng-repeat="todo in defEjecucionExtras">
-                                    <td>{{todo.descripcion}} </td>
-                                </tr>
-                                <tr class="w3-hover-green" ng-repeat="todo in defFinalizacionSugeridos">
-                                    <td>{{todo.descripcion}} </td>
-                                </tr>
-                                <tr class="w3-hover-green" ng-repeat="todo in defFinalizacionExtras">
-                                    <td>{{todo.descripcion}} </td>
-                                </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                    </md-content>
-                </md-tab>
-
-
-
 
             </md-tabs>
 

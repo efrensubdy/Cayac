@@ -9,7 +9,7 @@ angular.module('myApp.registrarRequisitosEjecucion', ['ngRoute'])
   });
 }])
 
-.controller('registrarRequisitosEjecucionCtrl', ['$localStorage','$sessionStorage','$mdDialog','$rootScope', '$http', '$scope','previos','previosExtras','ejecucion','ejecucionExtras','finalizacion','finalizacionExtras','insertarPrevioSugerido','insertarPrevioExtra','insertarEjecucionSugerido','insertarEjecucionExtra','insertarFinalizacionSugerido','insertarFinalizacionExtra','defPreviosSugeridos','defPreviosExtras','defEjecucionSugeridos','defEjecucionExtras','defFinalizacionSugeridos','defFinalizacionExtras','dinamicosPrevios','dinamicosPreviosExtras','dinamicosEjecucion','dinamicosEjecucionExtras','dinamicosFinalizacion','dinamicosFinalizacionExtras','iDinamicoPrevioSugerido','iDinamicoPrevioExtra','iDinamicoEjecucionSugerido','iDinamicoEjecucionExtra','iDinamicoFinalizacionSugerido','iDinamicoFinalizacionExtra','defDinamicosPreviosSugeridos','defDinamicosPreviosExtras','defDinamicosEjecucionSugeridos','defDinamicosEjecucionExtras','defDinamicosFinalizacionSugeridos','defDinamicosFinalizacionExtras',function($localStorage,$sessionStorage,$mdDialog,$rootScope, $http, $scope,previos,previosExtras,ejecucion,ejecucionExtras,finalizacion,finalizacionExtras,insertarPrevioSugerido,insertarPrevioExtra,insertarEjecucionSugerido,insertarEjecucionExtra,insertarFinalizacionSugerido,insertarFinalizacionExtra,defPreviosSugeridos,defPreviosExtras,defEjecucionSugeridos,defEjecucionExtras,defFinalizacionSugeridos,defFinalizacionExtras,dinamicosPrevios,dinamicosPreviosExtras,dinamicosEjecucion,dinamicosEjecucionExtras,dinamicosFinalizacion,dinamicosFinalizacionExtras,iDinamicoPrevioSugerido,iDinamicoPrevioExtra,iDinamicoEjecucionSugerido,iDinamicoEjecucionExtra,iDinamicoFinalizacionSugerido,iDinamicoFinalizacionExtra,defDinamicosPreviosSugeridos,defDinamicosPreviosExtras,defDinamicosEjecucionSugeridos,defDinamicosEjecucionExtras,defDinamicosFinalizacionSugeridos,defDinamicosFinalizacionExtras) {
+.controller('registrarRequisitosEjecucionCtrl', ['$localStorage','$sessionStorage','$mdDialog','$rootScope', '$http', '$scope','previos','previosExtras','ejecucion','ejecucionExtras','finalizacion','finalizacionExtras','insertarPrevioSugerido','insertarPrevioExtra','insertarEjecucionSugerido','insertarEjecucionExtra','insertarFinalizacionSugerido','insertarFinalizacionExtra','defPreviosSugeridos','defPreviosExtras','defEjecucionSugeridos','defEjecucionExtras','defFinalizacionSugeridos','defFinalizacionExtras','dinamicosPrevios','dinamicosPreviosExtras','dinamicosEjecucion','dinamicosEjecucionExtras','dinamicosFinalizacion','dinamicosFinalizacionExtras','iDinamicoPrevioSugerido','iDinamicoPrevioExtra','iDinamicoEjecucionSugerido','iDinamicoEjecucionExtra','iDinamicoFinalizacionSugerido','iDinamicoFinalizacionExtra','defDinamicosPreviosSugeridos','defDinamicosPreviosExtras','defDinamicosEjecucionSugeridos','defDinamicosEjecucionExtras','defDinamicosFinalizacionSugeridos','defDinamicosFinalizacionExtras' ,'eliminarPS','eliminarPE','eliminarES','eliminarEE','eliminarFS','eliminarFE' ,'eliminarDPS','eliminarDPE','eliminarDES','eliminarDEE','eliminarDFS','eliminarDFE',function($localStorage,$sessionStorage,$mdDialog,$rootScope, $http, $scope,previos,previosExtras,ejecucion,ejecucionExtras,finalizacion,finalizacionExtras,insertarPrevioSugerido,insertarPrevioExtra,insertarEjecucionSugerido,insertarEjecucionExtra,insertarFinalizacionSugerido,insertarFinalizacionExtra,defPreviosSugeridos,defPreviosExtras,defEjecucionSugeridos,defEjecucionExtras,defFinalizacionSugeridos,defFinalizacionExtras,dinamicosPrevios,dinamicosPreviosExtras,dinamicosEjecucion,dinamicosEjecucionExtras,dinamicosFinalizacion,dinamicosFinalizacionExtras,iDinamicoPrevioSugerido,iDinamicoPrevioExtra,iDinamicoEjecucionSugerido,iDinamicoEjecucionExtra,iDinamicoFinalizacionSugerido,iDinamicoFinalizacionExtra,defDinamicosPreviosSugeridos,defDinamicosPreviosExtras,defDinamicosEjecucionSugeridos,defDinamicosEjecucionExtras,defDinamicosFinalizacionSugeridos,defDinamicosFinalizacionExtras,eliminarPS,eliminarPE,eliminarES,eliminarEE,eliminarFS,eliminarFE ,eliminarDPS,eliminarDPE,eliminarDES,eliminarDEE,eliminarDFS,eliminarDFE) {
 
  $scope.flag=false;
          $scope.propertyName = 'nombreEmpresa';
@@ -56,13 +56,18 @@ angular.module('myApp.registrarRequisitosEjecucion', ['ngRoute'])
          }
 
           $scope.showAlert = function(ev) {
-                 $rootScope.listadoPrevioSugerido=previos.query({idContratante:$localStorage.contratanteLogeado.idContratante,idCategoria:$scope.idCategoria});
+                 $rootScope.listadoPrevioSugerido=previos.query({idContratante:$localStorage.contratanteLogeado.idContratante,idCategoria:$scope.idCategoria},function(result){
+                            $rootScope.longi=result.length;
+
+                 });
+
                  $rootScope.listadoPrevioExtra=previosExtras.query({idContratante:$localStorage.contratanteLogeado.idContratante,idCategoria:$scope.idCategoria});
                  $rootScope.listadoEjecucionSugerido=ejecucion.query({idContratante:$localStorage.contratanteLogeado.idContratante,idCategoria:$scope.idCategoria});
                  $rootScope.listadoEjecucionExtra=ejecucionExtras.query({idContratante:$localStorage.contratanteLogeado.idContratante,idCategoria:$scope.idCategoria});
                  $rootScope.listadoFinalizacionSugerido=finalizacion.query({idContratante:$localStorage.contratanteLogeado.idContratante,idCategoria:$scope.idCategoria});
                  $rootScope.listadoFinalizacionExtra=finalizacionExtras.query({idContratante:$localStorage.contratanteLogeado.idContratante,idCategoria:$scope.idCategoria});
                  $rootScope.idCategoria=$scope.idCategoria;
+
                  $mdDialog.show({
                        //Controlador del mensajes con operaciones definido en la parte de abajo
                        controller: DialogController,
@@ -103,6 +108,8 @@ angular.module('myApp.registrarRequisitosEjecucion', ['ngRoute'])
 
           function DialogController($scope, $mdDialog, $rootScope,$http) {
                 $scope.listadoPrevioSugerido=$rootScope.listadoPrevioSugerido;
+                $scope.longi=$rootScope.longi
+                console.log($scope.longi);
                 $scope.listPrevioSugerido=[];
                 $scope.listAllPrevioSugerido=[];
                 $scope.listadoPrevioExtra=$rootScope.listadoPrevioExtra;
@@ -138,6 +145,15 @@ angular.module('myApp.registrarRequisitosEjecucion', ['ngRoute'])
                 $scope.cancel = function() {
                               $mdDialog.cancel();
                  };
+                  $scope.hideMessage1=function(){
+                                 $scope.mensajillo1=false;
+                                 $scope.mensajillo2=false;
+                                 $scope.mensajillo3=false;
+                                 $scope.mensajillo4=false;
+                                 $scope.mensajillo5=false;
+                                 $scope.mensajillo6=false;
+
+                             }
 
                 $scope.agregarPrevioSugerido=function(previoSugerido,item){
                     if(previoSugerido){
@@ -280,21 +296,36 @@ angular.module('myApp.registrarRequisitosEjecucion', ['ngRoute'])
                      if(a>b){
                         console.log("entre a sugeridos")
                         agregarBaseDatosPreviosSugeridos($scope.listPrevioSugerido);
+                         $mdDialog.show({
+
+                                                                    controller: DialogController3,
+                                                                                                                                                             // permite la comunicacion con el html que despliega el boton requisitos
+                                                                                                                                           templateUrl: 'test/mensajeDeConfirmacionE.html',
+                                                                                                                                           parent: angular.element(document.body),
+                                                                                                                                           targetEvent: ev,
+                                                                                                                                           clickOutsideToClose:true,
+                                                                                                                                           fullscreen: $scope.customFullscreen // Only for -xs, -sm breakpoints.
+                                                                                                                                                              })
+                     }
+                     else if(a==0 && b==0){
+
+                     $scope.mensajillo1=true
+
                      }
                      else{
                         console.log("entre a all sugeridos")
                         agregarBaseDatosPreviosSugeridos($scope.listAllPrevioSugerido);
+                         $mdDialog.show({
+
+                                                                    controller: DialogController3,
+                                                                                                                                                             // permite la comunicacion con el html que despliega el boton requisitos
+                                                                                                                                           templateUrl: 'test/mensajeDeConfirmacionE.html',
+                                                                                                                                           parent: angular.element(document.body),
+                                                                                                                                           targetEvent: ev,
+                                                                                                                                           clickOutsideToClose:true,
+                                                                                                                                           fullscreen: $scope.customFullscreen // Only for -xs, -sm breakpoints.
+                                                                                                                                                              })
                      }
-                     $mdDialog.show(
-                          $mdDialog.alert()
-                          .parent(angular.element(document.querySelector('#popupContainer')))
-                          .clickOutsideToClose(true)
-                          .title('Estos seran permanentes')
-                          .textContent('el contratista deberá cumplir esto.')
-                          .ariaLabel('Alert Dialog Demo')
-                          .ok('mire sus definitivos!')
-                          .targetEvent(ev)
-                          );
                 };
                 $scope.aplicarPrevioExtra=function(ev){
                                      var a=$scope.listPrevioExtra.length;
@@ -302,21 +333,37 @@ angular.module('myApp.registrarRequisitosEjecucion', ['ngRoute'])
                                      if(a>b){
                                         console.log("entre a sugeridos")
                                         agregarBaseDatosPreviosExtras($scope.listPrevioExtra);
+                                         $mdDialog.show({
+
+                                                                                    controller: DialogController3,
+                                                                                                                                                                             // permite la comunicacion con el html que despliega el boton requisitos
+                                                                                                                                                           templateUrl: 'test/mensajeDeConfirmacionE.html',
+                                                                                                                                                           parent: angular.element(document.body),
+                                                                                                                                                           targetEvent: ev,
+                                                                                                                                                           clickOutsideToClose:true,
+                                                                                                                                                           fullscreen: $scope.customFullscreen // Only for -xs, -sm breakpoints.
+                                                                                                                                                                              })
                                      }
+                                     else if(a==0 && b==0){
+
+                                                          $scope.mensajillo2=true
+
+                                                          }
                                      else{
                                         console.log("entre a all sugeridos")
                                         agregarBaseDatosPreviosExtras($scope.listAllPrevioExtra);
+                                         $mdDialog.show({
+
+                                                                                    controller: DialogController3,
+                                                                                                                                                                             // permite la comunicacion con el html que despliega el boton requisitos
+                                                                                                                                                           templateUrl: 'test/mensajeDeConfirmacionE.html',
+                                                                                                                                                           parent: angular.element(document.body),
+                                                                                                                                                           targetEvent: ev,
+                                                                                                                                                           clickOutsideToClose:true,
+                                                                                                                                                           fullscreen: $scope.customFullscreen // Only for -xs, -sm breakpoints.
+                                                                                                                                                                              })
                                      }
-                                     $mdDialog.show(
-                                          $mdDialog.alert()
-                                          .parent(angular.element(document.querySelector('#popupContainer')))
-                                          .clickOutsideToClose(true)
-                                          .title('Estos seran permanentes')
-                                          .textContent('el contratista deberá cumplir esto.')
-                                          .ariaLabel('Alert Dialog Demo')
-                                          .ok('mire sus definitivos!')
-                                          .targetEvent(ev)
-                                          );
+
                                 };
 
                 $scope.aplicarEjecucionSugerido=function(ev){
@@ -325,21 +372,37 @@ angular.module('myApp.registrarRequisitosEjecucion', ['ngRoute'])
                                     if(a>b){
                                        console.log("entre a sugeridos")
                                        agregarBaseDatosEjecucionSugeridos($scope.listEjecucionSugerido);
+                                        $mdDialog.show({
+
+                                                                                   controller: DialogController3,
+                                                                                                                                                                            // permite la comunicacion con el html que despliega el boton requisitos
+                                                                                                                                                          templateUrl: 'test/mensajeDeConfirmacionE.html',
+                                                                                                                                                          parent: angular.element(document.body),
+                                                                                                                                                          targetEvent: ev,
+                                                                                                                                                          clickOutsideToClose:true,
+                                                                                                                                                          fullscreen: $scope.customFullscreen // Only for -xs, -sm breakpoints.
+                                                                                                                                                                             })
                                     }
+                                    else if(a==0 && b==0){
+
+                                                         $scope.mensajillo3=true
+
+                                                         }
                                     else{
                                        console.log("entre a all sugeridos")
                                        agregarBaseDatosEjecucionSugeridos($scope.listAllEjecucionSugerido);
+                                        $mdDialog.show({
+
+                                                                                   controller: DialogController3,
+                                                                                                                                                                            // permite la comunicacion con el html que despliega el boton requisitos
+                                                                                                                                                          templateUrl: 'test/mensajeDeConfirmacionE.html',
+                                                                                                                                                          parent: angular.element(document.body),
+                                                                                                                                                          targetEvent: ev,
+                                                                                                                                                          clickOutsideToClose:true,
+                                                                                                                                                          fullscreen: $scope.customFullscreen // Only for -xs, -sm breakpoints.
+                                                                                                                                                                             })
                                     }
-                                    $mdDialog.show(
-                                         $mdDialog.alert()
-                                         .parent(angular.element(document.querySelector('#popupContainer')))
-                                         .clickOutsideToClose(true)
-                                         .title('Estos seran permanentes')
-                                         .textContent('el contratista deberá cumplir esto.')
-                                         .ariaLabel('Alert Dialog Demo')
-                                         .ok('mire sus definitivos!')
-                                         .targetEvent(ev)
-                                         );
+
                                };
 
                 $scope.aplicarEjecucionExtra=function(ev){
@@ -348,21 +411,37 @@ angular.module('myApp.registrarRequisitosEjecucion', ['ngRoute'])
                                                      if(a>b){
                                                         console.log("entre a sugeridos")
                                                         agregarBaseDatosEjecucionExtras($scope.listEjecucionExtra);
+                                                         $mdDialog.show({
+
+                                                                                                    controller: DialogController3,
+                                                                                                                                                                                             // permite la comunicacion con el html que despliega el boton requisitos
+                                                                                                                                                                           templateUrl: 'test/mensajeDeConfirmacionE.html',
+                                                                                                                                                                           parent: angular.element(document.body),
+                                                                                                                                                                           targetEvent: ev,
+                                                                                                                                                                           clickOutsideToClose:true,
+                                                                                                                                                                           fullscreen: $scope.customFullscreen // Only for -xs, -sm breakpoints.
+                                                                                                                                                                                              })
                                                      }
+                                                     else if(a==0 && b==0){
+
+                                                                          $scope.mensajillo4=true
+
+                                                                          }
                                                      else{
                                                         console.log("entre a all sugeridos")
                                                         agregarBaseDatosEjecucionExtras($scope.listAllEjecucionExtra);
+                                                         $mdDialog.show({
+
+                                                                                                    controller: DialogController3,
+                                                                                                                                                                                             // permite la comunicacion con el html que despliega el boton requisitos
+                                                                                                                                                                           templateUrl: 'test/mensajeDeConfirmacionE.html',
+                                                                                                                                                                           parent: angular.element(document.body),
+                                                                                                                                                                           targetEvent: ev,
+                                                                                                                                                                           clickOutsideToClose:true,
+                                                                                                                                                                           fullscreen: $scope.customFullscreen // Only for -xs, -sm breakpoints.
+                                                                                                                                                                                              })
                                                      }
-                                                     $mdDialog.show(
-                                                          $mdDialog.alert()
-                                                          .parent(angular.element(document.querySelector('#popupContainer')))
-                                                          .clickOutsideToClose(true)
-                                                          .title('Estos seran permanentes')
-                                                          .textContent('el contratista deberá cumplir esto.')
-                                                          .ariaLabel('Alert Dialog Demo')
-                                                          .ok('mire sus definitivos!')
-                                                          .targetEvent(ev)
-                                                          );
+
                                                 };
 
 
@@ -372,21 +451,37 @@ angular.module('myApp.registrarRequisitosEjecucion', ['ngRoute'])
                                                     if(a>b){
                                                        console.log("entre a sugeridos")
                                                        agregarBaseDatosFinalizacionSugeridos($scope.listFinalizacionSugerido);
+                                                        $mdDialog.show({
+
+                                                                                                   controller: DialogController3,
+                                                                                                                                                                                            // permite la comunicacion con el html que despliega el boton requisitos
+                                                                                                                                                                          templateUrl: 'test/mensajeDeConfirmacionE.html',
+                                                                                                                                                                          parent: angular.element(document.body),
+                                                                                                                                                                          targetEvent: ev,
+                                                                                                                                                                          clickOutsideToClose:true,
+                                                                                                                                                                          fullscreen: $scope.customFullscreen // Only for -xs, -sm breakpoints.
+                                                                                                                                                                                             })
                                                     }
+                                                    else if(a==0 && b==0){
+
+                                                                         $scope.mensajillo5=true
+
+                                                                         }
                                                     else{
                                                        console.log("entre a all sugeridos")
                                                        agregarBaseDatosFinalizacionSugeridos($scope.listAllFinalizacionSugerido);
+                                                        $mdDialog.show({
+
+                                                                                                   controller: DialogController3,
+                                                                                                                                                                                            // permite la comunicacion con el html que despliega el boton requisitos
+                                                                                                                                                                          templateUrl: 'test/mensajeDeConfirmacionE.html',
+                                                                                                                                                                          parent: angular.element(document.body),
+                                                                                                                                                                          targetEvent: ev,
+                                                                                                                                                                          clickOutsideToClose:true,
+                                                                                                                                                                          fullscreen: $scope.customFullscreen // Only for -xs, -sm breakpoints.
+                                                                                                                                                                                             })
                                                     }
-                                                    $mdDialog.show(
-                                                         $mdDialog.alert()
-                                                         .parent(angular.element(document.querySelector('#popupContainer')))
-                                                         .clickOutsideToClose(true)
-                                                         .title('Estos seran permanentes')
-                                                         .textContent('el contratista deberá cumplir esto.')
-                                                         .ariaLabel('Alert Dialog Demo')
-                                                         .ok('mire sus definitivos!')
-                                                         .targetEvent(ev)
-                                                         );
+
                                                };
 
                   $scope.aplicarFinalizacionExtra=function(ev){
@@ -395,31 +490,40 @@ angular.module('myApp.registrarRequisitosEjecucion', ['ngRoute'])
                                                                      if(a>b){
                                                                         console.log("entre a sugeridos")
                                                                         agregarBaseDatosFinalizacionExtras($scope.listadoFinalizacionExtra);
+                                                                         $mdDialog.show({
+
+                                                                                                                    controller: DialogController3,
+                                                                                                                                                                                                             // permite la comunicacion con el html que despliega el boton requisitos
+                                                                                                                                                                                           templateUrl: 'test/mensajeDeConfirmacionE.html',
+                                                                                                                                                                                           parent: angular.element(document.body),
+                                                                                                                                                                                           targetEvent: ev,
+                                                                                                                                                                                           clickOutsideToClose:true,
+                                                                                                                                                                                           fullscreen: $scope.customFullscreen // Only for -xs, -sm breakpoints.
+                                                                                                                                                                                                              })
                                                                      }
+                                                                     else if(a==0 && b==0){
+
+                                                                                          $scope.mensajillo6=true
+
+                                                                                          }
                                                                      else{
                                                                         console.log("entre a all sugeridos")
                                                                         agregarBaseDatosFinalizacionExtras($scope.listAllFinalizacionExtra);
+                                                                         $mdDialog.show({
+
+                                                                                                                    controller: DialogController3,
+                                                                                                                                                                                                             // permite la comunicacion con el html que despliega el boton requisitos
+                                                                                                                                                                                           templateUrl: 'test/mensajeDeConfirmacionE.html',
+                                                                                                                                                                                           parent: angular.element(document.body),
+                                                                                                                                                                                           targetEvent: ev,
+                                                                                                                                                                                           clickOutsideToClose:true,
+                                                                                                                                                                                           fullscreen: $scope.customFullscreen // Only for -xs, -sm breakpoints.
+                                                                                                                                                                                                              })
                                                                      }
-                                                                     $mdDialog.show(
-                                                                          $mdDialog.alert()
-                                                                          .parent(angular.element(document.querySelector('#popupContainer')))
-                                                                          .clickOutsideToClose(true)
-                                                                          .title('Estos seran permanentes')
-                                                                          .textContent('el contratista deberá cumplir esto.')
-                                                                          .ariaLabel('Alert Dialog Demo')
-                                                                          .ok('mire sus definitivos!')
-                                                                          .targetEvent(ev)
-                                                                          );
+
                                                                 };
 
-               $scope.consultar = function(){
-                                     $scope.defPreviosSugeridos=defPreviosSugeridos.query({idContratante:$localStorage.contratanteLogeado.idContratante,idCategoria:$rootScope.idCategoria});
-                                     $scope.defPreviosExtras=defPreviosExtras.query({idContratante:$localStorage.contratanteLogeado.idContratante,idCategoria:$rootScope.idCategoria});
-                                     $scope.defEjecucionSugeridos=defEjecucionSugeridos.query({idContratante:$localStorage.contratanteLogeado.idContratante,idCategoria:$rootScope.idCategoria});
-                                     $scope.defEjecucionExtras=defEjecucionExtras.query({idContratante:$localStorage.contratanteLogeado.idContratante,idCategoria:$rootScope.idCategoria});
-                                     $scope.defFinalizacionSugeridos=defFinalizacionSugeridos.query({idContratante:$localStorage.contratanteLogeado.idContratante,idCategoria:$rootScope.idCategoria});
-                                     $scope.defFinalizacionExtras=defFinalizacionExtras.query({idContratante:$localStorage.contratanteLogeado.idContratante,idCategoria:$rootScope.idCategoria});
-                                     };
+
 
               var agregarBaseDatosPreviosSugeridos=function(lista){
                              var total=lista.length;
@@ -498,6 +602,66 @@ angular.module('myApp.registrarRequisitosEjecucion', ['ngRoute'])
 
 
           }
+          function DialogController3($scope, $mdDialog, $rootScope,$http){
+            $scope.defPreviosSugeridos=defPreviosSugeridos.query({idContratante:$localStorage.contratanteLogeado.idContratante,idCategoria:$rootScope.idCategoria});
+            $scope.defPreviosExtras=defPreviosExtras.query({idContratante:$localStorage.contratanteLogeado.idContratante,idCategoria:$rootScope.idCategoria});
+            $scope.defEjecucionSugeridos=defEjecucionSugeridos.query({idContratante:$localStorage.contratanteLogeado.idContratante,idCategoria:$rootScope.idCategoria});
+            $scope.defEjecucionExtras=defEjecucionExtras.query({idContratante:$localStorage.contratanteLogeado.idContratante,idCategoria:$rootScope.idCategoria});
+            $scope.defFinalizacionSugeridos=defFinalizacionSugeridos.query({idContratante:$localStorage.contratanteLogeado.idContratante,idCategoria:$rootScope.idCategoria});
+            $scope.defFinalizacionExtras=defFinalizacionExtras.query({idContratante:$localStorage.contratanteLogeado.idContratante,idCategoria:$rootScope.idCategoria});
+
+            $scope.hide = function() {
+               $mdDialog.hide();
+            };
+                                                    //funcion para cerral el mensaje
+             $scope.cancel = function() {
+                $mdDialog.cancel();
+             };
+             $scope.show=function(ev){
+                     $mdDialog.show({
+                                                   //Controlador del mensajes con operaciones definido en la parte de abajo
+                                controller: DialogController3,
+                                                  // permite la comunicacion con el html que despliega el boton requisitos
+                                templateUrl: 'test/definitivosEstaticos.html',
+                                parent: angular.element(document.body),
+                                targetEvent: ev,
+                                clickOutsideToClose:true,
+                                fullscreen: $scope.customFullscreen // Only for -xs, -sm breakpoints.
+            })
+            }
+           }
+            function DialogController4($scope, $mdDialog, $rootScope,$http){
+
+                       $scope.defPreviosSugeridos=defDinamicosPreviosSugeridos.query({idContratante:$localStorage.contratanteLogeado.idContratante,idCategoria:$rootScope.idCategoria});
+                       $scope.defPreviosExtras=defDinamicosPreviosExtras.query({idContratante:$localStorage.contratanteLogeado.idContratante,idCategoria:$rootScope.idCategoria});
+                       $scope.defEjecucionSugeridos=defDinamicosEjecucionSugeridos.query({idContratante:$localStorage.contratanteLogeado.idContratante,idCategoria:$rootScope.idCategoria});
+                       $scope.defEjecucionExtras=defDinamicosEjecucionExtras.query({idContratante:$localStorage.contratanteLogeado.idContratante,idCategoria:$rootScope.idCategoria});
+                       $scope.defFinalizacionSugeridos=defDinamicosFinalizacionSugeridos.query({idContratante:$localStorage.contratanteLogeado.idContratante,idCategoria:$rootScope.idCategoria});
+                       $scope.defFinalizacionExtras=defDinamicosFinalizacionExtras.query({idContratante:$localStorage.contratanteLogeado.idContratante,idCategoria:$rootScope.idCategoria});
+
+
+
+                        $scope.hide = function() {
+                           $mdDialog.hide();
+                        };
+                                                                //funcion para cerral el mensaje
+                         $scope.cancel = function() {
+                            $mdDialog.cancel();
+                         };
+                         $scope.show=function(ev){
+                                 $mdDialog.show({
+                                                               //Controlador del mensajes con operaciones definido en la parte de abajo
+                                            controller: DialogController4,
+                                                              // permite la comunicacion con el html que despliega el boton requisitos
+                                            templateUrl: 'test/definitivosDinamicos.html',
+                                            parent: angular.element(document.body),
+                                            targetEvent: ev,
+                                            clickOutsideToClose:true,
+                                            fullscreen: $scope.customFullscreen // Only for -xs, -sm breakpoints.
+                        })
+                        }
+
+          }
          function DialogController2($scope, $mdDialog, $rootScope,$http) {
             $scope.listDinamicoPrevioSugerido=[];
             $scope.listDinamicoAllPrevioSugerido=[];
@@ -522,6 +686,15 @@ angular.module('myApp.registrarRequisitosEjecucion', ['ngRoute'])
             $scope.listadoDinamicoFinalizacionSugerido=$rootScope.listadoDinamicoFinalizacionSugerido;
 
             $scope.listadoDinamicoFinalizacionExtra=$rootScope.listadoDinamicoFinalizacionExtra;
+            $scope.hideMessage1=function(){
+                                             $scope.mensajillo1=false;
+                                             $scope.mensajillo2=false;
+                                             $scope.mensajillo3=false;
+                                             $scope.mensajillo4=false;
+                                             $scope.mensajillo5=false;
+                                             $scope.mensajillo6=false;
+
+                                         }
 
 
 
@@ -769,21 +942,39 @@ angular.module('myApp.registrarRequisitosEjecucion', ['ngRoute'])
                      if(a>b){
                         console.log("entre a sugeridos")
                         agregarBaseDatosDinamicosPreviosSugeridos($scope.listDinamicoPrevioSugerido);
+                         $mdDialog.show({
+
+                                                                                                            controller: DialogController4,
+                                                                                                                                                                                                     // permite la comunicacion con el html que despliega el boton requisitos
+                                                                                                                                                                                   templateUrl: 'test/mensajeDeConfirmacionD.html',
+                                                                                                                                                                                   parent: angular.element(document.body),
+                                                                                                                                                                                   targetEvent: ev,
+                                                                                                                                                                                   clickOutsideToClose:true,
+                                                                                                                                                                                   fullscreen: $scope.customFullscreen // Only for -xs, -sm breakpoints.
+                                                                                                                                                                                                      })
+                     }
+                     else if(a==b && b==0){
+                        $scope.mensajillo1=true;
+
+
+
                      }
                      else{
                         console.log("entre a all sugeridos")
                         agregarBaseDatosDinamicosPreviosSugeridos($scope.listDinamicoAllPrevioSugerido);
+                        $mdDialog.show({
+
+                                                                                                                                    controller: DialogController4,
+                                                                                                                                                                                                                             // permite la comunicacion con el html que despliega el boton requisitos
+                                                                                                                                                                                                           templateUrl: 'test/mensajeDeConfirmacionD.html',
+                                                                                                                                                                                                           parent: angular.element(document.body),
+                                                                                                                                                                                                           targetEvent: ev,
+                                                                                                                                                                                                           clickOutsideToClose:true,
+                                                                                                                                                                                                           fullscreen: $scope.customFullscreen // Only for -xs, -sm breakpoints.
+                                                                                                                                                                                                                              })
                      }
-                     $mdDialog.show(
-                          $mdDialog.alert()
-                          .parent(angular.element(document.querySelector('#popupContainer')))
-                          .clickOutsideToClose(true)
-                          .title('Estos seran permanentes')
-                          .textContent('el contratista deberá cumplir esto.')
-                          .ariaLabel('Alert Dialog Demo')
-                          .ok('mire sus definitivos!')
-                          .targetEvent(ev)
-                          );
+
+
 
 
                     };
@@ -796,21 +987,38 @@ angular.module('myApp.registrarRequisitosEjecucion', ['ngRoute'])
                                      if(a>b){
                                         console.log("entre a sugeridos")
                                         agregarBaseDatosDinamicosPreviosExtras($scope.listDinamicoPrevioExtra);
+                                        $mdDialog.show({
+
+                                                                                                                                                    controller: DialogController4,
+                                                                                                                                                                                                                                             // permite la comunicacion con el html que despliega el boton requisitos
+                                                                                                                                                                                                                           templateUrl: 'test/mensajeDeConfirmacionD.html',
+                                                                                                                                                                                                                           parent: angular.element(document.body),
+                                                                                                                                                                                                                           targetEvent: ev,
+                                                                                                                                                                                                                           clickOutsideToClose:true,
+                                                                                                                                                                                                                           fullscreen: $scope.customFullscreen // Only for -xs, -sm breakpoints.
+                                                                                                                                                                                                                                              })
                                      }
+                                     else if(a==b && b==0){
+                                                             $scope.mensajillo2=true;
+
+
+
+                                                          }
                                      else{
                                         console.log("entre a all sugeridos")
                                         agregarBaseDatosDinamicosPreviosExtras($scope.listDinamicoAllPrevioExtra);
+                                        $mdDialog.show({
+
+                                                                                                                                                    controller: DialogController4,
+                                                                                                                                                                                                                                             // permite la comunicacion con el html que despliega el boton requisitos
+                                                                                                                                                                                                                           templateUrl: 'test/mensajeDeConfirmacionD.html',
+                                                                                                                                                                                                                           parent: angular.element(document.body),
+                                                                                                                                                                                                                           targetEvent: ev,
+                                                                                                                                                                                                                           clickOutsideToClose:true,
+                                                                                                                                                                                                                           fullscreen: $scope.customFullscreen // Only for -xs, -sm breakpoints.
+                                                                                                                                                                                                                                              })
                                      }
-                                     $mdDialog.show(
-                                          $mdDialog.alert()
-                                          .parent(angular.element(document.querySelector('#popupContainer')))
-                                          .clickOutsideToClose(true)
-                                          .title('Estos seran permanentes')
-                                          .textContent('el contratista deberá cumplir esto.')
-                                          .ariaLabel('Alert Dialog Demo')
-                                          .ok('mire sus definitivos!')
-                                          .targetEvent(ev)
-                                          );
+
                                 };
 
                 $scope.aplicarDinamicoEjecucionSugerido=function(ev){
@@ -819,21 +1027,39 @@ angular.module('myApp.registrarRequisitosEjecucion', ['ngRoute'])
                                     if(a>b){
                                        console.log("entre a sugeridos")
                                        agregarBaseDatosDinamicosEjecucionSugeridos($scope.listDinamicoEjecucionSugerido);
+                                       $mdDialog.show({
+
+                                                                                                                                                   controller: DialogController4,
+                                                                                                                                                                                                                                            // permite la comunicacion con el html que despliega el boton requisitos
+                                                                                                                                                                                                                          templateUrl: 'test/mensajeDeConfirmacionD.html',
+                                                                                                                                                                                                                          parent: angular.element(document.body),
+                                                                                                                                                                                                                          targetEvent: ev,
+                                                                                                                                                                                                                          clickOutsideToClose:true,
+                                                                                                                                                                                                                          fullscreen: $scope.customFullscreen // Only for -xs, -sm breakpoints.
+                                                                                                                                                                                                                                             })
+
                                     }
+                                    else if(a==b && b==0){
+                                                            $scope.mensajillo3=true;
+
+
+
+                                                         }
                                     else{
                                        console.log("entre a all sugeridos")
                                        agregarBaseDatosDinamicosEjecucionSugeridos($scope.listDinamicoAllEjecucionSugerido);
+                                       $mdDialog.show({
+
+                                                                                                                                                   controller: DialogController4,
+                                                                                                                                                                                                                                            // permite la comunicacion con el html que despliega el boton requisitos
+                                                                                                                                                                                                                          templateUrl: 'test/mensajeDeConfirmacionD.html',
+                                                                                                                                                                                                                          parent: angular.element(document.body),
+                                                                                                                                                                                                                          targetEvent: ev,
+                                                                                                                                                                                                                          clickOutsideToClose:true,
+                                                                                                                                                                                                                          fullscreen: $scope.customFullscreen // Only for -xs, -sm breakpoints.
+                                                                                                                                                                                                                                             })
                                     }
-                                    $mdDialog.show(
-                                         $mdDialog.alert()
-                                         .parent(angular.element(document.querySelector('#popupContainer')))
-                                         .clickOutsideToClose(true)
-                                         .title('Estos seran permanentes')
-                                         .textContent('el contratista deberá cumplir esto.')
-                                         .ariaLabel('Alert Dialog Demo')
-                                         .ok('mire sus definitivos!')
-                                         .targetEvent(ev)
-                                         );
+
                                };
 
                 $scope.aplicarDinamicoEjecucionExtra=function(ev){
@@ -842,21 +1068,38 @@ angular.module('myApp.registrarRequisitosEjecucion', ['ngRoute'])
                                                      if(a>b){
                                                         console.log("entre a sugeridos")
                                                         agregarBaseDatosDinamicosEjecucionExtras($scope.listDinamicoEjecucionExtra);
+                                                        $mdDialog.show({
+
+                                                                                                                                                                    controller: DialogController4,
+                                                                                                                                                                                                                                                             // permite la comunicacion con el html que despliega el boton requisitos
+                                                                                                                                                                                                                                           templateUrl: 'test/mensajeDeConfirmacionD.html',
+                                                                                                                                                                                                                                           parent: angular.element(document.body),
+                                                                                                                                                                                                                                           targetEvent: ev,
+                                                                                                                                                                                                                                           clickOutsideToClose:true,
+                                                                                                                                                                                                                                           fullscreen: $scope.customFullscreen // Only for -xs, -sm breakpoints.
+                                                                                                                                                                                                                                                              })
                                                      }
+                                                        else if(a==b && b==0){
+                                                            $scope.mensajillo4=true;
+
+
+
+                                                                          }
                                                      else{
                                                         console.log("entre a all sugeridos")
                                                         agregarBaseDatosDinamicosEjecucionExtras($scope.listDinamicosAllEjecucionExtra);
+                                                        $mdDialog.show({
+
+                                                                                                                                                                    controller: DialogController4,
+                                                                                                                                                                                                                                                             // permite la comunicacion con el html que despliega el boton requisitos
+                                                                                                                                                                                                                                           templateUrl: 'test/mensajeDeConfirmacionD.html',
+                                                                                                                                                                                                                                           parent: angular.element(document.body),
+                                                                                                                                                                                                                                           targetEvent: ev,
+                                                                                                                                                                                                                                           clickOutsideToClose:true,
+                                                                                                                                                                                                                                           fullscreen: $scope.customFullscreen // Only for -xs, -sm breakpoints.
+                                                                                                                                                                                                                                                              })
                                                      }
-                                                     $mdDialog.show(
-                                                          $mdDialog.alert()
-                                                          .parent(angular.element(document.querySelector('#popupContainer')))
-                                                          .clickOutsideToClose(true)
-                                                          .title('Estos seran permanentes')
-                                                          .textContent('el contratista deberá cumplir esto.')
-                                                          .ariaLabel('Alert Dialog Demo')
-                                                          .ok('mire sus definitivos!')
-                                                          .targetEvent(ev)
-                                                          );
+
                                                 };
 
 
@@ -867,62 +1110,80 @@ angular.module('myApp.registrarRequisitosEjecucion', ['ngRoute'])
                                                        console.log("entre a sugeridos")
                                                        console.log( $scope.listDinamicoFinalizacionSugerido);
                                                        agregarBaseDatosDinamicosFinalizacionSugeridos( $scope.listDinamicoFinalizacionSugerido);
+                                                       $mdDialog.show({
+
+                                                                                                                                                                   controller: DialogController4,
+                                                                                                                                                                                                                                                            // permite la comunicacion con el html que despliega el boton requisitos
+                                                                                                                                                                                                                                          templateUrl: 'test/mensajeDeConfirmacionD.html',
+                                                                                                                                                                                                                                          parent: angular.element(document.body),
+                                                                                                                                                                                                                                          targetEvent: ev,
+                                                                                                                                                                                                                                          clickOutsideToClose:true,
+                                                                                                                                                                                                                                          fullscreen: $scope.customFullscreen // Only for -xs, -sm breakpoints.
+                                                                                                                                                                                                                                                             })
                                                     }
+                                                       else if(a==b && b==0){
+                                                                            $scope.mensajillo5=true;
+
+
+
+                                                                         }
                                                     else{
                                                        console.log("entre a all sugeridos")
                                                        agregarBaseDatosDinamicosFinalizacionSugeridos($scope.listDinamicoAllFinalizacionSugerido);
-                                                    }
-                                                    $mdDialog.show(
-                                                         $mdDialog.alert()
-                                                         .parent(angular.element(document.querySelector('#popupContainer')))
-                                                         .clickOutsideToClose(true)
-                                                         .title('Estos seran permanentes')
-                                                         .textContent('el contratista deberá cumplir esto.')
-                                                         .ariaLabel('Alert Dialog Demo')
-                                                         .ok('mire sus definitivos!')
-                                                         .targetEvent(ev)
-                                                         );
-                                               };
+                                                       $mdDialog.show({
 
+                                                                                                                                                                   controller: DialogController4,
+
+                                                                                                                                                                                                                                                            // permite la comunicacion con el html que despliega el boton requisitos
+                                                                                                                                                                                                                                          templateUrl: 'test/mensajeDeConfirmacionD.html',
+                                                                                                                                                                                                                                          parent: angular.element(document.body),
+                                                                                                                                                                                                                                          targetEvent: ev,
+                                                                                                                                                                                                                                          clickOutsideToClose:true,
+                                                                                                                                                                                                                                          fullscreen: $scope.customFullscreen // Only for -xs, -sm breakpoints.
+                                                                                                                                                                                                                                                             })
+
+                                                    }
+
+                        };
                   $scope.aplicarDinamicoFinalizacionExtra=function(ev){
                                                                      var a=$scope.listDinamicoFinalizacionExtra.length;
                                                                      var b=$scope.listDinamicoAllFinalizacionExtra.length;
                                                                      if(a>b){
                                                                         console.log("entre a sugeridos")
                                                                         agregarBaseDatosDinamicosFinalizacionExtras($scope.listadoDinamicoFinalizacionExtra);
+                                                                        $mdDialog.show({
+
+                                                                                                                                                                                    controller: DialogController4,
+                                                                                                                                                                                                                                                                             // permite la comunicacion con el html que despliega el boton requisitos
+                                                                                                                                                                                                                                                           templateUrl: 'test/mensajeDeConfirmacionD.html',
+                                                                                                                                                                                                                                                           parent: angular.element(document.body),
+                                                                                                                                                                                                                                                           targetEvent: ev,
+                                                                                                                                                                                                                                                           clickOutsideToClose:true,
+                                                                                                                                                                                                                                                           fullscreen: $scope.customFullscreen // Only for -xs, -sm breakpoints.
+                                                                                                                                                                                                                                                                              })
                                                                      }
+                                                                     else if(a==b && b==0){
+                                                                                             $scope.mensajillo6=true;
+
+
+
+                                                                                          }
                                                                      else{
                                                                         console.log("entre a all sugeridos")
                                                                         agregarBaseDatosDinamicosFinalizacionExtras($scope.listDinamicoAllFinalizacionExtra);
+                                                                        $mdDialog.show({
+
+                                                                                                                                                                                    controller: DialogController4,
+                                                                                                                                                                                                                                                                             // permite la comunicacion con el html que despliega el boton requisitos
+                                                                                                                                                                                                                                                           templateUrl: 'test/mensajeDeConfirmacionD.html',
+                                                                                                                                                                                                                                                           parent: angular.element(document.body),
+                                                                                                                                                                                                                                                           targetEvent: ev,
+                                                                                                                                                                                                                                                           clickOutsideToClose:true,
+                                                                                                                                                                                                                                                           fullscreen: $scope.customFullscreen // Only for -xs, -sm breakpoints.
+                                                                                                                                                                                                                                                                              })
                                                                      }
-                                                                     $mdDialog.show(
-                                                                          $mdDialog.alert()
-                                                                          .parent(angular.element(document.querySelector('#popupContainer')))
-                                                                          .clickOutsideToClose(true)
-                                                                          .title('Estos seran permanentes')
-                                                                          .textContent('el contratista deberá cumplir esto.')
-                                                                          .ariaLabel('Alert Dialog Demo')
-                                                                          .ok('mire sus definitivos!')
-                                                                          .targetEvent(ev)
-                                                                          );
+
                                                                 };
-
-               $scope.consultar = function(){
-                                                   $scope.defPreviosSugeridos=defDinamicosPreviosSugeridos.query({idContratante:$localStorage.contratanteLogeado.idContratante,idCategoria:$rootScope.idCategoria});
-                                                   $scope.defPreviosExtras=defDinamicosPreviosExtras.query({idContratante:$localStorage.contratanteLogeado.idContratante,idCategoria:$rootScope.idCategoria});
-                                                   $scope.defEjecucionSugeridos=defDinamicosEjecucionSugeridos.query({idContratante:$localStorage.contratanteLogeado.idContratante,idCategoria:$rootScope.idCategoria});
-                                                   $scope.defEjecucionExtras=defDinamicosEjecucionExtras.query({idContratante:$localStorage.contratanteLogeado.idContratante,idCategoria:$rootScope.idCategoria});
-                                                   $scope.defFinalizacionSugeridos=defDinamicosFinalizacionSugeridos.query({idContratante:$localStorage.contratanteLogeado.idContratante,idCategoria:$rootScope.idCategoria});
-                                                   $scope.defFinalizacionExtras=defDinamicosFinalizacionExtras.query({idContratante:$localStorage.contratanteLogeado.idContratante,idCategoria:$rootScope.idCategoria});
-                                                   };
-
-
-
-
-
-
-
-
 
 
 
