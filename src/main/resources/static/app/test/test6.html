@@ -13,7 +13,7 @@
             <md-tabs md-dynamic-height md-border-bottom>
                 <md-tab label="Previos al Inicio del Contrato" ng-click="hideMessage1()">
                     <md-content class="md-padding">
-                        <div class="md-dialog-content">
+                        <div class="md-dialog-content" ng-show="lonPrevio">
                             <label>Sugeridos</label>
                             <table class="w3-table ">
                                 <thead>
@@ -35,8 +35,18 @@
                                 <label>DEBE SELECCIONAR AL MENOS UN REQUISITO</label>
 
                             </div>
-                        </div>
-                            <div class="md-dialog-content">
+                            </div>
+                            <div class="md-dialog-content" ng-show="!lonPrevio">
+                                <div flex>
+                                    <label>Usted ya ha Aplicado todos los requisitos</label>
+                                    <md-button class="md-warn md-raised md-hue-2" ng-click="show($event)">
+                                        ver definitivos
+                                    </md-button>
+                                    <div class="w3-col" style="width:50px"><i class="w3-xxlarge fa fa-flag-checkered"></i></div>
+                                </div>
+                            </div>
+
+                            <div class="md-dialog-content" ng-show="lonPrevioEx">
                             <label>Extras</label>
                             <table class="w3-table ">
                                 <thead>
@@ -60,13 +70,22 @@
 
                                 </div>
                         </div>
+                        <div class="md-dialog-content" ng-show="!lonPrevioEx">
+                            <div flex>
+                                <label>Usted ya ha Aplicado todos los requisitos</label>
+                                <md-button class="md-warn md-raised md-hue-2" ng-click="show($event)">
+                                    ver definitivos
+                                </md-button>
+                                <div class="w3-col" style="width:50px"><i class="w3-xxlarge fa fa-flag-checkered"></i></div>
+                            </div>
+                        </div>
 
                     </md-content>
 
                 </md-tab>
                 <md-tab label="Durante el Contrato" ng-click="hideMessage1()">
                     <md-content class="md-padding">
-                        <div class="md-dialog-content">
+                        <div class="md-dialog-content" ng-show="lonEjec">
                             <label>Sugeridos</label>
                             <table class="w3-table ">
                                 <thead>
@@ -90,7 +109,16 @@
 
                             </div>
                         </div>
-                            <div class="md-dialog-content">
+                        <div class="md-dialog-content" ng-show="!lonEjec">
+                            <div flex>
+                                <label>Usted ya ha Aplicado todos los requisitos</label>
+                                <md-button class="md-warn md-raised md-hue-2" ng-click="show($event)">
+                                    ver definitivos
+                                </md-button>
+                                <div class="w3-col" style="width:50px"><i class="w3-xxlarge fa fa-flag-checkered"></i></div>
+                            </div>
+                        </div>
+                            <div class="md-dialog-content" ng-show="lonEjecEx">
                             <label>Extras</label>
                             <table class="w3-table ">
                                 <thead>
@@ -114,13 +142,22 @@
 
                                 </div>
                         </div>
+                        <div class="md-dialog-content" ng-show="!lonEjecEx">
+                            <div flex>
+                                <label>Usted ya ha Aplicado todos los requisitos</label>
+                                <md-button class="md-warn md-raised md-hue-2" ng-click="show($event)">
+                                    ver definitivos
+                                </md-button>
+                                <div class="w3-col" style="width:50px"><i class="w3-xxlarge fa fa-flag-checkered"></i></div>
+                            </div>
+                        </div>
 
                     </md-content>
 
                 </md-tab>
                 <md-tab label="Finalizacion del Contrato" ng-click="hideMessage1()">
                     <md-content class="md-padding">
-                        <div class="md-dialog-content">
+                        <div class="md-dialog-content" ng-show="lonFi">
                             <label>Sugeridos</label>
                             <table class="w3-table ">
                                 <thead>
@@ -144,7 +181,16 @@
 
                             </div>
                         </div>
-                            <div class="md-dialog-content">
+                        <div class="md-dialog-content" ng-show="!lonFi">
+                            <div flex>
+                                <label>Usted ya ha Aplicado todos los requisitos</label>
+                                <md-button class="md-warn md-raised md-hue-2" ng-click="show($event)">
+                                    ver definitivos
+                                </md-button>
+                                <div class="w3-col" style="width:50px"><i class="w3-xxlarge fa fa-flag-checkered"></i></div>
+                            </div>
+                        </div>
+                            <div class="md-dialog-content" ng-show="lonFiEx">
                             <label>Extras</label>
                             <table class="w3-table">
                                 <thead>
@@ -165,6 +211,15 @@
                                 <div ng-show="mensajillo6">
                                     <label>DEBE SELECCIONAR AL MENOS UN REQUISITO</label>
                                 </div>
+                        </div>
+                        <div class="md-dialog-content" ng-show="!lonFiEx">
+                            <div flex>
+                                <label>Usted ya ha Aplicado todos los requisitos</label>
+                                <md-button class="md-warn md-raised md-hue-2" ng-click="show($event)">
+                                    ver definitivos
+                                </md-button>
+                                <div class="w3-col" style="width:50px"><i class="w3-xxlarge fa fa-flag-checkered"></i></div>
+                            </div>
                         </div>
 
 

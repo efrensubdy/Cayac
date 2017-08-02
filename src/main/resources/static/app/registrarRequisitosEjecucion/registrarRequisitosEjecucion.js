@@ -57,15 +57,72 @@ angular.module('myApp.registrarRequisitosEjecucion', ['ngRoute'])
 
           $scope.showAlert = function(ev) {
                  $rootScope.listadoPrevioSugerido=previos.query({idContratante:$localStorage.contratanteLogeado.idContratante,idCategoria:$scope.idCategoria},function(result){
-                            $rootScope.longi=result.length;
+
+                        if(result.length!=0){
+                          $rootScope.lonPrevio=true;
+
+                        }
+                        else{
+                           $rootScope.lonPrevio=false;
+                        }
 
                  });
 
-                 $rootScope.listadoPrevioExtra=previosExtras.query({idContratante:$localStorage.contratanteLogeado.idContratante,idCategoria:$scope.idCategoria});
-                 $rootScope.listadoEjecucionSugerido=ejecucion.query({idContratante:$localStorage.contratanteLogeado.idContratante,idCategoria:$scope.idCategoria});
-                 $rootScope.listadoEjecucionExtra=ejecucionExtras.query({idContratante:$localStorage.contratanteLogeado.idContratante,idCategoria:$scope.idCategoria});
-                 $rootScope.listadoFinalizacionSugerido=finalizacion.query({idContratante:$localStorage.contratanteLogeado.idContratante,idCategoria:$scope.idCategoria});
-                 $rootScope.listadoFinalizacionExtra=finalizacionExtras.query({idContratante:$localStorage.contratanteLogeado.idContratante,idCategoria:$scope.idCategoria});
+                 $rootScope.listadoPrevioExtra=previosExtras.query({idContratante:$localStorage.contratanteLogeado.idContratante,idCategoria:$scope.idCategoria},function(result){
+
+
+                     if(result.length!=0){
+                                              $rootScope.lonPrevioEx=true;
+
+                                            }
+                                            else{
+                                              $rootScope.lonPrevioEx=false;
+                                            }
+                 });
+                 $rootScope.listadoEjecucionSugerido=ejecucion.query({idContratante:$localStorage.contratanteLogeado.idContratante,idCategoria:$scope.idCategoria},function(result){
+
+                       if(result.length!=0){
+                              $rootScope.lonEjec=true;
+
+                        }
+                        else{
+                              $rootScope.lonEjec=false;
+                                                                  }
+
+                 });
+                 $rootScope.listadoEjecucionExtra=ejecucionExtras.query({idContratante:$localStorage.contratanteLogeado.idContratante,idCategoria:$scope.idCategoria},function(result){
+
+                          if(result.length!=0){
+                               $rootScope.lonEjecEx=true;
+
+                                                 }
+                            else{
+                                                       $rootScope.lonEjecEx=false;
+                                                                                           }
+
+                 });
+                 $rootScope.listadoFinalizacionSugerido=finalizacion.query({idContratante:$localStorage.contratanteLogeado.idContratante,idCategoria:$scope.idCategoria},function(result){
+
+                      if(result.length!=0){
+                                                   $rootScope.lonFi=true;
+
+                                             }
+                                             else{
+                                                   $rootScope.lonFi=false;
+                                                                                       }
+
+                 });
+                 $rootScope.listadoFinalizacionExtra=finalizacionExtras.query({idContratante:$localStorage.contratanteLogeado.idContratante,idCategoria:$scope.idCategoria},function(result){
+
+                       if(result.length!=0){
+                                                    $rootScope.lonFiEx=true;
+
+                                              }
+                                              else{
+                                                    $rootScope.lonFiEx=false;
+                                                                                        }
+
+                 });
                  $rootScope.idCategoria=$scope.idCategoria;
 
                  $mdDialog.show({
@@ -82,12 +139,68 @@ angular.module('myApp.registrarRequisitosEjecucion', ['ngRoute'])
 
                };
          $scope.showAlert2 = function(ev) {
-          $rootScope.listadoDinamicoPrevioSugerido=dinamicosPrevios.query({idContratante:$localStorage.contratanteLogeado.idContratante,idCategoria:$scope.idCategoria});
-          $rootScope.listadoDinamicoPrevioExtra=dinamicosPreviosExtras.query({idContratante:$localStorage.contratanteLogeado.idContratante,idCategoria:$scope.idCategoria});
-          $rootScope.listadoDinamicoEjecucionSugerido=dinamicosEjecucion.query({idContratante:$localStorage.contratanteLogeado.idContratante,idCategoria:$scope.idCategoria});
-          $rootScope.listadoDinamicoEjecucionExtra=dinamicosEjecucionExtras.query({idContratante:$localStorage.contratanteLogeado.idContratante,idCategoria:$scope.idCategoria});
-          $rootScope.listadoDinamicoFinalizacionSugerido=dinamicosFinalizacion.query({idContratante:$localStorage.contratanteLogeado.idContratante,idCategoria:$scope.idCategoria});
-          $rootScope.listadoDinamicoFinalizacionExtra=dinamicosFinalizacionExtras.query({idContratante:$localStorage.contratanteLogeado.idContratante,idCategoria:$scope.idCategoria});
+          $rootScope.listadoDinamicoPrevioSugerido=dinamicosPrevios.query({idContratante:$localStorage.contratanteLogeado.idContratante,idCategoria:$scope.idCategoria},function(result){
+                      if(result.length!=0){
+                                               $rootScope.lonPrevio=true;
+
+                                             }
+                                             else{
+                                                $rootScope.lonPrevio=false;
+                                             }
+
+          });
+          $rootScope.listadoDinamicoPrevioExtra=dinamicosPreviosExtras.query({idContratante:$localStorage.contratanteLogeado.idContratante,idCategoria:$scope.idCategoria},function(result){
+
+                     if(result.length!=0){
+                                              $rootScope.lonPrevioEx=true;
+
+                                            }
+                                            else{
+                                              $rootScope.lonPrevioEx=false;
+                                            }
+          });
+          $rootScope.listadoDinamicoEjecucionSugerido=dinamicosEjecucion.query({idContratante:$localStorage.contratanteLogeado.idContratante,idCategoria:$scope.idCategoria},function(result){
+
+           if(result.length!=0){
+                                        $rootScope.lonEjec=true;
+
+                                  }
+                                  else{
+                                        $rootScope.lonEjec=false;
+                                                                            }
+
+          });
+          $rootScope.listadoDinamicoEjecucionExtra=dinamicosEjecucionExtras.query({idContratante:$localStorage.contratanteLogeado.idContratante,idCategoria:$scope.idCategoria},function(result){
+
+                if(result.length!=0){
+                                           $rootScope.lonEjecEx=true;
+
+                                                             }
+                                        else{
+                                                                   $rootScope.lonEjecEx=false;
+                                                                                                       }
+
+          });
+          $rootScope.listadoDinamicoFinalizacionSugerido=dinamicosFinalizacion.query({idContratante:$localStorage.contratanteLogeado.idContratante,idCategoria:$scope.idCategoria},function(result){
+                  if(result.length!=0){
+                                                                   $rootScope.lonFi=true;
+
+                                                             }
+                                                             else{
+                                                                   $rootScope.lonFi=false;
+                                                                                                       }
+          });
+          $rootScope.listadoDinamicoFinalizacionExtra=dinamicosFinalizacionExtras.query({idContratante:$localStorage.contratanteLogeado.idContratante,idCategoria:$scope.idCategoria},function(result){
+             if(result.length!=0){
+                                                                $rootScope.lonFiEx=true;
+
+                                                          }
+                                                          else{
+                                                                $rootScope.lonFiEx=false;
+                                                                                                    }
+
+
+          });
           $rootScope.idCategoria=$scope.idCategoria;
 
 
@@ -108,8 +221,13 @@ angular.module('myApp.registrarRequisitosEjecucion', ['ngRoute'])
 
           function DialogController($scope, $mdDialog, $rootScope,$http) {
                 $scope.listadoPrevioSugerido=$rootScope.listadoPrevioSugerido;
-                $scope.longi=$rootScope.longi
-                console.log($scope.longi);
+                $scope.lonPrevio= $rootScope.lonPrevio;
+                $scope.lonPrevioEx=$rootScope.lonPrevioEx;
+                $scope.lonEjec=$rootScope.lonEjec;
+                $scope.lonEjecEx=$rootScope.lonEjecEx;
+                $scope.lonFi=$rootScope.lonFi;
+                console.log($scope.lonfi);
+                $scope.lonFiEx=$rootScope.lonFiEx;
                 $scope.listPrevioSugerido=[];
                 $scope.listAllPrevioSugerido=[];
                 $scope.listadoPrevioExtra=$rootScope.listadoPrevioExtra;
@@ -208,7 +326,7 @@ angular.module('myApp.registrarRequisitosEjecucion', ['ngRoute'])
                      $scope.listFinalizacionSugerido.push(item)
                     }
                     else if(!finalizacionSugerido && containsObject(item,$scope.listFinalizacionSugerido)){
-                      var index=$scope.listEjecucionExtra.indexOf(item)
+                      var index=$scope.listFinalizacionSugerido.indexOf(item)
                               if (index > -1) {
                                    $scope.listFinalizacionSugerido.splice(index, 1);
                                                                                       }
@@ -603,6 +721,7 @@ angular.module('myApp.registrarRequisitosEjecucion', ['ngRoute'])
 
           }
           function DialogController3($scope, $mdDialog, $rootScope,$http){
+
             $scope.defPreviosSugeridos=defPreviosSugeridos.query({idContratante:$localStorage.contratanteLogeado.idContratante,idCategoria:$rootScope.idCategoria});
             $scope.defPreviosExtras=defPreviosExtras.query({idContratante:$localStorage.contratanteLogeado.idContratante,idCategoria:$rootScope.idCategoria});
             $scope.defEjecucionSugeridos=defEjecucionSugeridos.query({idContratante:$localStorage.contratanteLogeado.idContratante,idCategoria:$rootScope.idCategoria});
@@ -663,6 +782,12 @@ angular.module('myApp.registrarRequisitosEjecucion', ['ngRoute'])
 
           }
          function DialogController2($scope, $mdDialog, $rootScope,$http) {
+            $scope.lonPrevio= $rootScope.lonPrevio;
+            $scope.lonPrevioEx=$rootScope.lonPrevioEx;
+            $scope.lonEjec=$rootScope.lonEjec;
+            $scope.lonEjecEx=$rootScope.lonEjecEx;
+            $scope.lonFi=$rootScope.lonFi;
+            $scope.lonFiEx=$rootScope.lonFiEx;
             $scope.listDinamicoPrevioSugerido=[];
             $scope.listDinamicoAllPrevioSugerido=[];
             $scope.listDinamicoPrevioExtra=[];
