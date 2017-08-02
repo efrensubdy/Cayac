@@ -720,14 +720,28 @@ angular.module('myApp.registrarRequisitosEjecucion', ['ngRoute'])
 
           }
           function DialogController3($scope, $mdDialog, $rootScope,$http){
-
+            $scope.eEliminarPrevios=[];
+            $scope.eEliminarPreviosExtras=[];
+            $scope.eEliminarEjecucion=[];
+            $scope.eEliminarEjecucionExtras=[];
+            $scope.eEliminarFinalizacion=[];
+            $scope.eEliminarFinalizacionExtra=[];
             $scope.defPreviosSugeridos=defPreviosSugeridos.query({idContratante:$localStorage.contratanteLogeado.idContratante,idCategoria:$rootScope.idCategoria});
             $scope.defPreviosExtras=defPreviosExtras.query({idContratante:$localStorage.contratanteLogeado.idContratante,idCategoria:$rootScope.idCategoria});
             $scope.defEjecucionSugeridos=defEjecucionSugeridos.query({idContratante:$localStorage.contratanteLogeado.idContratante,idCategoria:$rootScope.idCategoria});
             $scope.defEjecucionExtras=defEjecucionExtras.query({idContratante:$localStorage.contratanteLogeado.idContratante,idCategoria:$rootScope.idCategoria});
             $scope.defFinalizacionSugeridos=defFinalizacionSugeridos.query({idContratante:$localStorage.contratanteLogeado.idContratante,idCategoria:$rootScope.idCategoria});
             $scope.defFinalizacionExtras=defFinalizacionExtras.query({idContratante:$localStorage.contratanteLogeado.idContratante,idCategoria:$rootScope.idCategoria});
+            function containsObject(obj, list) {
+              var i;
+              for (i = 0; i < list.length; i++) {
+                     if (list[i] === obj) {
+                          return true;
+                     }
+               }
 
+                return false;
+            }
             $scope.hide = function() {
                $mdDialog.hide();
             };
@@ -747,50 +761,193 @@ angular.module('myApp.registrarRequisitosEjecucion', ['ngRoute'])
                                 fullscreen: $scope.customFullscreen // Only for -xs, -sm breakpoints.
             })
             }
+            $scope.eliminar=function(ev){
+                                              eliminarPreviosSugeridos($scope.eEliminarPrevios);
+                                              eliminarPreviosExtras($scope.eEliminarPreviosExtras);
+                                              eliminarEjecucionSugeridos($scope.eEliminarEjecucion);
+                                              eliminarEjecucionExtra($scope.eEliminarEjecucionExtras);
+                                              eliminarFinalizacion($scope.eEliminarFinalizacion);
+                                              eliminarFinalizacionExtra($scope.eEliminarFinalizacionExtra);
+
+                                              $mdDialog.show({
+                                                 //Controlador del mensajes con operaciones definido en la parte de abajo
+                                                 controller: DialogController,
+                                                // permite la comunicacion con el html que despliega el boton requisitos
+                                                templateUrl: 'test/test6.html',
+                                                 parent: angular.element(document.body),
+                                                 targetEvent: ev,
+                                                 clickOutsideToClose:true,
+                                                 fullscreen: $scope.customFullscreen // Only for -xs, -sm breakpoints.
+                                               })
+
+                      };
 
             $scope.eliminar1=function(select1,item){
                         console.log(item);
+                 if(select1){
+                     $scope.eEliminarPrevios.push(item)
+                   }
+                  else if(!select1 && containsObject(item,$scope.eEliminarPrevios)){
+                       var index=$scope.eEliminarPrevios.indexOf(item)
+                                          if (index > -1) {
+                                             $scope.eEliminarPrevios.splice(index, 1);
+                                           }
+                                           console.log($scope.eEliminarPrevios);
+                                      }
+
 
 
             }
             $scope.eliminar2=function(select2,item){
                         console.log(item);
-
-
+                    if(select2){
+                               $scope.eEliminarPreviosExtras.push(item)
+                    }
+                    else if(!select2 && containsObject(item,$scope.eEliminarPreviosExtras)){
+                        var index=$scope.eEliminarPreviosExtras.indexOf(item)
+                        if (index > -1) {
+                              $scope.eEliminarPreviosExtras.splice(index, 1);
                         }
+                         console.log($scope.eEliminarPreviosExtras);
+                     }
+
+
+
+             }
             $scope.eliminar3=function(select3,item){
                        console.log(item);
+               if(select3){
+
+                   $scope.eEliminarEjecucion.push(item)
+               }
+               else if(!select3 && containsObject(item,$scope.eEliminarEjecucion)){
+                   var index=$scope.eEliminarEjecucion.indexOf(item)
+                   if (index > -1) {
+                         $scope.eEliminarEjecucion.splice(index, 1);
+                   }
+                   console.log($scope.eEliminarEjecucion);
+               }
 
 
-                                    }
+            }
             $scope.eliminar4=function(select4,item){
                        console.log(item);
+             if(select4){
+                  $scope.eEliminarEjecucionExtras.push(item)
+              }
+              else if(!select4 && containsObject(item,$scope.eEliminarEjecucionExtras)){
+                   var index=$scope.eEliminarEjecucion.indexOf(item)
+                   if (index > -1) {
+                         $scope.eEliminarEjecucionExtras.splice(index, 1);
+                   }
+                   console.log($scope.eEliminarEjecucionExtras);
+              }
 
 
-                                                }
+            }
             $scope.eliminar5=function(select5,item){
                             console.log(item);
-
+                if(select5){
+                    $scope.eEliminarFinalizacion.push(item)
+                }
+                else if(!select5 && containsObject(item,$scope.eEliminarFinalizacion)){
+                     var index=$scope.eEliminarFinalizacion.indexOf(item)
+                     if (index > -1) {
+                            $scope.eEliminarFinalizacion.splice(index, 1);
+                     }
+                     console.log($scope.eEliminarFinalizacion);
+                }
 
                         }
             $scope.eliminar6=function(select6,item){
                             console.log(item);
+            if(select6){
+                                $scope.eEliminarFinalizacionExtra.push(item)
+                            }
+                            else if(!select6 && containsObject(item,$scope.eEliminarFinalizacionExtra)){
+                                 var index=$scope.eEliminarFinalizacionExtra.indexOf(item)
+                                 if (index > -1) {
+                                        $scope.eEliminarFinalizacionExtra.splice(index, 1);
+                                 }
+                                 console.log($scope.eEliminarFinalizacionExtra);
+                            }
 
+                }
 
-                        }
+             var eliminarPreviosSugeridos=function(lista){
+                   var total=lista.length;
+                    for (var i=0;i<total;i++){
+                             eliminarPS.remove({"idContratante":$localStorage.contratanteLogeado.idContratante,"idRequisito":lista[i].idRequisito});
 
+                    }
 
+              }
+              var eliminarPreviosExtras=function(lista){
+                    var total=lista.length;
+                    for (var i=0;i<total;i++){
+                        eliminarPE.remove({"idContratante":$localStorage.contratanteLogeado.idContratante,"idRequisito":lista[i].idRequisito});
 
+                     }
+
+              }
+              var eliminarEjecucionSugeridos=function(lista){
+                     var total=lista.length;
+                     for (var i=0;i<total;i++){
+                       eliminarES.remove({"idContratante":$localStorage.contratanteLogeado.idContratante,"idRequisito":lista[i].idRequisito});
+
+                      }
+
+              }
+              var eliminarEjecucionExtra=function(lista){
+                 var total=lista.length;
+                 for (var i=0;i<total;i++){
+                     eliminarES.remove({"idContratante":$localStorage.contratanteLogeado.idContratante,"idRequisito":lista[i].idRequisito});
+
+                 }
+
+              }
+              var eliminarFinalizacion=function(lista){
+                     var total=lista.length;
+                     for (var i=0;i<total;i++){
+                       eliminarFS.remove({"idContratante":$localStorage.contratanteLogeado.idContratante,"idRequisito":lista[i].idRequisito});
+
+                     }
+
+              }
+              var eliminarFinalizacionExtra=function(lista){
+                                   var total=lista.length;
+                                   for (var i=0;i<total;i++){
+                                     eliminarFE.remove({"idContratante":$localStorage.contratanteLogeado.idContratante,"idRequisito":lista[i].idRequisito});
+
+                                   }
+
+                            }
 
            }
             function DialogController4($scope, $mdDialog, $rootScope,$http){
-
+                       $scopeEliminarPrevios=[];
+                       $scopeEliminarPreviosExtras=[];
+                       $scopeEliminarEjecucion=[];
+                       $scopeEliminarEjecucionExtras=[];
+                       $scopeEliminarFinalizacion=[];
+                       $scopeEliminarFinalizacionExtra=[];
                        $scope.defPreviosSugeridos=defDinamicosPreviosSugeridos.query({idContratante:$localStorage.contratanteLogeado.idContratante,idCategoria:$rootScope.idCategoria});
                        $scope.defPreviosExtras=defDinamicosPreviosExtras.query({idContratante:$localStorage.contratanteLogeado.idContratante,idCategoria:$rootScope.idCategoria});
                        $scope.defEjecucionSugeridos=defDinamicosEjecucionSugeridos.query({idContratante:$localStorage.contratanteLogeado.idContratante,idCategoria:$rootScope.idCategoria});
                        $scope.defEjecucionExtras=defDinamicosEjecucionExtras.query({idContratante:$localStorage.contratanteLogeado.idContratante,idCategoria:$rootScope.idCategoria});
                        $scope.defFinalizacionSugeridos=defDinamicosFinalizacionSugeridos.query({idContratante:$localStorage.contratanteLogeado.idContratante,idCategoria:$rootScope.idCategoria});
                        $scope.defFinalizacionExtras=defDinamicosFinalizacionExtras.query({idContratante:$localStorage.contratanteLogeado.idContratante,idCategoria:$rootScope.idCategoria});
+                       function containsObject(obj, list) {
+                                     var i;
+                       for (i = 0; i < list.length; i++) {
+                                            if (list[i] === obj) {
+                                                 return true;
+                                            }
+                                      }
+
+                                       return false;
+                                   }
+
 
                         $scope.hide = function() {
                            $mdDialog.hide();
@@ -811,40 +968,159 @@ angular.module('myApp.registrarRequisitosEjecucion', ['ngRoute'])
                                             fullscreen: $scope.customFullscreen // Only for -xs, -sm breakpoints.
                         })
                         }
+                        $scope.eliminar=function(ev){
+                                                          eliminarPreviosSugeridos($scope.eEliminarPrevios);
+                                                          eliminarPreviosExtras($scope.eEliminarPreviosExtras);
+                                                          eliminarEjecucionSugeridos($scope.eEliminarEjecucion);
+                                                          eliminarEjecucionExtra($scope.eEliminarEjecucionExtras);
+                                                          eliminarFinalizacion($scope.eEliminarFinalizacion);
+                                                          eliminarFinalizacionExtra($scope.eEliminarFinalizacionExtra);
+
+
+                                                          $mdDialog.show({
+                                                             //Controlador del mensajes con operaciones definido en la parte de abajo
+                                                             controller: DialogController,
+                                                            // permite la comunicacion con el html que despliega el boton requisitos
+                                                            templateUrl: 'test/requisitosDinamicos.html',
+                                                             parent: angular.element(document.body),
+                                                             targetEvent: ev,
+                                                             clickOutsideToClose:true,
+                                                             fullscreen: $scope.customFullscreen // Only for -xs, -sm breakpoints.
+                                                           })
+
+                                  };
 
                         $scope.eliminar1=function(select1,item){
-                                        console.log(item);
+                            if(select1){
+                                   $scope.eEliminarPrevios.push(item)
+                                               }
+                             else if(!select1 && containsObject(item,$scope.eEliminarPrevios)){
+                                 var index=$scope.eEliminarPrevios.indexOf(item)
+                                 if (index > -1) {
+                                  $scope.eEliminarPrevios.splice(index, 1);
+                                 }
+                             console.log($scope.eEliminarPrevios);
+                             }
+
 
 
                         }
                         $scope.eliminar2=function(select2,item){
                                            console.log(item);
+                                if(select2){
+                                     $scope.eEliminarPreviosExtras.push(item)
+                                                 }
+                                else if(!select2 && containsObject(item,$scope.eEliminarPreviosExtras)){
+                                    var index=$scope.eEliminarPreviosExtras.indexOf(item)
+                                    if (index > -1) {
+                                        $scope.eEliminarPreviosExtras.splice(index, 1);
+                                }
+                                console.log($scope.eEliminarPreviosExtras);
+                               }
 
 
                         }
                         $scope.eliminar3=function(select3,item){
                                             console.log(item);
-
+                            if(select3){
+                                     $scope.eEliminarEjecucion.push(item)
+                            }
+                            else if(!select3 && containsObject(item,$scope.eEliminarEjecucion)){
+                                var index=$scope.eEliminarEjecucion.indexOf(item)
+                                if (index > -1) {
+                                      $scope.eEliminarEjecucion.splice(index, 1);
+                                }
+                                                                                                console.log($scope.eEliminarEjecucion);
+                            }
 
                         }
                         $scope.eliminar4=function(select4,item){
                                  console.log(item);
-
+                                if(select4){
+                                     $scope.eEliminarEjecucionExtras.push(item)
+                                }
+                                else if(!select4 && containsObject(item,$scope.eEliminarEjecucionExtras)){
+                                        var index=$scope.eEliminarEjecucion.indexOf(item)
+                                        if (index > -1) {
+                                        $scope.eEliminarEjecucionExtras.splice(index, 1);
+                                        }
+                                console.log($scope.eEliminarEjecucionExtras);
+                                }
 
                         }
                         $scope.eliminar5=function(select5,item){
                                    console.log(item);
-
+                          if(select5){
+                                $scope.eEliminarFinalizacion.push(item)
+                          }
+                          else if(!select5 && containsObject(item,$scope.eEliminarFinalizacion)){
+                              var index=$scope.eEliminarFinalizacion.indexOf(item)
+                              if (index > -1) {
+                                $scope.eEliminarFinalizacion.splice(index, 1);
+                              }
+                              console.log($scope.eEliminarFinalizacion);
+                          }
 
                         }
                         $scope.eliminar6=function(select6,item){
                                    console.log(item);
-
+                                   if(select6){
+                                       $scope.eEliminarFinalizacionExtra.push(item)
+                                    }
+                                    else if(!select6 && containsObject(item,$scope.eEliminarFinalizacionExtra)){
+                                        var index=$scope.eEliminarFinalizacionExtra.indexOf(item)
+                                        if (index > -1) {
+                                                $scope.eEliminarFinalizacionExtra.splice(index, 1);
+                                        }
+                                        console.log($scope.eEliminarFinalizacionExtra);
+                                     }
 
                         }
+                        var eliminarPreviosExtras=function(lista){
+                                            var total=lista.length;
+                            for (var i=0;i<total;i++){
+                                                eliminarPE.remove({"idContratante":$localStorage.contratanteLogeado.idContratante,"idRequisito":lista[i].idRequisito});
+
+                                             }
+
+                                      }
+                                      var eliminarEjecucionSugeridos=function(lista){
+                                             var total=lista.length;
+                                             for (var i=0;i<total;i++){
+                                               eliminarES.remove({"idContratante":$localStorage.contratanteLogeado.idContratante,"idRequisito":lista[i].idRequisito});
+
+                                              }
+
+                                      }
+                                      var eliminarEjecucionExtra=function(lista){
+                                         var total=lista.length;
+                                         for (var i=0;i<total;i++){
+                                             eliminarES.remove({"idContratante":$localStorage.contratanteLogeado.idContratante,"idRequisito":lista[i].idRequisito});
+
+                                         }
+
+                                      }
+                                      var eliminarFinalizacion=function(lista){
+                                             var total=lista.length;
+                                             for (var i=0;i<total;i++){
+                                               eliminarFS.remove({"idContratante":$localStorage.contratanteLogeado.idContratante,"idRequisito":lista[i].idRequisito});
+
+                                             }
+
+                                      }
+                                      var eliminarFinalizacionExtra=function(lista){
+                                                           var total=lista.length;
+                                                           for (var i=0;i<total;i++){
+                                                             eliminarFE.remove({"idContratante":$localStorage.contratanteLogeado.idContratante,"idRequisito":lista[i].idRequisito});
+
+                                                           }
+
+                                                    }
+
 
 
           }
+
          function DialogController2($scope, $mdDialog, $rootScope,$http) {
             $scope.lonPrevio= $rootScope.lonPrevio;
             $scope.lonPrevioEx=$rootScope.lonPrevioEx;
