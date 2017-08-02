@@ -54,7 +54,6 @@ angular.module('myApp.registrarRequisitosEjecucion', ['ngRoute'])
 
 
          }
-
           $scope.showAlert = function(ev) {
                  $rootScope.listadoPrevioSugerido=previos.query({idContratante:$localStorage.contratanteLogeado.idContratante,idCategoria:$scope.idCategoria},function(result){
 
@@ -513,12 +512,12 @@ angular.module('myApp.registrarRequisitosEjecucion', ['ngRoute'])
 
                                                                                    controller: DialogController3,
                                                                                                                                                                             // permite la comunicacion con el html que despliega el boton requisitos
-                                                                                                                                                          templateUrl: 'test/mensajeDeConfirmacionE.html',
-                                                                                                                                                          parent: angular.element(document.body),
-                                                                                                                                                          targetEvent: ev,
-                                                                                                                                                          clickOutsideToClose:true,
-                                                                                                                                                          fullscreen: $scope.customFullscreen // Only for -xs, -sm breakpoints.
-                                                                                                                                                                             })
+                                                                                   templateUrl: 'test/mensajeDeConfirmacionE.html',
+                                                                                   parent: angular.element(document.body),
+                                                                                   targetEvent: ev,
+                                                                                   clickOutsideToClose:true,
+                                                                                   fullscreen: $scope.customFullscreen // Only for -xs, -sm breakpoints.
+                                                                                    })
                                     }
 
                                };
@@ -748,6 +747,41 @@ angular.module('myApp.registrarRequisitosEjecucion', ['ngRoute'])
                                 fullscreen: $scope.customFullscreen // Only for -xs, -sm breakpoints.
             })
             }
+
+            $scope.eliminar1=function(select1,item){
+                        console.log(item);
+
+
+            }
+            $scope.eliminar2=function(select2,item){
+                        console.log(item);
+
+
+                        }
+            $scope.eliminar3=function(select3,item){
+                       console.log(item);
+
+
+                                    }
+            $scope.eliminar4=function(select4,item){
+                       console.log(item);
+
+
+                                                }
+            $scope.eliminar5=function(select5,item){
+                            console.log(item);
+
+
+                        }
+            $scope.eliminar6=function(select6,item){
+                            console.log(item);
+
+
+                        }
+
+
+
+
            }
             function DialogController4($scope, $mdDialog, $rootScope,$http){
 
@@ -757,8 +791,6 @@ angular.module('myApp.registrarRequisitosEjecucion', ['ngRoute'])
                        $scope.defEjecucionExtras=defDinamicosEjecucionExtras.query({idContratante:$localStorage.contratanteLogeado.idContratante,idCategoria:$rootScope.idCategoria});
                        $scope.defFinalizacionSugeridos=defDinamicosFinalizacionSugeridos.query({idContratante:$localStorage.contratanteLogeado.idContratante,idCategoria:$rootScope.idCategoria});
                        $scope.defFinalizacionExtras=defDinamicosFinalizacionExtras.query({idContratante:$localStorage.contratanteLogeado.idContratante,idCategoria:$rootScope.idCategoria});
-
-
 
                         $scope.hide = function() {
                            $mdDialog.hide();
@@ -779,6 +811,38 @@ angular.module('myApp.registrarRequisitosEjecucion', ['ngRoute'])
                                             fullscreen: $scope.customFullscreen // Only for -xs, -sm breakpoints.
                         })
                         }
+
+                        $scope.eliminar1=function(select1,item){
+                                        console.log(item);
+
+
+                        }
+                        $scope.eliminar2=function(select2,item){
+                                           console.log(item);
+
+
+                        }
+                        $scope.eliminar3=function(select3,item){
+                                            console.log(item);
+
+
+                        }
+                        $scope.eliminar4=function(select4,item){
+                                 console.log(item);
+
+
+                        }
+                        $scope.eliminar5=function(select5,item){
+                                   console.log(item);
+
+
+                        }
+                        $scope.eliminar6=function(select6,item){
+                                   console.log(item);
+
+
+                        }
+
 
           }
          function DialogController2($scope, $mdDialog, $rootScope,$http) {
