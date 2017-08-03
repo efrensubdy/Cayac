@@ -262,6 +262,19 @@ angular.module('myApp.registrarRequisitosEjecucion', ['ngRoute'])
                 $scope.cancel = function() {
                               $mdDialog.cancel();
                  };
+               $scope.show=function(ev){
+                                    $mdDialog.show({
+                                                                  //Controlador del mensajes con operaciones definido en la parte de abajo
+                                               controller: DialogController3,
+                                                                 // permite la comunicacion con el html que despliega el boton requisitos
+                                               templateUrl: 'test/definitivosEstaticos.html',
+                                               parent: angular.element(document.body),
+                                               targetEvent: ev,
+                                               clickOutsideToClose:true,
+                                               fullscreen: $scope.customFullscreen // Only for -xs, -sm breakpoints.
+                           })
+                           }
+
                   $scope.hideMessage1=function(){
                                  $scope.mensajillo1=false;
                                  $scope.mensajillo2=false;
@@ -769,16 +782,17 @@ angular.module('myApp.registrarRequisitosEjecucion', ['ngRoute'])
                                               eliminarFinalizacion($scope.eEliminarFinalizacion);
                                               eliminarFinalizacionExtra($scope.eEliminarFinalizacionExtra);
 
-                                              $mdDialog.show({
-                                                 //Controlador del mensajes con operaciones definido en la parte de abajo
-                                                 controller: DialogController,
-                                                // permite la comunicacion con el html que despliega el boton requisitos
-                                                templateUrl: 'test/test6.html',
-                                                 parent: angular.element(document.body),
-                                                 targetEvent: ev,
-                                                 clickOutsideToClose:true,
-                                                 fullscreen: $scope.customFullscreen // Only for -xs, -sm breakpoints.
-                                               })
+                                              $mdDialog.show(
+                                                                   $mdDialog.alert()
+                                                                     .parent(angular.element(document.querySelector('#popupContainer')))
+                                                                     .clickOutsideToClose(true)
+                                                                     .title('Sus Requisitos han sido eliminados')
+                                                                     .textContent('Podrá seguir agregando requisitos si lo desea.')
+                                                                     .ariaLabel('Alert Dialog Demo')
+                                                                     .ok('Aplique mas requisitos!')
+                                                                     .targetEvent(ev)
+                                                                 );
+
 
                       };
 
@@ -975,18 +989,16 @@ angular.module('myApp.registrarRequisitosEjecucion', ['ngRoute'])
                                                           eliminarEjecucionExtra($scope.eEliminarEjecucionExtras);
                                                           eliminarFinalizacion($scope.eEliminarFinalizacion);
                                                           eliminarFinalizacionExtra($scope.eEliminarFinalizacionExtra);
-
-
-                                                          $mdDialog.show({
-                                                             //Controlador del mensajes con operaciones definido en la parte de abajo
-                                                             controller: DialogController,
-                                                            // permite la comunicacion con el html que despliega el boton requisitos
-                                                            templateUrl: 'test/requisitosDinamicos.html',
-                                                             parent: angular.element(document.body),
-                                                             targetEvent: ev,
-                                                             clickOutsideToClose:true,
-                                                             fullscreen: $scope.customFullscreen // Only for -xs, -sm breakpoints.
-                                                           })
+                                $mdDialog.show(
+                                                                                                   $mdDialog.alert()
+                                                                                                     .parent(angular.element(document.querySelector('#popupContainer')))
+                                                                                                     .clickOutsideToClose(true)
+                                                                                                     .title('Sus Requisitos han sido eliminados')
+                                                                                                     .textContent('Podrá seguir agregando requisitos si lo desea.')
+                                                                                                     .ariaLabel('Alert Dialog Demo')
+                                                                                                     .ok('Aplique mas requisitos!')
+                                                                                                     .targetEvent(ev)
+                                                                                                 );
 
                                   };
 
@@ -1167,13 +1179,25 @@ angular.module('myApp.registrarRequisitosEjecucion', ['ngRoute'])
                                              $scope.mensajillo5=false;
                                              $scope.mensajillo6=false;
 
-                                         }
+                                         };
 
 
 
             $scope.hide = function() {
                  $mdDialog.hide();
                              };
+            $scope.show=function(ev){
+                                            $mdDialog.show({
+                                                                          //Controlador del mensajes con operaciones definido en la parte de abajo
+                                                       controller: DialogController4,
+                                                                         // permite la comunicacion con el html que despliega el boton requisitos
+                                                       templateUrl: 'test/definitivosDinamicos.html',
+                                                       parent: angular.element(document.body),
+                                                       targetEvent: ev,
+                                                       clickOutsideToClose:true,
+                                                       fullscreen: $scope.customFullscreen // Only for -xs, -sm breakpoints.
+                                   })
+                                   };
                                         //funcion para cerral el mensaje
             $scope.cancel = function() {
                  $mdDialog.cancel();

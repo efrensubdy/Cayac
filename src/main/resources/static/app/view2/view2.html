@@ -46,7 +46,7 @@
     <div class="w3-rest">
       <input class="w3-input w3-border" type="text"  placeholder="Código CIIU de su empresa" name="codigoCIIU" list="codigoCIIU" ng-model="codigoCIIU">
       <button type="button" class="w3-btn w3-blue" ng-click="alertCodigo(listini,codigoCIIU)">Detalle</button>
-      <label>{{codigoSeleccionado}}</label>
+      <label ng-model="label">{{codigoSeleccionado}}</label>
       <datalist id="codigoCIIU">
         <select name="codigoCIIU" ng-model="select">
           <option value="" disabled selected>Escoja la actividad de su Empresa contratista</option>

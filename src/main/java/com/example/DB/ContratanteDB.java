@@ -232,7 +232,7 @@ public class ContratanteDB {
 
     public List<Contrato> consultarContratosEjecucion( ) throws ClassNotFoundException, SQLException{
         List<Contrato> contratos = new LinkedList<>();
-        String sql ="select contrato.idContrato,contrato.nombreContrato,contrato.fechaInicio,contrato.fechaFin,contrato.idContratante,contrato.tipoContrato from  contrato left join  finalista on finalista.idContrato=contrato.idContrato where finalista.idContrato is  null;";
+        String sql ="select contrato.idContrato,contrato.nombreContrato,contrato.fechaInicio,contrato.fechaFin,contrato.idContratante,contrato.tipoContrato from  contrato left join  finalista on finalista.idFinalista=contrato.idFinalista where finalista.idFinalista is  null;";
         PreparedStatement ps = Conexion.conection().prepareStatement(sql);
         ResultSet rs = ps.executeQuery();
         while(rs.next()){

@@ -137,11 +137,6 @@ INSERT INTO extras VALUES (5,"TOMAR DECISIONES",4);
  
  SELECT * FROM requisitosdeejecuionextrasestaticosprevio;
  
- INSERT INTO SYS.requisitosdeejecuionsugeridosestaticosprevio(requisito,idCategoria) VALUES ("REQUISITO PREVIO ESTATICO SUGERIDO 1",1);
- INSERT INTO SYS.requisitosdeejecuionsugeridosestaticosprevio (requisito,idCategoria) VALUES ("REQUISITO PREVIO ESTATICO SUGERIDO 2",2);
- INSERT INTO SYS.requisitosdeejecuionsugeridosestaticosprevio (requisito,idCategoria) VALUES ("REQUISITO PREVIO ESTATICO SUGERIDO 3",3);
- INSERT INTO SYS.requisitosdeejecuionsugeridosestaticosprevio (requisito,idCategoria) VALUES ("REQUISITO PREVIO ESTATICO SUGERIDO 4",4);
- 
  
  INSERT INTO requisitosdeejecuionextrasestaticosprevio(requisito,idCategoria) VALUES ("REQUISITO PREVIO ESTATICO EXTRA 1",1);
  INSERT INTO requisitosdeejecuionextrasestaticosprevio(requisito,idCategoria) VALUES ("REQUISITO PREVIO ESTATICO EXTRA 2",2);
@@ -151,20 +146,11 @@ INSERT INTO extras VALUES (5,"TOMAR DECISIONES",4);
  
  
  
-INSERT INTO SYS.requisitosdeejecuionsugeridosestaticosejecucionactividades (requisito,idCategoria) VALUES ("REQUISITO EJECUCION ESTATICO SUGERIDO 1",1);
- INSERT INTO SYS.requisitosdeejecuionsugeridosestaticosejecucionactividades (requisito,idCategoria) VALUES ("REQUISITO EJECUCION ESTATICO SUGERIDO 2",2);
- INSERT INTO SYS.requisitosdeejecuionsugeridosestaticosejecucionactividades (requisito,idCategoria) VALUES ("REQUISITO EJECUCION ESTATICO SUGERIDO 3",3);
- INSERT INTO SYS.requisitosdeejecuionsugeridosestaticosejecucionactividades (requisito,idCategoria) VALUES ("REQUISITO EJECUCION ESTATICO SUGERIDO 4",4);
- 
 INSERT INTO requisitosdeejecuionextrasestaticosejecucionactividades (requisito,idCategoria) VALUES ("REQUISITO EJECUCION ESTATICO EXTRA 1",1); 
 INSERT INTO requisitosdeejecuionextrasestaticosejecucionactividades (requisito,idCategoria) VALUES ("REQUISITO EJECUCION ESTATICO EXTRA 2",2); 
 INSERT INTO requisitosdeejecuionextrasestaticosejecucionactividades (requisito,idCategoria) VALUES ("REQUISITO EJECUCION ESTATICO EXTRA 3",3); 
 INSERT INTO requisitosdeejecuionextrasestaticosejecucionactividades (requisito,idCategoria) VALUES ("REQUISITO EJECUCION ESTATICO EXTRA 4",4); 
 
-INSERT INTO SYS.requisitosdeejecuionsugeridosestaticosfinalizaciondeactivdades (requisito,idCategoria) VALUES ("REQUISITO FINALIZACION SUGERIDO 1",1);
-INSERT INTO SYS.requisitosdeejecuionsugeridosestaticosfinalizaciondeactivdades (requisito,idCategoria) VALUES ("REQUISITO FINALIZACION SUGERIDO 2",2);
-INSERT INTO SYS.requisitosdeejecuionsugeridosestaticosfinalizaciondeactivdades (requisito,idCategoria) VALUES ("REQUISITO FINALIZACION SUGERIDO 3",3);
-INSERT INTO SYS.requisitosdeejecuionsugeridosestaticosfinalizaciondeactivdades (requisito,idCategoria) VALUES ("REQUISITO FINALIZACION SUGERIDO 4",4);
  
 INSERT INTO requisitosdeejecuionextrasestaticosfinalizaciondeactivdades (requisito,idCategoria) VALUES ("REQUISITO FINALIZACION EXTRA 1",1);
 INSERT INTO requisitosdeejecuionextrasestaticosfinalizaciondeactivdades (requisito,idCategoria) VALUES ("REQUISITO FINALIZACION EXTRA 2",2);
@@ -172,30 +158,20 @@ INSERT INTO requisitosdeejecuionextrasestaticosfinalizaciondeactivdades (requisi
 INSERT INTO requisitosdeejecuionextrasestaticosfinalizaciondeactivdades (requisito,idCategoria) VALUES ("REQUISITO FINALIZACION EXTRA 4",4);
 
  
- INSERT INTO SYS.requidinapresug (requisito,idCategoria) VALUES ("REQUISITO PREVIO DINAMICO SUGERIDO 1",1);
- INSERT INTO SYS.requidinapresug (requisito,idCategoria) VALUES ("REQUISITO PREVIO DINAMICO SUGERIDO 2",2);
- INSERT INTO SYS.requidinapresug (requisito,idCategoria) VALUES ("REQUISITO PREVIO DINAMICO SUGERIDO 3",3);
- INSERT INTO SYS.requidinapresug (requisito,idCategoria) VALUES ("REQUISITO PREVIO DINAMICO SUGERIDO 4",4);
- 
  INSERT INTO requidinapreex (requisito,idCategoria) VALUES ("REQUISITO PREVIO DINAMICO EXTRA 1",1);
  INSERT INTO requidinapreex(requisito,idCategoria) VALUES ("REQUISITO PREVIO DINAMICO EXTRA 2",2);
  INSERT INTO requidinapreex(requisito,idCategoria) VALUES ("REQUISITO PREVIO DINAMICO EXTRA 3",3);
  INSERT INTO requidinapreex(requisito,idCategoria) VALUES ("REQUISITO PREVIO DINAMICO EXTRA 4",4);
- 
-INSERT INTO SYS.requidinaejecsug (requisito,idCategoria) VALUES ("REQUISITO EJECUCION DINAMICO SUGERIDO 1",1);
- INSERT INTO SYS.requidinaejecsug (requisito,idCategoria) VALUES ("REQUISITO EJECUCION DINAMICO SUGERIDO 2",2);
- INSERT INTO SYS.requidinaejecsug (requisito,idCategoria) VALUES ("REQUISITO EJECUCION DINAMICO SUGERIDO 3",3);
- INSERT INTO SYS.requidinaejecsug (requisito,idCategoria) VALUES ("REQUISITO EJECUCION DINAMICO SUGERIDO 4",4);
- 
+  
  INSERT INTO requidinaejecext (requisito,idCategoria) VALUES ("REQUISITO EJECUCION DINAMICO EXTRA 1",1); 
 INSERT INTO requidinaejecext (requisito,idCategoria) VALUES ("REQUISITO EJECUCION DINAMICO EXTRA 2",2); 
 INSERT INTO requidinaejecext (requisito,idCategoria) VALUES ("REQUISITO EJECUCION DINAMICO EXTRA 3",3); 
 INSERT INTO requidinaejecext (requisito,idCategoria) VALUES ("REQUISITO EJECUCION DINAMICO EXTRA 4",4); 
 
-INSERT INTO SYS.requidinafinalsug (requisito,idCategoria) VALUES ("REQUISITO FINALIZACION DINAMICO 1",1);
-INSERT INTO SYS.requidinafinalsug (requisito,idCategoria) VALUES ("REQUISITO FINALIZACION DINAMICO 2",2);
-INSERT INTO SYS.requidinafinalsug (requisito,idCategoria) VALUES ("REQUISITO FINALIZACION DINAMICO 3",3);
-INSERT INTO SYS.requidinafinalsug (requisito,idCategoria) VALUES ("REQUISITO FINALIZACION DINAMICO 4",4);
+INSERT INTO requidinafinalsug (requisito,idCategoria) VALUES ("REQUISITO FINALIZACION DINAMICO 1",1);
+INSERT INTO requidinafinalsug (requisito,idCategoria) VALUES ("REQUISITO FINALIZACION DINAMICO 2",2);
+INSERT INTO requidinafinalsug (requisito,idCategoria) VALUES ("REQUISITO FINALIZACION DINAMICO 3",3);
+INSERT INTO requidinafinalsug (requisito,idCategoria) VALUES ("REQUISITO FINALIZACION DINAMICO 4",4);
  
 INSERT INTO requidinafinalext (requisito,idCategoria) VALUES ("REQUISITO FINALIZACION DINAMICO EXTRA 1",1);
 INSERT INTO requidinafinalext (requisito,idCategoria) VALUES ("REQUISITO FINALIZACION DINAMICO EXTRA 2",2);

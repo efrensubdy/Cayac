@@ -36,17 +36,48 @@ public class FinalistDB {
     public void insertarFinalista(Finalista finalista)throws SQLException,ClassNotFoundException{
         java.util.Date utilDate = new Date();
         java.sql.Date date = new java.sql.Date(utilDate.getTime());
-        String sql = "INSERT INTO Finalista (idContratista,fechaCreacion, fechaModificacion, estado,idContrato)   VALUES(?,?,?,?,?)";
+        String sql = "INSERT INTO finalista (idContratista,fechaCreacion, fechaModificacion, estado)   VALUES(?,?,?,?)";
         Connection con =  Conexion.conection();
         PreparedStatement ps = con.prepareStatement(sql);
         ps.setInt(1, finalista.getIdContratista());
         ps.setDate(2,date);
         ps.setDate(3,date);
         ps.setString(4,"F");
-        ps.setInt(5,finalista.getIdContrato());
+
         ps.execute();
         ps.close();
         con.close();
+        int idFinalista=traerIdFinalista(finalista.getIdContratista());
+
+        updateContrato(idFinalista,finalista.getIdContrato());
+    }
+    public void  updateContrato(int idFinalista,int idContrato)throws SQLException,ClassNotFoundException{
+        String sql = "UPDATE  contrato set idFinalista = ? where idContrato =? ";
+        System.out.println(idFinalista);
+        System.out.println(idContrato);
+        Connection con =  Conexion.conection();
+        PreparedStatement ps = con.prepareStatement(sql);
+        ps.setInt(1,idFinalista);
+        ps.setInt(2,idContrato);
+        ps.execute();
+        con.close();
+
+    }
+    public int traerIdFinalista(int idContratista)throws SQLException,ClassNotFoundException {
+        int a =0;
+        String sql ="select idFinalista from finalista where idContratista = ? ";
+        PreparedStatement ps = Conexion.conection().prepareStatement(sql);
+        ps.setInt(1,idContratista);
+        ResultSet rs = ps.executeQuery();
+        while (rs.next()){
+
+            a=rs.getInt("idFinalista");
+
+        }
+
+        ps.close();
+
+        return a;
     }
     public  List<Contratista> consultarNoFinalistas(int idContrante,int idContrato) throws ClassNotFoundException, SQLException{
         List<Contratista> contratistas = new LinkedList<>();
@@ -119,11 +150,14 @@ public class FinalistDB {
     public void registroManual(Contratista contratista) throws SQLException, ClassNotFoundException, IOException {
         contratistasBD.nuevoContratista(contratista);
         Contratista contra=contratistasBD.getContratista(contratista.nombreEmpresa);
-        System.out.println(contra.getId());
         Finalista finalistaManual= new Finalista();
         finalistaManual.setIdContratista(contra.getId());
         finalistaManual.setIdContrato(contra.getIdContrato());
         insertarFinalista(finalistaManual);
+
+    }
+    public void actualizarContrato(int idFinalista )throws SQLException,ClassNotFoundException{
+
 
     }
     public List<Requisito> llenarRequisitosPrevios(int idContratante,int idCategoria) throws SQLException, ClassNotFoundException {

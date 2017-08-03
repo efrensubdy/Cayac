@@ -19,6 +19,7 @@ angular.module('myApp.view12', ['ngRoute'])
             $scope.reverse = ($scope.propertyName === propertyName) ? !$scope.reverse : false;
             $scope.propertyName = propertyName;
           };
+
          $scope.add=function(){
 
                         $scope.listado=finalesDefinitivos.query({idContratante:$localStorage.contratanteLogeado.idContratante,idContrato:$scope.contrato});
