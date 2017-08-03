@@ -6,7 +6,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>Cayac !!!</title>
+  <title class="w3-blue">Cayac !!!</title>
 
   <meta name="description" content="">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -48,40 +48,40 @@
     <div class="collpase navbar-collapse " id="myNavbar">
       <ul class="nav navbar-nav navbar-left">
         <li><a  ng-show="bandera3"  href="#!/view4">Registrar Contratantes</a></li>
-        <li><a ng-show="bandera||bandera2" href="#!/view1">Home</a></li>
-        <li><a ng-show="bandera" href="#!/view6">Cambiar Contraseña</a></li>
-        <li><a ng-show="bandera2" href="#!/view7">Cambiar Contraseña</a></li>
-        <li><a ng-show="bandera2" href="#!/view9">Soportes Seleccion</a></li>
-        <div ng-show="banderaEjecucion" class="w3-dropdown-click">
+        <li><a class="w3-text-blue" ng-show="bandera||bandera2" href="#!/view1">Home</a></li>
+        <li><a class="w3-text-blue" ng-show="bandera" href="#!/view6">Cambiar Contraseña</a></li>
+        <li><a class="w3-text-blue" ng-show="bandera2" href="#!/view7">Cambiar Contraseña</a></li>
+        <li><a class="w3-text-blue" ng-show="bandera2" href="#!/view9">Soportes Seleccion</a></li>
+        <div  ng-show="banderaEjecucion" class="w3-dropdown-click">
           <button onclick="myFunction6()" class="w3-button w3-green">Gestión de Proyecto</button>
           <div id="dem" class="w3-dropdown-content w3-bar-block w3-card-4 w3-animate-zoom">
-            <a onclick="myFunction6()" ng-show="bandera2" href="#!/subirDocumentosEstaticos">Estaticos Ejecucion</a></li>
-            <a onclick="myFunction6()" ng-show="bandera2" href="#!/agregarActividades">Dinamicos Ejecucion</a></li>
+            <a class="w3-text-blue" onclick="myFunction6()" ng-show="bandera2" href="#!/subirDocumentosEstaticos">Estaticos Ejecucion</a></li>
+            <a  class="w3-text-blue" onclick="myFunction6()" ng-show="bandera2" href="#!/agregarActividades">Dinamicos Ejecucion</a></li>
 
           </div>
         </div>
 
         <div ng-show="bandera" class="w3-dropdown-click">
-          <button onclick="myFunction()" class="w3-button w3-green">Selección</button>
+          <button onclick="myFunction()" class="w3-button w3-blue">Selección</button>
 
           <div id="demo" class="w3-dropdown-content w3-bar-block w3-card-4 w3-animate-zoom">
-            <div class="w3-bar-item w3-button" onclick="myFunction10()">
+            <div class="w3-bar-item w3-button  w3-blue" onclick="myFunction10()">
               Gestión de Requisitos<i class="fa fa-caret-down"></i></div>
             <div id="demoAcc4" class="w3-hide w3-white w3-card-4">
-              <a onclick="myFunction()" ng-show="bandera" class="example" href="#!/view3">Registrar Requisitos</a> </li>
-              <a onclick="myFunction()" ng-show="bandera" href="#!/view10">Revision de Requisitos</a> </li>
+              <a class="w3-text-blue" onclick="myFunction()" ng-show="bandera" class="example" href="#!/view3">Registrar Requisitos</a> </li>
+              <a class="w3-text-blue" onclick="myFunction()" ng-show="bandera" href="#!/view10">Revision de Requisitos</a> </li>
             </div>
-            <div class="w3-bar-item w3-button" onclick="myFunction3()">
+            <div class="w3-bar-item w3-button  w3-blue" onclick="myFunction3()">
               Objeto del Proyecto <i class="fa fa-caret-down"></i></div>
             <div id="demoAcc" class="w3-hide w3-white w3-card-4">
-              <a onclick="myFunction()" ng-show="bandera"  href="#!/view13">Registrar Proyecto</a></li>
-              <a onclick="myFunction()" ng-show="bandera"  href="#!/view15">Consultar Proyecto</a></li>
+              <a class="w3-text-blue" onclick="myFunction()" ng-show="bandera"  href="#!/view13">Registrar Proyecto</a></li>
+              <a class="w3-text-blue" onclick="myFunction()" ng-show="bandera"  href="#!/view15">Consultar Proyecto</a></li>
             </div>
-            <div class="w3-bar-item w3-button" onclick="myFunction9()">
+            <div class="w3-bar-item w3-button  w3-blue" onclick="myFunction9()">
               Gestión de candidatos <i class="fa fa-caret-down"></i></div>
             <div id="demoAcc3" class="w3-hide w3-white w3-card-4">
-              <a onclick="myFunction()" ng-show="bandera" class="example" href="#!/view2">Registrar Candidatos</a></li>
-              <a onclick="myFunction()"  ng-show="bandera" class="example" href="#!/view14">Consultar Candidatos</a></li>
+              <a class="w3-text-blue" onclick="myFunction()" ng-show="bandera" class="example" href="#!/view2">Registrar Candidatos</a></li>
+              <a class="w3-text-blue" onclick="myFunction()"  ng-show="bandera" class="example" href="#!/view14">Consultar Candidatos</a></li>
             </div>
 
 
@@ -89,20 +89,20 @@
           </div>
         </div>
           <div ng-show="bandera" class="w3-dropdown-click">
-          <button onclick="myFunction1()" class="w3-button w3-green">Ejecucion</button>
+          <button onclick="myFunction1()" class="w3-button w3-blue">Ejecucion</button>
           <div id="demi" class="w3-dropdown-content w3-bar-block w3-card-4 w3-animate-zoom">
-            <div class="w3-bar-item w3-button" onclick="myFunction4()">
+            <div class="w3-bar-item w3-button w3-blue" onclick="myFunction4()">
               Gestión Contratistas <i class="fa fa-caret-down"></i></div>
             <div id="demoAcc2" class="w3-hide w3-white w3-card-4">
-              <a onclick="myFunction1()" ng-show="bandera" class="example" href="#!/manualRegister">Registro Manual</a></li>
-              <a onclick="myFunction1()" ng-show="bandera" class="example" href="#!/view12">Consultar Contratistas</a></li>
+              <a  class="w3-text-blue" onclick="myFunction1()" ng-show="bandera" class="example" href="#!/manualRegister">Registro Manual</a></li>
+              <a class="w3-text-blue" onclick="myFunction1()" ng-show="bandera" class="example" href="#!/view12">Consultar Contratistas</a></li>
             </div>
-            <a onclick="myFunction1()" ng-show="bandera" class="example" href="#!/registrarRequisitosEjecucion">Gestion de Requisitos</a> </li>
-            <div class="w3-bar-item w3-button" onclick="myFunction5()">
+            <a class="w3-text-blue" onclick="myFunction1()" ng-show="bandera" class="example" href="#!/registrarRequisitosEjecucion">Gestion de Requisitos</a> </li>
+            <div class="w3-bar-item w3-button  w3-blue" onclick="myFunction5()">
               Gestión de Proyecto<i class="fa fa-caret-down"></i></div>
             <div id="demoAcc1" class="w3-hide w3-white w3-card-4">
-              <a onclick="myFunction1()" ng-show="bandera" class="example" href="#!/ejecucionCNCE">Gestión Estatica</a> </li>
-              <a onclick="myFunction1()" ng-show="bandera" class="example" href="#!/analisisDeActividades">Gestión Dinámica</a> </li>
+              <a class="w3-text-blue" onclick="myFunction1()" ng-show="bandera" class="example" href="#!/ejecucionCNCE">Gestión Estatica</a> </li>
+              <a class="w3-text-blue" onclick="myFunction1()" ng-show="bandera" class="example" href="#!/analisisDeActividades">Gestión Dinámica</a> </li>
             </div>
 
 

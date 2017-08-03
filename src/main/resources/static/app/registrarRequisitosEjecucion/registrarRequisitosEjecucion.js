@@ -925,12 +925,12 @@ angular.module('myApp.registrarRequisitosEjecucion', ['ngRoute'])
 
            }
             function DialogController4($scope, $mdDialog, $rootScope,$http){
-                       $scopeEliminarPrevios=[];
-                       $scopeEliminarPreviosExtras=[];
-                       $scopeEliminarEjecucion=[];
-                       $scopeEliminarEjecucionExtras=[];
-                       $scopeEliminarFinalizacion=[];
-                       $scopeEliminarFinalizacionExtra=[];
+                       $scope.eEliminarPrevios=[];
+                       $scope.eEliminarPreviosExtras=[];
+                       $scope.eEliminarEjecucion=[];
+                       $scope.eEliminarEjecucionExtras=[];
+                       $scope.eEliminarFinalizacion=[];
+                       $scope.eEliminarFinalizacionExtra=[];
                        $scope.defPreviosSugeridos=defDinamicosPreviosSugeridos.query({idContratante:$localStorage.contratanteLogeado.idContratante,idCategoria:$rootScope.idCategoria});
                        $scope.defPreviosExtras=defDinamicosPreviosExtras.query({idContratante:$localStorage.contratanteLogeado.idContratante,idCategoria:$rootScope.idCategoria});
                        $scope.defEjecucionSugeridos=defDinamicosEjecucionSugeridos.query({idContratante:$localStorage.contratanteLogeado.idContratante,idCategoria:$rootScope.idCategoria});
@@ -1076,6 +1076,14 @@ angular.module('myApp.registrarRequisitosEjecucion', ['ngRoute'])
                                      }
 
                         }
+                         var eliminarPreviosSugeridos=function(lista){
+                                                                    var total=lista.length;
+                                                    for (var i=0;i<total;i++){
+                                                                        eliminarDPS.remove({"idContratante":$localStorage.contratanteLogeado.idContratante,"idRequisito":lista[i].idRequisito});
+
+                                                                     }
+
+                                                              }
                         var eliminarPreviosExtras=function(lista){
                                             var total=lista.length;
                             for (var i=0;i<total;i++){

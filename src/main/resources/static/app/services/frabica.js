@@ -422,44 +422,44 @@ angular.module('services.listFactory', ['ngRoute','ngResource'])
                                                              return $resource('/app/requisitosExtras/eliminar/:idRequisito/:idContratante');
                                                                    })
 .factory('eliminarPS', function($resource) {
-                                                                      return $resource('/app/eliminar/eliminarPS/:idRequisito/:idContratante}');
+                                                                      return $resource('/app/eliminar/eliminarPS/:idRequisito/:idContratante');
                                                                             })
 .factory('eliminarPE', function($resource) {
-                                                                      return $resource('/app/eliminar/eliminarPE/:idRequisito/:idContratante}');
+                                                                      return $resource('/app/eliminar/eliminarPE/:idRequisito/:idContratante');
                                                                             })
 
 .factory('eliminarES', function($resource) {
-                                                                            return $resource('/app/eliminar/eliminarES/:idRequisito/:idContratante}');
+                                                                            return $resource('/app/eliminar/eliminarES/:idRequisito/:idContratante');
                                                                                   })
 
 .factory('eliminarEE', function($resource) {
-                                                                      return $resource('/app/eliminar/eliminarEE/:idRequisito/:idContratante}');
+                                                                      return $resource('/app/eliminar/eliminarEE/:idRequisito/:idContratante');
                                                                             })
 .factory('eliminarFS', function($resource) {
-                                                                      return $resource('/app/eliminar/eliminarFS/:idRequisito/:idContratante}');
+                                                                      return $resource('/app/eliminar/eliminarFS/:idRequisito/:idContratante');
                                                                             })
 .factory('eliminarFE', function($resource) {
-                                                                      return $resource('/app/eliminar/eliminarFE/:idRequisito/:idContratante}');
+                                                                      return $resource('/app/eliminar/eliminarFE/:idRequisito/:idContratante');
                                                                             })
 .factory('eliminarDPS', function($resource) {
-                                                                      return $resource('/app/eliminar/eliminarDPS/:idRequisito/:idContratante}');
+                                                                      return $resource('/app/eliminar/eliminarDPS/:idRequisito/:idContratante');
                                                                             })
 .factory('eliminarDPE', function($resource) {
-                                                                      return $resource('/app/eliminar/eliminarDPE/:idRequisito/:idContratante}');
+                                                                      return $resource('/app/eliminar/eliminarDPE/:idRequisito/:idContratante');
                                                                             })
 
 .factory('eliminarDES', function($resource) {
-                                                                            return $resource('/app/eliminar/eliminarDES/:idRequisito/:idContratante}');
+                                                                            return $resource('/app/eliminar/eliminarDES/:idRequisito/:idContratante');
                                                                                   })
 
 .factory('eliminarDEE', function($resource) {
-                                                                      return $resource('/app/eliminar/eliminarDEE/:idRequisito/:idContratante}');
+                                                                      return $resource('/app/eliminar/eliminarDEE/:idRequisito/:idContratante');
                                                                             })
 .factory('eliminarDFS', function($resource) {
-                                                                      return $resource('/app/eliminar/eliminarDFS/:idRequisito/:idContratante}');
+                                                                      return $resource('/app/eliminar/eliminarDFS/:idRequisito/:idContratante');
                                                                             })
 .factory('eliminarDFE', function($resource) {
-                                                                      return $resource('/app/eliminar/eliminarDFE/:idRequisito/:idContratante}');
+                                                                      return $resource('/app/eliminar/eliminarDFE/:idRequisito/:idContratante');
                                                                             })
 
         //Esta fabrica manda las imagenes, los documentos Y las fechas para luego se almacenen
