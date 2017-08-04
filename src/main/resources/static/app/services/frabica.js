@@ -87,8 +87,11 @@ angular.module('services.listFactory', ['ngRoute','ngResource'])
                    })
 
          .factory('contratosEjecucion', function($resource) {
-                                return $resource('/app/contratos/ejecucion');
+                                return $resource('/app/contratos/ejecucion/:idContratante');
                             })
+         .factory('contratosEnEjecucion', function($resource) {
+                                         return $resource('/app/contratos/enEjecucion/:idContratante');
+                                     })
       .factory('fechaContrato', function($resource) {
                              return $resource('/app/contratos/fecha/:fechaInicio/:fechaFin');
                          })

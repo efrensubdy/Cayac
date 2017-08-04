@@ -50,13 +50,27 @@ public class ContratoController {
         return a;
     }
 
-    @RequestMapping(value = "/ejecucion", method = RequestMethod.GET)
-    public ResponseEntity<?> obtenerContratosEjecucion() {
+    @RequestMapping(value = "ejecucion/{idContratante}", method = RequestMethod.GET)
+    public ResponseEntity<?> obtenerContratosEjecucion(@PathVariable Integer idContratante) {
 
         ResponseEntity a;
         try {
             //obtener datos que se enviarán a través del API
-            a = new ResponseEntity<>(manejoDeContratoBD.contratosEjecucion(), HttpStatus.ACCEPTED);
+            a = new ResponseEntity<>(manejoDeContratoBD.contratosEjecucion(idContratante), HttpStatus.ACCEPTED);
+
+        } catch (Exception ex) {
+            Logger.getLogger(Controller.class.getName()).log(Level.SEVERE, null, ex);
+            return new ResponseEntity<>("Error bla bla bla", HttpStatus.NOT_FOUND);
+        }
+        return a;
+    }
+    @RequestMapping(value = "enEjecucion/{idContratante}", method = RequestMethod.GET)
+    public ResponseEntity<?> obtenerContratosEnEjecucion(@PathVariable Integer idContratante) {
+
+        ResponseEntity a;
+        try {
+            //obtener datos que se enviarán a través del API
+            a = new ResponseEntity<>(manejoDeContratoBD.contratosEnEjecucion(idContratante), HttpStatus.ACCEPTED);
 
         } catch (Exception ex) {
             Logger.getLogger(Controller.class.getName()).log(Level.SEVERE, null, ex);

@@ -9,9 +9,9 @@ angular.module('myApp.view10', ['ngRoute'])
   });
 }])
 
-.controller('View10Ctrl', ['$localStorage','$sessionStorage','rExtra','rObligatorio','$http','$scope','$rootScope','$mdDialog','contratos','contratantesContrato','rCumplidos','rExtras','rNoCumplidos','rExtrasNC','pFinales','finalistas',function($localStorage,$sessionStorage,rExtra,rObligatorio,$http,$scope,$rootScope,$mdDialog,contratos,contratantesContrato,rCumplidos,rExtras,rNoCumplidos,rExtrasNC,pFinales,finalistas) {
+.controller('View10Ctrl', ['$localStorage','$sessionStorage','rExtra','rObligatorio','$http','$scope','$rootScope','$mdDialog','contratosEjecucion','contratantesContrato','rCumplidos','rExtras','rNoCumplidos','rExtrasNC','pFinales','finalistas',function($localStorage,$sessionStorage,rExtra,rObligatorio,$http,$scope,$rootScope,$mdDialog,contratosEjecucion,contratantesContrato,rCumplidos,rExtras,rNoCumplidos,rExtrasNC,pFinales,finalistas) {
 
-        $scope.listado=contratos.query({idContratante:$localStorage.contratanteLogeado.idContratante})
+        $scope.listado=contratosEjecucion.query({idContratante:$localStorage.contratanteLogeado.idContratante})
         $scope.flag=false;
         $scope.seleccionados=[];
         $scope.propertyName = 'cumplidos';
@@ -22,6 +22,7 @@ angular.module('myApp.view10', ['ngRoute'])
           };
         $scope.add=function(){
                 $scope.listillo=pFinales.query({idContratante:$localStorage.contratanteLogeado.idContratante,idContrato:$scope.contrato})
+               $rootScope.idContrato=$scope.contrato;
                 $scope.flag=true;
                 $rootScope.idCategoria=$scope.idCategoria
                 $rootScope.idContrato=$scope.idContrato
@@ -36,7 +37,7 @@ angular.module('myApp.view10', ['ngRoute'])
            $rootScope.listado5=rExtrasNC.query({idContratista:client.id,idCategoria:client.idCategoria,idContratante:$localStorage.contratanteLogeado.idContratante});
            $rootScope.listadoAS=rObligatorio.query({idContratante:$localStorage.contratanteLogeado.idContratante,idCategoria:client.idCategoria});
            $rootScope.listadoAE=rExtra.query({idContratante:$localStorage.contratanteLogeado.idContratante,idCategoria:client.idCategoria});
-
+           $rootScope.cliente=client;
            $mdDialog.show({
             //Controlador del mensajes con operaciones definido en la parte de abajo
              controller: DialogController,
@@ -85,14 +86,14 @@ angular.module('myApp.view10', ['ngRoute'])
            }
            $scope.agregarFinalista=function(ev){
                   console.log($rootScope.idContrato);
-                  var finalista={idContratista:$rootScope.cliente.id}
+                  var finalista={idContratista:$rootScope.cliente.id,idContrato:$rootScope.idContrato}
                   finalistas.save(finalista);
                   $mdDialog.show(
                      $mdDialog.alert()
                      .parent(angular.element(document.querySelector('#popupContainer')))
                      .clickOutsideToClose(true)
                      .title('Finalista agregado Satisfactoriamente')
-                     .textContent('El Contratista estará en ejcución .')
+                     .textContent('El Contratista estará en ejecución .')
                      .ariaLabel('Alert Dialog Demo')
                      .ok('mire sus Finalista!')
                      .targetEvent(ev)

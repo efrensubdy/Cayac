@@ -230,11 +230,34 @@ public class ContratanteDB {
         return contratos;
     }
 
-    public List<Contrato> consultarContratosEjecucion( ) throws ClassNotFoundException, SQLException{
+    public List<Contrato> consultarContratosEjecucion( int idContratante ) throws ClassNotFoundException, SQLException{
         List<Contrato> contratos = new LinkedList<>();
-        String sql ="select contrato.idContrato,contrato.nombreContrato,contrato.fechaInicio,contrato.fechaFin,contrato.idContratante,contrato.tipoContrato from  contrato left join  finalista on finalista.idFinalista=contrato.idFinalista where finalista.idFinalista is  null;";
+        String sql ="select contrato.idContrato,contrato.nombreContrato,contrato.fechaInicio,contrato.fechaFin,contrato.idContratante,contrato.tipoContrato from  contrato left join  finalista on finalista.idFinalista=contrato.idFinalista where contrato.idFinalista is  null and contrato.idContratante = ?;";
         PreparedStatement ps = Conexion.conection().prepareStatement(sql);
+        ps.setInt(1,idContratante);
         ResultSet rs = ps.executeQuery();
+        while(rs.next()){
+            Contrato nuevoContrato=new Contrato();
+            nuevoContrato.setIdContrato(rs.getInt("idContrato"));
+            nuevoContrato.setNombreContrato(rs.getString("nombreContrato"));
+            nuevoContrato.setFechaInicio(rs.getDate("fechaInicio"));
+            nuevoContrato.setFechaFin(rs.getDate("fechaFin"));
+            nuevoContrato.setIdContratante(rs.getInt("idContratante"));
+            nuevoContrato.setTipoContrato(rs.getString("tipoContrato"));
+
+
+            contratos.add(nuevoContrato);
+        }
+        ps.close();
+        return contratos;
+    }
+    public List<Contrato> consultarContratosEnEjecucion(int idContratante ) throws ClassNotFoundException, SQLException{
+        List<Contrato> contratos = new LinkedList<>();
+        String sql ="select contrato.idContrato,contrato.nombreContrato,contrato.fechaInicio,contrato.fechaFin,contrato.idContratante,contrato.tipoContrato from  contrato left join  finalista on finalista.idFinalista=contrato.idFinalista where contrato.idFinalista is not null and contrato.idContratante = ?;";
+        PreparedStatement ps = Conexion.conection().prepareStatement(sql);
+        ps.setInt(1,idContratante);
+        ResultSet rs = ps.executeQuery();
+
         while(rs.next()){
             Contrato nuevoContrato=new Contrato();
             nuevoContrato.setIdContrato(rs.getInt("idContrato"));

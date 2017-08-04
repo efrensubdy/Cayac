@@ -9,9 +9,9 @@ angular.module('myApp.ejecucionCNCE', ['ngRoute'])
   });
 }])
 
-.controller('ejecucionCNCECtrl', ['$localStorage','$sessionStorage','$http','$scope','$rootScope','$mdDialog','contratos','finalesDefinitivos','psC','psNC','esC','esNC','fsC','fsNC','peC','peNC','eeC','eeNC','feC','feNC','estadoPreviosSugeridos','estadoPreviosExtras','estadoEjecucionSugeridos','estadoEjecucionExtras','estadoFinalizacionSugeridos','estadoFinalizacionExtras',function($localStorage,$sessionStorage,$http,$scope,$rootScope,$mdDialog,contratos,finalesDefinitivos,psC,psNC,esC,esNC,fsC,fsNC,peC,peNC,eeC,eeNC,feC,feNC,estadoPreviosSugeridos,estadoPreviosExtras,estadoEjecucionSugeridos,estadoEjecucionExtras,estadoFinalizacionSugeridos,estadoFinalizacionExtras) {
+.controller('ejecucionCNCECtrl', ['$localStorage','$sessionStorage','$http','$scope','$rootScope','$mdDialog','contratosEnEjecucion','finalesDefinitivos','psC','psNC','esC','esNC','fsC','fsNC','peC','peNC','eeC','eeNC','feC','feNC','estadoPreviosSugeridos','estadoPreviosExtras','estadoEjecucionSugeridos','estadoEjecucionExtras','estadoFinalizacionSugeridos','estadoFinalizacionExtras',function($localStorage,$sessionStorage,$http,$scope,$rootScope,$mdDialog,contratosEnEjecucion,finalesDefinitivos,psC,psNC,esC,esNC,fsC,fsNC,peC,peNC,eeC,eeNC,feC,feNC,estadoPreviosSugeridos,estadoPreviosExtras,estadoEjecucionSugeridos,estadoEjecucionExtras,estadoFinalizacionstSugeridos,estadoFinalizacionExtras) {
 
-        $scope.listado=contratos.query({idContratante:$localStorage.contratanteLogeado.idContratante})
+        $scope.listado=contratosEnEjecucion.query({idContratante:$localStorage.contratanteLogeado.idContratante})
         $scope.flag=false;
         $scope.seleccionados=[];
         $scope.propertyName = 'cumplidos';

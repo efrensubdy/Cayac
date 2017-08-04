@@ -16,7 +16,8 @@ public interface AdministradorDeContratos {
     public void agregarContrato(Contrato contrato)throws SQLException,ClassNotFoundException,IOException;
     public List<Contrato>obtenerContratos(int idContratante)throws SQLException,ClassNotFoundException;
     public List<Contrato>contratosPorFecha(java.sql.Date fechaInicio,java.sql.Date fechaFin)throws SQLException,ClassNotFoundException;
-    public List<Contrato>contratosEjecucion()throws SQLException,ClassNotFoundException;
+    public List<Contrato>contratosEjecucion(int idContratante)throws SQLException,ClassNotFoundException;
+    public List<Contrato>contratosEnEjecucion(int idContratante)throws SQLException,ClassNotFoundException;
     public Contrato obtenerContratoporNombre(int nombreContrato)throws SQLException,ClassNotFoundException;
     public void insertarDocumento(Imagenes imagen)throws SQLException,ClassNotFoundException , IOException;
 

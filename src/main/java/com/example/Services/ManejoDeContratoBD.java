@@ -35,10 +35,14 @@ public class ManejoDeContratoBD implements AdministradorDeContratos {
     }
 
     @Override
-    public List<Contrato> contratosEjecucion() throws SQLException, ClassNotFoundException {
-        return contratanteDB.consultarContratosEjecucion();
+    public List<Contrato> contratosEjecucion(int idContratante) throws SQLException, ClassNotFoundException {
+        return contratanteDB.consultarContratosEjecucion(idContratante);
     }
 
+    @Override
+    public List<Contrato> contratosEnEjecucion(int idContratante) throws SQLException, ClassNotFoundException {
+        return contratanteDB.consultarContratosEnEjecucion(idContratante);
+    }
     @Override
     public Contrato obtenerContratoporNombre(int nombreContrato) throws SQLException, ClassNotFoundException {
         return contratanteDB.contratoporNombre(nombreContrato);

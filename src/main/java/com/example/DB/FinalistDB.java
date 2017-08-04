@@ -114,7 +114,7 @@ public class FinalistDB {
     }
     public  List<Contratista> consultarFinalistas(int idContrante,int idContrato) throws ClassNotFoundException, SQLException{
         List<Contratista> contratistas = new LinkedList<>();
-        String sql ="select t2.idFinalista, t1.idContratista,t1.nombreEmpresa,t1.nit,t1.codigoCIIU,t1.nombreGerente,t1.email,t1.arl,t1.direccion,t1.telefono,t1.duracion,t1.departamento,t1.idContratante,t1.personaContacto,t1.cargoPer,t1.telefonoCon,t1.emailContacto,t2.idContrato  FROM  contratista as t1 left join finalista as t2 on t1.idContratista=t2.idContratista where t2.idContratista is not null  and t1.idContratante = ? and t2.idContrato = ? ";
+        String sql ="SELECT t2.idFinalista, t1.idContratista,t1.nombreEmpresa,t1.nit,t1.codigoCIIU,t1.nombreGerente,t1.email,t1.arl,t1.direccion,t1.telefono,t1.duracion,t1.departamento,t1.idContratante,t1.personaContacto,t1.cargoPer,t1.telefonoCon,t1.emailContacto,t3.idContrato  FROM  (contratista AS t1 LEFT JOIN finalista AS t2 ON t1.idContratista=t2.idContratista) INNER JOIN contrato AS t3 ON t3.idFinalista=t2.idFinalista  WHERE t2.idContratista IS NOT NULL AND t1.idContratante= ? AND t3.idContrato= ? ";
         PreparedStatement ps = Conexion.conection().prepareStatement(sql);
         ps.setInt(1,idContrante);
         ps.setInt(2,idContrato);

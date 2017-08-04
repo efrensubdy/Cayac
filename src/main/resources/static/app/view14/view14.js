@@ -9,9 +9,9 @@ angular.module('myApp.view14', ['ngRoute'])
   });
 }])
 
-.controller('View14Ctrl', ['$localStorage','$sessionStorage','$scope','$rootScope','$http','$mdDialog','contratos','contratantesContrato','pFinales',function($localStorage,$sessionStorage,$scope,$rootScope,$http,$mdDialog,contratos,contratantesContrato,pFinales) {
+.controller('View14Ctrl', ['$localStorage','$sessionStorage','$scope','$rootScope','$http','$mdDialog','contratosEjecucion','contratantesContrato','pFinales','contratosEnEjecucion',function($localStorage,$sessionStorage,$scope,$rootScope,$http,$mdDialog,contratosEjecucion,contratantesContrato,pFinales,contratosEnEjecucion) {
  console.log($localStorage.contratanteLogeado.idContratante);
- $scope.listado=contratos.query({idContratante:$localStorage.contratanteLogeado.idContratante});
+ $scope.listado=contratosEjecucion.query({idContratante:$localStorage.contratanteLogeado.idContratante});
  $scope.flag=false;
  $scope.propertyName = 'nombreEmpresa';
           $scope.reverse = true;
