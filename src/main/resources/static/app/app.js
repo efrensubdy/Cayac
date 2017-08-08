@@ -93,6 +93,7 @@ $qProvider.errorOnUnhandledRejections(false);
     $scope.close2=function(){
 
                 $rootScope.bandera2=false;
+                $rootScope.banderaEjecucion=false;
                 $location.path("login3");
                 $localStorage.$reset();
                  delete $localStorage.userLogeado;

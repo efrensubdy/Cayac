@@ -113,6 +113,7 @@ public class UsersDB {
 
         tamañoTablaContratista=usuarios.size();
         ps.close();
+        Conexion.conection().close();
         return usuarios;
     }
     public int traerIdFinalista(int idContratista)throws SQLException,ClassNotFoundException {
@@ -219,17 +220,21 @@ public class UsersDB {
     }
     public Usuario getUsuario(String  user , String password) throws SQLException, ClassNotFoundException {
         Usuario usuarioLogeado=new Usuario();
+        boolean isContratista=false;
+        boolean isnotContratista=false;
         List<Usuario>usuarios=consultarUsuariosContratista();
         for(Usuario u :usuarios) {
 
             if (u.getEmail().equals(user) && u.getPassword().equals(password)&& u.getEstadoDatabase().equals("activo")) {
                 usuarioLogeado=u;
-                usuarioLogeado.setEstado(true);
+                isContratista=true;
             }
             else{
                usuarioLogeado.setEstado(false);
+               isnotContratista=false;
             }
         }
+        usuarioLogeado.setEstado(isContratista||isnotContratista);
         return usuarioLogeado;
 
     }

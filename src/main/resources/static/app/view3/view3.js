@@ -79,28 +79,35 @@ angular.module('myApp.view3', ['ngRoute'])
 
         }
 
-         $scope.showAlert = function(ev,a,b) {
+         $scope.showAlert = function(ev) {
                 //listado 2 sera la lista de requisitos sugeridos por el id del contratista
                 //presionadoo en la ejecucion solicitado a la fabrica requisitos
 
-                 $rootScope.listado2=requisitos.query({idContratante:$localStorage.contratanteLogeado.idContratante,idCategoria:$scope.idCategoria});
-                 $rootScope.listado3=extras.query({idContratante:$localStorage.contratanteLogeado.idContratante,idCategoria:$scope.idCategoria});
-                                if(a==0 && b!=0){
-                                     $rootScope.table1=false;
-                                     $rootScope.table2=true;
-                                }
-                               else if(b==0 && a!=0){
-                                    $rootScope.table2=false;
-                                    $rootScope.table1=true
-                               }
-                               else if(a!=0 && b!=0){
-                                    $rootScope.table1=true;
-                                    $rootScope.table2=true;
-                               }
-                               else{
-                                    $rootScope.table1=false;
-                                    $rootScope.table2=false;
-                               }
+                 $rootScope.listado2=requisitos.query({idContratante:$localStorage.contratanteLogeado.idContratante,idCategoria:$scope.idCategoria},function(resut){
+                     if(result.length!=0){
+                                              $rootScope.table1=true;
+
+                                            }
+                     else{
+                                               $rootScope.table1=false;
+                                            }
+
+                 });
+                 $rootScope.listado3=extras.query({idContratante:$localStorage.contratanteLogeado.idContratante,idCategoria:$scope.idCategoria},function(result){
+
+                      if(result.length!=0){
+                                              $rootScope.table2=true;
+
+                                            }
+                      else{
+                                               $rootScope.table2=false;
+                                            }
+
+
+
+
+                 });
+
 
 
                 $rootScope.idCategoria=$scope.idCategoria;

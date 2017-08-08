@@ -76,7 +76,7 @@ public class FinalistDB {
         }
 
         ps.close();
-
+        Conexion.conection().close();
         return a;
     }
     public  List<Contratista> consultarNoFinalistas(int idContrante,int idContrato) throws ClassNotFoundException, SQLException{
@@ -110,6 +110,7 @@ public class FinalistDB {
             contratistas.add(con);
         }
         ps.close();
+        Conexion.conection().close();
         return contratistas;
     }
     public  List<Contratista> consultarFinalistas(int idContrante,int idContrato) throws ClassNotFoundException, SQLException{
@@ -145,6 +146,7 @@ public class FinalistDB {
             contratistas.add(con);
         }
         ps.close();
+        Conexion.conection().close();
         return contratistas;
     }
     public void registroManual(Contratista contratista) throws SQLException, ClassNotFoundException, IOException {
@@ -175,6 +177,7 @@ public class FinalistDB {
             requisitos.add(nuevoRequisito);
         }
         ps.close();
+        Conexion.conection().close();
         return requisitos;
 
     }
@@ -193,6 +196,7 @@ public class FinalistDB {
             requisitos.add(nuevoRequisito);
         }
         ps.close();
+        Conexion.conection().close();
         return requisitos;
 
     }
@@ -211,6 +215,7 @@ public class FinalistDB {
             requisitos.add(nuevoRequisito);
         }
         ps.close();
+        Conexion.conection().close();
         return requisitos;
 
     }
@@ -229,6 +234,7 @@ public class FinalistDB {
             requisitosExtras.add(nuevoRequisito);
         }
         ps.close();
+        Conexion.conection().close();
         return requisitosExtras;
 
     }
@@ -247,6 +253,7 @@ public class FinalistDB {
             requisitosExtras.add(nuevoRequisito);
         }
         ps.close();
+        Conexion.conection().close();
         return requisitosExtras;
 
     }
@@ -265,6 +272,7 @@ public class FinalistDB {
             requisitosExtras.add(nuevoRequisito);
         }
         ps.close();
+        Conexion.conection().close();
         return requisitosExtras;
 
     }
@@ -374,7 +382,7 @@ public class FinalistDB {
             requisitoObligatorioList.add(ro);
         }
         ps.close();
-
+        Conexion.conection().close();
         return requisitoObligatorioList;
 
     }
@@ -396,6 +404,7 @@ public class FinalistDB {
         }
 
         ps.close();
+        Conexion.conection().close();
         return requisitoObligatorioList;
 
     }
@@ -417,6 +426,7 @@ public class FinalistDB {
         }
 
         ps.close();
+        Conexion.conection().close();
         return requisitoObligatorioList;
 
     }
@@ -437,7 +447,7 @@ public class FinalistDB {
             requisitoExtrasList.add(ro);
         }
         ps.close();
-
+        Conexion.conection().close();
         return requisitoExtrasList;
 
     }
@@ -458,7 +468,7 @@ public class FinalistDB {
             requisitoExtrasList.add(ro);
         }
         ps.close();
-
+        Conexion.conection().close();
         return requisitoExtrasList;
 
     }
@@ -480,6 +490,8 @@ public class FinalistDB {
         }
 
         ps.close();
+
+        Conexion.conection().close();
         return requisitoExtrasList;
 
     }
@@ -508,6 +520,7 @@ public class FinalistDB {
             requisitoObligatoriosLisT.add(requisitoObligatorio);
         }
         ps.close();
+        Conexion.conection().close();
         return requisitoObligatoriosLisT;
     }
 
@@ -535,6 +548,7 @@ public class FinalistDB {
             requisitoObligatoriosLisT.add(requisitoObligatorio);
         }
         ps.close();
+        Conexion.conection().close();
         return requisitoObligatoriosLisT;
     }
 
@@ -563,6 +577,7 @@ public class FinalistDB {
             requisitoObligatoriosLisT.add(requisitoObligatorio);
         }
         ps.close();
+        Conexion.conection().close();
         return requisitoObligatoriosLisT;
     }
 
@@ -592,6 +607,7 @@ public class FinalistDB {
 
         }
         ps.close();
+        Conexion.conection().close();
         return requisitosExtrasLisT;
     }
     public List<RequisitoExtra>estadoRequisitoseEjecucionExtras(int idContratante ,int idCategoria,int idFinalista)throws SQLException,ClassNotFoundException{
@@ -620,6 +636,7 @@ public class FinalistDB {
 
         }
         ps.close();
+        Conexion.conection().close();
         return requisitosExtrasLisT;
     }
     public List<RequisitoExtra>estadoRequisitosFinalizacionExtras(int idContratante ,int idCategoria,int idFinalista)throws SQLException,ClassNotFoundException{

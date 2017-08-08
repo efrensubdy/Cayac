@@ -51,8 +51,8 @@
         <li><a class="text-primary" ng-show="bandera||bandera2" href="#!/view1">Home</a></li>
         <li><a class="text-primary" ng-show="bandera" href="#!/view6">Cambiar Contraseña</a></li>
         <li><a class="text-primary" ng-show="bandera2" href="#!/view7">Cambiar Contraseña</a></li>
-        <li><a class="text-primary" ng-show="bandera2" href="#!/view9">Soportes Seleccion</a></li>
-        <li ng-show="bandera"> <div class="btn-toolbar">
+        <li><a class="text-primary" ng-show="bandera2 && !banderaEjecucion"  href="#!/view9">Soportes Seleccion</a></li>
+        <li ng-show="bandera" class="btn-toolbar"> <div class="btn-toolbar">
           <div class="btn-group navbar-btn">
             <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             Objeto del Proyecto
@@ -68,7 +68,7 @@
         </li>
         <li role="separator" class="divider"></li>
 
-        <li ng-show="bandera"> <div class="btn-toolbar">
+        <li ng-show="bandera" class="btn-toolbar"> <div class="btn-toolbar">
           <div class="btn-group navbar-btn">
             <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               Seleccion
@@ -89,49 +89,69 @@
                 <ul class="dropdown-menu">
                 <li><a class="text-primary"  ng-show="bandera" class="example" href="#!/view2">Registrar Candidatos</a></li>
                 <li><a class="text-primary"  ng-show="bandera" class="example" href="#!/view14">Consultar Candidatos</a></li>
-
                 </ul>
               </li>
             </ul>
           </div>
           </div>
         </li>
-        <div  ng-show="banderaEjecucion" class="w3-dropdown-click">
-          <button onclick="myFunction6()" class="w3-button w3-green">Gestión de Proyecto</button>
-          <div id="dem" class="w3-dropdown-content w3-bar-block w3-card-4 w3-animate-zoom">
-            <a class="text-primary" onclick="myFunction6()" ng-show="bandera2" href="#!/subirDocumentosEstaticos">Estaticos Ejecucion</a></li>
-            <a  class="text-primary" onclick="myFunction6()" ng-show="bandera2" href="#!/agregarActividades">Dinamicos Ejecucion</a></li>
+        <li ng-show="bandera" class="btn-toolbar"> <div class="btn-toolbar">
+          <div class="btn-group navbar-btn">
+            <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Ejecucion
+            </button>
+            <ul class="dropdown-menu">
+              <li class="dropdown-submenu">
+                <a class="text-primary" href="#">Gestión de Proyecto</a>
+                <ul class="dropdown-menu">
+                  <li><a class="text-primary"  ng-show="bandera" class="example" href="#!/ejecucionCNCE">Gestión Estatica</a> </li>
+                  <li><a class="text-primary"  ng-show="bandera" class="example" href="#!/analisisDeActividades">Gestión Dinámica</a> </li>
 
+                </ul>
+              </li>
+              <li role="separator" class="divider"></li>
+              <li  class="dropdown-submenu">
+                <a class="text-primary"  href="#">Gestión de Contratista</a>
+                <ul class="dropdown-menu">
+                 <li><a  class="text-primary" ng-show="bandera" class="example" href="#!/manualRegister">Registro Manual</a></li>
+                 <li><a class="text-primary"  ng-show="bandera" class="example" href="#!/view12">Consultar Contratistas</a></li>
+                </ul>
+              </li>
+              <li><a class="text-primary"  ng-show="bandera" class="example" href="#!/registrarRequisitosEjecucion">Gestion de Requisitos</a></li>
+            </ul>
           </div>
         </div>
-          <div ng-show="bandera" class="w3-dropdown-click">
-          <button onclick="myFunction1()" class="w3-button w3-blue">Ejecucion</button>
-          <div id="demi" class="w3-dropdown-content w3-bar-block w3-card-4 w3-animate-zoom">
-            <div class="w3-bar-item w3-button w3-hover-indigo" onclick="myFunction4()">
-              Gestión Contratistas <i class="fa fa-caret-down"></i></div>
-            <div id="demoAcc2" class="w3-hide w3-white w3-card-4">
-              <a  class="text-primary" onclick="myFunction1()" ng-show="bandera" class="example" href="#!/manualRegister">Registro Manual</a></li>
-              <a class="text-primary" onclick="myFunction1()" ng-show="bandera" class="example" href="#!/view12">Consultar Contratistas</a></li>
-            </div>
-            <a class="text-primary" onclick="myFunction1()" ng-show="bandera" class="example" href="#!/registrarRequisitosEjecucion">Gestion de Requisitos</a> </li>
-            <div class="w3-bar-item w3-button  w3-hover-indigo" onclick="myFunction5()">
-              Gestión de Proyecto<i class="fa fa-caret-down"></i></div>
-            <div id="demoAcc1" class="w3-hide w3-white w3-card-4">
-              <a class="text-primary" onclick="myFunction1()" ng-show="bandera" class="example" href="#!/ejecucionCNCE">Gestión Estatica</a> </li>
-              <a class="text-primary" onclick="myFunction1()" ng-show="bandera" class="example" href="#!/analisisDeActividades">Gestión Dinámica</a> </li>
-            </div>
+        </li>
+        <li ng-show="banderaEjecucion" class="btn-toolbar"> <div class="btn-toolbar">
+          <div class="btn-group navbar-btn">
+            <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Gestión del Proyecto
+            </button>
+
+            <ul class="dropdown-menu">
+              <li><a class="text-primary"  ng-show="bandera2" href="#!/subirDocumentosEstaticos">Estaticos Ejecucion</a></li>
+              <li><a  class="text-primary" ng-show="bandera2" href="#!/agregarActividades">Dinamicos Ejecucion</a></li>
+            </ul>
           </div>
         </div>
+        </li>
       </ul>
 
       <ul class="nav navbar-nav navbar-right">
-        <div ng-show="bandera" class="w3-dropdown-click">
-          <button onclick="myFunction2()" class="w3-button w3-green">Reportes</button>
-          <div id="demu" class="w3-dropdown-content w3-bar-block w3-card-4 w3-animate-zoom">
 
+        <li ng-show="bandera" class="btn-toolbar"> <div class="btn-toolbar">
+          <div class="btn-group navbar-btn">
+            <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Reportes
+            </button>
 
+            <ul class="dropdown-menu">
+              <li>....</li>
+
+            </ul>
           </div>
         </div>
+        </li>
 
         <button ng-hide="bandera||bandera2||bandera3 "   onclick="window.location.href='#!/login3'" class="btn btn-primary navbar-btn">Ingreso Contratista</button>
         <button ng-hide="bandera2 || bandera || bandera3" onclick="window.location.href='#!/login2'" class="btn btn-primary navbar-btn">Ingreso Contratante</button>
@@ -156,11 +176,6 @@
 <div ng-view></div>
 <footer class="w3-container w3-padding-64 w3-center w3-opacity w3-light-grey w3-xlarge">
   <a href="https://www.facebook.com/pages/SEQ-Consultores/484704751584981?fref=ts"><i class="fa fa-facebook-official w3-hover-opacity"></i></a>
-  <i class="fa fa-instagram w3-hover-opacity"></i>
-  <i class="fa fa-snapchat w3-hover-opacity"></i>
-  <i class="fa fa-pinterest-p w3-hover-opacity"></i>
-  <i class="fa fa-twitter w3-hover-opacity"></i>
-  <i class="fa fa-linkedin w3-hover-opacity"></i>
   <p class="w3-medium">Powered by <a href="https://www.w3schools.com/w3css/default.asp" target="_blank">w3.css</a></p>
 </footer>
 

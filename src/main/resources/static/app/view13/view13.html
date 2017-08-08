@@ -1,7 +1,7 @@
 
 <div class="w3-container">
 <div ng-controller="View13Ctrl" layout="column"  layout-padding ng-cloak>
-<form name="div1">
+<form name="div1" class="form-horizontal text-primary">
     <br/>
     <md-content class="md-no-momentum" layout-padding>
 
@@ -23,11 +23,11 @@
             <input ng-model="contrato.nombreContrato" type="text" placeholder="Nombre del Contrato (Obligatorio)" ng-required="true">
         </md-input-container>
         <div layout-gt-xs="row">
-            <label>ADJUNTE SU RUT</label>
+            <label>ADJUNTE RUT</label>
             <input class="form-control" type="file" file-model="myFile" name="myFile"/>
         </div>
         <div layout-gt-xs="row">
-            <label>ADJUNTE SU CAMARA DE COMERCIO</label>
+            <label>ADJUNTE CAMARA DE COMERCIO</label>
             <input class="form-control" type="file" file-model="myFile2" name="myFile2"/>
         </div>
         <div layout-gt-xs="row">

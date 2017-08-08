@@ -94,7 +94,7 @@ function myFunction6() {
     var x = document.getElementById("dem");
     if (x.className.indexOf("w3-show") == -1) {
         x.className += " w3-show";
-        myFunction3();
+
     } else {
         x.className = x.className.replace(" w3-show", "");
     }

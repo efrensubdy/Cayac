@@ -13,10 +13,8 @@ angular.module('myApp.subirDocumentosEstaticos', ['ngRoute'])
        $scope.file = "";
        $scope.agregarEstaticosSugeridosPrevios = function(ev,item) {
             var file = $scope.myDocSugeridoPrevio;
-            console.log(file);
-            console.log(item.id)
             var uploadUrl = 'http://localhost:8080/app/docEstaticos/'+ $localStorage.userLogeado.idFinalista + "/"+ item.id + "/"+ $localStorage.userLogeado.idContratista + "/previoSugerido" ;
-            console.log(uploadUrl)
+
             fileUpload.uploadFileToUrl(file, uploadUrl);
             $mdDialog.show(
                       $mdDialog.alert()

@@ -11,7 +11,7 @@
         </md-toolbar>
         <md-dialog-content>
             <md-tabs md-dynamic-height md-border-bottom>
-                <md-tab label="Requisitos Subidos">
+                <md-tab label="Subidos">
                     <md-content class="md-padding">
                         <div class="md-dialog-content">
                             <table class="w3-table-all">
@@ -49,6 +49,136 @@
                                 </tbody>
                             </table>
                         </div>
+                    </md-content>
+                </md-tab>
+                <md-tab label="No subidos">
+                    <md-content class="md-padding">
+                        <div class="md-dialog-content">
+                            <table class="w3-table-all">
+                                <thead>
+                                <tr class="w3-light-grey w3-hover-grey">
+                                    <th>Requisito</th>
+                                    <th>Estado</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr class="w3-hover-green" ng-repeat="todo in listadoNCSP" >
+                                    <td>{{todo.descripcion}}</td>
+                                    <td><div class="w3-col" style="width:50px"><i class="w3-xxlarge fa fa-exclamation-triangle"></i></div></td>
+                                </tr>
+                                <tr class="w3-hover-green" ng-repeat="todi in listadoNCEP" >
+                                    <td>{{todi.descripcion}}</td>
+                                    <td><div class="w3-col" style="width:50px"><i class="w3-xxlarge fa fa-exclamation-triangle"></i></div></td>
+                                </tr>
+                                <tr class="w3-hover-green" ng-repeat="todi in listadoNCSE" >
+                                    <td>{{todi.descripcion}}</td>
+                                    <td><div class="w3-col" style="width:50px"><i class="w3-xxlarge fa fa-exclamation-triangle"></i></div></td>
+                                </tr>
+                                <tr class="w3-hover-green" ng-repeat="todi in listadoNCEE" >
+                                    <td>{{todi.descripcion}}</td>
+                                    <td><div class="w3-col" style="width:50px"><i class="w3-xxlarge fa fa-exclamation-triangle"></i></div></td>
+                                </tr>
+                                <tr class="w3-hover-green" ng-repeat="todi in listadoNCSF" >
+                                    <td>{{todi.descripcion}}</td>
+                                    <td><div class="w3-col" style="width:50px"><i class="w3-xxlarge fa fa-exclamation-triangle"></i></div></td>
+                                </tr>
+                                <tr class="w3-hover-green" ng-repeat="todi in listadoNCEF" >
+                                    <td>{{todi.descripcion}}</td>
+                                    <td><div class="w3-col" style="width:50px"><i class="w3-xxlarge fa fa-exclamation-triangle"></i></div></td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </md-content>
+                </md-tab>
+                <md-tab label="Info">
+                    <md-content class="md-padding">
+                        <div class="md-dialog-content">
+                            <div>
+                                <md-select aria-label="Select 1" ng-model="tipoEstadistica" placeholder="Escoja el ciclo al cual le hará la revisión" ng-change="function1()">
+                                    <md-option ng-value="todo.id" ng-repeat="todo in options">{{ todo.name }}</md-option>
+                                </md-select>
+                            </div>
+
+                            <div ng-show="banderaPrevio">
+                                <label>Previos</label>
+                                <table class="w3-table-all">
+                                    <thead>
+                                    <tr class="w3-light-grey w3-hover-grey">
+                                        <th>Tipo</th>
+                                        <th>#</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <tr class="w3-hover-green">
+                                        <td><b> Cumplidos</b></td>
+                                        <td >{{listadoCSP.length +listadoCEP.length}}</td>
+                                    </tr>
+                                    <tr class="w3-hover-green">
+                                        <td><b>No Cumplidos</b></td>
+                                        <td>{{listadoNCSP.length  + listadoNCEP.length }}</td>
+                                    </tr>
+
+
+                                    </tbody>
+                                </table>
+                                <md-button class="md-warn md-raised md-hue-2" ng-click="agregar(listadoCSP.length +listadoCEP.length , listadoNCSP.length + listadoNCEP.length,1)">Grafico</md-button>
+                                <md-button class="md-warn md-raised md-hue-2" ng-click="hideGrafico(1)">ocultar grafico</md-button>
+                            </div>
+                            <div ng-show="banderaEjecucion">
+                                <label>Ejecucion</label>
+                                <table class="w3-table-all">
+                                    <thead>
+                                    <tr class="w3-light-grey w3-hover-grey">
+                                        <th>Tipo</th>
+                                        <th>#</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <tr class="w3-hover-green">
+                                        <td><b> Cumplidos</b></td>
+                                        <td >{{listadoESC.length +listadoEEC.length}}</td>
+                                    </tr>
+                                    <tr class="w3-hover-green">
+                                        <td><b>No Cumplidos</b></td>
+                                        <td>{{listadoNCSE.length + listadoNCEE.length}}</td>
+                                    </tr>
+
+                                    </tbody>
+                                </table>
+                                <md-button class="md-warn md-raised md-hue-2" ng-click="agregar(listadoESC.length +listadoEEC.length ,listadoNCSE.length + listadoNCEE.length,2)">Grafico</md-button>
+                                <md-button class="md-warn md-raised md-hue-2" ng-click="hideGrafico(2)">ocultar grafico</md-button>
+                            </div>
+                            <div ng-show="banderaFinalizacion">
+                                <label>Finalizacion</label>
+                                <table class="w3-table-all">
+                                    <thead>
+                                    <tr class="w3-light-grey w3-hover-grey">
+                                        <th>Tipo</th>
+                                        <th>#</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <tr class="w3-hover-green">
+                                        <td><b> Cumplidos</b></td>
+                                        <td >{{listadoFSC.length +listadoFEC.length}}</td>
+                                    </tr>
+                                    <tr class="w3-hover-green">
+                                        <td><b>No Cumplidos</b></td>
+                                        <td>{{listadoNCSF.length +listadoNCEF.length}}</td>
+                                    </tr>
+
+                                    </tbody>
+                                </table>
+                                <md-button class="md-warn md-raised md-hue-2" ng-click="agregar(listadoFSC.length +listadoFEC.length , listadoNCSF.length +listadoNCEF.length ,3)">Grafico</md-button>
+                                <md-button class="md-warn md-raised md-hue-2" ng-click="hideGrafico(3)">ocultar grafico</md-button>
+                            </div>
+
+                        </div>
+                        <div ng-show="bandera" google-chart chart="myChartObject" width="700" height="700"></div>
+                        <div ng-show="bandera2" google-chart chart="myChartObject" width="700" height="700"></div>
+                        <div ng-show="bandera3" google-chart chart="myChartObject" width="700" height="700"></div>
+
                     </md-content>
                 </md-tab>
             </md-tabs>
