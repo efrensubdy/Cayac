@@ -9,6 +9,7 @@ import java.util.List;
 
 /**
  * Created by HSEQ on 10/07/2017.
+ * Interface que define todos los metodos que permiten administrar los requisitos Dinamicos
  */
 public interface AdministradorDeRequisitosDinamicos {
     public List<Requisito> llenarDinamicosPreviosSugeridos(int idContratante, int idCategoria)throws SQLException,ClassNotFoundException;

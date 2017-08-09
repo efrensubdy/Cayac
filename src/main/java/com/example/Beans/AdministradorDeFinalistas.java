@@ -8,6 +8,7 @@ import java.util.List;
 
 /**
  * Created by HSEQ on 07/06/2017.
+ * Interface que define todos los metodos que permiten administrar los Finalistas
  */
 public interface AdministradorDeFinalistas {
     public void InsertarFinalista(Finalista finalista)throws SQLException,ClassNotFoundException;

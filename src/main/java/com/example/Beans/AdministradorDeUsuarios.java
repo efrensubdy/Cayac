@@ -7,6 +7,7 @@ import java.util.List;
 
 /**
  * Created by HSEQ on 04/04/2017.
+ * Interface que define todos los metodos que permiten administrar los usuarios
  */
 public interface AdministradorDeUsuarios {
     public boolean loginContratante(String email, String password) throws SQLException, ClassNotFoundException;

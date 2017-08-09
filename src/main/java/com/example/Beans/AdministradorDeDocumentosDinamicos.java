@@ -7,6 +7,7 @@ import java.sql.SQLException;
 
 /**
  * Created by HSEQ on 12/07/2017.
+ * Interface que define todos los metodos que permiten administrar los Documentos Dinamicos
  */
 public interface AdministradorDeDocumentosDinamicos {
     public void insertarDocumentoPrevioSugerido(DocumentoPrevio documentoPrevio) throws SQLException, ClassNotFoundException, IOException;

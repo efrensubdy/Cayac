@@ -11,6 +11,7 @@ import java.util.List;
 
 /**
  * Created by HSEQ on 13/06/2017.
+ * Interface que define todos los metodos que permiten administrar los contratos
  */
 public interface AdministradorDeContratos {
     public void agregarContrato(Contrato contrato)throws SQLException,ClassNotFoundException,IOException;

@@ -8,6 +8,7 @@ import java.util.List;
 
 /**
  * Created by HSEQ on 06/07/2017.
+ * Interface que define todos los metodos que permiten administrar el cumpimiento
  */
 public interface AdministradorDeCumplimiento {
     public List<RequisitoObligatorio> requisitosCumplidosPreviosSugeridos(int idFinalista, int idCategoria, int idContratante)throws SQLException,ClassNotFoundException;

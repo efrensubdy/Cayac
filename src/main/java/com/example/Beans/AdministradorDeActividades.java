@@ -7,6 +7,7 @@ import java.util.List;
 
 /**
  * Created by HSEQ on 12/07/2017.
+ * Interface que define todos los metodos que permiten administrar las actividades
  */
 public interface AdministradorDeActividades {
     public void insertarActividadPreviaSugerida(Actividad actividad)throws SQLException,ClassNotFoundException;

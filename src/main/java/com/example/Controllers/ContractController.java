@@ -20,7 +20,7 @@ import java.util.logging.Logger;
 /**
  *
  * @author Efren Fenrnadez
- * La siguiente clase se encarga de controlar los contratantes que ingresen al API
+ * Controlador de Contratistas
  */
 @RestController
 @RequestMapping(value="/app/contract")
@@ -36,6 +36,10 @@ public class ContractController {
         this.manejo = manejo;
     }
 
+    /**
+     * Metodo que devuelve todos los contratistas como una Entidad de Respuesta desde aL AP
+     * @return ENTIDAD COON TODOS LOS CONTRATISTAS
+     */
 
     @RequestMapping(method = RequestMethod.GET)
     public ResponseEntity<?> manejadorDeObtencionDeContratistas(){
@@ -46,7 +50,12 @@ public class ContractController {
         Logger.getLogger(Controller.class.getName()).log(Level.SEVERE, null, ex);
         return new ResponseEntity<>("Error bla bla bla",HttpStatus.NOT_FOUND);
     }        
-}
+    }
+
+    /**
+     * METODO QUE DEVUELVE TODAS LAS ACTIVIDADES ECONOMICAS QUE SE PUEDEN PONER A UN CONTRATISTA Y CONTRATANTE
+     * @return LISTA CON TODAS LAS ACTIVIDADES ECONOMICAS
+     */
     @RequestMapping(value = "activity",method = RequestMethod.GET)
     public ResponseEntity<?> obtencionDeActividadesEconomicas(){
         try {
@@ -58,8 +67,16 @@ public class ContractController {
         }
     }
 
+    /**
+     * Me deveulve el estado de los requisitos prensentados al contratistas para subir los documentos
+     * @param idContratante
+     * @param idCategoria
+     * @param idContratista
+     * @return todos los requisitos que le aplican a el contratista aplicad
+     */
+
     @RequestMapping(value = "estadoR/{idContratante}/{idCategoria}/{idContratista}", method = RequestMethod.GET)
-    public ResponseEntity<?>obtenerEstadoDeRequisitos(@PathVariable("idContratante")int idContratante,@PathVariable("idCategoria")int idCategoria,@PathVariable("idContratista")int idContratista){
+    public ResponseEntity<?>obtenerEstaodoDeRequisitos(@PathVariable("idContratante")int idContratante,@PathVariable("idCategoria")int idCategoria,@PathVariable("idContratista")int idContratista){
 
         ResponseEntity a;
         try {
@@ -72,6 +89,14 @@ public class ContractController {
         }
         return a;
     }
+
+    /**
+     * METODO QUE DEVUELVE EL ESTADO DE LOS REQUISITOS EXTRAS DEL CONTRATISTA
+     * @param idContratante
+     * @param idCategoria
+     * @param idContratista
+     * @return TODOS LOS REQUISITOS EXTRAS APLICADOS AL CONTRATISTA QUE PUEDE SUBIR
+     */
     @RequestMapping(value = "estadoE/{idContratante}/{idCategoria}/{idContratista}", method = RequestMethod.GET)
     public ResponseEntity<?>obtenerEstadoDeRequisitosExtras(@PathVariable("idContratante")int idContratante,@PathVariable("idCategoria")int idCategoria,@PathVariable("idContratista")int idContratista){
 
@@ -86,6 +111,12 @@ public class ContractController {
         }
         return a;
     }
+
+    /**
+     * Metodo post que agrega al contratista
+     * @param contratista
+     * @return entidazd de respuesta despues de insertar
+     */
     @RequestMapping(method = RequestMethod.POST)
     public ResponseEntity<?>nuevoContratista(@RequestBody Contratista contratista){
 

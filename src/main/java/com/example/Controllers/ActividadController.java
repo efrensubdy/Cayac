@@ -15,6 +15,7 @@ import java.util.logging.Logger;
 
 /**
  * Created by HSEQ on 12/07/2017.
+ * Controladdor de Actividades
  */
 @RestController
 @RequestMapping(value="/app/actividad")
@@ -22,6 +23,12 @@ public class ActividadController {
     @Autowired
     public ManejoDeActividades manejoDeActividades;
 
+    /**
+     *
+      * @param idFinalista
+     * @param idRequisito
+     * @return ¿
+     */
     @RequestMapping(value="{idFinalista}/{idRequisito}/previosSugeridos",method = RequestMethod.GET)
     public ResponseEntity<?> obtenerRequisitosPreviosSugeridos(@PathVariable int idFinalista, @PathVariable int idRequisito){
 

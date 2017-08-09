@@ -10,6 +10,7 @@ import java.util.List;
 
 /**
  * Created by HSEQ on 30/03/2017.
+ * Interface que define todos los metodos que permiten administrar las los Contratantes
  */
 public interface AdministradorDeContratante {
 public void registrarContratante(Contratante contratante) throws SQLException, ClassNotFoundException;

@@ -14,6 +14,7 @@ import java.util.List;
 /**
  *
  * @author HSEQ
+ * Interface que define todos los metodos que permiten administrar los contratistas
  */
 public interface AdministradorDeContratistas {
     public void registrarContratista(Contratista con) throws SQLException, ClassNotFoundException, IOException;
