@@ -151,7 +151,7 @@ angular.module('myApp.registrarRequisitosEjecucion', ['ngRoute'])
           $rootScope.listadoDinamicoPrevioExtra=dinamicosPreviosExtras.query({idContratante:$localStorage.contratanteLogeado.idContratante,idCategoria:$scope.idCategoria},function(result){
 
                      if(result.length!=0){
-                                              $rootScope.lonPrevioEx=true;
+                                             $rootScope.lonPrevioEx=true;
 
                                             }
                                             else{
@@ -221,6 +221,7 @@ angular.module('myApp.registrarRequisitosEjecucion', ['ngRoute'])
           function DialogController($scope, $mdDialog, $rootScope,$http) {
                 $scope.listadoPrevioSugerido=$rootScope.listadoPrevioSugerido;
                 $scope.lonPrevio= $rootScope.lonPrevio;
+
                 $scope.lonPrevioEx=$rootScope.lonPrevioEx;
                 $scope.lonEjec=$rootScope.lonEjec;
                 $scope.lonEjecEx=$rootScope.lonEjecEx;
@@ -1143,6 +1144,7 @@ angular.module('myApp.registrarRequisitosEjecucion', ['ngRoute'])
 
          function DialogController2($scope, $mdDialog, $rootScope,$http) {
             $scope.lonPrevio= $rootScope.lonPrevio;
+            console.log($scope.lonPrevioEx);
             $scope.lonPrevioEx=$rootScope.lonPrevioEx;
             $scope.lonEjec=$rootScope.lonEjec;
             $scope.lonEjecEx=$rootScope.lonEjecEx;

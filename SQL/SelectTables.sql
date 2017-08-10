@@ -30,33 +30,41 @@ SELECT *  FROM requisitosdeejecuionsugeridosestaticosejecucionactividades;
 SELECT *  FROM requisitosdeejecuionsugeridosestaticosprevio;
 SELECT *  FROM documentosestaticospreviosobli;
 SELECT * FROM finalista;
-
-
+ 
+ 
+SELECT *  FROM finalista INNER JOIN contratista WHERE finalista.idContratista=contratista.idContratista;
 
 SELECT * FROM requidinadeffinalsug AS re INNER JOIN requidinafinalsug AS r  WHERE re.idRequisito=r.id ;
+
+SELECT t1.id,t1.requisito FROM (requidinapreex AS t1) LEFT JOIN requidinadefpreext AS t2 ON t1.id=t2.idRequisito AND t2.idContratante= 1
+WHERE t2.id IS NULL AND t1.idCategoria=1
+
+
+SELECT  * FROM requidinapreex;
 
 SELECT  * FROM sys.actprevsuger;
 SELECT  * FROM sys.actprevext;
 SELECT * FROM sys.actejecsug;
 SELECT * FROM sys.actejecext;
 SELECT * FROM sys.actfinsug;
-SELECT * FROM sys.actfinext;
-
-delete from contrato where idContrato=21;
+SELECT * FROM finalista
+UPDATE  contrato SET idFinalista = ? 
+UPDATE  contrato SET idFinalista = NULL WHERE idContrato =27 
+DELETE FROM contrato WHERE idContrato=21;
 -- llenar requisitos previos sugeridos --
-select t1.idRequisitosDeEjecuionSugeridosEstaticosPrevio,t1.requisito from (sys.requisitosdeejecuionsugeridosestaticosprevio as t1 ) left join sys.requisitosdeejecuiondefsugeridosestaticosprevio as t2 on t1.idRequisitosDeEjecuionSugeridosEstaticosPrevio=t2.idRequsito and t2.idContratante= 1
-where t2.idrequisitosdeejecuiondefsugeridosestaticosprevio is null and t1.idCategoria= 1;
+SELECT t1.idRequisitosDeEjecuionSugeridosEstaticosPrevio,t1.requisito FROM (sys.requisitosdeejecuionsugeridosestaticosprevio AS t1 ) LEFT JOIN sys.requisitosdeejecuiondefsugeridosestaticosprevio AS t2 ON t1.idRequisitosDeEjecuionSugeridosEstaticosPrevio=t2.idRequsito AND t2.idContratante= 1
+WHERE t2.idrequisitosdeejecuiondefsugeridosestaticosprevio IS NULL AND t1.idCategoria= 1;
 
 -- llenar requisitos ejecucion sugeridos--
-select t1.idrequisitosdeejecuionsugeridosestaticosEjecucionActividades, t1.requisito from (sys.requisitosdeejecuionsugeridosestaticosejecucionactividades as t1 ) left join sys.requisitosdeejecuiondefsugeridosestaticosejecucionactividades as t2 on t1.idrequisitosdeejecuionsugeridosestaticosEjecucionActividades=t2.idRequisito and t2.idContratante= 1
-where t2.idrequisitosdeejecuiondefsugeridosestaticosejecucionactividades is null and t1.idCategoria= 1;
+SELECT t1.idrequisitosdeejecuionsugeridosestaticosEjecucionActividades, t1.requisito FROM (sys.requisitosdeejecuionsugeridosestaticosejecucionactividades AS t1 ) LEFT JOIN sys.requisitosdeejecuiondefsugeridosestaticosejecucionactividades AS t2 ON t1.idrequisitosdeejecuionsugeridosestaticosEjecucionActividades=t2.idRequisito AND t2.idContratante= 1
+WHERE t2.idrequisitosdeejecuiondefsugeridosestaticosejecucionactividades IS NULL AND t1.idCategoria= 1;
 
 -- llenar requisitos finalizacion --
 select t1.idrequisitosdeejecuionsugeridosestaticosFinalizacionDeActivdades, t1.requisito from (sys.requisitosdeejecuionsugeridosestaticosfinalizaciondeactivdades as t1 ) left join sys.ejecuionsugeridosestaticosdeffinalizaciondeactivdades as t2 on t1.idrequisitosdeejecuionsugeridosestaticosFinalizacionDeActivdades=t2.idRequisito and t2.idContratante= 1
 where t2.defFinalizaactiv is null and t1.idCategoria= 1;
 
 
-
+insert into usuarios values (4,null,3,1,"activo","Contratista",null);
 -- llenar requisitos previos extras 
 select t1.idRequisitosDeEjecuionSugeridosextrasPrevio,t1.requisito from (sys.requisitosdeejecuionextrasestaticosprevio as t1) left join sys.requisitosdeejecuiondefextrasestaticosprevio as t2 on t1.idRequisitosDeEjecuionSugeridosextrasPrevio=t2.idRequisito and t2.idContratante= 1
 where t2.idrequisitosdeejecuiondefextrasestaticosprevio is null and t1.idCategoria= 1;

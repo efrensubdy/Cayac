@@ -158,10 +158,10 @@ INSERT INTO requisitosdeejecuionextrasestaticosfinalizaciondeactivdades (requisi
 INSERT INTO requisitosdeejecuionextrasestaticosfinalizaciondeactivdades (requisito,idCategoria) VALUES ("REQUISITO FINALIZACION EXTRA 4",4);
 
  
- INSERT INTO requidinapreex (requisito,idCategoria) VALUES ("REQUISITO PREVIO DINAMICO EXTRA 1",1);
- INSERT INTO requidinapreex(requisito,idCategoria) VALUES ("REQUISITO PREVIO DINAMICO EXTRA 2",2);
- INSERT INTO requidinapreex(requisito,idCategoria) VALUES ("REQUISITO PREVIO DINAMICO EXTRA 3",3);
- INSERT INTO requidinapreex(requisito,idCategoria) VALUES ("REQUISITO PREVIO DINAMICO EXTRA 4",4);
+ INSERT INTO requidinapreex (requisito,apodo,idCategoria) VALUES ("REQUISITO PREVIO DINAMICO EXTRA 1","EXTRA1",1);
+ INSERT INTO requidinapreex(requisito,apodo,idCategoria) VALUES ("REQUISITO PREVIO DINAMICO EXTRA 2","EXTRA2",2);
+ INSERT INTO requidinapreex(requisito,apodo,idCategoria) VALUES ("REQUISITO PREVIO DINAMICO EXTRA 3","EXTRA3",3);
+ INSERT INTO requidinapreex(requisito,apodo,idCategoria) VALUES ("REQUISITO PREVIO DINAMICO EXTRA 4","EXTRA4",4);
   
  INSERT INTO requidinaejecext (requisito,idCategoria) VALUES ("REQUISITO EJECUCION DINAMICO EXTRA 1",1); 
 INSERT INTO requidinaejecext (requisito,idCategoria) VALUES ("REQUISITO EJECUCION DINAMICO EXTRA 2",2); 

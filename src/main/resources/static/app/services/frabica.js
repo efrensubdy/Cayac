@@ -372,25 +372,6 @@ angular.module('services.listFactory', ['ngRoute','ngResource'])
                                       })
 
 
-        .factory('traerActividadesPreviasSug', function($resource) {
-                              return $resource('/app/actividad/:idFinalista/:idRequisito/previosSugeridos');
-                          })
-        .factory('traerActividadesPreviasExt', function($resource) {
-                                     return $resource('/app/actividad/:idFinalista/:idRequisito/previosExtras');
-                                 })
-       .factory('traerActividadesEjecSug', function($resource) {
-                                    return $resource('/app/actividad/:idFinalista/:idRequisito/ejecucionSugeridos');
-                                })
-      .factory('traerActividadesEjecExt', function($resource) {
-                                          return $resource('/app/actividad/:idFinalista/:idRequisito/ejecucionExtras');
-                                      })
-     .factory('traerActividadesFinalSug', function($resource) {
-                                               return $resource('/app/actividad/:idFinalista/:idRequisito/finalizacionSugeridos');
-                                           })
-     .factory('traerActividadesFinalExt', function($resource) {
-                                                    return $resource('/app/actividad/:idFinalista/:idRequisito/finalizacionExtras');
-                                                })
-
 
         //A partir de este punto los metodos son de tipo POST para estas Fabrica
 
@@ -529,24 +510,6 @@ angular.module('services.listFactory', ['ngRoute','ngResource'])
         .factory('iDinamicoFinalizacionExtra', function($resource) {
                                                    return $resource('/app/dinamicos/finalizacionExtra/:id');
                                                })
-        .factory('addActividadPreviaSugerida', function($resource) {
-                                           return $resource('/app/actividad/previoSugerido/:id');
-                                       })
-        .factory('addActividadPrevioExtra', function($resource) {
-                                                   return $resource('/app/actividad/previoExtra/:id');
-                                               })
-        .factory('addActividadEjecucionSugerido', function($resource) {
-                                                           return $resource('/app/actividad/ejecucionSugerido/:id');
-                                                       })
-         .factory('addActividadEjecucionExtra', function($resource) {
-                                                       return $resource('/app/actividad/ejecucionExtra/:id');
-                                                   })
-         .factory('addActividadFinalizacionSugerido', function($resource) {
-                                                           return $resource('/app/actividad/finalizacionSugerido/:id');
-                                                       })
-         .factory('addActividadFinalizacionExtra', function($resource) {
-                                                           return $resource('/app/actividad/finalizacionExtra/:id');
-                                                       })
 
         //Esta fabrica se encarga de agregar un contratistas
        .factory('contratistas', function($resource) {

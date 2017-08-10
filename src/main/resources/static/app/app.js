@@ -22,8 +22,6 @@ angular.module('myApp', [
   'myApp.manualRegister',
   'myApp.ejecucionCNCE',
   'myApp.subirDocumentosEstaticos',
-  'myApp.agregarActividades',
-  'myApp.analisisDeActividades',
   'myApp.test',
   'myApp.login',
   'myApp.login2',

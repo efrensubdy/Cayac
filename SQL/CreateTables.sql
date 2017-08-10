@@ -486,11 +486,12 @@ CREATE TABLE `documentosestaticosfinaliext` (
   CONSTRAINT `DocFinExt_idFinalista` FOREIGN KEY (`idFinalista`) REFERENCES `finalista` (`idFinalista`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=INNODB DEFAULT CHARSET=utf8;
 
-
+SELECT * FROM requidinapresug;
 
 CREATE TABLE `requidinapresug` (
   `id` INT(11) NOT NULL AUTO_INCREMENT,
   `requisito` VARCHAR(500) NOT NULL,
+  `apodo` VARCHAR(500) NOT NULL,
   `idCategoria` INT(11) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `DinamicoPrevio_Categoria_idx` (`idCategoria`),
@@ -500,6 +501,7 @@ CREATE TABLE `requidinapresug` (
 CREATE TABLE `requidinapreex` (
   `id` INT(11) NOT NULL AUTO_INCREMENT,
   `requisito` VARCHAR(500) NOT NULL,
+  `apodo` VARCHAR(500) NOT NULL,
   `idCategoria` INT(11) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `dinamicoPrevioExtra_Categoria_idx` (`idCategoria`),
@@ -537,6 +539,7 @@ CREATE TABLE `requidinafinalsug` (
 CREATE TABLE `requidinafinalext` (
   `id` INT(11) NOT NULL AUTO_INCREMENT,
   `requisito` VARCHAR(500) NOT NULL,
+  `apodo` VARCHAR(500) NOT NULL,
   `idCategoria` INT(11) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `requidinafinalext_Categoria_idx` (`idCategoria`),
@@ -628,121 +631,6 @@ CREATE TABLE `requidinadeffinalext` (
   CONSTRAINT `requidinadeffinalext_Contratante` FOREIGN KEY (`idContratante`) REFERENCES `contratante` (`idContratante`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `requidinadeffinalext_Requisito` FOREIGN KEY (`idRequisito`) REFERENCES `requidinafinalext` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=INNODB DEFAULT CHARSET=utf8;
-
-
-CREATE TABLE `actprevsuger` (
-  `id` INT(11) NOT NULL AUTO_INCREMENT,
-  `idRequisito` INT(11) NOT NULL,
-  `idFinalista` INT(11) NOT NULL,
-  `nombre` VARCHAR(45) NOT NULL,
-  `fechaDeEjecucion` DATE NOT NULL,
-  `fechaEjecutada` DATE DEFAULT NULL,
-  `responsable` VARCHAR(45) NOT NULL,
-  `contenido` VARCHAR(500) DEFAULT NULL,
-  `tipo` VARCHAR(45) DEFAULT NULL,
-  `estado` VARCHAR(45) NOT NULL,
-  PRIMARY KEY (`id`),
-  KEY `ActPrevSuger_Requisito_idx` (`idRequisito`),
-  KEY `ActPrevSuger_Finalista_idx` (`idFinalista`),
-  CONSTRAINT `ActPrevSuger_Finalista` FOREIGN KEY (`idFinalista`) REFERENCES `finalista` (`idFinalista`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  CONSTRAINT `ActPrevSuger_Requisito` FOREIGN KEY (`idRequisito`) REFERENCES `requidinadefpresug` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=INNODB DEFAULT CHARSET=utf8;
-
-
-CREATE TABLE `actprevext` (
-  `id` INT(11) NOT NULL AUTO_INCREMENT,
-  `idRequisito` INT(11) NOT NULL,
-  `idFinalista` INT(11) NOT NULL,
-  `nombre` VARCHAR(45) NOT NULL,
-  `fechaDeEjecucion` DATE NOT NULL,
-  `fechaEjecutada` DATE DEFAULT NULL,
-  `responsable` VARCHAR(45) NOT NULL,
-  `contenido` VARCHAR(500) DEFAULT NULL,
-  `tipo` VARCHAR(45) DEFAULT NULL,
-  `estado` VARCHAR(45) NOT NULL,
-  PRIMARY KEY (`id`),
-  KEY `actprevext_Requisito_idx` (`idRequisito`),
-  KEY `actprevext_finalista_idx` (`idFinalista`),
-  CONSTRAINT `actprevext_Requisito` FOREIGN KEY (`idRequisito`) REFERENCES `requidinadefpreext` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  CONSTRAINT `actprevext_finalista` FOREIGN KEY (`idFinalista`) REFERENCES `finalista` (`idFinalista`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=INNODB DEFAULT CHARSET=utf8;
-
-
-CREATE TABLE `actejecsug` (
-  `id` INT(11) NOT NULL AUTO_INCREMENT,
-  `idRequisito` INT(11) NOT NULL,
-  `idFinalista` INT(11) NOT NULL,
-  `nombre` VARCHAR(45) NOT NULL,
-  `fechaDeEjecucion` DATE NOT NULL,
-  `fechaEjecutada` DATE DEFAULT NULL,
-  `responsable` VARCHAR(45) NOT NULL,
-  `contenido` VARCHAR(500) DEFAULT NULL,
-  `tipo` VARCHAR(45) DEFAULT NULL,
-  `estado` VARCHAR(45) DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  KEY `actejecsug_Requisito_idx` (`idRequisito`),
-  KEY `actejecsug_Finalista_idx` (`idFinalista`),
-  CONSTRAINT `actejecsug_Finalista` FOREIGN KEY (`idFinalista`) REFERENCES `finalista` (`idFinalista`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  CONSTRAINT `actejecsug_Requisito` FOREIGN KEY (`idRequisito`) REFERENCES `requidinadefejecext` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=INNODB DEFAULT CHARSET=utf8;
-
-CREATE TABLE `actejecext` (
-  `id` INT(11) NOT NULL AUTO_INCREMENT,
-  `idRequisito` INT(11) NOT NULL,
-  `idFinalista` INT(11) NOT NULL,
-  `nombre` VARCHAR(45) NOT NULL,
-  `fechaDeEjecucion` DATE NOT NULL,
-  `fechaEjecutada` DATE DEFAULT NULL,
-  `responsable` VARCHAR(45) NOT NULL,
-  `contenido` VARCHAR(500) DEFAULT NULL,
-  `tipo` VARCHAR(45) DEFAULT NULL,
-  `estado` VARCHAR(45) DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  KEY `actejecext_Requisito_idx` (`idRequisito`),
-  KEY `actejecext_Finalista_idx` (`idFinalista`),
-  CONSTRAINT `actejecext_Finalista` FOREIGN KEY (`idFinalista`) REFERENCES `finalista` (`idFinalista`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  CONSTRAINT `actejecext_Requisito` FOREIGN KEY (`idRequisito`) REFERENCES `requidinadefejecext` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=INNODB DEFAULT CHARSET=utf8;
-
-CREATE TABLE `actfinsug` (
-  `id` INT(11) NOT NULL AUTO_INCREMENT,
-  `idRequisito` INT(11) NOT NULL,
-  `idFinalista` INT(11) NOT NULL,
-  `nombre` VARCHAR(45) NOT NULL,
-  `fechaDeEjecucion` DATE NOT NULL,
-  `fechaEjecutada` DATE DEFAULT NULL,
-  `responsable` VARCHAR(45) NOT NULL,
-  `contenido` VARCHAR(500) DEFAULT NULL,
-  `tipo` VARCHAR(45) DEFAULT NULL,
-  `estado` VARCHAR(45) DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  KEY `actfinsug_Requisito_idx` (`idRequisito`),
-  KEY `actfinsug_Finalista_idx` (`idFinalista`),
-  CONSTRAINT `actfinsug_Finalista` FOREIGN KEY (`idFinalista`) REFERENCES `finalista` (`idFinalista`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  CONSTRAINT `actfinsug_Requisito` FOREIGN KEY (`idRequisito`) REFERENCES `requidinadeffinalsug` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=INNODB DEFAULT CHARSET=utf8;
-
-
-CREATE TABLE `actfinext` (
-  `id` INT(11) NOT NULL AUTO_INCREMENT,
-  `idRequisito` INT(11) NOT NULL,
-  `idFinalista` INT(11) NOT NULL,
-  `nombre` VARCHAR(45) NOT NULL,
-  `fechaDeEjecucion` DATE NOT NULL,
-  `fechaEjecutada` DATE DEFAULT NULL,
-  `responsable` VARCHAR(45) NOT NULL,
-  `contenido` VARCHAR(500) DEFAULT NULL,
-  `tipo` VARCHAR(45) DEFAULT NULL,
-  `estado` VARCHAR(45) DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  KEY `actfinExt_Requisito_idx` (`idRequisito`),
-  KEY `actfinExt_Finalista_idx` (`idFinalista`),
-  CONSTRAINT `actfinExt_Finalista` FOREIGN KEY (`idFinalista`) REFERENCES `finalista` (`idFinalista`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  CONSTRAINT `actfinExt_Requisito` FOREIGN KEY (`idRequisito`) REFERENCES `requidinadefejecext` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=INNODB DEFAULT CHARSET=utf8;
-
-
-
 
 
 
