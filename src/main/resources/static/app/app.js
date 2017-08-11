@@ -26,6 +26,7 @@ angular.module('myApp', [
   'myApp.login',
   'myApp.login2',
   'myApp.login3',
+  'myApp.gestionDinamica',
   'services.listFactory',
   'myApp.version'
 ]).

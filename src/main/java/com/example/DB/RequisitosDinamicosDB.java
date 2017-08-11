@@ -223,7 +223,7 @@ public class RequisitosDinamicosDB {
 
     public List<RequisitoObligatorio>requisitosDinamicosPreviosDefinitivosSugeridos(int idContratante,int idCategoria)throws ClassNotFoundException, SQLException{
         List<RequisitoObligatorio>requisitoObligatorioList=new LinkedList<>();
-        String sql ="select ro.id,ro.idContratante,r.idCategoria, ro.idRequisito,r.requisito from requidinadefpresug as ro inner join requidinapresug as r where ro.idRequisito=r.id and ro.idContratante= ? and ro.idCategoria= ? ; ";
+        String sql ="select ro.id,ro.idContratante,r.idCategoria, ro.idRequisito,r.requisito,r.apodo from requidinadefpresug as ro inner join requidinapresug as r where ro.idRequisito=r.id and ro.idContratante= ? and ro.idCategoria= ? ; ";
         PreparedStatement ps = Conexion.conection().prepareStatement(sql);
         ps.setInt(1,idContratante);
         ps.setInt(2,idCategoria);
@@ -235,6 +235,7 @@ public class RequisitosDinamicosDB {
             ro.setIdCategoria(rs.getInt("idCategoria"));
             ro.setIdRequisito(rs.getInt("idRequisito"));
             ro.setDescripcion(rs.getString("requisito"));
+            ro.setApodo(rs.getString("apodo"));
             requisitoObligatorioList.add(ro);
         }
 
@@ -349,7 +350,7 @@ public class RequisitosDinamicosDB {
     }
     public List<RequisitoObligatorio>estadoPreviosSugeridosDinamicos(int idfinalista ,int idCategoria,int idContratante)throws SQLException,ClassNotFoundException{
         List<RequisitoObligatorio>requisitoObligatoriosLisT=new LinkedList<>();
-        String sql="select rdps.id,rps.requisito,rdps.idCategoria from finalista as f  inner join contratista as c inner join usuarios as u inner join requidinadefpresug as rdps inner join requidinapresug as rps  where  f.idContratista=c.idContratista and c.idContratista=u.idContratista and u.idCategoria=rdps.idCategoria and rdps.idRequisito=rps.id and u.idCategoria=? and f.idFinalista=? and rdps.idContratante= ? ;";
+        String sql="select rdps.id,rps.requisito,rdps.idCategoria,rps.apodo from finalista as f  inner join contratista as c inner join usuarios as u inner join requidinadefpresug as rdps inner join requidinapresug as rps  where  f.idContratista=c.idContratista and c.idContratista=u.idContratista and u.idCategoria=rdps.idCategoria and rdps.idRequisito=rps.id and u.idCategoria=? and f.idFinalista=? and rdps.idContratante= ? ;";
         PreparedStatement ps=Conexion.conection().prepareStatement(sql);
         ps.setInt(1,idCategoria);
         ps.setInt(2,idfinalista);
@@ -360,7 +361,9 @@ public class RequisitosDinamicosDB {
             requisitoObligatorio.setId(rs.getInt("id"));
             requisitoObligatorio.setDescripcion(rs.getString("requisito"));
             requisitoObligatorio.setIdCategoria(rs.getInt("idCategoria"));
+            requisitoObligatorio.setApodo(rs.getString("apodo"));
             requisitoObligatorio.setTipo("previoSugerido");
+
             requisitoObligatoriosLisT.add(requisitoObligatorio);
         }
         ps.close();

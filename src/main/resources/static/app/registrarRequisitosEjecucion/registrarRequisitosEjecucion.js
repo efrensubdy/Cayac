@@ -9,7 +9,7 @@ angular.module('myApp.registrarRequisitosEjecucion', ['ngRoute'])
   });
 }])
 
-.controller('registrarRequisitosEjecucionCtrl', ['$localStorage','$sessionStorage','$mdDialog','$rootScope', '$http', '$scope','previos','previosExtras','ejecucion','ejecucionExtras','finalizacion','finalizacionExtras','insertarPrevioSugerido','insertarPrevioExtra','insertarEjecucionSugerido','insertarEjecucionExtra','insertarFinalizacionSugerido','insertarFinalizacionExtra','defPreviosSugeridos','defPreviosExtras','defEjecucionSugeridos','defEjecucionExtras','defFinalizacionSugeridos','defFinalizacionExtras','dinamicosPrevios','dinamicosPreviosExtras','dinamicosEjecucion','dinamicosEjecucionExtras','dinamicosFinalizacion','dinamicosFinalizacionExtras','iDinamicoPrevioSugerido','iDinamicoPrevioExtra','iDinamicoEjecucionSugerido','iDinamicoEjecucionExtra','iDinamicoFinalizacionSugerido','iDinamicoFinalizacionExtra','defDinamicosPreviosSugeridos','defDinamicosPreviosExtras','defDinamicosEjecucionSugeridos','defDinamicosEjecucionExtras','defDinamicosFinalizacionSugeridos','defDinamicosFinalizacionExtras' ,'eliminarPS','eliminarPE','eliminarES','eliminarEE','eliminarFS','eliminarFE' ,'eliminarDPS','eliminarDPE','eliminarDES','eliminarDEE','eliminarDFS','eliminarDFE',function($localStorage,$sessionStorage,$mdDialog,$rootScope, $http, $scope,previos,previosExtras,ejecucion,ejecucionExtras,finalizacion,finalizacionExtras,insertarPrevioSugerido,insertarPrevioExtra,insertarEjecucionSugerido,insertarEjecucionExtra,insertarFinalizacionSugerido,insertarFinalizacionExtra,defPreviosSugeridos,defPreviosExtras,defEjecucionSugeridos,defEjecucionExtras,defFinalizacionSugeridos,defFinalizacionExtras,dinamicosPrevios,dinamicosPreviosExtras,dinamicosEjecucion,dinamicosEjecucionExtras,dinamicosFinalizacion,dinamicosFinalizacionExtras,iDinamicoPrevioSugerido,iDinamicoPrevioExtra,iDinamicoEjecucionSugerido,iDinamicoEjecucionExtra,iDinamicoFinalizacionSugerido,iDinamicoFinalizacionExtra,defDinamicosPreviosSugeridos,defDinamicosPreviosExtras,defDinamicosEjecucionSugeridos,defDinamicosEjecucionExtras,defDinamicosFinalizacionSugeridos,defDinamicosFinalizacionExtras,eliminarPS,eliminarPE,eliminarES,eliminarEE,eliminarFS,eliminarFE ,eliminarDPS,eliminarDPE,eliminarDES,eliminarDEE,eliminarDFS,eliminarDFE) {
+.controller('registrarRequisitosEjecucionCtrl', ['$localStorage','$sessionStorage','$mdDialog','$rootScope', '$http', '$scope','$q','previos','previosExtras','ejecucion','ejecucionExtras','finalizacion','finalizacionExtras','insertarPrevioSugerido','insertarPrevioExtra','insertarEjecucionSugerido','insertarEjecucionExtra','insertarFinalizacionSugerido','insertarFinalizacionExtra','defPreviosSugeridos','defPreviosExtras','defEjecucionSugeridos','defEjecucionExtras','defFinalizacionSugeridos','defFinalizacionExtras','dinamicosPrevios','dinamicosPreviosExtras','dinamicosEjecucion','dinamicosEjecucionExtras','dinamicosFinalizacion','dinamicosFinalizacionExtras','iDinamicoPrevioSugerido','iDinamicoPrevioExtra','iDinamicoEjecucionSugerido','iDinamicoEjecucionExtra','iDinamicoFinalizacionSugerido','iDinamicoFinalizacionExtra','defDinamicosPreviosSugeridos','defDinamicosPreviosExtras','defDinamicosEjecucionSugeridos','defDinamicosEjecucionExtras','defDinamicosFinalizacionSugeridos','defDinamicosFinalizacionExtras' ,'eliminarPS','eliminarPE','eliminarES','eliminarEE','eliminarFS','eliminarFE' ,'eliminarDPS','eliminarDPE','eliminarDES','eliminarDEE','eliminarDFS','eliminarDFE',function($localStorage,$sessionStorage,$mdDialog,$rootScope, $http, $scope,$q,previos,previosExtras,ejecucion,ejecucionExtras,finalizacion,finalizacionExtras,insertarPrevioSugerido,insertarPrevioExtra,insertarEjecucionSugerido,insertarEjecucionExtra,insertarFinalizacionSugerido,insertarFinalizacionExtra,defPreviosSugeridos,defPreviosExtras,defEjecucionSugeridos,defEjecucionExtras,defFinalizacionSugeridos,defFinalizacionExtras,dinamicosPrevios,dinamicosPreviosExtras,dinamicosEjecucion,dinamicosEjecucionExtras,dinamicosFinalizacion,dinamicosFinalizacionExtras,iDinamicoPrevioSugerido,iDinamicoPrevioExtra,iDinamicoEjecucionSugerido,iDinamicoEjecucionExtra,iDinamicoFinalizacionSugerido,iDinamicoFinalizacionExtra,defDinamicosPreviosSugeridos,defDinamicosPreviosExtras,defDinamicosEjecucionSugeridos,defDinamicosEjecucionExtras,defDinamicosFinalizacionSugeridos,defDinamicosFinalizacionExtras,eliminarPS,eliminarPE,eliminarES,eliminarEE,eliminarFS,eliminarFE ,eliminarDPS,eliminarDPE,eliminarDES,eliminarDEE,eliminarDFS,eliminarDFE) {
 
  $scope.flag=false;
          $scope.propertyName = 'nombreEmpresa';
@@ -22,7 +22,7 @@ angular.module('myApp.registrarRequisitosEjecucion', ['ngRoute'])
          $scope.banderaCategoria2=false;
          $scope.banderaCategoria3=false;
          $scope.banderaCategoria4=false;
-
+         var anotherDeferred = $q.defer();
          $scope.function1=function(){
              switch ($scope.idCategoria) {
                  case "1":
@@ -54,6 +54,7 @@ angular.module('myApp.registrarRequisitosEjecucion', ['ngRoute'])
 
 
          }
+
           $scope.showAlert = function(ev) {
                  $rootScope.listadoPrevioSugerido=previos.query({idContratante:$localStorage.contratanteLogeado.idContratante,idCategoria:$scope.idCategoria},function(result){
 
@@ -64,7 +65,6 @@ angular.module('myApp.registrarRequisitosEjecucion', ['ngRoute'])
                         else{
                            $rootScope.lonPrevio=false;
                         }
-
                  });
 
                  $rootScope.listadoPrevioExtra=previosExtras.query({idContratante:$localStorage.contratanteLogeado.idContratante,idCategoria:$scope.idCategoria},function(result){
@@ -123,39 +123,44 @@ angular.module('myApp.registrarRequisitosEjecucion', ['ngRoute'])
 
                  });
                  $rootScope.idCategoria=$scope.idCategoria;
-
                  $mdDialog.show({
-                       //Controlador del mensajes con operaciones definido en la parte de abajo
-                       controller: DialogController,
-                      //permite la comunicacion con el html que despliega el boton requisitos
-                      templateUrl: 'test/test6.html',
-                      parent: angular.element(document.body),
-                      targetEvent: ev,
-                      clickOutsideToClose:true,
-                       fullscreen: $scope.customFullscreen // Only for -xs, -sm breakpoints.
-                       })
+                                        //Controlador del mensajes con operaciones definido en la parte de abajo
+                                        controller: DialogController,
+                                       //permite la comunicacion con el html que despliega el boton requisitos
+                                       templateUrl: 'test/test6.html',
+                                       parent: angular.element(document.body),
+                                       targetEvent: ev,
+                                       clickOutsideToClose:true,
+                                        fullscreen: $scope.customFullscreen // Only for -xs, -sm breakpoints.
+                                        })
 
 
                };
+
          $scope.showAlert2 = function(ev) {
           $rootScope.listadoDinamicoPrevioSugerido=dinamicosPrevios.query({idContratante:$localStorage.contratanteLogeado.idContratante,idCategoria:$scope.idCategoria},function(result){
                       if(result.length!=0){
                                                $rootScope.lonPrevio=true;
+                                               //$localStorage.lenPrevio=true;
 
                                              }
                                              else{
                                                 $rootScope.lonPrevio=false;
+                                                //$localStorage.lenPrevio=false;
                                              }
 
           });
+
           $rootScope.listadoDinamicoPrevioExtra=dinamicosPreviosExtras.query({idContratante:$localStorage.contratanteLogeado.idContratante,idCategoria:$scope.idCategoria},function(result){
 
                      if(result.length!=0){
                                              $rootScope.lonPrevioEx=true;
+                                             $localStorage.lenEx=true;
 
                                             }
-                                            else{
+                     else{
                                               $rootScope.lonPrevioEx=false;
+                                               $localStorage.lenEx=false;
                                             }
           });
           $rootScope.listadoDinamicoEjecucionSugerido=dinamicosEjecucion.query({idContratante:$localStorage.contratanteLogeado.idContratante,idCategoria:$scope.idCategoria},function(result){
@@ -201,23 +206,17 @@ angular.module('myApp.registrarRequisitosEjecucion', ['ngRoute'])
 
           });
           $rootScope.idCategoria=$scope.idCategoria;
-
-
-                          $mdDialog.show({
-                                //Controlador del mensajes con operaciones definido en la parte de abajo
-                                controller: DialogController2,
-                               //permite la comunicacion con el html que despliega el boton requisitos
-                               templateUrl: 'test/requisitosDinamicos.html',
-                               parent: angular.element(document.body),
-                               targetEvent: ev,
-                               clickOutsideToClose:true,
-                                fullscreen: $scope.customFullscreen // Only for -xs, -sm breakpoints.
-                                })
-
-
-                        };
-
-
+          $mdDialog.show({
+                                          //Controlador del mensajes con operaciones definido en la parte de abajo
+                                          controller: DialogController2,
+                                         //permite la comunicacion con el html que despliega el boton requisitos
+                                         templateUrl: 'test/requisitosDinamicos.html',
+                                         parent: angular.element(document.body),
+                                         targetEvent: ev,
+                                         clickOutsideToClose:true,
+                                          fullscreen: $scope.customFullscreen // Only for -xs, -sm breakpoints.
+                                          })
+          };
           function DialogController($scope, $mdDialog, $rootScope,$http) {
                 $scope.listadoPrevioSugerido=$rootScope.listadoPrevioSugerido;
                 $scope.lonPrevio= $rootScope.lonPrevio;
@@ -1144,7 +1143,8 @@ angular.module('myApp.registrarRequisitosEjecucion', ['ngRoute'])
 
          function DialogController2($scope, $mdDialog, $rootScope,$http) {
             $scope.lonPrevio= $rootScope.lonPrevio;
-            console.log($scope.lonPrevioEx);
+            console.log($localStorage.lenEx);
+            console.log($localStorage.lenPrevio);
             $scope.lonPrevioEx=$rootScope.lonPrevioEx;
             $scope.lonEjec=$rootScope.lonEjec;
             $scope.lonEjecEx=$rootScope.lonEjecEx;

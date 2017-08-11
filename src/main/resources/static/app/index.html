@@ -79,6 +79,7 @@
                 <ul class="dropdown-menu">
 
                   <li><a class="text-primary" ng-show="bandera" href="#!/view10">Revision de Requisitos</a> </li>
+
                  <li><a class="text-primary"   ng-show="bandera" class="example" href="#!/view3">Registrar Requisitos</a> </li>
 
                 </ul>
@@ -106,6 +107,7 @@
                 <ul class="dropdown-menu">
                   <li><a class="text-primary"  ng-show="bandera" class="example" href="#!/ejecucionCNCE">Gestión Estatica</a> </li>
 
+
                 </ul>
               </li>
               <li role="separator" class="divider"></li>
@@ -128,8 +130,9 @@
             </button>
 
             <ul class="dropdown-menu">
-              <li><a class="text-primary"  ng-show="bandera2" href="#!/subirDocumentosEstaticos">Estaticos Ejecucion</a></li>
-
+              <li><a class="text-primary"  ng-show="banderaEjecucion" href="#!/subirDocumentosEstaticos">Estaticos Ejecucion</a></li>
+              <li role="separator" class="divider"></li>
+              <li><a class="text-primary"  ng-show="banderaEjecucion" class="example" href="#!/gestionDinamica">Gestión Dinámica</a> </li>
             </ul>
           </div>
         </div>
@@ -215,6 +218,7 @@
 <script src="registrarRequisitosEjecucion/registrarRequisitosEjecucion.js"></script>
 <script src="subirDocumentosEstaticos/subirDocumentosEstaticos.js"></script>
 <script src="ejecucionCNCE/ejecucionCNCE.js"></script>
+<script src="gestionDinamica/gestionDinamica.js"></script>
 <script src="login/login.js"></script>
 <script src="test/test.js"></script>
 <script src="login2/login2.js"></script>
