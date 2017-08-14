@@ -185,6 +185,7 @@ public class DocumentosEjecucionDB {
             File q=new File("src/main/resources/static/app/Repository/Contratista/"+documentoPrevio.getIdContratista()+"/"+documentoPrevio.getIdRequiPrevio()+"estaticoPrevioSugerido" +"."+documentoPrevio.getTipo());
             if (q.isFile()) {
                 FileUtils.deleteQuietly(q);
+
             }
             String sql = "UPDATE  documentosestaticospreviosobli set fechaActualizacion = ? where idRequisito = ? and idFinalista= ?";
             Connection con =  Conexion.conection();

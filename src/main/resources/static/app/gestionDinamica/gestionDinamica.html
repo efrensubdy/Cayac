@@ -16,18 +16,18 @@
                     <th class="w3-center">Requisito</th>
                     <th class="w3-center">Análisis</th>
                 </tr>
-                <tr  class="w3-hover-indigo" ng-repeat="todo in previosSugeridos | orderBy:propertyName:reverse">
+                <tr  class="w3-hover-green" ng-repeat="todo in previosSugeridos | orderBy:propertyName:reverse">
                     <td class="w3-center"><b>{{todo.descripcion}}</b></td>
                     <td class="w3-center">
-                        <md-button button class="md-primary md-raised" ng-click="gestionar(todo,$event)">
+                        <md-button button class="md-primary md-raised" ng-click="gestionarPrevios(todo,$event)">
                             Gestionar
                         </md-button>
                     </td>
                 </tr>
-                <tr  class="w3-hover-indigo" ng-repeat="todo in previosExtras | orderBy:propertyName:reverse">
+                <tr  class="w3-hover-green" ng-repeat="todo in previosExtras | orderBy:propertyName:reverse">
                     <td class="w3-center"><b>{{todo.descripcion}}</b></td>
                     <td class="w3-center">
-                        <md-button button class="md-primary md-raised" ng-click="gestionar(todo,$event)">
+                        <md-button button class="md-primary md-raised" ng-click="gestionarPrevios(todo,$event)">
                             Gestionar
                         </md-button>
                     </td>
@@ -46,7 +46,7 @@
                     <th class="w3-center">Requisito</th>
                     <th class="w3-center">Análisis</th>
                 </tr>
-                <tr  class="w3-hover-indigo" ng-repeat="todo in ejecucionSugeridos | orderBy:propertyName:reverse">
+                <tr  class="w3-hover-green" ng-repeat="todo in ejecucionSugeridos | orderBy:propertyName:reverse">
                     <td class="w3-center"><b>{{todo.descripcion}}</b></td>
                     <td class="w3-center">
                         <md-button button class="md-primary md-raised" ng-click="gestionar(todo,$event)">
@@ -54,7 +54,7 @@
                         </md-button>
                     </td>
                 </tr>
-                <tr  class="w3-hover-indigo" ng-repeat="todo in ejecucionExtras | orderBy:propertyName:reverse">
+                <tr  class="w3-hover-green" ng-repeat="todo in ejecucionExtras | orderBy:propertyName:reverse">
                     <td class="w3-center"><b>{{todo.descripcion}}</b></td>
                     <td class="w3-center">
                         <md-button button class="md-primary md-raised" ng-click="gestionar(todo,$event)">
@@ -76,7 +76,7 @@
                     <th class="w3-center">Requisito</th>
                     <th class="w3-center">Análisis</th>
                 </tr>
-                <tr  class="w3-hover-indigo" ng-repeat="todo in finalizacionSugeridos | orderBy:propertyName:reverse">
+                <tr  class="w3-hover-green" ng-repeat="todo in finalizacionSugeridos | orderBy:propertyName:reverse">
                     <td class="w3-center"><b>{{todo.descripcion}}</b></td>
                     <td class="w3-center">
                         <md-button button class="md-primary md-raised" ng-click="gestionar(todo,$event)">
@@ -84,7 +84,7 @@
                         </md-button>
                     </td>
                 </tr>
-                <tr  class="w3-hover-indigo" ng-repeat="todo in finalizacionExtras | orderBy:propertyName:reverse">
+                <tr  class="w3-hover-green" ng-repeat="todo in finalizacionExtras | orderBy:propertyName:reverse">
                     <td class="w3-center"><b>{{todo.descripcion}}</b></td>
                     <td class="w3-center">
                         <md-button button class="md-primary md-raised" ng-click="gestionar(todo,$event)">

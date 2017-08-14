@@ -1,0 +1,47 @@
+<md-dialog id="attribute-dialog" aria-label="Requisitos">
+    <form>
+        <md-toolbar>
+            <div class="md-toolbar-tools">
+                <h1>Documentos</h1>
+                <span flex></span>
+                <md-button class="md-icon-button" ng-click="cancel()">
+                    <md-icon md-font-library="material-icons">highlight_off</md-icon>
+                </md-button>
+            </div>
+        </md-toolbar>
+        <md-dialog-content>
+            <md-tabs md-dynamic-height md-border-bottom>
+                <md-tab label="Subir Documentos">
+                    <md-content class="md-padding">
+                        <div class="md-dialog-content">
+                            <label>{{item.apodo}}</label>
+                            <label class="control-label">Select File</label>
+                            <input id="input-1" type="file" class="file">
+
+                        </div>
+
+                    </md-content>
+
+
+                </md-tab>
+                <md-tab label="Historial Documental">
+                    <md-content class="md-padding">
+                        <div class="md-dialog-content">
+                            <label>{{item.apodo}}</label>
+                        </div>
+
+                    </md-content>
+
+
+                </md-tab>
+
+            </md-tabs>
+        </md-dialog-content>
+
+
+
+
+    </form>
+
+
+</md-dialog>

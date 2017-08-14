@@ -58,4 +58,61 @@ $scope.function1=function(){
 
 
    }
-}]);
+   $scope.gestionarPrevios=function(item,ev){
+    console.log(item)
+    if (item.id ==2){
+    console.log("Soy Matriz de Peligros ");
+
+    }
+    else{
+    console.log("Cargue normal modofocko");
+    $rootScope.item=item;
+    $mdDialog.show({
+           //Controlador del mensajes con operaciones definido en la parte de abajo
+           controller: DialogController,
+                             // permite la comunicacion con el html que despliega el boton requisitos
+           templateUrl: 'test/documentosPreviosCargueNormal.html',
+           parent: angular.element(document.body),
+           targetEvent: ev,
+           clickOutsideToClose:true,
+           fullscreen: $scope.customFullscreen // Only for -xs, -sm breakpoints.
+     })
+
+
+    }
+
+   }
+   function DialogController($scope, $mdDialog, $rootScope,$http){
+    $scope.hide = function() {
+                   $mdDialog.hide();
+                };
+                                                        //funcion para cerral el mensaje
+    $scope.cancel = function() {
+                    $mdDialog.cancel();
+                 };
+
+
+   $scope.item=$rootScope.item;
+
+   }
+}])
+.directive('fileModel', ['$parse', function ($parse) {
+      return {
+             restrict: 'A',
+             link: function(scope, element, attrs) {
+                 var model, modelSetter;
+
+                 attrs.$observe('fileModel', function(fileModel){
+                     model = $parse(attrs.fileModel);
+                     modelSetter = model.assign;
+                 });
+
+                 element.bind('change', function(){
+                     scope.$apply(function(){
+                         modelSetter(scope.$parent, element[0].files[0]);
+                     });
+                 });
+             }
+         };
+
+ }]);
