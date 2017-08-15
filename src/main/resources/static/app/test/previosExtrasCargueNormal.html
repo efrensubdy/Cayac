@@ -15,10 +15,10 @@
                     <md-content class="md-padding">
                         <div class="md-dialog-content">
 
-                            <div ng-controller = "gestionDinamicaCtrl">
+                            <div ng-controller = "subirDocumentosEstaticosCtrl">
                                 <label>{{item.apodo}}</label>
                                 <input type="file" file-model="myDocSugeridoPrevio"  class="form-control" id ="myFileField" />
-                                <button type="button" class="w3-btn w3-blue" ng-click="agregarDocumentoPrevio(myDocSugeridoPrevio,item)" ng-model="tablita">Subir</button>
+                                <button type="button" class="w3-btn w3-blue" ng-click="agregarEstaticosSugeridosPrevios($event,todo)" ng-model="tablita">Subir</button>
                             </div>
 
                         </div>
@@ -40,11 +40,5 @@
 
             </md-tabs>
         </md-dialog-content>
-
-
-
-
     </form>
-
-
 </md-dialog>

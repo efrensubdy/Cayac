@@ -162,7 +162,7 @@ public class DocumentosEjecucionDB {
             Connection con = Conexion.conection();
             documentoPrevio.setContenido("src/main/resources/static/app/Repository/Contratista/" + documentoPrevio.getIdContratista());
             File f=documentoPrevio.getFile();
-            File q=new File("src/main/resources/static/app/Repository/Contratista/"+documentoPrevio.getIdContratista()+"/"+documentoPrevio.getIdRequiPrevio()+"estaticoPrevioSugerido" +"."+documentoPrevio.getTipo());
+            File q=new File("src/main/resources/static/app/Repository/Contratista/"+documentoPrevio.getIdContratista()+"/estatico/"+documentoPrevio.getIdRequiPrevio()+"estaticoPrevioSugerido" +"."+documentoPrevio.getTipo());
             FileUtils.moveFile(f,q);
             System.out.println(f.getName());
             PreparedStatement ps = con.prepareStatement(sql);
@@ -182,7 +182,7 @@ public class DocumentosEjecucionDB {
             java.sql.Date date = new java.sql.Date(utilDate.getTime());
             String fileType = getFileExtension(documentoPrevio.getFile());
             documentoPrevio.setTipo(fileType);
-            File q=new File("src/main/resources/static/app/Repository/Contratista/"+documentoPrevio.getIdContratista()+"/"+documentoPrevio.getIdRequiPrevio()+"estaticoPrevioSugerido" +"."+documentoPrevio.getTipo());
+            File q=new File("src/main/resources/static/app/Repository/Contratista/"+documentoPrevio.getIdContratista()+"/estatico/"+documentoPrevio.getIdRequiPrevio()+"estaticoPrevioSugerido" +"."+documentoPrevio.getTipo());
             if (q.isFile()) {
                 FileUtils.deleteQuietly(q);
 
@@ -197,7 +197,7 @@ public class DocumentosEjecucionDB {
             con.close();
             File f=documentoPrevio.getFile();
             System.out.println("idContratista "+documentoPrevio.getIdContratista());
-            File y=new File("src/main/resources/static/app/Repository/Contratista/"+documentoPrevio.getIdContratista()+"/"+documentoPrevio.getIdRequiPrevio()+"estaticoPrevioSugerido" +"."+documentoPrevio.getTipo());
+            File y=new File("src/main/resources/static/app/Repository/Contratista/"+documentoPrevio.getIdContratista()+"/estatico/"+documentoPrevio.getIdRequiPrevio()+"estaticoPrevioSugerido" +"."+documentoPrevio.getTipo());
             FileUtils.moveFile(f,y);
 
         }
@@ -220,7 +220,7 @@ public class DocumentosEjecucionDB {
             Connection con = Conexion.conection();
             documentoPrevio.setContenido("src/main/resources/static/app/Repository/Contratista/" + documentoPrevio.getIdContratista());
             File f=documentoPrevio.getFile();
-            File q=new File("src/main/resources/static/app/Repository/Contratista/"+documentoPrevio.getIdContratista()+"/"+documentoPrevio.getIdRequiPrevio()+"estaticoPrevioExtra" +"."+documentoPrevio.getTipo());
+            File q=new File("src/main/resources/static/app/Repository/Contratista/"+documentoPrevio.getIdContratista()+"/estatico/"+documentoPrevio.getIdRequiPrevio()+"estaticoPrevioExtra" +"."+documentoPrevio.getTipo());
             FileUtils.moveFile(f,q);
             System.out.println(f.getName());
             PreparedStatement ps = con.prepareStatement(sql);
@@ -240,7 +240,7 @@ public class DocumentosEjecucionDB {
             java.sql.Date date = new java.sql.Date(utilDate.getTime());
             String fileType = getFileExtension(documentoPrevio.getFile());
             documentoPrevio.setTipo(fileType);
-            File q=new File("src/main/resources/static/app/Repository/Contratista/"+documentoPrevio.getIdContratista()+"/"+documentoPrevio.getIdRequiPrevio()+"estaticoPrevioExtra" +"."+documentoPrevio.getTipo());
+            File q=new File("src/main/resources/static/app/Repository/Contratista/"+documentoPrevio.getIdContratista()+"/estatico/"+documentoPrevio.getIdRequiPrevio()+"estaticoPrevioExtra" +"."+documentoPrevio.getTipo());
             if (q.isFile()) {
                 FileUtils.deleteQuietly(q);
             }
@@ -254,7 +254,7 @@ public class DocumentosEjecucionDB {
             con.close();
             File f=documentoPrevio.getFile();
             System.out.println("idContratista "+documentoPrevio.getIdContratista());
-            File y=new File("src/main/resources/static/app/Repository/Contratista/"+documentoPrevio.getIdContratista()+"/"+documentoPrevio.getIdRequiPrevio()+"estaticoPrevioExtra" +"."+documentoPrevio.getTipo());
+            File y=new File("src/main/resources/static/app/Repository/Contratista/"+documentoPrevio.getIdContratista()+"/estatico/"+documentoPrevio.getIdRequiPrevio()+"estaticoPrevioExtra" +"."+documentoPrevio.getTipo());
             FileUtils.moveFile(f,y);
 
         }
@@ -274,7 +274,7 @@ public class DocumentosEjecucionDB {
             Connection con = Conexion.conection();
             documentoEjecucion.setContenido("src/main/resources/static/app/Repository/Contratista/" + documentoEjecucion.getIdContratista());
             File f=documentoEjecucion.getFile();
-            File q=new File("src/main/resources/static/app/Repository/Contratista/"+documentoEjecucion.getIdContratista()+"/"+documentoEjecucion.getIdRequiPrevio()+"estaticoEjecucionSugerido" +"."+documentoEjecucion.getTipo());
+            File q=new File("src/main/resources/static/app/Repository/Contratista/"+documentoEjecucion.getIdContratista()+"/estatico/"+documentoEjecucion.getIdRequiPrevio()+"estaticoEjecucionSugerido" +"."+documentoEjecucion.getTipo());
             FileUtils.moveFile(f,q);
             System.out.println(f.getName());
             PreparedStatement ps = con.prepareStatement(sql);
@@ -294,7 +294,7 @@ public class DocumentosEjecucionDB {
             java.sql.Date date = new java.sql.Date(utilDate.getTime());
             String fileType = getFileExtension(documentoEjecucion.getFile());
             documentoEjecucion.setTipo(fileType);
-            File q=new File("src/main/resources/static/app/Repository/Contratista/"+documentoEjecucion.getIdContratista()+"/"+documentoEjecucion.getIdRequiPrevio()+"estaticoEjecucionSugerido" +"."+documentoEjecucion.getTipo());
+            File q=new File("src/main/resources/static/app/Repository/Contratista/"+documentoEjecucion.getIdContratista()+"/estatico/"+documentoEjecucion.getIdRequiPrevio()+"estaticoEjecucionSugerido" +"."+documentoEjecucion.getTipo());
             if (q.isFile()) {
                 FileUtils.deleteQuietly(q);
             }
@@ -308,7 +308,7 @@ public class DocumentosEjecucionDB {
             con.close();
             File f=documentoEjecucion.getFile();
             System.out.println("idContratista "+documentoEjecucion.getIdContratista());
-            File y=new File("src/main/resources/static/app/Repository/Contratista/"+documentoEjecucion.getIdContratista()+"/"+documentoEjecucion.getIdRequiPrevio()+"estaticoEjecucionSugerido" +"."+documentoEjecucion.getTipo());
+            File y=new File("src/main/resources/static/app/Repository/Contratista/"+documentoEjecucion.getIdContratista()+"/estatico/"+documentoEjecucion.getIdRequiPrevio()+"estaticoEjecucionSugerido" +"."+documentoEjecucion.getTipo());
             FileUtils.moveFile(f,y);
 
         }
@@ -330,7 +330,7 @@ public class DocumentosEjecucionDB {
             Connection con = Conexion.conection();
             documentoEjecucion.setContenido("src/main/resources/static/app/Repository/Contratista/" + documentoEjecucion.getIdContratista());
             File f=documentoEjecucion.getFile();
-            File q=new File("src/main/resources/static/app/Repository/Contratista/"+documentoEjecucion.getIdContratista()+"/"+documentoEjecucion.getIdRequiPrevio()+"estaticoEjecucionExtra" +"."+documentoEjecucion.getTipo());
+            File q=new File("src/main/resources/static/app/Repository/Contratista/"+documentoEjecucion.getIdContratista()+"/estatico/"+documentoEjecucion.getIdRequiPrevio()+"estaticoEjecucionExtra" +"."+documentoEjecucion.getTipo());
             FileUtils.moveFile(f,q);
             System.out.println(f.getName());
             PreparedStatement ps = con.prepareStatement(sql);
@@ -350,7 +350,7 @@ public class DocumentosEjecucionDB {
             java.sql.Date date = new java.sql.Date(utilDate.getTime());
             String fileType = getFileExtension(documentoEjecucion.getFile());
             documentoEjecucion.setTipo(fileType);
-            File q=new File("src/main/resources/static/app/Repository/Contratista/"+documentoEjecucion.getIdContratista()+"/"+documentoEjecucion.getIdRequiPrevio()+"estaticoEjecucionExtra" +"."+documentoEjecucion.getTipo());
+            File q=new File("src/main/resources/static/app/Repository/Contratista/"+documentoEjecucion.getIdContratista()+"/estatico/"+documentoEjecucion.getIdRequiPrevio()+"estaticoEjecucionExtra" +"."+documentoEjecucion.getTipo());
             if (q.isFile()) {
                 FileUtils.deleteQuietly(q);
             }
@@ -364,7 +364,7 @@ public class DocumentosEjecucionDB {
             con.close();
             File f=documentoEjecucion.getFile();
             System.out.println("idContratista "+documentoEjecucion.getIdContratista());
-            File y=new File("src/main/resources/static/app/Repository/Contratista/"+documentoEjecucion.getIdContratista()+"/"+documentoEjecucion.getIdRequiPrevio()+"estaticoEjecucionExtra" +"."+documentoEjecucion.getTipo());
+            File y=new File("src/main/resources/static/app/Repository/Contratista/"+documentoEjecucion.getIdContratista()+"/estatico/"+documentoEjecucion.getIdRequiPrevio()+"estaticoEjecucionExtra" +"."+documentoEjecucion.getTipo());
             FileUtils.moveFile(f,y);
 
         }
@@ -382,7 +382,7 @@ public class DocumentosEjecucionDB {
             Connection con = Conexion.conection();
             documentoFinalizacion.setContenido("src/main/resources/static/app/Repository/Contratista/" + documentoFinalizacion.getIdContratista());
             File f=documentoFinalizacion.getFile();
-            File q=new File("src/main/resources/static/app/Repository/Contratista/"+documentoFinalizacion.getIdContratista()+"/"+documentoFinalizacion.getIdRequiPrevio()+"estaticoFinalizacionSugerido" +"."+documentoFinalizacion.getTipo());
+            File q=new File("src/main/resources/static/app/Repository/Contratista/"+documentoFinalizacion.getIdContratista()+"/estatico/"+documentoFinalizacion.getIdRequiPrevio()+"estaticoFinalizacionSugerido" +"."+documentoFinalizacion.getTipo());
             FileUtils.moveFile(f,q);
             System.out.println(f.getName());
             PreparedStatement ps = con.prepareStatement(sql);
@@ -402,7 +402,7 @@ public class DocumentosEjecucionDB {
             java.sql.Date date = new java.sql.Date(utilDate.getTime());
             String fileType = getFileExtension(documentoFinalizacion.getFile());
             documentoFinalizacion.setTipo(fileType);
-            File q=new File("src/main/resources/static/app/Repository/Contratista/"+documentoFinalizacion.getIdContratista()+"/"+documentoFinalizacion.getIdRequiPrevio()+"estaticoFinalizacionSugerido" +"."+documentoFinalizacion.getTipo());
+            File q=new File("src/main/resources/static/app/Repository/Contratista/"+documentoFinalizacion.getIdContratista()+"/estatico/"+documentoFinalizacion.getIdRequiPrevio()+"estaticoFinalizacionSugerido" +"."+documentoFinalizacion.getTipo());
             if (q.isFile()) {
                 FileUtils.deleteQuietly(q);
             }
@@ -416,7 +416,7 @@ public class DocumentosEjecucionDB {
             con.close();
             File f=documentoFinalizacion.getFile();
             System.out.println("idContratista "+documentoFinalizacion.getIdContratista());
-            File y=new File("src/main/resources/static/app/Repository/Contratista/"+documentoFinalizacion.getIdContratista()+"/"+documentoFinalizacion.getIdRequiPrevio()+"estaticoFinalizacionSugerido" +"."+documentoFinalizacion.getTipo());
+            File y=new File("src/main/resources/static/app/Repository/Contratista/"+documentoFinalizacion.getIdContratista()+"/estatico/"+documentoFinalizacion.getIdRequiPrevio()+"estaticoFinalizacionSugerido" +"."+documentoFinalizacion.getTipo());
             FileUtils.moveFile(f,y);
 
         }
@@ -433,7 +433,7 @@ public class DocumentosEjecucionDB {
             Connection con = Conexion.conection();
             documentoFinalizacion.setContenido("src/main/resources/static/app/Repository/Contratista/" + documentoFinalizacion.getIdContratista());
             File f=documentoFinalizacion.getFile();
-            File q=new File("src/main/resources/static/app/Repository/Contratista/"+documentoFinalizacion.getIdContratista()+"/"+documentoFinalizacion.getIdRequiPrevio()+"estaticoFinalizacionExtra" +"."+documentoFinalizacion.getTipo());
+            File q=new File("src/main/resources/static/app/Repository/Contratista/"+documentoFinalizacion.getIdContratista()+"/estatico/"+documentoFinalizacion.getIdRequiPrevio()+"estaticoFinalizacionExtra" +"."+documentoFinalizacion.getTipo());
             FileUtils.moveFile(f,q);
             System.out.println(f.getName());
             PreparedStatement ps = con.prepareStatement(sql);
@@ -453,7 +453,7 @@ public class DocumentosEjecucionDB {
             java.sql.Date date = new java.sql.Date(utilDate.getTime());
             String fileType = getFileExtension(documentoFinalizacion.getFile());
             documentoFinalizacion.setTipo(fileType);
-            File q=new File("src/main/resources/static/app/Repository/Contratista/"+documentoFinalizacion.getIdContratista()+"/"+documentoFinalizacion.getIdRequiPrevio()+"estaticoFinalizacionExtra" +"."+documentoFinalizacion.getTipo());
+            File q=new File("src/main/resources/static/app/Repository/Contratista/"+documentoFinalizacion.getIdContratista()+"/estatico/"+documentoFinalizacion.getIdRequiPrevio()+"estaticoFinalizacionExtra" +"."+documentoFinalizacion.getTipo());
             if (q.isFile()) {
                 FileUtils.deleteQuietly(q);
             }
@@ -467,7 +467,7 @@ public class DocumentosEjecucionDB {
             con.close();
             File f=documentoFinalizacion.getFile();
             System.out.println("idContratista "+documentoFinalizacion.getIdContratista());
-            File y=new File("src/main/resources/static/app/Repository/Contratista/"+documentoFinalizacion.getIdContratista()+"/"+documentoFinalizacion.getIdRequiPrevio()+"estaticoFinalizacionExtra" +"."+documentoFinalizacion.getTipo());
+            File y=new File("src/main/resources/static/app/Repository/Contratista/"+documentoFinalizacion.getIdContratista()+"/estatico/"+documentoFinalizacion.getIdRequiPrevio()+"estaticoFinalizacionExtra" +"."+documentoFinalizacion.getTipo());
             FileUtils.moveFile(f,y);
 
         }

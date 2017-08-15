@@ -11,7 +11,7 @@ import java.util.List;
  * Interface que define todos los metodos que permiten administrar los Finalistas
  */
 public interface AdministradorDeFinalistas {
-    public void InsertarFinalista(Finalista finalista)throws SQLException,ClassNotFoundException;
+    public void InsertarFinalista(Finalista finalista)throws SQLException,ClassNotFoundException,IOException;
     public void InsertarManual(Contratista con)throws SQLException,ClassNotFoundException,IOException;
     public void insertarPrevioSugerido(RequisitoObligatorio nuevoPrevioSugerido)throws SQLException,ClassNotFoundException;
     public void insertarPrevioExtra(RequisitoExtra nuevoPrevioExtra)throws SQLException,ClassNotFoundException;

@@ -18,7 +18,7 @@ public class ManejoDeFinalistaBD implements AdministradorDeFinalistas{
     @Autowired
     public FinalistDB finalistDB;
     @Override
-    public void InsertarFinalista(Finalista finalista) throws SQLException, ClassNotFoundException {
+    public void InsertarFinalista(Finalista finalista) throws SQLException, ClassNotFoundException,IOException {
         finalistDB.insertarFinalista(finalista);
     }
 

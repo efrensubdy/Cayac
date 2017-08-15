@@ -9,7 +9,7 @@ angular.module('myApp.gestionDinamica', ['ngRoute'])
   });
 }])
 
-.controller('gestionDinamicaCtrl', ['$scope','$log','$rootScope','$localStorage','$sessionStorage','$mdDialog', 'estadoDinamicosPreviosSugeridos','estadoDinamicosPreviosExtras', 'estadoDinamicosEjecucionSugeridos', 'estadoDinamicosEjecucionExtras', 'estadoDinamicosFinalizacionSugeridos', 'estadoDinamicosFinalizacionExtras',function($scope,$log,$rootScope,$localStorage,$sessionStorage,$mdDialog, estadoDinamicosPreviosSugeridos,estadoDinamicosPreviosExtras, estadoDinamicosEjecucionSugeridos, estadoDinamicosEjecucionExtras, estadoDinamicosFinalizacionSugeridos, estadoDinamicosFinalizacionExtras) {
+.controller('gestionDinamicaCtrl', ['$scope','$log','$rootScope','$localStorage','$sessionStorage','$mdDialog', 'estadoDinamicosPreviosSugeridos','estadoDinamicosPreviosExtras', 'estadoDinamicosEjecucionSugeridos', 'estadoDinamicosEjecucionExtras', 'estadoDinamicosFinalizacionSugeridos', 'estadoDinamicosFinalizacionExtras','fileUpload',function($scope,$log,$rootScope,$localStorage,$sessionStorage,$mdDialog, estadoDinamicosPreviosSugeridos,estadoDinamicosPreviosExtras, estadoDinamicosEjecucionSugeridos, estadoDinamicosEjecucionExtras, estadoDinamicosFinalizacionSugeridos, estadoDinamicosFinalizacionExtras,fileUpload) {
 
  $scope.options = [
             { id: 1, name: 'SOPORTES PREVIOS AL INICIO DEL CONTRATO' },
@@ -77,10 +77,45 @@ $scope.function1=function(){
            clickOutsideToClose:true,
            fullscreen: $scope.customFullscreen // Only for -xs, -sm breakpoints.
      })
+     }
+     }
+     $scope.gestionarPrevios=function(item,ev){
+         console.log(item)
+         if (item.id ==2){
+         console.log("Soy Matriz de Peligros ");
+
+         }
+         else{
+         console.log("Cargue normal modofocko");
+         $rootScope.item=item;
+         $mdDialog.show({
+                //Controlador del mensajes con operaciones definido en la parte de abajo
+                controller: DialogController,
+                                  // permite la comunicacion con el html que despliega el boton requisitos
+                templateUrl: 'test/documentosPreviosCargueNormal.html',
+                parent: angular.element(document.body),
+                targetEvent: ev,
+                clickOutsideToClose:true,
+                fullscreen: $scope.customFullscreen // Only for -xs, -sm breakpoints.
+          })
+
 
 
     }
 
+   }
+   $scope.gestionarPreviosExtras=function(item,ev){
+        console.log(item);
+        $mdDialog.show({
+                        //Controlador del mensajes con operaciones definido en la parte de abajo
+                        controller: DialogController,
+                                          // permite la comunicacion con el html que despliega el boton requisitos
+                        templateUrl: 'test/previosExtrasCargueNormal.html',
+                        parent: angular.element(document.body),
+                        targetEvent: ev,
+                        clickOutsideToClose:true,
+                        fullscreen: $scope.customFullscreen // Only for -xs, -sm breakpoints.
+                  })
    }
    function DialogController($scope, $mdDialog, $rootScope,$http){
     $scope.hide = function() {
@@ -93,6 +128,13 @@ $scope.function1=function(){
 
 
    $scope.item=$rootScope.item;
+   $scope.agregarDocumentoPrevio=function(file,item){
+   console.log(file);
+   console.log(item);
+     var url= "http://localhost:8080/app/docuDinaPre/"+$localStorage.userLogeado.idFinalista+"/"+item.id+"/"+$localStorage.userLogeado.idContratista;
+      fileUpload.uploadFileToUrl(file, url);
+
+   }
 
    }
 }])

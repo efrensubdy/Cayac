@@ -632,7 +632,17 @@ CREATE TABLE `requidinadeffinalext` (
   CONSTRAINT `requidinadeffinalext_Requisito` FOREIGN KEY (`idRequisito`) REFERENCES `requidinafinalext` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=INNODB DEFAULT CHARSET=utf8;
 
-
+CREATE TABLE `documentosDinamicosPrevios` (
+  `id` INT(11) NOT NULL AUTO_INCREMENT,
+  `idRequisito` INT(11) NOT NULL,
+  `idFinalista` INT(11) NOT NULL,
+  `fechaCreacion` DATE NOT NULL,
+  `fechaActualizacion` DATE NOT NULL,
+  `tipo` VARCHAR(45) NOT NULL,
+  `estado` VARCHAR(45) NOT NULL,
+  `contenido` VARCHAR(500) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=INNODB DEFAULT CHARSET=utf8;
 
 
 -- create Admins ---

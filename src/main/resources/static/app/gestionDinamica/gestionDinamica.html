@@ -27,7 +27,7 @@
                 <tr  class="w3-hover-green" ng-repeat="todo in previosExtras | orderBy:propertyName:reverse">
                     <td class="w3-center"><b>{{todo.descripcion}}</b></td>
                     <td class="w3-center">
-                        <md-button button class="md-primary md-raised" ng-click="gestionarPrevios(todo,$event)">
+                        <md-button button class="md-primary md-raised" ng-click="gestionarPreviosExtras(todo,$event)">
                             Gestionar
                         </md-button>
                     </td>

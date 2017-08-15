@@ -4,6 +4,7 @@ import com.example.Models.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.io.File;
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -33,7 +34,7 @@ public class FinalistDB {
     public FinalistDB()throws SQLException,ClassNotFoundException{
 
     }
-    public void insertarFinalista(Finalista finalista)throws SQLException,ClassNotFoundException{
+    public void insertarFinalista(Finalista finalista)throws SQLException,ClassNotFoundException,IOException{
         java.util.Date utilDate = new Date();
         java.sql.Date date = new java.sql.Date(utilDate.getTime());
         String sql = "INSERT INTO finalista (idContratista,fechaCreacion, fechaModificacion, estado)   VALUES(?,?,?,?)";
@@ -47,8 +48,30 @@ public class FinalistDB {
         ps.execute();
         ps.close();
         con.close();
-        int idFinalista=traerIdFinalista(finalista.getIdContratista());
+        File file = new File("src/main/resources/static/app/Repository/Contratista/"+ finalista.getIdContratista()+"/estatico");
+        if(!file.canWrite()){ // check if user have write permissions
+            if(!(file.exists() && file.isDirectory())){
+                if(file.mkdirs())
+                    System.out.println("Success ! Folders created.");
+                else
+                    System.out.println("Failure ! Folders not created.");
+            }
+        }else{
+            System.out.println("PERMISSION DENIED");
+        }
+        File file2 = new File("src/main/resources/static/app/Repository/Contratista/"+ finalista.getIdContratista()+"/dinamico");
+        if(!file2.canWrite()){ // check if user have write permissions
+            if(!(file2.exists() && file2.isDirectory())){
+                if(file2.mkdirs())
+                    System.out.println("Success ! Folders created.");
+                else
+                    System.out.println("Failure ! Folders not created.");
+            }
+        }else{
+            System.out.println("PERMISSION DENIED");
+        }
 
+        int idFinalista=traerIdFinalista(finalista.getIdContratista());
         updateContrato(idFinalista,finalista.getIdContrato());
     }
     public void  updateContrato(int idFinalista,int idContrato)throws SQLException,ClassNotFoundException{
@@ -583,7 +606,7 @@ public class FinalistDB {
 
     public List<RequisitoExtra>estadoRequisitosPreviosExtras(int idContratante ,int idCategoria,int idFinalista)throws SQLException,ClassNotFoundException{
         List<RequisitoExtra>requisitosExtrasLisT=new LinkedList<>();
-        String sql="select DISTINCT  re.idrequisitosdeejecuiondefextrasestaticosprevio,r.idRequisitosDeEjecuionSugeridosextrasPrevio,r.requisito,d.estado from (requisitosdeejecuiondefextrasestaticosprevio as re inner join requisitosdeejecuionextrasestaticosprevio as r on  re.idRequisito =r.idRequisitosDeEjecuionSugeridosextrasPrevio and re.idCategoria= ? and re.idContratante= ?) left join documentosestaticospreviosextras as d  on re.idCategoria= ? and d.idFinalista= ? and re.idRequisito=d.idRequisito\n" +
+        String sql="select DISTINCT  re.idrequisitosdeejecuiondefextrasestaticosprevio,r.idRequisitosDeEjecuionSugeridosextrasPrevio,r.requisito,d.estado from (requisitosdeejecuiondefextrasestaticosprevio as re inner join requisitosdeejecuionextrasestaticosprevio as r on  re.idRequisito =r.idRequisitosDeEjecuionSugeridosextrasPrevio and re.idCategoria= ? and re.idContratante= ?) left join documentosestaticospreviosextras as d  on re.idCategoria= ? and d.idFinalista= ? and re.idrequisitosdeejecuiondefextrasestaticosprevio=d.idRequisito\n" +
                 "where d.idFinalista is  null or d.idFinalista is not null;";
         PreparedStatement ps=Conexion.conection().prepareStatement(sql);
         ps.setInt(1,idCategoria);
