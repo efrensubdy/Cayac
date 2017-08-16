@@ -67,7 +67,9 @@ public int idRequisitoDeSubida;
     public String getContenido() {
         return contenido;
     }
+    public DocumentoPrevio(){
 
+    }
     public DocumentoPrevio(int idFinalista, File file, int idRequiPrevio,int idContratista) {
         this.idFinalista=idFinalista;
         this.file = file;

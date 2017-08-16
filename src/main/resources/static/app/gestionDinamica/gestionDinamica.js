@@ -9,7 +9,7 @@ angular.module('myApp.gestionDinamica', ['ngRoute'])
   });
 }])
 
-.controller('gestionDinamicaCtrl', ['$scope','$log','$rootScope','$localStorage','$sessionStorage','$mdDialog', 'estadoDinamicosPreviosSugeridos','estadoDinamicosPreviosExtras', 'estadoDinamicosEjecucionSugeridos', 'estadoDinamicosEjecucionExtras', 'estadoDinamicosFinalizacionSugeridos', 'estadoDinamicosFinalizacionExtras','fileUpload',function($scope,$log,$rootScope,$localStorage,$sessionStorage,$mdDialog, estadoDinamicosPreviosSugeridos,estadoDinamicosPreviosExtras, estadoDinamicosEjecucionSugeridos, estadoDinamicosEjecucionExtras, estadoDinamicosFinalizacionSugeridos, estadoDinamicosFinalizacionExtras,fileUpload) {
+.controller('gestionDinamicaCtrl', ['$scope','$log','$rootScope','$localStorage','$sessionStorage','$mdDialog', 'estadoDinamicosPreviosSugeridos','estadoDinamicosPreviosExtras', 'estadoDinamicosEjecucionSugeridos', 'estadoDinamicosEjecucionExtras', 'estadoDinamicosFinalizacionSugeridos', 'estadoDinamicosFinalizacionExtras','fileUpload','historialPreviosDinamicos',function($scope,$log,$rootScope,$localStorage,$sessionStorage,$mdDialog, estadoDinamicosPreviosSugeridos,estadoDinamicosPreviosExtras, estadoDinamicosEjecucionSugeridos, estadoDinamicosEjecucionExtras, estadoDinamicosFinalizacionSugeridos, estadoDinamicosFinalizacionExtras,fileUpload,historialPreviosDinamicos) {
 
  $scope.options = [
             { id: 1, name: 'SOPORTES PREVIOS AL INICIO DEL CONTRATO' },
@@ -133,6 +133,10 @@ $scope.function1=function(){
    console.log(item);
      var url= "http://localhost:8080/app/docuDinaPre/"+$localStorage.userLogeado.idFinalista+"/"+item.id+"/"+$localStorage.userLogeado.idContratista;
       fileUpload.uploadFileToUrl(file, url);
+
+   }
+   $scope.consultar=function(){
+    $scope.historicoDeDocumentos=historialPreviosDinamicos.query({idRequisito:$rootScope.item.id,idFinalista:$localStorage.userLogeado.idFinalista})
 
    }
 

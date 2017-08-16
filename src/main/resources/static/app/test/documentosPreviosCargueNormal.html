@@ -27,10 +27,29 @@
 
 
                 </md-tab>
-                <md-tab label="Historial Documental">
+                <md-tab label="Historial Documental" ng-click="consultar()">
                     <md-content class="md-padding">
                         <div class="md-dialog-content">
                             <label>{{item.apodo}}</label>
+                            <br>
+                            <table class="w3-table-all">
+                                <thead>
+                                <tr class="w3-light-grey w3-hover-grey" >
+                                    <th>Numero de Documento</th>
+                                    <th>soporte</th>
+                                </tr>
+                                <tbody>
+                                <tr class="w3-hover-green" ng-repeat="todo in historicoDeDocumentos">
+                                    <td><b>{{todo.id}}</b> </td>
+                                    <td><div class="w3-col" style="width:50px"><a href="{{todo.contenido}}" download><i class="w3-xxlarge fa fa-check-square"></i></a></div>  </td>
+                                </tr>
+
+                                </tbody>
+                                </thead>
+
+                            </table>
+
+
                         </div>
 
                     </md-content>

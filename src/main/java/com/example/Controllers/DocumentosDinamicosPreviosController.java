@@ -3,6 +3,7 @@ package com.example.Controllers;
 import com.example.Models.Documento;
 import com.example.Models.DocumentoPrevio;
 import com.example.Services.ManejoDeContratistasBD;
+import com.example.Services.ManejoDeDocumentosPrevios;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -26,9 +27,10 @@ import java.util.logging.Logger;
  */
 @RestController
 @RequestMapping(value="/app/docuDinaPre")
-public class DocumentosDinamicosPrevios {
-
-    @RequestMapping(path = "/{idFinalista}/{idRequisito}",method = RequestMethod.POST)
+public class DocumentosDinamicosPreviosController {
+    @Autowired
+    private ManejoDeDocumentosPrevios manejoDeDocumentosPrevios;
+    @RequestMapping(path = "/{idFinalista}/{idRequisito}/{idContratista}",method = RequestMethod.POST)
     public ResponseEntity<?> InsertarImagen(@PathVariable Integer idFinalista, @PathVariable Integer idRequisito, @PathVariable int idContratista
             , MultipartHttpServletRequest request){
 
@@ -42,7 +44,8 @@ public class DocumentosDinamicosPrevios {
                 MultipartFile file = request.getFile(uploadedFile);
                 File fileForDB=convert(file);
                 DocumentoPrevio nuevoDocumentoDb=new DocumentoPrevio(idFinalista,fileForDB,idRequisito,idContratista);
-                System.out.println("tamo aqui "+ fileForDB.getName());
+                manejoDeDocumentosPrevios.insertarPrevioDinamicoNormal(nuevoDocumentoDb);
+
 
 
             }
@@ -62,4 +65,19 @@ public class DocumentosDinamicosPrevios {
         fos.close();
         return convFile;
     }
+    @RequestMapping(value = "previos/{idRequisito}/{idFinalista}", method = RequestMethod.GET)
+    public ResponseEntity<?>obtenePreviosExtras(@PathVariable int idRequisito,@PathVariable int idFinalista){
+
+        ResponseEntity a;
+        try {
+            //obtener datos que se enviarán a través del API
+            a = new ResponseEntity<>(manejoDeDocumentosPrevios.historicoDeDocumentosPrevios(idRequisito, idFinalista),HttpStatus.ACCEPTED);
+
+        } catch (Exception ex) {
+            Logger.getLogger(Controller.class.getName()).log(Level.SEVERE, null, ex);
+            return new ResponseEntity<>("Error bla bla bla",HttpStatus.NOT_FOUND);
+        }
+        return a;
+    }
+
 }

@@ -202,9 +202,6 @@ public class DocumentosEjecucionDB {
 
         }
 
-
-
-
     }
     public void insertarDocumentoPrevioExtra(DocumentoPrevio documentoPrevio) throws SQLException, ClassNotFoundException, IOException {
 
