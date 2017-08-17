@@ -1,5 +1,8 @@
 
 -- select all--
+ SELECT * FROM documentosDinamicosPreviosExtras;
+SELECT * FROM documentosDinamicosPrevios;
+SELECT * FROM documentosDinamicosPrevios WHERE idRequisito = 1 AND idFinalista = 4;
 SELECT * FROM administrador;
 SELECT * FROM arl;
 SELECT * FROM activdadeconomica;

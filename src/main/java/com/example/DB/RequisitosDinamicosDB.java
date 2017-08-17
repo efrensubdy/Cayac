@@ -422,6 +422,7 @@ public class RequisitosDinamicosDB {
             requisitoObligatorio.setDescripcion(rs.getString("requisito"));
             requisitoObligatorio.setIdCategoria(rs.getInt("idCategoria"));
             requisitoObligatorio.setTipo("previoExtra");
+            requisitoObligatorio.setApodo("apodo");
             requisitoObligatoriosLisT.add(requisitoObligatorio);
         }
         ps.close();

@@ -3,6 +3,7 @@ package com.example.Services;
 import com.example.Beans.AdministradorDeDocumentosDinamicos;
 import com.example.DB.DocumentosDinamicosPreviosDB;
 import com.example.Models.DocumentoPrevio;
+import com.example.Models.Matriz;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -23,7 +24,22 @@ public class ManejoDeDocumentosPrevios implements AdministradorDeDocumentosDinam
     }
 
     @Override
+    public void insertarPrevioDinamicoExtra(DocumentoPrevio documentoPrevio) throws SQLException, ClassNotFoundException, IOException {
+        documentosDinamicosPreviosDB.insertarPrevioExtraDinamico(documentoPrevio);
+    }
+
+    @Override
+    public void insertarMatrizPeligros(Matriz matrizDePeligros) throws SQLException, ClassNotFoundException, IOException {
+        documentosDinamicosPreviosDB.insertarMatrizDePeligros(matrizDePeligros);
+    }
+
+    @Override
     public List<DocumentoPrevio> historicoDeDocumentosPrevios(int idRequisito, int idFinalista) throws SQLException, ClassNotFoundException {
         return documentosDinamicosPreviosDB.traerHistorialDeDocumentos(idRequisito, idFinalista);
+    }
+
+    @Override
+    public List<DocumentoPrevio> historicoDeDocumentosPreviosExtras(int idRequisito, int idFinalista) throws SQLException, ClassNotFoundException {
+        return documentosDinamicosPreviosDB.traerHistorialDeDocumentosExtras(idRequisito, idFinalista);
     }
 }

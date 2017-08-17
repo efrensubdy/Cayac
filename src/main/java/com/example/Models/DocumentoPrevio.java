@@ -1,6 +1,7 @@
 package com.example.Models;
 
 import java.io.File;
+import java.sql.Date;
 
 /**
  * Created by HSEQ on 05/07/2017.
@@ -46,6 +47,15 @@ public class DocumentoPrevio {
     public int id;
     public int idRequiPrevio;
     public String tipo;
+    public Date fecha;
+
+    public Date getFecha() {
+        return fecha;
+    }
+
+    public void setFecha(Date fecha) {
+        this.fecha = fecha;
+    }
 
     public int getIdRequisitoDeSubida() {
         return idRequisitoDeSubida;

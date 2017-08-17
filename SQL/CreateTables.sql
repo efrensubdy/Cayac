@@ -644,6 +644,40 @@ CREATE TABLE `documentosDinamicosPrevios` (
   PRIMARY KEY (`id`)
 ) ENGINE=INNODB DEFAULT CHARSET=utf8;
 
+CREATE TABLE `documentosDinamicosPreviosExtras` (
+  `id` INT(11) NOT NULL AUTO_INCREMENT,
+  `idRequisito` INT(11) NOT NULL,
+  `idFinalista` INT(11) NOT NULL,
+  `fechaCreacion` DATE NOT NULL,
+  `fechaActualizacion` DATE NOT NULL,
+  `tipo` VARCHAR(45) NOT NULL,
+  `estado` VARCHAR(45) NOT NULL,
+  `contenido` VARCHAR(500) NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `doc_finalista` (`idFinalista`),
+  KEY `doc_Requisito` (`idRequisito`),
+  CONSTRAINT `doc_finalista` FOREIGN KEY (`idFinalista`) REFERENCES `finalista` (`idFinalista`),
+  CONSTRAINT `doc_Requisito` FOREIGN KEY (`idRequisito`) REFERENCES `requidinapreex` (`id`)
+) ENGINE=INNODB DEFAULT CHARSET=utf8;
+
+CREATE TABLE `matrizDePeligros` (
+  `id` INT(11) NOT NULL AUTO_INCREMENT,
+  `nombreDoc` VARCHAR(500) NOT NULL,
+  `fechaCreacion` DATE NOT NULL,
+  `fechaActualizacion` DATE NOT NULL,
+  `idRequisito` INT(11) NOT NULL,
+  `idFinalista` INT(11) NOT NULL,
+  `tipo` VARCHAR(45) NOT NULL,
+  `estado` VARCHAR(45) NOT NULL,
+  `contenido` VARCHAR(500) NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `matriz_Finalista` (`idFinalista`),
+  KEY `matriz_Requisito` (`idRequisito`),
+  CONSTRAINT `matriz_Requisito` FOREIGN KEY (`idRequisito`) REFERENCES `requidinapresug` (`id`),
+  CONSTRAINT `matriz_Finalista` FOREIGN KEY (`idFinalista`) REFERENCES `finalista` (`idFinalista`)
+) ENGINE=INNODB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+
+
 
 -- create Admins ---
 

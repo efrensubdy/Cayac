@@ -9,7 +9,7 @@ angular.module('myApp.gestionDinamica', ['ngRoute'])
   });
 }])
 
-.controller('gestionDinamicaCtrl', ['$scope','$log','$rootScope','$localStorage','$sessionStorage','$mdDialog', 'estadoDinamicosPreviosSugeridos','estadoDinamicosPreviosExtras', 'estadoDinamicosEjecucionSugeridos', 'estadoDinamicosEjecucionExtras', 'estadoDinamicosFinalizacionSugeridos', 'estadoDinamicosFinalizacionExtras','fileUpload','historialPreviosDinamicos',function($scope,$log,$rootScope,$localStorage,$sessionStorage,$mdDialog, estadoDinamicosPreviosSugeridos,estadoDinamicosPreviosExtras, estadoDinamicosEjecucionSugeridos, estadoDinamicosEjecucionExtras, estadoDinamicosFinalizacionSugeridos, estadoDinamicosFinalizacionExtras,fileUpload,historialPreviosDinamicos) {
+.controller('gestionDinamicaCtrl', ['$scope','$log','$rootScope','$localStorage','$sessionStorage','$mdDialog', 'estadoDinamicosPreviosSugeridos','estadoDinamicosPreviosExtras', 'estadoDinamicosEjecucionSugeridos', 'estadoDinamicosEjecucionExtras', 'estadoDinamicosFinalizacionSugeridos', 'estadoDinamicosFinalizacionExtras','fileUpload','historialPreviosDinamicos','historialPreviosDinamicosExtras',function($scope,$log,$rootScope,$localStorage,$sessionStorage,$mdDialog, estadoDinamicosPreviosSugeridos,estadoDinamicosPreviosExtras, estadoDinamicosEjecucionSugeridos, estadoDinamicosEjecucionExtras, estadoDinamicosFinalizacionSugeridos, estadoDinamicosFinalizacionExtras,fileUpload,historialPreviosDinamicos,historialPreviosDinamicosExtras) {
 
  $scope.options = [
             { id: 1, name: 'SOPORTES PREVIOS AL INICIO DEL CONTRATO' },
@@ -58,31 +58,22 @@ $scope.function1=function(){
 
 
    }
-   $scope.gestionarPrevios=function(item,ev){
-    console.log(item)
-    if (item.id ==2){
-    console.log("Soy Matriz de Peligros ");
 
-    }
-    else{
-    console.log("Cargue normal modofocko");
-    $rootScope.item=item;
-    $mdDialog.show({
-           //Controlador del mensajes con operaciones definido en la parte de abajo
-           controller: DialogController,
-                             // permite la comunicacion con el html que despliega el boton requisitos
-           templateUrl: 'test/documentosPreviosCargueNormal.html',
-           parent: angular.element(document.body),
-           targetEvent: ev,
-           clickOutsideToClose:true,
-           fullscreen: $scope.customFullscreen // Only for -xs, -sm breakpoints.
-     })
-     }
-     }
-     $scope.gestionarPrevios=function(item,ev){
-         console.log(item)
+  $scope.gestionarPrevios=function(item,ev){
+
          if (item.id ==2){
+         $rootScope.item=item;
          console.log("Soy Matriz de Peligros ");
+         $mdDialog.show({
+                         //Controlador del mensajes con operaciones definido en la parte de abajo
+                         controller: DialogController2,
+                                           // permite la comunicacion con el html que despliega el boton requisitos
+                         templateUrl: 'test/gestionDeMatrices.html',
+                         parent: angular.element(document.body),
+                         targetEvent: ev,
+                         clickOutsideToClose:true,
+                         fullscreen: $scope.customFullscreen // Only for -xs, -sm breakpoints.
+         })
 
          }
          else{
@@ -106,6 +97,7 @@ $scope.function1=function(){
    }
    $scope.gestionarPreviosExtras=function(item,ev){
         console.log(item);
+        $rootScope.item=item;
         $mdDialog.show({
                         //Controlador del mensajes con operaciones definido en la parte de abajo
                         controller: DialogController,
@@ -128,6 +120,24 @@ $scope.function1=function(){
 
 
    $scope.item=$rootScope.item;
+   $rootScope.listaPre=historialPreviosDinamicos.query({idRequisito:$rootScope.item.id,idFinalista:$localStorage.userLogeado.idFinalista},function(result){
+     if(result.length > 0){
+       $scope.mostrar=true;
+
+               }
+     else{
+         $scope.mostrar=false;
+               }
+       });
+   $rootScope.listaPre2=historialPreviosDinamicosExtras.query({idRequisito:$rootScope.item.id,idFinalista:$localStorage.userLogeado.idFinalista},function(result){
+        if(result.length > 0){
+          $scope.mostrar2=true;
+
+                  }
+        else{
+            $scope.mostrar2=false;
+                  }
+          });
    $scope.agregarDocumentoPrevio=function(file,item){
    console.log(file);
    console.log(item);
@@ -135,10 +145,40 @@ $scope.function1=function(){
       fileUpload.uploadFileToUrl(file, url);
 
    }
-   $scope.consultar=function(){
-    $scope.historicoDeDocumentos=historialPreviosDinamicos.query({idRequisito:$rootScope.item.id,idFinalista:$localStorage.userLogeado.idFinalista})
+   $scope.agregarDocumentoPreviosExtras=function(file,item){
+   console.log(file);
+   console.log(item);
+   var url= "http://localhost:8080/app/docuDinaPre/extras/"+$localStorage.userLogeado.idFinalista+"/"+item.id+"/"+$localStorage.userLogeado.idContratista;
+   fileUpload.uploadFileToUrl(file,url);
 
    }
+   $scope.consultar=function(){
+        $scope.historicoDeDocumentos=$rootScope.listaPre
+   }
+   $scope.consultar2=function(){
+        $scope.historicoDeDocumentosExtra=$rootScope.listaPre2;
+   }
+
+   }
+   function DialogController2($scope,$http,$rootScope,$mdDialog){
+        $scope.item=$rootScope.item;
+        $scope.user={};
+        $scope.hide = function() {
+           $mdDialog.hide();
+        };
+                                                                //funcion para cerral el mensaje
+        $scope.cancel = function() {
+                            $mdDialog.cancel();
+        };
+
+        $scope.agregarmatriz=function(file, item,nombre,fecha1,fecha2){
+            console.log(file);
+            console.log(item);
+            console.log(nombre)
+            var uploadUrl = "http://localhost:8080/app/docuDinaPre/matriz/" + nombre + "/" + fecha1 + "/" + fecha2 + "/" + item.id + "/" + $localStorage.userLogeado.idFinalista + "/" + $localStorage.userLogeado.idContratista;
+            fileUpload.uploadFileToUrl(file,uploadUrl);
+        }
+
 
    }
 }])

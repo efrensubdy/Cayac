@@ -1,0 +1,57 @@
+<md-dialog id="attribute-dialog" aria-label="Requisitos">
+    <form>
+        <md-toolbar>
+            <div class="md-toolbar-tools">
+                <h1>Documentos</h1>
+                <span flex></span>
+                <md-button class="md-icon-button" ng-click="cancel()">
+                    <md-icon md-font-library="material-icons">highlight_off</md-icon>
+                </md-button>
+            </div>
+        </md-toolbar>
+        <md-dialog-content>
+            <md-tabs md-dynamic-height md-border-bottom>
+                <md-tab label="Subir Documentos">
+                    <md-content class="md-padding">
+                        <div class="md-dialog-content">
+                            <div ng-controller = "subirDocumentosEstaticosCtrl">
+                                <label>{{item.apodo}}</label>
+                                <br>
+                                <label><b>LOS ARCHIVOS DEBEN SER EN FORMATO .PDF</b></label>
+                                <md-input-container class="md-icon-float md-block">
+                                    <!-- Use floating label instead of placeholder -->
+                                    <label>Nombre del Documento</label>
+                                    <md-icon md-font-library="material-icons" class="name">picture_as_pdf</md-icon>
+                                    <input ng-model="user.name" type="text">
+                                </md-input-container>
+                                <div layout-gt-xs="row">
+                                    <div flex-gt-xs>
+                                        <label>FECHA DE CREACION</label>
+                                        <md-datepicker  ng-model="user.fechaInicio" md-placeholder="Fecha " ng-required="true"></md-datepicker>
+                                    </div>
+
+                                    <div flex-gt-xs>
+                                        <label>FECHA DE ACTUALIZACION</label>
+                                        <md-datepicker  ng-model="user.fechaFin" md-placeholder="Fecha " ng-required="true"></md-datepicker>
+                                    </div>
+                                </div>
+                                <label>SOPORTE</label>
+                                <input type="file" file-model="myDocmatriz"  class="form-control" id ="myFileField" />
+                                <br>
+                                <button type="button" class="btn btn-primary" ng-click="agregarmatriz(myDocmatriz,item,user.name,user.fechaInicio  | date:'yyyy-MM-dd',user.fechaFin  | date:'yyyy-MM-dd')" ng-model="tablita">Subir</button>
+                            </div>
+                        </div>
+                    </md-content>
+                </md-tab>
+                <md-tab label="Historial Documental" ng-click="consultar2()">
+                    <md-content class="md-padding">
+                        <div class="md-dialog-content" ng-show="mostrar2">
+                            <label>{{item.apodo}}</label>
+                            <br>
+                        </div>
+                    </md-content>
+                </md-tab>
+            </md-tabs>
+        </md-dialog-content>
+    </form>
+</md-dialog>
