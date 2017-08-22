@@ -21,7 +21,7 @@ angular.module('myApp.login2', ['ngRoute'])
 
              $rootScope.bandera =$localStorage.contratanteLogeado.estado ;
              $rootScope.idContratante=$localStorage.contratanteLogeado.idContratante;
-
+             delete $localStorage.userLogeado;
              $location.path("/view1");
 
         }

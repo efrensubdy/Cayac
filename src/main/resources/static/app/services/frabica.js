@@ -312,6 +312,10 @@ angular.module('services.listFactory', ['ngRoute','ngResource'])
                                                                       return $resource('/app/docuDinaPre/extras/:idRequisito/:idFinalista');
 
                                                                                                   })
+        .factory('historialDeMatrices', function($resource) {
+                                            return $resource('/app/docuDinaPre/historialMatriz/:idRequisito/:idFinalista');
+
+        })
         // Fabrica que se comunica con el controlador de Requisitos Extras
                 // a partir de la variable que recibe que es el id del Contratista
                 // trae todos los requisitos Extras de ese contratista si existe

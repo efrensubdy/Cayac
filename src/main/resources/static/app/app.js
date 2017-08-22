@@ -39,17 +39,17 @@ $qProvider.errorOnUnhandledRejections(false);
 .controller('logout',['$rootScope','$scope', '$http','$location','$localStorage','$sessionStorage',function($rootScope,$scope,$http,$location,$localStorage,$sessionStorage)  {
    $scope.$storage = $localStorage;
    if ("undefined" === typeof $localStorage.userLogeado && "undefined" !== typeof $localStorage.contratanteLogeado ) {
-
+       console.log("AT THIS MOMENT I'M CONTRACTOR")
        $rootScope.bandera=$localStorage.contratanteLogeado.estado;
 
-       console.log($rootScope.bandera)
        $rootScope.bandera2=false;
        $rootScope.bandera3=false;
 
    }
    else if("undefined" === typeof $localStorage.contratanteLogeado && "undefined" !== typeof $localStorage.userLogeado ){
-
+        console.log("AT THIS MOMENT I'M BUILDER")
         $rootScope.bandera2 = $localStorage.userLogeado.estado;
+
         $rootScope.banderaEjecucion=$localStorage.userLogeado.finalista;
         $rootScope.bandera=false;
         $rootScope.bandera3=false;
@@ -59,9 +59,9 @@ $qProvider.errorOnUnhandledRejections(false);
            $rootScope.bandera2=false;
            $rootScope.bandera3 = $localStorage.userLogeado.estado;
            $rootScope.bandera=false;
-      }
+    }
    else{
-
+       console.log("AT THIS MOMENT NOTBODY IS IN CAYAC")
        $rootScope.bandera=false;
        $rootScope.bandera2=false;
    }

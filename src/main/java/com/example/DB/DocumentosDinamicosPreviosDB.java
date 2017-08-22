@@ -285,6 +285,32 @@ public class DocumentosDinamicosPreviosDB {
 
         return historialPreviosExtras;
     }
+    public List<Matriz>traerHistorialDeMatrizDePeligros(int idRequisito,int idFinalista)throws SQLException,ClassNotFoundException{
+       List<Matriz>historialDeMatrices=new LinkedList<>();
+        String sql ="SELECT * FROM matrizDePeligros WHERE idRequisito = ? and idFinalista = ?";
+        PreparedStatement ps=Conexion.conection().prepareStatement(sql);
+        ps.setInt(1,idRequisito);
+        ps.setInt(2,idFinalista);
+        ResultSet rs=ps.executeQuery();
+        while (rs.next()){
+            Matriz matrizHistorica=new Matriz();
+            matrizHistorica.setId(rs.getInt("id"));
+            matrizHistorica.setNombre(rs.getString("nombreDoc"));
+            matrizHistorica.setFechaCreacion(rs.getDate("fechaCreacion"));
+            matrizHistorica.setFechaActualizacion(rs.getDate("fechaActualizacion"));
+            matrizHistorica.setIdRequisito(rs.getInt("idRequisito"));
+            matrizHistorica.setIdFinalista(rs.getInt("idFinalista"));
+            matrizHistorica.setTipo(rs.getString("tipo"));
+            matrizHistorica.setEstado(rs.getString("estado"));
+            matrizHistorica.setContenido(rs.getString("contenido"));
+            historialDeMatrices.add(matrizHistorica);
+        }
+        ps.close();
+
+        return historialDeMatrices;
+    }
+
+
     private  String getFileExtension(File fullName) {
         String fileName = fullName.getName();
         int dotIndex = fileName.lastIndexOf('.');

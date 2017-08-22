@@ -15,7 +15,8 @@ public void insertarPrevioDinamicoNormal(DocumentoPrevio documentoPrevio)throws 
 public void insertarPrevioDinamicoExtra(DocumentoPrevio documentoPrevio)throws SQLException,ClassNotFoundException,IOException;
 public void insertarMatrizPeligros(Matriz matrizDePeligros)throws SQLException,ClassNotFoundException,IOException;
 public List<DocumentoPrevio>historicoDeDocumentosPrevios(int idRequisito, int idFinalista)throws SQLException,ClassNotFoundException;
-    public List<DocumentoPrevio>historicoDeDocumentosPreviosExtras(int idRequisito, int idFinalista)throws SQLException,ClassNotFoundException;
+public List<DocumentoPrevio>historicoDeDocumentosPreviosExtras(int idRequisito, int idFinalista)throws SQLException,ClassNotFoundException;
+public List<Matriz>historicoDeMatrices(int idRequisito,int idFinalista)throws SQLException,ClassNotFoundException;
 
 
 }

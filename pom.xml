@@ -106,15 +106,9 @@
 						<server>TomcatServer</server>
 						<path>/seqWebApp</path>
 						<ignorePackaging>true</ignorePackaging>
-
 					</configuration>
-
 				</plugin>
-
-
 			</plugins>
-                
 	</build>
-
 
 </project>

@@ -13,12 +13,21 @@
             <md-tabs md-dynamic-height md-border-bottom>
                 <md-tab label="Subir Documentos">
                     <md-content class="md-padding">
-                        <div class="md-dialog-content">
-                            <div ng-controller = "gestionDinamicaCtrl">
+                        <div class="md-dialog-contecambioPrevioExtrant">
+                            <div ng-controller = "gestionDinamicaCtrl" ng-show="!docuPrevioBanderaExtra">
                                 <label>{{item.apodo}}</label>
                                 <label><b>LOS ARCHIVOS DEBEN SER EN FORMATO .PDF</b></label>
                                 <input type="file" file-model="myDocPrevioExtra"  class="form-control" id ="myFileField" />
                                 <button type="button" class="w3-btn w3-blue" ng-click="agregarDocumentoPreviosExtras(myDocPrevioExtra,item)" ng-model="tablita">Subir</button>
+                            </div>
+                        </div>
+                        <div class="md-dialog-content" ng-show="docuPrevioBanderaExtra">
+                            <div flex>
+                                <label>Su documento se subio correctamente</label>
+                                <div class="w3-col" style="width:50px"><i class="w3-xxlarge fa fa-file-pdf-o"  style="font-size:48px;color:red;"></i></div>
+                                <div class="w3-col" style="width:50px"><i class="w3-xxlarge fa fa-upload"  style="font-size:48px;color:red;"></i></div>
+                                <label>Desea seguir subiendo registros</label>
+                                <button type="button" class="btn btn-primary" ng-click="cambioPrevioExtra()" ng-model="tablita">subir</button>
                             </div>
                         </div>
                     </md-content>

@@ -1,38 +1,47 @@
 
 <div class="w3-container">
 <div ng-controller="View13Ctrl" layout="column"  layout-padding ng-cloak>
-<form name="div1" class="form-horizontal text-primary">
     <br/>
     <md-content class="md-no-momentum" layout-padding>
 
-
-        <md-input-container class="md-icon-float md-block">
+        <div layout-gt-xs="row"  layout-align="space-around center">
+            <div flex-gt-xs>
+            <md-input-container class="md-icon-float md-block">
             <!-- Use floating label instead of placeholder -->
-
             <md-icon md-font-library="material-icons">class</md-icon>
             <label>TIPO DE CONTRATO</label>
             <md-select aria-label="Select 1" ng-model="contrato.tipoContrato" placeholder="Escoja el tipo de Contrato">
                 <md-option ng-value="todo.name" ng-repeat="todo in options">{{ todo.name }}</md-option>
 
             </md-select>
+            </md-input-container>
+            </div>
+            <div flex-gt-xs>
+                <md-input-container class="md-icon-float md-block">
+                <md-icon md-font-library="material-icons">style</md-icon>
+                <label>Nombre del Contrato</label>
+                <input ng-model="contrato.nombreContrato" type="text" placeholder="Nombre del Contrato (Obligatorio)" ng-required="true">
+                </md-input-container>
+            </div>
 
-        </md-input-container>
+        </div>
+        <div layout-gt-xs="row"  layout-align="center center">
+           <label class="w3-center">ADJUNTE</label>
+        </div>
+        <div layout-gt-xs="row"  layout-align="space-around center">
 
-        <md-input-container md-no-float class="md-block">
-            <md-icon md-font-library="material-icons">style</md-icon>
-            <input ng-model="contrato.nombreContrato" type="text" placeholder="Nombre del Contrato (Obligatorio)" ng-required="true">
-        </md-input-container>
-        <div layout-gt-xs="row">
-            <label>ADJUNTE RUT</label>
+            <div flex-gt-xs >
+            <label>RUT</label>
             <input class="form-control" type="file" file-model="myFile" name="myFile"/>
-        </div>
-        <div layout-gt-xs="row">
-            <label>ADJUNTE CAMARA DE COMERCIO</label>
+            </div>
+            <div flex-gt-xs>
+            <label>CAMARA DE COMERCIO</label>
             <input class="form-control" type="file" file-model="myFile2" name="myFile2"/>
-        </div>
-        <div layout-gt-xs="row">
-            <label>ADJUNTE LA CEDULA DEL REPRESETANTE</label>
+            </div>
+            <div flex-gt-xs>
+            <label>CEDULA DEL REPRESENTANTE</label>
             <input class="form-control" type="file" file-model="myFile3" name="myFile3"/>
+            </div>
         </div>
           <div layout-gt-xs="row">
               <div flex-gt-xs>
@@ -59,7 +68,6 @@
         </section>
 
     </md-content>
-</form>
 </div>
 </div>
 

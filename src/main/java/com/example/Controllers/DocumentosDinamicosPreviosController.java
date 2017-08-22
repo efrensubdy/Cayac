@@ -1,11 +1,8 @@
 package com.example.Controllers;
 
-import com.example.Models.Contrato;
-import com.example.Models.Documento;
 import com.example.Models.DocumentoPrevio;
 import com.example.Models.Matriz;
-import com.example.Services.ManejoDeContratistasBD;
-import com.example.Services.ManejoDeDocumentosPrevios;
+import com.example.Services.ManejoDeDocumentosPreviosDinamicosBD;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -23,8 +20,6 @@ import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Iterator;
-import java.util.LinkedList;
-import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -35,7 +30,7 @@ import java.util.logging.Logger;
 @RequestMapping(value="/app/docuDinaPre")
 public class DocumentosDinamicosPreviosController {
     @Autowired
-    private ManejoDeDocumentosPrevios manejoDeDocumentosPrevios;
+    private ManejoDeDocumentosPreviosDinamicosBD manejoDeDocumentosPrevios;
     @RequestMapping(path = "/{idFinalista}/{idRequisito}/{idContratista}",method = RequestMethod.POST)
     public ResponseEntity<?> InsertarImagen(@PathVariable Integer idFinalista, @PathVariable Integer idRequisito, @PathVariable int idContratista
             , MultipartHttpServletRequest request){
@@ -117,6 +112,20 @@ public class DocumentosDinamicosPreviosController {
         try {
             //obtener datos que se enviarán a través del API
             a = new ResponseEntity<>(manejoDeDocumentosPrevios.historicoDeDocumentosPreviosExtras(idRequisito, idFinalista),HttpStatus.ACCEPTED);
+
+        } catch (Exception ex) {
+            Logger.getLogger(Controller.class.getName()).log(Level.SEVERE, null, ex);
+            return new ResponseEntity<>("Error bla bla bla",HttpStatus.NOT_FOUND);
+        }
+        return a;
+    }
+    @RequestMapping(value = "historialMatriz/{idRequisito}/{idFinalista}", method = RequestMethod.GET)
+    public ResponseEntity<?>historicoDeMatrices(@PathVariable int idRequisito,@PathVariable int idFinalista){
+
+        ResponseEntity a;
+        try {
+            //obtener datos que se enviarán a través del API
+            a = new ResponseEntity<>(manejoDeDocumentosPrevios.historicoDeMatrices(idRequisito, idFinalista),HttpStatus.ACCEPTED);
 
         } catch (Exception ex) {
             Logger.getLogger(Controller.class.getName()).log(Level.SEVERE, null, ex);

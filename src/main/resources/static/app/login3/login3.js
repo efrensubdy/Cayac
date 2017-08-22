@@ -19,10 +19,10 @@ angular.module('myApp.login3', ['ngRoute'])
                         $scope.$storage = $localStorage;
                          $rootScope.bandera2 = $localStorage.userLogeado.estado;
                          $rootScope.idContratista=$localStorage.userLogeado.idContratista;
-                          $rootScope.banderaEjecucion=$localStorage.userLogeado.finalista;
+                         $rootScope.banderaEjecucion=$localStorage.userLogeado.finalista;
                          $scope.$storage = $localStorage;
                          $rootScope.email=$scope.email;
-
+                         delete $localStorage.contratanteLogeado;
                          $location.path("/view1");
 
 

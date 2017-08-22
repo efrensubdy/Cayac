@@ -14,7 +14,7 @@
                 <md-tab label="Subir Documentos">
                     <md-content class="md-padding">
                         <div class="md-dialog-content">
-                            <div ng-controller = "subirDocumentosEstaticosCtrl">
+                            <div ng-controller = "subirDocumentosEstaticosCtrl" ng-show="!docuBandera">
                                 <label>{{item.apodo}}</label>
                                 <br>
                                 <label><b>LOS ARCHIVOS DEBEN SER EN FORMATO .PDF</b></label>
@@ -41,13 +41,45 @@
                                 <button type="button" class="btn btn-primary" ng-click="agregarmatriz(myDocmatriz,item,user.name,user.fechaInicio  | date:'yyyy-MM-dd',user.fechaFin  | date:'yyyy-MM-dd')" ng-model="tablita">Subir</button>
                             </div>
                         </div>
+                        <div class="md-dialog-content" ng-show="docuBandera">
+                            <div flex>
+                                <label>Su documento se subio correctamente</label>
+                                <div class="w3-col" style="width:50px"><i class="w3-xxlarge fa fa-file-pdf-o"  style="font-size:48px;color:red;"></i></div>
+                                <div class="w3-col" style="width:50px"><i class="w3-xxlarge fa fa-upload"  style="font-size:48px;color:red;"></i></div>
+                                <label>Desea seguir subiendo registros</label>
+                                <button type="button" class="btn btn-primary" ng-click="cambio()" ng-model="tablita">subir</button>
+                            </div>
+                        </div>
                     </md-content>
                 </md-tab>
-                <md-tab label="Historial Documental" ng-click="consultar2()">
+                <md-tab label="Historial Documental" ng-click="consultarHistorico()">
                     <md-content class="md-padding">
                         <div class="md-dialog-content" ng-show="mostrar2">
                             <label>{{item.apodo}}</label>
                             <br>
+                            <table class="w3-table-all">
+                                <thead>
+                                <tr class="w3-light-grey w3-hover-grey" >
+                                    <th>Numero de Documento</th>
+                                    <th>Nombre</th>
+                                    <th>soporte</th>
+                                </tr>
+                                <tbody>
+                                <tr class="w3-hover-green" ng-repeat="todo in historicoDeMatrices">
+                                    <td><b>{{todo.id}}</b> </td>
+                                    <td><b>{{todo.nombre}}</b></td>
+                                    <td><div class="w3-col" style="width:50px"><a href="{{todo.contenido}}" download><i class="w3-xxlarge fa fa-download"></i></a></div>  </td>
+                                </tr>
+                                </tbody>
+                                </thead>
+                            </table>
+                        </div>
+                        <div class="md-dialog-content" ng-show="!mostrar2">
+                            <div flex>
+                                <label>En el momento no hay ningún Documento</label>
+                                <div class="w3-col" style="width:50px"><i class="w3-xxlarge fa fa-file-pdf-o"  style="font-size:48px;color:red;"></i></div>
+                            </div>
+                        </div>
                         </div>
                     </md-content>
                 </md-tab>

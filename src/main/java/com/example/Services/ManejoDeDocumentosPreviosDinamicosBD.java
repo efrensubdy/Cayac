@@ -15,7 +15,7 @@ import java.util.List;
  * Created by HSEQ on 16/08/2017.
  */
 @Service
-public class ManejoDeDocumentosPrevios implements AdministradorDeDocumentosDinamicos {
+public class ManejoDeDocumentosPreviosDinamicosBD implements AdministradorDeDocumentosDinamicos {
     @Autowired
     private DocumentosDinamicosPreviosDB documentosDinamicosPreviosDB;
     @Override
@@ -41,5 +41,10 @@ public class ManejoDeDocumentosPrevios implements AdministradorDeDocumentosDinam
     @Override
     public List<DocumentoPrevio> historicoDeDocumentosPreviosExtras(int idRequisito, int idFinalista) throws SQLException, ClassNotFoundException {
         return documentosDinamicosPreviosDB.traerHistorialDeDocumentosExtras(idRequisito, idFinalista);
+    }
+
+    @Override
+    public List<Matriz> historicoDeMatrices(int idRequisito, int idFinalista) throws SQLException, ClassNotFoundException {
+        return documentosDinamicosPreviosDB.traerHistorialDeMatrizDePeligros(idRequisito, idFinalista);
     }
 }

@@ -17,6 +17,15 @@ public class Matriz {
     public String contenido;
     public String estado;
     public int contratista;
+    public int id;
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
 
     public int getContratista() {
         return contratista;
