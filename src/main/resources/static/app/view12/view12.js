@@ -23,7 +23,6 @@ angular.module('myApp.view12', ['ngRoute'])
          $scope.add=function(){
 
                         $scope.listado=finalesDefinitivos.query({idContratante:$localStorage.contratanteLogeado.idContratante,idContrato:$scope.contrato});
-
                         $scope.flag=true;
 
          }

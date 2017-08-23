@@ -42,8 +42,20 @@ $scope.add=function(ev,a,b,c){
     $scope.contrato.tipoContrato='';
     $scope.contrato.fechaFin='';
     $scope.contrato.fechaInicioDeActividades='';
-    $scope.div1.$setPristine();
-    $scope.div1.$setUntouched();
+    $scope.myFile='';
+    $scope.myFile2='';
+    $scope.myFile3='';
+    $mdDialog.show(
+         $mdDialog.alert()
+                 .parent(angular.element(document.querySelector('#popupContainer')))
+                 .clickOutsideToClose(true)
+                 .title('Error')
+                 .textContent('Contrato totalmente registrado')
+                 .ariaLabel('Alert Dialog Demo')
+                 .ok('Revise sus contratos!')
+                 .targetEvent(ev)
+     );
+
 
 }
 

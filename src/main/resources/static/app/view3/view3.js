@@ -73,7 +73,7 @@ angular.module('myApp.view3', ['ngRoute'])
                 }
             }
             $rootScope.listado2=requisitos.query({idContratante:$localStorage.contratanteLogeado.idContratante,idCategoria:$scope.idCategoria},function(result){
-                 console.log(result.length);
+
                  if(result.length!=0){
                                           $rootScope.table1=true;
 
@@ -84,7 +84,7 @@ angular.module('myApp.view3', ['ngRoute'])
 
              });
              $rootScope.listado3=extras.query({idContratante:$localStorage.contratanteLogeado.idContratante,idCategoria:$scope.idCategoria},function(result){
-                 console.log(result.length);
+
                   if(result.length!=0){
                                           $rootScope.table2=true;
 

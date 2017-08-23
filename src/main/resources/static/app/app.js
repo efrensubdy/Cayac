@@ -22,6 +22,7 @@ angular.module('myApp', [
   'myApp.manualRegister',
   'myApp.ejecucionCNCE',
   'myApp.subirDocumentosEstaticos',
+  'myApp.revisionDinamica',
   'myApp.test',
   'myApp.login',
   'myApp.login2',
@@ -101,6 +102,7 @@ $qProvider.errorOnUnhandledRejections(false);
 
 
         };
+    //NUEVA FUNCION DE LogoUT PARA ADMIN
     $scope.close3=function(){
 
                     $rootScope.bandera3=false;

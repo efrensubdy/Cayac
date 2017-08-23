@@ -1,14 +1,16 @@
 
-<div class="w3-container">
-<h3 class="w3-center text-primary ">GESTIÓN DE REQUISITOS DE EJECUCIÓN</h3>
-<p class="w3-center text-primary ">EN ESTA VISTA PODRA AGREGAR LOS REQUISITOS A CADA CATEGORIA</p>
+<div class="w3-container w3-center">
+<div class="container">
+    <h3 class="w3-center"><b>GESTIÓN DE REQUISITOS DE EJECUCIÓN</b></h3>
+<br>
+    <p class="w3-center"><b>EN ESTA VISTA PODRA AGREGAR LOS REQUISITOS A CADA CATEGORIA</b></p>
 
-    <div class="w3-container " >
-      <form  id="myForm" action="/action_page.php" class="w3-container text-primary  w3-margin">
-        <div class="w3-row w3-section" style="position:relative">
-          <div class="w3-col" style="width:50px"><i class="w3-xxlarge fa fa-search"></i></div>
+    <div class="container " >
+      <form >
+        <div class="form-group">
+          <p class="w3-center"><b>ESCOJA UNA DE LAS CATEGORIAS MENCIONADAS A CONTINUACIÓN </b> </p>
           <div class="w3-rest">
-            <select class="w3-select" ng-click="function1(fechas)" data-placeholder="Categoria a la que le va aplicar los requisitos" name="singleSelect" ng-model="idCategoria">
+            <select class="form-control" ng-click="function1(fechas)" data-placeholder="Categoria a la que le va aplicar los requisitos" name="singleSelect" ng-model="idCategoria">
               <option value="1">Categoria 1</option>
               <option value="2">Categoria 2</option>
               <option value="3">Categoria 3</option>
@@ -18,12 +20,12 @@
         </div>
       </form>
       <br>
-      <div class="w3-rest" ng-show="banderaCategoria1" >
-        <div class="w3-blue">
-          <h2>Categoria 1</h2>
+      <div class="container" ng-show="banderaCategoria1" >
+        <div >
+            <h2 class="text-primary">Categoria 1</h2>
         </div>
 
-        <form class="w3-container">
+        <form>
 
           <p>La Categoria 1 pertenecen todos aquellos contratistas cuyo contrato</p>
           <p>Es mayor o igual a  un mes y su nivel de riesgo es mayor o igual a 3</p>
@@ -32,9 +34,9 @@
         <button class="btn btn-primary " type="submit" ng-click="showAlert($event)">Aplicar Requisitos</button>
 
       </div>
-      <div class="w3-rest" ng-show="banderaCategoria2" >
-        <div class="w3-red">
-          <h2>Categoria 2</h2>
+      <div class="container" ng-show="banderaCategoria2" >
+        <div>
+            <h2 class="text-danger">Categoria 2</h2>
         </div>
 
         <form class="w3-container">
@@ -45,9 +47,9 @@
         <button class="btn btn-danger" type="submit" ng-click="showAlert($event)">Aplicar Requisitos</button>
 
       </div>
-      <div class="w3-rest" ng-show="banderaCategoria3" >
-        <div class="w3-green">
-          <h2>Categoria 3</h2>
+      <div class="container" ng-show="banderaCategoria3" >
+        <div >
+            <h2 class="text-success">Categoria 3</h2>
         </div>
 
         <form class="w3-container">
@@ -60,9 +62,9 @@
         <button class="btn btn-success" type="submit" ng-click="showAlert($event)">Aplicar Requisitos</button>
 
       </div>
-      <div class="w3-rest" ng-show="banderaCategoria4" >
-        <div class="w3-purple">
-          <h2>Categoria 4</h2>
+      <div class="container" ng-show="banderaCategoria4" >
+        <div>
+          <h2 class="text-warning">Categoria 4</h2>
         </div>
 
         <form class="w3-container">
@@ -72,11 +74,9 @@
           <p>Es menor o igual a un mes y su nivel de riesgo es menor o igual  a 2</p>
         </form>
 
-        <button class="w3-btn w3-purple" type="submit" ng-click="showAlert($event)">Aplicar Requisitos</button>
-
+        <button class="btn btn-warning" type="submit" ng-click="showAlert($event)">Aplicar Requisitos</button>
       </div>
 
-
     </div>
-
+</div>
 </div>
