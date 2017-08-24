@@ -1,109 +1,107 @@
 
 <div class="w3-container">
-
-<form  id="myForm" action="/action_page.php" class="w3-container text-primary w3-margin">
-  <h4 class="w3-center">AGREGUE A SU CANDIDATO</h4>
-  <div class="w3-row w3-section">
-    <div class="w3-col" style="width:50px"><i class="w3-xxlarge fa fa-key"></i></div>
-    <div class="w3-rest">
-      <input class="w3-input w3-border" type="text"  placeholder="A que contrato pertenece el contratista" name="contrato" list="contratos" ng-model="contrato">
-      <datalist id="contratos">
-      <select name="contratos" ng-model="select">
-        <option value="" disabled selected>Escoja El contrato al que va pertenecer su contratista</option>
-        <option ng-repeat="todo in listado"  value="{{todo.idContrato}}" ng-model="selectedOption">{{todo.nombreContrato}}</option>
-      </select>
+<div class="container align-middle text-center">
+  <div class="row">
+    <div class="col-sm-12">
+      <h4 class="text-primary"><b>Registre al Candidato</b></h4>
+    </div>
+  </div>
+  <br>
+  <div class="row">
+    <div class="col-sm-6">
+      <label>Asigne al candidato un contrato</label>
+      <input class="form-control" type="text"  placeholder="A que contrato pertenece el contratista" name="contrato" list="contrat" ng-model="contrato">
+      <datalist id="contrat">
+        <select name="contrat" ng-model="select">
+          <option value="" disabled selected>Escoja El contrato al que va pertenecer su contratista</option>
+          <option ng-repeat="todo in listado"  value="{{todo.idContrato}}" ng-model="selectedOption">{{todo.nombreContrato}}</option>
+        </select>
       </datalist>
     </div>
-  </div>
-  <div class="w3-row w3-section">
-    <div class="w3-col" style="width:50px"><i class="w3-xxlarge fa fa-user-secret"></i></div>
-    <div class="w3-rest">
-      <input class="w3-input w3-border" type="text" name="firstname" id="fn" placeholder="nombre de su empresa" ng-model="nombreEmpresa">
+
+    <div class="col-sm-6">
+      <label for="nombreEmpresa">Nombre de la  Empresa Candidata</label>
+      <input class="form-control" type="text" name="firstname" id="nombreEmpresa" placeholder="nombre de su empresa" ng-model="nombreEmpresa">
     </div>
   </div>
-  <div class="w3-row w3-section">
-    <div class="w3-col" style="width:50px"><i class="w3-xxlarge fa fa-key"></i></div>
-    <div class="w3-rest">
-      <input class="w3-input w3-border" type="password" name="pasword" placeholder="nueva Contraseña.." ng-model="password">
+  <br>
+  <div class="row">
+    <div class="col-sm-6">
+      <label for="email">Correo Electrónico para ingresar a Cayac</label>
+      <input class="form-control" type="email" name="email" id="email"  placeholder="email please.."  ng-model="email" >
+    </div>
+    <div class="col-sm-6">
+      <label>Contraseña para Cayac</label>
+      <input class="form-control" type="password" name="pasword" placeholder="nueva Contraseña.." ng-model="password">
     </div>
   </div>
-  <div class="w3-row w3-section">
-    <div class="w3-col" style="width:50px"><i class="w3-xxlarge fa fa-history"></i></div>
-    <div class="w3-rest">
-      <md-select class="w3-input w3-border" aria-label="Select 1" ng-model="duracionContrato" placeholder="Numero de Duracion">
-        <md-option ng-value="todo" ng-repeat="todo in options">{{ todo.name }}</md-option>
-      </md-select>
+  <br>
+  <div class="row">
+    <div class="col-sm-6">
+      <label>Duración del Contrato</label>
+      <select class="form-control" aria-label="Select 1" ng-model="duracionContrato" placeholder="Numero de Duracion">
+        <option ng-value="todo" ng-repeat="todo in options">{{ todo.name }}</option>
+      </select>
     </div>
-  </div>
-  <div class="w3-row w3-section">
-    <div class="w3-col" style="width:50px"><i class="w3-xxlarge fa fa-pencil"></i></div>
-    <div class="w3-rest">
-      <input class="w3-input w3-border"   name="nit" placeholder="NIT de su empresa" ng-model="nit">
-    </div>
-  </div>
-  <div class="w3-row w3-section">
-    <div class="w3-col" style="width:50px"><i class="w3-xxlarge fa fa-pencil"></i></div>
-    <div class="w3-rest">
-      <input class="w3-input w3-border" type="text"  placeholder="Código CIIU de su empresa" name="codigoCIIU" list="codigoCIIU" ng-model="codigoCIIU">
+    <div class="col-sm-6">
+      <label>Codigo CIIU de su Empresa</label>
+      <input class="form-control" type="text"  placeholder="Código CIIU de su empresa" name="codigoCIIU" list="codigoCII" ng-model="codigoCIIU">
       <button type="button" class="btn btn-primary navbar-btn" ng-click="alertCodigo(listini,codigoCIIU)">Detalle</button>
       <label ng-model="label">{{codigoSeleccionado}}</label>
-      <datalist id="codigoCIIU">
-        <select name="codigoCIIU" ng-model="select">
+      <datalist id="codigoCII">
+        <select name="codigoCII" ng-model="select">
           <option value="" disabled selected>Escoja la actividad de su Empresa contratista</option>
           <option ng-repeat="todo in listini"  value="{{todo.codigoCUU}}" ng-model="selectedActivityOption">{{todo.codigoCUU}}</option>
         </select>
       </datalist>
     </div>
   </div>
-  <div class="w3-row w3-section">
-    <div class="w3-col" style="width:50px"><i class="w3-xxlarge fa fa-male"></i></div>
-    <div class="w3-rest">
-      <input class="w3-input w3-border"   name="gerenteGeneral" placeholder="Nombre del Gerente General de su empresa Contratista" ng-model="nombreDeGerenteGeneral">
+  <br>
+  <div class="row">
+    <div class="col-sm-6">
+      <label>NIT Empresa Candidata</label>
+      <input class="form-control"   name="nit" placeholder="NIT de su empresa" ng-model="nit">
+    </div>
+    <div class="col-sm-6">
+      <label>Direccion de la Empresa Candidata</label>
+      <input class="form-control"   name="direccion" placeholder="direccion de su empresa Contratista " ng-model="direccion">
     </div>
   </div>
-  <div class="w3-row w3-section">
-    <div class="w3-col" style="width:50px"><i class="w3-xxlarge fa fa-envelope-o"></i></div>
-    <div class="w3-rest">
-      <input class="w3-input w3-border" type="email" name="email"  placeholder="email please.."  ng-model="email" >
+  <br>
+  <div class="row">
+    <div class="col-sm-6">
+      <label>Telefono Empresa Candidata</label>
+      <input class="form-control"   name="telefono" placeholder="numero telefonico de la empresa" ng-model="telefono">
+    </div>
+    <div class="col-sm-6">
+      <label>Gerente General de la Empresa Candidata</label>
+      <input class="form-control"   name="gerenteGeneral" placeholder="Nombre del Gerente General de su empresa Contratista" ng-model="nombreDeGerenteGeneral">
     </div>
   </div>
-  <div class="w3-row w3-section">
-    <div class="w3-col" style="width:50px"><i class="w3-xxlarge fa fa-pencil"></i></div>
-    <div class="w3-rest">
-      <input class="w3-input w3-border" type="text"  placeholder="ARL de su empresa" name="movies" list="movies" ng-model="arl">
-      <datalist id="movies">
-      <select name="movies" class="w3-select"  data-placeholder="ARL de la empresa"  >
-        <option value="" disabled selected>Escoja</option>
-        <option value="Sura">Sura</option>
-        <option value="Bolivar">Bolivar</option>
-        <option value="Equidad">Equidad</option>
-        <option value="Aurora">Aurora</option>
-        <option value="Colpatria">Colpatria</option>
-        <option value="Liberty">Liberty</option>
-        <option value="Mapfre">Mapfre</option>
-        <option value="Alfa">Alfa</option>
-      </select>
+  <br>
+  <div class="row">
+    <div class="col-sm-6">
+      <label>ARL Empresa Candidata</label>
+      <input class="form-control" type="text"  placeholder="ARL de su empresa" name="arl" list="arl" ng-model="arl">
+      <datalist id="arl">
+        <select name="arl" class="w3-select"  data-placeholder="ARL de la empresa"  >
+          <option value="" disabled selected>Escoja</option>
+          <option value="Sura">Sura</option>
+          <option value="Bolivar">Bolivar</option>
+          <option value="Equidad">Equidad</option>
+          <option value="Aurora">Aurora</option>
+          <option value="Colpatria">Colpatria</option>
+          <option value="Liberty">Liberty</option>
+          <option value="Mapfre">Mapfre</option>
+          <option value="Alfa">Alfa</option>
+        </select>
       </datalist>
     </div>
-  </div>
-  <div class="w3-row w3-section">
-    <div class="w3-col" style="width:50px"><i class="w3-xxlarge fa fa-building"></i></div>
-    <div class="w3-rest">
-      <input class="w3-input w3-border"   name="direccion" placeholder="direccion de su empresa Contratista " ng-model="direccion">
-    </div>
-  </div>
-  <div class="w3-row w3-section">
-    <div class="w3-col" style="width:50px"><i class="w3-xxlarge fa fa-phone"></i></div>
-    <div class="w3-rest">
-      <input class="w3-input w3-border"   name="telefono" placeholder="numero telefonico de la empresa" ng-model="telefono">
-    </div>
-  </div>
-  <div class="w3-row w3-section">
-    <div class="w3-col" style="width:50px"><i class="w3-xxlarge fa fa-pencil"></i></div>
-    <div class="w3-rest">
-      <input class="w3-input w3-border" type="text"  name="departamento" list="departamento" placeholder="departamento de su empresa" ng-model="departamento">
-      <datalist id="departamento">
-        <select name="departamento" class="w3-select"  data-placeholder="departamento de la empresa"  >
+    <div class="col-sm-6">
+      <label>Departamento de la Empresa Candidata</label>
+      <input class="form-control" type="text"  name="departamentos" list="departamentos" placeholder="departamento de su empresa" ng-model="departamento">
+      <datalist id="departamentos">
+        <select name="departamentos" class="w3-select"  data-placeholder="departamento de la empresa"  >
           <option value="" disabled selected>Escoja un Departamento</option>
           <option value="Bogotá D.C">Bogotá D.C</option>
           <option value="La Guajira">La Guajira</option>
@@ -137,31 +135,31 @@
         </select>
       </datalist>
     </div>
-    <div class="w3-row w3-section">
-      <div class="w3-col" style="width:50px"><i class="w3-xxlarge fa fa-male"></i></div>
-      <div class="w3-rest">
-        <input class="w3-input w3-border" type="text" name="personContacto"  placeholder="Nombre de Persona de Contacto de Empresa Contratista.."  ng-model="personContacto" >
-      </div>
+  </div>
+  <br>
+  <div class="row">
+    <div class="col-sm-6">
+      <label>Nombre Persona Contacto Empresa Candidata</label>
+      <input class="form-control" type="text" name="personContacto"  placeholder="Nombre de Persona de Contacto de Empresa Contratista.."  ng-model="personContacto" >
     </div>
-    <div class="w3-row w3-section">
-      <div class="w3-col" style="width:50px"><i class="w3-xxlarge fa fa-briefcase	"></i></div>
-      <div class="w3-rest">
-        <input class="w3-input w3-border" type="text" name="cargoPersonaContacto"  placeholder="Cargo de Persona Contacto de la Empresa.."  ng-model="cargoPersonaContacto" >
-      </div>
-    </div>
-    <div class="w3-row w3-section">
-      <div class="w3-col" style="width:50px"><i class="w3-xxlarge fa fa-phone-square"></i></div>
-      <div class="w3-rest">
-        <input class="w3-input w3-border" type="text" name="telefonoPersonaContacto"  placeholder="telefono persona Contacto.."  ng-model="telefonoPersonaContacto" >
-      </div>
-    </div>
-    <div class="w3-row w3-section">
-      <div class="w3-col" style="width:50px"><i class="w3-xxlarge fa fa-envelope-open"></i></div>
-      <div class="w3-rest">
-        <input class="w3-input w3-border" type="email" name="emailContacto"  placeholder="Email persona Contacto.."  ng-model="emailContacto" >
-      </div>
+    <div class="col-sm-6">
+      <label>Cargo Persona Contacto de la Empresa Candidata</label>
+      <input class="form-control" type="text" name="cargoPersonaContacto"  placeholder="Cargo de Persona Contacto de la Empresa.."  ng-model="cargoPersonaContacto" >
     </div>
   </div>
-</form>
-<button class="btn btn-primary btn-block" type="submit" ng-click="add($event)">Try it</button>
+  <br>
+  <div class="row">
+    <div class="col-sm-6">
+      <label>Telefono persona Contacto Empresa Candidata</label>
+      <input class="form-control" type="text" name="telefonoPersonaContacto"  placeholder="telefono persona Contacto.."  ng-model="telefonoPersonaContacto" >
+    </div>
+    <div class="col-sm-6">
+      <label for="emailContacto">Email persona Contacto Empresa Candidata</label>
+      <input class="form-control" type="email" name="emailContacto" id="emailContacto" placeholder="Email persona Contacto.."  ng-model="emailContacto" >
+    </div>
+  </div>
+  <br>
+  <button class="btn btn-primary btn-block" type="submit" ng-click="add($event)">Registrar</button>
+</div>
+
 </div>

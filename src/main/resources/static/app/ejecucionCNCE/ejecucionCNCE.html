@@ -1,40 +1,40 @@
 
 <div class="w3-container">
-    <h1 class="w3-center text-primary" >REVISE LO QUE SUBIERON SUS CONTRATISTAS</h1>
-    <form  id="myForm" class="w3-container w3-card-4 w3-light-grey text-primary w3-margin">
-        <div class="w3-row w3-section">
-            <div class="w3-col" style="width:50px"><i class="w3-xxlarge fa fa-search"></i></div>
-            <h4 class="w3-center">ESCOJA EL CONTRATO SOBRE EL CUAL REALIZARÁ LA REVISIÓN</h4>
-            <div class="w3-rest">
-                <input class="w3-input w3-border" type="text"  placeholder="A que contrato le va aplicar los requisitos" name="contrato" list="contratos" ng-model="contrato">
+    <div class="container text-center ">
+        <h4 class="w3-center" ><b>REVISE LO QUE SUBIERON SUS CONTRATISTAS</b></h4>
+    <form >
+        <div class="form-group">
+
+            <h4 class="w3-center"><b>ESCOJA EL CONTRATO SOBRE EL CUAL REALIZARÁ LA REVISIÓN</b></h4>
+
+                <input class="form-control" type="text"  placeholder="A que contrato le va aplicar los requisitos" name="contrato" list="contratos" ng-model="contrato">
                 <datalist id="contratos">
                     <select name="contratos" ng-model="select">
                         <option value="" disabled selected>Escoja un  contrato de los existentes </option>
                         <option ng-repeat="todo in listado"  value="{{todo.idContrato}}" ng-model="selectedOption">{{todo.nombreContrato}}</option>
                     </select>
                 </datalist>
-            </div>
+
         </div>
     </form>
-    <button class="btn btn-primary navbar-btn" type="submit" ng-click="add()">Consultar</button>
+    <button class="btn btn-primary align-middle" type="submit" ng-click="add()">Consultar</button>
+    </div>
 </div>
 <br>
 <br>
-    <div class="w3-container" ng-show="flag">
+    <div class="container text-center" ng-show="flag">
       <p>EN LA SIGUIENTE TABLA ENCONTRARÁ A LOS CONTRATISTAS PERTENECIENTES AL CONTRATO</p>
 
-            <table class="w3-table-all">
+            <table class="table table-striped table-bordered table-hover table-condensed">
               <tbody>
-                <tr class="w3-light-grey w3-hover-grey">
-                  <th class="w3-center"><button ng-click="sortBy('nombreEmpresa')">Nombre de Empresa</button></th>
-                    <th class="w3-center">Análisis</th>
-
-
+                <tr >
+                  <th >Nombre de Empresa</th>
+                    <th >Análisis</th>
 
               </tr>
-                <tr  class="w3-hover-green" ng-repeat="todo in listillo | orderBy:propertyName:reverse">
-                    <td class="w3-center">{{todo.nombreEmpresa}}</td>
-                    <td class="w3-center">
+                <tr ng-repeat="todo in listillo | orderBy:propertyName:reverse">
+                    <td >{{todo.nombreEmpresa}}</td>
+                    <td >
                         <md-button button class="md-primary md-raised" ng-click="showAlert($event,todo)" >
                             Resumen
                         </md-button>

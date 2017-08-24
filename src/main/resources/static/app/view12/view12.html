@@ -1,11 +1,11 @@
 
 <div class="w3-container ">
-    <div class="container">
-    <h2 class="w3-center" >REVISE A SUS CONTRATISTAS</h2>
+    <div class="container align-middle text-center">
+        <h4 class="w3-center" ><b>REVISE A SUS CONTRATISTAS</b></h4>
     <form>
         <div class="form-group">
-            <h3 class="w3-center">ESCOJA EL CONTRATO SOBRE EL CUAL QUIERE VER LOS CONTRATISTAS</h3>
-            <p>EN PARTE DE ABAJO ECONTRARÁ UNA LISTA DE TODOS SUS CONTRATOS DISPONIBLES </p>
+            <h4 class="w3-center"><b>ESCOJA EL CONTRATO SOBRE EL CUAL QUIERE VER LOS CONTRATISTAS</b></h4>
+            <p><b>EN PARTE DE ABAJO ECONTRARÁ UNA LISTA DE TODOS SUS CONTRATOS DISPONIBLES</b> </p>
                 <input class="form-control" type="text"  placeholder="Contratos Existentes" name="contrato" list="contratos" ng-model="contrato">
                 <datalist id="contratos">
                     <select name="contratos" ng-model="select">
@@ -16,7 +16,7 @@
         </div>
     </form>
     <button class="btn btn-primary " type="submit" ng-click="add()">Consultar</button>
-    <div class="w3-container" ng-show="flag">
+    <div class="w3-container align-middle text-center" ng-show="flag">
         <h4>FINALISTAS DEFINITIVOS</h4>
 
         <div class="w3-container">
