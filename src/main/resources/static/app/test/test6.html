@@ -15,15 +15,15 @@
                     <md-content class="md-padding">
                         <div class="md-dialog-content" ng-show="lonPrevio">
                             <label>Sugeridos</label>
-                            <table class="w3-table ">
+                            <table class="table table-sm  table-striped table-bordered table-hover table-condensed  text-justify ">
                                 <thead>
-                                <tr class="w3-light-grey w3-hover-grey">
+                                <tr class="">
                                     <th>Descripcion</th>
                                     <th>¿Aplica?<md-checkbox  aria-label="CheckboxMaster" ng-model="masterPrevioSugerido" ng-click="allPreviosSugeridos(masterPrevioSugerido)"></md-checkbox></th>
                                 </tr>
                                 </thead>
                                 <tbody>
-                                <tr class="w3-hover-green" ng-repeat="todo in listadoPrevioSugerido" >
+                                <tr class="" ng-repeat="todo in listadoPrevioSugerido" >
                                     <td>{{todo.requisito}}</td>
                                     <td><md-checkbox class="w3-center"  aria-label="Checkbox 1"  ng-model="previoSugerido" ng-change="agregarPrevioSugerido(previoSugerido, todo)">
                                     </md-checkbox></td>
@@ -48,15 +48,15 @@
 
                             <div class="md-dialog-content" ng-show="lonPrevioEx">
                             <label>Extras</label>
-                            <table class="w3-table ">
+                            <table class="table table-sm  table-striped table-bordered table-hover table-condensed  text-justify ">
                                 <thead>
-                                <tr class="w3-light-grey w3-hover-grey">
+                                <tr class="">
                                     <th>Descripcion</th>
                                     <th>¿Aplica?<md-checkbox  aria-label="CheckboxMaster" ng-model="masterPrevioExtra" ng-click="allPreviosExtra(masterPrevioExtra)"></md-checkbox></th>
                                 </tr>
                                 </thead>
                                 <tbody>
-                                <tr class="w3-hover-green" ng-repeat="todo in listadoPrevioExtra" >
+                                <tr class="" ng-repeat="todo in listadoPrevioExtra" >
                                     <td>{{todo.descripcion}}</td>
                                     <td><md-checkbox class="w3-center"  aria-label="Checkbox 1"  ng-model="previoExtras" ng-change="agregarPrevioExtra(previoExtras, todo)">
                                     </md-checkbox></td>
@@ -87,15 +87,15 @@
                     <md-content class="md-padding">
                         <div class="md-dialog-content" ng-show="lonEjec">
                             <label>Sugeridos</label>
-                            <table class="w3-table ">
+                            <table class="table table-sm  table-striped table-bordered table-hover table-condensed  text-justify ">
                                 <thead>
-                                <tr class="w3-light-grey w3-hover-grey">
+                                <tr class="">
                                     <th>Descripcion</th>
                                     <th>¿Aplica?<md-checkbox  aria-label="CheckboxMaster" ng-model="masterEjecucionSugerido" ng-click="allEjecucionSugerido(masterEjecucionSugerido)"></md-checkbox></th>
                                 </tr>
                                 </thead>
                                 <tbody>
-                                <tr class="w3-hover-green" ng-repeat="todo in listadoEjecucionSugerido" >
+                                <tr class="" ng-repeat="todo in listadoEjecucionSugerido" >
                                     <td>{{todo.requisito}}</td>
                                     <td><md-checkbox class="w3-center"  aria-label="Checkbox 1"  ng-model="ejecucionSugerido" ng-change="agregarEjecucionSugerido(ejecucionSugerido, todo)">
                                     </md-checkbox></td>
@@ -120,15 +120,15 @@
                         </div>
                             <div class="md-dialog-content" ng-show="lonEjecEx">
                             <label>Extras</label>
-                            <table class="w3-table ">
+                            <table class="table table-sm  table-striped table-bordered table-hover table-condensed  text-justify ">
                                 <thead>
-                                <tr class="w3-light-grey w3-hover-grey">
+                                <tr class="">
                                     <th>Descripcion</th>
                                     <th>¿Aplica?<md-checkbox  aria-label="CheckboxMaster" ng-model="masterEjecucionExtra" ng-click="allEjecucionExtra(masterEjecucionExtra)"></md-checkbox></th>
                                 </tr>
                                 </thead>
                                 <tbody>
-                                <tr class="w3-hover-green" ng-repeat="todo in listadoEjecucionExtra" >
+                                <tr class="" ng-repeat="todo in listadoEjecucionExtra" >
                                     <td>{{todo.descripcion}}</td>
                                     <td><md-checkbox class="w3-center"  aria-label="Checkbox 1"  ng-model="ejecucionExtra" ng-change="agregarEjecucionExtra(ejecucionExtra, todo)">
                                     </md-checkbox></td>
@@ -159,15 +159,15 @@
                     <md-content class="md-padding">
                         <div class="md-dialog-content" ng-show="lonFi">
                             <label>Sugeridos</label>
-                            <table class="w3-table ">
+                            <table class="table table-sm  table-striped table-bordered table-hover table-condensed  text-justify ">
                                 <thead>
-                                <tr class="w3-light-grey w3-hover-grey">
+                                <tr class="">
                                     <th>Descripcion</th>
                                     <th>¿Aplica?<md-checkbox  aria-label="CheckboxMaster" ng-model="masterFinalizacionSugerido" ng-click="allFinalizacionSugerido(masterFinalizacionSugerido)"></md-checkbox></th>
                                 </tr>
                                 </thead>
                                 <tbody>
-                                <tr class="w3-hover-green" ng-repeat="todo in listadoFinalizacionSugerido" >
+                                <tr class="" ng-repeat="todo in listadoFinalizacionSugerido" >
                                     <td>{{todo.requisito}}</td>
                                     <td><md-checkbox class="w3-center"  aria-label="Checkbox 1"  ng-model="finalizacionSugerido" ng-change="agregarFinalizacionSugerido(finalizacionSugerido, todo)">
                                     </md-checkbox></td>
@@ -192,15 +192,15 @@
                         </div>
                             <div class="md-dialog-content" ng-show="lonFiEx">
                             <label>Extras</label>
-                            <table class="w3-table">
+                            <table class="table table-sm  table-striped table-bordered table-hover table-condensed  text-justify">
                                 <thead>
-                                <tr class="w3-light-grey w3-hover-grey">
+                                <tr class="">
                                     <th>Descripcion</th>
                                     <th>¿Aplica?<md-checkbox  aria-label="CheckboxMaster" ng-model="masterFinalizacionExtra" ng-click="allFinalizacionExtra(masterFinalizacionExtra)"></md-checkbox></th>
                                 </tr>
                                 </thead>
                                 <tbody>
-                                <tr class="w3-hover-green" ng-repeat="todo in listadoFinalizacionExtra" >
+                                <tr class="" ng-repeat="todo in listadoFinalizacionExtra" >
                                     <td>{{todo.descripcion}}</td>
                                     <td><md-checkbox class="w3-center"  aria-label="Checkbox 1"  ng-model="finalizacionExtra" ng-change="agregarFinalizacionExtra(finalizacionExtra, todo)">
                                     </md-checkbox></td>

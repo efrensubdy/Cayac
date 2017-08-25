@@ -15,15 +15,15 @@
                 <md-tab label="Requisitos Sugeridos">
                     <md-content class="md-padding">
                         <div class="md-dialog-content">
-                            <table class="w3-table-all">
+                            <table class="table table-sm  table-striped table-bordered table-hover table-condensed  text-justify">
                                 <thead>
-                                <tr class="w3-light-grey w3-hover-grey">
+                                <tr class="">
                                     <th>Descripcion</th>
                                     <th>¿Aplica?<input type="checkbox"></th>
                                 </tr>
                                 </thead>
                                 <tbody>
-                                <tr class="w3-hover-green" ng-repeat="todo in listado2" >
+                                <tr class="" ng-repeat="todo in listado2" >
                                     <td>{{todo.requisito}}</td>
                                     <td><input class="w3-check" type="checkbox"  aria-label="Checkbox 1" ng-model="selected" ng-change="display(selected, todo)">
                                         </input></td>
@@ -40,15 +40,15 @@
                 <md-tab label="Requisitos Extras">
                     <md-content class="md-padding">
                         <div class="md-dialog-content">
-                            <table class="w3-table-all">
+                            <table class="table table-sm  table-striped table-bordered table-hover table-condensed  text-justify">
                                 <thead>
-                                <tr class="w3-light-grey w3-hover-grey">
+                                <tr class="">
                                     <th>Descripcion</th>
                                     <th>¿Aplica?<input type="checkbox" ng-model="father"></th>
                                 </tr>
                                 </thead>
                                 <tbody>
-                                <tr class="w3-hover-green" ng-repeat="todo in listado3" >
+                                <tr class="" ng-repeat="todo in listado3" >
                                     <td>{{todo.requisito}}</td>
                                     <td><input class="w3-check" type="checkbox"  aria-label="Checkbox 1"  ng-model="select" ng-change="display2(select, todo)">
                                         </input></td>
@@ -63,25 +63,25 @@
                 <md-tab label="Requisitos Definitivos" ng-click="consultar()">
                     <md-content class="md-padding">
                         <div class="md-dialog-content">
-                            <table class="w3-table-all">
+                            <table class="table table-sm  table-striped table-bordered table-hover table-condensed  text-justify">
                                 <thead>
-                                <tr class="w3-light-grey w3-hover-grey">
+                                <tr class="">
                                     <th>Sugeridos</th>
                                 </tr>
                                 </thead>
                                 <tbody>
-                                <tr class="w3-hover-green" ng-repeat="todo in list1">
+                                <tr class="" ng-repeat="todo in list1">
                                     <td> {{todo.descripcion}} </td>
                                 </tr>
                                 </tbody>
                             </table>
-                            <table class="w3-table-all">
-                                <tr class="w3-light-grey w3-hover-grey">
+                            <table class="table table-sm  table-striped table-bordered table-hover table-condensed  text-justify">
+                                <tr class="">
                                     <th>Extras</th>
                                 </tr>
                                 </thead>
                                 <tbody>
-                                <tr class="w3-hover-green" ng-repeat="todo in list2">
+                                <tr class="" ng-repeat="todo in list2">
                                     <td>{{todo.descripcion}} </td>
                                 </tr>
                                 </tbody>

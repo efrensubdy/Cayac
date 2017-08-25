@@ -1,8 +1,8 @@
 
 <div  ng-controller="revisionDinamicaCtrl as ctrl" class="w3-container ">
-    <div class="container">
-        <h2 class="w3-center">ESCOJA EL CONTRATO SOBRE EL CUAL VA REALIZAR LA REVISIÓN</h2>
-        <p>EN PARTE DE ABAJO ECONTRARÁ UNA LISTA DE TODOS SUS CONTRATOS DISPONIBLES </p>
+    <div class="container text-center align-middle ">
+        <h4 class="w3-center">ESCOJA EL CONTRATO SOBRE EL CUAL VA REALIZAR LA REVISIÓN</h4>
+        <p><b>EN PARTE DE ABAJO ECONTRARÁ UNA LISTA DE TODOS SUS CONTRATOS DISPONIBLES</b></p>
         <form>
             <div class="form-group">
                 <input class="form-control" type="text"  placeholder="Contratos Existentes" name="contrato" list="contratos" ng-model="contrato">
@@ -16,7 +16,7 @@
             </div>
             <button class="btn btn-primary " type="submit" ng-click="add()">Consultar</button>
 
-            <div class="w3-container" ng-show="flag">
+            <div class="w3-container text-center align-middle" ng-show="flag">
                 <h4>FINALISTAS DEFINITIVOS</h4>
 
                 <div class="w3-container">
@@ -44,3 +44,9 @@
         </form>
     </div>
 </div>
+
+<br>
+<br>
+<br>
+<br>
+<br>

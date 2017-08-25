@@ -1,32 +1,36 @@
 
-<div  ng-controller="gestionDinamicaCtrl as ctrl">
-    <div class="w3-container text-primary w3-center">
+<div class="w3-container">
+<div  class="container" ng-controller="gestionDinamicaCtrl as ctrl">
+    <div class="container  align-middle">
+        <h4><b>GESTIÓN DINAMICA</b></h4>
+        <p><b>A CONTINUACIÓN ECONTRARÁ UN TABLA CON LOS REQUISITOS APLICADOS POR SU CONTRATANTE SEGÚN EL CICLO
+            CON UN BOTON SOBRE EL CUAL PODRÁ GESTIONAR EL REQUISITO   </b></p>
         <div>
-            <md-select aria-label="Select 1" ng-model="tipoCiclo" placeholder="Escoja el ciclo al cual Realizará las actividades" ng-change="function1()">
-                <md-option ng-value="todo.id" ng-repeat="todo in options">{{ todo.name }}</md-option>
-            </md-select>
+            <select class="form-control" ng-model="tipoCiclo" placeholder="Escoja el ciclo al cual Realizará las actividades" ng-change="function1()">
+                <option ng-value="todo.id" ng-repeat="todo in options">{{ todo.name }}</option>
+            </select>
         </div>
         <br>
         <br>
-        <div class="w3-container" ng-show="banderaPrevio">
+        <div class="container" ng-show="banderaPrevio">
             <p><b>EN LA SIGUIENTE TABLA ENCONTRARÁ LOS REQUISITOS PREVIOS APLICADOS POR SU CONTRATANTE</b></p>
-            <table class="w3-table-all">
+            <table class="table table-striped table-bordered table-hover table-condensed">
                 <tbody>
-                <tr class="w3-light-grey w3-hover-grey">
-                    <th class="w3-center">Requisito</th>
-                    <th class="w3-center">Análisis</th>
+                <tr class="">
+                    <th class="text-justify">Requisito</th>
+                    <th class="text-justify">Análisis</th>
                 </tr>
-                <tr  class="w3-hover-green" ng-repeat="todo in previosSugeridos | orderBy:propertyName:reverse">
-                    <td class="w3-center"><b>{{todo.descripcion}}</b></td>
-                    <td class="w3-center">
+                <tr  class="" ng-repeat="todo in previosSugeridos | orderBy:propertyName:reverse">
+                    <td class="text-justify"><b>{{todo.descripcion}}</b></td>
+                    <td class="text-justify">
                         <md-button button class="md-primary md-raised" ng-click="gestionarPrevios(todo,$event)">
                             Gestionar
                         </md-button>
                     </td>
                 </tr>
-                <tr  class="w3-hover-green" ng-repeat="todo in previosExtras | orderBy:propertyName:reverse">
-                    <td class="w3-center"><b>{{todo.descripcion}}</b></td>
-                    <td class="w3-center">
+                <tr  class="" ng-repeat="todo in previosExtras | orderBy:propertyName:reverse">
+                    <td class="text-justify"><b>{{todo.descripcion}}</b></td>
+                    <td class="text-justify">
                         <md-button button class="md-primary md-raised" ng-click="gestionarPreviosExtras(todo,$event)">
                             Gestionar
                         </md-button>
@@ -38,25 +42,25 @@
             </table>
 
         </div>
-        <div class="w3-container" ng-show="banderaEjecucion">
+        <div class="container" ng-show="banderaEjecucion">
             <p><b>EN LA SIGUIENTE TABLA ENCONTRARÁ LOS REQUISITOS PREVIOS APLICADOS POR SU CONTRATANTE</b></p>
-            <table class="w3-table-all">
+            <table class="table table-striped table-bordered table-hover table-condensed">
                 <tbody>
-                <tr class="w3-light-grey w3-hover-grey">
-                    <th class="w3-center">Requisito</th>
-                    <th class="w3-center">Análisis</th>
+                <tr class="">
+                    <th class="text-justify">Requisito</th>
+                    <th class="text-justify">Análisis</th>
                 </tr>
-                <tr  class="w3-hover-green" ng-repeat="todo in ejecucionSugeridos | orderBy:propertyName:reverse">
-                    <td class="w3-center"><b>{{todo.descripcion}}</b></td>
-                    <td class="w3-center">
+                <tr  class="" ng-repeat="todo in ejecucionSugeridos | orderBy:propertyName:reverse">
+                    <td class="text-justify"><b>{{todo.descripcion}}</b></td>
+                    <td class="text-justify">
                         <md-button button class="md-primary md-raised" ng-click="gestionar(todo,$event)">
                             Gestionar
                         </md-button>
                     </td>
                 </tr>
-                <tr  class="w3-hover-green" ng-repeat="todo in ejecucionExtras | orderBy:propertyName:reverse">
-                    <td class="w3-center"><b>{{todo.descripcion}}</b></td>
-                    <td class="w3-center">
+                <tr  class="" ng-repeat="todo in ejecucionExtras | orderBy:propertyName:reverse">
+                    <td class="text-justify"><b>{{todo.descripcion}}</b></td>
+                    <td class="text-justify">
                         <md-button button class="md-primary md-raised" ng-click="gestionar(todo,$event)">
                             Gestionar
                         </md-button>
@@ -68,25 +72,25 @@
             </table>
 
         </div>
-        <div class="w3-container" ng-show="banderaFinalizacion">
+        <div class="container" ng-show="banderaFinalizacion">
             <p><b>EN LA SIGUIENTE TABLA ENCONTRARÁ LOS REQUISITOS PREVIOS APLICADOS POR SU CONTRATANTE</b></p>
-            <table class="w3-table-all">
+            <table class="table table-striped table-bordered table-hover table-condensed">
                 <tbody>
-                <tr class="w3-light-grey w3-hover-grey">
-                    <th class="w3-center">Requisito</th>
-                    <th class="w3-center">Análisis</th>
+                <tr class="">
+                    <th class="text-justify">Requisito</th>
+                    <th class="text-justify">Análisis</th>
                 </tr>
-                <tr  class="w3-hover-green" ng-repeat="todo in finalizacionSugeridos | orderBy:propertyName:reverse">
-                    <td class="w3-center"><b>{{todo.descripcion}}</b></td>
-                    <td class="w3-center">
+                <tr  class="" ng-repeat="todo in finalizacionSugeridos | orderBy:propertyName:reverse">
+                    <td class="text-justify"><b>{{todo.descripcion}}</b></td>
+                    <td class="text-justify">
                         <md-button button class="md-primary md-raised" ng-click="gestionar(todo,$event)">
                             Gestionar
                         </md-button>
                     </td>
                 </tr>
-                <tr  class="w3-hover-green" ng-repeat="todo in finalizacionExtras | orderBy:propertyName:reverse">
-                    <td class="w3-center"><b>{{todo.descripcion}}</b></td>
-                    <td class="w3-center">
+                <tr  class="" ng-repeat="todo in finalizacionExtras | orderBy:propertyName:reverse">
+                    <td class="text-justify"><b>{{todo.descripcion}}</b></td>
+                    <td class="text-justify">
                         <md-button button class="md-primary md-raised" ng-click="gestionar(todo,$event)">
                             Gestionar
                         </md-button>
@@ -101,3 +105,9 @@
 
     </div>
 </div>
+</div>
+<br>
+<br>
+<br>
+<br>
+<br>

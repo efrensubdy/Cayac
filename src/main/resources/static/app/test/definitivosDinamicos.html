@@ -14,37 +14,37 @@
                 <md-tab label="Requisitos Definitivos" ng-click="consultar()">
                     <md-content class="md-padding">
                         <div class="md-dialog-content">
-                            <table class="w3-table-all">
+                            <table class="table table-sm  table-striped table-bordered table-hover table-condensed  text-justify">
                                 <thead>
-                                <tr class="w3-light-grey w3-hover-grey">
+                                <tr >
                                     <th>DEFINITIVOS</th>
                                     <th>ELIMINAR</th>
 
                                 </tr>
                                 </thead>
                                 <tbody>
-                                <tr class="w3-hover-green" ng-repeat="todo in defPreviosSugeridos">
+                                <tr  ng-repeat="todo in defPreviosSugeridos">
                                     <td> {{todo.descripcion}} </td>
                                     <td><md-checkbox  aria-label="Checkbox 1" class="w3-check" type="checkbox"   ng-model="select1" ng-change="eliminar1(select1, todo)"></md-checkbox></td>
 
                                 </tr>
-                                <tr class="w3-hover-green" ng-repeat="todo in defPreviosExtras">
+                                <tr  ng-repeat="todo in defPreviosExtras">
                                     <td>{{todo.descripcion}} </td>
                                     <td><md-checkbox  aria-label="Checkbox 1" class="w3-check" type="checkbox"   ng-model="select2" ng-change="eliminar2(select2, todo)"></md-checkbox></td>
                                 </tr>
-                                <tr class="w3-hover-green" ng-repeat="todo in defEjecucionSugeridos">
+                                <tr  ng-repeat="todo in defEjecucionSugeridos">
                                     <td>{{todo.descripcion}} </td>
                                     <td><md-checkbox  aria-label="Checkbox 1" class="w3-check" type="checkbox"   ng-model="select3" ng-change="eliminar3(select3, todo)"></md-checkbox></td>
                                 </tr>
-                                <tr class="w3-hover-green" ng-repeat="todo in defEjecucionExtras">
+                                <tr  ng-repeat="todo in defEjecucionExtras">
                                     <td>{{todo.descripcion}} </td>
                                     <td><md-checkbox  aria-label="Checkbox 1" class="w3-check" type="checkbox"   ng-model="select4" ng-change="eliminar4(select4, todo)"></md-checkbox></td>
                                 </tr>
-                                <tr class="w3-hover-green" ng-repeat="todo in defFinalizacionSugeridos">
+                                <tr  ng-repeat="todo in defFinalizacionSugeridos">
                                     <td>{{todo.descripcion}} </td>
                                     <td><md-checkbox  aria-label="Checkbox 1" class="w3-check" type="checkbox"   ng-model="select5" ng-change="eliminar5(select5, todo)"></md-checkbox></td>
                                 </tr>
-                                <tr class="w3-hover-green" ng-repeat="todo in defFinalizacionExtras">
+                                <tr  ng-repeat="todo in defFinalizacionExtras">
                                     <td>{{todo.descripcion}} </td>
                                     <td><md-checkbox  aria-label="Checkbox 1" class="w3-check" type="checkbox"   ng-model="select6" ng-change="eliminar6(select6, todo)"></md-checkbox></td>
                                 </tr>

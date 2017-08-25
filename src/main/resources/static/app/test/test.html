@@ -30,15 +30,15 @@
                     <md-tab label="Requisitos Sugeridos" ng-click="hideMessage1()">
                         <md-content class="md-padding">
                         <div class="md-dialog-content" ng-show="table1">
-                        <table class="w3-table-all">
+                        <table class="table table-sm  table-striped table-bordered table-hover table-condensed  text-justify">
                         <thead>
-                        <tr class="w3-light-grey w3-hover-grey">
+                        <tr class="">
                             <th>Descripcion</th>
                             <th>¿Aplica?<md-checkbox  aria-label="CheckboxMaster" ng-model="master" ng-click="all(master)"></md-checkbox></th>
                         </tr>
                         </thead>
                         <tbody>
-                        <tr class="w3-hover-green" ng-repeat="todo in listado2" >
+                        <tr class="" ng-repeat="todo in listado2" >
                             <td>{{todo.requisito}}</td>
                             <td><md-checkbox  aria-label="Checkbox 1"  ng-model="selected" ng-change="display(selected, todo)">
                             </md-checkbox></td>
@@ -72,15 +72,15 @@
                     <md-tab label="Requisitos Extras" ng-click="hideMessage1()">
                         <md-content class="md-padding">
                             <div class="md-dialog-content" ng-show="table2">
-                                <table class="w3-table-all">
+                                <table class="table table-sm  table-striped table-bordered table-hover table-condensed  text-justify">
                                     <thead>
-                                    <tr class="w3-light-grey w3-hover-grey">
+                                    <tr class="">
                                         <th>Descripcion</th>
                                         <th>¿Aplica?<md-checkbox  aria-label="CheckboxMaster2" ng-model="master2" ng-click="all2(master2)"></md-checkbox></th>
                                     </tr>
                                     </thead>
                                     <tbody>
-                                    <tr class="w3-hover-green" ng-repeat="todo in listado3" >
+                                    <tr class="" ng-repeat="todo in listado3" >
                                         <td>{{todo.descripcion}}</td>
                                         <td><md-checkbox  aria-label="Checkbox 1" ng-model="select" ng-change="display2(select, todo)">
                                         </md-checkbox></td>

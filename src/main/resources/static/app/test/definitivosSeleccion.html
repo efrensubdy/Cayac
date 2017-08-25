@@ -14,19 +14,19 @@
                 <md-tab label="Requisitos Definitivos" ng-click="consultar()">
                     <md-content class="md-padding">
                         <div class="md-dialog-content">
-                            <table class="w3-table-all">
+                            <table class="table table-sm  table-striped table-bordered table-hover table-condensed  text-justify">
                                 <thead>
-                                <tr class="w3-light-grey w3-hover-grey">
+                                <tr >
                                     <th>DEFINITIVOS</th>
                                     <th>ELIMINAR</th>
                                 </tr>
                                 </thead>
                                 <tbody>
-                                <tr class="w3-hover-green" ng-repeat="todo in list1">
+                                <tr ng-repeat="todo in list1">
                                     <td> {{todo.descripcion}} </td>
                                     <td><md-checkbox  aria-label="Checkbox 1" class="w3-check" type="checkbox"   ng-model="selected" ng-change="display3(selected, todo)"></md-checkbox></td>
                                 </tr>
-                                <tr class="w3-hover-green" ng-repeat="todo in list2">
+                                <tr  ng-repeat="todo in list2">
                                     <td>{{todo.descripcion}} </td>
                                     <td><md-checkbox aria-label="Checkbox 1"   ng-model="select" ng-change="display4(select, todo)"></md-checkbox></td>
 

@@ -18,7 +18,6 @@ public class Conexion {
 
 	private static final String DB_PASSWORD = "susypadyn";
 
-
 	public static Connection conection() throws ClassNotFoundException, SQLException{
 		Class.forName(JDBC_DRIVER);
 		Connection conn = DriverManager.getConnection(DB_URL, DB_USER, DB_PASSWORD);
