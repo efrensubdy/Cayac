@@ -1,41 +1,43 @@
 
-<div class="w3-container text-primary">
-<h1 class="w3-center">SUBA AQUÍ EL SOPORTE DE REQUISITOS APLICADOS POR SU CONTRATANTE</h1>
+<div class="w3-container">
+<div class="container text-center">    
+    
+<h4 class="w3-center">SUBA AQUÍ EL SOPORTE DE REQUISITOS APLICADOS POR SU CONTRATANTE</h4>
 <label ng-show="banderaFecha"  class="w3-center"> LA FECHA DE ENTREGA DE LOS DOCUMENTOS ES {{objeto.fechaFin| date : "fullDate"}},
     LE QUEDAN {{objeto.tiempoRestante}} PARA ENTREGAR LOS SOPORTES</label>
 <label ng-show="!banderaFecha">SU FECHA DE SUBIR SOPORTES YA PASO CONTACTESE CON SU CONTRATANTE</label>
-<form class="w3-container" ng-show="mostrar">
-    <table class="w3-table-all"  ng-controller="View9Ctrl">
+<div class="container" ng-show="mostrar">
+    <table class="table table-sm  table-striped table-bordered table-hover table-condensed  text-justify"  ng-controller="View9Ctrl">
         <thead>
-        <tr class="w3-light-grey w3-hover-grey">
-                <th>  <button ng-click="sortBy('descripcion')">Descripcion</button></th>
-                <th><button>Soporte</button></th>
-                <th>Estado</th>
+        <tr >
+                <th width="600px"> Descripcion</th>
+                <th width="600px">Soporte</th>
+                <th width="600px">Estado</th>
         </tr>
         </thead>
         <tbody >
 
-        <tr  class="w3-hover-green" ng-repeat="todo in list1" >
-            <td ng-model="pero" >{{todo.descripcion}}</td>
-            <td>
+        <tr   ng-repeat="todo in list1" >
+            <td width="600px" ng-model="pero" >{{todo.descripcion}}</td>
+            <td width="800px" >
                <div>
-                 <input type="file" file-model="myFile"/></file-model>
-                   <button type="button" class="w3-btn w3-blue" ng-click="agregar($event,todo)" ng-model="tablita">Subir</button>
+                 <input class="form-control" type="file" file-model="myFile"/></file-model>
+                   <button class="btn btn-primary align-middle" type="button" ng-click="agregar($event,todo)" ng-model="tablita">Subir</button>
                 </div>
             </td>
-            <td>
+            <td width="50px" >
                 <div class="w3-col" ng-show="{{todo.estado}}||flag"  style="width:50px"><i class="w3-xxlarge fa fa-check-square"></i></div>
             </td>
         </tr>
-        <tr class="w3-hover-green" ng-repeat="todo in list2" >
-            <td ng-model="pero" >{{todo.descripcion}}</td>
-            <td>
+        <tr  ng-repeat="todo in list2" >
+            <td width="600px"  ng-model="pero" >{{todo.descripcion}}</td>
+            <td width="800px">
                 <div>
-                    <input type="file" file-model="myFile"/></file-model>
-                    <button type="button" class="w3-btn w3-blue" ng-click="agregar2($event,todo)" ng-model="tablita">Subir</button>
+                    <input class="form-control" type="file" file-model="myFile"/></file-model>
+                    <button type="button" class="btn btn-primary align-middle" ng-click="agregar2($event,todo)" ng-model="tablita">Subir</button>
                 </div>
             </td>
-            <td>
+            <td width="50px">
                 <div ng-show="{{todo.estado}}||flag2" class="w3-col" style="width:50px"><i class="w3-xxlarge fa fa-check-square"></i></div>
             </td>
         </tr>
@@ -43,7 +45,8 @@
     </table>
 
 
-</form>
+</div>
+</div>    
 </div>
 
 <br>

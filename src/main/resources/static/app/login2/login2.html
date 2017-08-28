@@ -1,23 +1,23 @@
 
-<form id="myForm" action="/action_page.php" class="w3-container text-primary w3-margin">
-  <h2 class="w3-center">BIENVENIDO CONTRATANTE</h2>
+<form id="myForm"  class="w3-container text-primary w3-margin">
+  <h4 class="w3-center"><b>BIENVENIDO CONTRATANTE</b></h4>
 
   <div class="w3-row w3-section">
     <div class="w3-col" style="width:50px"><i class="w3-xxlarge fa fa-user-secret"></i></div>
     <div class="w3-rest">
-      <input ng- class="w3-input w3-border" type="text" name="nombreContratante" id="fn" placeholder="email de la empresa" ng-model="email">
+      <input class="form-control" type="text" name="nombreContratante" id="fn" placeholder="email de la empresa" ng-model="email">
     </div>
   </div>
   <div class="w3-row w3-section">
     <div class="w3-col" style="width:50px"><i class="w3-xxlarge fa fa-key"></i></div>
     <div class="w3-rest">
-      <input class="w3-input w3-border" type="password" name="pasword" placeholder="Establezca su contraseña.." ng-model="password">
+      <input class="form-control" type="password" name="pasword" placeholder="Establezca su contraseña.." ng-model="password">
     </div>
   </div>
-
+  <div class="w3-row w3-section">
+    <button class="btn btn-primary btn-block" type="submit" ng-click="add($event)">Iniciar Sesion</button>
+  </div>
 </form>
-<button class="btn btn-primary btn-block" type="submit" ng-click="add($event)">Iniciar Sesion</button>
-
 <br>
 <br>
 <br>

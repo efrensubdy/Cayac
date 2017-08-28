@@ -23,6 +23,7 @@ angular.module('myApp', [
   'myApp.ejecucionCNCE',
   'myApp.subirDocumentosEstaticos',
   'myApp.revisionDinamica',
+  'myApp.inicio',
   'myApp.test',
   'myApp.login',
   'myApp.login2',
@@ -32,7 +33,7 @@ angular.module('myApp', [
   'myApp.version'
 ]).
 config(['$routeProvider','$httpProvider','$qProvider', function($routeProvider, $httpProvider,$qProvider) {
-$routeProvider.otherwise({redirectTo: '/login2'});
+$routeProvider.otherwise({redirectTo: '/inicio'});
 $httpProvider.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 $qProvider.errorOnUnhandledRejections(false);
 }])
@@ -82,7 +83,7 @@ $qProvider.errorOnUnhandledRejections(false);
     $scope.close=function(){
 
             $rootScope.bandera=false;
-            $location.path("login2");
+            $location.path("inicio");
             delete $localStorage.contratanteLogeado;
             delete $scope.$storage;
             console.log($localStorage.contratanteLogeado);
@@ -94,7 +95,7 @@ $qProvider.errorOnUnhandledRejections(false);
 
                 $rootScope.bandera2=false;
                 $rootScope.banderaEjecucion=false;
-                $location.path("login3");
+                $location.path("inicio");
                 $localStorage.$reset();
                  delete $localStorage.userLogeado;
                  delete $scope.$storage;
@@ -106,7 +107,7 @@ $qProvider.errorOnUnhandledRejections(false);
     $scope.close3=function(){
 
                     $rootScope.bandera3=false;
-                    $location.path("login3");
+                    $location.path("inicio");
                     $localStorage.$reset();
                      delete $localStorage.userLogeado;
                      delete $scope.$storage;

@@ -1,4 +1,6 @@
-
+DROP TABLE matrizDePeligros;
+DROP TABLE documentosDinamicosPreviosExtras;
+DROP TABLE documentosDinamicosPrevios;
 DROP TABLE requidinadeffinalext;
 DROP TABLE requidinadeffinalsug;
 DROP TABLE requidinadefejecext;

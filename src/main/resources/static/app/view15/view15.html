@@ -1,9 +1,9 @@
 
 <div class="w3-container">
    <div class="container">
-    <h1 class="text-primary w3-center ">CONSULTA DE CONTRATOS</h1>
-    <p class=" text-primary w3-center">EN ESTA VISTA PODRA CONSULTAR SUS CONTRATOS</p>
-    <div class="container " >
+       <h1 class="w3-center "><b>CONSULTA DE CONTRATOS</b></h1>
+       <p class=" w3-center"><b>EN ESTA VISTA PODRA CONSULTAR SUS CONTRATOS</b></p>
+    <div class="container text-center " >
         <p>ESCOJA ALGUNA DE LAS OPCIONES QUE SE LE PRESENTAN A CONTINUACIÓN</p>
         <form >
             <div class="form-group">
@@ -16,7 +16,7 @@
             </div>
         </form>
     </div>
-    <div class="container" ng-show="nombreClick">
+    <div class="container text-center" ng-show="nombreClick">
         <form>
             <input class="form-control" type="text"  placeholder="A que contrato le va aplicar los requisitos" name="contrato" list="contratos" ng-model="contrato" >
             <datalist id="contratos">
@@ -30,7 +30,7 @@
         </form>
         </div>
     </div>
-    <div class="container" ng-show="fechaClick">
+    <div class="container text-center" ng-show="fechaClick">
 
         <p>
             ESCOJA EL RANGO EN EL CUAL VA MIRAR SUS CONTRATOS
@@ -55,7 +55,7 @@
     </div>
 </div>
     <br>
-    <div class="container" ng-show="permisoTable">
+    <div class="container text-center" ng-show="permisoTable">
         <table class="table table-striped table-bordered table-hover table-condensed">
             <tbody>
             <tr>
