@@ -15,6 +15,15 @@ public class RequisitoObligatorio {
     public int idFinalista;
     public int idContratante;
     public  String apodo;
+    public String contenido;
+
+    public String getContenido() {
+        return contenido;
+    }
+
+    public void setContenido(String contenido) {
+        this.contenido = contenido;
+    }
 
     public String getApodo() {
         return apodo;

@@ -9,12 +9,12 @@
   <br>
   <div class="row">
     <div class="col-sm-6">
-      <label>Asigne al candidato un contrato</label>
+      <label>Asigne un Servicio a contratar</label>
       <input class="form-control" type="text"  placeholder="A que contrato pertenece el contratista" name="contrato" list="contrat" ng-model="contrato">
       <datalist id="contrat">
         <select name="contrat" ng-model="select">
           <option value="" disabled selected>Escoja El contrato al que va pertenecer su contratista</option>
-          <option ng-repeat="todo in listado"  value="{{todo.idContrato}}" ng-model="selectedOption">{{todo.nombreContrato}}</option>
+          <option ng-repeat="todo in listado"  value="{{todo.id}}" ng-model="selectedOption">{{todo.nombre}}</option>
         </select>
       </datalist>
     </div>

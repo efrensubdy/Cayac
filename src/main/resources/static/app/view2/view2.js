@@ -10,8 +10,8 @@ angular.module('myApp.view2', ['ngRoute'])
 }])
 
 
-.controller('View2Ctrl', ['$localStorage','$sessionStorage','$mdDialog','$location','$rootScope','$scope', 'contratistas','contratosEjecucion','activity', function ($localStorage,$sessionStorage,$mdDialog,$location,$rootScope,$scope, contratistas,contratosEjecucion,activity)  {
-      $scope.listado=contratosEjecucion.query({idContratante:$localStorage.contratanteLogeado.idContratante})
+.controller('View2Ctrl', ['$localStorage','$sessionStorage','$mdDialog','$location','$rootScope','$scope', 'contratistas','contratosEjecucion','activity','serviciosAContrar', function ($localStorage,$sessionStorage,$mdDialog,$location,$rootScope,$scope, contratistas,contratosEjecucion,activity,serviciosAContrar)  {
+      $scope.listado=serviciosAContrar.query({idContratante:$localStorage.contratanteLogeado.idContratante})
       $scope.listini=activity.query();
       $scope.options = [
                           { id: 0, name: 'MENOS DE UN MES' },
@@ -20,7 +20,6 @@ angular.module('myApp.view2', ['ngRoute'])
                           {id:  3,name:'MAS DE UN AÑO'}
 
                         ];
-
 
       $scope.add=function(ev){
 

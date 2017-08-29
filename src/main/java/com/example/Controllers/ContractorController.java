@@ -1,6 +1,7 @@
 package com.example.Controllers;
 
 import com.example.Models.Contratante;
+import com.example.Models.ServicioAContratar;
 import com.example.Services.ManejoDeContratanteBD;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -26,6 +27,34 @@ public class ContractorController {
     @Autowired
     public void setManejoDeContratanteBD(ManejoDeContratanteBD manejoDeContratanteBD) {
         this.manejoDeContratanteBD = manejoDeContratanteBD;
+    }
+    @RequestMapping(value = "servicioaContratar/{idContratante}", method = RequestMethod.GET)
+    public ResponseEntity<?> obtenerServ(@PathVariable int idContratante) {
+
+        ResponseEntity a;
+        try {
+            //obtener datos que se enviarán a través del API
+            a = new ResponseEntity<>(manejoDeContratanteBD.obtenerTodosLosServicios(idContratante), HttpStatus.ACCEPTED);
+
+        } catch (Exception ex) {
+            Logger.getLogger(Controller.class.getName()).log(Level.SEVERE, null, ex);
+            return new ResponseEntity<>("Error bla bla bla", HttpStatus.NOT_FOUND);
+        }
+        return a;
+    }
+    @RequestMapping(value = "servicioConContratista/{idContratante}", method = RequestMethod.GET)
+    public ResponseEntity<?> obtenerServConContratista(@PathVariable int idContratante) {
+
+        ResponseEntity a;
+        try {
+            //obtener datos que se enviarán a través del API
+            a = new ResponseEntity<>(manejoDeContratanteBD.obtenerTodosLosServiciosConContratista(idContratante), HttpStatus.ACCEPTED);
+
+        } catch (Exception ex) {
+            Logger.getLogger(Controller.class.getName()).log(Level.SEVERE, null, ex);
+            return new ResponseEntity<>("Error bla bla bla", HttpStatus.NOT_FOUND);
+        }
+        return a;
     }
 
     /**
@@ -181,6 +210,21 @@ public class ContractorController {
         try {
             //obtener datos que se enviarán a través del API
             manejoDeContratanteBD.registrarContratante(contratante);
+            a = new ResponseEntity<>(HttpStatus.ACCEPTED);
+
+        } catch (Exception ex) {
+            Logger.getLogger(Controller.class.getName()).log(Level.SEVERE, null, ex);
+            return new ResponseEntity<>("Error bla bla bla",HttpStatus.NOT_FOUND);
+        }
+        return a;
+    }
+    @RequestMapping(value ="serAContratar",method = RequestMethod.POST)
+    public ResponseEntity<?>registrarServicioAContratar(@RequestBody ServicioAContratar servicioAContratar){
+
+        ResponseEntity a;
+        try {
+            //obtener datos que se enviarán a través del API
+            manejoDeContratanteBD.registrarServicioAContratar(servicioAContratar);
             a = new ResponseEntity<>(HttpStatus.ACCEPTED);
 
         } catch (Exception ex) {

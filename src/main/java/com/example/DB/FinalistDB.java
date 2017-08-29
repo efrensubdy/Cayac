@@ -104,7 +104,7 @@ public class FinalistDB {
     }
     public  List<Contratista> consultarNoFinalistas(int idContrante,int idContrato) throws ClassNotFoundException, SQLException{
         List<Contratista> contratistas = new LinkedList<>();
-        String sql ="select t1.idContratista,t1.nombreEmpresa,t1.nit,t1.codigoCIIU,t1.nombreGerente,t1.email,t1.arl,t1.direccion,t1.telefono,t1.duracion,t1.departamento,t1.idContratante,t1.personaContacto,t1.cargoPer,t1.telefonoCon,t1.emailContacto,t1.idContrato  FROM  contratista as t1 left join finalista as t2 on t1.idContratista=t2.idContratista where t2.idContratista is null  and t1.idContratante = ? and t1.idContrato = ?";
+        String sql ="select t1.idContratista,t1.nombreEmpresa,t1.nit,t1.codigoCIIU,t1.nombreGerente,t1.email,t1.arl,t1.direccion,t1.telefono,t1.duracion,t1.departamento,t1.idContratante,t1.personaContacto,t1.cargoPer,t1.telefonoCon,t1.emailContacto,t1.idservicioAContratar  FROM  contratista as t1 left join finalista as t2 on t1.idContratista=t2.idContratista where t2.idContratista is null  and t1.idContratante = ? and t1.idservicioAContratar = ?";
         PreparedStatement ps = Conexion.conection().prepareStatement(sql);
         ps.setInt(1,idContrante);
         ps.setInt(2,idContrato);
@@ -127,9 +127,9 @@ public class FinalistDB {
             con.setCargoPersonaContacto(rs.getString("cargoPer"));
             con.setTelefonoPersonaContacto(rs.getString("telefonoCon"));
             con.setEmailContacto(rs.getString("emailContacto"));
-            con.setIdContrato(rs.getInt("idContrato"));
+            con.setIdContrato(rs.getInt("idservicioAContratar"));
             con.setIdCategoria(contratistasBD.traerCategoria(rs.getInt("idContratista")));
-            con.setCumplidos(contratistasBD.obtenerCumplidos(con.getId(),con.getIdCategoria(),con.getContratante()));
+            con.setCumplidos(0);
             contratistas.add(con);
         }
         ps.close();
@@ -173,11 +173,11 @@ public class FinalistDB {
         return contratistas;
     }
     public void registroManual(Contratista contratista) throws SQLException, ClassNotFoundException, IOException {
-        contratistasBD.nuevoContratista(contratista);
+        contratistasBD.nuevoContratistaManual(contratista);
         Contratista contra=contratistasBD.getContratista(contratista.nombreEmpresa);
         Finalista finalistaManual= new Finalista();
         finalistaManual.setIdContratista(contra.getId());
-        finalistaManual.setIdContrato(contra.getIdContrato());
+        finalistaManual.setIdContrato(contratista.getIdContrato());
         insertarFinalista(finalistaManual);
 
     }

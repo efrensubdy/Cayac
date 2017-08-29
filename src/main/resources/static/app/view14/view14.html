@@ -9,8 +9,8 @@
                 <input class="form-control" type="text"  placeholder="A que contrato pertenece el contratista" name="contrato" list="contratos" ng-model="contrato">
                 <datalist id="contratos">
                     <select name="contratos" ng-model="select">
-                        <option value="" disabled selected>Escoja El contrato al que va pertenecer su contratista</option>
-                        <option ng-repeat="todo in listado"  value="{{todo.idContrato}}" ng-model="selectedOption">{{todo.nombreContrato}}</option>
+                        <option value="" disabled selected>Escoja El servicio a contratar al que va pertenecer el candidato</option>
+                        <option ng-repeat="todo in listado"  value="{{todo.id}}" ng-model="selectedOption">{{todo.nombre}}</option>
                     </select>
                 </datalist>
             </div>

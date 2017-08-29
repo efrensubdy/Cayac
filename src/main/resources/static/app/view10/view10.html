@@ -10,7 +10,7 @@
                 <datalist id="contratos">
                     <select name="contratos" ng-model="select">
                         <option value="" disabled selected>Escoja el contrato  para el cual </option>
-                        <option ng-repeat="todo in listado"  value="{{todo.idContrato}}" ng-model="selectedOption">{{todo.nombreContrato}}</option>
+                        <option ng-repeat="todo in listado"  value="{{todo.id}}" ng-model="selectedOption">{{todo.nombre}}</option>
                     </select>
                 </datalist>
             </div>

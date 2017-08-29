@@ -86,7 +86,7 @@ public class UsersDB {
      */
     public List<Usuario> consultarUsuariosContratista() throws SQLException, ClassNotFoundException {
         List<Usuario> usuarios = new LinkedList<>();
-        String sql ="select con.idContratista ,con.email, con.password, u.idUsuarios,u.idCategoria,con.idContratante,con.idContrato,u.estado, u.rol from usuarios as u inner join contratista as con where u.idContratista=con.idContratista";
+        String sql ="select con.idContratista ,con.email, con.password, u.idUsuarios,u.idCategoria,con.idContratante,con.idservicioAContratar,u.estado, u.rol from usuarios as u inner join contratista as con where u.idContratista=con.idContratista";
         PreparedStatement ps = Conexion.conection().prepareStatement(sql);
         ResultSet rs = ps.executeQuery();
         while(rs.next()){
@@ -97,7 +97,7 @@ public class UsersDB {
             u.setId(rs.getInt("idUsuarios"));
             u.setCategoria(rs.getInt("idCategoria"));
             u.setIdContratante(rs.getInt("idContratante"));
-            u.setIdContrato(rs.getInt("idContrato"));
+            u.setIdContrato(rs.getInt("idservicioAContratar"));
             u.setIdFinalista(traerIdFinalista(rs.getInt("idContratista")));
             if(u.getIdFinalista()==0){
               u.setFinalista(false);

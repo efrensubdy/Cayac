@@ -23,6 +23,7 @@ angular.module('myApp', [
   'myApp.ejecucionCNCE',
   'myApp.subirDocumentosEstaticos',
   'myApp.revisionDinamica',
+  'myApp.registroServicio',
   'myApp.inicio',
   'myApp.test',
   'myApp.login',

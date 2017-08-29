@@ -9,9 +9,9 @@ angular.module('myApp.view10', ['ngRoute'])
   });
 }])
 
-.controller('View10Ctrl', ['$localStorage','$sessionStorage','rExtra','rObligatorio','$http','$scope','$rootScope','$mdDialog','contratosEjecucion','contratantesContrato','rCumplidos','rExtras','rNoCumplidos','rExtrasNC','pFinales','finalistas',function($localStorage,$sessionStorage,rExtra,rObligatorio,$http,$scope,$rootScope,$mdDialog,contratosEjecucion,contratantesContrato,rCumplidos,rExtras,rNoCumplidos,rExtrasNC,pFinales,finalistas) {
+.controller('View10Ctrl', ['$localStorage','$sessionStorage','rExtra','rObligatorio','$http','$scope','$rootScope','$mdDialog','serviciosConContratista','contratantesContrato','rCumplidos','rExtras','rNoCumplidos','rExtrasNC','pFinales','finalistas',function($localStorage,$sessionStorage,rExtra,rObligatorio,$http,$scope,$rootScope,$mdDialog,serviciosConContratista,contratantesContrato,rCumplidos,rExtras,rNoCumplidos,rExtrasNC,pFinales,finalistas) {
 
-        $scope.listado=contratosEjecucion.query({idContratante:$localStorage.contratanteLogeado.idContratante})
+        $scope.listado=serviciosConContratista.query({idContratante:$localStorage.contratanteLogeado.idContratante})
         $scope.flag=false;
         $scope.seleccionados=[];
         $scope.propertyName = 'cumplidos';

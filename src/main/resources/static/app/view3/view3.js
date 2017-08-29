@@ -27,7 +27,7 @@ angular.module('myApp.view3', ['ngRoute'])
         $scope.banderaCategoria4=false;
         $scope.fechas=fechaLimiteContratante.query({idContratante:$localStorage.contratanteLogeado.idContratante})
         $scope.function1=function(list){
-
+            delete $rootScope.fecha;
             switch ($scope.idCategoria) {
                 case "1":
                     $scope.banderaCategoria1=true;
@@ -65,13 +65,16 @@ angular.module('myApp.view3', ['ngRoute'])
 
             }
             var x;
+
             for (x in list){
                 if(x<=3){
                     if(list[x].idCategoria==$scope.idCategoria){
                         $rootScope.fecha=list[x];
+
                     }
                 }
             }
+            console.log($rootScope.fecha);
             $rootScope.listado2=requisitos.query({idContratante:$localStorage.contratanteLogeado.idContratante,idCategoria:$scope.idCategoria},function(result){
 
                  if(result.length!=0){
@@ -136,13 +139,21 @@ angular.module('myApp.view3', ['ngRoute'])
             // se obtienen ambas listas
 
            $scope.objeto=$rootScope.fecha;
-
+           if("undefined" !== typeof $scope.objeto){
 
             if ($scope.objeto.estado){
                  $scope.banderaFecha=true;
+                 $scope.banderanoo=false;
             }
             else{
                  $scope.banderaFecha=false;
+                 $scope.banderanoo=false;
+            }
+            }
+            else{
+                $scope.banderanoo=true;
+
+
             }
 
             $scope.listadoSugerido=[];
@@ -421,7 +432,7 @@ angular.module('myApp.view3', ['ngRoute'])
                 if(selected){
                        console.log(item);
                        $scope.listadoSugeridoE.push(item);
-                       //requisitosOEliminar.remove({"idContratante":$localStorage.contratanteLogeado.idContratante,"idRequisito":item.idRequisito});
+                       requisitosOEliminar.remove({"idContratante":$localStorage.contratanteLogeado.idContratante,"idRequisito":item.idRequisito});
 
                 }
                 else if(!selected && containsObject(item, $scope.listadoSugerido)){
@@ -438,7 +449,7 @@ angular.module('myApp.view3', ['ngRoute'])
                      if(select){
                         console.log(item)
                         $scope.listadoExtraE.push(item);
-                        //requisitosEEliminar.remove({"idContratante":$localStorage.contratanteLogeado.idContratante,"idRequisito":item.idRequisito})
+                        requisitosEEliminar.remove({"idContratante":$localStorage.contratanteLogeado.idContratante,"idRequisito":item.idRequisito})
                      }
                      else if(!selected && containsObject(item, $scope.listadoSugerido)){
                        var index= $scope.listadoSugerido.indexOf(item)

@@ -137,6 +137,54 @@ public class ContratanteDB {
         tamañoTabla=contratantes.size();
         return contratantes;
     }
+    public void nuevoServicioAContratar(ServicioAContratar servicioAContratar)throws SQLException,ClassNotFoundException{
+
+        String sql = "INSERT INTO servicioacontratar (nombre,tipo,idContratante) values (?,?,?) ";
+        Connection con =Conexion.conection();
+        PreparedStatement ps=con.prepareStatement(sql);
+        ps.setString(1,servicioAContratar.getNombre());
+        ps.setString(2,servicioAContratar.getTipo());
+        ps.setInt(3,servicioAContratar.getIdContratante());
+        ps.execute();
+        ps.close();
+        con.close();
+    }
+    public List<ServicioAContratar> consultarServicios(int idContratante) throws ClassNotFoundException, SQLException{
+        List<ServicioAContratar> arls = new LinkedList<>();
+        String sql ="SELECT servicioacontratar.id,servicioacontratar.nombre,servicioacontratar.tipo,servicioacontratar.idContratante FROM  servicioacontratar LEFT JOIN  contratista ON contratista.idservicioAContratar=servicioacontratar.id WHERE contratista.idservicioAContratar IS NULL AND servicioacontratar.idContratante = ?";
+        PreparedStatement ps = Conexion.conection().prepareStatement(sql);
+        ps.setInt(1,idContratante);
+        ResultSet rs = ps.executeQuery();
+        while(rs.next()){
+            ServicioAContratar na=new ServicioAContratar();
+            na.setId(rs.getInt("id"));
+            na.setNombre(rs.getString("nombre"));
+            na.setTipo(rs.getString("tipo"));
+            na.setIdContratante(rs.getInt("idContratante"));
+            arls.add(na);
+        }
+        ps.close();
+        tamañoTabla=arls.size();
+        return arls;
+    }
+    public List<ServicioAContratar> consultarServiciosConContratista(int idContratante) throws ClassNotFoundException, SQLException{
+        List<ServicioAContratar> arls = new LinkedList<>();
+        String sql ="SELECT servicioacontratar.id,servicioacontratar.nombre,servicioacontratar.tipo,servicioacontratar.idContratante FROM  servicioacontratar LEFT JOIN  contratista ON contratista.idservicioAContratar=servicioacontratar.id WHERE contratista.idservicioAContratar IS NOT NULL AND servicioacontratar.idContratante = ?";
+        PreparedStatement ps = Conexion.conection().prepareStatement(sql);
+        ps.setInt(1,idContratante);
+        ResultSet rs = ps.executeQuery();
+        while(rs.next()){
+            ServicioAContratar na=new ServicioAContratar();
+            na.setId(rs.getInt("id"));
+            na.setNombre(rs.getString("nombre"));
+            na.setTipo(rs.getString("tipo"));
+            na.setIdContratante(rs.getInt("idContratante"));
+            arls.add(na);
+        }
+        ps.close();
+        tamañoTabla=arls.size();
+        return arls;
+    }
     public  void nuevoContrato(Contrato contrato) throws ClassNotFoundException, SQLException, IOException {
         String sql = "INSERT INTO  contrato(nombreContrato,fechaInicio,fechaFin,idContratante,tipoContrato,rut,camaraDeComercio,cc,fechaInicioActivdades,idFinalista,tipo1,tipo2,tipo3) VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?)";
         String contenido="Repository/Contratante/" + contrato.getIdContratante();

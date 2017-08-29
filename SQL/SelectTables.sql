@@ -1,16 +1,19 @@
 
 -- select all--
- SELECT * FROM documentosDinamicosPreviosExtras;
+SELECT * FROM matrizDePeligros;		
+SELECT * FROM documentosDinamicosPreviosExtras;
 SELECT * FROM documentosDinamicosPrevios;
 SELECT * FROM documentosDinamicosPrevios WHERE idRequisito = 1 AND idFinalista = 4;
 SELECT * FROM administrador;
 SELECT * FROM arl;
+SELECT * FROM servicioacontratar;
 SELECT * FROM activdadeconomica;
 SELECT * FROM certificaciones;
 SELECT * FROM departamento; 
 SELECT * FROM contratista;
 SELECT * FROM contratante;
 SELECT * FROM contrato;
+DELETE FROM contrato WHERE idContrato = 25;
 SELECT * FROM usuarios;
 SELECT * FROM categoria;
 SELECT * FROM requisitos;
@@ -34,7 +37,7 @@ SELECT *  FROM requisitosdeejecuionsugeridosestaticosprevio;
 SELECT *  FROM documentosestaticospreviosobli;
 SELECT * FROM finalista;
  
- 
+ DELETE FROM imagenes WHERE idImagenes=1;
 SELECT *  FROM finalista INNER JOIN contratista WHERE finalista.idContratista=contratista.idContratista;
 
 SELECT * FROM requidinadeffinalsug AS re INNER JOIN requidinafinalsug AS r  WHERE re.idRequisito=r.id ;
@@ -134,6 +137,12 @@ where d.idFinalista is  null or d.idFinalista is not null;
 
 -- *
 
+SELECT DISTINCT  re.idrequisitosdeejecuiondefsugeridosestaticosprevio,r.idRequisitosDeEjecuionSugeridosEstaticosPrevio,r.requisito,d.estado  FROM (sys.requisitosdeejecuiondefsugeridosestaticosprevio AS re INNER JOIN sys.requisitosdeejecuionsugeridosestaticosprevio AS r ON  re.idRequsito =r.idRequisitosDeEjecuionSugeridosEstaticosPrevio AND re.idCategoria= 1 AND re.idContratante= 2) LEFT JOIN sys.documentosestaticospreviosobli AS d  ON re.idCategoria= 1 AND re.idrequisitosdeejecuiondefsugeridosestaticosprevio=d.idRequisito
+WHERE d.idFinalista IS NOT NULL;
+
+
+SELECT distinct * from (requidinadefpresug as def INNER JOIN requidinapresug as re on def.idRequisito=re.id and re.idCategoria = 1 and def.idContratante=1)left join documentosDinamicosPrevios as d on def.idCategoria=1 AND d.idFinalista=4  and def.id=d.idRequisito
+where d.idFinalista is not null; 
 
 
 
@@ -141,8 +150,9 @@ where d.idFinalista is  null or d.idFinalista is not null;
 
 
 
+select rs.idrequisitosdeejecuiondefsugeridosestaticosprevio,i.idFinalista,r.requisito,r.idRequisitosDeEjecuionSugeridosEstaticosPrevio,i.tipo from (requisitosdeejecuiondefsugeridosestaticosprevio as rs inner join requisitosdeejecuionsugeridosestaticosprevio as r on rs.idRequsito =r.idRequisitosDeEjecuionSugeridosEstaticosPrevio and rs.idCategoria= ? and rs.idContratante= ?) left join documentosestaticospreviosobli as i  on  rs.idCategoria= ? and i.idFinalista= ? and rs.idContratante= ? and rs.idrequisitosdeejecuiondefsugeridosestaticosprevio=i.idRequisito where i.idFinalista is   null;
 
-
+SELECT * FROM requidinadefpresug AS def INNER JOIN requidinapresug AS re ON def.idRequisito=re.id AND re.idCategoria = 1; 
 
 
 -- Requisitos Previos sugeridos cumplidos --
@@ -271,3 +281,10 @@ select rdps.id,rps.requisito,rdps.idCategoria from sys.finalista as f  inner joi
 
 
 select rdps.id,rps.requisito,rdps.idCategoria from sys.finalista as f  inner join sys.contratista as c inner join sys.usuarios as u inner join sys.requidinadeffinalext as rdps inner join sys.requidinafinalext as rps  where  f.idContratista=c.idContratista and c.idContratista=u.idContratista and u.idCategoria=rdps.idCategoria and rdps.idRequisito=rps.id and u.idCategoria=1 and f.idFinalista=3 and c.idContratante=2 ;
+
+
+
+
+
+
+select servicioacontratar.id,servicioacontratar.nombre,servicioacontratar.tipo from  servicioacontratar left join  contratista on contratista.idservicioAContratar=servicioacontratar.id where contratista.idservicioAContratar is not  null and servicioacontratar.idContratante = 2;

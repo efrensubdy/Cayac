@@ -67,7 +67,15 @@ angular.module('services.listFactory', ['ngRoute','ngResource'])
        .factory('contratantes', function($resource) {
                 return $resource('/app/contractor/:idContratante');
             })
-
+       .factory('serviciosAContrar', function($resource) {
+                       return $resource('/app/contractor/servicioaContratar/:idContratante');
+                   })
+       .factory('serviciosConContratista', function($resource) {
+                              return $resource('/app/contractor/servicioConContratista/:idContratante');
+                          })
+       .factory('registroServ', function($resource) {
+                              return $resource('/app/contractor/serAContratar/:id');
+                          })
          .factory('activity', function($resource) {
                         return $resource('/app/contract/activity/:id');
                     })

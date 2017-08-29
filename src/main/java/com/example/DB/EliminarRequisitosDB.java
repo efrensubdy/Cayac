@@ -13,7 +13,7 @@ import java.sql.SQLException;
 @Service
 public class EliminarRequisitosDB {
     public void eliminarPrevioSugerido(int idRequisito , int idContratante) throws ClassNotFoundException, SQLException {
-        String sql = "DELETE FROM requisitosdeejecuiondefsugeridosestaticosprevio WHERE idRequisito= ? AND idContratante= ?";
+        String sql = "DELETE FROM requisitosdeejecuiondefsugeridosestaticosprevio WHERE idRequsito= ? AND idContratante= ?";
         Connection con =  Conexion.conection();
         PreparedStatement ps = con.prepareStatement(sql);
         ps.setInt(1,idRequisito);

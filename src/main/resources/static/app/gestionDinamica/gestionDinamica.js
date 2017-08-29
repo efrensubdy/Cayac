@@ -46,8 +46,6 @@ $scope.function1=function(){
                           $scope.finalizacionSugeridos=estadoDinamicosFinalizacionSugeridos.query({idFinalista:$localStorage.userLogeado.idFinalista,idCategoria:$localStorage.userLogeado.categoria,idContratante:$localStorage.userLogeado.idContratante});
                           $scope.finalizacionExtras=estadoDinamicosFinalizacionExtras.query({idFinalista:$localStorage.userLogeado.idFinalista,idCategoria:$localStorage.userLogeado.categoria,idContratante:$localStorage.userLogeado.idContratante});
 
-
-
                           break;
 
                    }
@@ -60,8 +58,8 @@ $scope.function1=function(){
    }
 
   $scope.gestionarPrevios=function(item,ev){
-
-         if (item.id ==2){
+         console.log(item);
+         if (item.apodo == "MATRIZ DE PELIGROS "){
          $rootScope.item=item;
          console.log("Soy Matriz de Peligros ");
          $mdDialog.show({

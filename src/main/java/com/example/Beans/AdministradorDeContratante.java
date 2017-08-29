@@ -1,9 +1,6 @@
 package com.example.Beans;
 
-import com.example.Models.Contratante;
-import com.example.Models.Contratista;
-import com.example.Models.RequisitoExtra;
-import com.example.Models.RequisitoObligatorio;
+import com.example.Models.*;
 
 import java.sql.SQLException;
 import java.util.List;
@@ -20,5 +17,8 @@ public List<RequisitoObligatorio> requisitosCumplidos(int idContratista,int idCa
 public List<RequisitoObligatorio> requisitosNoCumplidos(int idContratista,int idCategoria,int idContratante)throws SQLException, ClassNotFoundException;
 public List<RequisitoExtra> requisitosExtrasCumplidos(int idContratista,int idCategoria,int idContratante)throws SQLException, ClassNotFoundException;
 public List<RequisitoExtra> requisitosExtrasNoCumplidos(int idContratista,int idCategoria,int idContratante)throws SQLException, ClassNotFoundException;
+public void registrarServicioAContratar(ServicioAContratar servicioAContratar)throws SQLException,ClassNotFoundException;
+public List<ServicioAContratar>obtenerTodosLosServicios(int idContratante)throws SQLException,ClassNotFoundException;
+    public List<ServicioAContratar>obtenerTodosLosServiciosConContratista(int idContratante)throws SQLException,ClassNotFoundException;
 
 }

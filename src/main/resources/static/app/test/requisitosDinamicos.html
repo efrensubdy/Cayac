@@ -17,13 +17,13 @@
                             <label>Sugeridos</label>
                             <table class="table table-sm  table-striped table-bordered table-hover table-condensed  text-justify">
                                 <thead>
-                                <tr class="w3-light-grey w3-hover-grey">
+                                <tr >
                                     <th>Descripcion</th>
                                     <th>¿Aplica?<md-checkbox  aria-label="CheckboxMaster" ng-model="masterDinamicoPrevioSugerido" ng-click="allDinamicosPreviosSugeridos(masterDinamicoPrevioSugerido)"></md-checkbox></th>
                                 </tr>
                                 </thead>
                                 <tbody>
-                                <tr class="w3-hover-green" ng-repeat="todo in listadoDinamicoPrevioSugerido" >
+                                <tr  ng-repeat="todo in listadoDinamicoPrevioSugerido" >
                                     <td>{{todo.requisito}}</td>
                                     <td><md-checkbox class="w3-center"  aria-label="Checkbox 1"  ng-model="dinamicoPrevioSugerido" ng-change="agregarDinamicoPrevioSugerido(dinamicoPrevioSugerido,todo)">
                                     </md-checkbox></td>
@@ -49,13 +49,13 @@
                             <label>Extras</label>
                             <table class="w3-table ">
                                 <thead>
-                                <tr class="w3-light-grey w3-hover-grey">
+                                <tr >
                                     <th>Descripcion</th>
                                     <th>¿Aplica?<md-checkbox  aria-label="CheckboxMaster" ng-model="masterDinamicoPrevioExtra" ng-click="allDinamicosPreviosExtra(masterDinamicoPrevioExtra)"></md-checkbox></th>
                                 </tr>
                                 </thead>
                                 <tbody>
-                                <tr class="w3-hover-green" ng-repeat="todo in listadoDinamicoPrevioExtra" >
+                                <tr  ng-repeat="todo in listadoDinamicoPrevioExtra" >
                                     <td>{{todo.descripcion}}</td>
                                     <td><md-checkbox class="w3-center"  aria-label="Checkbox 1"  ng-model="dinamicoPrevioExtras" ng-change="agregarDinamicoPrevioExtra(dinamicoPrevioExtras,todo)">
                                     </md-checkbox></td>
@@ -86,13 +86,13 @@
                             <label>Sugeridos</label>
                             <table  class="table table-sm  table-striped table-bordered table-hover table-condensed  text-justify">
                                 <thead>
-                                <tr class="w3-light-grey w3-hover-grey">
+                                <tr >
                                     <th>Descripcion</th>
                                     <th>¿Aplica?<md-checkbox  aria-label="CheckboxMaster" ng-model="masterDinamicoEjecucionSugerido" ng-click="allDinamicosEjecucionSugerido(masterDinamicoEjecucionSugerido)"></md-checkbox></th>
                                 </tr>
                                 </thead>
                                 <tbody>
-                                <tr class="w3-hover-green" ng-repeat="todo in listadoDinamicoEjecucionSugerido" >
+                                <tr  ng-repeat="todo in listadoDinamicoEjecucionSugerido" >
                                     <td>{{todo.requisito}}</td>
                                     <td><md-checkbox class="w3-center"  aria-label="Checkbox 1"  ng-model="dinamicoEjecucionSugerido" ng-change="agregarDinamicoEjecucionSugerido(dinamicoEjecucionSugerido,todo)">
                                     </md-checkbox></td>
@@ -119,13 +119,13 @@
                             <label>Extras</label>
                             <table class="table table-sm  table-striped table-bordered table-hover table-condensed  text-justify">
                                 <thead>
-                                <tr class="w3-light-grey w3-hover-grey">
+                                <tr >
                                     <th>Descripcion</th>
                                     <th>¿Aplica?<md-checkbox  aria-label="CheckboxMaster" ng-model="masterDinamicoEjecucionExtra" ng-click="allDinamicosEjecucionExtra(masterDinamicoEjecucionExtra)"></md-checkbox></th>
                                 </tr>
                                 </thead>
                                 <tbody>
-                                <tr class="w3-hover-green" ng-repeat="todo in listadoDinamicoEjecucionExtra" >
+                                <tr  ng-repeat="todo in listadoDinamicoEjecucionExtra" >
                                     <td>{{todo.descripcion}}</td>
                                     <td><md-checkbox class="w3-center"  aria-label="Checkbox 1"  ng-model="dinamicoEjecucionExtra" ng-change="agregarDinamicoEjecucionExtra(dinamicoEjecucionExtra,todo)">
                                     </md-checkbox></td>
@@ -157,13 +157,13 @@
                             <label>Sugeridos</label>
                             <table class="table table-sm  table-striped table-bordered table-hover table-condensed  text-justify">
                                 <thead>
-                                <tr class="w3-light-grey w3-hover-grey">
+                                <tr >
                                     <th>Descripcion</th>
                                     <th>¿Aplica?<md-checkbox  aria-label="CheckboxMaster" ng-model="masterDinamicoFinalizacionSugerido" ng-click="allDinamicosFinalizacionSugerido(masterDinamicoFinalizacionSugerido)"></md-checkbox></th>
                                 </tr>
                                 </thead>
                                 <tbody>
-                                <tr class="w3-hover-green" ng-repeat="todo in listadoDinamicoFinalizacionSugerido" >
+                                <tr  ng-repeat="todo in listadoDinamicoFinalizacionSugerido" >
                                     <td>{{todo.requisito}}</td>
                                     <td><md-checkbox class="w3-center"  aria-label="Checkbox 1"  ng-model="dinamicosFinalizacionSugerido" ng-change="agregarDinamicosFinalizacionSugerido(dinamicosFinalizacionSugerido,todo)">
                                     </md-checkbox></td>
@@ -190,13 +190,13 @@
                             <label>Extras</label>
                             <table class="table table-sm  table-striped table-bordered table-hover table-condensed  text-justify">
                                 <thead>
-                                <tr class="w3-light-grey w3-hover-grey">
+                                <tr >
                                     <th>Descripcion</th>
                                     <th>¿Aplica?<md-checkbox  aria-label="CheckboxMaster" ng-model="masterDinamicoFinalizacionExtra" ng-click="allDinamicosFinalizacionExtra(masterDinamicoFinalizacionExtra)"></md-checkbox></th>
                                 </tr>
                                 </thead>
                                 <tbody>
-                                <tr class="w3-hover-green" ng-repeat="todo in listadoDinamicoFinalizacionExtra" >
+                                <tr  ng-repeat="todo in listadoDinamicoFinalizacionExtra" >
                                     <td>{{todo.descripcion}}</td>
                                     <td><md-checkbox class="w3-center"  aria-label="Checkbox 1"  ng-model="dinamicoFinalizacionExtra" ng-change="agregarDinamicoFinalizacionExtra(dinamicoFinalizacionExtra,todo)">
                                     </md-checkbox></td>

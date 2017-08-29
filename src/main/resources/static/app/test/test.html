@@ -21,7 +21,8 @@
                                 <md-button class="md-warn md-raised md-hue-2" ng-click="fun($event)">Establecer</md-button>
                                 <label ng-show="banderaFecha" ng-controller="View3Ctrl"> LA FECHA DE ENTREGA DE LOS DOCUMENTOS ES {{objeto.fechaFin| date : "fullDate"}},
                                     LE QUEDAN {{objeto.tiempoRestante}} PARA ENTREGAR LOS SOPORTES</label>
-                                <label ng-show="!banderaFecha" ng-controller="View3Ctrl"> LA FECHA ESTABLECIDA YA PASO</label>
+                                <label ng-show="!banderaFecha && !banderanoo" ng-controller="View3Ctrl"> LA FECHA ESTABLECIDA YA PASO</label>
+                                <label ng-show="banderanoo">NO SE HA ESTABLECIDO FECHA</label>
                                 <br>
                             </div>
 

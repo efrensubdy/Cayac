@@ -49,7 +49,7 @@ $scope.add=function(ev,a,b,c){
          $mdDialog.alert()
                  .parent(angular.element(document.querySelector('#popupContainer')))
                  .clickOutsideToClose(true)
-                 .title('Error')
+                 .title('Exito')
                  .textContent('Contrato totalmente registrado')
                  .ariaLabel('Alert Dialog Demo')
                  .ok('Revise sus contratos!')

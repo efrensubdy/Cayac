@@ -91,7 +91,7 @@ public class ContratistasBD {
         departamentoDB=new DepartamentoDB();
         arlBD=new ArlBD();
         consultarContratistas();
-        String sql = "INSERT INTO contratista VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+        String sql = "INSERT INTO contratista VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
         Connection con =  Conexion.conection();
         nuevoContratista.setId(tamañoTabla + 1);
         nuevoContratista.setCodigoCIIU(String.valueOf(Integer.valueOf(actividadEconomicaBD.findAactivdad(Integer.valueOf(nuevoContratista.codigoCIIU)))));
@@ -118,6 +118,75 @@ public class ContratistasBD {
         ps.setString(18,nuevoContratista.getTelefonoPersonaContacto());
         ps.setString(19,nuevoContratista.getEmailContacto());
         ps.setInt(20,nuevoContratista.getIdContrato());
+
+        nuevoUsuario.setIdContratista(nuevoContratista.getId());
+
+        if (nuevoContratista.getDuracionContrato()>=1 && nivelDeRiesgo>=3){
+            nuevoUsuario.setCategoria(1);
+        }
+        else if(nuevoContratista.getDuracionContrato()>=1 && nivelDeRiesgo<=2){
+            nuevoUsuario.setCategoria(3);
+        }
+        else if (nuevoContratista.getDuracionContrato()<1 && nivelDeRiesgo>=3){
+            nuevoUsuario.setCategoria(2);
+        }
+        else{
+            nuevoUsuario.setCategoria(4);
+        }
+        ps.execute();
+        ps.close();
+        con.close();
+        usersDB.nuevoUsuarioContratista(nuevoUsuario);
+        int a=nuevoContratista.getId();
+        File file = new File("src/main/resources/static/app/Repository/Contratista/"+ a);
+        if(!file.canWrite()){ // check if user have write permissions
+            if(!(file.exists() && file.isDirectory())){
+                if(file.mkdirs())
+                    System.out.println("Success ! Folders created.");
+                else
+                    System.out.println("Failure ! Folders not created.");
+            }
+        }else{
+            System.out.println("PERMISSION DENIED");
+        }
+
+    }
+    public   void nuevoContratistaManual(Contratista nuevoContratista)throws ClassNotFoundException,SQLException,IOException {
+        int nivelDeRiesgo=obtenerNivelDeRiesgo(nuevoContratista.getCodigoCIIU());
+        Usuario nuevoUsuario =new Usuario();
+        java.util.Date utilDate = new Date();
+        java.sql.Date date = new java.sql.Date(utilDate.getTime());
+        actividadEconomicaBD=new ActividadEconomicaBD();
+        departamentoDB=new DepartamentoDB();
+        arlBD=new ArlBD();
+        consultarContratistas();
+        String sql = "INSERT INTO contratista VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+        Connection con =  Conexion.conection();
+        nuevoContratista.setId(tamañoTabla + 1);
+        nuevoContratista.setCodigoCIIU(String.valueOf(Integer.valueOf(actividadEconomicaBD.findAactivdad(Integer.valueOf(nuevoContratista.codigoCIIU)))));
+        nuevoContratista.setDepartamento(String.valueOf(departamentoDB.findAactivdad(nuevoContratista.getDepartamento())));
+        nuevoContratista.setArl(String.valueOf(arlBD.findArl(nuevoContratista.getArl())));
+        PreparedStatement ps = con.prepareStatement(sql);
+        ps.setInt(1,nuevoContratista.getId());
+        ps.setString(2,nuevoContratista.getNombreEmpresa());
+        ps.setString(3,nuevoContratista.getNit());
+        ps.setString(4,nuevoContratista.getCodigoCIIU());
+        ps.setString(5,nuevoContratista.getNombreDeGerenteGeneral());
+        ps.setString(6,nuevoContratista.getEmail());
+        ps.setInt(7,Integer.valueOf(nuevoContratista.getArl()));
+        ps.setString(8,nuevoContratista.getDireccion());
+        ps.setString(9,nuevoContratista.getTelefono());
+        ps.setString(10,String.valueOf(nuevoContratista.getDuracionContrato()));
+        ps.setInt(11,Integer.valueOf(nuevoContratista.getDepartamento()));
+        ps.setDate(12, date);
+        ps.setDate(13, date);
+        ps.setString(14,nuevoContratista.getPassword());
+        ps.setInt(15,nuevoContratista.getContratante());
+        ps.setString(16,nuevoContratista.getPersonContacto());
+        ps.setString(17,nuevoContratista.getCargoPersonaContacto());
+        ps.setString(18,nuevoContratista.getTelefonoPersonaContacto());
+        ps.setString(19,nuevoContratista.getEmailContacto());
+        ps.setNull(20,java.sql.Types.INTEGER);
         nuevoUsuario.setIdContratista(nuevoContratista.getId());
 
         if (nuevoContratista.getDuracionContrato()>=1 && nivelDeRiesgo>=3){
@@ -188,7 +257,7 @@ public class ContratistasBD {
             con.setCargoPersonaContacto(rs.getString("cargoPer"));
             con.setTelefonoPersonaContacto(rs.getString("telefonoCon"));
             con.setEmailContacto(rs.getString("emailContacto"));
-            con.setIdContrato(rs.getInt("idContrato"));
+            con.setIdContrato(rs.getInt("idservicioAContratar"));
             con.setIdCategoria(traerCategoria(rs.getInt("idContratista")));
             con.setCumplidos(obtenerCumplidos(rs.getInt("idContratista"),con.getIdCategoria(),con.getContratante()));
             contratistas.add(con);
@@ -478,7 +547,7 @@ public class ContratistasBD {
         imagen.setTipo(fileType);
         String sql = "INSERT INTO imagenes (idRequisitoSugerido,contenido,fechaCreacion,fechaActualizacion,tipo,idContratista,estado) VALUES(?,?,?,?,?,?,?)";
         Connection con =  Conexion.conection();
-        imagen.setContenido("src/main/resources/static/app/Repository/Contratista/"+imagen.getIdContratista());
+        imagen.setContenido("Repository/Contratista/"+imagen.getIdContratista()+"/"+imagen.getIdRequisitoSugerido()+"sugerido" +"."+imagen.getTipo());
         File f=imagen.getFile();
         File q=new File("src/main/resources/static/app/Repository/Contratista/"+imagen.getIdContratista()+"/"+imagen.getIdRequisitoSugerido()+"sugerido" +"."+imagen.getTipo());
         FileUtils.moveFile(f,q);
@@ -544,7 +613,7 @@ public class ContratistasBD {
             String sql = "INSERT INTO documentos(idRequisitoSugerido,contenido,fechaCreacion,fechaActualizacion,tipo,idContratista,estado) VALUES(?,?,?,?,?,?,?)";
             Connection con = Conexion.conection();
 
-            documento.setContenido("src/main/resources/static/app/Repository/Contratista/" + documento.getIdContratista());
+            documento.setContenido("Repository/Contratista/"+documento.getIdContratista()+"/"+documento.getIdRequisitoSugerido()+"extra" +"."+documento.getTipo());
             File f=documento.getFile();
             File q=new File("src/main/resources/static/app/Repository/Contratista/"+documento.getIdContratista()+"/"+documento.getIdRequisitoSugerido()+"extra" +"."+documento.getTipo());
             FileUtils.moveFile(f,q);
@@ -634,7 +703,7 @@ public class ContratistasBD {
 
     public List<RequisitoObligatorio>requisitosCumplidos(int idContratista,int idCategoria,int idContratante)throws SQLException,ClassNotFoundException{
        List<RequisitoObligatorio>requisitoObligatoriosLisT=new LinkedList<>();
-       String sql="select rs.idRequisitosObligatorios,i.idContratista,r.requisisto,r.idrequisitos,i.tipo from (requisitosobligatoriossugeridos as rs inner join requisitos as r on rs.idRequisito =r.idrequisitos and rs.idCategoria= ? and rs.idContratante= ?) left join imagenes as i  on  rs.idCategoria= ? and i.idContratista= ? and rs.idContratante= ? and rs.idRequisitosObligatorios=i.idRequisitoSugerido where i.idContratista is not  null;";
+       String sql="select rs.idRequisitosObligatorios,i.idContratista,r.requisisto,r.idrequisitos,i.tipo,i.contenido from (requisitosobligatoriossugeridos as rs inner join requisitos as r on rs.idRequisito =r.idrequisitos and rs.idCategoria= ? and rs.idContratante= ?) left join imagenes as i  on  rs.idCategoria= ? and i.idContratista= ? and rs.idContratante= ? and rs.idRequisitosObligatorios=i.idRequisitoSugerido where i.idContratista is not  null;";
        PreparedStatement ps=Conexion.conection().prepareStatement(sql);
         ps.setInt(1,idCategoria);
         ps.setInt(2,idContratante);
@@ -649,6 +718,7 @@ public class ContratistasBD {
            requisitoObligatorio.setDescripcion(rs.getString("requisisto"));
            requisitoObligatorio.setIdRequisito(rs.getInt("idrequisitos"));
            requisitoObligatorio.setTipo(rs.getString("tipo"));
+           requisitoObligatorio.setContenido(rs.getString("contenido"));
            requisitoObligatoriosLisT.add(requisitoObligatorio);
        }
        ps.close();

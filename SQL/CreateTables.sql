@@ -49,10 +49,18 @@ CREATE TABLE `contratante` (
   `representanteLegal` VARCHAR(45) NOT NULL,
   PRIMARY KEY (`idContratante`),
   KEY `contra_AcTI_idx` (`codigoCIIU`),
-  CONSTRAINT `contra_AcTI` FOREIGN KEY (`codigoCIIU`) REFERENCES `activdadeconomica` (`codigoCIIU`) ON DELETE NO ACTION ON UPDATE NO ACTION
+  CONSTRAINT `contra_AcTI` FOREIGN KEY (`codigoCIIU`) REFERENCES `activdadeconomica` (`codigoCIIU`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=INNODB DEFAULT CHARSET=utf8;
 
-
+CREATE TABLE `servicioacontratar` (
+  `id` INT(11) NOT NULL AUTO_INCREMENT,
+  `nombre` VARCHAR(500) NOT NULL,
+  `tipo` VARCHAR(45) NOT NULL,
+  `idContratante` INT(11) NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `Serv_Contra` (`idContratante`),
+  CONSTRAINT `Serv_Contra` FOREIGN KEY (`idContratante`) REFERENCES `contratante` (`idContratante`)
+) ENGINE=INNODB DEFAULT CHARSET=utf8;
 
 CREATE TABLE `contratista` (
   `idContratista` INT(11) NOT NULL,
@@ -74,18 +82,18 @@ CREATE TABLE `contratista` (
   `cargoPer` VARCHAR(45) NOT NULL,
   `telefonoCon` VARCHAR(45) NOT NULL,
   `emailContacto` VARCHAR(45) NOT NULL,
-  `idContrato` INT(11) NOT NULL,
+  `idservicioAContratar` INT(11) DEFAULT NULL,
   PRIMARY KEY (`idContratista`),
   KEY `fk_Contratista_Departamento_idx` (`departamento`),
   KEY `fk_Contratista_Arl_idx` (`arl`),
   KEY `fk_Contratista_Actividad_idx` (`codigoCIIU`),
   KEY `FK_Contratista_Contratante_idx` (`idContratante`),
-  KEY `fk_Contratista_Contrato_idx` (`idContrato`),
+  KEY `fk_servicioAContratar` (`idservicioAContratar`),
   CONSTRAINT `fk_Contratista_Actividad` FOREIGN KEY (`codigoCIIU`) REFERENCES `activdadeconomica` (`codigoCIIU`) ON DELETE CASCADE ON UPDATE CASCADE,
-  CONSTRAINT `fk_Contratista_Arl` FOREIGN KEY (`arl`) REFERENCES `arl` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `fk_Contratista_Arl` FOREIGN KEY (`arl`) REFERENCES `arl` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `fk_Contratista_Contratante` FOREIGN KEY (`idContratante`) REFERENCES `contratante` (`idContratante`) ON DELETE CASCADE ON UPDATE CASCADE,
-  CONSTRAINT `fk_Contratista_Contrato` FOREIGN KEY (`idContrato`) REFERENCES `contrato` (`idContrato`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  CONSTRAINT `fk_Contratista_Departamento` FOREIGN KEY (`departamento`) REFERENCES `departamento` (`idDepartamento`) ON DELETE CASCADE ON UPDATE CASCADE
+  CONSTRAINT `fk_Contratista_Departamento` FOREIGN KEY (`departamento`) REFERENCES `departamento` (`idDepartamento`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `fk_servicioAContratar` FOREIGN KEY (`idservicioAContratar`) REFERENCES `servicioacontratar` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=INNODB DEFAULT CHARSET=utf8;
 
 CREATE TABLE `finalista` (
@@ -96,7 +104,32 @@ CREATE TABLE `finalista` (
   `estado` VARCHAR(45) NOT NULL,
   PRIMARY KEY (`idFinalista`),
   KEY `Finalista_Contratista_idx` (`idContratista`),
-  CONSTRAINT `Finalista_Contratista` FOREIGN KEY (`idContratista`) REFERENCES `contratista` (`idContratista`) ON DELETE NO ACTION ON UPDATE NO ACTION
+  CONSTRAINT `Finalista_Contratista` FOREIGN KEY (`idContratista`) REFERENCES `contratista` (`idContratista`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=INNODB DEFAULT CHARSET=utf8;
+
+CREATE TABLE `categoria` (
+  `idCategoria` INT(11) NOT NULL,
+  `Categoriatipo` VARCHAR(45) NOT NULL,
+  PRIMARY KEY (`idCategoria`)
+) ENGINE=INNODB DEFAULT CHARSET=utf8;
+
+CREATE TABLE `usuarios` (
+  `idUsuarios` INT(11) NOT NULL,
+  `idContratante` INT(11) DEFAULT NULL,
+  `idContratista` INT(11) DEFAULT NULL,
+  `idCategoria` INT(11) DEFAULT NULL,
+  `estado` VARCHAR(45) NOT NULL,
+  `rol` VARCHAR(45) NOT NULL,
+  `idAdministrador` INT(11) DEFAULT NULL,
+  PRIMARY KEY (`idUsuarios`),
+  KEY `fk_usuario_Contratante_idx` (`idContratante`),
+  KEY `fk_usuario_Contratista_idx` (`idContratista`),
+  KEY `fk_usuario_Categoria_idx` (`idCategoria`),
+  KEY `fk_usuario_Administrador_idx` (`idAdministrador`),
+  CONSTRAINT `fk_usuario_Administrador` FOREIGN KEY (`idAdministrador`) REFERENCES `administrador` (`idadministrador`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `fk_usuario_Categoria` FOREIGN KEY (`idCategoria`) REFERENCES `categoria` (`idCategoria`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `fk_usuario_Contratante` FOREIGN KEY (`idContratante`) REFERENCES `contratante` (`idContratante`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `fk_usuario_Contratista` FOREIGN KEY (`idContratista`) REFERENCES `contratista` (`idContratista`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=INNODB DEFAULT CHARSET=utf8;
 
 CREATE TABLE `contrato` (
@@ -121,34 +154,11 @@ CREATE TABLE `contrato` (
   CONSTRAINT `Contrato_Finalista` FOREIGN KEY (`idFinalista`) REFERENCES `finalista` (`idFinalista`)
 ) ENGINE=INNODB AUTO_INCREMENT=25 DEFAULT CHARSET=utf8;
 
-CREATE TABLE `categoria` (
-  `idCategoria` INT(11) NOT NULL,
-  `Categoriatipo` VARCHAR(45) NOT NULL,
-  PRIMARY KEY (`idCategoria`)
-) ENGINE=INNODB DEFAULT CHARSET=utf8;
 
 
 
 
 
-CREATE TABLE `usuarios` (
-  `idUsuarios` INT(11) NOT NULL,
-  `idContratante` INT(11) DEFAULT NULL,
-  `idContratista` INT(11) DEFAULT NULL,
-  `idCategoria` INT(11) DEFAULT NULL,
-  `estado` VARCHAR(45) NOT NULL,
-  `rol` VARCHAR(45) NOT NULL,
-  `idAdministrador` INT(11) DEFAULT NULL,
-  PRIMARY KEY (`idUsuarios`),
-  KEY `fk_usuario_Contratante_idx` (`idContratante`),
-  KEY `fk_usuario_Contratista_idx` (`idContratista`),
-  KEY `fk_usuario_Categoria_idx` (`idCategoria`),
-  KEY `fk_usuario_Administrador_idx` (`idAdministrador`),
-  CONSTRAINT `fk_usuario_Administrador` FOREIGN KEY (`idAdministrador`) REFERENCES `administrador` (`idadministrador`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  CONSTRAINT `fk_usuario_Categoria` FOREIGN KEY (`idCategoria`) REFERENCES `categoria` (`idCategoria`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  CONSTRAINT `fk_usuario_Contratante` FOREIGN KEY (`idContratante`) REFERENCES `contratante` (`idContratante`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  CONSTRAINT `fk_usuario_Contratista` FOREIGN KEY (`idContratista`) REFERENCES `contratista` (`idContratista`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=INNODB DEFAULT CHARSET=utf8;
 
 CREATE TABLE `requisitos` (
   `idrequisitos` INT(11) NOT NULL,
@@ -638,10 +648,14 @@ CREATE TABLE `documentosDinamicosPrevios` (
   `idFinalista` INT(11) NOT NULL,
   `fechaCreacion` DATE NOT NULL,
   `fechaActualizacion` DATE NOT NULL,
-  `tipo` VARCHAR(45) NOT NULL,
-  `estado` VARCHAR(45) NOT NULL,
+  `tipo` VARCHAR(55) NOT NULL,
+  `estado` VARCHAR(55) NOT NULL,
   `contenido` VARCHAR(500) NOT NULL,
-  PRIMARY KEY (`id`)
+  PRIMARY KEY (`id`),
+  KEY `requisito_Documento` (`idRequisito`),
+  KEY `Finalista_Documento` (`idFinalista`),
+  CONSTRAINT `requisito_Documento` FOREIGN KEY (`idRequisito`) REFERENCES `requidinadefpresug` (`id`),
+  CONSTRAINT `Finalista_Documento` FOREIGN KEY (`idFinalista`) REFERENCES `finalista` (`idFinalista`)
 ) ENGINE=INNODB DEFAULT CHARSET=utf8;
 
 CREATE TABLE `documentosDinamicosPreviosExtras` (

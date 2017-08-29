@@ -2,10 +2,7 @@ package com.example.Services;
 
 import com.example.Beans.AdministradorDeContratante;
 import com.example.DB.ContratanteDB;
-import com.example.Models.Contratante;
-import com.example.Models.Contratista;
-import com.example.Models.RequisitoExtra;
-import com.example.Models.RequisitoObligatorio;
+import com.example.Models.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -58,5 +55,20 @@ public class ManejoDeContratanteBD implements AdministradorDeContratante {
     @Override
     public List<RequisitoExtra> requisitosExtrasNoCumplidos(int idContratista,int idCategoria,int idContratante) throws SQLException, ClassNotFoundException {
         return contratanteDB.requisitosExtrasNoCumplidos(idContratista, idCategoria, idContratante);
+    }
+
+    @Override
+    public void registrarServicioAContratar(ServicioAContratar servicioAContratar) throws SQLException, ClassNotFoundException {
+        contratanteDB.nuevoServicioAContratar(servicioAContratar);
+    }
+
+    @Override
+    public List<ServicioAContratar> obtenerTodosLosServicios(int idContratante) throws SQLException, ClassNotFoundException {
+        return contratanteDB.consultarServicios(idContratante);
+    }
+
+    @Override
+    public List<ServicioAContratar> obtenerTodosLosServiciosConContratista(int idContratante) throws SQLException, ClassNotFoundException {
+        return contratanteDB.consultarServiciosConContratista(idContratante);
     }
 }
