@@ -9,7 +9,7 @@ angular.module('myApp.revisionDinamica', ['ngRoute'])
   });
 }])
 
-.controller('revisionDinamicaCtrl', [ '$mdDialog','$scope','$log','$rootScope','$localStorage','$sessionStorage','contratosEnEjecucion','finalesDefinitivos','cumpDinaPrev','noCumpDinaPrev',function( $mdDialog,$scope,$log,$rootScope,$localStorage,$sessionStorage,contratosEnEjecucion,finalesDefinitivos,cumpDinaPrev,noCumpDinaPrev) {
+.controller('revisionDinamicaCtrl', [ '$mdDialog','$scope','$log','$rootScope','$localStorage','$sessionStorage','contratosEnEjecucion','finalesDefinitivos','cumpDinaPrev','noCumpDinaPrev','cumpDinaPrevMat','historialPreviosDinamicos','historialDeMatrices',function( $mdDialog,$scope,$log,$rootScope,$localStorage,$sessionStorage,contratosEnEjecucion,finalesDefinitivos,cumpDinaPrev,noCumpDinaPrev,cumpDinaPrevMat,historialPreviosDinamicos,historialDeMatrices) {
 $scope.listado=contratosEnEjecucion.query({idContratante:$localStorage.contratanteLogeado.idContratante});
 $scope.options = [
                             { id: 1, name: 'Cumplidos' },
@@ -32,12 +32,33 @@ $scope.propertyName = 'nombreEmpresa';
 
          }
          $scope.activated=function(item){
-            console.log(item);
+
             $rootScope.contratistaActual=item;
             $scope.activo=true;
          }
-         $scope.opciones=function(item){
+         $scope.activated2=function(item){
             console.log(item);
+            if (item.apodo=="MATRIZ DE PELIGROS "){
+                console.log("entre a matriz de peligros")
+                 $scope.historialmatriz=historialDeMatrices.query({idRequisito:item.idRequisito,idFinalista:item.idFinalista})
+                 $mdDialog.show({
+                                          //Controlador del mensajes con operaciones definido en la parte de abajo
+                                          controller: revisionDinamicaCtrl,
+                                                            // permite la comunicacion con el html que despliega el boton requisitos
+                                          templateUrl: 'test/historicoMatrices.html',
+                                          parent: angular.element(document.body),
+                                          targetEvent: ev,
+                                          clickOutsideToClose:true,
+                                          fullscreen: $scope.customFullscreen // Only for -xs, -sm breakpoints.
+                          })
+            }
+            else{
+
+            }
+
+         }
+         $scope.opciones=function(item){
+
             switch(item.name){
 
                 case "Cumplidos":
@@ -45,6 +66,7 @@ $scope.propertyName = 'nombreEmpresa';
                     $scope.banderaCumplidos=true;
                     $scope.banderaNoCumplidos=false;
                     $scope.tableCumplidos=cumpDinaPrev.query({idCategoria:$rootScope.contratistaActual.idCategoria,idContratante:$localStorage.contratanteLogeado.idContratante,idFinalista:$rootScope.contratistaActual.idFinalista})
+                    $scope.tableCumplidosMatriz=cumpDinaPrevMat.query({idCategoria:$rootScope.contratistaActual.idCategoria,idContratante:$localStorage.contratanteLogeado.idContratante,idFinalista:$rootScope.contratistaActual.idFinalista})
                     break;
                 case "No Cumplidos":
                     $scope.banderaNoCumplidos=true;

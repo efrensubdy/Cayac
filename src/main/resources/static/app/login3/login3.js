@@ -11,6 +11,8 @@ angular.module('myApp.login3', ['ngRoute'])
 
 
 .controller('Login3Ctrl', ['$localStorage','$sessionStorage','$location','$rootScope','$scope','$mdDialog','$http','rObligatorio', function ($localStorage,$sessionStorage,$location,$rootScope,$scope,$mdDialog,$http,rObligatorio){
+      $scope.banderaCandidato=$localStorage.banderaCandidato;
+      $scope.banderaContratista= $localStorage.banderaContratista;
       var auntenticado=function(ev){
       var t;
       var w=function(){

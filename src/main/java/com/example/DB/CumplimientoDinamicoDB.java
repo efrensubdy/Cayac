@@ -41,6 +41,31 @@ public class CumplimientoDinamicoDB {
         ps.close();
         return dinamicoCumplidoList;
     }
+    public List<DinamicoCumplido>dinamicosCumplidosEnMatriz(int idCategoria,int idContratante,int idFinalista) throws SQLException,ClassNotFoundException{
+        List<DinamicoCumplido> dinamicoCumplidoList=new LinkedList<>();
+        String sql="SELECT DISTINCT def.idContratante,re.idCategoria,re.requisito,re.apodo, m.idRequisito, m.idFinalista    FROM (requidinadefpresug AS def INNER JOIN requidinapresug AS re ON def.idRequisito=re.id AND re.idCategoria = ? AND def.idContratante= ?)LEFT JOIN matrizDePeligros AS m ON def.idCategoria = ? AND m.idFinalista= ? AND def.id=m.idRequisito\n" +
+                "WHERE m.idFinalista IS NOT NULL AND re.apodo = \"MATRIZ DE PELIGROS\"\n" +
+                "GROUP BY m.idRequisito;";
+        PreparedStatement ps= Conexion.conection().prepareStatement(sql);
+        ps.setInt(1,idCategoria);
+        ps.setInt(2,idContratante);
+        ps.setInt(3,idCategoria);
+        ps.setInt(4,idFinalista);
+        ResultSet rs=ps.executeQuery();
+        while(rs.next()){
+            DinamicoCumplido cumplido = new DinamicoCumplido();
+            cumplido.setIdContratante(rs.getInt("idContratante"));
+            cumplido.setIdCategoria(rs.getInt("idCategoria"));
+            cumplido.setRequisito(rs.getString("requisito"));
+            cumplido.setApodo(rs.getString("apodo"));
+            cumplido.setIdRequisito(rs.getInt("idRequisito"));
+            cumplido.setIdFinalista(rs.getInt("idFinalista"));
+            dinamicoCumplidoList.add(cumplido);
+
+        }
+        ps.close();
+        return dinamicoCumplidoList;
+    }
     public List<DinamicoCumplido>dinamicosNoCumplidos(int idCategoria,int idContratante,int idFinalista) throws SQLException,ClassNotFoundException{
         List<DinamicoCumplido> dinamicoCumplidoList=new LinkedList<>();
         String sql="SELECT DISTINCT def.idContratante,re.idCategoria,re.requisito,re.apodo, def.idRequisito, d.idFinalista  FROM (requidinadefpresug AS def INNER JOIN requidinapresug AS re ON def.idRequisito=re.id AND re.idCategoria = ? AND def.idContratante= ?)LEFT JOIN documentosDinamicosPrevios AS d ON def.idCategoria= ? AND d.idFinalista= ?  AND def.id=d.idRequisito\n" +

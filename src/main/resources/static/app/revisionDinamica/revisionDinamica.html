@@ -64,7 +64,15 @@
                             <tr  ng-repeat="todo in tableCumplidos | orderBy:propertyName:reverse">
                                 <td>{{todo.requisito}}</td>
                                 <td>
-                                    <md-button button class="md-primary md-raised"  ng-click="activated(todo)">
+                                    <md-button button class="md-primary md-raised"  ng-click="activated2(todo)">
+                                        Historico
+                                    </md-button>
+                                </td>
+                            </tr>
+                            <tr  ng-repeat="todo in tableCumplidosMatriz | orderBy:propertyName:reverse">
+                                <td>{{todo.requisito}}</td>
+                                <td>
+                                    <md-button button class="md-primary md-raised"  ng-click="activated2(todo)">
                                         Historico
                                     </md-button>
                                 </td>

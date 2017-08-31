@@ -25,6 +25,11 @@ public class ManejoDeCumplimientoDB implements AdministradorDeCumplimientoDinami
     }
 
     @Override
+    public List<DinamicoCumplido> cumplidosDinamicosPreviosMatriz(int idCategoria, int idContratante, int idFinalista) throws SQLException, ClassNotFoundException {
+        return cumplimientoDinamicoDB.dinamicosCumplidosEnMatriz(idCategoria, idContratante, idFinalista);
+    }
+
+    @Override
     public List<DinamicoCumplido> noCumplidosDinamicosPrevios(int idCategoria, int idContratante, int idFinalista) throws SQLException, ClassNotFoundException {
         return cumplimientoDinamicoDB.dinamicosNoCumplidos(idCategoria, idContratante, idFinalista);
     }

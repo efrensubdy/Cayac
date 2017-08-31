@@ -11,6 +11,18 @@ angular.module('myApp.inicio', ['ngRoute'])
 
 .controller('inicioCtrl', ['$timeout', '$q', '$scope','$log','$rootScope','$localStorage','$sessionStorage','$location',function($timeout, $q, $scope,$log,$rootScope,$localStorage,$sessionStorage,$location) {
 
+$scope.a=function(){
 
+    $localStorage.banderaCandidato=true;
+    $localStorage.banderaContratista=false;
+    $location.path("/login3");
+
+}
+$scope.b=function(){
+
+    $localStorage.banderaContratista=true;
+    $localStorage.banderaCandidato=false;
+    $location.path("/login3");
+}
 
 }]);

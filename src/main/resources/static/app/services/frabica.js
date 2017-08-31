@@ -269,6 +269,9 @@ angular.module('services.listFactory', ['ngRoute','ngResource'])
       .factory('cumpDinaPrev', function($resource) {
                      return $resource('/app/cumplimientoDinamico/previoSugeridoCumplido/:idCategoria/:idContratante/:idFinalista');
                })
+      .factory('cumpDinaPrevMat', function($resource) {
+                           return $resource('/app/cumplimientoDinamico/previoSugeridoCumplidoMatriz/:idCategoria/:idContratante/:idFinalista');
+                     })
       .factory('noCumpDinaPrev', function($resource) {
                            return $resource('/app/cumplimientoDinamico/previoSugeridoNoCumplido/:idCategoria/:idContratante/:idFinalista');
                      })

@@ -10,5 +10,6 @@ import java.util.List;
  */
 public interface AdministradorDeCumplimientoDinamico {
     public List<DinamicoCumplido>cumplidosDinamicosPrevios(int idCategoria,int idContratante,int idFinalista) throws SQLException,ClassNotFoundException;
+    public List<DinamicoCumplido>cumplidosDinamicosPreviosMatriz(int idCategoria,int idContratante,int idFinalista) throws SQLException,ClassNotFoundException;
     public List<DinamicoCumplido>noCumplidosDinamicosPrevios(int idCategoria,int idContratante,int idFinalista) throws SQLException,ClassNotFoundException;
 }

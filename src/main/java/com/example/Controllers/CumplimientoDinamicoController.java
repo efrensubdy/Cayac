@@ -36,6 +36,20 @@ public class CumplimientoDinamicoController {
         }
         return a;
     }
+    @RequestMapping(value = "previoSugeridoCumplidoMatriz/{idCategoria}/{idContratante}/{idFinalista}", method = RequestMethod.GET)
+    public ResponseEntity<?> obtenerRequiPrevioCumplidoMatriz( @PathVariable("idCategoria")int idCategoria, @PathVariable("idContratante")int idContratante, @PathVariable("idFinalista") int idFinalista){
+
+        ResponseEntity a;
+        try {
+            //obtener datos que se enviarán a través del API
+            a = new ResponseEntity<>(manejoDeCumplimientoDB.cumplidosDinamicosPreviosMatriz(idCategoria, idContratante, idFinalista), HttpStatus.ACCEPTED);
+
+        } catch (Exception ex) {
+            Logger.getLogger(Controller.class.getName()).log(Level.SEVERE, null, ex);
+            return new ResponseEntity<>("Error bla bla bla",HttpStatus.NOT_FOUND);
+        }
+        return a;
+    }
     @RequestMapping(value = "previoSugeridoNoCumplido/{idCategoria}/{idContratante}/{idFinalista}", method = RequestMethod.GET)
     public ResponseEntity<?> obtenerRequiPrevioNoCumplido( @PathVariable("idCategoria")int idCategoria, @PathVariable("idContratante")int idContratante, @PathVariable("idFinalista") int idFinalista){
 
