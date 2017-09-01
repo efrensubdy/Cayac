@@ -9,7 +9,7 @@ angular.module('myApp.registrarRequisitosEjecucion', ['ngRoute'])
   });
 }])
 
-.controller('registrarRequisitosEjecucionCtrl', ['$localStorage','$sessionStorage','$mdDialog','$rootScope', '$http', '$scope','$q','previos','previosExtras','ejecucion','ejecucionExtras','finalizacion','finalizacionExtras','insertarPrevioSugerido','insertarPrevioExtra','insertarEjecucionSugerido','insertarEjecucionExtra','insertarFinalizacionSugerido','insertarFinalizacionExtra','defPreviosSugeridos','defPreviosExtras','defEjecucionSugeridos','defEjecucionExtras','defFinalizacionSugeridos','defFinalizacionExtras','dinamicosPrevios','dinamicosPreviosExtras','dinamicosEjecucion','dinamicosEjecucionExtras','dinamicosFinalizacion','dinamicosFinalizacionExtras','iDinamicoPrevioSugerido','iDinamicoPrevioExtra','iDinamicoEjecucionSugerido','iDinamicoEjecucionExtra','iDinamicoFinalizacionSugerido','iDinamicoFinalizacionExtra','defDinamicosPreviosSugeridos','defDinamicosPreviosExtras','defDinamicosEjecucionSugeridos','defDinamicosEjecucionExtras','defDinamicosFinalizacionSugeridos','defDinamicosFinalizacionExtras' ,'eliminarPS','eliminarPE','eliminarES','eliminarEE','eliminarFS','eliminarFE' ,'eliminarDPS','eliminarDPE','eliminarDES','eliminarDEE','eliminarDFS','eliminarDFE',function($localStorage,$sessionStorage,$mdDialog,$rootScope, $http, $scope,$q,previos,previosExtras,ejecucion,ejecucionExtras,finalizacion,finalizacionExtras,insertarPrevioSugerido,insertarPrevioExtra,insertarEjecucionSugerido,insertarEjecucionExtra,insertarFinalizacionSugerido,insertarFinalizacionExtra,defPreviosSugeridos,defPreviosExtras,defEjecucionSugeridos,defEjecucionExtras,defFinalizacionSugeridos,defFinalizacionExtras,dinamicosPrevios,dinamicosPreviosExtras,dinamicosEjecucion,dinamicosEjecucionExtras,dinamicosFinalizacion,dinamicosFinalizacionExtras,iDinamicoPrevioSugerido,iDinamicoPrevioExtra,iDinamicoEjecucionSugerido,iDinamicoEjecucionExtra,iDinamicoFinalizacionSugerido,iDinamicoFinalizacionExtra,defDinamicosPreviosSugeridos,defDinamicosPreviosExtras,defDinamicosEjecucionSugeridos,defDinamicosEjecucionExtras,defDinamicosFinalizacionSugeridos,defDinamicosFinalizacionExtras,eliminarPS,eliminarPE,eliminarES,eliminarEE,eliminarFS,eliminarFE ,eliminarDPS,eliminarDPE,eliminarDES,eliminarDEE,eliminarDFS,eliminarDFE) {
+.controller('registrarRequisitosEjecucionCtrl', ['$localStorage','$sessionStorage','$mdDialog','$rootScope', '$http', '$scope','$q','previos','previosExtras','ejecucion','ejecucionExtras','finalizacion','finalizacionExtras','insertarPrevioSugerido','insertarPrevioExtra','insertarEjecucionSugerido','insertarEjecucionExtra','insertarFinalizacionSugerido','insertarFinalizacionExtra','defPreviosSugeridos','defPreviosExtras','defEjecucionSugeridos','defEjecucionExtras','defFinalizacionSugeridos','defFinalizacionExtras','dinamicosPrevios','dinamicosPreviosExtras','dinamicosEjecucion','dinamicosEjecucionExtras','dinamicosFinalizacion','dinamicosFinalizacionExtras','iDinamicoPrevioSugerido','iDinamicoPrevioExtra','iDinamicoEjecucionSugerido','iDinamicoEjecucionExtra','iDinamicoFinalizacionSugerido','iDinamicoFinalizacionExtra' ,'eliminarPS','eliminarPE','eliminarES','eliminarEE','eliminarFS','eliminarFE',function($localStorage,$sessionStorage,$mdDialog,$rootScope, $http, $scope,$q,previos,previosExtras,ejecucion,ejecucionExtras,finalizacion,finalizacionExtras,insertarPrevioSugerido,insertarPrevioExtra,insertarEjecucionSugerido,insertarEjecucionExtra,insertarFinalizacionSugerido,insertarFinalizacionExtra,defPreviosSugeridos,defPreviosExtras,defEjecucionSugeridos,defEjecucionExtras,defFinalizacionSugeridos,defFinalizacionExtras,dinamicosPrevios,dinamicosPreviosExtras,dinamicosEjecucion,dinamicosEjecucionExtras,dinamicosFinalizacion,dinamicosFinalizacionExtras,iDinamicoPrevioSugerido,iDinamicoPrevioExtra,iDinamicoEjecucionSugerido,iDinamicoEjecucionExtra,iDinamicoFinalizacionSugerido,iDinamicoFinalizacionExtra,eliminarPS,eliminarPE,eliminarES,eliminarEE,eliminarFS,eliminarFE) {
 
  $scope.flag=false;
          $scope.propertyName = 'nombreEmpresa';
@@ -31,215 +31,183 @@ angular.module('myApp.registrarRequisitosEjecucion', ['ngRoute'])
                      $scope.banderaCategoria2=false;
                      $scope.banderaCategoria3=false;
                      $scope.banderaCategoria4=false;
+                     $scope.banderaET=false;
                      break;
                  case "2":
                      $scope.banderaCategoria1=false;
                      $scope.banderaCategoria2=true;
                      $scope.banderaCategoria3=false;
                      $scope.banderaCategoria4=false;
+                     $scope.banderaET=false;
                      break;
                  case "3":
                     $scope.banderaCategoria1=false;
                     $scope.banderaCategoria2=false;
                     $scope.banderaCategoria3=true;
                     $scope.banderaCategoria4=false;
+                    $scope.banderaET=false;
                     break;
                  case "4":
                     $scope.banderaCategoria1=false;
                     $scope.banderaCategoria2=false;
                     $scope.banderaCategoria3=false;
                     $scope.banderaCategoria4=true;
+                    $scope.banderaET=false;
                                  break;
 
              }
              if("undefined" !== typeof $scope.idCategoria ){
              $rootScope.listadoPrevioSugerido=previos.query({idContratante:$localStorage.contratanteLogeado.idContratante,idCategoria:$scope.idCategoria},function(result){
-
+               console.log(result.length);
                if(result.length!=0){
-               $rootScope.lonPrevio=true;
+               $rootScope.lonPrevi=true;
 
                 }
                else{
-                $rootScope.lonPrevio=false;
+                $rootScope.lonPrevi=false;
                 }
               });
 
              $rootScope.listadoPrevioExtra=previosExtras.query({idContratante:$localStorage.contratanteLogeado.idContratante,idCategoria:$scope.idCategoria},function(result){
                  if(result.length!=0){
-                   $rootScope.lonPrevioEx=true;
+                   $rootScope.lonPreviEx=true;
 
                  }
                  else{
-                   $rootScope.lonPrevioEx=false;
+                   $rootScope.lonPreviEx=false;
                  }
               });
               $rootScope.listadoEjecucionSugerido=ejecucion.query({idContratante:$localStorage.contratanteLogeado.idContratante,idCategoria:$scope.idCategoria},function(result){
                     if(result.length!=0){
-                           $rootScope.lonEjec=true;
+                           $rootScope.loEjec=true;
 
                      }
                      else{
-                           $rootScope.lonEjec=false;
+                           $rootScope.loEjec=false;
                                                                }
 
               });
               $rootScope.listadoEjecucionExtra=ejecucionExtras.query({idContratante:$localStorage.contratanteLogeado.idContratante,idCategoria:$scope.idCategoria},function(result){
 
                 if(result.length!=0){
-                    $rootScope.lonEjecEx=true;
+                    $rootScope.loEjecEx=true;
 
                                       }
                  else{
-                    $rootScope.lonEjecEx=false;
+                    $rootScope.loEjecEx=false;
                                                                                         }
 
               });
               $rootScope.listadoFinalizacionSugerido=finalizacion.query({idContratante:$localStorage.contratanteLogeado.idContratante,idCategoria:$scope.idCategoria},function(result){
 
                if(result.length!=0){
-                  $rootScope.lonFi=true;
+                  $rootScope.loFi=true;
 
                }
                else{
-                  $rootScope.lonFi=false;
+                  $rootScope.loFi=false;
                 }
 
               });
               $rootScope.listadoFinalizacionExtra=finalizacionExtras.query({idContratante:$localStorage.contratanteLogeado.idContratante,idCategoria:$scope.idCategoria},function(result){
 
                 if(result.length!=0){
-                      $rootScope.lonFiEx=true;
+                      $rootScope.loFiEx=true;
 
                                        }
                 else{
-                     $rootScope.lonFiEx=false;
+                     $rootScope.loFiEx=false;
                 }
 
-              });
-              $rootScope.listadoDinamicoPrevioSugerido=dinamicosPrevios.query({idContratante:$localStorage.contratanteLogeado.idContratante,idCategoria:$scope.idCategoria},function(result){
-                if(result.length!=0){
-                 $rootScope.lonPrevio2=true;
-
-
-                }
-               else{
-                  $rootScope.lonPrevio2=false;
-
-               }
-
-              });
-
-              $rootScope.listadoDinamicoPrevioExtra=dinamicosPreviosExtras.query({idContratante:$localStorage.contratanteLogeado.idContratante,idCategoria:$scope.idCategoria},function(result){
-                if(result.length!=0){
-                   $rootScope.lonPrevioEx2=true;
-
-
-                  }
-                else{
-                $rootScope.lonPrevioEx2=false;
-
-                }
                 });
-                $rootScope.listadoDinamicoEjecucionSugerido=dinamicosEjecucion.query({idContratante:$localStorage.contratanteLogeado.idContratante,idCategoria:$scope.idCategoria},function(result){
 
-                 if(result.length!=0){
-                          $rootScope.lonEjec2=true;
-
-                  }
-                  else{
-                          $rootScope.lonEjec2=false;
-                  }
-
-                });
-                $rootScope.listadoDinamicoEjecucionExtra=dinamicosEjecucionExtras.query({idContratante:$localStorage.contratanteLogeado.idContratante,idCategoria:$scope.idCategoria},function(result){
-
-                  if(result.length!=0){
-                     $rootScope.lonEjecEx2=true;
-
-                   }
-                  else{
-                     $rootScope.lonEjecEx2=false;
-                   }
-
-                });
-                 $rootScope.listadoDinamicoFinalizacionSugerido=dinamicosFinalizacion.query({idContratante:$localStorage.contratanteLogeado.idContratante,idCategoria:$scope.idCategoria},function(result){
-                      if(result.length!=0){
-                             $rootScope.lonFi2=true;
-
-                       }
-                       else{
-                             $rootScope.lonFi2=false;
-                        }
-                  });
-                  $rootScope.listadoDinamicoFinalizacionExtra=dinamicosFinalizacionExtras.query({idContratante:$localStorage.contratanteLogeado.idContratante,idCategoria:$scope.idCategoria},function(result){
-                   if(result.length!=0){
-                      $rootScope.lonFiEx2=true;
-
-                   }
-                   else{
-                      $rootScope.lonFiEx2=false;
-                   }
-
-
-                });
                 }
 
          }
+         $scope.activated=function(a){
+            console.log(a);
+            switch(a){
+                case "1":
+                  console.log("entre");
+                   $scope.listadoPrevioSugerido=$rootScope.listadoPrevioSugerido;
+                   $scope.listadoPrevioExtra=$rootScope.listadoPrevioExtra;
+                  $scope.lonPrevio= $rootScope.lonPrevi;
+                  $scope.lonPrevioEx=$rootScope.lonPreviEx;
+                  $scope.lonEjec=false;
+                  $scope.lonEjecEx=false;
+                  $scope.lonFi=false;
+                  $scope.lonFiEx=false
 
-          $scope.showAlert = function(ev) {
+                break;
+                case "2":
+                $scope.listadoEjecucionSugerido=$rootScope.listadoEjecucionSugerido;
+                $scope.listadoEjecucionExtra=$rootScope.listadoEjecucionExtra;
+                $scope.lonEjec=$rootScope.loEjec;
+                $scope.lonEjecEx=$rootScope.loEjecEx;
+                $scope.lonPrevio=false;
+                $scope.lonPrevioEx=false;
+                $scope.lonFi=false;
+                $scope.lonFiEx=false
+                break;
+
+                case "3":
+                $scope.lonEjec=false;
+                                $scope.lonEjecEx=false;
+                                $scope.lonPrevio=false;
+                                $scope.lonPrevioEx=false;
+                 console.log($scope.lonEjec);
+                $scope.listadoFinalizacionSugerido=$rootScope.listadoFinalizacionSugerido;
+               $scope.listadoFinalizacionExtra=$rootScope.listadoFinalizacionExtra;
+                $scope.lonFi=$rootScope.loFi;
+                $scope.lonFiEx=$rootScope.loFiEx;
+                break;
+
+
+            }
+            //$scope.listadoPrevioSugerido=$rootScope.listadoPrevioSugerido;
+            //$scope.listadoPrevioExtra=$rootScope.listadoPrevioExtra;
+
+         }
+         $scope.showAlert = function(ev) {
 
                  $rootScope.idCategoria=$scope.idCategoria;
-                 $mdDialog.show({
+                 $scope.banderaET=true;
+                 //$mdDialog.show({
                                         //Controlador del mensajes con operaciones definido en la parte de abajo
-                                        controller: DialogController,
+                   //                     controller: DialogController,
                                        //permite la comunicacion con el html que despliega el boton requisitos
-                                       templateUrl: 'test/test6.html',
-                                       parent: angular.element(document.body),
-                                       targetEvent: ev,
-                                       clickOutsideToClose:true,
-                                        fullscreen: $scope.customFullscreen // Only for -xs, -sm breakpoints.
-                                        })
+                    //                   templateUrl: 'test/test6.html',
+                     //                  parent: angular.element(document.body),
+                     //                  targetEvent: ev,
+                     //                  clickOutsideToClose:true,
+                      //                  fullscreen: $scope.customFullscreen // Only for -xs, -sm breakpoints.
+                       //                 })
 
 
                };
-
-         $scope.showAlert2 = function(ev) {
-          $rootScope.idCategoria=$scope.idCategoria;
-          $mdDialog.show({
-                                          //Controlador del mensajes con operaciones definido en la parte de abajo
-                                          controller: DialogController2,
-                                         //permite la comunicacion con el html que despliega el boton requisitos
-                                         templateUrl: 'test/requisitosDinamicos.html',
-                                         parent: angular.element(document.body),
-                                         targetEvent: ev,
-                                         clickOutsideToClose:true,
-                                          fullscreen: $scope.customFullscreen // Only for -xs, -sm breakpoints.
-                                          })
-          };
           function DialogController($scope, $mdDialog, $rootScope,$http) {
                 $scope.listadoPrevioSugerido=$rootScope.listadoPrevioSugerido;
-                $scope.lonPrevio= $rootScope.lonPrevio;
-
-                $scope.lonPrevioEx=$rootScope.lonPrevioEx;
+                 $scope.listadoPrevioExtra=$rootScope.listadoPrevioExtra;
                 $scope.lonEjec=$rootScope.lonEjec;
                 $scope.lonEjecEx=$rootScope.lonEjecEx;
                 $scope.lonFi=$rootScope.lonFi;
                 $scope.lonFiEx=$rootScope.lonFiEx;
                 $scope.listPrevioSugerido=[];
                 $scope.listAllPrevioSugerido=[];
-                $scope.listadoPrevioExtra=$rootScope.listadoPrevioExtra;
+
                 $scope.listPrevioExtra=[];
                 $scope.listAllPrevioExtra=[];
                 $scope.listadoEjecucionSugerido=$rootScope.listadoEjecucionSugerido;
+                $scope.listadoEjecucionExtra=$rootScope.listadoEjecucionExtra;
                 $scope.listEjecucionSugerido=[];
                 $scope.listAllEjecucionSugerido=[];
-                $scope.listadoEjecucionExtra=$rootScope.listadoEjecucionExtra;
+
                 $scope.listEjecucionExtra=[];
                 $scope.listAllEjecucionExtra=[];
-                $scope.listadoFinalizacionSugerido=$rootScope.listadoFinalizacionSugerido;
+
                 $scope.listFinalizacionSugerido=[];
                 $scope.listAllFinalizacionSugerido=[];
-                $scope.listadoFinalizacionExtra=$rootScope.listadoFinalizacionExtra;
+
                 $scope.listFinalizacionExtra=[];
                 $scope.listAllFinalizacionExtra=[];
                  function containsObject(obj, list) {
@@ -932,753 +900,6 @@ angular.module('myApp.registrarRequisitosEjecucion', ['ngRoute'])
                    }
 
             }
-
-           }
-            function DialogController4($scope, $mdDialog, $rootScope,$http){
-                       $scope.eEliminarPrevios=[];
-                       $scope.eEliminarPreviosExtras=[];
-                       $scope.eEliminarEjecucion=[];
-                       $scope.eEliminarEjecucionExtras=[];
-                       $scope.eEliminarFinalizacion=[];
-                       $scope.eEliminarFinalizacionExtra=[];
-                       $scope.defPreviosSugeridos=defDinamicosPreviosSugeridos.query({idContratante:$localStorage.contratanteLogeado.idContratante,idCategoria:$rootScope.idCategoria});
-                       $scope.defPreviosExtras=defDinamicosPreviosExtras.query({idContratante:$localStorage.contratanteLogeado.idContratante,idCategoria:$rootScope.idCategoria});
-                       $scope.defEjecucionSugeridos=defDinamicosEjecucionSugeridos.query({idContratante:$localStorage.contratanteLogeado.idContratante,idCategoria:$rootScope.idCategoria});
-                       $scope.defEjecucionExtras=defDinamicosEjecucionExtras.query({idContratante:$localStorage.contratanteLogeado.idContratante,idCategoria:$rootScope.idCategoria});
-                       $scope.defFinalizacionSugeridos=defDinamicosFinalizacionSugeridos.query({idContratante:$localStorage.contratanteLogeado.idContratante,idCategoria:$rootScope.idCategoria});
-                       $scope.defFinalizacionExtras=defDinamicosFinalizacionExtras.query({idContratante:$localStorage.contratanteLogeado.idContratante,idCategoria:$rootScope.idCategoria});
-                       function containsObject(obj, list) {
-                                     var i;
-                       for (i = 0; i < list.length; i++) {
-                                            if (list[i] === obj) {
-                                                 return true;
-                                            }
-                                      }
-
-                                       return false;
-                                   }
-
-
-                        $scope.hide = function() {
-                           $mdDialog.hide();
-                        };
-                                                                //funcion para cerral el mensaje
-                         $scope.cancel = function() {
-                            $mdDialog.cancel();
-                         };
-                         $scope.show=function(ev){
-                                 $mdDialog.show({
-                                                               //Controlador del mensajes con operaciones definido en la parte de abajo
-                                            controller: DialogController4,
-                                                              // permite la comunicacion con el html que despliega el boton requisitos
-                                            templateUrl: 'test/definitivosDinamicos.html',
-                                            parent: angular.element(document.body),
-                                            targetEvent: ev,
-                                            clickOutsideToClose:true,
-                                            fullscreen: $scope.customFullscreen // Only for -xs, -sm breakpoints.
-                        })
-                        }
-                        $scope.eliminar=function(ev){
-                                                          eliminarPreviosSugeridos($scope.eEliminarPrevios);
-                                                          eliminarPreviosExtras($scope.eEliminarPreviosExtras);
-                                                          eliminarEjecucionSugeridos($scope.eEliminarEjecucion);
-                                                          eliminarEjecucionExtra($scope.eEliminarEjecucionExtras);
-                                                          eliminarFinalizacion($scope.eEliminarFinalizacion);
-                                                          eliminarFinalizacionExtra($scope.eEliminarFinalizacionExtra);
-                                $mdDialog.show(
-                                       $mdDialog.alert()
-                                         .parent(angular.element(document.querySelector('#popupContainer')))
-                                         .clickOutsideToClose(true)
-                                         .title('Sus Requisitos han sido eliminados')
-                                         .textContent('Podrá seguir agregando requisitos si lo desea.')
-                                         .ariaLabel('Alert Dialog Demo')
-                                         .ok('Aplique mas requisitos!')
-                                         .targetEvent(ev)
-                                     );
-
-                                  };
-
-                        $scope.eliminar1=function(select1,item){
-                            if(select1){
-                                   $scope.eEliminarPrevios.push(item)
-                                               }
-                             else if(!select1 && containsObject(item,$scope.eEliminarPrevios)){
-                                 var index=$scope.eEliminarPrevios.indexOf(item)
-                                 if (index > -1) {
-                                  $scope.eEliminarPrevios.splice(index, 1);
-                                 }
-                             console.log($scope.eEliminarPrevios);
-                             }
-
-
-
-                        }
-                        $scope.eliminar2=function(select2,item){
-                                           console.log(item);
-                                if(select2){
-                                     $scope.eEliminarPreviosExtras.push(item)
-                                                 }
-                                else if(!select2 && containsObject(item,$scope.eEliminarPreviosExtras)){
-                                    var index=$scope.eEliminarPreviosExtras.indexOf(item)
-                                    if (index > -1) {
-                                        $scope.eEliminarPreviosExtras.splice(index, 1);
-                                }
-                                console.log($scope.eEliminarPreviosExtras);
-                               }
-
-
-                        }
-                        $scope.eliminar3=function(select3,item){
-                                            console.log(item);
-                            if(select3){
-                                     $scope.eEliminarEjecucion.push(item)
-                            }
-                            else if(!select3 && containsObject(item,$scope.eEliminarEjecucion)){
-                                var index=$scope.eEliminarEjecucion.indexOf(item)
-                                if (index > -1) {
-                                      $scope.eEliminarEjecucion.splice(index, 1);
-                                }
-                                                                                                console.log($scope.eEliminarEjecucion);
-                            }
-
-                        }
-                        $scope.eliminar4=function(select4,item){
-                                 console.log(item);
-                                if(select4){
-                                     $scope.eEliminarEjecucionExtras.push(item)
-                                }
-                                else if(!select4 && containsObject(item,$scope.eEliminarEjecucionExtras)){
-                                        var index=$scope.eEliminarEjecucion.indexOf(item)
-                                        if (index > -1) {
-                                        $scope.eEliminarEjecucionExtras.splice(index, 1);
-                                        }
-                                console.log($scope.eEliminarEjecucionExtras);
-                                }
-
-                        }
-                        $scope.eliminar5=function(select5,item){
-                                   console.log(item);
-                          if(select5){
-                                $scope.eEliminarFinalizacion.push(item)
-                          }
-                          else if(!select5 && containsObject(item,$scope.eEliminarFinalizacion)){
-                              var index=$scope.eEliminarFinalizacion.indexOf(item)
-                              if (index > -1) {
-                                $scope.eEliminarFinalizacion.splice(index, 1);
-                              }
-                              console.log($scope.eEliminarFinalizacion);
-                          }
-
-                        }
-                        $scope.eliminar6=function(select6,item){
-                                   console.log(item);
-                                   if(select6){
-                                       $scope.eEliminarFinalizacionExtra.push(item)
-                                    }
-                                    else if(!select6 && containsObject(item,$scope.eEliminarFinalizacionExtra)){
-                                        var index=$scope.eEliminarFinalizacionExtra.indexOf(item)
-                                        if (index > -1) {
-                                                $scope.eEliminarFinalizacionExtra.splice(index, 1);
-                                        }
-                                        console.log($scope.eEliminarFinalizacionExtra);
-                                     }
-
-                        }
-                         var eliminarPreviosSugeridos=function(lista){
-                                                                    var total=lista.length;
-                                                    for (var i=0;i<total;i++){
-                                                                        eliminarDPS.remove({"idContratante":$localStorage.contratanteLogeado.idContratante,"idRequisito":lista[i].idRequisito});
-
-                                                                     }
-
-                                                              }
-                        var eliminarPreviosExtras=function(lista){
-                                            var total=lista.length;
-                            for (var i=0;i<total;i++){
-                                                eliminarPE.remove({"idContratante":$localStorage.contratanteLogeado.idContratante,"idRequisito":lista[i].idRequisito});
-
-                                             }
-
-                                      }
-                                      var eliminarEjecucionSugeridos=function(lista){
-                                             var total=lista.length;
-                                             for (var i=0;i<total;i++){
-                                               eliminarES.remove({"idContratante":$localStorage.contratanteLogeado.idContratante,"idRequisito":lista[i].idRequisito});
-
-                                              }
-
-                                      }
-                                      var eliminarEjecucionExtra=function(lista){
-                                         var total=lista.length;
-                                         for (var i=0;i<total;i++){
-                                             eliminarES.remove({"idContratante":$localStorage.contratanteLogeado.idContratante,"idRequisito":lista[i].idRequisito});
-
-                                         }
-
-                                      }
-                                      var eliminarFinalizacion=function(lista){
-                                             var total=lista.length;
-                                             for (var i=0;i<total;i++){
-                                               eliminarFS.remove({"idContratante":$localStorage.contratanteLogeado.idContratante,"idRequisito":lista[i].idRequisito});
-
-                                             }
-
-                                      }
-                                      var eliminarFinalizacionExtra=function(lista){
-                                                           var total=lista.length;
-                                                           for (var i=0;i<total;i++){
-                                                             eliminarFE.remove({"idContratante":$localStorage.contratanteLogeado.idContratante,"idRequisito":lista[i].idRequisito});
-
-                                                           }
-
-                                                    }
-
-
-
-          }
-
-         function DialogController2($scope, $mdDialog, $rootScope,$http) {
-            $scope.lonPrevio= $rootScope.lonPrevio2;
-            $scope.lonPrevioEx=$rootScope.lonPrevioEx2;
-            $scope.lonEjec=$rootScope.lonEjec2;
-            $scope.lonEjecEx=$rootScope.lonEjecEx2;
-            $scope.lonFi=$rootScope.lonFi2;
-            $scope.lonFiEx=$rootScope.lonFiEx2;
-            $scope.listDinamicoPrevioSugerido=[];
-            $scope.listDinamicoAllPrevioSugerido=[];
-            $scope.listDinamicoPrevioExtra=[];
-            $scope.listDinamicoAllPrevioExtra=[];
-            $scope.listDinamicoEjecucionSugerido=[];
-            $scope.listDinamicoAllEjecucionSugerido=[];
-            $scope.listDinamicoEjecucionExtra=[];
-            $scope.listDinamicoAllEjecucionExtra=[];
-            $scope.listDinamicoFinalizacionSugerido=[];
-            $scope.listDinamicoAllFinalizacionSugerido=[];
-            $scope.listDinamicoFinalizacionExtra=[];
-            $scope.listDinamicoAllFinalizacionExtra=[];
-            $scope.listadoDinamicoPrevioSugerido=$rootScope.listadoDinamicoPrevioSugerido;
-
-            $scope.listadoDinamicoPrevioExtra=$rootScope.listadoDinamicoPrevioExtra;
-
-            $scope.listadoDinamicoEjecucionSugerido=$rootScope.listadoDinamicoEjecucionSugerido;
-
-            $scope.listadoDinamicoEjecucionExtra=$rootScope.listadoDinamicoEjecucionExtra;
-
-            $scope.listadoDinamicoFinalizacionSugerido=$rootScope.listadoDinamicoFinalizacionSugerido;
-
-            $scope.listadoDinamicoFinalizacionExtra=$rootScope.listadoDinamicoFinalizacionExtra;
-            $scope.hideMessage1=function(){
-                                             $scope.mensajillo1=false;
-                                             $scope.mensajillo2=false;
-                                             $scope.mensajillo3=false;
-                                             $scope.mensajillo4=false;
-                                             $scope.mensajillo5=false;
-                                             $scope.mensajillo6=false;
-
-                                         };
-
-
-
-            $scope.hide = function() {
-                 $mdDialog.hide();
-                             };
-            $scope.show=function(ev){
-                                            $mdDialog.show({
-                                                                          //Controlador del mensajes con operaciones definido en la parte de abajo
-                                                       controller: DialogController4,
-                                                                         // permite la comunicacion con el html que despliega el boton requisitos
-                                                       templateUrl: 'test/definitivosDinamicos.html',
-                                                       parent: angular.element(document.body),
-                                                       targetEvent: ev,
-                                                       clickOutsideToClose:true,
-                                                       fullscreen: $scope.customFullscreen // Only for -xs, -sm breakpoints.
-                                   })
-                                   };
-                                        //funcion para cerral el mensaje
-            $scope.cancel = function() {
-                 $mdDialog.cancel();
-                             };
-
-            $scope.agregarDinamicoPrevioSugerido=function(dinamicoPrevioSugerido,item){
-               if(dinamicoPrevioSugerido){
-                                $scope.listDinamicoPrevioSugerido.push(item)
-                                }
-                                else if(!dinamicoPrevioSugerido && containsObject(item,$scope.listDinamicoPrevioSugerido)){
-                                   var index=$scope.listDinamicoPrevioSugerido.indexOf(item)
-                                    if (index > -1) {
-                                        $scope.listDinamicoPrevioSugerido.splice(index, 1);
-                                    }
-                                    console.log($scope.listDinamicoPrevioSugerido);
-                                }
-                            };
-                            $scope.agregarDinamicoPrevioExtra=function(dinamicoPrevioExtras,item){
-                                if(dinamicoPrevioExtras){
-                                $scope.listDinamicoPrevioExtra.push(item)
-                                }
-                                else if(!dinamicoPrevioExtras && containsObject(item,$scope.listDinamicoPrevioExtra)){
-                                    var index=$scope.listDinamicoPrevioExtra.indexOf(item)
-                                       if (index > -1) {
-                                               $scope.listDinamicoPrevioExtra.splice(index, 1);
-                                        }
-
-                                }
-
-                            };
-                            $scope.agregarDinamicoEjecucionSugerido=function(dinamicoEjecucionSugerido,item){
-                                if(dinamicoEjecucionSugerido){
-                                $scope.listDinamicoEjecucionSugerido.push(item)
-                                }
-                                else if(!dinamicoEjecucionSugerido && containsObject(item,$scope.listDinamicoEjecucionSugerido)){
-                                  var index=$scope.listDinamicoEjecucionSugerido.indexOf(item)
-                                       if (index > -1) {
-                                               $scope.listDinamicoEjecucionSugerido.splice(index, 1);
-                                        }
-
-                                 }
-                            };
-                            $scope.agregarDinamicoEjecucionExtra=function(dinamicoEjecucionExtra,item){
-                                if(dinamicoEjecucionExtra){
-                                $scope.listDinamicoEjecucionExtra.push(item)
-                                }
-                                else if(!dinamicoEjecucionExtra && containsObject(item,$scope.listDinamicoEjecucionExtra)){
-                                    var index=$scope.listDinamicoEjecucionExtra.indexOf(item)
-                                    if (index > -1) {
-                                         $scope.listDinamicoEjecucionExtra.splice(index, 1);
-                                     }
-
-                                }
-                            };
-                            $scope.agregarDinamicosFinalizacionSugerido=function(dinamicosFinalizacionSugerido,item){
-                                if(dinamicosFinalizacionSugerido){
-
-                                $scope.listDinamicoFinalizacionSugerido.push(item)
-
-
-                                }
-                                else if(!dinamicosFinalizacionSugerido && containsObject(item, $scope.listDinamicoFinalizacionSugerido)){
-                                    var index= $scope.listDinamicoFinalizacionSugerido.indexOf(item)
-                                       if (index > -1) {
-                                            $scope.listDinamicoFinalizacionSugerido.splice(index, 1);
-                                       }
-
-                                    }
-                            };
-                            $scope.agregarDinamicoFinalizacionExtra=function(dinamicoFinalizacionExtra,item){
-                                if(dinamicoFinalizacionExtra){
-                                  $scope.listDinamicoFinalizacionExtra.push(item)
-                                }
-                                else if(!dinamicoFinalizacionExtra && containsObject(item,$scope.listDinamicoFinalizacionExtra)){
-                                   var index=$scope.listDinamicoFinalizacionExtra.indexOf(item)
-                                      if (index > -1) {
-                                            $scope.listDinamicoFinalizacionExtra.splice(index, 1);
-                                              }
-
-                                 }
-
-                            };
-
-                            $scope.allDinamicosPreviosSugeridos=function(masterDinamicoPrevioSugerido){
-                                if(!masterDinamicoPrevioSugerido){
-                                    $scope.dinamicoPrevioSugerido=true;
-                                    $scope.listDinamicosAllPrevioSugerido=$rootScope.listadoDinamicoPrevioSugerido;
-                                }
-                                else{
-                                    $scope.dinamicoPrevioSugerido=false;
-                                    $scope.listAllPrevioSugerido=[];
-                                }
-                            };
-                            $scope.allDinamicosPreviosExtra=function(masterDinamicoPrevioExtra){
-                                if(!masterDinamicoPrevioExtra){
-                                    $scope.dinamicoPrevioExtras=true;
-                                    $scope.listDinamicoAllPrevioExtra=$rootScope.listadoDinamicoPrevioExtra;
-                                 }
-                                 else{
-                                    $scope.dinamicoPrevioExtras=false;
-                                    $scope.listDinamicoAllPrevioExtra=[];
-                                 }
-                            };
-                            $scope.allDinamicosEjecucionSugerido=function(masterDinamicoEjecucionSugerido){
-                                if(!masterDinamicoEjecucionSugerido){
-                                  $scope.dinamicoEjecucionSugerido=true;
-                                  $scope.listDinamicoAllEjecucionSugerido=$rootScope.listadoDinamicoEjecucionSugerido;
-                                 }
-                                 else{
-                                   $scope.dinamicoEjecucionSugerido=false;
-                                   $scope.listDinamicoAllEjecucionSugerido=[];
-                                 }
-
-                            };
-                            $scope.allDinamicosEjecucionExtra=function(masterDinamicoEjecucionExtra){
-                                if(!masterDinamicoEjecucionExtra){
-                                   $scope.dinamicoEjecucionExtra=true;
-                                   $scope.listDinamicoAllEjecucionExtra=$rootScope.listadoDinamicoEjecucionExtra;
-                                 }
-                                 else{
-                                    $scope.dinamicoEjecucionExtra=false;
-                                    $scope.listDinamicoAllEjecucionExtra=[];
-                                 }
-                            };
-                            $scope.allDinamicosFinalizacionSugerido=function(masterDinamicoFinalizacionSugerido){
-                                if(!masterDinamicoFinalizacionSugerido){
-                                  $scope.dinamicosFinalizacionSugerido=true;
-                                  $scope.listDinamicosAllFinalizacionSugerido=$rootScope.listadoDinamicoFinalizacionSugerido;
-                                }
-                                else{
-                                  $scope.dinamicosFinalizacionSugerido=false;
-                                  $scope.listDinamicosAllFinalizacionSugerido=[];
-                                 }
-                            };
-                            $scope.allDinamicosFinalizacionExtra=function(masterDinamicoFinalizacionExtra){
-                                if(!masterDinamicoFinalizacionExtra){
-                                   $scope.dinamicoFinalizacionExtra=true;
-                                   $scope.listDinamicoAllFinalizacionExtra=$rootScope.listadoDinamicoFinalizacionExtra;
-                                }
-                                else{
-                                   $scope.dinamicoFinalizacionExtra=false;
-                                   $scope.listDinamicoAllFinalizacionExtra=[];
-                                }
-                            };
-
-
-
-                    function containsObject(obj, list) {
-                        var i;
-                        for (i = 0; i < list.length; i++) {
-                            if (list[i] === obj) {
-                                return true;
-                            }
-                        }
-
-                        return false;
-                    }
-
-                                var agregarBaseDatosDinamicosPreviosSugeridos=function(lista){
-                                                 var total=lista.length;
-                                                 for (var i=0;i<total;i++){
-                                                     var requisitoObligatorio={"idContratante":$localStorage.contratanteLogeado.idContratante,"idCategoria":$rootScope.idCategoria,"idRequisito":lista[i].numero};
-                                                     console.log(requisitoObligatorio);
-                                                     console.log(total);
-                                                     iDinamicoPrevioSugerido.save(requisitoObligatorio);
-
-                                                 }
-
-
-                                  }
-                                 var agregarBaseDatosDinamicosEjecucionSugeridos=function(lista){
-                                                                 var total=lista.length;
-                                                                 for (var i=0;i<total;i++){
-                                                                     console.log(lista[i]);
-                                                                     var requisitoObligatorio={"idContratante":$localStorage.contratanteLogeado.idContratante,"idCategoria":$rootScope.idCategoria,"idRequisito":lista[i].numero};
-                                                                     console.log(requisitoObligatorio);
-                                                                     console.log(total);
-                                                                     iDinamicoEjecucionSugerido.save(requisitoObligatorio);
-
-                                                                 }
-
-
-                                  }
-                                 var agregarBaseDatosDinamicosFinalizacionSugeridos=function(lista){
-                                                                              var total=lista.length;
-                                                                              for (var i=0;i<total;i++){
-                                                                                  console.log(lista[i]);
-                                                                                  var requisitoObligatorio={"idContratante":$localStorage.contratanteLogeado.idContratante,"idCategoria":$rootScope.idCategoria,"idRequisito":lista[i].numero};
-                                                                                  console.log(requisitoObligatorio);
-                                                                                  console.log(total);
-                                                                                  iDinamicoFinalizacionSugerido.save(requisitoObligatorio);
-
-                                                                              }
-
-
-                                               }
-                                   var agregarBaseDatosDinamicosPreviosExtras=function(lista){
-                                                             var total=lista.length;
-                                                            for (var i=0;i<total;i++){
-                                                              var requisitoExtra={"idContratante":$localStorage.contratanteLogeado.idContratante,"idCategoria":$rootScope.idCategoria,"idRequisito":lista[i].id};
-                                                               console.log(total);
-                                                               console.log(requisitoExtra);
-                                                               iDinamicoPrevioExtra.save(requisitoExtra);
-
-                                                            }
-
-
-                                   }
-                                    var agregarBaseDatosDinamicosEjecucionExtras=function(lista){
-                                                                           var total=lista.length;
-                                                                          for (var i=0;i<total;i++){
-                                                                            var requisitoExtra={"idContratante":$localStorage.contratanteLogeado.idContratante,"idCategoria":$rootScope.idCategoria,"idRequisito":lista[i].id};
-                                                                             console.log(total);
-                                                                             console.log(requisitoExtra);
-                                                                             iDinamicoEjecucionExtra.save(requisitoExtra);
-
-                                                                          }
-
-
-                                    }
-
-                                var agregarBaseDatosDinamicosFinalizacionExtras=function(lista){
-                                                                                       var total=lista.length;
-                                                                                      for (var i=0;i<total;i++){
-                                                                                        var requisitoExtra={"idContratante":$localStorage.contratanteLogeado.idContratante,"idCategoria":$rootScope.idCategoria,"idRequisito":lista[i].id};
-                                                                                         console.log(total);
-                                                                                         console.log(requisitoExtra);
-                                                                                         iDinamicoFinalizacionExtra.save(requisitoExtra);
-
-                                                                                      }
-
-
-                                                }
-
-
-                $scope.aplicarDinamiooPrevioSugerido=function(ev){
-                     var a=$scope.listDinamicoPrevioSugerido.length;
-                     var b=$scope.listDinamicoAllPrevioSugerido.length;
-                     if(a>b){
-                        console.log("entre a sugeridos")
-                        agregarBaseDatosDinamicosPreviosSugeridos($scope.listDinamicoPrevioSugerido);
-                         $mdDialog.show({
-
-                                                                                                            controller: DialogController4,
-                                                                                                                                                                                                     // permite la comunicacion con el html que despliega el boton requisitos
-                                                                                                                                                                                   templateUrl: 'test/mensajeDeConfirmacionD.html',
-                                                                                                                                                                                   parent: angular.element(document.body),
-                                                                                                                                                                                   targetEvent: ev,
-                                                                                                                                                                                   clickOutsideToClose:true,
-                                                                                                                                                                                   fullscreen: $scope.customFullscreen // Only for -xs, -sm breakpoints.
-                                                                                                                                                                                                      })
-                     }
-                     else if(a==b && b==0){
-                        $scope.mensajillo1=true;
-
-
-
-                     }
-                     else{
-                        console.log("entre a all sugeridos")
-                        agregarBaseDatosDinamicosPreviosSugeridos($scope.listDinamicoAllPrevioSugerido);
-                        $mdDialog.show({
-
-                                                                                                                                    controller: DialogController4,
-                                                                                                                                                                                                                             // permite la comunicacion con el html que despliega el boton requisitos
-                                                                                                                                                                                                           templateUrl: 'test/mensajeDeConfirmacionD.html',
-                                                                                                                                                                                                           parent: angular.element(document.body),
-                                                                                                                                                                                                           targetEvent: ev,
-                                                                                                                                                                                                           clickOutsideToClose:true,
-                                                                                                                                                                                                           fullscreen: $scope.customFullscreen // Only for -xs, -sm breakpoints.
-                                                                                                                                                                                                                              })
-                     }
-
-
-
-
-                    };
-
-
-
-                    $scope.aplicarDinamicoPrevioExtra=function(ev){
-                                     var a=$scope.listDinamicoPrevioExtra.length;
-                                     var b=$scope.listDinamicoAllPrevioExtra.length;
-                                     if(a>b){
-                                        console.log("entre a sugeridos")
-                                        agregarBaseDatosDinamicosPreviosExtras($scope.listDinamicoPrevioExtra);
-                                        $mdDialog.show({
-
-                                                                                                                                                    controller: DialogController4,
-                                                                                                                                                                                                                                             // permite la comunicacion con el html que despliega el boton requisitos
-                                                                                                                                                                                                                           templateUrl: 'test/mensajeDeConfirmacionD.html',
-                                                                                                                                                                                                                           parent: angular.element(document.body),
-                                                                                                                                                                                                                           targetEvent: ev,
-                                                                                                                                                                                                                           clickOutsideToClose:true,
-                                                                                                                                                                                                                           fullscreen: $scope.customFullscreen // Only for -xs, -sm breakpoints.
-                                                                                                                                                                                                                                              })
-                                     }
-                                     else if(a==b && b==0){
-                                                             $scope.mensajillo2=true;
-
-
-
-                                                          }
-                                     else{
-                                        console.log("entre a all sugeridos")
-                                        agregarBaseDatosDinamicosPreviosExtras($scope.listDinamicoAllPrevioExtra);
-                                        $mdDialog.show({
-
-                                                                                                                                                    controller: DialogController4,
-                                                                                                                                                                                                                                             // permite la comunicacion con el html que despliega el boton requisitos
-                                                                                                                                                                                                                           templateUrl: 'test/mensajeDeConfirmacionD.html',
-                                                                                                                                                                                                                           parent: angular.element(document.body),
-                                                                                                                                                                                                                           targetEvent: ev,
-                                                                                                                                                                                                                           clickOutsideToClose:true,
-                                                                                                                                                                                                                           fullscreen: $scope.customFullscreen // Only for -xs, -sm breakpoints.
-                                                                                                                                                                                                                                              })
-                                     }
-
-                                };
-
-                $scope.aplicarDinamicoEjecucionSugerido=function(ev){
-                                    var a=$scope.listDinamicoEjecucionSugerido.length;
-                                    var b=$scope.listDinamicoAllEjecucionSugerido.length;
-                                    if(a>b){
-                                       console.log("entre a sugeridos")
-                                       agregarBaseDatosDinamicosEjecucionSugeridos($scope.listDinamicoEjecucionSugerido);
-                                       $mdDialog.show({
-
-                                                                                                                                                   controller: DialogController4,
-                                                                                                                                                                                                                                            // permite la comunicacion con el html que despliega el boton requisitos
-                                                                                                                                                                                                                          templateUrl: 'test/mensajeDeConfirmacionD.html',
-                                                                                                                                                                                                                          parent: angular.element(document.body),
-                                                                                                                                                                                                                          targetEvent: ev,
-                                                                                                                                                                                                                          clickOutsideToClose:true,
-                                                                                                                                                                                                                          fullscreen: $scope.customFullscreen // Only for -xs, -sm breakpoints.
-                                                                                                                                                                                                                                             })
-
-                                    }
-                                    else if(a==b && b==0){
-                                                            $scope.mensajillo3=true;
-
-
-
-                                                         }
-                                    else{
-                                       console.log("entre a all sugeridos")
-                                       agregarBaseDatosDinamicosEjecucionSugeridos($scope.listDinamicoAllEjecucionSugerido);
-                                       $mdDialog.show({
-
-                                                                                                                                                   controller: DialogController4,
-                                                                                                                                                                                                                                            // permite la comunicacion con el html que despliega el boton requisitos
-                                                                                                                                                                                                                          templateUrl: 'test/mensajeDeConfirmacionD.html',
-                                                                                                                                                                                                                          parent: angular.element(document.body),
-                                                                                                                                                                                                                          targetEvent: ev,
-                                                                                                                                                                                                                          clickOutsideToClose:true,
-                                                                                                                                                                                                                          fullscreen: $scope.customFullscreen // Only for -xs, -sm breakpoints.
-                                                                                                                                                                                                                                             })
-                                    }
-
-                               };
-
-                $scope.aplicarDinamicoEjecucionExtra=function(ev){
-                                                     var a=$scope.listDinamicoEjecucionExtra.length;
-                                                     var b=$scope.listDinamicoAllEjecucionExtra.length;
-                                                     if(a>b){
-                                                        console.log("entre a sugeridos")
-                                                        agregarBaseDatosDinamicosEjecucionExtras($scope.listDinamicoEjecucionExtra);
-                                                        $mdDialog.show({
-
-                                                                                                                                                                    controller: DialogController4,
-                                                                                                                                                                                                                                                             // permite la comunicacion con el html que despliega el boton requisitos
-                                                                                                                                                                                                                                           templateUrl: 'test/mensajeDeConfirmacionD.html',
-                                                                                                                                                                                                                                           parent: angular.element(document.body),
-                                                                                                                                                                                                                                           targetEvent: ev,
-                                                                                                                                                                                                                                           clickOutsideToClose:true,
-                                                                                                                                                                                                                                           fullscreen: $scope.customFullscreen // Only for -xs, -sm breakpoints.
-                                                                                                                                                                                                                                                              })
-                                                     }
-                                                        else if(a==b && b==0){
-                                                            $scope.mensajillo4=true;
-
-
-
-                                                                          }
-                                                     else{
-                                                        console.log("entre a all sugeridos")
-                                                        agregarBaseDatosDinamicosEjecucionExtras($scope.listDinamicosAllEjecucionExtra);
-                                                        $mdDialog.show({
-
-                                                                                                                                                                    controller: DialogController4,
-                                                                                                                                                                                                                                                             // permite la comunicacion con el html que despliega el boton requisitos
-                                                                                                                                                                                                                                           templateUrl: 'test/mensajeDeConfirmacionD.html',
-                                                                                                                                                                                                                                           parent: angular.element(document.body),
-                                                                                                                                                                                                                                           targetEvent: ev,
-                                                                                                                                                                                                                                           clickOutsideToClose:true,
-                                                                                                                                                                                                                                           fullscreen: $scope.customFullscreen // Only for -xs, -sm breakpoints.
-                                                                                                                                                                                                                                                              })
-                                                     }
-
-                                                };
-
-
-                $scope.aplicarDinamicoFinalizacionSugerido=function(ev){
-                                                    var a= $scope.listDinamicoFinalizacionSugerido.length;
-                                                    var b=$scope.listDinamicoAllFinalizacionSugerido.length;
-                                                    if(a>b){
-                                                       console.log("entre a sugeridos")
-                                                       console.log( $scope.listDinamicoFinalizacionSugerido);
-                                                       agregarBaseDatosDinamicosFinalizacionSugeridos( $scope.listDinamicoFinalizacionSugerido);
-                                                       $mdDialog.show({
-
-                                                                                                                                                                   controller: DialogController4,
-                                                                                                                                                                                                                                                            // permite la comunicacion con el html que despliega el boton requisitos
-                                                                                                                                                                                                                                          templateUrl: 'test/mensajeDeConfirmacionD.html',
-                                                                                                                                                                                                                                          parent: angular.element(document.body),
-                                                                                                                                                                                                                                          targetEvent: ev,
-                                                                                                                                                                                                                                          clickOutsideToClose:true,
-                                                                                                                                                                                                                                          fullscreen: $scope.customFullscreen // Only for -xs, -sm breakpoints.
-                                                                                                                                                                                                                                                             })
-                                                    }
-                                                       else if(a==b && b==0){
-                                                                            $scope.mensajillo5=true;
-
-
-
-                                                                         }
-                                                    else{
-                                                       console.log("entre a all sugeridos")
-                                                       agregarBaseDatosDinamicosFinalizacionSugeridos($scope.listDinamicoAllFinalizacionSugerido);
-                                                       $mdDialog.show({
-
-                                                                                                                                                                   controller: DialogController4,
-
-                                                                                                                                                                                                                                                            // permite la comunicacion con el html que despliega el boton requisitos
-                                                                                                                                                                                                                                          templateUrl: 'test/mensajeDeConfirmacionD.html',
-                                                                                                                                                                                                                                          parent: angular.element(document.body),
-                                                                                                                                                                                                                                          targetEvent: ev,
-                                                                                                                                                                                                                                          clickOutsideToClose:true,
-                                                                                                                                                                                                                                          fullscreen: $scope.customFullscreen // Only for -xs, -sm breakpoints.
-                                                                                                                                                                                                                                                             })
-
-                                                    }
-
-                        };
-                  $scope.aplicarDinamicoFinalizacionExtra=function(ev){
-                                                                     var a=$scope.listDinamicoFinalizacionExtra.length;
-                                                                     var b=$scope.listDinamicoAllFinalizacionExtra.length;
-                                                                     if(a>b){
-                                                                        console.log("entre a sugeridos")
-                                                                        agregarBaseDatosDinamicosFinalizacionExtras($scope.listadoDinamicoFinalizacionExtra);
-                                                                        $mdDialog.show({
-
-                                                                                                                                                                                    controller: DialogController4,
-                                                                                                                                                                                                                                                                             // permite la comunicacion con el html que despliega el boton requisitos
-                                                                                                                                                                                                                                                           templateUrl: 'test/mensajeDeConfirmacionD.html',
-                                                                                                                                                                                                                                                           parent: angular.element(document.body),
-                                                                                                                                                                                                                                                           targetEvent: ev,
-                                                                                                                                                                                                                                                           clickOutsideToClose:true,
-                                                                                                                                                                                                                                                           fullscreen: $scope.customFullscreen // Only for -xs, -sm breakpoints.
-                                                                                                                                                                                                                                                                              })
-                                                                     }
-                                                                     else if(a==b && b==0){
-                                                                                             $scope.mensajillo6=true;
-
-
-
-                                                                                          }
-                                                                     else{
-                                                                        console.log("entre a all sugeridos")
-                                                                        agregarBaseDatosDinamicosFinalizacionExtras($scope.listDinamicoAllFinalizacionExtra);
-                                                                        $mdDialog.show({
-
-                                                                                                                                                                                    controller: DialogController4,
-                                                                                                                                                                                                                                                                             // permite la comunicacion con el html que despliega el boton requisitos
-                                                                                                                                                                                                                                                           templateUrl: 'test/mensajeDeConfirmacionD.html',
-                                                                                                                                                                                                                                                           parent: angular.element(document.body),
-                                                                                                                                                                                                                                                           targetEvent: ev,
-                                                                                                                                                                                                                                                           clickOutsideToClose:true,
-                                                                                                                                                                                                                                                           fullscreen: $scope.customFullscreen // Only for -xs, -sm breakpoints.
-                                                                                                                                                                                                                                                                              })
-                                                                     }
-
-                                                                };
-
-
 
            }
 

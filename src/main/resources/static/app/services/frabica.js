@@ -265,17 +265,6 @@ angular.module('services.listFactory', ['ngRoute','ngResource'])
                                                          return $resource('/app/dinamicosDefinitivos/:idContratante/:idCategoria/finalizacionExtras');
                                                      })
 
-
-      .factory('cumpDinaPrev', function($resource) {
-                     return $resource('/app/cumplimientoDinamico/previoSugeridoCumplido/:idCategoria/:idContratante/:idFinalista');
-               })
-      .factory('cumpDinaPrevMat', function($resource) {
-                           return $resource('/app/cumplimientoDinamico/previoSugeridoCumplidoMatriz/:idCategoria/:idContratante/:idFinalista');
-                     })
-      .factory('noCumpDinaPrev', function($resource) {
-                           return $resource('/app/cumplimientoDinamico/previoSugeridoNoCumplido/:idCategoria/:idContratante/:idFinalista');
-                     })
-
      .factory('estadoPreviosSugeridos', function($resource) {
                                                     return $resource('/app/requisitoEstaticos/:idContratante/:idCategoria/:idFinalista/estadoPreviosSugeridos');
                                                      })

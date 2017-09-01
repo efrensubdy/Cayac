@@ -22,14 +22,12 @@ angular.module('myApp', [
   'myApp.manualRegister',
   'myApp.ejecucionCNCE',
   'myApp.subirDocumentosEstaticos',
-  'myApp.revisionDinamica',
   'myApp.registroServicio',
   'myApp.inicio',
   'myApp.test',
   'myApp.login',
   'myApp.login2',
   'myApp.login3',
-  'myApp.gestionDinamica',
   'services.listFactory',
   'myApp.version'
 ]).

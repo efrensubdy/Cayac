@@ -9,7 +9,7 @@
         <form >
             <div class="form-group">
                 <p class="text-center"><b>ESCOJA UNA DE LAS CATEGORIAS MENCIONADAS A CONTINUACIÓN </b> </p>
-                <div class="w3-rest">
+                <div class="container">
                     <select class="form-control" ng-click="function1()" data-placeholder="Categoria a la que le va aplicar los requisitos" name="singleSelect" ng-model="idCategoria">
                         <option value="1">Categoria 1</option>
                         <option value="2">Categoria 2</option>
@@ -17,72 +17,226 @@
                         <option value="4">Categoria 4</option>
                     </select>
                 </div>
+                <br>
+                <div class="container" ng-show="banderaCategoria1" >
+                    <div >
+                        <h2 class="text-primary">Categoria 1</h2>
+                    </div>
+
+                    <form>
+
+                        <p>La Categoria 1 pertenecen todos aquellos contratistas cuyo contrato</p>
+                        <p>Es mayor o igual a  un mes y su nivel de riesgo es mayor o igual a 3</p>
+                    </form>
+                    <button class="btn btn-primary " type="submit" ng-click="showAlert($event)">Requisitos Estaticos</button>
+
+                </div>
+                <div class="container" ng-show="banderaCategoria2" >
+                    <div>
+                        <h2 class="text-danger">Categoria 2</h2>
+                    </div>
+
+                    <form >
+                        <p>La Categoria 2 pertenecen todos aquellos contratistas cuyo contrato</p>
+                        <p>Es menor o igual a  un mes y su nivel de riesgo es mayor o igual a 3</p>
+                    </form>
+
+                    <button class="btn btn-danger" type="submit" ng-click="showAlert($event)">Requisitos Estaticos</button>
+
+                </div>
+                <div class="container" ng-show="banderaCategoria3" >
+                    <div >
+                        <h2 class="text-success">Categoria 3</h2>
+                    </div>
+
+                    <form >
+                        <p>
+
+                        <p>La categoria 3 pertenecen todos aquellos contratistas cuyo contrato</p>
+                        <p>Es mayor o igual a  un mes y su nivel de riesgo es menor o igual  a 2</p>
+                    </form>
+
+                    <button class="btn btn-success" type="submit" ng-click="showAlert($event)">Requisitos Estaticos</button>
+
+                </div>
+                <div class="container" ng-show="banderaCategoria4" >
+                    <div>
+                        <h2 class="text-warning">Categoria 4</h2>
+                    </div>
+                    <form >
+                        <p>
+
+                        <p>La categoria 4 pertenecen todos aquellos contratistas cuyo contrato</p>
+                        <p>Es menor o igual a un mes y su nivel de riesgo es menor o igual  a 2</p>
+                    </form>
+
+                    <button class="btn btn-warning" type="submit" ng-click="showAlert($event)">Requisitos Estaticos</button>
+                </div>
+
+                <div class="hidden-xs hidden-md hidden-lg"></div>
+
+                <div class="container" ng-show="banderaET">
+                    <select class="form-control"  data-placeholder="Categoria a la que le va aplicar los requisitos" name="singleSelect" ng-model="ciclo" ng-click="activated(ciclo)">
+                        <option value="1">PREVIO AL INICIO DEL CONTRATO</option>
+                        <option value="2">DURANTE LA EJECUCION DEL CONTRATO</option>
+                        <option value="3">FINALIZACION DEL CONTRATO</option>
+
+                    </select>
+
+                    <div class="hidden-xs hidden-md hidden-lg"></div>
+
+                    <div class="container" ng-show="lonPrevio">
+                           <label>Sugeridos</label>
+                           <table class="table table-sm  table-striped table-bordered table-hover table-condensed  text-justify ">
+                               <thead>
+                               <tr class="">
+                                   <th>Descripcion</th>
+                                   <th>¿Aplica?<md-checkbox  aria-label="CheckboxMaster" ng-model="masterPrevioSugerido" ng-click="allPreviosSugeridos(masterPrevioSugerido)"></md-checkbox></th>
+                               </tr>
+                               </thead>
+                               <tbody>
+                               <tr class="" ng-repeat="todo in listadoPrevioSugerido" >
+                                   <td>{{todo.requisito}}</td>
+                                   <td><md-checkbox class="w3-center"  aria-label="Checkbox 1"  ng-model="previoSugerido" ng-change="agregarPrevioSugerido(previoSugerido, todo)">
+                                   </md-checkbox></td>
+                               </tr>
+                               </tbody>
+                           </table>
+
+                           <div ng-show="mensajillo1">
+                               <label>DEBE SELECCIONAR AL MENOS UN REQUISITO</label>
+
+                           </div>
+                       </div>
+                       <div class="container" ng-show="lonPrevioEx">
+                           <label>Extras</label>
+                           <table class="table table-sm  table-striped table-bordered table-hover table-condensed  text-justify ">
+                               <thead>
+                               <tr class="">
+                                   <th>Descripcion</th>
+                                   <th>¿Aplica?<md-checkbox  aria-label="CheckboxMaster" ng-model="masterPrevioExtra" ng-click="allPreviosExtra(masterPrevioExtra)"></md-checkbox></th>
+                               </tr>
+                               </thead>
+                               <tbody>
+                               <tr class="" ng-repeat="todo in listadoPrevioExtra" >
+                                   <td>{{todo.descripcion}}</td>
+                                   <td><md-checkbox class="w3-center"  aria-label="Checkbox 1"  ng-model="previoExtras" ng-change="agregarPrevioExtra(previoExtras, todo)">
+                                   </md-checkbox></td>
+                               </tr>
+                               </tbody>
+
+                           </table>
+                           <md-button class="md-warn md-raised md-hue-2" ng-click="aplicarPrevioSugerido($event)">Aplicar Sugeridos</md-button>
+                           <md-button class="md-warn md-raised md-hue-2" ng-click="aplicarPrevioExtra($event)">Aplicar Extras</md-button>
+
+                           <div ng-show="mensajillo2">
+                               <label>DEBE SELECCIONAR AL MENOS UN REQUISITO</label>
+
+                           </div>
+                       </div>
+                       <div class="container" ng-show="lonEjec">
+                           <label>Sugeridos</label>
+                           <table class="table table-sm  table-striped table-bordered table-hover table-condensed  text-justify ">
+                               <thead>
+                               <tr class="">
+                                   <th>Descripcion</th>
+                                   <th>¿Aplica?<md-checkbox  aria-label="CheckboxMaster" ng-model="masterEjecucionSugerido" ng-click="allEjecucionSugerido(masterEjecucionSugerido)"></md-checkbox></th>
+                               </tr>
+                               </thead>
+                               <tbody>
+                               <tr class="" ng-repeat="todo in listadoEjecucionSugerido" >
+                                   <td>{{todo.requisito}}</td>
+                                   <td><md-checkbox class="w3-center"  aria-label="Checkbox 1"  ng-model="ejecucionSugerido" ng-change="agregarEjecucionSugerido(ejecucionSugerido, todo)">
+                                   </md-checkbox></td>
+                               </tr>
+                               </tbody>
+
+                           </table>
+                           <md-button class="md-warn md-raised md-hue-2" ng-click="aplicarEjecucionSugerido($event)">Aplicar</md-button>
+                           <div ng-show="mensajillo3">
+                               <label>DEBE SELECCIONAR AL MENOS UN REQUISITO</label>
+
+                           </div>
+                       </div>
+                       <div class="container" ng-show="lonEjecEx">
+                           <label>Extras</label>
+                           <table class="table table-sm  table-striped table-bordered table-hover table-condensed  text-justify ">
+                               <thead>
+                               <tr class="">
+                                   <th>Descripcion</th>
+                                   <th>¿Aplica?<md-checkbox  aria-label="CheckboxMaster" ng-model="masterEjecucionExtra" ng-click="allEjecucionExtra(masterEjecucionExtra)"></md-checkbox></th>
+                               </tr>
+                               </thead>
+                               <tbody>
+                               <tr class="" ng-repeat="todo in listadoEjecucionExtra" >
+                                   <td>{{todo.descripcion}}</td>
+                                   <td><md-checkbox class="w3-center"  aria-label="Checkbox 1"  ng-model="ejecucionExtra" ng-change="agregarEjecucionExtra(ejecucionExtra, todo)">
+                                   </md-checkbox></td>
+                               </tr>
+                               </tbody>
+
+                           </table>
+                           <md-button class="md-warn md-raised md-hue-2" ng-click="aplicarEjecucionExtra($event)">Aplicar</md-button>
+                           <div ng-show="mensajillo4">
+                               <label>DEBE SELECCIONAR AL MENOS UN REQUISITO</label>
+
+                           </div>
+                       </div>
+                       <div class="container" ng-show="lonFi">
+                           <label>Sugeridos</label>
+                           <table class="table table-sm  table-striped table-bordered table-hover table-condensed  text-justify ">
+                               <thead>
+                               <tr class="">
+                                   <th>Descripcion</th>
+                                   <th>¿Aplica?<md-checkbox  aria-label="CheckboxMaster" ng-model="masterFinalizacionSugerido" ng-click="allFinalizacionSugerido(masterFinalizacionSugerido)"></md-checkbox></th>
+                               </tr>
+                               </thead>
+                               <tbody>
+                               <tr class="" ng-repeat="todo in listadoFinalizacionSugerido" >
+                                   <td>{{todo.requisito}}</td>
+                                   <td><md-checkbox class="w3-center"  aria-label="Checkbox 1"  ng-model="finalizacionSugerido" ng-change="agregarFinalizacionSugerido(finalizacionSugerido, todo)">
+                                   </md-checkbox></td>
+                               </tr>
+                               </tbody>
+
+                           </table>
+                           <md-button class="md-warn md-raised md-hue-2" ng-click="aplicarFinalizacionSugerido($event)">Aplicar</md-button>
+                           <div ng-show="mensajillo5">
+                               <label>DEBE SELECCIONAR AL MENOS UN REQUISITO</label>
+
+                           </div>
+                       </div>
+                       <div class="container" ng-show="lonFiEx">
+                           <label>Extras</label>
+                           <table class="table table-sm  table-striped table-bordered table-hover table-condensed  text-justify">
+                               <thead>
+                               <tr class="">
+                                   <th>Descripcion</th>
+                                   <th>¿Aplica?<md-checkbox  aria-label="CheckboxMaster" ng-model="masterFinalizacionExtra" ng-click="allFinalizacionExtra(masterFinalizacionExtra)"></md-checkbox></th>
+                               </tr>
+                               </thead>
+                               <tbody>
+                               <tr class="" ng-repeat="todo in listadoFinalizacionExtra" >
+                                   <td>{{todo.descripcion}}</td>
+                                   <td><md-checkbox class="w3-center"  aria-label="Checkbox 1"  ng-model="finalizacionExtra" ng-change="agregarFinalizacionExtra(finalizacionExtra, todo)">
+                                   </md-checkbox></td>
+                               </tr>
+                               </tbody>
+                           </table>
+                           <md-button class="md-warn md-raised md-hue-2" ng-click="aplicarFinalizacionExtra($event)">Aplicar</md-button>
+                           <div ng-show="mensajillo6">
+                               <label>DEBE SELECCIONAR AL MENOS UN REQUISITO</label>
+                           </div>
+                       </div>
+
+
+                </div>
+
+
+
             </div>
-        </form>
-        <br>
-        <div class="container" ng-show="banderaCategoria1" >
-            <div >
-                <h2 class="text-primary">Categoria 1</h2>
-            </div>
 
-            <form>
-
-                <p>La Categoria 1 pertenecen todos aquellos contratistas cuyo contrato</p>
-                <p>Es mayor o igual a  un mes y su nivel de riesgo es mayor o igual a 3</p>
-            </form>
-            <button class="btn btn-primary " type="submit" ng-click="showAlert($event)">Requisitos Estaticos</button>
-            <button class="btn btn-primary " type="submit" ng-click="showAlert2($event)">Requisitos Dinámicos</button>
-
-
-        </div>
-        <div class="container" ng-show="banderaCategoria2" >
-            <div>
-                <h2 class="text-danger">Categoria 2</h2>
-            </div>
-
-            <form >
-                <p>La Categoria 2 pertenecen todos aquellos contratistas cuyo contrato</p>
-                <p>Es menor o igual a  un mes y su nivel de riesgo es mayor o igual a 3</p>
-            </form>
-
-            <button class="btn btn-danger" type="submit" ng-click="showAlert($event)">Requisitos Estaticos</button>
-            <button class="btn btn-danger" type="submit" ng-click="showAlert2($event)">Requisitos Dinámicos</button>
-
-
-        </div>
-        <div class="container" ng-show="banderaCategoria3" >
-            <div >
-                <h2 class="text-success">Categoria 3</h2>
-            </div>
-
-            <form >
-                <p>
-
-                <p>La categoria 3 pertenecen todos aquellos contratistas cuyo contrato</p>
-                <p>Es mayor o igual a  un mes y su nivel de riesgo es menor o igual  a 2</p>
-            </form>
-
-            <button class="btn btn-success" type="submit" ng-click="showAlert($event)">Requisitos Estaticos</button>
-            <button class="btn btn-success" type="submit" ng-click="showAlert2($event)">Requisitos Dinámicos</button>
-        </div>
-        <div class="container" ng-show="banderaCategoria4" >
-            <div>
-                <h2 class="text-warning">Categoria 4</h2>
-            </div>
-            <form >
-                <p>
-
-                <p>La categoria 4 pertenecen todos aquellos contratistas cuyo contrato</p>
-                <p>Es menor o igual a un mes y su nivel de riesgo es menor o igual  a 2</p>
-            </form>
-
-            <button class="btn btn-warning" type="submit" ng-click="showAlert($event)">Requisitos Estaticos</button>
-            <button class="btn btn-warning" type="submit" ng-click="showAlert2($event)">Requisitos Dinámicos</button>
-
-
-        </div>
-
-
+       </form>
     </div>
 </div>
 </div>
