@@ -73,20 +73,25 @@
                     <button class="btn btn-warning" type="submit" ng-click="showAlert($event)">Requisitos Estaticos</button>
                 </div>
 
-                <div class="hidden-xs hidden-md hidden-lg"></div>
+               <br>
+                <br>
 
                 <div class="container" ng-show="banderaET">
                     <select class="form-control"  data-placeholder="Categoria a la que le va aplicar los requisitos" name="singleSelect" ng-model="ciclo" ng-click="activated(ciclo)">
                         <option value="1">PREVIO AL INICIO DEL CONTRATO</option>
                         <option value="2">DURANTE LA EJECUCION DEL CONTRATO</option>
                         <option value="3">FINALIZACION DEL CONTRATO</option>
+                        <option value="4">DEFINITIVOS</option>
 
                     </select>
 
-                    <div class="hidden-xs hidden-md hidden-lg"></div>
+                    <br>
+                    <br>
+                    <br>
 
                     <div class="container" ng-show="lonPrevio">
-                           <label>Sugeridos</label>
+                           <label>SUGERIDOS</label>
+                            <br>
                            <table class="table table-sm  table-striped table-bordered table-hover table-condensed  text-justify ">
                                <thead>
                                <tr class="">
@@ -109,7 +114,8 @@
                            </div>
                        </div>
                        <div class="container" ng-show="lonPrevioEx">
-                           <label>Extras</label>
+                           <label>EXTRAS</label>
+                           <br>
                            <table class="table table-sm  table-striped table-bordered table-hover table-condensed  text-justify ">
                                <thead>
                                <tr class="">
@@ -135,7 +141,8 @@
                            </div>
                        </div>
                        <div class="container" ng-show="lonEjec">
-                           <label>Sugeridos</label>
+                           <label>SUGERIDOS</label>
+                           <br>
                            <table class="table table-sm  table-striped table-bordered table-hover table-condensed  text-justify ">
                                <thead>
                                <tr class="">
@@ -152,14 +159,14 @@
                                </tbody>
 
                            </table>
-                           <md-button class="md-warn md-raised md-hue-2" ng-click="aplicarEjecucionSugerido($event)">Aplicar</md-button>
                            <div ng-show="mensajillo3">
                                <label>DEBE SELECCIONAR AL MENOS UN REQUISITO</label>
 
                            </div>
                        </div>
                        <div class="container" ng-show="lonEjecEx">
-                           <label>Extras</label>
+                           <label>EXTRAS</label>
+                           <br>
                            <table class="table table-sm  table-striped table-bordered table-hover table-condensed  text-justify ">
                                <thead>
                                <tr class="">
@@ -176,14 +183,16 @@
                                </tbody>
 
                            </table>
-                           <md-button class="md-warn md-raised md-hue-2" ng-click="aplicarEjecucionExtra($event)">Aplicar</md-button>
+                           <md-button class="md-warn md-raised md-hue-2" ng-click="aplicarEjecucionSugerido($event)">Aplicar Sugeridos</md-button>
+                           <md-button class="md-warn md-raised md-hue-2" ng-click="aplicarEjecucionExtra($event)">Aplicar Extras</md-button>
                            <div ng-show="mensajillo4">
                                <label>DEBE SELECCIONAR AL MENOS UN REQUISITO</label>
 
                            </div>
                        </div>
                        <div class="container" ng-show="lonFi">
-                           <label>Sugeridos</label>
+                           <label>SUGERIDOS</label>
+                           <br>
                            <table class="table table-sm  table-striped table-bordered table-hover table-condensed  text-justify ">
                                <thead>
                                <tr class="">
@@ -200,14 +209,15 @@
                                </tbody>
 
                            </table>
-                           <md-button class="md-warn md-raised md-hue-2" ng-click="aplicarFinalizacionSugerido($event)">Aplicar</md-button>
+
                            <div ng-show="mensajillo5">
                                <label>DEBE SELECCIONAR AL MENOS UN REQUISITO</label>
 
                            </div>
                        </div>
                        <div class="container" ng-show="lonFiEx">
-                           <label>Extras</label>
+                           <label>EXTRAS</label>
+                           <br>
                            <table class="table table-sm  table-striped table-bordered table-hover table-condensed  text-justify">
                                <thead>
                                <tr class="">
@@ -223,11 +233,51 @@
                                </tr>
                                </tbody>
                            </table>
-                           <md-button class="md-warn md-raised md-hue-2" ng-click="aplicarFinalizacionExtra($event)">Aplicar</md-button>
+                           <md-button class="md-warn md-raised md-hue-2" ng-click="aplicarFinalizacionSugerido($event)">Aplicar Sugeridos</md-button>
+                           <md-button class="md-warn md-raised md-hue-2" ng-click="aplicarFinalizacionExtra($event)">Aplicar Extras</md-button>
                            <div ng-show="mensajillo6">
                                <label>DEBE SELECCIONAR AL MENOS UN REQUISITO</label>
                            </div>
                        </div>
+                    <div class="container" ng-show="banderaDef">
+                        <table class="table table-sm  table-striped table-bordered table-hover table-condensed  text-justify">
+                            <thead>
+                            <tr class="">
+                                <th>DEFINITIVOS</th>
+                                <th>ELIMINAR</th>
+
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr class="" ng-repeat="todo in defPreviosSugeridos">
+                                <td> {{todo.descripcion}} </td>
+                                <td><md-checkbox  aria-label="Checkbox 1" class="w3-check" type="checkbox"   ng-model="select1" ng-change="eliminar1(select1, todo)"></md-checkbox></td>
+
+                            </tr>
+                            <tr class="" ng-repeat="todo in defPreviosExtras">
+                                <td>{{todo.descripcion}} </td>
+                                <td><md-checkbox  aria-label="Checkbox 1" class="w3-check" type="checkbox"   ng-model="select2" ng-change="eliminar2(select2, todo)"></md-checkbox></td>
+                            </tr>
+                            <tr class="" ng-repeat="todo in defEjecucionSugeridos">
+                                <td>{{todo.descripcion}} </td>
+                                <td><md-checkbox  aria-label="Checkbox 1" class="w3-check" type="checkbox"   ng-model="select3" ng-change="eliminar3(select3, todo)"></md-checkbox></td>
+                            </tr>
+                            <tr class="" ng-repeat="todo in defEjecucionExtras">
+                                <td>{{todo.descripcion}} </td>
+                                <td><md-checkbox  aria-label="Checkbox 1" class="w3-check" type="checkbox"   ng-model="select4" ng-change="eliminar4(select4, todo)"></md-checkbox></td>
+                            </tr>
+                            <tr class="" ng-repeat="todo in defFinalizacionSugeridos">
+                                <td>{{todo.descripcion}} </td>
+                                <td><md-checkbox  aria-label="Checkbox 1" class="w3-check" type="checkbox"   ng-model="select5" ng-change="eliminar5(select5, todo)"></md-checkbox></td>
+                            </tr>
+                            <tr class="" ng-repeat="todo in defFinalizacionExtras">
+                                <td>{{todo.descripcion}} </td>
+                                <td><md-checkbox  aria-label="Checkbox 1" class="w3-check" type="checkbox"   ng-model="select6" ng-change="eliminar6(select6, todo)"></md-checkbox></td>
+                            </tr>
+                            </tbody>
+                        </table>
+                        <md-button class="md-warn md-raised md-hue-2" ng-click="eliminar($event)">Eliminar</md-button>
+                    </div>
 
 
                 </div>

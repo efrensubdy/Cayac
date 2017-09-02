@@ -129,38 +129,62 @@ angular.module('myApp.registrarRequisitosEjecucion', ['ngRoute'])
             switch(a){
                 case "1":
                   console.log("entre");
-                   $scope.listadoPrevioSugerido=$rootScope.listadoPrevioSugerido;
-                   $scope.listadoPrevioExtra=$rootScope.listadoPrevioExtra;
-                  $scope.lonPrevio= $rootScope.lonPrevi;
+
+                  $scope.lonPrevio= previos.query({idContratante:$localStorage.contratanteLogeado.idContratante,idCategoria:$scope.idCategoria});
+                   $scope.listadoPrevioExtra=previosExtras.query({idContratante:$localStorage.contratanteLogeado.idContratante,idCategoria:$scope.idCategoria})
+                  $scope.listadoPrevioSugerido=$rootScope.listadoPrevioSugerido;
+
                   $scope.lonPrevioEx=$rootScope.lonPreviEx;
                   $scope.lonEjec=false;
                   $scope.lonEjecEx=false;
                   $scope.lonFi=false;
                   $scope.lonFiEx=false
+                  $scope.banderaDef=false;
 
                 break;
                 case "2":
-                $scope.listadoEjecucionSugerido=$rootScope.listadoEjecucionSugerido;
-                $scope.listadoEjecucionExtra=$rootScope.listadoEjecucionExtra;
+                $scope.listadoEjecucionSugerido=ejecucion.query({idContratante:$localStorage.contratanteLogeado.idContratante,idCategoria:$scope.idCategoria});
+                $scope.listadoEjecucionExtra=ejecucionExtras.query({idContratante:$localStorage.contratanteLogeado.idContratante,idCategoria:$scope.idCategoria});
                 $scope.lonEjec=$rootScope.loEjec;
                 $scope.lonEjecEx=$rootScope.loEjecEx;
                 $scope.lonPrevio=false;
                 $scope.lonPrevioEx=false;
                 $scope.lonFi=false;
                 $scope.lonFiEx=false
+                $scope.banderaDef=false;
                 break;
 
                 case "3":
                 $scope.lonEjec=false;
-                                $scope.lonEjecEx=false;
-                                $scope.lonPrevio=false;
-                                $scope.lonPrevioEx=false;
-                 console.log($scope.lonEjec);
-                $scope.listadoFinalizacionSugerido=$rootScope.listadoFinalizacionSugerido;
-               $scope.listadoFinalizacionExtra=$rootScope.listadoFinalizacionExtra;
+                $scope.lonEjecEx=false;
+                $scope.lonPrevio=false;
+                $scope.lonPrevioEx=false;
+                $scope.banderaDef=false;
+
+                $scope.listadoFinalizacionSugerido=finalizacion.query({idContratante:$localStorage.contratanteLogeado.idContratante,idCategoria:$scope.idCategoria});
+               $scope.listadoFinalizacionExtra=finalizacionExtras.query({idContratante:$localStorage.contratanteLogeado.idContratante,idCategoria:$scope.idCategoria});
                 $scope.lonFi=$rootScope.loFi;
                 $scope.lonFiEx=$rootScope.loFiEx;
+
                 break;
+                case "4":
+                $scope.defPreviosSugeridos=defPreviosSugeridos.query({idContratante:$localStorage.contratanteLogeado.idContratante,idCategoria:$rootScope.idCategoria});
+                $scope.defPreviosExtras=defPreviosExtras.query({idContratante:$localStorage.contratanteLogeado.idContratante,idCategoria:$rootScope.idCategoria});
+                $scope.defEjecucionSugeridos=defEjecucionSugeridos.query({idContratante:$localStorage.contratanteLogeado.idContratante,idCategoria:$rootScope.idCategoria});
+                $scope.defEjecucionExtras=defEjecucionExtras.query({idContratante:$localStorage.contratanteLogeado.idContratante,idCategoria:$rootScope.idCategoria});
+                $scope.defFinalizacionSugeridos=defFinalizacionSugeridos.query({idContratante:$localStorage.contratanteLogeado.idContratante,idCategoria:$rootScope.idCategoria});
+                $scope.defFinalizacionExtras=defFinalizacionExtras.query({idContratante:$localStorage.contratanteLogeado.idContratante,idCategoria:$rootScope.idCategoria});
+                $scope.lonEjec=false
+                $scope.lonEjecEx=false
+                $scope.lonPrevio=false;
+                $scope.lonPrevioEx=false;
+                $scope.lonFi=false;
+                $scope.lonFiEx=false
+                $scope.banderaDef=true;
+                break;
+
+
+
 
 
             }
