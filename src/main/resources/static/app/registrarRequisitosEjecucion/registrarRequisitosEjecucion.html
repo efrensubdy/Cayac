@@ -90,7 +90,7 @@
                     <br>
 
                     <div class="container" ng-show="lonPrevio">
-                           <label>SUGERIDOS</label>
+
                             <br>
                            <table class="table table-sm  table-striped table-bordered table-hover table-condensed  text-justify ">
                                <thead>
@@ -105,43 +105,24 @@
                                    <td><md-checkbox class="w3-center"  aria-label="Checkbox 1"  ng-model="previoSugerido" ng-change="agregarPrevioSugerido(previoSugerido, todo)">
                                    </md-checkbox></td>
                                </tr>
-                               </tbody>
-                           </table>
-
-                           <div ng-show="mensajillo1">
-                               <label>DEBE SELECCIONAR AL MENOS UN REQUISITO</label>
-
-                           </div>
-                       </div>
-                       <div class="container" ng-show="lonPrevioEx">
-                           <label>EXTRAS</label>
-                           <br>
-                           <table class="table table-sm  table-striped table-bordered table-hover table-condensed  text-justify ">
-                               <thead>
-                               <tr class="">
-                                   <th>Descripcion</th>
-                                   <th>¿Aplica?<md-checkbox  aria-label="CheckboxMaster" ng-model="masterPrevioExtra" ng-click="allPreviosExtra(masterPrevioExtra)"></md-checkbox></th>
-                               </tr>
-                               </thead>
-                               <tbody>
                                <tr class="" ng-repeat="todo in listadoPrevioExtra" >
                                    <td>{{todo.descripcion}}</td>
                                    <td><md-checkbox class="w3-center"  aria-label="Checkbox 1"  ng-model="previoExtras" ng-change="agregarPrevioExtra(previoExtras, todo)">
                                    </md-checkbox></td>
                                </tr>
+
                                </tbody>
-
                            </table>
-                           <md-button class="md-warn md-raised md-hue-2" ng-click="aplicarPrevioSugerido($event)">Aplicar Sugeridos</md-button>
-                           <md-button class="md-warn md-raised md-hue-2" ng-click="aplicarPrevioExtra($event)">Aplicar Extras</md-button>
+                        <md-button class="md-warn md-raised md-hue-2" ng-click="aplicarPrevioSugerido($event)">Aplicar Requisitos</md-button>
 
-                           <div ng-show="mensajillo2">
+                        <div ng-show="mensajillo1">
                                <label>DEBE SELECCIONAR AL MENOS UN REQUISITO</label>
 
                            </div>
                        </div>
+
                        <div class="container" ng-show="lonEjec">
-                           <label>SUGERIDOS</label>
+
                            <br>
                            <table class="table table-sm  table-striped table-bordered table-hover table-condensed  text-justify ">
                                <thead>
@@ -156,25 +137,6 @@
                                    <td><md-checkbox class="w3-center"  aria-label="Checkbox 1"  ng-model="ejecucionSugerido" ng-change="agregarEjecucionSugerido(ejecucionSugerido, todo)">
                                    </md-checkbox></td>
                                </tr>
-                               </tbody>
-
-                           </table>
-                           <div ng-show="mensajillo3">
-                               <label>DEBE SELECCIONAR AL MENOS UN REQUISITO</label>
-
-                           </div>
-                       </div>
-                       <div class="container" ng-show="lonEjecEx">
-                           <label>EXTRAS</label>
-                           <br>
-                           <table class="table table-sm  table-striped table-bordered table-hover table-condensed  text-justify ">
-                               <thead>
-                               <tr class="">
-                                   <th>Descripcion</th>
-                                   <th>¿Aplica?<md-checkbox  aria-label="CheckboxMaster" ng-model="masterEjecucionExtra" ng-click="allEjecucionExtra(masterEjecucionExtra)"></md-checkbox></th>
-                               </tr>
-                               </thead>
-                               <tbody>
                                <tr class="" ng-repeat="todo in listadoEjecucionExtra" >
                                    <td>{{todo.descripcion}}</td>
                                    <td><md-checkbox class="w3-center"  aria-label="Checkbox 1"  ng-model="ejecucionExtra" ng-change="agregarEjecucionExtra(ejecucionExtra, todo)">
@@ -183,15 +145,16 @@
                                </tbody>
 
                            </table>
-                           <md-button class="md-warn md-raised md-hue-2" ng-click="aplicarEjecucionSugerido($event)">Aplicar Sugeridos</md-button>
-                           <md-button class="md-warn md-raised md-hue-2" ng-click="aplicarEjecucionExtra($event)">Aplicar Extras</md-button>
-                           <div ng-show="mensajillo4">
+                           <md-button class="md-warn md-raised md-hue-2" ng-click="aplicarEjecucionSugerido($event)">Aplicar Requisitos</md-button>
+
+                           <div ng-show="mensajillo3">
                                <label>DEBE SELECCIONAR AL MENOS UN REQUISITO</label>
 
                            </div>
                        </div>
+
                        <div class="container" ng-show="lonFi">
-                           <label>SUGERIDOS</label>
+
                            <br>
                            <table class="table table-sm  table-striped table-bordered table-hover table-condensed  text-justify ">
                                <thead>
@@ -206,39 +169,25 @@
                                    <td><md-checkbox class="w3-center"  aria-label="Checkbox 1"  ng-model="finalizacionSugerido" ng-change="agregarFinalizacionSugerido(finalizacionSugerido, todo)">
                                    </md-checkbox></td>
                                </tr>
-                               </tbody>
-
-                           </table>
-
-                           <div ng-show="mensajillo5">
-                               <label>DEBE SELECCIONAR AL MENOS UN REQUISITO</label>
-
-                           </div>
-                       </div>
-                       <div class="container" ng-show="lonFiEx">
-                           <label>EXTRAS</label>
-                           <br>
-                           <table class="table table-sm  table-striped table-bordered table-hover table-condensed  text-justify">
-                               <thead>
-                               <tr class="">
-                                   <th>Descripcion</th>
-                                   <th>¿Aplica?<md-checkbox  aria-label="CheckboxMaster" ng-model="masterFinalizacionExtra" ng-click="allFinalizacionExtra(masterFinalizacionExtra)"></md-checkbox></th>
-                               </tr>
-                               </thead>
-                               <tbody>
                                <tr class="" ng-repeat="todo in listadoFinalizacionExtra" >
                                    <td>{{todo.descripcion}}</td>
                                    <td><md-checkbox class="w3-center"  aria-label="Checkbox 1"  ng-model="finalizacionExtra" ng-change="agregarFinalizacionExtra(finalizacionExtra, todo)">
                                    </md-checkbox></td>
                                </tr>
                                </tbody>
+
                            </table>
-                           <md-button class="md-warn md-raised md-hue-2" ng-click="aplicarFinalizacionSugerido($event)">Aplicar Sugeridos</md-button>
-                           <md-button class="md-warn md-raised md-hue-2" ng-click="aplicarFinalizacionExtra($event)">Aplicar Extras</md-button>
-                           <div ng-show="mensajillo6">
+                           <md-button class="md-warn md-raised md-hue-2" ng-click="aplicarFinalizacionSugerido($event)">Aplicar Requisitos</md-button>
+
+
+
+                           <div ng-show="mensajillo5">
                                <label>DEBE SELECCIONAR AL MENOS UN REQUISITO</label>
+
                            </div>
                        </div>
+
+
                     <div class="container" ng-show="banderaDef">
                         <table class="table table-sm  table-striped table-bordered table-hover table-condensed  text-justify">
                             <thead>
