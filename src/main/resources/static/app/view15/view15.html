@@ -1,20 +1,23 @@
 
 <div class="w3-container">
-   <div class="container">
-       <h1 class="w3-center "><b>CONSULTA DE CONTRATOS</b></h1>
-       <p class=" w3-center"><b>EN ESTA VISTA PODRA CONSULTAR SUS CONTRATOS</b></p>
-    <div class="container text-center " >
-        <p>ESCOJA ALGUNA DE LAS OPCIONES QUE SE LE PRESENTAN A CONTINUACIÓN</p>
-        <form >
-            <div class="form-group">
+  <div class="container">
 
+   <div class="container">
+
+       <h4 class="w3-center "><b>CONSULTA DE CONTRATOS</b></h4>
+       <p class=" w3-center"><b>EN ESTA VISTA PODRA CONSULTAR SUS CONTRATOS</b></p>
+        <div class="container text-center " >
+        <p>ESCOJA ALGUNA DE LAS OPCIONES QUE SE LE PRESENTAN A CONTINUACIÓN</p>
+        <div class="row">
+           <div class="col-sm-12">
+            <div class="container">
                     <select class="form-control" ng-click="function1()" name="singleSelect" ng-model="tipoContrato">
                         <option value="nombre" >Nombre</option>
                         <option value="fecha" >Fecha</option>
                     </select>
-
             </div>
-        </form>
+           </div>
+        </div>
     </div>
     <div class="container text-center" ng-show="nombreClick">
         <form>
@@ -53,7 +56,6 @@
         <br>
         <button class="btn btn-primary center-block" type="submit" ng-click="buscar(fecha.fechaInicio | date:'yyyy-MM-dd',fecha.fechaFin | date:'yyyy-MM-dd')">buscar</button>
     </div>
-</div>
     <br>
     <div class="container text-center" ng-show="permisoTable">
         <table class="table table-striped table-bordered table-hover table-condensed">
@@ -103,7 +105,6 @@
 </div>
 </div>
 </div>
-
 <br>
 <br>
 <br>
