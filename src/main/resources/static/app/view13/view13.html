@@ -1,55 +1,74 @@
 
-<div  ng-controller="View13Ctrl" class="w3-container w3-left">
+<div  ng-controller="View13Ctrl" class="w3-container">
 </div>
     <div class="container ">
-        <h4 class="w3-center"><b>REGISTRE SU CONTRATO</b></h4>
-            <div class="row">
+        <div class="row">
+            <div class="col-sm-12">
+                <label class="text-center">REGISTRE SU CONTRATO</label>
+            </div>
             <div class="col-sm-6">
-                <h6 for="email">TIPO DE CONTRATO</h6>
+                <div class="col-xs-10">
+                <label for="email">TIPO DE CONTRATO</label>
                 <select class="form-control" ng-model="contrato.tipoContrato" placeholder="Escoja el tipo de Contrato">
                     <option ng-value="todo.name" ng-repeat="todo in options">{{ todo.name }}</option>
                 </select>
+                </div>
 
             </div>
             <div class="col-sm-6">
-                <h6 >NOMBRE DEL CONTRATO</h6>
+                <div class="col-xs-10">
+                <label >NOMBRE DEL CONTRATO</label>
                 <input ng-model="contrato.nombreContrato" type="text" class="form-control" id="email">
-
+                </div>
             </div>
             </div>
 
     </div>
-    <br>
+
     <div class="container">
         <form>
             <div class="form-group">
-                <h6>RUT</h6>
+                <div class="col-xs-11">
+                <label>RUT</label>
                 <input type="file" class="form-control"  file-model="myFile" name="myFile"/>
+                </div>
             </div>
+            <br>
             <div class="form-group">
-                <h6>CAMARA DE COMERCIO</h6>
+                <div class="col-xs-11">
+                <label>CAMARA DE COMERCIO</label>
                 <input type="file" class="form-control"  file-model="myFile2" name="myFile2"/>
+                </div>
             </div>
+            <br>
             <div class="form-group">
-                <h6>CEDULA DEL REPRESENTANTE</h6>
+                <div class="col-xs-11">
+                <label>CEDULA DEL REPRESENTANTE</label>
                 <input type="file" class="form-control"  file-model="myFile3" name="myFile3"/>
+                </div>
             </div>
         </form>
     </div>
-
+    <br>
     <div class="container">
         <div class="row">
                 <div class="col-sm-4">
-                    <h6>FECHA DE INICIO DE CONTRATO</h6>
-                    <input type="date"  class="form-control"  ng-model="contrato.fechaInicio" md-placeholder="Fecha Iniciación " ng-required="true"></input>
+                    <div class="col-xs-9">
+                    <label>FECHA DE INICIO DE CONTRATO</label>
+                    <input type="date"  class="form-control"  ng-model="contrato.fechaInicio" md-placeholder="Fecha Iniciación " ng-required="true">
+                    </div>
                 </div>
                 <div class="col-sm-4">
-                    <h6>FECHA DE FINALIZACION DE CONTRATO</h6>
-                    <input type="date" class="form-control"   ng-model="contrato.fechaFin" md-placeholder="Fecha Iniciación " ng-required="true"></input>
+                    <div class="col-xs-9">
+                    <label>FECHA DE FINALIZACION DE CONTRATO</label>
+                    <input type="date" class="form-control"   ng-model="contrato.fechaFin" md-placeholder="Fecha Iniciación " ng-required="true">
+                    </div>
                 </div>
                 <div class="col-sm-4">
-                    <h6>FECHA DE INICIO DE ACTIVIDADES</h6>
-                    <input type="date" class="form-control" ng-model="contrato.fechaInicioDeActividades" md-placeholder="Fecha Iniciación " ng-required="true"></input>
+                    <div class="col-xs-9">
+                    <label>FECHA DE INICIO DE ACTIVIDADES</label>
+                    <input type="date" class="form-control" ng-model="contrato.fechaInicioDeActividades" md-placeholder="Fecha Iniciación " ng-required="true">
+                    </div>
                 </div>
         </div>
         <br>

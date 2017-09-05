@@ -1,11 +1,12 @@
 
 <div class="w3-container">
-   <div class="container text-center ">
+   <div class="container text-left ">
        <h4 class="align-middle"><b>REVISE LO QUE SUBIERON SUS CANDIDATOS</b></h4>
     <form>
         <div class="form-group">
-            <p class="w3-center"><b>ESCOJA EL CONTRATO SOBRE EL CUAL REALIZARÁ LA REVISIÓN</b></p>
+            <p class="w3-left"><b>ESCOJA EL CONTRATO SOBRE EL CUAL REALIZARÁ LA REVISIÓN</b></p>
             <div>
+                <div class="col-xs-10">
                 <input class="form-control" type="text"  placeholder="A que contrato le va aplicar los requisitos" name="contrato" list="contratos" ng-model="contrato">
                 <datalist id="contratos">
                     <select name="contratos" ng-model="select">
@@ -13,15 +14,22 @@
                         <option ng-repeat="todo in listado"  value="{{todo.id}}" ng-model="selectedOption">{{todo.nombre}}</option>
                     </select>
                 </datalist>
+                    <br>
+                    <br>
+                    <button class="btn btn-primary align-middle" type="submit" ng-click="add()">Consultar</button>
             </div>
+            </div>
+
         </div>
     </form>
-    <button class="btn btn-primary align-middle" type="submit" ng-click="add()">Consultar</button>
+
    </div>
 </div>
 <br>
 <br>
-    <div class="container text-center" ng-show="flag">
+    <div class="container text-left" ng-show="flag">
+        <div class="row">
+            <div class="col-xs-10">
         <p><b>EN LA SIGUIENTE TABLA ENCONTRARÁ A LOS CONTRATISTAS PERTENECIENTES AL CONTRATO</b></p>
 
             <table class="table table-striped table-bordered table-hover table-condensed">
@@ -44,7 +52,8 @@
               </tbody>
 
             </table>
-
+        </div>
+        </div>
     </div>
 </div>
 

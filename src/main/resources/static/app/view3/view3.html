@@ -1,16 +1,17 @@
 
 <div class="w3-container align-middle">
 <div class="container">
-    <h3 class="text-center"><b>GESTIÓN DE REQUISITOS DE SELECCIÓN</b></h3>
+    <h4 class="text-center"><b>GESTIÓN DE REQUISITOS DE SELECCIÓN</b></h4>
 <br>
-    <p class="text-center"><b>EN ESTA VISTA PODRA AGREGAR LOS REQUISITOS A CADA CATEGORIA</b></p>
-
-    <div class="container " >
+    <div class="container align-middle"  >
       <form >
         <div class="form-group">
-          <p class="text-center"><b>ESCOJA UNA DE LAS CATEGORIAS MENCIONADAS A CONTINUACIÓN </b> </p>
-          <div class="w3-rest">
-            <select class="form-control" ng-click="function1(fechas)" data-placeholder="Categoria a la que le va aplicar los requisitos" name="singleSelect" ng-model="idCategoria">
+          <p class="text-left"><b>EN ESTA VISTA PODRA AGREGAR LOS REQUISITOS A CADA CATEGORIA</b></p>
+          <p class="text-left"><b>ESCOJA UNA DE LAS CATEGORIAS MENCIONADAS A CONTINUACIÓN </b> </p>
+          <div class="row">
+          <div class="col-xs-8">
+
+            <select class="form-control push-right" ng-click="function1(fechas)" data-placeholder="Categoria a la que le va aplicar los requisitos" name="singleSelect" ng-model="idCategoria">
               <option value="1">Categoria 1</option>
               <option value="2">Categoria 2</option>
               <option value="3">Categoria 3</option>
@@ -18,9 +19,10 @@
             </select>
           </div>
         </div>
+        </div>
       </form>
       <br>
-      <div class="container align-middle " ng-show="banderaCategoria1" >
+      <div class="container text-center " ng-show="banderaCategoria1" >
         <div >
             <h2 class="text-primary">Categoria 1</h2>
         </div>
