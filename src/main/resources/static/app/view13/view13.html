@@ -1,10 +1,12 @@
 
 <div  ng-controller="View13Ctrl" class="w3-container">
-</div>
     <div class="container ">
         <div class="row">
             <div class="col-sm-12">
-                <label class="text-center">REGISTRE SU CONTRATO</label>
+                <div class="col-xs-11 text-center">
+                <label class="w3-center">REGISTRE SU CONTRATO</label>
+                <p></p>
+                </div>
             </div>
             <div class="col-sm-6">
                 <div class="col-xs-10">
@@ -31,25 +33,29 @@
                 <div class="col-xs-11">
                 <label>RUT</label>
                 <input type="file" class="form-control"  file-model="myFile" name="myFile"/>
+                <p></p>
                 </div>
             </div>
-            <br>
+            
             <div class="form-group">
                 <div class="col-xs-11">
                 <label>CAMARA DE COMERCIO</label>
                 <input type="file" class="form-control"  file-model="myFile2" name="myFile2"/>
+                <p></p>
                 </div>
+
             </div>
-            <br>
+            
             <div class="form-group">
                 <div class="col-xs-11">
                 <label>CEDULA DEL REPRESENTANTE</label>
                 <input type="file" class="form-control"  file-model="myFile3" name="myFile3"/>
+                <p></p>
                 </div>
             </div>
         </form>
     </div>
-    <br>
+    
     <div class="container">
         <div class="row">
                 <div class="col-sm-4">
@@ -68,17 +74,11 @@
                     <div class="col-xs-9">
                     <label>FECHA DE INICIO DE ACTIVIDADES</label>
                     <input type="date" class="form-control" ng-model="contrato.fechaInicioDeActividades" md-placeholder="Fecha Iniciación " ng-required="true">
+                    <p></p>
                     </div>
                 </div>
         </div>
-        <br>
-        <div class="row">
-            <button class="btn btn-primary center-block" ng-click="add($event,contrato.fechaInicio | date:'yyyy-MM-dd',contrato.fechaFin | date:'yyyy-MM-dd',contrato.fechaInicioDeActividades | date:'yyyy-MM-dd')">REGISTRAR CONTRATO</button>
-        </div>
-         </div>
 
-<br>
-<br>
-<br>
-<br>
-<br>
+       </div>
+
+</div>

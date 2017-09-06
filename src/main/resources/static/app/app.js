@@ -39,7 +39,8 @@ $qProvider.errorOnUnhandledRejections(false);
 
 .controller('logout',['$rootScope','$scope', '$http','$location','$localStorage','$sessionStorage',function($rootScope,$scope,$http,$location,$localStorage,$sessionStorage)  {
    $scope.$storage = $localStorage;
-   if ("undefined" === typeof $localStorage.userLogeado && "undefined" !== typeof $localStorage.contratanteLogeado ) {
+
+   if ("undefined" === typeof $localStorage.userLogeado && "undefined" !== typeof $localStorage.contratanteLogeado && $localStorage.contratanteLogeado.rol=="Contratante"  ) {
        console.log("AT THIS MOMENT I'M CONTRACTOR")
        $rootScope.bandera=$localStorage.contratanteLogeado.estado;
 
@@ -55,10 +56,11 @@ $qProvider.errorOnUnhandledRejections(false);
         $rootScope.bandera=false;
         $rootScope.bandera3=false;
    }
-   else if("undefined" === typeof $localStorage.contratanteLogeado && "undefined" !== typeof $localStorage.userLogeado && $localStorage.contratanteLogeado.rol=="administrador"){
+   else if("undefined" !== typeof $localStorage.contratanteLogeado && "undefined" === typeof $localStorage.userLogeado && $localStorage.contratanteLogeado.rol=="administrador"){
+
            console.log("AT THIS MOMENT I'M ADMIN")
            $rootScope.bandera2=false;
-           $rootScope.bandera3 = $localStorage.userLogeado.estado;
+           $rootScope.bandera3 = $localStorage.contratanteLogeado.estado;
            $rootScope.bandera=false;
     }
    else{

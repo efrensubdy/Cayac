@@ -12,11 +12,11 @@ import java.sql.SQLException;
 public class Conexion {
 
 	private static final String JDBC_DRIVER = "com.mysql.jdbc.Driver";
-	private static final String DB_URL = "jdbc:mysql://181.143.181.205:3306/seqconsultores_sys";
-	private static final String DB_USER = "seq";
+	private static final String DB_URL = "jdbc:mysql://seqmysql.cgle3ujtslg6.us-west-2.rds.amazonaws.com/seq_cayac";
+	private static final String DB_USER = "devopsSEQ";
 	//private static final String DB_PASSWORD = "seqc";
 
-	private static final String DB_PASSWORD = "susypadyn";
+	private static final String DB_PASSWORD = "VbW3ra4L5VbpnJJk";
 
 	public static Connection conection() throws ClassNotFoundException, SQLException{
 		Class.forName(JDBC_DRIVER);

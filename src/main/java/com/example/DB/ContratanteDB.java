@@ -69,26 +69,28 @@ public class ContratanteDB {
         consultarContratantes();
         usersDB=new UsersDB();
         departamentoDB=new DepartamentoDB();
-        String sql = "INSERT INTO  contratante VALUES(?,?,?,?,?,?,?,?,?,?,?)";
+        String sql = "INSERT INTO  contratante (nombreEmpresa,telefono,email,password,departamento,fecha_Creacion,fecha_Actualizacion,codigoCIIU,direccion,representanteLegal)VALUES(?,?,?,?,?,?,?,?,?,?)";
         Connection con =  Conexion.conection();
-        contratante.setId(tamañoTabla + 1);
-        a=tamañoTabla + 1;
         contratante.setDepartamento(String.valueOf(departamentoDB.findAactivdad(contratante.getDepartamento())));
         contratante.setCodigoCIIU(Integer.valueOf(actividadEconomicaBD.findAactivdad(Integer.valueOf(contratante.codigoCIIU))));
         PreparedStatement ps = con.prepareStatement(sql);
-        ps.setInt(1,contratante.getId());
-        ps.setString(2,contratante.getNombreEmpresa());
-        ps.setString(3,contratante.getTelefono());
-        ps.setString(4,contratante.getEmail());
-        ps.setString(5,contratante.getPassword());
-        ps.setInt(6,Integer.valueOf(contratante.getDepartamento()));
+        ps.setString(1,contratante.getNombreEmpresa());
+        ps.setString(2,contratante.getTelefono());
+        ps.setString(3,contratante.getEmail());
+        ps.setString(4,contratante.getPassword());
+        ps.setInt(5,Integer.valueOf(contratante.getDepartamento()));
+        ps.setDate(6, date);
         ps.setDate(7, date);
-        ps.setDate(8, date);
-        ps.setInt(9,contratante.getCodigoCIIU());
-        ps.setString(10,contratante.getDireccion());
-        ps.setString(11,contratante.getRepresentanteLegal());
-
-        nuevoUsuario.setIdContratante(contratante.getId());
+        ps.setInt(8,contratante.getCodigoCIIU());
+        ps.setString(9,contratante.getDireccion());
+        ps.setString(10,contratante.getRepresentanteLegal());
+        ps.execute();
+        ps.close();
+        con.close();
+        Contratante contratante3=new Contratante();
+        contratante3=getContratante(contratante);
+        a=contratante3.getId();
+        nuevoUsuario.setIdContratante(contratante3.getId());
         File file = new File("src/main/resources/static/app/Repository/Contratante/"+ a);
         if(!file.canWrite()){ // check if user have write permissions
             if(!(file.exists() && file.isDirectory())){
@@ -100,12 +102,20 @@ public class ContratanteDB {
         }else{
             System.out.println("PERMISSION DENIED");
         }
-
-        ps.execute();
-        ps.close();
-        con.close();
         usersDB.nuevoUsuarioContratante(nuevoUsuario);
 
+    }
+    public Contratante getContratante(Contratante contra) throws SQLException, ClassNotFoundException {
+        Contratante contratante=new Contratante();
+        List<Contratante>contratanteList=consultarContratantes();
+        for (Contratante c :contratanteList){
+            if (contra.getNombreEmpresa().equals(c.getNombreEmpresa())){
+                contratante=c;
+            }
+
+        }
+
+        return contratante;
     }
 
     /**

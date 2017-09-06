@@ -36,7 +36,7 @@ CREATE TABLE `administrador` (
 ) ENGINE=INNODB DEFAULT CHARSET=utf8;
 
 CREATE TABLE `contratante` (
-  `idContratante` INT(11) NOT NULL,
+  `idContratante` INT(11) NOT NULL AUTO_INCREMENT,
   `nombreEmpresa` VARCHAR(45) NOT NULL,
   `telefono` VARCHAR(45) NOT NULL,
   `email` VARCHAR(45) NOT NULL,
@@ -63,7 +63,7 @@ CREATE TABLE `servicioacontratar` (
 ) ENGINE=INNODB DEFAULT CHARSET=utf8;
 
 CREATE TABLE `contratista` (
-  `idContratista` INT(11) NOT NULL,
+  `idContratista` INT(11) NOT NULL AUTO_INCREMENT,
   `nombreEmpresa` VARCHAR(45) NOT NULL,
   `nit` VARCHAR(45) NOT NULL,
   `codigoCIIU` INT(11) NOT NULL,
