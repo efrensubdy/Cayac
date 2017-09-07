@@ -1,7 +1,7 @@
 
-<div class="w3-container align-middle">
+<div class="w3-container">
 <div class="container">
-    <h4 class="text-center"><b>GESTIÓN DE REQUISITOS DE SELECCIÓN</b></h4>
+    <h4 ><b>GESTIÓN DE REQUISITOS DE SELECCIÓN</b></h4>
 <br>
     <div class="container align-middle"  >
       <form >
@@ -11,7 +11,7 @@
           <div class="row">
           <div class="col-xs-8">
 
-            <select class="form-control push-right" ng-click="function1(fechas)" data-placeholder="Categoria a la que le va aplicar los requisitos" name="singleSelect" ng-model="idCategoria">
+            <select class="form-control push-right" ng-click="function1()" data-placeholder="Categoria a la que le va aplicar los requisitos" name="singleSelect" ng-model="idCategoria">
               <option value="1">Categoria 1</option>
               <option value="2">Categoria 2</option>
               <option value="3">Categoria 3</option>
@@ -22,7 +22,7 @@
         </div>
       </form>
       <br>
-      <div class="container text-center " ng-show="banderaCategoria1" >
+      <div class="container  " ng-show="banderaCategoria1" >
         <div >
             <h2 class="text-primary">Categoria 1</h2>
         </div>
@@ -36,7 +36,7 @@
         <button class="btn btn-primary " type="submit" ng-click="showAlert($event)">Aplicar Requisitos</button>
 
       </div>
-      <div class="container align-middle" ng-show="banderaCategoria2" >
+      <div class="container " ng-show="banderaCategoria2" >
         <div>
             <h2 class="text-danger">Categoria 2</h2>
         </div>
@@ -49,7 +49,7 @@
         <button class="btn btn-danger" type="submit" ng-click="showAlert($event)">Aplicar Requisitos</button>
 
       </div>
-      <div class="container align-middle" ng-show="banderaCategoria3" >
+      <div class="container" ng-show="banderaCategoria3" >
         <div >
             <h2 class="text-success">Categoria 3</h2>
         </div>
@@ -64,7 +64,7 @@
         <button class="btn btn-success" type="submit" ng-click="showAlert($event)">Aplicar Requisitos</button>
 
       </div>
-      <div class="container align-middle" ng-show="banderaCategoria4" >
+      <div class="container" ng-show="banderaCategoria4" >
         <div>
           <h2 class="text-warning">Categoria 4</h2>
         </div>
@@ -78,7 +78,74 @@
 
         <button class="btn btn-warning" type="submit" ng-click="showAlert($event)">Aplicar Requisitos</button>
       </div>
+      <br>
+      <div ng-show="banderaLista">
+        <div class="col-xs-8">
+          <select class="form-control"  data-placeholder="¿QUE QUIEREN HACER CON ESTA CATEGORIA?" name="singleSelect" ng-model="ciclo" ng-click="activated(ciclo)">
+            <option value="1">ESTABLECER FECHA</option>
+            <option value="2">AGREGAR REQUISITOS</option>
+            <option value="3">DEFINITIVOS</option>
+          </select>
+          <br>
+          <br>
+          <div class="container" ng-show="table1">
+            <div class="col-xs-8">
+              <table class="table table-sm  table-striped table-bordered table-hover table-condensed  text-justify">
+                <thead>
+                <tr class="">
+                  <th>DESCRIPICION</th>
+                  <th>¿APLICA?<md-checkbox  aria-label="CheckboxMaster" ng-model="master" ng-click="all(master)"></md-checkbox></th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr class="" ng-repeat="todo in listado2" >
+                  <td>{{todo.requisito}}</td>
+                  <td><md-checkbox  aria-label="Checkbox 1"  ng-model="selected" ng-change="display(selected, todo)">
+                  </md-checkbox></td>
+                </tr>
+                <tr class="" ng-repeat="todo in listado3" >
+                  <td>{{todo.descripcion}}</td>
+                  <td><md-checkbox  aria-label="Checkbox 1" ng-model="select" ng-change="display2(select, todo)">
+                  </md-checkbox></td>
+                </tr>
+                </tbody>
+              </table>
+            </div>
+            <md-button class="md-warn md-raised md-hue-2" ng-click="aplicar($event)">Aplicar</md-button>
+            <br>
+            <div ng-show="mensajillo">
+              <label>DEBE SELECCIONAR AL MENOS UN REQUISITO</label>
 
+            </div>
+
+          </div>
+          <div class="container" ng-show="table2">
+            <div class="col-xs-8">
+            <table class="table table-sm  table-striped table-bordered table-hover table-condensed  text-justify">
+              <thead>
+              <tr >
+                <th>DEFINITIVOS</th>
+                <th>ELIMINAR</th>
+              </tr>
+              </thead>
+              <tbody>
+              <tr ng-repeat="todo in list4">
+                <td> {{todo.descripcion}} </td>
+                <td><md-checkbox  aria-label="Checkbox 1" class="w3-check" type="checkbox"   ng-model="selected" ng-change="display3(selected, todo)"></md-checkbox></td>
+              </tr>
+              <tr  ng-repeat="todo in list5">
+                <td>{{todo.descripcion}} </td>
+                <td><md-checkbox aria-label="Checkbox 1"   ng-model="select" ng-change="display4(select, todo)"></md-checkbox></td>
+
+              </tr>
+              </tbody>
+            </table>
+            </div>
+            <md-button class="md-warn md-raised md-hue-2" ng-click="eliminar($event)">Eliminar</md-button>
+
+          </div>
+        </div>
+      </div>
     </div>
 </div>
 </div>

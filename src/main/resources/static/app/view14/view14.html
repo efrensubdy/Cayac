@@ -1,11 +1,13 @@
 
 <div class="w3-container">
-    <div class="container align-middle text-center">
+    <div class="container align-middle">
     <form >
         <h4 ><b>CONSULTAR CANDIDATOS</b></h4>
         <div class="form-group">
-            <p><b>ESCOJA UNO DE LOS CONTRATOS PRESENTADOS A CONTINUACIÓN</b></p>
-            <div class="w3-rest">
+
+            <div class="container">
+                <div class="col-xs-9">
+                    <p><b>ESCOJA UNO DE LOS SERVICIOS A CONTRATAR PRESENTADOS A CONTINUACIÓN</b></p>
                 <input class="form-control" type="text"  placeholder="A que contrato pertenece el contratista" name="contrato" list="contratos" ng-model="contrato">
                 <datalist id="contratos">
                     <select name="contratos" ng-model="select">
@@ -13,24 +15,28 @@
                         <option ng-repeat="todo in listado"  value="{{todo.id}}" ng-model="selectedOption">{{todo.nombre}}</option>
                     </select>
                 </datalist>
+                </div>
             </div>
         </div>
 
     </form>
-    <button class="btn btn-primary" type="submit" ng-click="add($event)">Consultar </button>
+        <div class="col-xs-9">
+             <button class="btn btn-primary " type="submit" ng-click="add($event)">Consultar </button>
+        </div>
     </div>
 </div>
 <br>
 <br>
-    <div class="container align-middle text-center" ng-show="flag">
-    <h4>CANDIDATOS CONTRATISTAS</h4>
-    <p>EN LA SIGUIENTE TABLA PODRÁ OBSERVAR TODA LA INFORMACIÓN PERTENECIENTE AL CANDIDATO</p>
+    <div class="container align-middle" ng-show="flag">
+        <div class="col-xs-10">
+    <h4><b>CANDIDATOS CONTRATISTAS</b></h4>
+            <p><b>EN LA SIGUIENTE TABLA PODRÁ OBSERVAR TODA LA INFORMACIÓN PERTENECIENTE AL CANDIDATO</b></p>
 
     <table class="table table-striped table-bordered table-hover table-condensed">
         <tbody>
         <tr>
             <th>Nombre de Empresa</th>
-            <th>Gestión de Requisitos</th>
+            <th>EMPRESA LIGADA</th>
 
 
         </tr>
@@ -44,6 +50,7 @@
         </tr>
         </tbody>
     </table>
+        </div>
 </div>
 
 <br>

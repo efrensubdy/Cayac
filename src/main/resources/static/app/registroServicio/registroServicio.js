@@ -25,7 +25,7 @@ $scope.add=function(ev){
                                           .title('Registro de Servicio completo')
                                           .textContent('Ahora podrá registrar candidatos a este servicio.')
                                           .ariaLabel('Alert Dialog Demo')
-                                          .ok('mire a sus candidatos!')
+                                          .ok('Registre Candidatos!')
                                           .targetEvent(ev)
                                       );
     }

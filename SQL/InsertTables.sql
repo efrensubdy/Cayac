@@ -107,7 +107,16 @@ INSERT INTO extras VALUES (5,"TOMAR DECISIONES",4);
  FIELDS TERMINATED BY ';'
  LINES TERMINATED BY '\n';
  
+ 
+ LOAD DATA LOCAL INFILE "/Users/User/Documents/ActividadesEconomicas.csv" INTO TABLE activdadeconomica
+ FIELDS TERMINATED BY ';'
+ LINES TERMINATED BY '\n'; 
+ 
+ 
   LOAD DATA LOCAL INFILE "/Users/HSEQ/Documents/requisitosSeleccion.csv" INTO TABLE requisitos
+ FIELDS TERMINATED BY ';'
+ LINES TERMINATED BY '\n'; 
+ LOAD DATA LOCAL INFILE "/Users/User/Documents/requisitosSeleccion.csv" INTO TABLE requisitos
  FIELDS TERMINATED BY ';'
  LINES TERMINATED BY '\n'; 
  

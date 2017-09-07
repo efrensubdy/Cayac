@@ -83,6 +83,7 @@ public class ContratistasBD {
      * @throws SQLException ouede arrojar excepción si no está bien configurada la base de datos
      */
     public   void nuevoContratista(Contratista nuevoContratista)throws ClassNotFoundException,SQLException,IOException {
+        System.out.println("llegue");
         int nivelDeRiesgo=obtenerNivelDeRiesgo(nuevoContratista.getCodigoCIIU());
         Usuario nuevoUsuario =new Usuario();
         java.util.Date utilDate = new Date();
@@ -91,35 +92,38 @@ public class ContratistasBD {
         departamentoDB=new DepartamentoDB();
         arlBD=new ArlBD();
         consultarContratistas();
-        String sql = "INSERT INTO contratista VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+        String sql = "INSERT INTO contratista (nombreEmpresa,nit,codigoCIIU,nombreGerente,email,arl,direccion,telefono,duracion,departamento,fecha_Creacion,fecha_modificacion,password,idContratante,personaContacto,cargoPer,telefonoCon,emailContacto,idservicioAContratar) VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
         Connection con =  Conexion.conection();
         nuevoContratista.setId(tamañoTabla + 1);
         nuevoContratista.setCodigoCIIU(String.valueOf(Integer.valueOf(actividadEconomicaBD.findAactivdad(Integer.valueOf(nuevoContratista.codigoCIIU)))));
         nuevoContratista.setDepartamento(String.valueOf(departamentoDB.findAactivdad(nuevoContratista.getDepartamento())));
         nuevoContratista.setArl(String.valueOf(arlBD.findArl(nuevoContratista.getArl())));
         PreparedStatement ps = con.prepareStatement(sql);
-        ps.setInt(1,nuevoContratista.getId());
-        ps.setString(2,nuevoContratista.getNombreEmpresa());
-        ps.setString(3,nuevoContratista.getNit());
-        ps.setString(4,nuevoContratista.getCodigoCIIU());
-        ps.setString(5,nuevoContratista.getNombreDeGerenteGeneral());
-        ps.setString(6,nuevoContratista.getEmail());
-        ps.setInt(7,Integer.valueOf(nuevoContratista.getArl()));
-        ps.setString(8,nuevoContratista.getDireccion());
-        ps.setString(9,nuevoContratista.getTelefono());
-        ps.setString(10,String.valueOf(nuevoContratista.getDuracionContrato()));
-        ps.setInt(11,Integer.valueOf(nuevoContratista.getDepartamento()));
+        ps.setString(1,nuevoContratista.getNombreEmpresa());
+        ps.setString(2,nuevoContratista.getNit());
+        ps.setString(3,nuevoContratista.getCodigoCIIU());
+        ps.setString(4,nuevoContratista.getNombreDeGerenteGeneral());
+        ps.setString(5,nuevoContratista.getEmail());
+        ps.setInt(6,Integer.valueOf(nuevoContratista.getArl()));
+        ps.setString(7,nuevoContratista.getDireccion());
+        ps.setString(8,nuevoContratista.getTelefono());
+        ps.setString(9,String.valueOf(nuevoContratista.getDuracionContrato()));
+        ps.setInt(10,Integer.valueOf(nuevoContratista.getDepartamento()));
+        ps.setDate(11, date);
         ps.setDate(12, date);
-        ps.setDate(13, date);
-        ps.setString(14,nuevoContratista.getPassword());
-        ps.setInt(15,nuevoContratista.getContratante());
-        ps.setString(16,nuevoContratista.getPersonContacto());
-        ps.setString(17,nuevoContratista.getCargoPersonaContacto());
-        ps.setString(18,nuevoContratista.getTelefonoPersonaContacto());
-        ps.setString(19,nuevoContratista.getEmailContacto());
-        ps.setInt(20,nuevoContratista.getIdContrato());
+        ps.setString(13,nuevoContratista.getPassword());
+        ps.setInt(14,nuevoContratista.getContratante());
+        ps.setString(15,nuevoContratista.getPersonContacto());
+        ps.setString(16,nuevoContratista.getCargoPersonaContacto());
+        ps.setString(17,nuevoContratista.getTelefonoPersonaContacto());
+        ps.setString(18,nuevoContratista.getEmailContacto());
+        ps.setInt(19,nuevoContratista.getIdContrato());
+        ps.execute();
+        ps.close();
+        con.close();
+        Contratista contra =getContratista(nuevoContratista.getNombreEmpresa());
 
-        nuevoUsuario.setIdContratista(nuevoContratista.getId());
+        nuevoUsuario.setIdContratista(contra.getId());
 
         if (nuevoContratista.getDuracionContrato()>=1 && nivelDeRiesgo>=3){
             nuevoUsuario.setCategoria(1);
@@ -133,11 +137,9 @@ public class ContratistasBD {
         else{
             nuevoUsuario.setCategoria(4);
         }
-        ps.execute();
-        ps.close();
-        con.close();
+
         usersDB.nuevoUsuarioContratista(nuevoUsuario);
-        int a=nuevoContratista.getId();
+        int a=contra.getId();
         File file = new File("src/main/resources/static/app/Repository/Contratista/"+ a);
         if(!file.canWrite()){ // check if user have write permissions
             if(!(file.exists() && file.isDirectory())){
@@ -259,7 +261,7 @@ public class ContratistasBD {
             con.setEmailContacto(rs.getString("emailContacto"));
             con.setIdContrato(rs.getInt("idservicioAContratar"));
             con.setIdCategoria(traerCategoria(rs.getInt("idContratista")));
-            con.setCumplidos(obtenerCumplidos(rs.getInt("idContratista"),con.getIdCategoria(),con.getContratante()));
+            //con.setCumplidos(obtenerCumplidos(rs.getInt("idContratista"),con.getIdCategoria(),con.getContratante()));
             contratistas.add(con);
         }
 

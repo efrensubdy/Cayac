@@ -1,21 +1,25 @@
 
 <div class="w3-container align-middle">
 <div class="container align-middle text-center">
-    <h3 class="w3-center"><b>GESTIÓN DE REQUISITOS</b></h3>
-    <br>
-    <p class="w3-center "><b>EN ESTA VISTA PODRA AGREGAR LOS REQUISITOS A CADA CATEGORIA</b></p>
 
-    <div class="container align-middle text-center" >
+
+    <div class="container align-middle " >
         <form >
             <div class="form-group">
+                <h3 class="w3-center"><b>GESTIÓN DE REQUISITOS</b></h3>
+                <br>
+                <p class="w3-center "><b>EN ESTA VISTA PODRA AGREGAR LOS REQUISITOS A CADA CATEGORIA</b></p>
                 <p class="text-center"><b>ESCOJA UNA DE LAS CATEGORIAS MENCIONADAS A CONTINUACIÓN </b> </p>
                 <div class="container">
+                   <div class="col-xs-9">
+
                     <select class="form-control" ng-click="function1()" data-placeholder="Categoria a la que le va aplicar los requisitos" name="singleSelect" ng-model="idCategoria">
                         <option value="1">Categoria 1</option>
                         <option value="2">Categoria 2</option>
                         <option value="3">Categoria 3</option>
                         <option value="4">Categoria 4</option>
                     </select>
+                   </div>
                 </div>
                 <br>
                 <div class="container" ng-show="banderaCategoria1" >
@@ -78,10 +82,8 @@
 
                 <div class="container" ng-show="banderaET">
                     <select class="form-control"  data-placeholder="Categoria a la que le va aplicar los requisitos" name="singleSelect" ng-model="ciclo" ng-click="activated(ciclo)">
-                        <option value="1">PREVIO AL INICIO DEL CONTRATO</option>
-                        <option value="2">DURANTE LA EJECUCION DEL CONTRATO</option>
-                        <option value="3">FINALIZACION DEL CONTRATO</option>
-                        <option value="4">DEFINITIVOS</option>
+                        <option value="1">REQUISITOS</option>
+                        <option value="2">DEFINITIVOS</option>
 
                     </select>
 
@@ -121,73 +123,6 @@
                            </div>
                        </div>
 
-                       <div class="container" ng-show="lonEjec">
-
-                           <br>
-                           <table class="table table-sm  table-striped table-bordered table-hover table-condensed  text-justify ">
-                               <thead>
-                               <tr class="">
-                                   <th>Descripcion</th>
-                                   <th>¿Aplica?<md-checkbox  aria-label="CheckboxMaster" ng-model="masterEjecucionSugerido" ng-click="allEjecucionSugerido(masterEjecucionSugerido)"></md-checkbox></th>
-                               </tr>
-                               </thead>
-                               <tbody>
-                               <tr class="" ng-repeat="todo in listadoEjecucionSugerido" >
-                                   <td>{{todo.requisito}}</td>
-                                   <td><md-checkbox class="w3-center"  aria-label="Checkbox 1"  ng-model="ejecucionSugerido" ng-change="agregarEjecucionSugerido(ejecucionSugerido, todo)">
-                                   </md-checkbox></td>
-                               </tr>
-                               <tr class="" ng-repeat="todo in listadoEjecucionExtra" >
-                                   <td>{{todo.descripcion}}</td>
-                                   <td><md-checkbox class="w3-center"  aria-label="Checkbox 1"  ng-model="ejecucionExtra" ng-change="agregarEjecucionExtra(ejecucionExtra, todo)">
-                                   </md-checkbox></td>
-                               </tr>
-                               </tbody>
-
-                           </table>
-                           <md-button class="md-warn md-raised md-hue-2" ng-click="aplicarEjecucionSugerido($event)">Aplicar Requisitos</md-button>
-
-                           <div ng-show="mensajillo3">
-                               <label>DEBE SELECCIONAR AL MENOS UN REQUISITO</label>
-
-                           </div>
-                       </div>
-
-                       <div class="container" ng-show="lonFi">
-
-                           <br>
-                           <table class="table table-sm  table-striped table-bordered table-hover table-condensed  text-justify ">
-                               <thead>
-                               <tr class="">
-                                   <th>Descripcion</th>
-                                   <th>¿Aplica?<md-checkbox  aria-label="CheckboxMaster" ng-model="masterFinalizacionSugerido" ng-click="allFinalizacionSugerido(masterFinalizacionSugerido)"></md-checkbox></th>
-                               </tr>
-                               </thead>
-                               <tbody>
-                               <tr class="" ng-repeat="todo in listadoFinalizacionSugerido" >
-                                   <td>{{todo.requisito}}</td>
-                                   <td><md-checkbox class="w3-center"  aria-label="Checkbox 1"  ng-model="finalizacionSugerido" ng-change="agregarFinalizacionSugerido(finalizacionSugerido, todo)">
-                                   </md-checkbox></td>
-                               </tr>
-                               <tr class="" ng-repeat="todo in listadoFinalizacionExtra" >
-                                   <td>{{todo.descripcion}}</td>
-                                   <td><md-checkbox class="w3-center"  aria-label="Checkbox 1"  ng-model="finalizacionExtra" ng-change="agregarFinalizacionExtra(finalizacionExtra, todo)">
-                                   </md-checkbox></td>
-                               </tr>
-                               </tbody>
-
-                           </table>
-                           <md-button class="md-warn md-raised md-hue-2" ng-click="aplicarFinalizacionSugerido($event)">Aplicar Requisitos</md-button>
-
-
-
-                           <div ng-show="mensajillo5">
-                               <label>DEBE SELECCIONAR AL MENOS UN REQUISITO</label>
-
-                           </div>
-                       </div>
-
-
                     <div class="container" ng-show="banderaDef">
                         <table class="table table-sm  table-striped table-bordered table-hover table-condensed  text-justify">
                             <thead>
@@ -206,22 +141,6 @@
                             <tr class="" ng-repeat="todo in defPreviosExtras">
                                 <td>{{todo.descripcion}} </td>
                                 <td><md-checkbox  aria-label="Checkbox 1" class="w3-check" type="checkbox"   ng-model="select2" ng-change="eliminar2(select2, todo)"></md-checkbox></td>
-                            </tr>
-                            <tr class="" ng-repeat="todo in defEjecucionSugeridos">
-                                <td>{{todo.descripcion}} </td>
-                                <td><md-checkbox  aria-label="Checkbox 1" class="w3-check" type="checkbox"   ng-model="select3" ng-change="eliminar3(select3, todo)"></md-checkbox></td>
-                            </tr>
-                            <tr class="" ng-repeat="todo in defEjecucionExtras">
-                                <td>{{todo.descripcion}} </td>
-                                <td><md-checkbox  aria-label="Checkbox 1" class="w3-check" type="checkbox"   ng-model="select4" ng-change="eliminar4(select4, todo)"></md-checkbox></td>
-                            </tr>
-                            <tr class="" ng-repeat="todo in defFinalizacionSugeridos">
-                                <td>{{todo.descripcion}} </td>
-                                <td><md-checkbox  aria-label="Checkbox 1" class="w3-check" type="checkbox"   ng-model="select5" ng-change="eliminar5(select5, todo)"></md-checkbox></td>
-                            </tr>
-                            <tr class="" ng-repeat="todo in defFinalizacionExtras">
-                                <td>{{todo.descripcion}} </td>
-                                <td><md-checkbox  aria-label="Checkbox 1" class="w3-check" type="checkbox"   ng-model="select6" ng-change="eliminar6(select6, todo)"></md-checkbox></td>
                             </tr>
                             </tbody>
                         </table>

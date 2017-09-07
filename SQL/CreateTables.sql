@@ -177,6 +177,24 @@ CREATE TABLE `extras` (
   KEY `Extra_Categorioa_idx` (`idCategoria`)
 ) ENGINE=INNODB DEFAULT CHARSET=utf8;
 
+CREATE TABLE `requisitosdeejecuionsugeridosestaticosprevio` (
+  `idRequisitosDeEjecuionSugeridosEstaticosPrevio` INT(11) NOT NULL AUTO_INCREMENT,
+  `requisito` VARCHAR(500) NOT NULL,
+  `idCategoria` INT(11) NOT NULL,
+  PRIMARY KEY (`idRequisitosDeEjecuionSugeridosEstaticosPrevio`),
+  KEY `RESEP_CATEGORIA_idx` (`idCategoria`),
+  CONSTRAINT `RESEP_CATEGORIA` FOREIGN KEY (`idCategoria`) REFERENCES `categoria` (`idCategoria`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=INNODB DEFAULT CHARSET=utf8;
+
+CREATE TABLE `requisitosdeejecuionextrasestaticosprevio` (
+  `idRequisitosDeEjecuionSugeridosextrasPrevio` INT(11) NOT NULL AUTO_INCREMENT,
+  `requisito` VARCHAR(500) NOT NULL,
+  `idCategoria` INT(11) NOT NULL,
+  PRIMARY KEY (`idRequisitosDeEjecuionSugeridosextrasPrevio`),
+  KEY `REEEP_CATEGORIA_idx` (`idCategoria`),
+  CONSTRAINT `REEEP_CATEGORIA` FOREIGN KEY (`idCategoria`) REFERENCES `categoria` (`idCategoria`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=INNODB DEFAULT CHARSET=utf8;
+
 
 CREATE TABLE `requisitosobligatoriossugeridos` (
   `idRequisitosObligatorios` INT(11) NOT NULL AUTO_INCREMENT,
@@ -205,6 +223,37 @@ CREATE TABLE `requisitosobligatoriosextras` (
   CONSTRAINT `RequisitoExtra_Extra` FOREIGN KEY (`idRequisito`) REFERENCES `extras` (`idExtras`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `RequsitoExtra_Contratante` FOREIGN KEY (`idContratante`) REFERENCES `contratante` (`idContratante`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=INNODB DEFAULT CHARSET=utf8;
+
+CREATE TABLE `requisitosdeejecuiondefsugeridosestaticosprevio` (
+  `idrequisitosdeejecuiondefsugeridosestaticosprevio` INT(11) NOT NULL AUTO_INCREMENT,
+  `idContratante` INT(11) NOT NULL,
+  `idCategoria` INT(11) NOT NULL,
+  `idRequsito` INT(11) NOT NULL,
+  PRIMARY KEY (`idrequisitosdeejecuiondefsugeridosestaticosprevio`),
+  KEY `Requi_idContratante_idx` (`idContratante`),
+  KEY `Requi_idCategoria_idx` (`idCategoria`),
+  KEY `Requi_idRequisito_idx` (`idRequsito`),
+  CONSTRAINT `Requi_idCategoria` FOREIGN KEY (`idCategoria`) REFERENCES `categoria` (`idCategoria`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `Requi_idContratante` FOREIGN KEY (`idContratante`) REFERENCES `contratante` (`idContratante`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `Requi_idRequisito` FOREIGN KEY (`idRequsito`) REFERENCES `requisitosdeejecuionsugeridosestaticosprevio` (`idRequisitosDeEjecuionSugeridosEstaticosPrevio`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=INNODB DEFAULT CHARSET=utf8;
+
+CREATE TABLE `requisitosdeejecuiondefextrasestaticosprevio` (
+  `idrequisitosdeejecuiondefextrasestaticosprevio` INT(11) NOT NULL AUTO_INCREMENT,
+  `idContratante` INT(11) NOT NULL,
+  `idCategoria` INT(11) NOT NULL,
+  `idRequisito` INT(11) NOT NULL,
+  PRIMARY KEY (`idrequisitosdeejecuiondefextrasestaticosprevio`),
+  KEY `REQUI_CONTRATANTE_idx` (`idContratante`),
+  KEY `REQUI_CATEGORIA_idx` (`idCategoria`),
+  KEY `REQUI_REQUISITOS_idx` (`idRequisito`),
+  CONSTRAINT `REQUI_CATEGORIA` FOREIGN KEY (`idCategoria`) REFERENCES `categoria` (`idCategoria`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `REQUI_CONTRATANTE` FOREIGN KEY (`idContratante`) REFERENCES `contratante` (`idContratante`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `REQUI_REQUISITOS` FOREIGN KEY (`idRequisito`) REFERENCES `requisitosdeejecuionextrasestaticosprevio` (`idRequisitosDeEjecuionSugeridosextrasPrevio`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=INNODB DEFAULT CHARSET=utf8;
+
+
+
 
 CREATE TABLE `fechalimite` (
   `idfechalimite` INT(11) NOT NULL,
@@ -252,25 +301,6 @@ CREATE TABLE `documentos` (
 
 
 
-CREATE TABLE `requisitosdeejecuionsugeridosestaticosprevio` (
-  `idRequisitosDeEjecuionSugeridosEstaticosPrevio` INT(11) NOT NULL AUTO_INCREMENT,
-  `requisito` VARCHAR(500) NOT NULL,
-  `idCategoria` INT(11) NOT NULL,
-  PRIMARY KEY (`idRequisitosDeEjecuionSugeridosEstaticosPrevio`),
-  KEY `RESEP_CATEGORIA_idx` (`idCategoria`),
-  CONSTRAINT `RESEP_CATEGORIA` FOREIGN KEY (`idCategoria`) REFERENCES `categoria` (`idCategoria`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=INNODB DEFAULT CHARSET=utf8;
-
-CREATE TABLE `requisitosdeejecuionextrasestaticosprevio` (
-  `idRequisitosDeEjecuionSugeridosextrasPrevio` INT(11) NOT NULL AUTO_INCREMENT,
-  `requisito` VARCHAR(500) NOT NULL,
-  `idCategoria` INT(11) NOT NULL,
-  PRIMARY KEY (`idRequisitosDeEjecuionSugeridosextrasPrevio`),
-  KEY `REEEP_CATEGORIA_idx` (`idCategoria`),
-  CONSTRAINT `REEEP_CATEGORIA` FOREIGN KEY (`idCategoria`) REFERENCES `categoria` (`idCategoria`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=INNODB DEFAULT CHARSET=utf8;
-
-
 
 CREATE TABLE `requisitosdeejecuionsugeridosestaticosejecucionactividades` (
   `idrequisitosdeejecuionsugeridosestaticosEjecucionActividades` INT(11) NOT NULL AUTO_INCREMENT,
@@ -310,34 +340,6 @@ CREATE TABLE `requisitosdeejecuionextrasestaticosfinalizaciondeactivdades` (
   CONSTRAINT `FinalizacionActEstaticaExtra_idCategoria` FOREIGN KEY (`idCategoria`) REFERENCES `categoria` (`idCategoria`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=INNODB DEFAULT CHARSET=utf8;
 
-
-CREATE TABLE `requisitosdeejecuiondefsugeridosestaticosprevio` (
-  `idrequisitosdeejecuiondefsugeridosestaticosprevio` INT(11) NOT NULL AUTO_INCREMENT,
-  `idContratante` INT(11) NOT NULL,
-  `idCategoria` INT(11) NOT NULL,
-  `idRequsito` INT(11) NOT NULL,
-  PRIMARY KEY (`idrequisitosdeejecuiondefsugeridosestaticosprevio`),
-  KEY `Requi_idContratante_idx` (`idContratante`),
-  KEY `Requi_idCategoria_idx` (`idCategoria`),
-  KEY `Requi_idRequisito_idx` (`idRequsito`),
-  CONSTRAINT `Requi_idCategoria` FOREIGN KEY (`idCategoria`) REFERENCES `categoria` (`idCategoria`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  CONSTRAINT `Requi_idContratante` FOREIGN KEY (`idContratante`) REFERENCES `contratante` (`idContratante`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  CONSTRAINT `Requi_idRequisito` FOREIGN KEY (`idRequsito`) REFERENCES `requisitosdeejecuionsugeridosestaticosprevio` (`idRequisitosDeEjecuionSugeridosEstaticosPrevio`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=INNODB DEFAULT CHARSET=utf8;
-
-CREATE TABLE `requisitosdeejecuiondefextrasestaticosprevio` (
-  `idrequisitosdeejecuiondefextrasestaticosprevio` INT(11) NOT NULL AUTO_INCREMENT,
-  `idContratante` INT(11) NOT NULL,
-  `idCategoria` INT(11) NOT NULL,
-  `idRequisito` INT(11) NOT NULL,
-  PRIMARY KEY (`idrequisitosdeejecuiondefextrasestaticosprevio`),
-  KEY `REQUI_CONTRATANTE_idx` (`idContratante`),
-  KEY `REQUI_CATEGORIA_idx` (`idCategoria`),
-  KEY `REQUI_REQUISITOS_idx` (`idRequisito`),
-  CONSTRAINT `REQUI_CATEGORIA` FOREIGN KEY (`idCategoria`) REFERENCES `categoria` (`idCategoria`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  CONSTRAINT `REQUI_CONTRATANTE` FOREIGN KEY (`idContratante`) REFERENCES `contratante` (`idContratante`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  CONSTRAINT `REQUI_REQUISITOS` FOREIGN KEY (`idRequisito`) REFERENCES `requisitosdeejecuionextrasestaticosprevio` (`idRequisitosDeEjecuionSugeridosextrasPrevio`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=INNODB DEFAULT CHARSET=utf8;
 
 
 CREATE TABLE `requisitosdeejecuiondefsugeridosestaticosejecucionactividades` (

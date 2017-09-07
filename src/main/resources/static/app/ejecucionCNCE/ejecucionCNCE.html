@@ -1,10 +1,11 @@
 
 <div class="w3-container">
     <div class="container text-center ">
-        <h4 class="w3-center" ><b>REVISE LO QUE SUBIERON SUS CONTRATISTAS</b></h4>
-    <form >
-        <div class="form-group">
 
+    <form >
+        <div class="row">
+            <div class="col-xs-9">
+                <h4 class="w3-center" ><b>REVISE LO QUE SUBIERON SUS CONTRATISTAS</b></h4>
             <p class="w3-center"><b>ESCOJA EL CONTRATO SOBRE EL CUAL REALIZARÁ LA REVISIÓN</b></p>
 
                 <input class="form-control" type="text"  placeholder="A que contrato le va aplicar los requisitos" name="contrato" list="contratos" ng-model="contrato">
@@ -14,10 +15,19 @@
                         <option ng-repeat="todo in listado"  value="{{todo.idContrato}}" ng-model="selectedOption">{{todo.nombreContrato}}</option>
                     </select>
                 </datalist>
+                <br>
+                <br>
+            </div>
 
         </div>
+        <div class="row">
+            <div class="col-xs-9">
+                <button class="btn btn-primary align-middle" type="submit" ng-click="add()">Consultar</button>
+            </div>
+        </div>
     </form>
-    <button class="btn btn-primary align-middle" type="submit" ng-click="add()">Consultar</button>
+    <br>
+
     </div>
 </div>
 <br>

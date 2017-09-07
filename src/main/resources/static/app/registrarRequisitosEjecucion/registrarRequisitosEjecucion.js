@@ -14,15 +14,6 @@ angular.module('myApp.registrarRequisitosEjecucion', ['ngRoute'])
  $scope.listAllPrevioSugerido=[];
  $scope.listPrevioExtra=[];
  $scope.listAllPrevioExtra=[];
- $scope.listEjecucionSugerido=[];
- $scope.listAllEjecucionSugerido=[];
- $scope.listEjecucionExtra=[];
- $scope.listAllEjecucionExtra=[];
- $scope.listFinalizacionSugerido=[];
- $scope.listAllFinalizacionSugerido=[];
- $scope.listFinalizacionExtra=[];
- $scope.listFinalizacionSugerido=[];
- $scope.listAllFinalizacionExtra=[];
  $scope.eEliminarPrevios=[];
  $scope.eEliminarPreviosExtras=[];
  $scope.eEliminarEjecucion=[];
@@ -97,57 +88,10 @@ angular.module('myApp.registrarRequisitosEjecucion', ['ngRoute'])
                    $rootScope.lonPreviEx=false;
                  }
               });
-              $rootScope.listadoEjecucionSugerido=ejecucion.query({idContratante:$localStorage.contratanteLogeado.idContratante,idCategoria:$scope.idCategoria},function(result){
-                    if(result.length!=0){
-                           $rootScope.loEjec=true;
 
-                     }
-                     else{
-                           $rootScope.loEjec=false;
-                                                               }
-
-              });
-              $rootScope.listadoEjecucionExtra=ejecucionExtras.query({idContratante:$localStorage.contratanteLogeado.idContratante,idCategoria:$scope.idCategoria},function(result){
-
-                if(result.length!=0){
-                    $rootScope.loEjecEx=true;
-
-                                      }
-                 else{
-                    $rootScope.loEjecEx=false;
-                                                                                        }
-
-              });
-              $rootScope.listadoFinalizacionSugerido=finalizacion.query({idContratante:$localStorage.contratanteLogeado.idContratante,idCategoria:$scope.idCategoria},function(result){
-
-               if(result.length!=0){
-                  $rootScope.loFi=true;
-
-               }
-               else{
-                  $rootScope.loFi=false;
-                }
-
-              });
-              $rootScope.listadoFinalizacionExtra=finalizacionExtras.query({idContratante:$localStorage.contratanteLogeado.idContratante,idCategoria:$scope.idCategoria},function(result){
-
-                if(result.length!=0){
-                      $rootScope.loFiEx=true;
-
-                                       }
-                else{
-                     $rootScope.loFiEx=false;
-                }
-
-                });
-
-
-                }
                 $rootScope.lonPrevi=$rootScope.lonPrevi || $rootScope.lonPreviEx;
-                $rootScope.lonEjec= $rootScope.lonEjec || $rootScope.lonEjecEx;
-                  $rootScope.lonFi= $rootScope.lonFi || $rootScope.lonFiEx;
 
-
+         }
          }
          $scope.activated=function(a){
             console.log(a);
@@ -173,47 +117,6 @@ angular.module('myApp.registrarRequisitosEjecucion', ['ngRoute'])
 
                 break;
                 case "2":
-                $scope.listadoEjecucionSugerido=ejecucion.query({idContratante:$localStorage.contratanteLogeado.idContratante,idCategoria:$scope.idCategoria});
-                $scope.listadoEjecucionExtra=ejecucionExtras.query({idContratante:$localStorage.contratanteLogeado.idContratante,idCategoria:$scope.idCategoria});
-                $scope.lonEjec=$rootScope.loEjec;
-                if (!$scope.lonEjec){
-                   $scope.linea2=true;
-
-                                  }
-
-                $scope.lonPrevio=false;
-                $scope.lonPrevioEx=false;
-                $scope.lonFi=false;
-                $scope.lonFiEx=false
-                $scope.banderaDef=false;
-                $scope.mensajillo1=false;
-                $scope.mensajillo3=false;
-                $scope.mensajillo5=false;
-
-                break;
-
-                case "3":
-                $scope.lonEjec=false;
-                $scope.lonEjecEx=false;
-                $scope.lonPrevio=false;
-                $scope.lonPrevioEx=false;
-                $scope.banderaDef=false;
-
-                $scope.listadoFinalizacionSugerido=finalizacion.query({idContratante:$localStorage.contratanteLogeado.idContratante,idCategoria:$scope.idCategoria});
-               $scope.listadoFinalizacionExtra=finalizacionExtras.query({idContratante:$localStorage.contratanteLogeado.idContratante,idCategoria:$scope.idCategoria});
-                $scope.lonFi=$rootScope.loFi;
-                console.log($scope.lonFi)
-                if (!$scope.lonFi){
-                    $scope.linea3=true;
-
-                }
-                $scope.mensajillo1=false;
-                $scope.mensajillo3=false;
-                $scope.mensajillo5=false;
-
-
-                break;
-                case "4":
                 $scope.defPreviosSugeridos=defPreviosSugeridos.query({idContratante:$localStorage.contratanteLogeado.idContratante,idCategoria:$rootScope.idCategoria});
                 $scope.defPreviosExtras=defPreviosExtras.query({idContratante:$localStorage.contratanteLogeado.idContratante,idCategoria:$rootScope.idCategoria});
                 $scope.defEjecucionSugeridos=defEjecucionSugeridos.query({idContratante:$localStorage.contratanteLogeado.idContratante,idCategoria:$rootScope.idCategoria});
@@ -275,61 +178,10 @@ angular.module('myApp.registrarRequisitosEjecucion', ['ngRoute'])
 
                }
           };
-          $scope.agregarEjecucionSugerido=function(ejecucionSugerido,item){
-              if(ejecucionSugerido){
-              $scope.listEjecucionSugerido.push(item)
-              }
-               else if(!ejecucionSugerido && containsObject(item,$scope.listEjecucionSugerido)){
-                 var index=$scope.listEjecucionSugerido.indexOf(item)
-                 if (index > -1) {
-                     $scope.listEjecucionSugerido.splice(index, 1);
-                 }
-
-                }
-           };
-           $scope.agregarEjecucionExtra=function(ejecucionExtra,item){
-              if(ejecucionExtra){
-              $scope.listEjecucionExtra.push(item)
-              }
-              else if(!ejecucionExtra && containsObject(item,$scope.listEjecucionExtra)){
-                     var index=$scope.listEjecucionExtra.indexOf(item)
-                      if (index > -1) {
-                            $scope.listEjecucionExtra.splice(index, 1);
-                      }
-
-               }
-           };
-           $scope.agregarFinalizacionSugerido=function(finalizacionSugerido,item){
-              if(finalizacionSugerido){
-               $scope.listFinalizacionSugerido.push(item)
-              }
-              else if(!finalizacionSugerido && containsObject(item,$scope.listFinalizacionSugerido)){
-                var index=$scope.listFinalizacionSugerido.indexOf(item)
-                if (index > -1) {
-                             $scope.listFinalizacionSugerido.splice(index, 1);
-                }
-
-                }
-           };
-           $scope.agregarFinalizacionExtra=function(finalizacionExtra,item){
-              if(finalizacionExtra){
-                $scope.listFinalizacionExtra.push(item)
-              }
-              else if(!finalizacionExtra && containsObject(item,$scope.listFinalizacionExtra)){
-                  var index=$scope.listFinalizacionExtra.indexOf(item)
-                  if (index > -1) {
-                     $scope.listFinalizacionExtra.splice(index, 1);
-                  }
-
-              }
-           };
            $scope.eliminar=function(ev){
              eliminarPreviosSugeridos($scope.eEliminarPrevios);
              eliminarPreviosExtras($scope.eEliminarPreviosExtras);
-             eliminarEjecucionSugeridos($scope.eEliminarEjecucion);
-             eliminarEjecucionExtra($scope.eEliminarEjecucionExtras);
-             eliminarFinalizacion($scope.eEliminarFinalizacion);
-             eliminarFinalizacionExtra($scope.eEliminarFinalizacionExtra);
+
 
                  $mdDialog.show(
                                       $mdDialog.alert()
@@ -357,36 +209,7 @@ angular.module('myApp.registrarRequisitosEjecucion', ['ngRoute'])
                }
             };
 
-            $scope.allEjecucionSugerido=function(masterEjecucionSugerido){
-               if(!masterEjecucionSugerido){
-                 $scope.ejecucionSugerido=true;
-                 $scope.listAllEjecucionSugerido=$rootScope.listadoEjecucionSugerido;
-                 $scope.ejecucionExtra=true;
-                 $scope.listAllEjecucionExtra=$rootScope.listadoEjecucionExtra;
-                }
-                else{
-                  $scope.ejecucionSugerido=false;
-                  $scope.listAllEjecucionSugerido=[];
-                  $scope.ejecucionExtra=false;
-                  $scope.listAllEjecucionExtra=[];
-                }
 
-            };
-
-            $scope.allFinalizacionSugerido=function(masterFinalizacionSugerido){
-               if(!masterFinalizacionSugerido){
-                 $scope.finalizacionSugerido=true;
-                 $scope.listAllFinalizacionSugerido=$rootScope.listadoFinalizacionSugerido;
-                 $scope.finalizacionExtra=true;
-                 $scope.listAllFinalizacionExtra=$rootScope.listadoFinalizacionExtra;
-               }
-               else{
-                 $scope.finalizacionSugerido=false;
-                 $scope.listAllFinalizacionSugerido=[];
-                 $scope.finalizacionExtra=false;
-                 $scope.listAllFinalizacionExtra=[];
-                }
-            };
             $scope.eliminar1=function(select1,item){
                     console.log(item);
              if(select1){
@@ -413,62 +236,6 @@ angular.module('myApp.registrarRequisitosEjecucion', ['ngRoute'])
                      console.log($scope.eEliminarPreviosExtras);
                  }
              }
-             $scope.eliminar3=function(select3,item){
-                       console.log(item);
-               if(select3){
-
-                   $scope.eEliminarEjecucion.push(item)
-               }
-               else if(!select3 && containsObject(item,$scope.eEliminarEjecucion)){
-                   var index=$scope.eEliminarEjecucion.indexOf(item)
-                   if (index > -1) {
-                         $scope.eEliminarEjecucion.splice(index, 1);
-                   }
-                   console.log($scope.eEliminarEjecucion);
-               }
-             }
-             $scope.eliminar4=function(select4,item){
-                       console.log(item);
-                 if(select4){
-                      $scope.eEliminarEjecucionExtras.push(item)
-                  }
-                  else if(!select4 && containsObject(item,$scope.eEliminarEjecucionExtras)){
-                       var index=$scope.eEliminarEjecucion.indexOf(item)
-                       if (index > -1) {
-                             $scope.eEliminarEjecucionExtras.splice(index, 1);
-                       }
-                       console.log($scope.eEliminarEjecucionExtras);
-                  }
-             }
-             $scope.eliminar5=function(select5,item){
-                            console.log(item);
-                if(select5){
-                    $scope.eEliminarFinalizacion.push(item)
-                }
-                else if(!select5 && containsObject(item,$scope.eEliminarFinalizacion)){
-                     var index=$scope.eEliminarFinalizacion.indexOf(item)
-                     if (index > -1) {
-                            $scope.eEliminarFinalizacion.splice(index, 1);
-                     }
-                     console.log($scope.eEliminarFinalizacion);
-                }
-             }
-             $scope.eliminar6=function(select6,item){
-                console.log(item);
-                if(select6){
-                  $scope.eEliminarFinalizacionExtra.push(item)
-                }
-                else if(!select6 && containsObject(item,$scope.eEliminarFinalizacionExtra)){
-                 var index=$scope.eEliminarFinalizacionExtra.indexOf(item)
-                 if (index > -1) {
-                        $scope.eEliminarFinalizacionExtra.splice(index, 1);
-                 }
-                 console.log($scope.eEliminarFinalizacionExtra);
-                }
-
-             }
-
-
 
          $scope.aplicarPrevioSugerido=function(ev){
           var a=$scope.listPrevioSugerido.length;
@@ -514,94 +281,6 @@ angular.module('myApp.registrarRequisitosEjecucion', ['ngRoute'])
           }
 
          };
-         $scope.aplicarEjecucionSugerido=function(ev){
-            var a=$scope.listEjecucionSugerido.length;
-            var b=$scope.listAllEjecucionSugerido.length;
-            var a2=$scope.listEjecucionExtra.length;
-            var b2=$scope.listAllEjecucionExtra.length;
-             if(a>b || a2 >b2){
-                console.log("entre a sugeridos")
-                agregarBaseDatosEjecucionSugeridos($scope.listEjecucionSugerido);
-                agregarBaseDatosEjecucionExtras($scope.listEjecucionExtra);
-                $mdDialog.show(
-                  $mdDialog.alert()
-                    .parent(angular.element(document.querySelector('#popupContainer')))
-                    .clickOutsideToClose(true)
-                    .title('Sus Requisitos han  quedado asignados')
-                    .textContent('Podrá seguir agregando requisitos si lo desea.')
-                    .ariaLabel('Alert Dialog Demo')
-                    .ok('Mire sus definitivos!')
-                    .targetEvent(ev)
-                 );
-
-             }
-             else if(a==0 && b==0 && a2==0 && b2==0 ){
-
-                  $scope.mensajillo3=true
-
-             }
-             else{
-                console.log("entre a all sugeridos")
-                agregarBaseDatosEjecucionSugeridos($scope.listAllEjecucionSugerido);
-                agregarBaseDatosEjecucionExtras($scope.listAllEjecucionExtra);
-                 $mdDialog.show(
-                      $mdDialog.alert()
-                        .parent(angular.element(document.querySelector('#popupContainer')))
-                        .clickOutsideToClose(true)
-                        .title('Sus Requisitos han  quedado asignados')
-                        .textContent('Podrá seguir agregando requisitos si lo desea.')
-                        .ariaLabel('Alert Dialog Demo')
-                        .ok('Mire sus definitivos!')
-                        .targetEvent(ev)
-                  );
-
-             }
-
-          };
-          $scope.aplicarFinalizacionSugerido=function(ev){
-              var a=$scope.listFinalizacionSugerido.length;
-              var b=$scope.listAllFinalizacionSugerido.length;
-              var a2=$scope.listadoFinalizacionExtra.length;
-              var b2=$scope.listAllFinalizacionExtra.length;
-              if(a>b  || a2>b2){
-                 console.log("entre a sugeridos")
-                 agregarBaseDatosFinalizacionSugeridos($scope.listFinalizacionSugerido);
-                 agregarBaseDatosFinalizacionExtras($scope.listadoFinalizacionExtra);
-                  $mdDialog.show(
-                       $mdDialog.alert()
-                         .parent(angular.element(document.querySelector('#popupContainer')))
-                         .clickOutsideToClose(true)
-                         .title('Sus Requisitos han  quedado asignados')
-                         .textContent('Podrá seguir agregando requisitos si lo desea.')
-                         .ariaLabel('Alert Dialog Demo')
-                         .ok('Mire sus definitivos!')
-                         .targetEvent(ev)
-                  );
-
-              }
-              else if(a==0 && b==0 && a2==0 && b2==0 ){
-
-                 $scope.mensajillo5=true
-
-                                   }
-              else{
-                 console.log("entre a all sugeridos")
-                 agregarBaseDatosFinalizacionSugeridos($scope.listAllFinalizacionSugerido);
-                 agregarBaseDatosFinalizacionExtras($scope.listAllFinalizacionExtra);
-                  $mdDialog.show(
-                       $mdDialog.alert()
-                         .parent(angular.element(document.querySelector('#popupContainer')))
-                         .clickOutsideToClose(true)
-                         .title('Sus Requisitos han  quedado asignados')
-                         .textContent('Podrá seguir agregando requisitos si lo desea.')
-                         .ariaLabel('Alert Dialog Demo')
-                         .ok('Mire sus definitivos!')
-                         .targetEvent(ev)
-                                   );
-
-              }
-
-          };
 
           function containsObject(obj, list) {
              var i;
@@ -624,26 +303,7 @@ angular.module('myApp.registrarRequisitosEjecucion', ['ngRoute'])
 
            }
           }
-          var agregarBaseDatosEjecucionSugeridos=function(lista){
-               var total=lista.length;
-               for (var i=0;i<total;i++){
-                   var requisitoObligatorio={"idContratante":$localStorage.contratanteLogeado.idContratante,"idCategoria":$rootScope.idCategoria,"idRequisito":lista[i].numero};
-                   console.log(requisitoObligatorio);
-                   console.log(total);
-                   insertarEjecucionSugerido.save(requisitoObligatorio);
 
-               }
-          }
-          var agregarBaseDatosFinalizacionSugeridos=function(lista){
-            var total=lista.length;
-            for (var i=0;i<total;i++){
-                var requisitoObligatorio={"idContratante":$localStorage.contratanteLogeado.idContratante,"idCategoria":$rootScope.idCategoria,"idRequisito":lista[i].numero};
-                console.log(requisitoObligatorio);
-                console.log(total);
-                insertarFinalizacionSugerido.save(requisitoObligatorio);
-
-            }
-          }
           var agregarBaseDatosPreviosExtras=function(lista){
            var total=lista.length;
               for (var i=0;i<total;i++){
@@ -654,31 +314,7 @@ angular.module('myApp.registrarRequisitosEjecucion', ['ngRoute'])
 
               }
            }
-           var agregarBaseDatosEjecucionExtras=function(lista){
-             var total=lista.length;
-            for (var i=0;i<total;i++){
-              var requisitoExtra={"idContratante":$localStorage.contratanteLogeado.idContratante,"idCategoria":$rootScope.idCategoria,"idRequisito":lista[i].id};
-               console.log(total);
-               console.log(requisitoExtra);
-               insertarEjecucionExtra.save(requisitoExtra);
 
-            }
-
-
-           }
-
-           var agregarBaseDatosFinalizacionExtras=function(lista){
-             var total=lista.length;
-            for (var i=0;i<total;i++){
-              var requisitoExtra={"idContratante":$localStorage.contratanteLogeado.idContratante,"idCategoria":$rootScope.idCategoria,"idRequisito":lista[i].id};
-               console.log(total);
-               console.log(requisitoExtra);
-               insertarFinalizacionExtra.save(requisitoExtra);
-
-            }
-
-
-            }
 
             var eliminarPreviosSugeridos=function(lista){
                var total=lista.length;
@@ -696,37 +332,6 @@ angular.module('myApp.registrarRequisitosEjecucion', ['ngRoute'])
                  }
 
             }
-            var eliminarEjecucionSugeridos=function(lista){
-                                 var total=lista.length;
-                                 for (var i=0;i<total;i++){
-                                   eliminarES.remove({"idContratante":$localStorage.contratanteLogeado.idContratante,"idRequisito":lista[i].idRequisito});
 
-                                  }
-
-            }
-            var eliminarEjecucionExtra=function(lista){
-                             var total=lista.length;
-                             for (var i=0;i<total;i++){
-                                 eliminarES.remove({"idContratante":$localStorage.contratanteLogeado.idContratante,"idRequisito":lista[i].idRequisito});
-
-                             }
-
-            }
-            var eliminarFinalizacion=function(lista){
-                                 var total=lista.length;
-                                 for (var i=0;i<total;i++){
-                                   eliminarFS.remove({"idContratante":$localStorage.contratanteLogeado.idContratante,"idRequisito":lista[i].idRequisito});
-
-                                 }
-
-            }
-            var eliminarFinalizacionExtra=function(lista){
-                               var total=lista.length;
-                               for (var i=0;i<total;i++){
-                                 eliminarFE.remove({"idContratante":$localStorage.contratanteLogeado.idContratante,"idRequisito":lista[i].idRequisito});
-
-                               }
-
-             }
 
 }]);
