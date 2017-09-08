@@ -800,7 +800,7 @@ public class ContratistasBD {
      */
     public List<RequisitoExtra>requisitosExtrasCumplidos(int idContratista,int idCategoria,int idContratante)throws SQLException,ClassNotFoundException{
         List<RequisitoExtra>requisitosExtrasLisT=new LinkedList<>();
-        String sql="select re.idRequisitosObligatoriosExtras,d.idContratista,r.idExtras,r.Extrascol,d.tipo from (requisitosobligatoriosextras as re inner join extras as r on re.idRequisito =r.idExtras and re.idCategoria=? and re.idContratante=?) left join documentos as d  on re.idCategoria=? and d.idContratista=? and re.idContratante= ? and re.idRequisitosObligatoriosExtras=d.idRequisitoSugerido\n" +
+        String sql="select re.idRequisitosObligatoriosExtras,d.idContratista,r.idExtras,r.Extrascol,d.tipo,d.contenido from (requisitosobligatoriosextras as re inner join extras as r on re.idRequisito =r.idExtras and re.idCategoria=? and re.idContratante=?) left join documentos as d  on re.idCategoria=? and d.idContratista=? and re.idContratante= ? and re.idRequisitosObligatoriosExtras=d.idRequisitoSugerido\n" +
                 "where d.idContratista is not  null;";
         PreparedStatement ps=Conexion.conection().prepareStatement(sql);
         ps.setInt(1,idCategoria);
@@ -816,6 +816,7 @@ public class ContratistasBD {
             requisitoExtra.setDescripcion(rs.getString("Extrascol"));
             requisitoExtra.setIdRequisito(rs.getInt("idExtras"));
             requisitoExtra.setTipo(rs.getString("tipo"));
+            requisitoExtra.setContenido(rs.getString("contenido"));
             requisitosExtrasLisT.add(requisitoExtra);
         }
         ps.close();

@@ -34,6 +34,46 @@ public class FinalistDB {
     public FinalistDB()throws SQLException,ClassNotFoundException{
 
     }
+    public void insertarFinalista2(Finalista finalista)throws SQLException,ClassNotFoundException,IOException{
+        java.util.Date utilDate = new Date();
+        java.sql.Date date = new java.sql.Date(utilDate.getTime());
+        String sql = "INSERT INTO finalista (idContratista,fechaCreacion, fechaModificacion, estado)   VALUES(?,?,?,?)";
+        Connection con =  Conexion.conection();
+        PreparedStatement ps = con.prepareStatement(sql);
+        ps.setInt(1, finalista.getIdContratista());
+        ps.setDate(2,date);
+        ps.setDate(3,date);
+        ps.setString(4,"F");
+
+        ps.execute();
+        ps.close();
+        con.close();
+        File file = new File("src/main/resources/static/app/Repository/Contratista/"+ finalista.getIdContratista()+"/estatico");
+        if(!file.canWrite()){ // check if user have write permissions
+            if(!(file.exists() && file.isDirectory())){
+                if(file.mkdirs())
+                    System.out.println("Success ! Folders created.");
+                else
+                    System.out.println("Failure ! Folders not created.");
+            }
+        }else{
+            System.out.println("PERMISSION DENIED");
+        }
+        File file2 = new File("src/main/resources/static/app/Repository/Contratista/"+ finalista.getIdContratista()+"/dinamico");
+        if(!file2.canWrite()){ // check if user have write permissions
+            if(!(file2.exists() && file2.isDirectory())){
+                if(file2.mkdirs())
+                    System.out.println("Success ! Folders created.");
+                else
+                    System.out.println("Failure ! Folders not created.");
+            }
+        }else{
+            System.out.println("PERMISSION DENIED");
+        }
+
+        int idFinalista=traerIdFinalista(finalista.getIdContratista());
+        updateContrato(idFinalista,finalista.getIdContrato());
+    }
     public void insertarFinalista(Finalista finalista)throws SQLException,ClassNotFoundException,IOException{
         java.util.Date utilDate = new Date();
         java.sql.Date date = new java.sql.Date(utilDate.getTime());

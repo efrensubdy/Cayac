@@ -179,7 +179,8 @@ public class ContratanteDB {
     }
     public List<ServicioAContratar> consultarServiciosConContratista(int idContratante) throws ClassNotFoundException, SQLException{
         List<ServicioAContratar> arls = new LinkedList<>();
-        String sql ="SELECT servicioacontratar.id,servicioacontratar.nombre,servicioacontratar.tipo,servicioacontratar.idContratante FROM  servicioacontratar LEFT JOIN  contratista ON contratista.idservicioAContratar=servicioacontratar.id WHERE contratista.idservicioAContratar IS NOT NULL AND servicioacontratar.idContratante = ?";
+        String sql ="SELECT servicioacontratar.id,servicioacontratar.nombre,servicioacontratar.tipo,servicioacontratar.idContratante FROM  (servicioacontratar  LEFT JOIN  contratista ON contratista.idservicioAContratar=servicioacontratar.id)LEFT JOIN finalista ON contratista.idContratista = finalista.idContratista\n" +
+                " WHERE contratista.idservicioAContratar IS NOT NULL AND servicioacontratar.idContratante = ? AND finalista.idFinalista IS NULL";
         PreparedStatement ps = Conexion.conection().prepareStatement(sql);
         ps.setInt(1,idContratante);
         ResultSet rs = ps.executeQuery();
