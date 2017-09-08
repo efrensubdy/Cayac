@@ -81,6 +81,8 @@ angular.module('myApp.view3', ['ngRoute'])
                 case "1":
                 $scope.table1=false;
                 $scope.table2=false;
+                $scope.banderaFecha=true;
+                q($localStorage.contratanteLogeado.idContratante,$scope.idCategoria);
 
                 break;
                 case "2":
@@ -88,12 +90,14 @@ angular.module('myApp.view3', ['ngRoute'])
                 $scope.listado2=requisitos.query({idContratante:$localStorage.contratanteLogeado.idContratante,idCategoria:$scope.idCategoria})
                 $scope.listado3=extras.query({idContratante:$localStorage.contratanteLogeado.idContratante,idCategoria:$scope.idCategoria})
                 $scope.table1=true;
+                 $scope.banderaFecha=false;
                 break;
                 case "3":
                 $scope.table1=false;
                 $scope.list4=rObligatorio.query({idContratante:$localStorage.contratanteLogeado.idContratante,idCategoria:$rootScope.idCategoria});
                 $scope.list5=rExtra.query({idContratante:$localStorage.contratanteLogeado.idContratante,idCategoria:$rootScope.idCategoria});
                 $scope.table2=true;
+                 $scope.banderaFecha=false;
 
                 break;
 

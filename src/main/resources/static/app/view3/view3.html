@@ -79,6 +79,7 @@
         <button class="btn btn-warning" type="submit" ng-click="showAlert($event)">Aplicar Requisitos</button>
       </div>
       <br>
+
       <div ng-show="banderaLista">
         <div class="col-xs-8">
           <select class="form-control"  data-placeholder="¿QUE QUIEREN HACER CON ESTA CATEGORIA?" name="singleSelect" ng-model="ciclo" ng-click="activated(ciclo)">
@@ -88,6 +89,15 @@
           </select>
           <br>
           <br>
+          <div class="container" ng-show="banderaFecha">
+            <div class="col-xs-8">
+              <label>Cuanto tiempo tendra su contratista para subir los documentos</label>
+              <input type="date" placeholder="yyyy-MM-dd"  ng-model="fecha"/>
+              <md-button class="md-warn md-raised md-hue-2" ng-click="fun($event)">Establecer</md-button>
+              <label> LA FECHA DE ENTREGA DE LOS DOCUMENTOS ES {{objeto.fechaFin| date : "fullDate"}},
+                LE QUEDAN {{objeto.tiempoRestante}} PARA ENTREGAR LOS SOPORTES</label>
+            </div>
+          </div>
           <div class="container" ng-show="table1">
             <div class="col-xs-8">
               <table class="table table-sm  table-striped table-bordered table-hover table-condensed  text-justify">

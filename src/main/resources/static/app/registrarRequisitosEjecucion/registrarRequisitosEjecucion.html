@@ -1,15 +1,15 @@
 
-<div class="w3-container align-middle">
-<div class="container align-middle text-center">
+<div class="w3-container">
+<div class="container align-middle ">
 
 
     <div class="container align-middle " >
         <form >
             <div class="form-group">
-                <h3 class="w3-center"><b>GESTIÓN DE REQUISITOS</b></h3>
+                <h3 ><b>GESTIÓN DE REQUISITOS</b></h3>
                 <br>
-                <p class="w3-center "><b>EN ESTA VISTA PODRA AGREGAR LOS REQUISITOS A CADA CATEGORIA</b></p>
-                <p class="text-center"><b>ESCOJA UNA DE LAS CATEGORIAS MENCIONADAS A CONTINUACIÓN </b> </p>
+                <p ><b>EN ESTA VISTA PODRA AGREGAR LOS REQUISITOS A CADA CATEGORIA</b></p>
+                <p ><b>ESCOJA UNA DE LAS CATEGORIAS MENCIONADAS A CONTINUACIÓN </b> </p>
                 <div class="container">
                    <div class="col-xs-9">
 
@@ -81,18 +81,20 @@
                 <br>
 
                 <div class="container" ng-show="banderaET">
+                    <div class="col-xs-9">
                     <select class="form-control"  data-placeholder="Categoria a la que le va aplicar los requisitos" name="singleSelect" ng-model="ciclo" ng-click="activated(ciclo)">
                         <option value="1">REQUISITOS</option>
                         <option value="2">DEFINITIVOS</option>
 
                     </select>
+                    </div>
 
                     <br>
                     <br>
                     <br>
 
                     <div class="container" ng-show="lonPrevio">
-
+                        <div class="col-xs-9">
                             <br>
                            <table class="table table-sm  table-striped table-bordered table-hover table-condensed  text-justify ">
                                <thead>
@@ -115,15 +117,18 @@
 
                                </tbody>
                            </table>
+
                         <md-button class="md-warn md-raised md-hue-2" ng-click="aplicarPrevioSugerido($event)">Aplicar Requisitos</md-button>
 
                         <div ng-show="mensajillo1">
                                <label>DEBE SELECCIONAR AL MENOS UN REQUISITO</label>
 
                            </div>
+                        </div>
                        </div>
 
                     <div class="container" ng-show="banderaDef">
+                        <div class="col-xs-9">
                         <table class="table table-sm  table-striped table-bordered table-hover table-condensed  text-justify">
                             <thead>
                             <tr class="">
@@ -146,7 +151,7 @@
                         </table>
                         <md-button class="md-warn md-raised md-hue-2" ng-click="eliminar($event)">Eliminar</md-button>
                     </div>
-
+                    </div>
 
                 </div>
 

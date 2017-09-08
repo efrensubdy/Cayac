@@ -119,10 +119,7 @@ angular.module('myApp.registrarRequisitosEjecucion', ['ngRoute'])
                 case "2":
                 $scope.defPreviosSugeridos=defPreviosSugeridos.query({idContratante:$localStorage.contratanteLogeado.idContratante,idCategoria:$rootScope.idCategoria});
                 $scope.defPreviosExtras=defPreviosExtras.query({idContratante:$localStorage.contratanteLogeado.idContratante,idCategoria:$rootScope.idCategoria});
-                $scope.defEjecucionSugeridos=defEjecucionSugeridos.query({idContratante:$localStorage.contratanteLogeado.idContratante,idCategoria:$rootScope.idCategoria});
-                $scope.defEjecucionExtras=defEjecucionExtras.query({idContratante:$localStorage.contratanteLogeado.idContratante,idCategoria:$rootScope.idCategoria});
-                $scope.defFinalizacionSugeridos=defFinalizacionSugeridos.query({idContratante:$localStorage.contratanteLogeado.idContratante,idCategoria:$rootScope.idCategoria});
-                $scope.defFinalizacionExtras=defFinalizacionExtras.query({idContratante:$localStorage.contratanteLogeado.idContratante,idCategoria:$rootScope.idCategoria});
+
                 $scope.lonEjec=false
                 $scope.lonEjecEx=false
                 $scope.lonPrevio=false;
