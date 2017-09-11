@@ -9,7 +9,7 @@ angular.module('myApp.ejecucionCNCE', ['ngRoute'])
   });
 }])
 
-.controller('ejecucionCNCECtrl', ['$localStorage','$sessionStorage','$http','$scope','$rootScope','$mdDialog','contratosEnEjecucion','finalesDefinitivos','psC','psNC','esC','esNC','fsC','fsNC','peC','peNC','eeC','eeNC','feC','feNC','estadoPreviosSugeridos','estadoPreviosExtras','estadoEjecucionSugeridos','estadoEjecucionExtras','estadoFinalizacionSugeridos','estadoFinalizacionExtras',function($localStorage,$sessionStorage,$http,$scope,$rootScope,$mdDialog,contratosEnEjecucion,finalesDefinitivos,psC,psNC,esC,esNC,fsC,fsNC,peC,peNC,eeC,eeNC,feC,feNC,estadoPreviosSugeridos,estadoPreviosExtras,estadoEjecucionSugeridos,estadoEjecucionExtras,estadoFinalizacionstSugeridos,estadoFinalizacionExtras) {
+.controller('ejecucionCNCECtrl', ['$localStorage','$sessionStorage','$http','$scope','$rootScope','$mdDialog','contratosEnEjecucion','finalesDefinitivos','psC','psNC','peC','peNC',function($localStorage,$sessionStorage,$http,$scope,$rootScope,$mdDialog,contratosEnEjecucion,finalesDefinitivos,psC,psNC,peC,peNC) {
 
         $scope.listado=contratosEnEjecucion.query({idContratante:$localStorage.contratanteLogeado.idContratante})
         $scope.flag=false;
@@ -33,16 +33,8 @@ angular.module('myApp.ejecucionCNCE', ['ngRoute'])
            $rootScope.idClient=client.id;
            $rootScope.listadoCSP=psC.query({idFinalista:client.idFinalista,idCategoria:client.idCategoria,idContratante:$localStorage.contratanteLogeado.idContratante});
            $rootScope.listadoCEP=peC.query({idFinalista:client.idFinalista,idCategoria:client.idCategoria,idContratante:$localStorage.contratanteLogeado.idContratante});
-           $rootScope.listadoESC=esC.query({idFinalista:client.idFinalista,idCategoria:client.idCategoria,idContratante:$localStorage.contratanteLogeado.idContratante});
-           $rootScope.listadoEEC=eeC.query({idFinalista:client.idFinalista,idCategoria:client.idCategoria,idContratante:$localStorage.contratanteLogeado.idContratante});
-           $rootScope.listadoFSC=fsC.query({idFinalista:client.idFinalista,idCategoria:client.idCategoria,idContratante:$localStorage.contratanteLogeado.idContratante});
-           $rootScope.listadoFEC=feC.query({idFinalista:client.idFinalista,idCategoria:client.idCategoria,idContratante:$localStorage.contratanteLogeado.idContratante});
            $rootScope.listadoNCSP=psNC.query({idFinalista:client.idFinalista,idCategoria:client.idCategoria,idContratante:$localStorage.contratanteLogeado.idContratante});
            $rootScope.listadoNCEP=peNC.query({idFinalista:client.idFinalista,idCategoria:client.idCategoria,idContratante:$localStorage.contratanteLogeado.idContratante});
-           $rootScope.listadoNCSE=esNC.query({idFinalista:client.idFinalista,idCategoria:client.idCategoria,idContratante:$localStorage.contratanteLogeado.idContratante});
-           $rootScope.listadoNCEE=eeNC.query({idFinalista:client.idFinalista,idCategoria:client.idCategoria,idContratante:$localStorage.contratanteLogeado.idContratante});
-           $rootScope.listadoNCSF=fsNC.query({idFinalista:client.idFinalista,idCategoria:client.idCategoria,idContratante:$localStorage.contratanteLogeado.idContratante});
-           $rootScope.listadoNCEF=feNC.query({idFinalista:client.idFinalista,idCategoria:client.idCategoria,idContratante:$localStorage.contratanteLogeado.idContratante});
 
            $mdDialog.show({
             //Controlador del mensajes con operaciones definido en la parte de abajo
@@ -61,16 +53,9 @@ angular.module('myApp.ejecucionCNCE', ['ngRoute'])
          function DialogController($scope, $mdDialog, $rootScope, $http) {
            $scope.listadoCSP=$rootScope.listadoCSP;
            $scope.listadoCEP=$rootScope.listadoCEP;
-           $scope.listadoESC=$rootScope.listadoESC;
-           $scope.listadoEEC=$rootScope.listadoEEC;
-           $scope.listadoFSC=$rootScope.listadoFSC;
-           $scope.listadoFEC=$rootScope.listadoFEC;
            $scope.listadoNCSP=$rootScope.listadoNCSP
            $scope.listadoNCEP=$rootScope.listadoNCEP
-           $scope.listadoNCSE=$rootScope.listadoNCSE
-           $scope.listadoNCEE=$rootScope.listadoNCEE
-           $scope.listadoNCSF=$rootScope.listadoNCSF
-           $scope.listadoNCEF=$rootScope.listadoNCEF
+
            $scope.idClient=$rootScope.idClient
 
 
@@ -92,6 +77,11 @@ angular.module('myApp.ejecucionCNCE', ['ngRoute'])
            $scope.bandera=false;
            $scope.bandera2=false;
            $scope.bandera3=false;
+           $scope.estadis=function(){
+                 $scope.banderaPrevio=true;
+                  $scope.bandera=false;
+           }
+
 
            $scope.function1=function(){
                    console.log($scope.tipoEstadistica)

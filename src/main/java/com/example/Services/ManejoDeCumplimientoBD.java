@@ -27,25 +27,6 @@ public class ManejoDeCumplimientoBD implements AdministradorDeCumplimiento {
         return cumplimientoEjecucionDB.requisitosNoCumplidosSugeridosPrevios(idFinalista, idCategoria, idContratante);
     }
 
-    @Override
-    public List<RequisitoObligatorio> requisitosCumplidosEjecucionSugeridos(int idFinalista, int idCategoria, int idContratante) throws SQLException, ClassNotFoundException {
-        return cumplimientoEjecucionDB.requisitosCumplidosEjecucionSugeridos(idFinalista, idCategoria, idContratante);
-    }
-
-    @Override
-    public List<RequisitoObligatorio> requisitosNoCumplidosEjecucionSugeridos(int idFinalista, int idCategoria, int idContratante) throws SQLException, ClassNotFoundException {
-        return cumplimientoEjecucionDB.requisitosNoCumplidosEjecucionSugeridos(idFinalista, idCategoria, idContratante);
-    }
-
-    @Override
-    public List<RequisitoObligatorio> requisitosCumplidosFinalizacionSugeridos(int idFinalista, int idCategoria, int idContratante) throws SQLException, ClassNotFoundException {
-        return cumplimientoEjecucionDB.requisitosCumplidosFinalizacionSugeridos(idFinalista, idCategoria, idContratante);
-    }
-
-    @Override
-    public List<RequisitoObligatorio> requisitosNoCumplidosFinalizacionSugeridos(int idFinalista, int idCategoria, int idContratante) throws SQLException, ClassNotFoundException {
-        return cumplimientoEjecucionDB.requisitosNoCumplidosFinalizacionSugeridos(idFinalista, idCategoria, idContratante);
-    }
 
     @Override
     public List<RequisitoExtra> requisitosExtrasPreviosCumplidos(int idFinalista, int idCategoria, int idContratante) throws SQLException, ClassNotFoundException {
@@ -57,23 +38,4 @@ public class ManejoDeCumplimientoBD implements AdministradorDeCumplimiento {
         return cumplimientoEjecucionDB.requisitosExtrasPreviosNoCumplidos(idFinalista, idCategoria, idContratante);
     }
 
-    @Override
-    public List<RequisitoExtra> requisitosExtrasEjecucionCumplidos(int idFinalista, int idCategoria, int idContratante) throws SQLException, ClassNotFoundException {
-        return cumplimientoEjecucionDB.requisitosExtrasEjecucionCumplidos(idFinalista, idCategoria, idContratante);
-    }
-
-    @Override
-    public List<RequisitoExtra> requisitosExtrasEjecucionNoCumplidos(int idFinalista, int idCategoria, int idContratante) throws SQLException, ClassNotFoundException {
-        return cumplimientoEjecucionDB.requisitosExtrasEjecucionNoCumplidos(idFinalista, idCategoria, idContratante);
-    }
-
-    @Override
-    public List<RequisitoExtra> requisitosExtrasFinalizacionCumplidos(int idFinalista, int idCategoria, int idContratante) throws SQLException, ClassNotFoundException {
-        return cumplimientoEjecucionDB.requisitosExtrasFinalizacionCumplidos(idFinalista, idCategoria, idContratante);
-    }
-
-    @Override
-    public List<RequisitoExtra> requisitosExtrasFinalizacionNoCumplidos(int idFinalista, int idCategoria, int idContratante) throws SQLException, ClassNotFoundException {
-        return cumplimientoEjecucionDB.requisitosExtrasFinalizacionNoCumplidos(idFinalista, idCategoria, idContratante);
-    }
 }

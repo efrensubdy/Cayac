@@ -84,30 +84,6 @@ public class DocumentosEstaticosController {
         return a;
     }
 
-    @RequestMapping(path = "/{idFinalista}/{idRequisito}/{idContratista}/ejecucionSugerido",method = RequestMethod.POST)
-    public ResponseEntity<?> InsertarDocumentoEjecucionSugerido(@PathVariable Integer idFinalista, @PathVariable Integer idRequisito,@PathVariable Integer idContratista
-            , MultipartHttpServletRequest request){
-
-        ResponseEntity a;
-        try {
-
-            Iterator<String> itr = request.getFileNames();
-            while(itr.hasNext()) {
-                String uploadedFile = itr.next();
-                MultipartFile file = request.getFile(uploadedFile);
-                File fileForDB=convert(file);
-                DocumentoEjecucion documentoEjecucion=new DocumentoEjecucion(idFinalista,fileForDB,idRequisito,idContratista);
-                manejoDeDocumentosDeEjecucion.insertarDocumentoEjecucionSugerido(documentoEjecucion);
-
-            }
-            a = new ResponseEntity<>(HttpStatus.ACCEPTED);
-
-        } catch (Exception ex) {
-            Logger.getLogger(Controller.class.getName()).log(Level.SEVERE, null, ex);
-            return new ResponseEntity<>("Error bla bla bla",HttpStatus.NOT_FOUND);
-        }
-        return a;
-    }
 
 
     private File convert(MultipartFile file) throws IOException {
@@ -117,79 +93,6 @@ public class DocumentosEstaticosController {
         fos.write(file.getBytes());
         fos.close();
         return convFile;
-    }
-
-    @RequestMapping(path = "/{idFinalista}/{idRequisito}/{idContratista}/ejecucionExtra",method = RequestMethod.POST)
-    public ResponseEntity<?> InsertarDocumentoEjecucionExtra(@PathVariable Integer idFinalista, @PathVariable Integer idRequisito, @PathVariable Integer idContratista
-            , MultipartHttpServletRequest request){
-
-        ResponseEntity a;
-        try {
-
-            Iterator<String> itr = request.getFileNames();
-            while(itr.hasNext()) {
-                String uploadedFile = itr.next();
-                MultipartFile file = request.getFile(uploadedFile);
-                File fileForDB=convert(file);
-                DocumentoEjecucion documentoEjecucion=new DocumentoEjecucion(idFinalista,fileForDB,idRequisito,idContratista);
-                manejoDeDocumentosDeEjecucion.insertarDocumentoEjecucionExtra(documentoEjecucion);
-
-            }
-            a = new ResponseEntity<>(HttpStatus.ACCEPTED);
-
-        } catch (Exception ex) {
-            Logger.getLogger(Controller.class.getName()).log(Level.SEVERE, null, ex);
-            return new ResponseEntity<>("Error bla bla bla",HttpStatus.NOT_FOUND);
-        }
-        return a;
-    }
-    @RequestMapping(path = "/{idFinalista}/{idRequisito}/{idContratista}/finalizacionSugerido",method = RequestMethod.POST)
-    public ResponseEntity<?> InsertarDocumentoFinalizacionSugerido(@PathVariable Integer idFinalista, @PathVariable Integer idRequisito, @PathVariable Integer idContratista
-            , MultipartHttpServletRequest request){
-
-        ResponseEntity a;
-        try {
-
-            Iterator<String> itr = request.getFileNames();
-            while(itr.hasNext()) {
-                String uploadedFile = itr.next();
-                MultipartFile file = request.getFile(uploadedFile);
-                File fileForDB=convert(file);
-                DocumentoFinalizacion documentoFinalizacion=new DocumentoFinalizacion(idFinalista,fileForDB,idRequisito,idContratista);
-                manejoDeDocumentosDeEjecucion.insertarDocumentoFinalizacionSugerido(documentoFinalizacion);
-
-            }
-            a = new ResponseEntity<>(HttpStatus.ACCEPTED);
-
-        } catch (Exception ex) {
-            Logger.getLogger(Controller.class.getName()).log(Level.SEVERE, null, ex);
-            return new ResponseEntity<>("Error bla bla bla",HttpStatus.NOT_FOUND);
-        }
-        return a;
-    }
-    @RequestMapping(path = "/{idFinalista}/{idRequisito}/{idContratista}/finalizacionExtra",method = RequestMethod.POST)
-    public ResponseEntity<?> InsertarDocumentoFinalizacionExtra(@PathVariable Integer idFinalista, @PathVariable Integer idRequisito, @PathVariable Integer idContratista
-            , MultipartHttpServletRequest request){
-
-        ResponseEntity a;
-        try {
-
-            Iterator<String> itr = request.getFileNames();
-            while(itr.hasNext()) {
-                String uploadedFile = itr.next();
-                MultipartFile file = request.getFile(uploadedFile);
-                File fileForDB=convert(file);
-                DocumentoFinalizacion documentoFinalizacion=new DocumentoFinalizacion(idFinalista,fileForDB,idRequisito,idContratista);
-                manejoDeDocumentosDeEjecucion.insertarDocumentoFinalizacionExtra(documentoFinalizacion);
-
-            }
-            a = new ResponseEntity<>(HttpStatus.ACCEPTED);
-
-        } catch (Exception ex) {
-            Logger.getLogger(Controller.class.getName()).log(Level.SEVERE, null, ex);
-            return new ResponseEntity<>("Error bla bla bla",HttpStatus.NOT_FOUND);
-        }
-        return a;
     }
 
 

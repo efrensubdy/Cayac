@@ -138,24 +138,6 @@ angular.module('services.listFactory', ['ngRoute','ngResource'])
                                                 return $resource('/app/cumplimiento/previoSugeridoNoCumplido/:idFinalista/:idCategoria/:idContratante')
 
                                             })
-      .factory('esC', function($resource) {
-                                                      return $resource('/app/cumplimiento/ejecucionSugeridoCumplido/:idFinalista/:idCategoria/:idContratante')
-
-                                                  })
-
-      .factory('esNC', function($resource) {
-                                                            return $resource('/app/cumplimiento/ejecucionSugeridoNoCumplido/:idFinalista/:idCategoria/:idContratante')
-
-                                                        })
-
-       .factory('fsC', function($resource) {
-                                                            return $resource('/app/cumplimiento/finalizacionSugeridoCumplido/:idFinalista/:idCategoria/:idContratante')
-
-                                                        })
-       .factory('fsNC', function($resource) {
-                                                                   return $resource('/app/cumplimiento/finalizacionSugeridoNoCumplido/:idFinalista/:idCategoria/:idContratante')
-
-                                                               })
        .factory('peC', function($resource) {
                         return $resource('/app/cumplimiento/previoSugeridoExtraCumplido/:idFinalista/:idCategoria/:idContratante')
 
@@ -164,24 +146,6 @@ angular.module('services.listFactory', ['ngRoute','ngResource'])
                          return $resource('/app/cumplimiento/previoSugeridoExtraNoCumplido/:idFinalista/:idCategoria/:idContratante')
 
                                                                       })
-        .factory('eeC', function($resource) {
-                         return $resource('/app/cumplimiento/ejecucionSugeridoExtraCumplido/:idFinalista/:idCategoria/:idContratante')
-
-                                                                      })
-        .factory('eeNC', function($resource) {
-                         return $resource('/app/cumplimiento/ejecucionExtraNoCumplido/:idFinalista/:idCategoria/:idContratante')
-
-                                                                      })
-
-       .factory('feC', function($resource) {
-                                return $resource('/app/cumplimiento/finalizacionExtraCumplido/:idFinalista/:idCategoria/:idContratante')
-
-                                                                             })
-
-       .factory('feNC', function($resource) {
-                                      return $resource('/app/cumplimiento/finalizacionExtraNoCumplido/:idFinalista/:idCategoria/:idContratante')
-
-                                                                                   })
        //Fabrica que se comunica con el controlador de contratista trallendo el estado de los  los requisitos sugeridos
        //cumplidos para subir documentos
        .factory('rEstadoR', function($resource) {
@@ -232,38 +196,6 @@ angular.module('services.listFactory', ['ngRoute','ngResource'])
         .factory('defPreviosExtras', function($resource) {
                                      return $resource('/app/requisitoEstaticos/:idContratante/:idCategoria/previosExtras');
                                  })
-       .factory('defEjecucionSugeridos', function($resource) {
-                                    return $resource('/app/requisitoEstaticos/:idContratante/:idCategoria/ejecucionSugeridos');
-                                })
-      .factory('defEjecucionExtras', function($resource) {
-                                          return $resource('/app/requisitoEstaticos/:idContratante/:idCategoria/ejecucionExtras');
-                                      })
-     .factory('defFinalizacionSugeridos', function($resource) {
-                                               return $resource('/app/requisitoEstaticos/:idContratante/:idCategoria/finalizacionSugeridos');
-                                           })
-     .factory('defFinalizacionExtras', function($resource) {
-                                                    return $resource('/app/requisitoEstaticos/:idContratante/:idCategoria/finalizacionExtras');
-                                                })
-
-
-      .factory('defDinamicosPreviosSugeridos', function($resource) {
-                                   return $resource('/app/dinamicosDefinitivos/:idContratante/:idCategoria/previosSugeridos');
-                               })
-       .factory('defDinamicosPreviosExtras', function($resource) {
-                                          return $resource('/app/dinamicosDefinitivos/:idContratante/:idCategoria/previosExtras');
-                                      })
-            .factory('defDinamicosEjecucionSugeridos', function($resource) {
-                                         return $resource('/app/dinamicosDefinitivos/:idContratante/:idCategoria/ejecucionSugeridos');
-                                     })
-           .factory('defDinamicosEjecucionExtras', function($resource) {
-                                               return $resource('/app/dinamicosDefinitivos/:idContratante/:idCategoria/ejecucionExtras');
-                                           })
-          .factory('defDinamicosFinalizacionSugeridos', function($resource) {
-                                                    return $resource('/app/dinamicosDefinitivos/:idContratante/:idCategoria/finalizacionSugeridos');
-                                                })
-          .factory('defDinamicosFinalizacionExtras', function($resource) {
-                                                         return $resource('/app/dinamicosDefinitivos/:idContratante/:idCategoria/finalizacionExtras');
-                                                     })
 
      .factory('estadoPreviosSugeridos', function($resource) {
                                                     return $resource('/app/requisitoEstaticos/:idContratante/:idCategoria/:idFinalista/estadoPreviosSugeridos');
@@ -271,50 +203,8 @@ angular.module('services.listFactory', ['ngRoute','ngResource'])
       .factory('estadoPreviosExtras', function($resource) {
                                                     return $resource('/app/requisitoEstaticos/:idContratante/:idCategoria/:idFinalista/estadoPreviosExtras');
                                                            })
-       .factory('estadoEjecucionSugeridos', function($resource) {
-                                                    return $resource('/app/requisitoEstaticos/:idContratante/:idCategoria/:idFinalista/estadoEjecucionSugeridos');
-                                                           })
-       .factory('estadoEjecucionExtras', function($resource) {
-                                                   return $resource('/app/requisitoEstaticos/:idContratante/:idCategoria/:idFinalista/estadoEjecucionExtras');
-                                                                })
-        .factory('estadoFinalizacionSugeridos', function($resource) {
-                                                   return $resource('/app/requisitoEstaticos/:idContratante/:idCategoria/:idFinalista/estadoFinalizacionSugeridos');
-                                                                        })
-       .factory('estadoFinalizacionExtras', function($resource) {
-                                                   return $resource('/app/requisitoEstaticos/:idContratante/:idCategoria/:idFinalista/estadoFinalizacionExtras');
-                                                                               })
 
-        .factory('estadoDinamicosPreviosSugeridos', function($resource) {
-                                                           return $resource('/app/dinamicosDefinitivos/:idFinalista/:idCategoria/:idContratante/estadoPreviosSugeridos');
-                                                            })
-        .factory('estadoDinamicosPreviosExtras', function($resource) {
-                                                           return $resource('/app/dinamicosDefinitivos/:idFinalista/:idCategoria/:idContratante/estadoPreviosExtras');
-                                                                  })
-        .factory('estadoDinamicosEjecucionSugeridos', function($resource) {
-                                                           return $resource('/app/dinamicosDefinitivos/:idFinalista/:idCategoria/:idContratante/estadoEjecucionSugeridos');
-                                                                  })
-        .factory('estadoDinamicosEjecucionExtras', function($resource) {
-                                                          return $resource('/app/dinamicosDefinitivos/:idFinalista/:idCategoria/:idContratante/estadoEjecucionExtras');
-                                                                       })
-        .factory('estadoDinamicosFinalizacionSugeridos', function($resource) {
-                                                          return $resource('/app/dinamicosDefinitivos/:idFinalista/:idCategoria/:idContratante/estadoFinalizacionSugeridos');
-                                                                               })
-        .factory('estadoDinamicosFinalizacionExtras', function($resource) {
-                                                          return $resource('/app/dinamicosDefinitivos/:idFinalista/:idCategoria/:idContratante/estadoFinalizacionExtras');
-                                                                                      })
 
-        .factory('historialPreviosDinamicos', function($resource) {
-                                                              return $resource('/app/docuDinaPre/previos/:idRequisito/:idFinalista');
-
-                                                                                          })
-        .factory('historialPreviosDinamicosExtras', function($resource) {
-                                                                      return $resource('/app/docuDinaPre/extras/:idRequisito/:idFinalista');
-
-                                                                                                  })
-        .factory('historialDeMatrices', function($resource) {
-                                            return $resource('/app/docuDinaPre/historialMatriz/:idRequisito/:idFinalista');
-
-        })
         // Fabrica que se comunica con el controlador de Requisitos Extras
                 // a partir de la variable que recibe que es el id del Contratista
                 // trae todos los requisitos Extras de ese contratista si existe
@@ -348,41 +238,6 @@ angular.module('services.listFactory', ['ngRoute','ngResource'])
         .factory('previosExtras', function($resource) {
                                     return $resource('/app/finalista/previosExtras/:idContratante/:idCategoria');
                                 })
-       .factory('ejecucion', function($resource) {
-                                   return $resource('/app/finalista/ejecucionSugeridos/:idContratante/:idCategoria');
-                               })
-        .factory('ejecucionExtras', function($resource) {
-                                           return $resource('/app/finalista/ejecucionExtras/:idContratante/:idCategoria');
-                                       })
-        .factory('finalizacion', function($resource) {
-                                  return $resource('/app/finalista/finalizacionSugeridos/:idContratante/:idCategoria');
-                              })
-         .factory('finalizacionExtras', function($resource) {
-                                          return $resource('/app/finalista/finalizacionExtras/:idContratante/:idCategoria');
-                                      })
-
-
-        .factory('dinamicosPrevios', function($resource) {
-                            return $resource('/app/dinamicos/previosSugeridos/:idContratante/:idCategoria');
-                        })
-        .factory('dinamicosPreviosExtras', function($resource) {
-                                    return $resource('/app/dinamicos/previosExtras/:idContratante/:idCategoria');
-                                })
-       .factory('dinamicosEjecucion', function($resource) {
-                                   return $resource('/app/dinamicos/ejecucionSugeridos/:idContratante/:idCategoria');
-                               })
-        .factory('dinamicosEjecucionExtras', function($resource) {
-                                           return $resource('/app/dinamicos/ejecucionExtras/:idContratante/:idCategoria');
-                                       })
-        .factory('dinamicosFinalizacion', function($resource) {
-                                  return $resource('/app/dinamicos/finalizacionSugeridos/:idContratante/:idCategoria');
-                              })
-         .factory('dinamicosFinalizacionExtras', function($resource) {
-                                          return $resource('/app/dinamicos/finalizacionExtras/:idContratante/:idCategoria');
-                                      })
-
-
-
         //A partir de este punto los metodos son de tipo POST para estas Fabrica
 
         // Esta fabrica se encarga de mandar un objeto de tipo USER que proviene de un contratante
@@ -415,45 +270,11 @@ angular.module('services.listFactory', ['ngRoute','ngResource'])
          .factory('requisitosEEliminar', function($resource) {
                                                              return $resource('/app/requisitosExtras/eliminar/:idRequisito/:idContratante');
                                                                    })
-.factory('eliminarPS', function($resource) {
-                                                                      return $resource('/app/eliminar/eliminarPS/:idRequisito/:idContratante');
+        .factory('eliminarPS', function($resource) {
+               return $resource('/app/eliminar/eliminarPS/:idRequisito/:idContratante');
                                                                             })
-.factory('eliminarPE', function($resource) {
-                                                                      return $resource('/app/eliminar/eliminarPE/:idRequisito/:idContratante');
-                                                                            })
-
-.factory('eliminarES', function($resource) {
-                                                                            return $resource('/app/eliminar/eliminarES/:idRequisito/:idContratante');
-                                                                                  })
-
-.factory('eliminarEE', function($resource) {
-                                                                      return $resource('/app/eliminar/eliminarEE/:idRequisito/:idContratante');
-                                                                            })
-.factory('eliminarFS', function($resource) {
-                                                                      return $resource('/app/eliminar/eliminarFS/:idRequisito/:idContratante');
-                                                                            })
-.factory('eliminarFE', function($resource) {
-                                                                      return $resource('/app/eliminar/eliminarFE/:idRequisito/:idContratante');
-                                                                            })
-.factory('eliminarDPS', function($resource) {
-                                                                      return $resource('/app/eliminar/eliminarDPS/:idRequisito/:idContratante');
-                                                                            })
-.factory('eliminarDPE', function($resource) {
-                                                                      return $resource('/app/eliminar/eliminarDPE/:idRequisito/:idContratante');
-                                                                            })
-
-.factory('eliminarDES', function($resource) {
-                                                                            return $resource('/app/eliminar/eliminarDES/:idRequisito/:idContratante');
-                                                                                  })
-
-.factory('eliminarDEE', function($resource) {
-                                                                      return $resource('/app/eliminar/eliminarDEE/:idRequisito/:idContratante');
-                                                                            })
-.factory('eliminarDFS', function($resource) {
-                                                                      return $resource('/app/eliminar/eliminarDFS/:idRequisito/:idContratante');
-                                                                            })
-.factory('eliminarDFE', function($resource) {
-                                                                      return $resource('/app/eliminar/eliminarDFE/:idRequisito/:idContratante');
+        .factory('eliminarPE', function($resource) {
+              return $resource('/app/eliminar/eliminarPE/:idRequisito/:idContratante');
                                                                             })
 
         //Esta fabrica manda las imagenes, los documentos Y las fechas para luego se almacenen
@@ -471,6 +292,12 @@ angular.module('services.listFactory', ['ngRoute','ngResource'])
        .factory('fechaLimiteContratante', function($resource) {
                                                             return $resource('/app/limites/limit/:idContratante');
                                                                                   })
+       .factory('insertarPrevioSugerido', function($resource) {
+                                          return $resource('/app/requisitoEstaticos/previosSugerido/:id');
+                                      })
+        .factory('insertarPrevioExtra', function($resource) {
+                                                  return $resource('/app/requisitoEstaticos/previosExtra/:id');
+                                              })
        .factory('finalistas', function($resource) {
                    return $resource('/app/finalista/:id');
                })
@@ -482,44 +309,6 @@ angular.module('services.listFactory', ['ngRoute','ngResource'])
         .factory('nuevoContrato', function($resource) {
                            return $resource('/app/contratos/:id');
                        })
-        .factory('insertarPrevioSugerido', function($resource) {
-                                   return $resource('/app/requisitoEstaticos/previoSugerido/:id');
-                               })
-        .factory('insertarPrevioExtra', function($resource) {
-                                           return $resource('/app/requisitoEstaticos/previoExtra/:id');
-                                       })
-        .factory('insertarEjecucionSugerido', function($resource) {
-                                                   return $resource('/app/requisitoEstaticos/ejecucionSugerido/:id');
-                                               })
-        .factory('insertarEjecucionExtra', function($resource) {
-                                               return $resource('/app/requisitoEstaticos/ejecucionExtra/:id');
-                                           })
-        .factory('insertarFinalizacionSugerido', function($resource) {
-                                                   return $resource('/app/requisitoEstaticos/finalizacionSugerido/:id');
-                                               })
-        .factory('insertarFinalizacionExtra', function($resource) {
-                                                   return $resource('/app/requisitoEstaticos/finalizacionExtra/:id');
-                                               })
-
-
-        .factory('iDinamicoPrevioSugerido', function($resource) {
-                                   return $resource('/app/dinamicos/previoSugerido/:id');
-                               })
-        .factory('iDinamicoPrevioExtra', function($resource) {
-                                           return $resource('/app/dinamicos/previoExtra/:id');
-                                       })
-        .factory('iDinamicoEjecucionSugerido', function($resource) {
-                                                   return $resource('/app/dinamicos/ejecucionSugerido/:id');
-                                               })
-        .factory('iDinamicoEjecucionExtra', function($resource) {
-                                               return $resource('/app/dinamicos/ejecucionExtra/:id');
-                                           })
-        .factory('iDinamicoFinalizacionSugerido', function($resource) {
-                                                   return $resource('/app/dinamicos/finalizacionSugerido/:id');
-                                               })
-        .factory('iDinamicoFinalizacionExtra', function($resource) {
-                                                   return $resource('/app/dinamicos/finalizacionExtra/:id');
-                                               })
 
         //Esta fabrica se encarga de agregar un contratistas
        .factory('contratistas', function($resource) {

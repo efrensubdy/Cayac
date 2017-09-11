@@ -38,26 +38,6 @@ public class ManejoDeFinalistaBD implements AdministradorDeFinalistas{
     }
 
     @Override
-    public void insertarEjecucionSugerido(RequisitoObligatorio nuevoEjecucionSugerido) throws SQLException, ClassNotFoundException {
-        finalistDB.insertarEjecucionSugerido(nuevoEjecucionSugerido);
-    }
-
-    @Override
-    public void insertarEjecucionExtra(RequisitoExtra nuevoEjecucionExtra) throws SQLException, ClassNotFoundException {
-       finalistDB.insertarEjecucionExtra(nuevoEjecucionExtra);
-    }
-
-    @Override
-    public void insertarFinalizacionSugerido(RequisitoObligatorio nuevoFinalizacionSugerido) throws SQLException, ClassNotFoundException {
-       finalistDB.insertarFinalizacionSugerido(nuevoFinalizacionSugerido);
-    }
-
-    @Override
-    public void insertarFinalizacionExtra(RequisitoExtra nuevoFinalizacionExtra) throws SQLException, ClassNotFoundException {
-        finalistDB.insertarFinalizacionExtra(nuevoFinalizacionExtra);
-    }
-
-    @Override
     public List<Contratista> posiblesFinalistas(int idContratante,int idContrato) throws SQLException, ClassNotFoundException {
         System.out.println(idContratante);
         System.out.println(idContrato);
@@ -79,54 +59,16 @@ public class ManejoDeFinalistaBD implements AdministradorDeFinalistas{
         return finalistDB.llenarRequisitosExtrasPrevios(idContratante, idCategoria);
     }
 
-    @Override
-    public List<Requisito> llenarEjecucionSugeridos(int idContratante, int idCategoria) throws SQLException, ClassNotFoundException {
-        return finalistDB.llenarRequisitosEjecucion(idContratante, idCategoria);
-    }
-
-    @Override
-    public List<RequisitoExtra> llenarEjecucionExtras(int idContratante, int idCategoria) throws SQLException, ClassNotFoundException {
-        return finalistDB.llenarRequisitosExtrasEjecucion(idContratante, idCategoria);
-    }
-
-    @Override
-    public List<Requisito> llenarFinalizacionSugeridos(int idContratante, int idCategoria) throws SQLException, ClassNotFoundException {
-        return finalistDB.llenarRequisitosfinalizacion(idContratante, idCategoria);
-    }
-
-    @Override
-    public List<RequisitoExtra> llenarFinalizacionExtras(int idContratante, int idCategoria) throws SQLException, ClassNotFoundException {
-        return finalistDB.llenarRequisitosExtrasFinalizacion(idContratante, idCategoria);
-    }
 
     @Override
     public List<RequisitoObligatorio> previosDefinitivosSugeridos(int idContratante, int idCategoria) throws SQLException, ClassNotFoundException {
         return finalistDB.requisitosPreviosDefinitivosSugeridos(idContratante, idCategoria);
     }
 
-    @Override
-    public List<RequisitoObligatorio> ejecucionDefinitivosSugeridos(int idContratante, int idCategoria) throws SQLException, ClassNotFoundException {
-        return finalistDB.requisitosEjecucionDefinitivosSugeridos(idContratante, idCategoria);
-    }
-
-    @Override
-    public List<RequisitoObligatorio> finalizacionDefinitivosSugeridos(int idContratante, int idCategoria) throws SQLException, ClassNotFoundException {
-        return finalistDB.requisitosFinalizacionDefinitivosSugeridos(idContratante, idCategoria);
-    }
 
     @Override
     public List<RequisitoExtra> previosDefinitivosExtras(int idContratante, int idCategoria) throws SQLException, ClassNotFoundException {
         return finalistDB.requisitosPreviosDefinitivosExtras(idContratante, idCategoria);
-    }
-
-    @Override
-    public List<RequisitoExtra> ejecucionDefinitivosExtras(int idContratante, int idCategoria) throws SQLException, ClassNotFoundException {
-        return finalistDB.requisitosEjecucionDefinitivosExtras(idContratante, idCategoria);
-    }
-
-    @Override
-    public List<RequisitoExtra> finalizacionDefinitivosExtras(int idContratante, int idCategoria) throws SQLException, ClassNotFoundException {
-        return finalistDB.requisitosFinalizacionDefinitivosExtras(idContratante, idCategoria);
     }
 
     @Override
@@ -135,28 +77,9 @@ public class ManejoDeFinalistaBD implements AdministradorDeFinalistas{
     }
 
     @Override
-    public List<RequisitoObligatorio> estadoEjecucionSugeridos(int idContratante, int idCategoria,int idFinalista) throws SQLException, ClassNotFoundException {
-        return finalistDB.estadoDeRequisitosEjecucionSugeridos(idContratante, idCategoria, idFinalista);
-    }
-
-    @Override
-    public List<RequisitoObligatorio> estadoFinalizacionSugeridos(int idContratante, int idCategoria ,int idFinalista) throws SQLException, ClassNotFoundException {
-        return finalistDB.estadoDeRequisitosFinalizacionSugeridos(idContratante, idCategoria, idFinalista);
-    }
-
-    @Override
     public List<RequisitoExtra> estadoPreviosExtras(int idContratante, int idCategoria,int idFinalista) throws SQLException, ClassNotFoundException {
         return finalistDB.estadoRequisitosPreviosExtras(idContratante, idCategoria,idFinalista);
     }
 
-    @Override
-    public List<RequisitoExtra> estadoEjecucionExtras(int idContratante, int idCategoria,int idFinalista) throws SQLException, ClassNotFoundException {
-        return finalistDB.estadoRequisitoseEjecucionExtras(idContratante, idCategoria, idFinalista);
-    }
-
-    @Override
-    public List<RequisitoExtra> estadoFinalizacionExtras(int idContratante, int idCategoria,int idFinalista) throws SQLException, ClassNotFoundException {
-        return finalistDB.estadoRequisitosFinalizacionExtras(idContratante, idCategoria,idFinalista);
-    }
 
 }

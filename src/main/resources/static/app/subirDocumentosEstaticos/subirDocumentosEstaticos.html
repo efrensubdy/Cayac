@@ -1,6 +1,7 @@
 
 <div class="w3-container">
     <div class="container text-center">
+        <div class="col-xs-11">
         <h4><b>GESTIÓN ESTATICA</b></h4>
         <p><b>A CONTINUACIÓN ECONTRARÁ UN TABLA CON LOS REQUISITOS APLICADOS POR SU CONTRATANTE Y UN ESPACIO DONDE SUBIRA LOS SOPORTES
               AL SUBIR EL SOPORTE SE RECOMIENDA ACTUALIZAR LA PAGINA PARA QUE EL ESTADO CAMBIE   </b></p>
@@ -38,56 +39,9 @@
                 <div ng-show="{{todo.estado}}" class="w3-col" style="width:50px"><i class="w3-xxlarge fa fa-check-square"></i></div>
             </td>
         </tr>
-        <tr  ng-repeat="todo in defEjecucionSugeridos" >
-            <td width="600px"  >{{todo.descripcion}}</td>
-            <td width="800px" >
-                <div ng-controller = "subirDocumentosEstaticosCtrl">
-                    <input type="file" file-model="myDocSugeridoEjecucion" class="form-control"/></file-model>
-                    <button type="button" class="btn btn-primary align-middle" ng-click="agregarEstaticosSugeridosEjecucion($event,todo)" ng-model="tablita">Subir</button>
-                </div>
-            </td>
-            <td width="100px">
-                <div ng-show="{{todo.estado}}" class="w3-col" style="width:50px"><i class="w3-xxlarge fa fa-check-square"></i></div>
-            </td>
-        </tr>
-        <tr  ng-repeat="todo in defEjecucionExtras" >
-            <td width="600px"  >{{todo.descripcion}}</td>
-            <td width="800px">
-                <div  ng-controller = "subirDocumentosEstaticosCtrl">
-                    <input type="file" file-model="myDocExtraEjecucion" class="form-control"/></file-model>
-                    <button type="button" class="btn btn-primary align-middle" ng-click="agregarEstaticosExtrasEjecucion($event,todo)" ng-model="tablita">Subir</button>
-                </div>
-            </td>
-            <td width="100px">
-                <div ng-show="{{todo.estado}}" class="w3-col" style="width:50px"><i class="w3-xxlarge fa fa-check-square"></i></div>
-            </td>
-        </tr>
-        <tr  ng-repeat="todo in defFinalizacionSugeridos" >
-            <td width="600px"  >{{todo.descripcion}}</td>
-            <td width="800px">
-                <div  ng-controller = "subirDocumentosEstaticosCtrl">
-                    <input type="file" file-model="myDocSugeridoFinalizacion" class="form-control"/></file-model>
-                    <button type="button" class="btn btn-primary align-middle" ng-click="agregarEstaticosSugeridosFinalizacion($event,todo)" ng-model="tablita">Subir</button>
-                </div>
-            </td>
-            <td width="100px">
-                <div ng-show="{{todo.estado}}" class="w3-col" style="width:50px"><i class="w3-xxlarge fa fa-check-square"></i></div>
-            </td>
-        </tr>
-        <tr  ng-repeat="todo in defFinalizacionExtras" >
-            <td width="600px"  >{{todo.descripcion}}</td>
-            <td width="800px">
-                <div ng-controller = "subirDocumentosEstaticosCtrl">
-                    <input type="file" file-model="myDocExtraFinailizacion" class="form-control"/></file-model>
-                    <button type="button" class="btn btn-primary align-middle" ng-click="agregarEstaticosExtrasFinalizacion($event,todo)" ng-model="tablita">Subir</button>
-                </div>
-            </td>
-            <td width="100px">
-                <div ng-show="{{todo.estado}}" class="w3-col" style="width:50px"><i class="w3-xxlarge fa fa-check-square"></i></div>
-            </td>
-        </tr>
         </tbody>
     </table>
+        </div>
     </div>
 </div>
 <br>

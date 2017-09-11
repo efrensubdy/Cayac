@@ -1,7 +1,7 @@
 
 -- select all--
 
-SELECT * FROM matrizDePeligros;		
+SELECT * FROM servicioacontratar;	
 SELECT * FROM documentosDinamicosPreviosExtras;
 SELECT * FROM documentosDinamicosPrevios;
 SELECT * FROM documentosDinamicosPrevios WHERE idRequisito = 1 AND idFinalista = 4;

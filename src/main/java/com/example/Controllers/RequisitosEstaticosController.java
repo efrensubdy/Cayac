@@ -61,62 +61,7 @@ public class RequisitosEstaticosController {
         }
         return a;
     }
-    @RequestMapping(value="{idContratante}/{idCategoria}/ejecucionSugeridos",method = RequestMethod.GET)
-    public ResponseEntity<?> obtenerRequisitosEjecucionSugeridos(@PathVariable int idContratante, @PathVariable int idCategoria){
 
-        ResponseEntity a;
-        try {
-            //obtener datos que se enviarán a través del API
-            a = new ResponseEntity<>(manejoDeFinalistaBD.ejecucionDefinitivosSugeridos(idContratante, idCategoria), HttpStatus.ACCEPTED);
-
-        } catch (Exception ex) {
-            Logger.getLogger(Controller.class.getName()).log(Level.SEVERE, null, ex);
-            return new ResponseEntity<>("Error bla bla bla",HttpStatus.NOT_FOUND);
-        }
-        return a;
-    }
-    @RequestMapping(value="{idContratante}/{idCategoria}/ejecucionExtras",method = RequestMethod.GET)
-    public ResponseEntity<?> obtenerRequisitosEjecucionExtras(@PathVariable int idContratante, @PathVariable int idCategoria){
-
-        ResponseEntity a;
-        try {
-            //obtener datos que se enviarán a través del API
-            a = new ResponseEntity<>(manejoDeFinalistaBD.ejecucionDefinitivosExtras(idContratante, idCategoria), HttpStatus.ACCEPTED);
-
-        } catch (Exception ex) {
-            Logger.getLogger(Controller.class.getName()).log(Level.SEVERE, null, ex);
-            return new ResponseEntity<>("Error bla bla bla",HttpStatus.NOT_FOUND);
-        }
-        return a;
-    }
-    @RequestMapping(value="{idContratante}/{idCategoria}/finalizacionSugeridos",method = RequestMethod.GET)
-    public ResponseEntity<?> obtenerRequisitosFinalizacionSugeridos(@PathVariable int idContratante, @PathVariable int idCategoria){
-
-        ResponseEntity a;
-        try {
-            //obtener datos que se enviarán a través del API
-            a = new ResponseEntity<>(manejoDeFinalistaBD.finalizacionDefinitivosSugeridos(idContratante, idCategoria), HttpStatus.ACCEPTED);
-
-        } catch (Exception ex) {
-            Logger.getLogger(Controller.class.getName()).log(Level.SEVERE, null, ex);
-            return new ResponseEntity<>("Error bla bla bla",HttpStatus.NOT_FOUND);
-        }
-        return a;
-    }
-    @RequestMapping(value="{idContratante}/{idCategoria}/finalizacionExtras",method = RequestMethod.GET)
-    public ResponseEntity<?> obtenerRequisitosFinalizacionExtras(@PathVariable int idContratante, @PathVariable int idCategoria){
-
-        ResponseEntity a;
-        try {
-            //obtener datos que se enviarán a través del API
-            a = new ResponseEntity<>(manejoDeFinalistaBD.finalizacionDefinitivosExtras(idContratante, idCategoria), HttpStatus.ACCEPTED);
-
-        } catch (Exception ex) {
-            Logger.getLogger(Controller.class.getName()).log(Level.SEVERE, null, ex);
-            return new ResponseEntity<>("Error bla bla bla",HttpStatus.NOT_FOUND);
-        }
-        return a;
-    }
     @RequestMapping(value="{idContratante}/{idCategoria}/{idFinalista}/estadoPreviosSugeridos",method = RequestMethod.GET)
     public ResponseEntity<?> estadoPreviosSugeridos(@PathVariable int idContratante, @PathVariable int idCategoria,@PathVariable int idFinalista){
 
@@ -145,67 +90,12 @@ public class RequisitosEstaticosController {
         }
         return a;
     }
-    @RequestMapping(value="{idContratante}/{idCategoria}/{idFinalista}/estadoEjecucionSugeridos",method = RequestMethod.GET)
-    public ResponseEntity<?> estadoEjecucionSugeridos(@PathVariable int idContratante, @PathVariable int idCategoria, @PathVariable int idFinalista){
-
-        ResponseEntity a;
-        try {
-            //obtener datos que se enviarán a través del API
-            a = new ResponseEntity<>(manejoDeFinalistaBD.estadoEjecucionSugeridos(idContratante, idCategoria,idFinalista), HttpStatus.ACCEPTED);
-
-        } catch (Exception ex) {
-            Logger.getLogger(Controller.class.getName()).log(Level.SEVERE, null, ex);
-            return new ResponseEntity<>("Error bla bla bla",HttpStatus.NOT_FOUND);
-        }
-        return a;
-    }
-    @RequestMapping(value="{idContratante}/{idCategoria}/{idFinalista}/estadoEjecucionExtras",method = RequestMethod.GET)
-    public ResponseEntity<?> estadoEjecucionExtras(@PathVariable int idContratante, @PathVariable int idCategoria, @PathVariable int idFinalista){
-
-        ResponseEntity a;
-        try {
-            //obtener datos que se enviarán a través del API
-            a = new ResponseEntity<>(manejoDeFinalistaBD.estadoEjecucionExtras(idContratante, idCategoria,idFinalista), HttpStatus.ACCEPTED);
-
-        } catch (Exception ex) {
-            Logger.getLogger(Controller.class.getName()).log(Level.SEVERE, null, ex);
-            return new ResponseEntity<>("Error bla bla bla",HttpStatus.NOT_FOUND);
-        }
-        return a;
-    }
-    @RequestMapping(value="{idContratante}/{idCategoria}/{idFinalista}/estadoFinalizacionSugeridos",method = RequestMethod.GET)
-    public ResponseEntity<?> estadoFinalizacionSugeridos(@PathVariable int idContratante, @PathVariable int idCategoria,@PathVariable int idFinalista){
-
-        ResponseEntity a;
-        try {
-            //obtener datos que se enviarán a través del API
-            a = new ResponseEntity<>(manejoDeFinalistaBD.estadoFinalizacionSugeridos(idContratante, idCategoria,idFinalista), HttpStatus.ACCEPTED);
-
-        } catch (Exception ex) {
-            Logger.getLogger(Controller.class.getName()).log(Level.SEVERE, null, ex);
-            return new ResponseEntity<>("Error bla bla bla",HttpStatus.NOT_FOUND);
-        }
-        return a;
-    }
-    @RequestMapping(value="{idContratante}/{idCategoria}/{idFinalista}/estadoFinalizacionExtras",method = RequestMethod.GET)
-    public ResponseEntity<?> estadoFinalizacionExtra(@PathVariable int idContratante, @PathVariable int idCategoria,@PathVariable int idFinalista){
-
-        ResponseEntity a;
-        try {
-            //obtener datos que se enviarán a través del API
-            a = new ResponseEntity<>(manejoDeFinalistaBD.estadoFinalizacionExtras(idContratante, idCategoria,idFinalista), HttpStatus.ACCEPTED);
-
-        } catch (Exception ex) {
-            Logger.getLogger(Controller.class.getName()).log(Level.SEVERE, null, ex);
-            return new ResponseEntity<>("Error bla bla bla",HttpStatus.NOT_FOUND);
-        }
-        return a;
-    }
-    @RequestMapping(value="previoSugerido",method = RequestMethod.POST)
+    @RequestMapping(value="previosSugerido",method = RequestMethod.POST)
     public ResponseEntity<?> registroPrevioSugerido(@RequestBody RequisitoObligatorio requisitoObligatorio){
         ResponseEntity a;
         try {
             //obtener datos que se enviarán a través del API
+            System.out.println("jejeje");
             manejoDeFinalistaBD.insertarPrevioSugerido(requisitoObligatorio);
             a = new ResponseEntity<>(HttpStatus.ACCEPTED);
 
@@ -215,68 +105,12 @@ public class RequisitosEstaticosController {
         }
         return a;
     }
-    @RequestMapping(value="previoExtra",method = RequestMethod.POST)
+    @RequestMapping(value="previosExtra",method = RequestMethod.POST)
     public ResponseEntity<?> registroPrevioExtra(@RequestBody RequisitoExtra requisitoExtra){
         ResponseEntity a;
         try {
             //obtener datos que se enviarán a través del API
             manejoDeFinalistaBD.insertarPrevioExtra(requisitoExtra);
-            a = new ResponseEntity<>(HttpStatus.ACCEPTED);
-
-        } catch (Exception ex) {
-            Logger.getLogger(Controller.class.getName()).log(Level.SEVERE, null, ex);
-            return new ResponseEntity<>("Error bla bla bla",HttpStatus.NOT_FOUND);
-        }
-        return a;
-    }
-    @RequestMapping(value="ejecucionSugerido",method = RequestMethod.POST)
-    public ResponseEntity<?> registroEjecucionSugerido(@RequestBody RequisitoObligatorio requisitoObligatorio){
-        ResponseEntity a;
-        try {
-            //obtener datos que se enviarán a través del API
-            manejoDeFinalistaBD.insertarEjecucionSugerido(requisitoObligatorio);
-            a = new ResponseEntity<>(HttpStatus.ACCEPTED);
-
-        } catch (Exception ex) {
-            Logger.getLogger(Controller.class.getName()).log(Level.SEVERE, null, ex);
-            return new ResponseEntity<>("Error bla bla bla",HttpStatus.NOT_FOUND);
-        }
-        return a;
-    }
-    @RequestMapping(value="ejecucionExtra",method = RequestMethod.POST)
-    public ResponseEntity<?> registroEjecucionExtra(@RequestBody RequisitoExtra requisitoExtra){
-        ResponseEntity a;
-        try {
-            //obtener datos que se enviarán a través del API
-            manejoDeFinalistaBD.insertarEjecucionExtra(requisitoExtra);
-            a = new ResponseEntity<>(HttpStatus.ACCEPTED);
-
-        } catch (Exception ex) {
-            Logger.getLogger(Controller.class.getName()).log(Level.SEVERE, null, ex);
-            return new ResponseEntity<>("Error bla bla bla",HttpStatus.NOT_FOUND);
-        }
-        return a;
-    }
-    @RequestMapping(value="finalizacionSugerido",method = RequestMethod.POST)
-    public ResponseEntity<?> registroFinalizacionSugerido(@RequestBody RequisitoObligatorio requisitoObligatorio){
-        ResponseEntity a;
-        try {
-            //obtener datos que se enviarán a través del API
-            manejoDeFinalistaBD.insertarFinalizacionSugerido(requisitoObligatorio);
-            a = new ResponseEntity<>(HttpStatus.ACCEPTED);
-
-        } catch (Exception ex) {
-            Logger.getLogger(Controller.class.getName()).log(Level.SEVERE, null, ex);
-            return new ResponseEntity<>("Error bla bla bla",HttpStatus.NOT_FOUND);
-        }
-        return a;
-    }
-    @RequestMapping(value="finalizacionExtra",method = RequestMethod.POST)
-    public ResponseEntity<?> registroFinalizacionExtra(@RequestBody RequisitoExtra requisitoExtra){
-        ResponseEntity a;
-        try {
-            //obtener datos que se enviarán a través del API
-            manejoDeFinalistaBD.insertarFinalizacionExtra(requisitoExtra);
             a = new ResponseEntity<>(HttpStatus.ACCEPTED);
 
         } catch (Exception ex) {

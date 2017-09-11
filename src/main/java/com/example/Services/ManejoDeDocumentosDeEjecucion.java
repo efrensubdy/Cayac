@@ -29,23 +29,4 @@ public class ManejoDeDocumentosDeEjecucion implements AdministradorDeDocumentosE
         documentosEjecucionDB.insertarDocumentoPrevioExtra(documentoPrevio);
     }
 
-    @Override
-    public void insertarDocumentoEjecucionSugerido(DocumentoEjecucion documentoEjecucion) throws SQLException, ClassNotFoundException,IOException {
-        documentosEjecucionDB.insertarDocumentoEjecucionSugerido(documentoEjecucion);
-    }
-
-    @Override
-    public void insertarDocumentoEjecucionExtra(DocumentoEjecucion documentoEjecucion) throws SQLException, ClassNotFoundException, IOException {
-        documentosEjecucionDB.insertarDocumentoEjecucionExtra(documentoEjecucion);
-    }
-
-    @Override
-    public void insertarDocumentoFinalizacionSugerido(DocumentoFinalizacion documentoFinalizacion) throws SQLException, ClassNotFoundException, IOException {
-        documentosEjecucionDB.insertarDocumentoFinalizacionSugerido(documentoFinalizacion);
-    }
-
-    @Override
-    public void insertarDocumentoFinalizacionExtra(DocumentoFinalizacion documentoFinalizacion) throws SQLException, ClassNotFoundException, IOException {
-        documentosEjecucionDB.insertarDocumentoFinalizacionExtra(documentoFinalizacion);
-    }
 }
