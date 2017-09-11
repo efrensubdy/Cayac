@@ -1,10 +1,7 @@
 
 -- select all--
-
+SELECT * FROM documentosestaticospreviosobli;
 SELECT * FROM servicioacontratar;	
-SELECT * FROM documentosDinamicosPreviosExtras;
-SELECT * FROM documentosDinamicosPrevios;
-SELECT * FROM documentosDinamicosPrevios WHERE idRequisito = 1 AND idFinalista = 4;
 SELECT * FROM administrador;
 SELECT * FROM arl;
 SELECT * FROM servicioacontratar;
@@ -38,7 +35,7 @@ SELECT *  FROM requisitosdeejecuionsugeridosestaticosprevio;
 SELECT *  FROM documentosestaticospreviosobli;
 SELECT * FROM finalista;
  
- DELETE FROM imagenes WHERE idImagenes=1;
+
 SELECT *  FROM finalista INNER JOIN contratista WHERE finalista.idContratista=contratista.idContratista;
 
 SELECT * FROM requidinadeffinalsug AS re INNER JOIN requidinafinalsug AS r  WHERE re.idRequisito=r.id ;

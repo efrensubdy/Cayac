@@ -83,38 +83,7 @@ angular.module('myApp.ejecucionCNCE', ['ngRoute'])
            }
 
 
-           $scope.function1=function(){
-                   console.log($scope.tipoEstadistica)
-                   switch ($scope.tipoEstadistica) {
-                       case 1:
-                           $scope.banderaPrevio=true;
-                           $scope.banderaEjecucion=false;
-                           $scope.banderaFinalizacion=false;
-                            $scope.bandera=false;
-                              $scope.bandera2=false;
-                             $scope.bandera3=false;
-                           break;
-                       case 2:
-                           $scope.banderaPrevio=false;
-                           $scope.banderaEjecucion=true;
-                           $scope.banderaFinalizacion=false;
-                            $scope.bandera=false;
-                             $scope.bandera2=false;
-                              $scope.bandera3=false;
 
-                           break;
-                       case 3:
-                          $scope.banderaPrevio=false;
-                          $scope.banderaEjecucion=false;
-                          $scope.banderaFinalizacion=true;
-                          $scope.bandera=false;
-                          $scope.bandera2=false;
-                          $scope.bandera3=false;
-
-                          break;
-
-                   }
-           }
            $scope.hideGrafico=function(a){
                   switch(a){
                                case 1:

@@ -120,69 +120,15 @@ INSERT INTO extras VALUES (5,"TOMAR DECISIONES",4);
  FIELDS TERMINATED BY ';'
  LINES TERMINATED BY '\n'; 
  
- SELECT * FROM requisitosdeejecuionsugeridosestaticosprevio;
+ 
  LOAD DATA LOCAL INFILE "/Users/HSEQ/Documents/ejecucionEstaticaPrevia.csv" INTO TABLE requisitosdeejecuionsugeridosestaticosprevio
  FIELDS TERMINATED BY ';'
  LINES TERMINATED BY '\n'; 
  
-  LOAD DATA LOCAL INFILE "/Users/HSEQ/Documents/ejecucionDuranteContratoEstatico.csv" INTO TABLE requisitosdeejecuionsugeridosestaticosejecucionactividades
- FIELDS TERMINATED BY ';'
- LINES TERMINATED BY '\n'; 
  
- 
-  LOAD DATA LOCAL INFILE "/Users/HSEQ/Documents/ejecucionFinalizacionEstatica.csv" INTO TABLE requisitosdeejecuionsugeridosestaticosfinalizaciondeactivdades
- FIELDS TERMINATED BY ';'
- LINES TERMINATED BY '\n'; 
- 
- -- Aqui quedamos --
- 
-  LOAD DATA LOCAL INFILE "/Users/HSEQ/Documents/DinamicosPrevios.csv" INTO TABLE requidinapresug
- FIELDS TERMINATED BY ';'
- LINES TERMINATED BY '\n'; 
- 
-   LOAD DATA LOCAL INFILE "/Users/HSEQ/Documents/DinamicosEjecucion.csv" INTO TABLE requidinaejecsug
- FIELDS TERMINATED BY ';'
- LINES TERMINATED BY '\n'; 
- 
- SELECT * FROM requisitosdeejecuionextrasestaticosprevio;
- 
+
  
  INSERT INTO requisitosdeejecuionextrasestaticosprevio(requisito,idCategoria) VALUES ("REQUISITO PREVIO ESTATICO EXTRA 1",1);
  INSERT INTO requisitosdeejecuionextrasestaticosprevio(requisito,idCategoria) VALUES ("REQUISITO PREVIO ESTATICO EXTRA 2",2);
  INSERT INTO requisitosdeejecuionextrasestaticosprevio(requisito,idCategoria) VALUES ("REQUISITO PREVIO ESTATICO EXTRA 3",3);
  INSERT INTO requisitosdeejecuionextrasestaticosprevio(requisito,idCategoria) VALUES ("REQUISITO PREVIO ESTATICO EXTRA 4",4);
- 
- 
- 
- 
-INSERT INTO requisitosdeejecuionextrasestaticosejecucionactividades (requisito,idCategoria) VALUES ("REQUISITO EJECUCION ESTATICO EXTRA 1",1); 
-INSERT INTO requisitosdeejecuionextrasestaticosejecucionactividades (requisito,idCategoria) VALUES ("REQUISITO EJECUCION ESTATICO EXTRA 2",2); 
-INSERT INTO requisitosdeejecuionextrasestaticosejecucionactividades (requisito,idCategoria) VALUES ("REQUISITO EJECUCION ESTATICO EXTRA 3",3); 
-INSERT INTO requisitosdeejecuionextrasestaticosejecucionactividades (requisito,idCategoria) VALUES ("REQUISITO EJECUCION ESTATICO EXTRA 4",4); 
-
- 
-INSERT INTO requisitosdeejecuionextrasestaticosfinalizaciondeactivdades (requisito,idCategoria) VALUES ("REQUISITO FINALIZACION EXTRA 1",1);
-INSERT INTO requisitosdeejecuionextrasestaticosfinalizaciondeactivdades (requisito,idCategoria) VALUES ("REQUISITO FINALIZACION EXTRA 2",2);
-INSERT INTO requisitosdeejecuionextrasestaticosfinalizaciondeactivdades (requisito,idCategoria) VALUES ("REQUISITO FINALIZACION EXTRA 3",3);
-INSERT INTO requisitosdeejecuionextrasestaticosfinalizaciondeactivdades (requisito,idCategoria) VALUES ("REQUISITO FINALIZACION EXTRA 4",4);
-
- 
- INSERT INTO requidinapreex (requisito,apodo,idCategoria) VALUES ("REQUISITO PREVIO DINAMICO EXTRA 1","EXTRA1",1);
- INSERT INTO requidinapreex(requisito,apodo,idCategoria) VALUES ("REQUISITO PREVIO DINAMICO EXTRA 2","EXTRA2",2);
- INSERT INTO requidinapreex(requisito,apodo,idCategoria) VALUES ("REQUISITO PREVIO DINAMICO EXTRA 3","EXTRA3",3);
- INSERT INTO requidinapreex(requisito,apodo,idCategoria) VALUES ("REQUISITO PREVIO DINAMICO EXTRA 4","EXTRA4",4);
-  
- INSERT INTO requidinaejecext (requisito,idCategoria) VALUES ("REQUISITO EJECUCION DINAMICO EXTRA 1",1); 
-INSERT INTO requidinaejecext (requisito,idCategoria) VALUES ("REQUISITO EJECUCION DINAMICO EXTRA 2",2); 
-INSERT INTO requidinaejecext (requisito,idCategoria) VALUES ("REQUISITO EJECUCION DINAMICO EXTRA 3",3); 
-INSERT INTO requidinaejecext (requisito,idCategoria) VALUES ("REQUISITO EJECUCION DINAMICO EXTRA 4",4); 
-
-INSERT INTO requidinafinalsug (requisito,idCategoria) VALUES ("REQUISITO FINALIZACION DINAMICO 1",1);
-INSERT INTO requidinafinalsug (requisito,idCategoria) VALUES ("REQUISITO FINALIZACION DINAMICO 2",2);
-INSERT INTO requidinafinalsug (requisito,idCategoria) VALUES ("REQUISITO FINALIZACION DINAMICO 3",3);
-INSERT INTO requidinafinalsug (requisito,idCategoria) VALUES ("REQUISITO FINALIZACION DINAMICO 4",4);
- 
-INSERT INTO requidinafinalext (requisito,idCategoria) VALUES ("REQUISITO FINALIZACION DINAMICO EXTRA 1",1);
-INSERT INTO requidinafinalext (requisito,idCategoria) VALUES ("REQUISITO FINALIZACION DINAMICO EXTRA 2",2);
-INSERT INTO requidinafinalext (requisito,idCategoria) VALUES ("REQUISITO FINALIZACION DINAMICO EXTRA 3",3);
-INSERT INTO requidinafinalext (requisito,idCategoria) VALUES ("REQUISITO FINALIZACION DINAMICO EXTRA 4",4);
