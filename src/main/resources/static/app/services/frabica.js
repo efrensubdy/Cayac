@@ -309,7 +309,9 @@ angular.module('services.listFactory', ['ngRoute','ngResource'])
         .factory('nuevoContrato', function($resource) {
                            return $resource('/app/contratos/:id');
                        })
-
+        .factory('plandeTrabajo', function($resource) {
+                                   return $resource('/app/planDeTrabajo/:id');
+                               })
         //Esta fabrica se encarga de agregar un contratistas
        .factory('contratistas', function($resource) {
             return $resource('/app/contract/:id');

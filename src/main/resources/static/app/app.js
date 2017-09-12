@@ -24,6 +24,7 @@ angular.module('myApp', [
   'myApp.subirDocumentosEstaticos',
   'myApp.registroServicio',
   'myApp.inicio',
+  'myApp.planDeTrabajo',
   'myApp.test',
   'myApp.login',
   'myApp.login2',

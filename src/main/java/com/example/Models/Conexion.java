@@ -17,7 +17,6 @@ public class Conexion {
 	private static final String DB_PASSWORD = "VbW3ra4L5VbpnJJk";
 	//private static final String DB_URL = "jdbc:mysql://181.143.181.205:3306/seqconsultores_sys";
 	//private static final String DB_USER = "seq";
-
 	//private static final String DB_PASSWORD = "susypadyn";
 
 	public static Connection conection() throws ClassNotFoundException, SQLException{

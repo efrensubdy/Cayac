@@ -3,6 +3,8 @@ package com.example;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.security.SecurityProperties;
+import org.springframework.boot.builder.SpringApplicationBuilder;
+import org.springframework.boot.web.support.SpringBootServletInitializer;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.annotation.Order;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
@@ -25,7 +27,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 @SpringBootApplication
-public class SeqApplication {
+public class SeqApplication extends SpringBootServletInitializer {
 	@Configuration
 	@EnableGlobalMethodSecurity(prePostEnabled = true)
 	@Order(SecurityProperties.ACCESS_OVERRIDE_ORDER)
@@ -80,7 +82,13 @@ public class SeqApplication {
 		}
 
 	}
-	public static void main(String[] args) {
+	@Override
+	protected SpringApplicationBuilder configure(SpringApplicationBuilder application) {
+		return application.sources(SeqApplication.class);
+	}
+
+	public static void main(String[] args) throws Exception {
 		SpringApplication.run(SeqApplication.class, args);
 	}
+
 }

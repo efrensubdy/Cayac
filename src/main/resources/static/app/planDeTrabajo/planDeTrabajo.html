@@ -1,0 +1,88 @@
+<div>
+<div  ng-controller="planDeTrabajoCtrl as ctrl">
+    <div class="w3-container ">
+        <div class="container align-middle">
+            <div class="row">
+                <div class="col-sm-12">
+                    <h4 class="text-primary"><b>PLAN DE TRABAJO</b></h4>
+
+                </div>
+            </div>
+            <div class="row">
+                    <label>A CONTINUACIÓN ECONTRARÁ LOS MESES SOBRE LOS CUALES DEBE REGISTRAR EL PLAN </label>
+                    <br>
+                    <div class="row">
+                    <div class="col-xs-5">
+                    <select class="form-control" ng-model="mes" placeholder="seleccione el mes" ng-change="simple()">
+                        <option ng-value="todo" ng-repeat="todo in meses">{{todo.name}}</option>
+
+                    </select>
+                    </div>
+                    </div>
+                <br>
+            </div>
+            <br>
+            <br>
+            <div class="row" ng-show="banderaActividad">
+                <label>¿QUE DESEA HACER?</label>
+                <br>
+                <div class="row">
+                <div class="col-xs-5">
+                    <select class="form-control" ng-model="opcion" placeholder="seleccione el mes" ng-change="op(opcion)">
+                        <option ng-value="todo" ng-repeat="todo in opciones">{{todo.nombre}}</option>
+
+                    </select>
+                </div>
+                </div>
+                <br>
+                <br>
+                <div class="row" ng-show="bandera1">
+                    <label>REGISTRE LA ACTIVIDAD</label>
+                    <br>
+                    <br>
+                    <div class="row">
+                    <div class="col-sm-10">
+                        <div class="col-xs-11">
+                        <label>Nombre</label>
+                        <input class="form-control" ng-model="nombre" placeholder="nombre de la actividad">
+                        </div>
+                    </div>
+                    </div>
+                    <br>
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <div class="col-xs-6">
+                                <label>Fecha de Inicio</label>
+                                <input type="date"  class="form-control"  ng-model="fechaInicio" placeholder="Fecha Iniciación" ng-required="true">
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="col-xs-6">
+                                <label>Fecha de Fin</label>
+                                <input type="date"  class="form-control"  ng-model="fechaFin" placeholder="Fecha Fin" ng-required="true">
+                            </div>
+                        </div>
+                    </div>
+                    <br>
+                    <div class="row">
+                        <div class="col-xs-9">
+
+                        <button class="btn btn-primary center-block" ng-click="add($event,fechaInicio | date:'yyyy-MM-dd',fechaFin | date:'yyyy-MM-dd',nombre,mes.name)">REGISTRAR ACTIVIDAD</button>
+                        </div>
+                    </div>
+                </div>
+                <div></div>
+
+            </div>
+        </div>
+
+
+
+    </div>
+</div>
+</div>
+<br>
+<br>
+<br>
+<br>
+<br>
