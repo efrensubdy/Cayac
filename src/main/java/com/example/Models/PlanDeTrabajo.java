@@ -7,11 +7,20 @@ import java.sql.Date;
  */
 public class PlanDeTrabajo {
 public int id;
+public int idContratista;
 public String nombre;
 public Date fechaInicio;
 public Date fechaFin;
 public String evidencia;
 public String mes;
+
+    public int getIdContratista() {
+        return idContratista;
+    }
+
+    public void setIdContratista(int idContratista) {
+        this.idContratista = idContratista;
+    }
 
     public int getId() {
         return id;

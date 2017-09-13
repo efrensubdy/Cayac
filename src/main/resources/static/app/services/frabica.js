@@ -88,6 +88,10 @@ angular.module('services.listFactory', ['ngRoute','ngResource'])
          .factory('contratantesCategoria', function($resource) {
                                     return $resource('/app/contractor/categoria/:idContrato/:idCategoria');
                                 })
+         .factory('actividadPlan', function($resource) {
+                       return $resource('/app/planDeTrabajo/actpC/:idContratista/:mes')
+
+                                        })
 
          //Fabrica que trae todos los contratos pertencientes al contratante
          .factory('contratos', function($resource) {
@@ -312,6 +316,9 @@ angular.module('services.listFactory', ['ngRoute','ngResource'])
         .factory('plandeTrabajo', function($resource) {
                                    return $resource('/app/planDeTrabajo/:id');
                                })
+        .factory('aproba', function($resource) {
+                                           return $resource('/app/planDeTrabajo/aprobacion/:id');
+                                       })
         //Esta fabrica se encarga de agregar un contratistas
        .factory('contratistas', function($resource) {
             return $resource('/app/contract/:id');

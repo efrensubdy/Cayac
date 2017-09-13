@@ -22,7 +22,6 @@ public class UsersDB {
     public static int tamañoTablaContratista;
     public static int tamañoTablaContrante;
     public static int tamañotablaAdmin;
-
     /**
      * Inserta un nuevo usuario en la base de datos
      * @param usuario que se va agregar a la base de datos de tipo contratante

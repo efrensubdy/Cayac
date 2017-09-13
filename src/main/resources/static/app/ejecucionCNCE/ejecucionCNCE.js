@@ -9,7 +9,7 @@ angular.module('myApp.ejecucionCNCE', ['ngRoute'])
   });
 }])
 
-.controller('ejecucionCNCECtrl', ['$localStorage','$sessionStorage','$http','$scope','$rootScope','$mdDialog','contratosEnEjecucion','finalesDefinitivos','psC','psNC','peC','peNC',function($localStorage,$sessionStorage,$http,$scope,$rootScope,$mdDialog,contratosEnEjecucion,finalesDefinitivos,psC,psNC,peC,peNC) {
+.controller('ejecucionCNCECtrl', ['$localStorage','$sessionStorage','$http','$scope','$rootScope','$mdDialog','contratosEnEjecucion','finalesDefinitivos','psC','psNC','peC','peNC','aproba',function($localStorage,$sessionStorage,$http,$scope,$rootScope,$mdDialog,contratosEnEjecucion,finalesDefinitivos,psC,psNC,peC,peNC,aproba) {
 
         $scope.listado=contratosEnEjecucion.query({idContratante:$localStorage.contratanteLogeado.idContratante})
         $scope.flag=false;
@@ -30,6 +30,7 @@ angular.module('myApp.ejecucionCNCE', ['ngRoute'])
 
          $scope.showAlert = function(ev,client) {
            console.log(client);
+           $rootScope.user=client;
            $rootScope.idClient=client.id;
            $rootScope.listadoCSP=psC.query({idFinalista:client.idFinalista,idCategoria:client.idCategoria,idContratante:$localStorage.contratanteLogeado.idContratante});
            $rootScope.listadoCEP=peC.query({idFinalista:client.idFinalista,idCategoria:client.idCategoria,idContratante:$localStorage.contratanteLogeado.idContratante});
@@ -77,12 +78,16 @@ angular.module('myApp.ejecucionCNCE', ['ngRoute'])
            $scope.bandera=false;
            $scope.bandera2=false;
            $scope.bandera3=false;
+           $scope.aprobar=function(){
+                 console.log($rootScope.user);
+                 aproba.save({idContratista:$rootScope.user.id,idContratante:$localStorage.contratanteLogeado.idContratante})
+
+
+           }
            $scope.estadis=function(){
                  $scope.banderaPrevio=true;
                   $scope.bandera=false;
            }
-
-
 
            $scope.hideGrafico=function(a){
                   switch(a){

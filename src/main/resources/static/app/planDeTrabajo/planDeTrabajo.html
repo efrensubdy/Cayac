@@ -28,7 +28,7 @@
                 <br>
                 <div class="row">
                 <div class="col-xs-5">
-                    <select class="form-control" ng-model="opcion" placeholder="seleccione el mes" ng-change="op(opcion)">
+                    <select class="form-control" ng-model="opcion" placeholder="seleccione lo que va a realizar" ng-change="op(opcion,mes)">
                         <option ng-value="todo" ng-repeat="todo in opciones">{{todo.nombre}}</option>
 
                     </select>
@@ -72,8 +72,51 @@
                     </div>
                 </div>
                 <div></div>
-
+                <div class="container" ng-show="bandera4">
+                    <div class="col-xs-8">
+                        <table class="table table-sm  table-striped table-bordered table-hover table-condensed  text-justify">
+                            <thead>
+                            <tr class="">
+                                <th>ACTIVIDAD</th>
+                                <th>SUBA SOPORTE</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr class="" ng-repeat="todo in table2" >
+                                <td>{{todo.nombre}}</td>
+                                <td><input class="form-control" type="file" file-model="myFile"/></file-model>
+                                    <button type="button" class="btn btn-primary align-middle" ng-click="" ng-model="tablita">Subir</button></td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="container" ng-show="bandera3">
+                    <div class="col-xs-8">
+                        <table class="table table-sm  table-striped table-bordered table-hover table-condensed  text-justify">
+                            <thead>
+                            <tr class="">
+                                <th>NUMERO</th>
+                                <th>ACTIVIDAD</th>
+                                <th>MES</th>
+                                <th>FECHA DE INICIO</th>
+                                <th>FECHA FIN</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr class="" ng-repeat="todo in table3" >
+                                <td>{{todo.id}}</td>
+                                <td>{{todo.nombre}}</td>
+                                <td>{{todo.mes}}</td>
+                                <td>{{todo.fechaInicio}}</td>
+                                <td>{{todo.fechaFin}}</td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
             </div>
+
         </div>
 
 
