@@ -11,15 +11,6 @@ angular.module('myApp.subirDocumentosEstaticos', ['ngRoute'])
 
 .controller('subirDocumentosEstaticosCtrl', ['$localStorage','$sessionStorage','$http','$parse','$scope','$rootScope','$mdDialog','fileUpload','estadoPreviosSugeridos','estadoPreviosExtras',function($localStorage,$sessionStorage,$http,$parse,$scope,$rootScope,$mdDialog,fileUpload,estadoPreviosSugeridos,estadoPreviosExtras) {
        $scope.file = "";
-       var q=function(idContratante, idContratista){
-                      var url= "http://localhost:8080/app/planDeTrabajo/aprobado/"+idContratista+"/"+idContratante ;
-                      $http.get(url).then(function(response) {
-                                   console.log(response.data);
-                                   $scope.objeto=response.data;
-                                    return response.data;
-                                 })
-       }
-       q($localStorage.userLogeado.idContratante,$localStorage.userLogeado.idContratista);
 
        $scope.agregarEstaticosSugeridosPrevios = function(ev,item) {
             var file = $scope.myDocSugeridoPrevio;

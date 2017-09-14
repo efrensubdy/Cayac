@@ -58,6 +58,17 @@ angular.module('myApp.ejecucionCNCE', ['ngRoute'])
            $scope.listadoNCEP=$rootScope.listadoNCEP
 
            $scope.idClient=$rootScope.idClient
+           var q=function(idContratante, idContratista){
+                                 var url= "http://localhost:8080/app/planDeTrabajo/aprobado/"+idContratista+"/"+idContratante ;
+                                  var a;
+                               a=$http.get(url).then(function(response) {
+                                               $scope.o=response.data;
+                                               return response.data;
+                                            })
+                     return a;
+                  }
+           q($localStorage.contratanteLogeado.idContratante,$rootScope.user.id);
+            console.log($scope.o);
 
 
            $scope.hide = function() {

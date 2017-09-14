@@ -9,7 +9,20 @@ angular.module('myApp.planDeTrabajo', ['ngRoute'])
   });
 }])
 
-.controller('planDeTrabajoCtrl', ['$timeout', '$q', '$scope','$http','$log','$rootScope','$localStorage','$sessionStorage','plandeTrabajo','actividadPlan',function($timeout, $q, $scope,$http,$log,$rootScope,$localStorage,$sessionStorage,plandeTrabajo,actividadPlan) {
+.controller('planDeTrabajoCtrl', ['$timeout', '$q', '$scope','$http','$log','$rootScope','$localStorage','$sessionStorage','plandeTrabajo','actividadPlan','fileUpload',function($timeout, $q, $scope,$http,$log,$rootScope,$localStorage,$sessionStorage,plandeTrabajo,actividadPlan,fileUpload) {
+var q=function(idContratante, idContratista){
+                      var url= "http://localhost:8080/app/planDeTrabajo/aprobado/"+idContratista+"/"+idContratante ;
+                       var a;
+                    a=$http.get(url).then(function(response) {
+                                    $scope.objeto=response.data;
+                                    return response.data;
+                                 })
+          return a;
+       }
+q($localStorage.userLogeado.idContratante,$localStorage.userLogeado.idContratista);
+ console.log($scope.objeto);
+
+
 
 
 $scope.meses=[
@@ -39,8 +52,6 @@ $scope.meses=[
 
   }
   $scope.op=function(item,mes){
-        console.log(item);
-        console.log(mes);
          switch(item.id){
             case 1:
                $scope.bandera1=true;
@@ -65,12 +76,15 @@ $scope.meses=[
 
   }
   $scope.add=function(ev,fechaInicio,fechaFin,nombre,mes){
-    console.log(fechaInicio);
-    console.log(fechaFin);
-    console.log(nombre);
-    console.log(mes);
+
     var plan={"nombre":nombre,"mes":mes,"fechaInicio":fechaInicio,"fechaFin":fechaFin,"idContratista":$localStorage.userLogeado.idContratista};
     plandeTrabajo.save(plan);
+
+  }
+  $scope.subirDocumento=function(item,file){
+    console.log(item);
+    console.log(file);
+
 
   }
 

@@ -1,7 +1,10 @@
 <div>
 <div  ng-controller="planDeTrabajoCtrl as ctrl">
     <div class="w3-container ">
-        <div class="container align-middle">
+        <div class="container text-center" ng-show="!objeto">
+            <label>EL CONTRATISTA NO A APROBADO EL INICIO DE ACTIVIDADES</label>
+        </div>
+        <div class="container align-middle" ng-show="objeto">
             <div class="row">
                 <div class="col-sm-12">
                     <h4 class="text-primary"><b>PLAN DE TRABAJO</b></h4>
@@ -85,7 +88,7 @@
                             <tr class="" ng-repeat="todo in table2" >
                                 <td>{{todo.nombre}}</td>
                                 <td><input class="form-control" type="file" file-model="myFile"/></file-model>
-                                    <button type="button" class="btn btn-primary align-middle" ng-click="" ng-model="tablita">Subir</button></td>
+                                    <button type="button" class="btn btn-primary align-middle" ng-click="subirDocumento(todo,myFile)" ng-model="tablita">Subir</button></td>
                             </tr>
                             </tbody>
                         </table>

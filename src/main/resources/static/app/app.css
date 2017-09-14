@@ -157,6 +157,32 @@
     border-radius: 6px 0 6px 6px;
 }
 
+.button1 {
+    background-color: #3E7CB3; /* Green */
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 14px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 8px
+}
+.titulos{
+
+color: #3E7CB3;
+
+
+
+
+}
+body {
+    background-image: url("img/Recurso 2.png");
+}
+
+
 
 
 
