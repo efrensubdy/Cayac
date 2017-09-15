@@ -158,7 +158,7 @@
 }
 
 .button1 {
-    background-color: #3E7CB3; /* Green */
+    background-color: #3E7CB3;
     border: none;
     color: white;
     padding: 10px 20px;
@@ -170,6 +170,52 @@
     cursor: pointer;
     border-radius: 8px
 }
+.button2 {
+    background-color: #272757;
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 14px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 8px
+}
+.button3 {
+    background-color: #575756; /* Green */
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 14px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 8px
+}
+
+.button4 {
+    background-color: #4DA1D9; /* Green */
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 14px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 8px
+}
+.labelForTextbox {
+  ...
+  display: block;
+  margin-bottom: 10px; /** Change this value to whatever you wish **/
+}
+
 .titulos{
 
 color: #3E7CB3;
@@ -178,8 +224,30 @@ color: #3E7CB3;
 
 
 }
-body {
-    background-image: url("img/Recurso 2.png");
+.texto{
+
+color: #575756;
+
+}
+.texto2{
+
+color: #272757;
+
+}
+.texto3{
+
+color: #3E7CB3;
+
+}
+.texto4{
+
+color: #4DA1D9;
+
+}
+td{
+
+color: #575756;
+
 }
 
 
