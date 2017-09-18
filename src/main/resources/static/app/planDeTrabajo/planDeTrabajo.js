@@ -84,6 +84,9 @@ $scope.meses=[
   $scope.subirDocumento=function(item,file){
     console.log(item);
     console.log(file);
+    var uploadUrl = 'http://localhost:8080/app/planDeTrabajo/'+ item.id + "/"+ $localStorage.userLogeado.idContratista;
+    console.log(uploadUrl);
+    fileUpload.uploadFileToUrl(file,uploadUrl);
 
 
   }

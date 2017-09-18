@@ -5,9 +5,9 @@
         <h4 class="titulos"><b>GESTIÓN ESTATICA</b></h4>
         <p class="texto"><b>A CONTINUACIÓN ECONTRARÁ UN TABLA CON LOS REQUISITOS APLICADOS POR SU CONTRATANTE Y UN ESPACIO DONDE SUBIRA LOS SOPORTES
               AL SUBIR EL SOPORTE SE RECOMIENDA ACTUALIZAR LA PAGINA PARA QUE EL ESTADO CAMBIE   </b></p>
-    <table class="table table-sm  table-striped table-bordered table-hover table-condensed  text-justify"  ng-controller="View9Ctrl">
+    <table class="table table-sm  table-bordered table-hover table-condensed  text-justify"  ng-controller="View9Ctrl">
         <tbody>
-        <tr >
+        <tr class="titulos">
                 <th width="600px">Descripcion</th>
                 <th width="800px">Soporte</th>
                 <th width="100px">Estado</th>
@@ -15,7 +15,7 @@
         </thead>
         <tbody >
 
-        <tr  ng-repeat="todo in defPreviosSugeridos" >
+        <tr class="texto"  ng-repeat="todo in defPreviosSugeridos" >
             <td width="600px" >{{todo.descripcion}}</td>
             <td width="800px">
                <div ng-controller = "subirDocumentosEstaticosCtrl">

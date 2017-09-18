@@ -13,6 +13,15 @@ public Date fechaInicio;
 public Date fechaFin;
 public String evidencia;
 public String mes;
+public boolean estado;
+
+    public boolean isEstado() {
+        return estado;
+    }
+
+    public void setEstado(boolean estado) {
+        this.estado = estado;
+    }
 
     public int getIdContratista() {
         return idContratista;

@@ -13,14 +13,14 @@
     <div class="col-xs-11">
     <table class="table table-sm  table-striped table-bordered table-hover table-condensed  text-justify"  ng-controller="View9Ctrl">
         <thead>
-        <tr >
+        <tr class="titulos">
                 <th width="600px"> Descripcion</th>
                 <th width="600px">Soporte</th>
                 <th width="600px">Estado</th>
         </tr>
         </thead>
         <tbody >
-        <tr   ng-repeat="todo in list1" >
+        <tr class="texto"   ng-repeat="todo in list1" >
             <td width="600px" ng-model="pero" >{{todo.descripcion}}</td>
             <td width="800px" >
                <div>

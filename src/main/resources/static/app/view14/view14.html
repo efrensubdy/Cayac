@@ -32,15 +32,15 @@
     <h4><b>CANDIDATOS CONTRATISTAS</b></h4>
             <p><b>EN LA SIGUIENTE TABLA PODRÁ OBSERVAR TODA LA INFORMACIÓN PERTENECIENTE AL CANDIDATO</b></p>
 
-    <table class="table table-striped table-bordered table-hover table-condensed">
+    <table class="table table-bordered table-hover table-condensed">
         <tbody>
-        <tr>
+        <tr class="titulos">
             <th>Nombre de Empresa</th>
             <th>EMPRESA LIGADA</th>
 
 
         </tr>
-        <tr  ng-repeat="todo in listado2 | orderBy:propertyName:reverse">
+        <tr  class="texto" ng-repeat="todo in listado2 | orderBy:propertyName:reverse">
             <td>{{todo.nombreEmpresa}}</td>
             <td>
                 <md-button button class="md-primary md-raised" ng-click="showAlert2($event,todo)">

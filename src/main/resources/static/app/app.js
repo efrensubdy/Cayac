@@ -25,7 +25,6 @@ angular.module('myApp', [
   'myApp.registroServicio',
   'myApp.inicio',
   'myApp.planDeTrabajo',
-  'myApp.test',
   'myApp.login',
   'myApp.login2',
   'myApp.login3',

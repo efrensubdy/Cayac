@@ -250,6 +250,19 @@ color: #575756;
 
 }
 
+.bg {
+    /* The image used */
+    background-image: url("img/Recurso 2.png");
+
+    /* Full height */
+    height: 20%;
+
+    /* Center and scale the image nicely */
+     background-position: 70% 160%;
+    background-repeat: no-repeat;
+    background-size: 500px 500px;
+    padding-top: 40px;
+}
 
 
 

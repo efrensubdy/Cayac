@@ -46,7 +46,7 @@
                     <div class="row">
                     <div class="col-sm-10">
                         <div class="col-xs-11">
-                        <label>Nombre</label>
+                        <label class="titulos">Nombre</label>
                         <input class="form-control" ng-model="nombre" placeholder="nombre de la actividad">
                         </div>
                     </div>
@@ -55,13 +55,13 @@
                     <div class="row">
                         <div class="col-sm-6">
                             <div class="col-xs-6">
-                                <label>Fecha de Inicio</label>
+                                <label class="titulos">Fecha de Inicio</label>
                                 <input type="date"  class="form-control"  ng-model="fechaInicio" placeholder="Fecha Iniciación" ng-required="true">
                             </div>
                         </div>
                         <div class="col-sm-6">
                             <div class="col-xs-6">
-                                <label>Fecha de Fin</label>
+                                <label class="titulos">Fecha de Fin</label>
                                 <input type="date"  class="form-control"  ng-model="fechaFin" placeholder="Fecha Fin" ng-required="true">
                             </div>
                         </div>
@@ -78,18 +78,25 @@
                 <div class="container" ng-show="bandera4">
                     <div class="col-xs-8">
                         <label class="titulos">SUBA LOS SOPORTES A SUS ACTIVIDADES REGISTRADAS</label>
-                        <table class="table table-sm  table-striped table-bordered table-hover table-condensed  text-justify">
+                        <table class="table table-sm  table-bordered table-hover table-condensed  text-justify">
                             <thead>
-                            <tr class="">
+                            <tr class="titulos">
                                 <th>ACTIVIDAD</th>
                                 <th>SUBA SOPORTE</th>
+                                <th>Estado</th>
                             </tr>
                             </thead>
                             <tbody>
-                            <tr class="" ng-repeat="todo in table2" >
+                            <tr class="texto" ng-repeat="todo in table2" >
                                 <td>{{todo.nombre}}</td>
                                 <td><input class="form-control" type="file" file-model="myFile"/></file-model>
-                                    <button type="button" class="btn btn-primary align-middle" ng-click="subirDocumento(todo,myFile)" ng-model="tablita">Subir</button></td>
+                                    <br>
+                                    <button type="button" class="button button1 w3-center" ng-click="subirDocumento(todo,myFile)" ng-model="tablita">Subir</button></td>
+                                <td>
+                                    <div ng-show="{{todo.estado}}" class="w3-col" style="width:50px"><a href="{{todo.evidencia}}" download><i class="w3-xxlarge fa fa-check-square"></i></a></div>
+                                    <div ng-show="{{!todo.estado}}" class="w3-col" style="width:50px"><a href="{{todo.evidencia}}" download><i class="w3-xxlarge fa fa-exclamation-triangle"></i></a></div>
+
+                                </td>
                             </tr>
                             </tbody>
                         </table>
@@ -98,23 +105,28 @@
                 <div class="container" ng-show="bandera3">
                     <div class="col-xs-8">
                         <label class="titulos">EN LA PARTE DE ABAJO ECONTRARÁ TODAS LAS ACTIVIDADES REGISTRADAS</label>
-                        <table class="table table-sm  table-striped table-bordered table-hover table-condensed  text-justify">
+                        <table class="table table-sm  table-bordered table-hover table-condensed  text-justify">
                             <thead>
-                            <tr class="">
+                            <tr class="titulos">
                                 <th>NUMERO</th>
                                 <th>ACTIVIDAD</th>
                                 <th>MES</th>
                                 <th>FECHA DE INICIO</th>
                                 <th>FECHA FIN</th>
+                                <th>SOPORTE</th>
                             </tr>
                             </thead>
                             <tbody>
-                            <tr class="" ng-repeat="todo in table3" >
+                            <tr class="texto" ng-repeat="todo in table3" >
                                 <td>{{todo.id}}</td>
                                 <td>{{todo.nombre}}</td>
                                 <td>{{todo.mes}}</td>
                                 <td>{{todo.fechaInicio}}</td>
                                 <td>{{todo.fechaFin}}</td>
+                                <td>
+                                    <div ng-show="{{todo.estado}}" class="w3-col" style="width:50px"><a href="{{todo.evidencia}}" download><i class="w3-xxlarge fa fa-check-square"></i></a></div>
+                                    <div ng-show="{{!todo.estado}}" class="w3-col" style="width:50px"><a href="{{todo.evidencia}}" download><i class="w3-xxlarge fa fa-exclamation-triangle"></i></a></div>
+                                </td>
                             </tr>
                             </tbody>
                         </table>
@@ -123,8 +135,6 @@
             </div>
 
         </div>
-
-
 
     </div>
 </div>

@@ -101,7 +101,7 @@
           </div>
           <div class="container" ng-show="table1">
             <div class="col-xs-8">
-              <table class="table table-sm  table-striped table-bordered table-hover table-condensed  text-justify">
+              <table class="table table-sm table-bordered table-hover table-condensed  text-justify">
                 <thead>
                 <tr class="">
                   <th>DESCRIPICION</th>
@@ -132,19 +132,19 @@
           </div>
           <div class="container" ng-show="table2">
             <div class="col-xs-8">
-            <table class="table table-sm  table-striped table-bordered table-hover table-condensed  text-justify">
+            <table class="table table-sm table-bordered table-hover table-condensed  text-justify">
               <thead>
-              <tr >
+              <tr class="titulos" >
                 <th>DEFINITIVOS</th>
                 <th>ELIMINAR</th>
               </tr>
               </thead>
               <tbody>
-              <tr ng-repeat="todo in list4">
+              <tr class="texto" ng-repeat="todo in list4">
                 <td> {{todo.descripcion}} </td>
                 <td><md-checkbox  aria-label="Checkbox 1" class="w3-check" type="checkbox"   ng-model="selected" ng-change="display3(selected, todo)"></md-checkbox></td>
               </tr>
-              <tr  ng-repeat="todo in list5">
+              <tr  class="texto" ng-repeat="todo in list5">
                 <td>{{todo.descripcion}} </td>
                 <td><md-checkbox aria-label="Checkbox 1"   ng-model="select" ng-change="display4(select, todo)"></md-checkbox></td>
 

@@ -30,14 +30,14 @@
 
         <div class="w3-container">
             <div class="col-xs-9">
-            <table class="table table-striped table-bordered table-hover table-condensed">
+            <table class="table  table-bordered table-hover table-condensed">
                 <tbody>
-                <tr>
+                <tr class="titulos">
                     <th> Nombre de Empresa</th>
                     <th>Finalistas Definitivos</th>
 
                 </tr>
-                <tr  ng-repeat="todo in listado | orderBy:propertyName:reverse">
+                <tr class="texto"  ng-repeat="todo in listado | orderBy:propertyName:reverse">
                     <td>{{todo.nombreEmpresa}}</td>
                     <td>
                         <md-button button class="md-primary md-raised"  ng-click="showAlert2($event,todo)">

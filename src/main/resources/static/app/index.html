@@ -45,7 +45,7 @@
 </div>
 </header>
 </html>
-<body background="">
+<body class="bg">
 
 <nav id="mainNav" class="navbar  navbar-inverse navbar-fixed-top affix-top">
   <div class="container-fluid">
@@ -235,68 +235,53 @@
 <!--[if lt IE 7]>
 <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
 <![endif]-->
-<div class="w3-container">
-<div class="container ">
-  <div class="row">
-    <div class="col-sm-1 col-md-pull-1">
-      <div class="panel panel-default pull-left ">
-        <div class="panel-heading">
-          <div class="w3-container">
-          <div class="row">
-          <div class="col-sm-1 pull-left">
-          <span class="glyphicon glyphicon-globe"></span>
-          </div>
-           <div class="col-sm-1">
-             <b>Navegación</b>
-           </div>
-          </div>
-          </div>
 
+
+<div class="w3-container">
+<div class="row">
+  <div class="col-sm-2">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <div class="w3-container">
+        <div class="row">
+          <div class="col-sm-1">
+            <span class="glyphicon glyphicon-globe" style="color:primary"></span>
+          </div>
+          <div class="col-sm-1">
+            <label class="titulos">Navegacion</label>
+          </div>
         </div>
-        <div class="panel-body">
-          <ul class="nav nav-pills nav-stacked ">
-            <li ng-show="bandera||bandera2" role="presentation">
-              <a href="#!/view1">
+        </div>
+      </div>
+      <div class="panel-body">
+        <ul class="nav nav-pills nav-stacked ">
+          <li ng-show="bandera||bandera2" role="presentation">
+            <a href="#!/view1">
               <div class="row">
                 <div class="col-sm-1"><span class="	glyphicon glyphicon-home"></span></div>
                 <div class="col-sm-1">Inicio</div>
-
-
               </div>
-
-
-
-              </a>
-            </li>
-            <li ng-show="bandera2 && !banderaEjecucion" role="presentation"><a href="#!/view1">Soportes Seleccion</a></li>
-            <li ng-hide="bandera||bandera2||bandera3 ||banderaEjecucion"><a href="#!/inicio">Inicio Cayac</a></li>
-            <li ng-show="banderaEjecucion"><a href="#!/subirDocumentosEstaticos">Documentos</a></li>
-            <li ng-show="banderaEjecucion"><a href="#!/planDeTrabajo">Plan de Trabajo</a></li>
-          </ul>
-
-        </div>
-      </div>
-
-    </div>
-    <div class="col-sm-1">
-
-    </div>
-    <div class="col-sm-8 col-md-pull-1">
-
-      <div ng-view>
+            </a>
+          </li>
+          <li ng-show="bandera2 && !banderaEjecucion" role="presentation"><a href="#!/view1">Soportes Seleccion</a></li>
+          <li ng-hide="bandera||bandera2||bandera3 ||banderaEjecucion"><a href="#!/inicio">Inicio Cayac</a></li>
+          <li ng-show="banderaEjecucion"><a href="#!/subirDocumentosEstaticos">Documentos</a></li>
+          <li ng-show="banderaEjecucion"><a href="#!/planDeTrabajo">Plan de Trabajo</a></li>
+        </ul>
 
       </div>
-
     </div>
-    <div class="col-sm-1 col-md-push-2">
-
-    </div>
-
-    </div>
-
   </div>
 
+  <div class="col-sm-10">
+    <div ng-view>
+
+    </div>
+  </div>
 </div>
+
+</div>
+
 
 <br>
 <br>
@@ -360,7 +345,6 @@
 <script src="planDeTrabajo/planDeTrabajo.js"></script>
 <script src="login/login.js"></script>
 <script src="inicio/inicio.js"></script>
-<script src="test/test.js"></script>
 <script src="login2/login2.js"></script>
 <script src="login3/login3.js"></script>
 <script src="services/frabica.js"></script>

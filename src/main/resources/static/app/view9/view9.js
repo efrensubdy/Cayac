@@ -32,8 +32,7 @@ angular.module('myApp.view9', ['ngRoute'])
            }
         $scope.agregar = function(ev,item) {
             var file = $scope.myFile;
-            console.log(file);
-            console.log(item.id)
+
             var uploadUrl = 'http://localhost:8080/app/imagenes/'+ $localStorage.userLogeado.idContratista + "/"+ item.id;
             fileUpload.uploadFileToUrl(file, uploadUrl);
             $mdDialog.show(

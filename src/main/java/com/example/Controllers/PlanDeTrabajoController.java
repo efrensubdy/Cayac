@@ -1,6 +1,7 @@
 package com.example.Controllers;
 
 import com.example.Models.Aprobacion;
+import com.example.Models.Documento;
 import com.example.Models.PlanDeTrabajo;
 import com.example.Models.Usuario;
 import com.example.Services.ManejoDePlanesDeTrabajoBD;
@@ -9,7 +10,13 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.multipart.MultipartHttpServletRequest;
 
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.util.Iterator;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -37,7 +44,7 @@ public class PlanDeTrabajoController {
         return a;
     }
     @RequestMapping(value = "aprobado/{idContratista}/{idContratante}", method = RequestMethod.GET)
-    public ResponseEntity<?>obtenerActividadesDeContratisttas(@PathVariable int idContratista, @PathVariable int idContratante){
+    public ResponseEntity<?>obtenerAprobacionDeContratisttas(@PathVariable int idContratista, @PathVariable int idContratante){
 
         ResponseEntity a;
         try {
@@ -79,6 +86,41 @@ public class PlanDeTrabajoController {
             return new ResponseEntity<>("Error bla bla bla",HttpStatus.NOT_FOUND);
         }
         return a;
+    }
+    @RequestMapping(path = "/{id}/{idContratista}",method = RequestMethod.POST)
+    public ResponseEntity<?> actualizarRegistro(@PathVariable Integer id, @PathVariable Integer idContratista
+            , MultipartHttpServletRequest request){
+
+        ResponseEntity a;
+        try {
+
+            Iterator<String> itr = request.getFileNames();
+            while(itr.hasNext()) {
+                String uploadedFile = itr.next();
+                MultipartFile file = request.getFile(uploadedFile);
+                File fileForDB=convert(file);
+                Documento docForDB=new Documento();
+                docForDB.setId(id);
+                docForDB.setIdContratista(idContratista);
+                docForDB.setFile(fileForDB);
+                manejoDePlanesDeTrabajoBD.actualizarSoporte(docForDB);
+            }
+            a = new ResponseEntity<>(HttpStatus.ACCEPTED);
+
+        } catch (Exception ex) {
+            Logger.getLogger(Controller.class.getName()).log(Level.SEVERE, null, ex);
+            return new ResponseEntity<>("Error bla bla bla",HttpStatus.NOT_FOUND);
+        }
+        return a;
+    }
+
+    private File convert(MultipartFile file) throws IOException {
+        File convFile = new File(file.getOriginalFilename());
+        convFile.createNewFile();
+        FileOutputStream fos = new FileOutputStream(convFile);
+        fos.write(file.getBytes());
+        fos.close();
+        return convFile;
     }
 
 

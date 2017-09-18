@@ -2,10 +2,14 @@ package com.example.DB;
 
 import com.example.Models.Aprobacion;
 import com.example.Models.Conexion;
+import com.example.Models.Documento;
 import com.example.Models.PlanDeTrabajo;
 import com.sun.org.apache.regexp.internal.RE;
+import org.apache.commons.io.FileUtils;
 import org.springframework.stereotype.Service;
 
+import java.io.File;
+import java.io.IOException;
 import java.sql.*;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -20,7 +24,9 @@ public class PlanDeTrabajoBD {
 
 public void agregarPlanDeTrabajo(PlanDeTrabajo plan)throws SQLException,ClassNotFoundException{
     System.out.println(plan.getNombre());
-    String sql="INSERT INTO planDeTrabajo (mes,actividad,fechaInicio,fechaFin,evidencia,idContratista) VALUES (?,?,?,?,?,?)";
+    java.util.Date utilDate = new Date();
+    java.sql.Date date = new java.sql.Date(utilDate.getTime());
+    String sql="INSERT INTO planDeTrabajo (mes,actividad,fechaInicio,fechaFin,evidencia,idContratista,fechaDeRegistro) VALUES (?,?,?,?,?,?,?,?)";
     Connection con =  Conexion.conection();
     PreparedStatement ps=con.prepareStatement(sql);
     ps.setString(1,plan.getMes());
@@ -29,6 +35,7 @@ public void agregarPlanDeTrabajo(PlanDeTrabajo plan)throws SQLException,ClassNot
     ps.setDate(4,plan.getFechaFin());
     ps.setNull(5, Types.VARCHAR);
     ps.setInt(6,plan.getIdContratista());
+    ps.setDate(7,date);
     ps.execute();
     ps.close();
     con.close();
@@ -64,7 +71,6 @@ public void agregarAprobacion(Aprobacion aprobacion)throws SQLException,ClassNot
 
 }
 public List<PlanDeTrabajo>consultarActividadesdelPlanDeTrabajo(int idContratista,String mes)throws SQLException,ClassNotFoundException {
-    System.out.println(idContratista);
     List<PlanDeTrabajo> planDeTrabajoList = new LinkedList<>();
     String sql="SELECT * FROM planDeTrabajo WHERE idContratista = ? AND mes = ?;";
     PreparedStatement ps = Conexion.conection().prepareStatement(sql);
@@ -77,6 +83,12 @@ public List<PlanDeTrabajo>consultarActividadesdelPlanDeTrabajo(int idContratista
         planDeTrabajo.setNombre(rs.getString("actividad"));
         planDeTrabajo.setMes(rs.getString("mes"));
         planDeTrabajo.setEvidencia(rs.getString("evidencia"));
+        if(planDeTrabajo.getEvidencia()==null){
+            planDeTrabajo.setEstado(false);
+        }
+        else{
+            planDeTrabajo.setEstado(true);
+        }
         planDeTrabajo.setIdContratista(rs.getInt("idContratista"));
         planDeTrabajo.setFechaInicio(rs.getDate("fechaInicio"));
         planDeTrabajo.setFechaFin(rs.getDate("fechaFin"));
@@ -86,8 +98,78 @@ public List<PlanDeTrabajo>consultarActividadesdelPlanDeTrabajo(int idContratista
 
     return planDeTrabajoList;
 }
+    public boolean consultarRegistro(int id,int idContratista) throws SQLException, ClassNotFoundException {
+        boolean flag=false;
+        String sql ="select count(*) as registro from planDeTrabajo where id= ? and idContratista=? and evidencia is not null;";
+        PreparedStatement ps = Conexion.conection().prepareStatement(sql);
+        ps.setInt(1,id);
+        ps.setInt(2,idContratista);
+        ResultSet rs = ps.executeQuery();
+        int registro=0;
+        while (rs.next()){
+            registro=rs.getInt("registro");
+
+        }
+        if (registro==0){
+            flag=false;
+        }
+        else{
+            flag=true;
+        }
+
+        return flag;
+    }
+
+public void actualizarSoporte(Documento documento)throws SQLException,ClassNotFoundException,IOException{
+    System.out.println(documento.getFile().getName());
+    String fileType = getFileExtension(documento.getFile());
+    documento.setTipo(fileType);
+    boolean flag=consultarRegistro(documento.getId(),documento.getIdContratista());
+    if(!flag){
+        String sql ="UPDATE planDeTrabajo SET evidencia = ? WHERE id= ? and idContratista= ?;";
+        Connection con=Conexion.conection();
+        documento.setContenido("Repository/Contratista/"+documento.getIdContratista()+"/dinamico/"+documento.getId()+"Actividad" +"."+documento.getTipo());
+        File f=documento.getFile();
+        File q=new File("src/main/resources/static/app/Repository/Contratista/"+documento.getIdContratista()+"/dinamico/"+documento.getId()+"Actividad" +"."+documento.getTipo());
+        FileUtils.moveFile(f,q);
+        PreparedStatement ps=con.prepareStatement(sql);
+        ps.setString(1,documento.getContenido());
+        ps.setInt(2,documento.getId());
+        ps.setInt(3,documento.getIdContratista());
+        ps.execute();
+        ps.close();
+        con.close();
+    }
+    else{
+        File q=new File("src/main/resources/static/app/Repository/Contratista/"+documento.getIdContratista()+"/dinamico/"+documento.getId()+"Actividad" +"."+documento.getTipo());
+        if (q.isFile()) {
+            FileUtils.deleteQuietly(q);
+
+        }
+        String sql ="UPDATE planDeTrabajo SET evidencia = ? WHERE id= ? and idContratista= ?;";
+        Connection con=Conexion.conection();
+        documento.setContenido("Repository/Contratista/"+documento.getIdContratista()+"/dinamico/"+documento.getId()+"Actividad" +"."+documento.getTipo());
+        File f=documento.getFile();
+        File y=new File("src/main/resources/static/app/Repository/Contratista/"+documento.getIdContratista()+"/dinamico/"+documento.getId()+"Actividad" +"."+documento.getTipo());
+        FileUtils.moveFile(f,y);
+        PreparedStatement ps=con.prepareStatement(sql);
+        ps.setString(1,documento.getContenido());
+        ps.setInt(2,documento.getId());
+        ps.setInt(3,documento.getIdContratista());
+        ps.execute();
+        ps.close();
+        con.close();
+
+    }
 
 
+}
+
+    private  String getFileExtension(File fullName) {
+        String fileName = fullName.getName();
+        int dotIndex = fileName.lastIndexOf('.');
+        return (dotIndex == -1) ? "" : fileName.substring(dotIndex + 1);
+    }
 
 
 }
