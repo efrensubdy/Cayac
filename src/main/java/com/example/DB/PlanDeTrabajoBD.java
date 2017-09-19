@@ -98,6 +98,67 @@ public List<PlanDeTrabajo>consultarActividadesdelPlanDeTrabajo(int idContratista
 
     return planDeTrabajoList;
 }
+    public List<PlanDeTrabajo>consultarActividadesdelPlanDeTrabajoConSoporte(int idContratista,String mes)throws SQLException,ClassNotFoundException {
+        List<PlanDeTrabajo> planDeTrabajoList = new LinkedList<>();
+        String sql="SELECT * FROM planDeTrabajo WHERE idContratista = ? AND mes = ?;";
+        PreparedStatement ps = Conexion.conection().prepareStatement(sql);
+        ps.setInt(1,idContratista);
+        ps.setString(2,mes);
+        ResultSet rs = ps.executeQuery();
+        while (rs.next()){
+            PlanDeTrabajo planDeTrabajo=new PlanDeTrabajo();
+            planDeTrabajo.setId(rs.getInt("id"));
+            planDeTrabajo.setNombre(rs.getString("actividad"));
+            planDeTrabajo.setMes(rs.getString("mes"));
+            planDeTrabajo.setEvidencia(rs.getString("evidencia"));
+            if(planDeTrabajo.getEvidencia()==null){
+                planDeTrabajo.setEstado(false);
+            }
+            else{
+                planDeTrabajo.setEstado(true);
+            }
+            planDeTrabajo.setIdContratista(rs.getInt("idContratista"));
+            planDeTrabajo.setFechaInicio(rs.getDate("fechaInicio"));
+            planDeTrabajo.setFechaFin(rs.getDate("fechaFin"));
+            if (planDeTrabajo.isEstado()){
+                planDeTrabajoList.add(planDeTrabajo);
+            }
+
+
+        }
+
+        return planDeTrabajoList;
+    }
+    public List<PlanDeTrabajo>consultarActividadesdelPlanDeTrabajoSinSoporte(int idContratista,String mes)throws SQLException,ClassNotFoundException {
+        List<PlanDeTrabajo> planDeTrabajoList = new LinkedList<>();
+        String sql="SELECT * FROM planDeTrabajo WHERE idContratista = ? AND mes = ?;";
+        PreparedStatement ps = Conexion.conection().prepareStatement(sql);
+        ps.setInt(1,idContratista);
+        ps.setString(2,mes);
+        ResultSet rs = ps.executeQuery();
+        while (rs.next()){
+            PlanDeTrabajo planDeTrabajo=new PlanDeTrabajo();
+            planDeTrabajo.setId(rs.getInt("id"));
+            planDeTrabajo.setNombre(rs.getString("actividad"));
+            planDeTrabajo.setMes(rs.getString("mes"));
+            planDeTrabajo.setEvidencia(rs.getString("evidencia"));
+            if(planDeTrabajo.getEvidencia()==null){
+                planDeTrabajo.setEstado(false);
+            }
+            else{
+                planDeTrabajo.setEstado(true);
+            }
+            planDeTrabajo.setIdContratista(rs.getInt("idContratista"));
+            planDeTrabajo.setFechaInicio(rs.getDate("fechaInicio"));
+            planDeTrabajo.setFechaFin(rs.getDate("fechaFin"));
+            if (!planDeTrabajo.isEstado()){
+                planDeTrabajoList.add(planDeTrabajo);
+            }
+
+
+        }
+        return planDeTrabajoList;
+    }
     public boolean consultarRegistro(int id,int idContratista) throws SQLException, ClassNotFoundException {
         boolean flag=false;
         String sql ="select count(*) as registro from planDeTrabajo where id= ? and idContratista=? and evidencia is not null;";

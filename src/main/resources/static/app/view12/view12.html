@@ -19,7 +19,7 @@
            </div>
             <div class="row">
                 <br>
-                <button class="btn btn-primary " type="submit" ng-click="add()">Consultar</button>
+                <button class="button button1 " type="submit" ng-click="add()">Consultar</button>
             </div>
         </div>
     </form>
@@ -40,9 +40,9 @@
                 <tr class="texto"  ng-repeat="todo in listado | orderBy:propertyName:reverse">
                     <td>{{todo.nombreEmpresa}}</td>
                     <td>
-                        <md-button button class="md-primary md-raised"  ng-click="showAlert2($event,todo)">
+                        <button  class="btn button1"  ng-click="showAlert2($event,todo)">
                             Detalle Contratista
-                        </md-button>
+                        </button>
                     </td>
                 </tr>
                 </tbody>

@@ -250,6 +250,10 @@ color: #575756;
 
 }
 
+.bottom img{
+  vertical-align:bottom;
+}
+
 .bg {
     /* The image used */
     background-image: url("img/Recurso 2.png");
@@ -262,6 +266,7 @@ color: #575756;
     background-repeat: no-repeat;
     background-size: 500px 500px;
     padding-top: 40px;
+    display:block;
 }
 
 

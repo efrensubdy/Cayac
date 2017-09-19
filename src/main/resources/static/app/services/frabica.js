@@ -92,7 +92,14 @@ angular.module('services.listFactory', ['ngRoute','ngResource'])
                        return $resource('/app/planDeTrabajo/actpC/:idContratista/:mes')
 
                                         })
+         .factory('actividadConSoporte', function($resource) {
+                                return $resource('/app/planDeTrabajo/conSopor/:idContratista/:mes')
 
+                                                 })
+         .factory('actividadSinSoporte', function($resource) {
+                                         return $resource('/app/planDeTrabajo/sinSopor/:idContratista/:mes')
+
+                                                          })
          //Fabrica que trae todos los contratos pertencientes al contratante
          .factory('contratos', function($resource) {
                        return $resource('/app/contratos/:idContratante');

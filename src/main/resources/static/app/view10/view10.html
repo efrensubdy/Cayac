@@ -16,7 +16,7 @@
                 </datalist>
                     <br>
                     <br>
-                    <button class="btn btn-primary align-middle" type="submit" ng-click="add()">Consultar</button>
+                    <button class="btn button1 align-middle" type="submit" ng-click="add()">Consultar</button>
             </div>
             </div>
 
@@ -43,7 +43,7 @@
                 <tr  ng-repeat="todo in listillo | orderBy:propertyName:reverse">
                     <td class="w3-center">{{todo.nombreEmpresa}}</td>
                     <td class="w3-center">
-                        <md-button button class="md-primary md-raised" ng-click="showAlert($event,todo)" >
+                        <md-button button class="btn button1" ng-click="showAlert($event,todo)" >
                             Resumen
                         </md-button>
                     </td>

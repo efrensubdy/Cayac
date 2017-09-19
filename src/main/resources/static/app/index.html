@@ -1,8 +1,5 @@
 <!DOCTYPE html>
-<!--[if lt IE 7]>      <html lang="en" ng-app="myApp" class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
-<!--[if IE 7]>         <html lang="en" ng-app="myApp" class="no-js lt-ie9 lt-ie8"> <![endif]-->
-<!--[if IE 8]>         <html lang="en" ng-app="myApp" class="no-js lt-ie9"> <![endif]-->
-<!--[if gt IE 8]><!--> <html lang="en" ng-app="myApp" class="no-js"> <!--<![endif]-->
+<html lang="en" ng-app="myApp" class="no-js">
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -44,7 +41,6 @@
   </div>
 </div>
 </header>
-</html>
 <body class="bg">
 
 <nav id="mainNav" class="navbar  navbar-inverse navbar-fixed-top affix-top">
@@ -135,6 +131,7 @@
                 <a class="text-primary" >Gestión de Proyecto</a>
                 <ul class="dropdown-menu">
                   <li><a class="text-primary"  ng-show="bandera" class="example" href="#!/ejecucionCNCE">Gestión Estatica</a> </li>
+                  <li><a class="text-primary"  ng-show="bandera" class="example" href="#!/gestionDeActividades">Gestión de Actividades</a></li>
                 </ul>
               </li>
               <li role="separator" class="divider"></li>
@@ -232,11 +229,6 @@
 </nav>
 
 
-<!--[if lt IE 7]>
-<p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
-<![endif]-->
-
-
 <div class="w3-container">
 <div class="row">
   <div class="col-sm-2">
@@ -248,7 +240,7 @@
             <span class="glyphicon glyphicon-globe" style="color:primary"></span>
           </div>
           <div class="col-sm-1">
-            <label class="titulos">Navegacion</label>
+            <label class="titulos">Navegación</label>
           </div>
         </div>
         </div>
@@ -274,7 +266,7 @@
   </div>
 
   <div class="col-sm-10">
-    <div ng-view>
+    <div class="container" ng-view>
 
     </div>
   </div>
@@ -286,24 +278,6 @@
 <br>
 <br>
 <br>
-
-<footer class="w3-padding">
-  <div class="navbar navbar-default">
-    <div class="col-sm-4 text-center">
-      <p>© 2017 - SEQ CONSULTORES LTDA.</p>
-    </div>
-    <div class="col-sm-4 text-center">
-      <h4>Contactenos</h4>
-      <p>Linea Telefónica 68330</p>
-    </div>
-    <div class="col-sm-4 text-justify-center">
-      <i class="fa fa-facebook-official w3-hover-opacity w3-large"></i>
-      <i class="fa fa-twitter w3-hover-opacity w3-large"></i>
-      <i class="fa fa-linkedin w3-hover-opacity w3-large"></i>
-    </div>
-  </div>
-</footer>
-
 
 <!-- In production use:
 <script src="//ajax.googleapis.com/ajax/libs/angularjs/x.x.x/angular.min.js"></script>
@@ -343,6 +317,7 @@
 <script src="ejecucionCNCE/ejecucionCNCE.js"></script>
 <script src="registroServicio/registroServicio.js"></script>
 <script src="planDeTrabajo/planDeTrabajo.js"></script>
+<script src="gestionDeActividades/gestionDeActividades.js"></script>
 <script src="login/login.js"></script>
 <script src="inicio/inicio.js"></script>
 <script src="login2/login2.js"></script>
@@ -351,5 +326,22 @@
 <script src="components/version/version.js"></script>
 <script src="components/version/version-directive.js"></script>
 <script src="components/version/interpolate-filter.js"></script>
+
+<footer class="w3-padding">
+  <div class="navbar navbar-default">
+    <div class="col-sm-4 text-center">
+      <p>© 2017 - SEQ CONSULTORES LTDA.</p>
+    </div>
+    <div class="col-sm-4 text-center">
+      <h4>Contactenos</h4>
+      <p>Linea Telefónica 68330</p>
+    </div>
+    <div class="col-sm-4 text-justify-center">
+      <i class="fa fa-facebook-official w3-hover-opacity w3-large"></i>
+      <i class="fa fa-twitter w3-hover-opacity w3-large"></i>
+      <i class="fa fa-linkedin w3-hover-opacity w3-large"></i>
+    </div>
+  </div>
+</footer>
 </body>
 </html>

@@ -25,6 +25,7 @@ angular.module('myApp', [
   'myApp.registroServicio',
   'myApp.inicio',
   'myApp.planDeTrabajo',
+  'myApp.gestionDeActividades',
   'myApp.login',
   'myApp.login2',
   'myApp.login3',
