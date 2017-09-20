@@ -3,6 +3,7 @@ package com.example.Services;
 import com.example.Beans.AdministradorDePlanesDeTrabajo;
 import com.example.DB.PlanDeTrabajoBD;
 import com.example.Models.Aprobacion;
+import com.example.Models.Contratista;
 import com.example.Models.Documento;
 import com.example.Models.PlanDeTrabajo;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -47,6 +48,11 @@ public class ManejoDePlanesDeTrabajoBD implements AdministradorDePlanesDeTrabajo
     @Override
     public List<PlanDeTrabajo> traerActividadesPorContratistaSinSoporte(int idContratista, String mes) throws SQLException, ClassNotFoundException {
         return planDeTrabajoBD.consultarActividadesdelPlanDeTrabajoSinSoporte(idContratista, mes);
+    }
+
+    @Override
+    public List<Contratista> pendientesSinSoporte(int idContratante, String mes) throws SQLException, ClassNotFoundException {
+        return planDeTrabajoBD.pendientesSinSoporte(idContratante, mes);
     }
 
     @Override

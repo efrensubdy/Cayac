@@ -1,6 +1,7 @@
 package com.example.Beans;
 
 import com.example.Models.Aprobacion;
+import com.example.Models.Contratista;
 import com.example.Models.Documento;
 import com.example.Models.PlanDeTrabajo;
 
@@ -18,6 +19,7 @@ public interface AdministradorDePlanesDeTrabajo {
     public List<PlanDeTrabajo>traerActividadesPorContratista(int idContratista,String mes)throws SQLException,ClassNotFoundException;
     public List<PlanDeTrabajo>traerActividadesPorContratistaConSoporte(int idContratista,String mes)throws SQLException,ClassNotFoundException;
     public List<PlanDeTrabajo>traerActividadesPorContratistaSinSoporte(int idContratista,String mes)throws SQLException,ClassNotFoundException;
+    public List<Contratista>pendientesSinSoporte(int idContratante,String mes) throws SQLException,ClassNotFoundException;
     public boolean tieneAprobacion(int idContratista,int idContratante)throws SQLException,ClassNotFoundException;
 
 

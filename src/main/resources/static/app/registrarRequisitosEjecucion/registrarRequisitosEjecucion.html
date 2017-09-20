@@ -96,12 +96,12 @@
                             <br>
                            <table class="table table-sm  table-bordered table-hover table-condensed  text-justify ">
                                <thead>
-                               <tr class="">
+                               <tr class="titulos">
                                    <th>Descripcion</th>
                                    <th>¿Aplica?<md-checkbox  aria-label="CheckboxMaster" ng-model="masterPrevioSugerido" ng-click="allPreviosSugeridos(masterPrevioSugerido)"></md-checkbox></th>
                                </tr>
                                </thead>
-                               <tbody>
+                               <tbody class="texto">
                                <tr class="" ng-repeat="todo in listadoPrevioSugerido" >
                                    <td>{{todo.requisito}}</td>
                                    <td><md-checkbox class="w3-center"  aria-label="Checkbox 1"  ng-model="previoSugerido" ng-change="agregarPrevioSugerido(previoSugerido, todo)">
@@ -129,13 +129,13 @@
                         <div class="col-xs-9">
                         <table class="table table-sm table-bordered table-hover table-condensed  text-justify">
                             <thead>
-                            <tr class="">
+                            <tr class="titulos">
                                 <th>DEFINITIVOS</th>
                                 <th>ELIMINAR</th>
 
                             </tr>
                             </thead>
-                            <tbody>
+                            <tbody class="texto">
                             <tr class="" ng-repeat="todo in defPreviosSugeridos">
                                 <td> {{todo.descripcion}} </td>
                                 <td><md-checkbox  aria-label="Checkbox 1" class="w3-check" type="checkbox"   ng-model="select1" ng-change="eliminar1(select1, todo)"></md-checkbox></td>

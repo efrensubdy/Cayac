@@ -9,7 +9,19 @@ angular.module('myApp.gestionDeActividades', ['ngRoute'])
   });
 }])
 
-.controller('gestionDeActividadesCtrl', ['$mdDialog','$timeout', '$q', '$scope','$log','$rootScope','$localStorage','$sessionStorage','contratosEnEjecucion','finalesDefinitivos','actividadConSoporte','actividadSinSoporte',function($mdDialog,$timeout, $q, $scope,$log,$rootScope,$localStorage,$sessionStorage,contratosEnEjecucion,finalesDefinitivos,actividadConSoporte,actividadSinSoporte) {
+.controller('gestionDeActividadesCtrl', ['$http','$mdDialog','$timeout', '$q', '$scope','$log','$rootScope','$localStorage','$sessionStorage','contratosEnEjecucion','finalesDefinitivos','actividadConSoporte','actividadSinSoporte',function($http,$mdDialog,$timeout, $q, $scope,$log,$rootScope,$localStorage,$sessionStorage,contratosEnEjecucion,finalesDefinitivos,actividadConSoporte,actividadSinSoporte) {
+
+var q=function(idContratante, idContratista){
+console.log("dsds")
+ var url= "http://localhost:8080/app/planDeTrabajo/aprobado/"+idContratista+"/"+idContratante ;
+  var a;
+    a=$http.get(url).then(function(response) {
+               $rootScope.o=response.data;
+
+               return response.data;
+  })
+     return a;
+                  }
 
 $scope.meses=[
  { id: 1, name: 'ENERO'},
@@ -31,9 +43,12 @@ $scope.flag=false
 $scope.add=function(){
                 $scope.listillo=finalesDefinitivos.query({idContratante:$localStorage.contratanteLogeado.idContratante,idContrato:$scope.contrato})
                 $scope.flag=true;
+
                 $rootScope.idCategoria=$scope.idCategoria
                 $rootScope.idContrato=$scope.idContrato
                 }
+
+
 
 
 $scope.showAlert=function(ev, client,mes){
@@ -53,6 +68,7 @@ $scope.showAlert=function(ev, client,mes){
 
 
 }
+
 
 function DialogController($scope, $mdDialog, $rootScope, $http) {
  $scope.listadoActividad=$rootScope.lista1;

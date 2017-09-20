@@ -79,7 +79,7 @@
         <div class="col-xs-11">
         <table class="table table-bordered table-hover table-condensed">
             <tbody>
-            <tr>
+            <tr class="titulos">
                 <th width="600px" >Nombre de Contrato</th>
                 <th width="600px" >Fecha Inicio</th>
                 <th width="600px" >Fecha Fin</th>
@@ -87,7 +87,7 @@
                 <th width="600px" >Cedula de Representante</th>
                 <th width="600px" >Rut</th>
             </tr>
-            <tr>
+            <tr class="texto">
                 <td width="600px" >{{e.nombreContrato}}</td>
                 <td width="600px" >{{e.fechaInicio}}</td>
                 <td width="600px" >{{e.fechaFin}}</td>
@@ -105,7 +105,7 @@
     <div class="col-xs-11">
     <table class="table table-bordered table-hover table-condensed">
         <tbody>
-        <tr >
+        <tr class="titulos" >
             <th width="600px" >Nombre de Empresa</th>
             <th width="600px" >Fecha Inicio</th>
             <th width="600px" >Fecha Fin</th>
@@ -113,7 +113,7 @@
             <th width="600px" >Cedula de Representante</th>
             <th width="600px" >Rut</th>
         </tr>
-        <tr  ng-repeat="todo in listado">
+        <tr class="texto" ng-repeat="todo in listado">
             <td width="600px" >{{todo.nombreContrato}}</td>
             <td width="600px" >{{todo.fechaInicio}}</td>
             <td width="600px" >{{todo.fechaFin}}</td>

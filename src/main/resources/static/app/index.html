@@ -16,10 +16,7 @@
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
   <link rel="stylesheet" type="text/css" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
 </head>
-<style>
-
-</style>
-<header class="w3-display-container w3-left w3-content" style="max-width:900px;">
+<header class="w3-display-container w3-left w3-content">
   <br>
   <br>
 <div class="w3-container">
@@ -27,14 +24,14 @@
     <div class="row">
     <div class="col-sm-6">
 
-      <img src="img/cayac.jpg" alt="Lights" style="width:100%">
+      <img src="img/cayac.jpg" alt="Lights" style="display: block;">
 
     </div>
     <div class="col-sm-6">
       <div class="w3-container w3-right">
       <br>
       <br>
-      <img ng-hide="bandera||bandera2||bandera3 " src="img/logoSeq.PNG" alt="Lights" style="width:100%">
+      <img ng-hide="bandera||bandera2||bandera3 " src="img/logoSeq.PNG" alt="Lights" style="display: block;">
       </div>
     </div>
   </div>
@@ -144,6 +141,18 @@
               </li>
               <li role="separator" class="divider"></li>
               <li><a class="text-primary"  ng-show="bandera" class="example" href="#!/registrarRequisitosEjecucion">Gestion de Requisitos</a></li>
+            </ul>
+          </div>
+        </div>
+        </li>
+        <li ng-show="bandera" class="btn-toolbar"> <div class="btn-toolbar">
+          <div class="btn-group navbar-btn">
+            <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Notificaciones
+            </button>
+            <ul class="dropdown-menu">
+              <li><a class="text-primary"  ng-show="bandera" class="example" href="#!/notificaciones">bandeja de Entrada</a></li>
+              <li role="separator" class="divider"></li>
             </ul>
           </div>
         </div>
@@ -266,9 +275,7 @@
   </div>
 
   <div class="col-sm-10">
-    <div class="container" ng-view>
-
-    </div>
+    <div class="w3-container" ng-view></div>
   </div>
 </div>
 
@@ -318,6 +325,7 @@
 <script src="registroServicio/registroServicio.js"></script>
 <script src="planDeTrabajo/planDeTrabajo.js"></script>
 <script src="gestionDeActividades/gestionDeActividades.js"></script>
+<script src="notificaciones/notificaciones.js"></script>
 <script src="login/login.js"></script>
 <script src="inicio/inicio.js"></script>
 <script src="login2/login2.js"></script>

@@ -71,6 +71,20 @@ public class PlanDeTrabajoController {
         }
         return a;
     }
+    @RequestMapping(value = "contratante/{idContratante}/{mes}", method = RequestMethod.GET)
+    public ResponseEntity<?>obtenerPendientesDeSoporte(@PathVariable int idContratante, @PathVariable String mes){
+
+        ResponseEntity a;
+        try {
+            //obtener datos que se enviarán a través del API
+            a = new ResponseEntity<>(manejoDePlanesDeTrabajoBD.pendientesSinSoporte(idContratante,mes),HttpStatus.ACCEPTED);
+
+        } catch (Exception ex) {
+            Logger.getLogger(Controller.class.getName()).log(Level.SEVERE, null, ex);
+            return new ResponseEntity<>("Error bla bla bla",HttpStatus.NOT_FOUND);
+        }
+        return a;
+    }
     @RequestMapping(value = "aprobado/{idContratista}/{idContratante}", method = RequestMethod.GET)
     public ResponseEntity<?>obtenerAprobacionDeContratisttas(@PathVariable int idContratista, @PathVariable int idContratante){
 

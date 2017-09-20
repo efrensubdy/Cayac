@@ -124,9 +124,12 @@ INSERT INTO extras VALUES (5,"TOMAR DECISIONES",4);
  LOAD DATA LOCAL INFILE "/Users/HSEQ/Documents/ejecucionEstaticaPrevia.csv" INTO TABLE requisitosdeejecuionsugeridosestaticosprevio
  FIELDS TERMINATED BY ';'
  LINES TERMINATED BY '\n'; 
+  distinct
  
- 
-
+INSERT INTO  requisitosdeejecuionsugeridosestaticosprevio (requisito,idCategoria) VALUES ("ACTA DE INICIO DE ACTIVIDADES",1);
+INSERT INTO  requisitosdeejecuionsugeridosestaticosprevio (requisito,idCategoria) VALUES ("ACTA DE INICIO DE ACTIVIDADES",2);
+INSERT INTO  requisitosdeejecuionsugeridosestaticosprevio (requisito,idCategoria) VALUES ("ACTA DE INICIO DE ACTIVIDADES",3);
+INSERT INTO  requisitosdeejecuionsugeridosestaticosprevio (requisito,idCategoria) VALUES ("ACTA DE INICIO DE ACTIVIDADES",4);
  
  INSERT INTO requisitosdeejecuionextrasestaticosprevio(requisito,idCategoria) VALUES ("REQUISITO PREVIO ESTATICO EXTRA 1",1);
  INSERT INTO requisitosdeejecuionextrasestaticosprevio(requisito,idCategoria) VALUES ("REQUISITO PREVIO ESTATICO EXTRA 2",2);

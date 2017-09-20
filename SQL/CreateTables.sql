@@ -328,19 +328,19 @@ CREATE TABLE `documentosestaticospreviosextras` (
   CONSTRAINT `RequisitosExtras_DocPrevExtra` FOREIGN KEY (`idRequisito`) REFERENCES `requisitosdeejecuiondefextrasestaticosprevio` (`idrequisitosdeejecuiondefextrasestaticosprevio`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=INNODB DEFAULT CHARSET=utf8;
 
-
 CREATE TABLE `planDeTrabajo` (
-  `id` INT(11) NOT NULL AUTO_INCREMENT,
-  `mes` VARCHAR(20) NOT NULL,
-  `actividad` VARCHAR(100) NOT NULL,
-  `fechaInicio` DATE NOT NULL,
-  `fechaFin` DATE NOT NULL,
-  `evidencia` VARCHAR(500) NOT NULL,
-  `idContratista` INT(11) NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `mes` varchar(20) NOT NULL,
+  `actividad` varchar(100) NOT NULL,
+  `fechaInicio` date NOT NULL,
+  `fechaFin` date NOT NULL,
+  `evidencia` varchar(500) DEFAULT NULL,
+  `idContratista` int(11) NOT NULL,
+  `fechaDeRegistro` date NOT NULL,
   PRIMARY KEY (`id`),
   KEY `Actividad_Contratista` (`idContratista`),
   CONSTRAINT `Actividad_Contratista` FOREIGN KEY (`idContratista`) REFERENCES `contratista` (`idContratista`)
-) ENGINE=INNODB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
 
 CREATE TABLE `inboxContratante` (
   `id` INT(11) NOT NULL AUTO_INCREMENT,
@@ -362,6 +362,17 @@ CREATE TABLE `inboxContratista` (
   CONSTRAINT `mail__Contratante` FOREIGN KEY (`idContratante`) REFERENCES `contratante` (`idContratante`),
   CONSTRAINT `mail__Contratista` FOREIGN KEY (`idContratista`) REFERENCES `contratista` (`idContratista`)
 ) ENGINE=INNODB DEFAULT CHARSET=latin1;
+
+CREATE TABLE `Aprobacion` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `idContratista` int(11) NOT NULL,
+  `idContratante` int(11) NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `contratante_aprobacion` (`idContratante`),
+  KEY `contratista_aprobacion` (`idContratista`),
+  CONSTRAINT `contratante_aprobacion` FOREIGN KEY (`idContratante`) REFERENCES `contratante` (`idContratante`),
+  CONSTRAINT `contratista_aprobacion` FOREIGN KEY (`idContratista`) REFERENCES `contratista` (`idContratista`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 
 -- create Admins ---

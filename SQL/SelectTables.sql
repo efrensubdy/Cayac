@@ -1,5 +1,9 @@
 
 -- select all--
+
+
+SELECT * FROM planDeTrabajo;
+SELECT * FROM planDeTrabajo WHERE idContratista =2 AND mes ="ENERO";
 SELECT * FROM documentosestaticospreviosobli;
 SELECT * FROM servicioacontratar;	
 SELECT * FROM administrador;

@@ -100,6 +100,10 @@ angular.module('services.listFactory', ['ngRoute','ngResource'])
                                          return $resource('/app/planDeTrabajo/sinSopor/:idContratista/:mes')
 
                                                           })
+         .factory('notifacionSinSoporte', function($resource) {
+                                                  return $resource('/app/planDeTrabajo/contratante/:idContratante/:mes')
+
+          })
          //Fabrica que trae todos los contratos pertencientes al contratante
          .factory('contratos', function($resource) {
                        return $resource('/app/contratos/:idContratante');

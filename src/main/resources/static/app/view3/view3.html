@@ -103,18 +103,18 @@
             <div class="col-xs-8">
               <table class="table table-sm table-bordered table-hover table-condensed  text-justify">
                 <thead>
-                <tr class="">
+                <tr class="titulos">
                   <th>DESCRIPICION</th>
                   <th>¿APLICA?<md-checkbox  aria-label="CheckboxMaster" ng-model="master" ng-click="all(master)"></md-checkbox></th>
                 </tr>
                 </thead>
                 <tbody>
-                <tr class="" ng-repeat="todo in listado2" >
+                <tr class="texto" ng-repeat="todo in listado2" >
                   <td>{{todo.requisito}}</td>
                   <td><md-checkbox  aria-label="Checkbox 1"  ng-model="selected" ng-change="display(selected, todo)">
                   </md-checkbox></td>
                 </tr>
-                <tr class="" ng-repeat="todo in listado3" >
+                <tr class="texto" ng-repeat="todo in listado3" >
                   <td>{{todo.descripcion}}</td>
                   <td><md-checkbox  aria-label="Checkbox 1" ng-model="select" ng-change="display2(select, todo)">
                   </md-checkbox></td>
