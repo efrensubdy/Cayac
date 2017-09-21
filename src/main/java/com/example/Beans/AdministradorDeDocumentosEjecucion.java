@@ -1,7 +1,5 @@
 package com.example.Beans;
 
-import com.example.Models.DocumentoEjecucion;
-import com.example.Models.DocumentoFinalizacion;
 import com.example.Models.DocumentoPrevio;
 
 import java.io.IOException;

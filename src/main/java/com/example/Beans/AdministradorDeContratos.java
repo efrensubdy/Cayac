@@ -1,11 +1,9 @@
 package com.example.Beans;
 
 import com.example.Models.Contrato;
-import com.example.Models.DocumentoFinalizacion;
 import com.example.Models.Imagenes;
 
 import java.io.IOException;
-import java.sql.Date;
 import java.sql.SQLException;
 import java.util.List;
 

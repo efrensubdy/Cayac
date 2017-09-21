@@ -13,7 +13,10 @@ angular.module('myApp.login3', ['ngRoute'])
 .controller('Login3Ctrl', ['$localStorage','$sessionStorage','$location','$rootScope','$scope','$mdDialog','$http','rObligatorio', function ($localStorage,$sessionStorage,$location,$rootScope,$scope,$mdDialog,$http,rObligatorio){
       $scope.banderaCandidato=$localStorage.banderaCandidato;
       $scope.banderaContratista= $localStorage.banderaContratista;
+      $scope.progressBandera=false;
+      $scope.value=0;
       var auntenticado=function(ev){
+       $scope.value=60;
       var t;
       var w=function(){
 
@@ -32,6 +35,7 @@ angular.module('myApp.login3', ['ngRoute'])
                     }
                     else{
                            $rootScope.bandera2 = false;
+                           $scope.progressBandera=false;
                              $mdDialog.show(
                                                                  $mdDialog.alert()
                                                                          .parent(angular.element(document.querySelector('#popupContainer')))
@@ -61,6 +65,8 @@ angular.module('myApp.login3', ['ngRoute'])
 
       }
       $scope.add=function(ev){
+       $scope.progressBandera=true;
+       $scope.value=20
         auntenticado(ev);
 
 

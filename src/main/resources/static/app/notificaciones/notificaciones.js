@@ -9,13 +9,14 @@ angular.module('myApp.notificaciones', ['ngRoute'])
   });
 }])
 
-.controller('notificacionesCtrl', ['$timeout', '$q', '$scope','$log','$rootScope','$localStorage','$sessionStorage','notifacionSinSoporte',function($timeout, $q, $scope,$log,$rootScope,$localStorage,$sessionStorage,notifacionSinSoporte) {
+.controller('notificacionesCtrl', ['$mdDialog','$timeout', '$q', '$scope','$log','$rootScope','$localStorage','$sessionStorage','notifacionSinSoporte','mensajeContratista',function($mdDialog,$timeout, $q, $scope,$log,$rootScope,$localStorage,$sessionStorage,notifacionSinSoporte,mensajeContratista) {
 
  $scope.notificaciones=[
     {id:1,nombre:'CONTRATISTAS SIN ACTIVDADES REGISTRADAS'},
     {id:2,nombre:'CONTRATISTAS CON ACTIVIDADES PERO SIN SOPORTE'},
 
   ];
+
 
   $scope.meses=[
    { id: 1, name: 'ENERO'},
@@ -32,12 +33,64 @@ angular.module('myApp.notificaciones', ['ngRoute'])
    { id: 12, name: 'DICIEMBRE'},
 
               ];
-
+$scope.banderaSinSoporte=false;
 $scope.add = function(notificacion,mes){
-    console.log(mes);
-    console.log(notificacion)
+
+    switch(notificacion.id){
+        case 1:
+        console.log("Sin actividades")
+        break;
+        case 2:
+        console.log("sin soporte")
+        $scope.banderaSinSoporte=true;
+        $scope.noti=notifacionSinSoporte.query({idContratante:$localStorage.contratanteLogeado.idContratante,mes:mes.name})
+        break;
+
+
+    }
+
+}
+$scope.showAlert=function(ev,client){
+     $rootScope.client=client;
+     $mdDialog.show({
+                 //Controlador del mensajes con operaciones definido en la parte de abajo
+                 controller: DialogController,
+                  //permite la comunicacion con el html que despliega el boton requisitos
+                  templateUrl: 'test/mensajeDeContratista.html',
+                  parent: angular.element(document.body),
+                  targetEvent: ev,
+                  clickOutsideToClose:true,
+                  fullscreen: $scope.customFullscreen // Only for -xs, -sm breakpoints.
+     })
+
+
+
 
 }
 
+function DialogController($scope, $mdDialog, $rootScope, $http) {
+    $scope.client=$rootScope.client
+    $scope.mensaje=true;
+    $scope.show=function(){
+        $scope.mensaje=true;
+    }
+    $scope.hide = function() {
+                           $mdDialog.hide();
+                         };
+                         //funcion para cerral el mensaje
+               $scope.cancel = function() {
+                           $mdDialog.cancel();
+                         };
+    $scope.envio=function(item){
+
+        var mensaje={mensaje:item,idContratante:$localStorage.contratanteLogeado.idContratante,idContratista:$scope.client.id}
+        mensajeContratista.save(mensaje);
+        $scope.textArea= '';
+        $scope.mensaje=false;
+
+    }
+
+
+}
 
 }]);

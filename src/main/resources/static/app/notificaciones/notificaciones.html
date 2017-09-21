@@ -41,7 +41,36 @@
 
 
 
-    </div>
+            </div>
 </div>
-</div>
+   <br>
+        <div class="container align-middle text-center" ng-show="banderaSinSoporte">
+            <div class="col-xs-9">
+                <p class="texto">EN LA SIGUIENTE TABLA ENCONTRARÁ A LOS CONTRATISTAS CON UNA O MAS ACTIVIDADES PENDIENTES DE SOPORTE,
+                    SI QUIERE UN DETALLE DE LAS MISMAS PUEDE ENTRAR POR EL MENU DE GESTIÓN DE PROYECTO
+                </p>
+                <table class="table table-bordered table-hover table-condensed">
+                    <tbody>
+                    <tr  class="titulos">
+                        <th >NOMBRE DE EMPRESA</th>
+                        <th >PENDIENTES DE SOPORTE</th>
 
+                    </tr>
+                    <tr ng-repeat="todo in noti | orderBy:propertyName:reverse">
+                        <td >{{todo.nombreEmpresa}}</td>
+                        <td >
+                            <button class="btn btn-primary" ng-click="showAlert($event,todo)" >
+                                Resumen
+                            </button>
+                        </td>
+                    </tr>
+
+                    </tbody>
+
+                </table>
+            </div>
+        </div>
+
+</div>
+</div>
+</div>

@@ -27,6 +27,7 @@ angular.module('myApp', [
   'myApp.planDeTrabajo',
   'myApp.gestionDeActividades',
   'myApp.notificaciones',
+  'myApp.mensajeria',
   'myApp.login',
   'myApp.login2',
   'myApp.login3',

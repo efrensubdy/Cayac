@@ -1,9 +1,6 @@
 package com.example.Controllers;
 
-import com.example.Models.DocumentoEjecucion;
-import com.example.Models.DocumentoFinalizacion;
 import com.example.Models.DocumentoPrevio;
-import com.example.Models.Imagenes;
 import com.example.Services.ManejoDeDocumentosDeEjecucion;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;

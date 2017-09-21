@@ -2,10 +2,7 @@ package com.example.Services;
 
 import com.example.Beans.AdministradorDePlanesDeTrabajo;
 import com.example.DB.PlanDeTrabajoBD;
-import com.example.Models.Aprobacion;
-import com.example.Models.Contratista;
-import com.example.Models.Documento;
-import com.example.Models.PlanDeTrabajo;
+import com.example.Models.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -31,6 +28,11 @@ public class ManejoDePlanesDeTrabajoBD implements AdministradorDePlanesDeTrabajo
     }
 
     @Override
+    public void agregarMensaje(Mensaje mensaje) throws SQLException, ClassNotFoundException {
+        planDeTrabajoBD.agregarMensaje(mensaje);
+    }
+
+    @Override
     public void actualizarSoporte(Documento doc) throws SQLException, ClassNotFoundException, IOException {
         planDeTrabajoBD.actualizarSoporte(doc);
     }
@@ -48,6 +50,11 @@ public class ManejoDePlanesDeTrabajoBD implements AdministradorDePlanesDeTrabajo
     @Override
     public List<PlanDeTrabajo> traerActividadesPorContratistaSinSoporte(int idContratista, String mes) throws SQLException, ClassNotFoundException {
         return planDeTrabajoBD.consultarActividadesdelPlanDeTrabajoSinSoporte(idContratista, mes);
+    }
+
+    @Override
+    public List<Mensaje> consultarMensajesPorContratista(int idContratista, int idContratante) throws SQLException, ClassNotFoundException {
+        return planDeTrabajoBD.consultarMensajesContratista(idContratista, idContratante);
     }
 
     @Override

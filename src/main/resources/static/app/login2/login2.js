@@ -11,10 +11,13 @@ angular.module('myApp.login2', ['ngRoute'])
 
 
 .controller('Login2Ctrl', ['$localStorage','$sessionStorage','$location','$rootScope','$scope', '$mdDialog','$http', function ($localStorage,$sessionStorage,$location,$rootScope,$scope,$mdDialog,$http){
+      $scope.progressBandera=false;
+      $scope.value=0;
       var auntenticado=function(ev){
       var d;
       var e;
       var t;
+      $scope.value=60;
       var p=function(){
 
         if ($localStorage.contratanteLogeado.estado && $localStorage.contratanteLogeado.rol =="Contratante"){
@@ -35,6 +38,8 @@ angular.module('myApp.login2', ['ngRoute'])
 
                 }
         else{
+
+               $scope.progressBandera=false;
                $rootScope.bandera = false;
 
                 $mdDialog.show(
@@ -58,15 +63,20 @@ angular.module('myApp.login2', ['ngRoute'])
       var url2="http://localhost:8080/app/login/contratante/categoria/" + $scope.email +"/" + $scope.password;
 
       $http.get(url2).then(function(response){
-                                       t=response.data;
+                                           t=response.data;
 
                                        $localStorage.contratanteLogeado=t;
+
                                     return response.data;
                               }).then(p);
 
+
       }
       var idContratante
+
       $scope.add=function(ev){
+        $scope.progressBandera=true;
+        $scope.value=20
         auntenticado(ev);
 
 

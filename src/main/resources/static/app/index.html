@@ -145,19 +145,6 @@
           </div>
         </div>
         </li>
-        <li ng-show="bandera" class="btn-toolbar"> <div class="btn-toolbar">
-          <div class="btn-group navbar-btn">
-            <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              Notificaciones
-            </button>
-            <ul class="dropdown-menu">
-              <li><a class="text-primary"  ng-show="bandera" class="example" href="#!/notificaciones">bandeja de Entrada</a></li>
-              <li role="separator" class="divider"></li>
-            </ul>
-          </div>
-        </div>
-        </li>
-
         <li ng-show="banderaEjecucion" class="btn-toolbar"> <div class="btn-toolbar">
           <div class="btn-group navbar-btn">
             <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -264,10 +251,81 @@
               </div>
             </a>
           </li>
-          <li ng-show="bandera2 && !banderaEjecucion" role="presentation"><a href="#!/view1">Soportes Seleccion</a></li>
+          <li ng-show="banderaEjecucion" role="presentation">
+            <a href="#!/mensajeria">
+              <div class="row">
+                <div class="col-sm-1"><span class="	glyphicon glyphicon-comment"></span></div>
+                <div class="col-sm-1">mensajeria</div>
+              </div>
+            </a>
+          </li>
+          <li ng-show="banderaEjecucion" role="presentation">
+            <a href="#!/subirDocumentosEstaticos">
+              <div class="row">
+                <div class="col-sm-1"><span class="glyphicon glyphicon-file"></span></div>
+                <div class="col-sm-1">Documentos</div>
+              </div>
+            </a>
+          </li>
+          <li ng-show="banderaEjecucion" role="presentation">
+            <a href="#!/planDeTrabajo">
+              <div class="row">
+                <div class="col-sm-1"><span class="	glyphicon glyphicon-briefcase"></span></div>
+                <div class="col-sm-1">Plan de Trabajo</div>
+              </div>
+            </a>
+          </li>
+          <li ng-show="banderaEjecucion" role="presentation">
+            <a href="">
+              <div class="row">
+                <div class="col-sm-1"><span class="glyphicon glyphicon-signal"></span></div>
+                <div class="col-sm-1">Auditoria</div>
+              </div>
+            </a>
+          </li>
+          <li ng-show="banderaEjecucion" role="presentation">
+            <a href="">
+              <div class="row">
+                <div class="col-sm-1"><span class="glyphicon glyphicon-plus"></span></div>
+                <div class="col-sm-1">Seguridad Social</div>
+              </div>
+            </a>
+          </li>
+          <li ng-show="banderaEjecucion" role="presentation">
+            <a href="">
+              <div class="row">
+                <div class="col-sm-1"><span class="glyphicon glyphicon-equalizer"></span></div>
+                <div class="col-sm-1">Estandares Mínimos</div>
+              </div>
+            </a>
+          </li>
+          <li ng-show="banderaEjecucion" role="presentation">
+            <a href="">
+              <div class="row">
+                <div class="col-sm-1"><span class="	glyphicon glyphicon-alert"></span></div>
+                <div class="col-sm-1">Accidentes</div>
+              </div>
+            </a>
+          </li>
+
+
+          <li ng-show="bandera" role="presentation">
+            <a href="#!/notificaciones">
+              <div class="row">
+                <div class="col-sm-1"><span class="glyphicon glyphicon-send"></span></div>
+                <div class="col-sm-1">Notificaciones</div>
+              </div>
+            </a>
+          </li>
+          <li ng-show="bandera2 && !banderaEjecucion" role="presentation">
+            <a href="#!/view9">
+              <div class="row">
+                <div class="col-sm-1"><span class="glyphicon glyphicon-duplicate"></span></div>
+                <div class="col-sm-1">Soportes Seleccion</div>
+              </div>
+            </a>
+          </li>
           <li ng-hide="bandera||bandera2||bandera3 ||banderaEjecucion"><a href="#!/inicio">Inicio Cayac</a></li>
-          <li ng-show="banderaEjecucion"><a href="#!/subirDocumentosEstaticos">Documentos</a></li>
-          <li ng-show="banderaEjecucion"><a href="#!/planDeTrabajo">Plan de Trabajo</a></li>
         </ul>
 
       </div>
@@ -326,6 +384,7 @@
 <script src="planDeTrabajo/planDeTrabajo.js"></script>
 <script src="gestionDeActividades/gestionDeActividades.js"></script>
 <script src="notificaciones/notificaciones.js"></script>
+<script src="mensajeria/mensajeria.js"></script>
 <script src="login/login.js"></script>
 <script src="inicio/inicio.js"></script>
 <script src="login2/login2.js"></script>

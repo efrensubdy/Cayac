@@ -1,8 +1,6 @@
 package com.example.DB;
 
 import com.example.Models.Conexion;
-import com.example.Models.DocumentoEjecucion;
-import com.example.Models.DocumentoFinalizacion;
 import com.example.Models.DocumentoPrevio;
 import org.apache.commons.io.FileUtils;
 import org.springframework.stereotype.Service;

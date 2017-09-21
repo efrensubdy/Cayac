@@ -67,6 +67,37 @@ public void agregarAprobacion(Aprobacion aprobacion)throws SQLException,ClassNot
     con.close();
 
 }
+public void agregarMensaje(Mensaje mensaje)throws SQLException,ClassNotFoundException{
+    String sql="INSERT INTO inboxContratista (mensaje,idContratante,idContratista) VALUES (?,?,?)";
+    Connection con =Conexion.conection();
+    PreparedStatement ps=con.prepareStatement(sql);
+    ps.setString(1,mensaje.getMensaje());
+    ps.setInt(2,mensaje.getIdContratante());
+    ps.setInt(3,mensaje.getIdContratista());
+    ps.execute();
+    ps.close();
+    con.close();
+
+
+
+}
+public List<Mensaje>consultarMensajesContratista(int idContratista,int idContratante)throws SQLException,ClassNotFoundException{
+    List<Mensaje>mensajeList=new LinkedList<>();
+    String sql="SELECT * FROM inboxContratista WHERE idContratista = ? AND idContratante = ?;";
+    PreparedStatement ps = Conexion.conection().prepareStatement(sql);
+    ps.setInt(1,idContratista);
+    ps.setInt(2,idContratante);
+    ResultSet rs = ps.executeQuery();
+    while (rs.next()) {
+        Mensaje mensajeDb = new Mensaje();
+        mensajeDb.setId(rs.getInt("id"));
+        mensajeDb.setIdContratante(rs.getInt("idContratante"));
+        mensajeDb.setIdContratista(rs.getInt("idContratista"));
+        mensajeDb.setMensaje(rs.getString("mensaje"));
+        mensajeList.add(mensajeDb);
+    }
+    return mensajeList;
+}
 public List<PlanDeTrabajo>consultarActividadesdelPlanDeTrabajo(int idContratista,String mes)throws SQLException,ClassNotFoundException {
     List<PlanDeTrabajo> planDeTrabajoList = new LinkedList<>();
     String sql="SELECT * FROM planDeTrabajo WHERE idContratista = ? AND mes = ?;";

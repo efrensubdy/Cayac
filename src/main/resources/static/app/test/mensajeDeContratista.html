@@ -1,0 +1,36 @@
+<md-dialog id="attribute-dialog" aria-label="Mensaje">
+    <form>
+        <md-toolbar>
+            <div class="md-toolbar-tools">
+                <h1>Detalles</h1>
+                <span flex></span>
+                <md-button class="md-icon-button" ng-click="cancel()">
+                    <md-icon md-font-library="material-icons">highlight_off</md-icon>
+                </md-button>
+            </div>
+        </md-toolbar>
+        <md-dialog-content>
+            <md-tabs md-dynamic-height md-border-bottom>
+                <md-tab label="Mensaje">
+                    <div class="md-dialog-content" ng-show="mensaje">
+                        <label class="titulos">MANDE AL CONTRATISTA UN MENSAJE UN MENSAJE </label>
+                        <div class="form-group">
+                            <label class="titulos" for="comment">Mensaje: </label>
+                            <textarea class="form-control texto" rows="5" id="comment" ng-model="textArea"></textarea>
+                            <br>
+                            <button class="btn btn-primary" ng-click="envio(textArea)">Enviar</button>
+                        </div>
+
+                    </div>
+                    <div class="md-dialog-content" ng-show="!mensaje">
+                        <div class="w3-center"><i class="fa fa-question-circle" style="font-size:80px;color:black;text-shadow:2px 2px 4px #000000;"></i></div>
+                        <br>
+                        <label class="titulos">Desea ver Enviar mas Mensajes</label>
+                        <md-button class="md-primary md-raised md-hue-2" ng-click="show()">si</md-button>
+                        <md-button class="md-primary md-raised md-hue-2" ng-click="cancel()">no</md-button>
+                    </div>
+                </md-tab>
+            </md-tabs>
+        </md-dialog-content>
+    </form>
+</md-dialog>

@@ -1,9 +1,6 @@
 package com.example.Controllers;
 
-import com.example.Models.Aprobacion;
-import com.example.Models.Documento;
-import com.example.Models.PlanDeTrabajo;
-import com.example.Models.Usuario;
+import com.example.Models.*;
 import com.example.Services.ManejoDePlanesDeTrabajoBD;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -99,6 +96,20 @@ public class PlanDeTrabajoController {
         }
         return a;
     }
+    @RequestMapping(value = "mensajesContr/{idContratista}/{idContratante}", method = RequestMethod.GET)
+    public ResponseEntity<?>obtenerMensajesDeContratisttas(@PathVariable int idContratista, @PathVariable int idContratante){
+
+        ResponseEntity a;
+        try {
+            //obtener datos que se enviarán a través del API
+            a = new ResponseEntity<>(manejoDePlanesDeTrabajoBD.consultarMensajesPorContratista(idContratista,idContratante),HttpStatus.ACCEPTED);
+
+        } catch (Exception ex) {
+            Logger.getLogger(Controller.class.getName()).log(Level.SEVERE, null, ex);
+            return new ResponseEntity<>("Error bla bla bla",HttpStatus.NOT_FOUND);
+        }
+        return a;
+    }
     @RequestMapping(value ="aprobacion",method = RequestMethod.POST)
     public ResponseEntity<?> agregarAprobacion(@RequestBody Aprobacion aprobacion){
 
@@ -107,6 +118,20 @@ public class PlanDeTrabajoController {
             //obtener datos que se enviarán a través del API
             System.out.println("csjdfhkdsjhf");
             manejoDePlanesDeTrabajoBD.agregarAprobacion(aprobacion);
+            a = new ResponseEntity<>(HttpStatus.ACCEPTED);
+        } catch (Exception ex) {
+            Logger.getLogger(Controller.class.getName()).log(Level.SEVERE, null, ex);
+            return new ResponseEntity<>("Error bla bla bla",HttpStatus.NOT_FOUND);
+        }
+        return a;
+    }
+    @RequestMapping(value ="mensaje",method = RequestMethod.POST)
+    public ResponseEntity<?> agregarMensaje(@RequestBody Mensaje mensaje){
+
+        ResponseEntity a;
+        try {
+            //obtener datos que se enviarán a través del API
+            manejoDePlanesDeTrabajoBD.agregarMensaje(mensaje);
             a = new ResponseEntity<>(HttpStatus.ACCEPTED);
         } catch (Exception ex) {
             Logger.getLogger(Controller.class.getName()).log(Level.SEVERE, null, ex);
