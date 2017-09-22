@@ -259,12 +259,12 @@ color: #575756;
     background-image: url("img/Recurso 2.png");
 
     /* Full height */
-    height: 20%;
+    height: 10%;
 
     /* Center and scale the image nicely */
-     background-position: 70% 160%;
+     background-position: 70% 130%;
     background-repeat: no-repeat;
-    background-size: 500px 500px;
+    background-size: 450px 450px;
     padding-top: 40px;
     display:block;
 }
