@@ -20,7 +20,7 @@ angular.module('myApp.login2', ['ngRoute'])
       $scope.value=60;
       var p=function(){
 
-        if ($localStorage.contratanteLogeado.estado && $localStorage.contratanteLogeado.rol =="Contratante"){
+        if ($localStorage.contratanteLogeado.estadoDatabase =="activo" && $localStorage.contratanteLogeado.rol =="Contratante"){
 
              $rootScope.bandera =$localStorage.contratanteLogeado.estado ;
              $rootScope.idContratante=$localStorage.contratanteLogeado.idContratante;
@@ -64,6 +64,7 @@ angular.module('myApp.login2', ['ngRoute'])
 
       $http.get(url2).then(function(response){
                                            t=response.data;
+                                           console.log(response.data);
 
                                        $localStorage.contratanteLogeado=t;
 

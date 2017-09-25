@@ -238,39 +238,34 @@ public class UsersDB {
 
     }
     public Usuario getUsuario2(String  user , String password) throws SQLException, ClassNotFoundException {
-        Usuario usuarioLogeado=new Usuario();
-        boolean isAdmin=false;
-        boolean isContratante=false;
-        List<Usuario>usuarios=consultarUsuariosContratante();
-        List<Usuario>administradores=consultarUsuariosAdiminstradores();
-        for(Usuario u :usuarios) {
+            Usuario usuarioLogeado=new Usuario();
+            boolean isAdmin=false;
+            boolean isContratante=false;
+            List<Usuario>usuarios=consultarUsuariosContratante();
+            List<Usuario>administradores=consultarUsuariosAdiminstradores();
+            for(Usuario u :usuarios) {
 
-            if (u.getEmail().equals(user) && u.getPassword().equals(password)) {
-                usuarioLogeado = u;
-                isContratante = true;
-                System.out.println("sdjcfhksdfh");
+                if (u.getEmail().equals(user) && u.getPassword().equals(password)) {
+                    usuarioLogeado = u;
+                    isContratante = true;
+                    System.out.println("sdjcfhksdfh");
 
-            }
-            else{
-                isContratante =false;
-            }
-        }
-
-         for(Usuario admin :administradores){
-            if (admin.getEmail().equals(user) && admin.getPassword().equals(password)) {
-                        usuarioLogeado=admin;
-                        isAdmin=true;
+                }
 
             }
-            else{
-                isAdmin=false;
-            }
+        System.out.println(isContratante);
+             for(Usuario admin :administradores){
+                if (admin.getEmail().equals(user) && admin.getPassword().equals(password)) {
+                            usuarioLogeado=admin;
+                            isAdmin=true;
 
-         }
+                }
+             }
 
-        usuarioLogeado.setEstado(isContratante|| isAdmin);
 
-        return usuarioLogeado;
+            usuarioLogeado.setEstado(isContratante|| isAdmin);
+
+            return usuarioLogeado;
 
     }
 

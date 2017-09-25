@@ -7,6 +7,15 @@ public class Aprobacion {
     public int id;
     public int idContratista;
     public int idContratante;
+    public String mes;
+
+    public String getMes() {
+        return mes;
+    }
+
+    public void setMes(String mes) {
+        this.mes = mes;
+    }
 
     public int getId() {
         return id;

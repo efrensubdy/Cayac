@@ -96,6 +96,20 @@ public class PlanDeTrabajoController {
         }
         return a;
     }
+    @RequestMapping(value = "aprobadoPlanDeTrabajo/{idContratista}/{idContratante}/{mes}", method = RequestMethod.GET)
+    public ResponseEntity<?>obtenerAprobacionDePlanDeTrabajoContratisttas(@PathVariable int idContratista, @PathVariable int idContratante,@PathVariable String mes){
+
+        ResponseEntity a;
+        try {
+            //obtener datos que se enviarán a través del API
+            a = new ResponseEntity<>(manejoDePlanesDeTrabajoBD.tieneAprobacionPlandeTrabajo(idContratista,idContratante,mes),HttpStatus.ACCEPTED);
+
+        } catch (Exception ex) {
+            Logger.getLogger(Controller.class.getName()).log(Level.SEVERE, null, ex);
+            return new ResponseEntity<>("Error bla bla bla",HttpStatus.NOT_FOUND);
+        }
+        return a;
+    }
     @RequestMapping(value = "mensajesContr/{idContratista}/{idContratante}", method = RequestMethod.GET)
     public ResponseEntity<?>obtenerMensajesDeContratisttas(@PathVariable int idContratista, @PathVariable int idContratante){
 
@@ -118,6 +132,21 @@ public class PlanDeTrabajoController {
             //obtener datos que se enviarán a través del API
             System.out.println("csjdfhkdsjhf");
             manejoDePlanesDeTrabajoBD.agregarAprobacion(aprobacion);
+            a = new ResponseEntity<>(HttpStatus.ACCEPTED);
+        } catch (Exception ex) {
+            Logger.getLogger(Controller.class.getName()).log(Level.SEVERE, null, ex);
+            return new ResponseEntity<>("Error bla bla bla",HttpStatus.NOT_FOUND);
+        }
+        return a;
+    }
+    @RequestMapping(value ="aprobacionDePlanDeTrabajo",method = RequestMethod.POST)
+    public ResponseEntity<?> agregarAprobacionPlanDeTrabajo(@RequestBody Aprobacion aprobacion){
+
+        ResponseEntity a;
+        try {
+            //obtener datos que se enviarán a través del API
+            System.out.println("csjdfhkdsjhf");
+            manejoDePlanesDeTrabajoBD.agregarAprobaciondePlanTrabajo(aprobacion);
             a = new ResponseEntity<>(HttpStatus.ACCEPTED);
         } catch (Exception ex) {
             Logger.getLogger(Controller.class.getName()).log(Level.SEVERE, null, ex);

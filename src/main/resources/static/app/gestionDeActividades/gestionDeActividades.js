@@ -9,7 +9,7 @@ angular.module('myApp.gestionDeActividades', ['ngRoute'])
   });
 }])
 
-.controller('gestionDeActividadesCtrl', ['$http','$mdDialog','$timeout', '$q', '$scope','$log','$rootScope','$localStorage','$sessionStorage','contratosEnEjecucion','finalesDefinitivos','actividadConSoporte','actividadSinSoporte',function($http,$mdDialog,$timeout, $q, $scope,$log,$rootScope,$localStorage,$sessionStorage,contratosEnEjecucion,finalesDefinitivos,actividadConSoporte,actividadSinSoporte) {
+.controller('gestionDeActividadesCtrl', ['$http','$mdDialog','$timeout', '$q', '$scope','$log','$rootScope','$localStorage','$sessionStorage','contratosEnEjecucion','finalesDefinitivos','actividadConSoporte','actividadSinSoporte','aprobaPLanDeTrabajo',function($http,$mdDialog,$timeout, $q, $scope,$log,$rootScope,$localStorage,$sessionStorage,contratosEnEjecucion,finalesDefinitivos,actividadConSoporte,actividadSinSoporte,aprobaPLanDeTrabajo) {
 
 var q=function(idContratante, idContratista){
 console.log("dsds")
@@ -55,6 +55,7 @@ $scope.showAlert=function(ev, client,mes){
         $rootScope.client=client;
         $rootScope.lista1= actividadConSoporte.query({idContratista:client.id,mes:mes.name})
         $rootScope.lista2= actividadSinSoporte.query({idContratista:client.id,mes:mes.name})
+        $rootScope.mes=mes;
         $mdDialog.show({
             //Controlador del mensajes con operaciones definido en la parte de abajo
             controller: DialogController,
@@ -74,7 +75,24 @@ function DialogController($scope, $mdDialog, $rootScope, $http) {
  $scope.listadoActividad=$rootScope.lista1;
  $scope.listadoActividad2=$rootScope.lista2;
  console.log($scope.listadoActividad);
-
+ var q=function(idContratante, idContratista,mes){
+                       var url= "http://localhost:8080/app/planDeTrabajo/aprobadoPlanDeTrabajo/"+idContratista+"/"+idContratante +"/"+mes ;
+                       console.log(url);
+                        var a;
+                     a=$http.get(url).then(function(response) {
+                                     $scope.objeto=response.data;
+                                     console.log(response.data);
+                                     return response.data;
+                                  })
+           return a;
+        }
+ q($localStorage.contratanteLogeado.idContratante,$rootScope.client.id,$rootScope.mes.name);
+ $scope.aprobarPlanDeTrabajo= function(){
+        console.log($rootScope.client);
+        console.log($rootScope.mes);
+        var aprobadin={"idContratista":$rootScope.client.id,"idContratante":$localStorage.contratanteLogeado.idContratante,"mes":$rootScope.mes.name}
+        aprobaPLanDeTrabajo.save(aprobadin);
+ }
 
  $scope.hide = function() {
                        $mdDialog.hide();

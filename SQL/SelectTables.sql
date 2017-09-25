@@ -1,8 +1,9 @@
 
 -- select all--
-
-
+SELECT * FROM aprobarplandetrabajo;
+SELECT * FROM inboxContratista;
 SELECT * FROM planDeTrabajo;
+UPDATE planDeTrabajo SET mes="SEPTIEMBRE" WHERE id=1 OR id=2
 SELECT * FROM planDeTrabajo WHERE idContratista =2 AND mes ="ENERO";
 SELECT * FROM documentosestaticospreviosobli;
 SELECT * FROM servicioacontratar;	
@@ -220,54 +221,6 @@ WHERE d.idFinalista IS NULL;
 
 -- --------------------------------------------------------------------------------------------------------
 
--- llenar requisitos previos sugeridos Dinamicos --
-SELECT t1.id,t1.requisito FROM (sys.requidinapresug AS t1 ) LEFT JOIN sys.requidinadefpresug AS t2 ON t1.id=t2.idRequisito AND t2.idContratante= 2
-WHERE t2.id IS NULL AND t1.idCategoria= 1;
-
--- llenar requisitos ejecucion sugeridos Dinamicos--
-SELECT t1.id,t1.requisito FROM (sys.requidinaejecsug AS t1 ) LEFT JOIN sys.requidinadefejecsug AS t2 ON t1.id=t2.idRequisito AND t2.idContratante= 2
-WHERE t2.id IS NULL AND t1.idCategoria= 1;
-
--- llenar requisitos finalizacion Dinamicos --
-SELECT t1.id,t1.requisito FROM (sys.requidinafinalsug AS t1 ) LEFT JOIN sys.requidinadeffinalsug AS t2 ON t1.id=t2.idRequisito AND t2.idContratante= 2
-WHERE t2.id IS NULL AND t1.idCategoria= 1;
-
-
--- llenar requisitos previos Dinamicos extras 
-SELECT t1.id,t1.requisito FROM (sys.requidinapreex AS t1) LEFT JOIN sys.requidinadefpreext AS t2 ON t1.id=t2.idRequisito AND t2.idContratante= 1
-WHERE t2.id IS NULL AND t1.idCategoria= 1;
--- llenar requisitos ejecución Dinamicos extras 
-SELECT t1.id,t1.requisito FROM (sys.requidinaejecext AS t1) LEFT JOIN sys.requidinadefejecext AS t2 ON t1.id=t2.idRequisito AND t2.idContratante= 1
-WHERE t2.id IS NULL AND t1.idCategoria= 1;
-
--- llenar requisitos finalizacion Dinamicos extras 
-SELECT t1.id,t1.requisito FROM (sys.requidinafinalext AS t1) LEFT JOIN sys.requidinadeffinalext AS t2 ON t1.id=t2.idRequisito AND t2.idContratante= 1
-WHERE t2.id IS NULL AND t1.idCategoria= 1;
-
-
-
-
--- Definitivos Dinamicos Previos Sugeridos --
-SELECT ro.id,ro.idContratante,r.idCategoria, ro.idRequisito,r.requisito FROM sys.requidinadefpresug AS ro INNER JOIN sys.requidinapresug AS r WHERE ro.idRequisito=r.id AND ro.idContratante= 1 AND ro.idCategoria= 1 ;
-
-
--- Definitivos Dinamicos Ejecucion Sugeridos --
-SELECT ro.id,ro.idContratante,r.idCategoria, ro.idRequisito,r.requisito FROM sys.requidinadefejecsug AS ro INNER JOIN sys.requidinaejecsug AS r WHERE ro.idRequisito=r.id AND ro.idContratante= 1 AND ro.idCategoria= 1 ;
-
-
--- Definitivos Dinamicos Finalizacion Sugeridos --
-SELECT ro.id,ro.idContratante,r.idCategoria, ro.idRequisito,r.requisito FROM sys.requidinadeffinalsug AS ro INNER JOIN sys.requidinafinalsug AS r WHERE ro.idRequisito=r.id AND ro.idContratante= 1 AND ro.idCategoria= 1 ;
-
--- Definitivos Dinamicos Previos Extras
-SELECT ro.id,ro.idContratante,r.idCategoria, ro.idRequisito,r.requisito  FROM sys.requidinadefpreext AS ro INNER JOIN sys.requidinapreex AS r WHERE ro.idRequisito=r.id  AND ro.idContratante= 1 AND ro.idCategoria= 1;
-
-
---  Definitivos Dinamicos Ejecucion Extras
-SELECT ro.id,ro.idContratante,r.idCategoria, ro.idRequisito,r.requisito  FROM sys.requidinadefejecext AS ro INNER JOIN sys.requidinaejecext AS r WHERE ro.idRequisito=r.id  AND ro.idContratante= 1 AND ro.idCategoria= 1;
-
---  Definitivos Dinamicos Finalizacion Extras
-SELECT ro.id,ro.idContratante,r.idCategoria, ro.idRequisito,r.requisito  FROM sys.requidinadeffinalext AS ro INNER JOIN sys.requidinafinalext AS r WHERE ro.idRequisito=r.id  AND ro.idContratante= 1 AND ro.idCategoria= 1;
-
 
 SELECT * FROM sys.finalista INNER JOIN sys.contratista WHERE finalista.idContratista=contratista.idContratista;
 
@@ -275,12 +228,6 @@ SELECT * FROM sys.finalista INNER JOIN sys.contratista WHERE finalista.idContrat
 -- Estado Previos sugeridos --
 SELECT rdps.id,rps.requisito,rdps.idCategoria FROM sys.finalista AS f  INNER JOIN sys.contratista AS c INNER JOIN sys.usuarios AS u INNER JOIN sys.requidinadefpresug AS rdps INNER JOIN sys.requidinapresug AS rps  WHERE  f.idContratista=c.idContratista AND c.idContratista=u.idContratista AND u.idCategoria=rdps.idCategoria AND rdps.idRequisito=rps.id AND u.idCategoria=1 AND f.idFinalista=3 ;
 
-
--- Estado Ejecucion sugeridos --
-SELECT rdps.id,rps.requisito,rdps.idCategoria FROM sys.finalista AS f  INNER JOIN sys.contratista AS c INNER JOIN sys.usuarios AS u INNER JOIN sys.requidinadefejecsug AS rdps INNER JOIN sys.requidinaejecsug AS rps  WHERE  f.idContratista=c.idContratista AND c.idContratista=u.idContratista AND u.idCategoria=rdps.idCategoria AND rdps.idRequisito=rps.id AND u.idCategoria=1 AND f.idFinalista=3 ;
-
--- Estado Finalizacion sugeridos --
-SELECT rdps.id,rps.requisito,rdps.idCategoria FROM sys.finalista AS f  INNER JOIN sys.contratista AS c INNER JOIN sys.usuarios AS u INNER JOIN sys.requidinadeffinalsug AS rdps INNER JOIN sys.requidinafinalsug AS rps  WHERE  f.idContratista=c.idContratista AND c.idContratista=u.idContratista AND u.idCategoria=rdps.idCategoria AND rdps.idRequisito=rps.id AND u.idCategoria=1 AND f.idFinalista=3 ;
 
 
 
@@ -298,3 +245,13 @@ SELECT rdps.id,rps.requisito,rdps.idCategoria FROM sys.finalista AS f  INNER JOI
 
 
 SELECT servicioacontratar.id,servicioacontratar.nombre,servicioacontratar.tipo FROM  servicioacontratar LEFT JOIN  contratista ON contratista.idservicioAContratar=servicioacontratar.id WHERE contratista.idservicioAContratar IS NOT  NULL AND servicioacontratar.idContratante = 2;
+
+
+
+
+
+SELECT co.idContratista,co.nombreEmpresa,co.nit,co.codigoCIIU,co.nombreGerente,co.email,co.arl,co.direccion,co.telefono,co.duracion,co.departamento,co.idContratante,co.personaContacto,co.cargoPer,co.telefonoCon,co.emailContacto FROM planDeTrabajo as pt  inner join contratista as co INNER JOIN Aprobacion as a   where pt.idContratista=co.idContratista and a.idContratista=pt.idContratista and  pt.evidencia is null and co.idContratante=2 and  pt.mes ="ENERO" group by pt.idContratista;
+
+
+
+

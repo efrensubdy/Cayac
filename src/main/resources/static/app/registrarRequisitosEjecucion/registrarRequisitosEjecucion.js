@@ -190,6 +190,7 @@ angular.module('myApp.registrarRequisitosEjecucion', ['ngRoute'])
                                         .ok('Aplique mas requisitos!')
                                         .targetEvent(ev)
                                     );
+                 $scope.banderaET=false;
            };
            $scope.allPreviosSugeridos=function(masterPrevioSugerido){
                if(!masterPrevioSugerido){
@@ -253,6 +254,7 @@ angular.module('myApp.registrarRequisitosEjecucion', ['ngRoute'])
                     .ok('Aplique mas requisitos!')
                     .targetEvent(ev)
                 );
+                $scope.banderaET=false;
 
           }
           else if(a==0 && b==0 && a2==0 && b2==0 ){
@@ -274,6 +276,7 @@ angular.module('myApp.registrarRequisitosEjecucion', ['ngRoute'])
                                  .ok('Aplique mas requisitos!')
                                  .targetEvent(ev)
                              );
+             $scope.banderaET=false;
 
           }
 

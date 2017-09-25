@@ -28,6 +28,8 @@ angular.module('myApp', [
   'myApp.gestionDeActividades',
   'myApp.notificaciones',
   'myApp.mensajeria',
+  'myApp.facturacion',
+  'myApp.seguridadSocial',
   'myApp.login',
   'myApp.login2',
   'myApp.login3',

@@ -23,7 +23,7 @@ public void agregarPlanDeTrabajo(PlanDeTrabajo plan)throws SQLException,ClassNot
     System.out.println(plan.getNombre());
     java.util.Date utilDate = new Date();
     java.sql.Date date = new java.sql.Date(utilDate.getTime());
-    String sql="INSERT INTO planDeTrabajo (mes,actividad,fechaInicio,fechaFin,evidencia,idContratista,fechaDeRegistro) VALUES (?,?,?,?,?,?,?,?)";
+    String sql="INSERT INTO planDeTrabajo (mes,actividad,fechaInicio,fechaFin,evidencia,idContratista,fechaDeRegistro) VALUES (?,?,?,?,?,?,?)";
     Connection con =  Conexion.conection();
     PreparedStatement ps=con.prepareStatement(sql);
     ps.setString(1,plan.getMes());
@@ -55,6 +55,26 @@ public boolean tieneAprobacion( int idContratista,int idContratante)throws SQLEx
     }
   return flag;
 }
+    public boolean tieneAprobacionPlanDeTrabajo( int idContratista,int idContratante,String mes)throws SQLException,ClassNotFoundException{
+        boolean flag=false;
+        int registro=0;
+        String sql="SELECT COUNT(*) AS registro FROM aprobarplandetrabajo WHERE idContratista = ? AND idContratante =? AND mes=?";
+        PreparedStatement ps = Conexion.conection().prepareStatement(sql);
+        ps.setInt(1,idContratista);
+        ps.setInt(2,idContratante);
+        ps.setString(3,mes);
+        ResultSet rs =ps.executeQuery();
+        while (rs.next()){
+            registro=rs.getInt("registro");
+
+        }
+        if(registro !=0){
+            flag=true;
+
+        }
+        return flag;
+    }
+
 public void agregarAprobacion(Aprobacion aprobacion)throws SQLException,ClassNotFoundException{
     System.out.println("dcsddsfsd");
     String sql="INSERT INTO Aprobacion (idContratista,idContratante) VALUES (?,?)";
@@ -67,6 +87,19 @@ public void agregarAprobacion(Aprobacion aprobacion)throws SQLException,ClassNot
     con.close();
 
 }
+    public void agregarAprobaciondePlanDeTrabajo(Aprobacion aprobacion)throws SQLException,ClassNotFoundException{
+        System.out.println("plan de trabajo");
+       String sql="INSERT INTO aprobarplandetrabajo (mes,idContratista,idContratante) VALUES (?,?,?)";
+        Connection con =Conexion.conection();
+        PreparedStatement ps=con.prepareStatement(sql);
+        ps.setString(1,aprobacion.getMes());
+        ps.setInt(2,aprobacion.getIdContratista());
+        ps.setInt(3,aprobacion.getIdContratante());
+        ps.execute();
+        ps.close();
+        con.close();
+
+    }
 public void agregarMensaje(Mensaje mensaje)throws SQLException,ClassNotFoundException{
     String sql="INSERT INTO inboxContratista (mensaje,idContratante,idContratista) VALUES (?,?,?)";
     Connection con =Conexion.conection();

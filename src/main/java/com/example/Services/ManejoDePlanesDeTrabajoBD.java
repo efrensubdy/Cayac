@@ -28,6 +28,11 @@ public class ManejoDePlanesDeTrabajoBD implements AdministradorDePlanesDeTrabajo
     }
 
     @Override
+    public void agregarAprobaciondePlanTrabajo(Aprobacion aprobacion) throws SQLException, ClassNotFoundException {
+        planDeTrabajoBD.agregarAprobaciondePlanDeTrabajo(aprobacion);
+    }
+
+    @Override
     public void agregarMensaje(Mensaje mensaje) throws SQLException, ClassNotFoundException {
         planDeTrabajoBD.agregarMensaje(mensaje);
     }
@@ -65,5 +70,10 @@ public class ManejoDePlanesDeTrabajoBD implements AdministradorDePlanesDeTrabajo
     @Override
     public boolean tieneAprobacion(int idContratista, int idContratante) throws SQLException, ClassNotFoundException {
         return planDeTrabajoBD.tieneAprobacion(idContratista,idContratante);
+    }
+
+    @Override
+    public boolean tieneAprobacionPlandeTrabajo(int idContratista, int idContratante, String mes) throws SQLException, ClassNotFoundException {
+        return planDeTrabajoBD.tieneAprobacionPlanDeTrabajo(idContratista, idContratante, mes);
     }
 }
