@@ -68,6 +68,11 @@ public class ManejoDePlanesDeTrabajoBD implements AdministradorDePlanesDeTrabajo
     }
 
     @Override
+    public List<Contratista> sinRegistro(int idContratante) throws SQLException, ClassNotFoundException {
+        return planDeTrabajoBD.sinRegistrodeActividad(idContratante);
+    }
+
+    @Override
     public boolean tieneAprobacion(int idContratista, int idContratante) throws SQLException, ClassNotFoundException {
         return planDeTrabajoBD.tieneAprobacion(idContratista,idContratante);
     }

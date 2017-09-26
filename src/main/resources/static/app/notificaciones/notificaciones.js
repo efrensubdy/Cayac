@@ -9,7 +9,7 @@ angular.module('myApp.notificaciones', ['ngRoute'])
   });
 }])
 
-.controller('notificacionesCtrl', ['$mdDialog','$timeout', '$q', '$scope','$log','$rootScope','$localStorage','$sessionStorage','notifacionSinSoporte','mensajeContratista',function($mdDialog,$timeout, $q, $scope,$log,$rootScope,$localStorage,$sessionStorage,notifacionSinSoporte,mensajeContratista) {
+.controller('notificacionesCtrl', ['$mdDialog','$timeout', '$q', '$scope','$log','$rootScope','$localStorage','$sessionStorage','notifacionSinSoporte','mensajeContratista','notifacionSinRegistro',function($mdDialog,$timeout, $q, $scope,$log,$rootScope,$localStorage,$sessionStorage,notifacionSinSoporte,mensajeContratista,notifacionSinRegistro) {
 
  $scope.notificaciones=[
     {id:1,nombre:'CONTRATISTAS SIN ACTIVDADES REGISTRADAS'},
@@ -39,6 +39,8 @@ $scope.add = function(notificacion,mes){
     switch(notificacion.id){
         case 1:
         console.log("Sin actividades")
+        $scope.banderaSinSoporte=true;
+        $scope.noti=notifacionSinRegistro.query({idContratante:$localStorage.contratanteLogeado.idContratante})
         break;
         case 2:
         console.log("sin soporte")

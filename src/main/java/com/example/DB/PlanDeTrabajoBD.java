@@ -250,6 +250,37 @@ public List<PlanDeTrabajo>consultarActividadesdelPlanDeTrabajo(int idContratista
 
     return contratistaList;
     }
+    public List<Contratista> sinRegistrodeActividad(int idContratante)throws SQLException,ClassNotFoundException{
+        List<Contratista> contratistaList=new LinkedList<>();
+        String sql="SELECT co.idContratista,co.nombreEmpresa,co.nit,co.codigoCIIU,co.nombreGerente,co.email,co.arl,co.direccion,co.telefono,co.duracion,co.departamento,co.idContratante,co.personaContacto,co.cargoPer,co.telefonoCon,co.emailContacto  FROM (contratista AS co INNER JOIN Aprobacion AS a ON a.idContratista=co.idContratista) LEFT JOIN planDeTrabajo AS pt ON pt.idContratista=co.idContratista WHERE co.idContratante =  ? AND pt.idContratista IS NULL ;";
+        PreparedStatement ps = Conexion.conection().prepareStatement(sql);
+        ps.setInt(1,idContratante);
+        ResultSet rs = ps.executeQuery();
+        while(rs.next()) {
+            Contratista con = new Contratista();
+            con.setId(rs.getInt("idContratista"));
+            con.setNombreEmpresa(rs.getString("nombreEmpresa"));
+            con.setNit(rs.getString("nit"));
+            con.setCodigoCIIU(rs.getString("codigoCIIU"));
+            con.setNombreDeGerenteGeneral(rs.getString("nombreGerente"));
+            con.setEmail(rs.getString("email"));
+            con.setArl(String.valueOf(rs.getInt("arl")));
+            con.setDireccion(rs.getString("direccion"));
+            con.setTelefono(rs.getNString("telefono"));
+            con.setDuracionContrato(Integer.valueOf(rs.getString("duracion")));
+            con.setDepartamento(String.valueOf(rs.getInt("departamento")));
+            con.setContratante(rs.getInt("idContratante"));
+            con.setPersonContacto(rs.getString("personaContacto"));
+            con.setCargoPersonaContacto(rs.getString("cargoPer"));
+            con.setTelefonoPersonaContacto(rs.getString("telefonoCon"));
+            con.setEmailContacto(rs.getString("emailContacto"));
+            contratistaList.add(con);
+        }
+
+        return contratistaList;
+
+
+    }
     public boolean consultarRegistro(int id,int idContratista) throws SQLException, ClassNotFoundException {
         boolean flag=false;
         String sql ="select count(*) as registro from planDeTrabajo where id= ? and idContratista=? and evidencia is not null;";

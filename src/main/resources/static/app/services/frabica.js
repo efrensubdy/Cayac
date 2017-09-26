@@ -104,6 +104,10 @@ angular.module('services.listFactory', ['ngRoute','ngResource'])
                                                   return $resource('/app/planDeTrabajo/contratante/:idContratante/:mes')
 
           })
+          .factory('notifacionSinRegistro', function($resource) {
+                                                            return $resource('/app/planDeTrabajo/sinRegistro/:idContratante')
+
+                    })
           .factory('mensajeContr', function($resource) {
               return $resource('/app/planDeTrabajo/mensajesContr/:idContratista/:idContratante')
 
