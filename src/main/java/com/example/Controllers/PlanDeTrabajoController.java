@@ -68,13 +68,13 @@ public class PlanDeTrabajoController {
         }
         return a;
     }
-    @RequestMapping(value = "sinRegistro/{idContratante}", method = RequestMethod.GET)
-    public ResponseEntity<?>obtenerSinRegistroDeActividad(@PathVariable int idContratante){
+    @RequestMapping(value = "sinRegistro/{idContratante}/{mes}/{year}", method = RequestMethod.GET)
+    public ResponseEntity<?>obtenerSinRegistroDeActividad(@PathVariable int idContratante,@PathVariable String mes,@PathVariable int year){
 
         ResponseEntity a;
         try {
             //obtener datos que se enviarán a través del API
-            a = new ResponseEntity<>(manejoDePlanesDeTrabajoBD.sinRegistro(idContratante),HttpStatus.ACCEPTED);
+            a = new ResponseEntity<>(manejoDePlanesDeTrabajoBD.sinRegistro(idContratante,mes,year),HttpStatus.ACCEPTED);
 
         } catch (Exception ex) {
             Logger.getLogger(Controller.class.getName()).log(Level.SEVERE, null, ex);
@@ -82,13 +82,13 @@ public class PlanDeTrabajoController {
         }
         return a;
     }
-    @RequestMapping(value = "contratante/{idContratante}/{mes}", method = RequestMethod.GET)
-    public ResponseEntity<?>obtenerPendientesDeSoporte(@PathVariable int idContratante, @PathVariable String mes){
+    @RequestMapping(value = "contratante/{idContratante}/{mes}/{year}", method = RequestMethod.GET)
+    public ResponseEntity<?>obtenerPendientesDeSoporte(@PathVariable int idContratante, @PathVariable String mes,@PathVariable int year){
 
         ResponseEntity a;
         try {
             //obtener datos que se enviarán a través del API
-            a = new ResponseEntity<>(manejoDePlanesDeTrabajoBD.pendientesSinSoporte(idContratante,mes),HttpStatus.ACCEPTED);
+            a = new ResponseEntity<>(manejoDePlanesDeTrabajoBD.pendientesSinSoporte(idContratante,mes,year),HttpStatus.ACCEPTED);
 
         } catch (Exception ex) {
             Logger.getLogger(Controller.class.getName()).log(Level.SEVERE, null, ex);

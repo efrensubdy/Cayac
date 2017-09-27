@@ -33,14 +33,33 @@ angular.module('myApp.notificaciones', ['ngRoute'])
    { id: 12, name: 'DICIEMBRE'},
 
               ];
+  $scope.years=[
+     { id: 10, name: 2009},
+     { id: 11, name: 2010},
+     { id: 12, name: 2011},
+     { id: 13, name: 2012},
+     { id: 14, name: 2013},
+     { id: 15, name: 2014},
+     { id: 16, name: 2015},
+     { id: 17, name: 2016},
+     { id: 18, name: 2017},
+     { id: 19, name: 2018},
+     { id: 20, name: 2019},
+     { id: 21, name: 2020},
+     { id: 22, name: 2021},
+     { id: 23, name: 2022},
+     { id: 24, name: 2023},
+     { id: 25, name: 2024},
+     { id: 26, name: 2026},
+                ];
 $scope.banderaSinSoporte=false;
-$scope.add = function(notificacion,mes){
+$scope.add = function(notificacion,mes,year){
 
     switch(notificacion.id){
         case 1:
         console.log("Sin actividades")
         $scope.banderaSinSoporte=true;
-        $scope.noti=notifacionSinRegistro.query({idContratante:$localStorage.contratanteLogeado.idContratante})
+        $scope.noti=notifacionSinRegistro.query({idContratante:$localStorage.contratanteLogeado.idContratante,mes:mes.name,year:year.name})
         break;
         case 2:
         console.log("sin soporte")

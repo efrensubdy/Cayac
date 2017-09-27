@@ -14,14 +14,31 @@
                             </select>
                             <br>
                         </div>
+                    </div>
+                    <div class="row" ng-show="banderaMes">
                         <br>
-                        <div class="col-sm-12" ng-show="banderaMes">
+                        <div class="col-sm-4" >
                             <div>
-                                <input type="file" file-model="myDoc"  class="form-control" id ="myFileField" />
+                                <label class="texto">SUBA ACÁ EL DOCUMENTO DE LA SEGURIDAD SOCIAL</label>
+                                <input type="file" file-model="myDoc"  class="form-control" />
                                 <br>
-                                <button type="button" class="btn btn-primary align-middle" ng-click="subirArchivo($event,myDoc,mes)" ng-model="tablita">Subir</button>
                             </div>
                         </div>
+                        <div class="col-sm-4">
+                            <div>
+                                <label class="texto">SUBA ACÁ EL DOCUMENTO DEL PERSONAL</label>
+                                <input type="file" file-model="myDoc2"  class="form-control"  />
+                                <br>
+                            </div>
+                        </div>
+                        <div class="col-sm-4">
+                            <div>
+                                <label class="texto">EN EL MES HUBO UN CAMBIO EN EL PERSONAL DESCRIBALO</label>
+                                <textarea class="form-control texto" rows="5" id="comment" ng-model="textArea"></textarea>
+                                <br>
+                            </div>
+                        </div>
+                        <button type="button" class="btn btn-primary align-middle" ng-click="subirArchivo($event,myDoc,myDoc2,mes,textArea)" ng-model="tablita">Subir</button>
                     </div>
                 </div>
             </div>

@@ -101,11 +101,11 @@ angular.module('services.listFactory', ['ngRoute','ngResource'])
 
                                                           })
          .factory('notifacionSinSoporte', function($resource) {
-                                                  return $resource('/app/planDeTrabajo/contratante/:idContratante/:mes')
+                                                  return $resource('/app/planDeTrabajo/contratante/:idContratante/:mes/:year')
 
           })
           .factory('notifacionSinRegistro', function($resource) {
-                                                            return $resource('/app/planDeTrabajo/sinRegistro/:idContratante')
+                                                            return $resource('/app/planDeTrabajo/sinRegistro/:idContratante/:mes/:year')
 
                     })
           .factory('mensajeContr', function($resource) {

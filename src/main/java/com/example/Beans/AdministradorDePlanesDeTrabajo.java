@@ -19,8 +19,8 @@ public interface AdministradorDePlanesDeTrabajo {
     public List<PlanDeTrabajo>traerActividadesPorContratistaConSoporte(int idContratista,String mes)throws SQLException,ClassNotFoundException;
     public List<PlanDeTrabajo>traerActividadesPorContratistaSinSoporte(int idContratista,String mes)throws SQLException,ClassNotFoundException;
     public List<Mensaje>consultarMensajesPorContratista(int idContratista,int idContratante)throws SQLException,ClassNotFoundException;
-    public List<Contratista>pendientesSinSoporte(int idContratante,String mes) throws SQLException,ClassNotFoundException;
-    public List<Contratista>sinRegistro(int idContratante) throws SQLException,ClassNotFoundException;
+    public List<Contratista>pendientesSinSoporte(int idContratante,String mes,int year) throws SQLException,ClassNotFoundException;
+    public List<Contratista>sinRegistro(int idContratante,String mes,int year) throws SQLException,ClassNotFoundException;
     public boolean tieneAprobacion(int idContratista,int idContratante)throws SQLException,ClassNotFoundException;
     public boolean tieneAprobacionPlandeTrabajo(int idContratista,int idContratante,String mes)throws SQLException,ClassNotFoundException;
 

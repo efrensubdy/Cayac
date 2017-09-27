@@ -19,6 +19,7 @@ import java.util.List;
 @Service
 public class PlanDeTrabajoBD {
 
+
 public void agregarPlanDeTrabajo(PlanDeTrabajo plan)throws SQLException,ClassNotFoundException{
     System.out.println(plan.getNombre());
     java.util.Date utilDate = new Date();
@@ -220,12 +221,13 @@ public List<PlanDeTrabajo>consultarActividadesdelPlanDeTrabajo(int idContratista
         }
         return planDeTrabajoList;
     }
-    public List<Contratista>pendientesSinSoporte(int idContratante , String mes )throws SQLException,ClassNotFoundException{
+    public List<Contratista>pendientesSinSoporte(int idContratante , String mes, int year )throws SQLException,ClassNotFoundException{
         List<Contratista> contratistaList=new LinkedList<>();
-        String sql="SELECT co.idContratista,co.nombreEmpresa,co.nit,co.codigoCIIU,co.nombreGerente,co.email,co.arl,co.direccion,co.telefono,co.duracion,co.departamento,co.idContratante,co.personaContacto,co.cargoPer,co.telefonoCon,co.emailContacto FROM planDeTrabajo AS pt  INNER JOIN contratista AS co INNER JOIN Aprobacion AS a   WHERE pt.idContratista=co.idContratista AND a.idContratista=pt.idContratista AND  pt.evidencia IS NULL AND co.idContratante= ? AND  pt.mes = ? GROUP BY pt.idContratista;";
+        String sql="SELECT co.idContratista,co.nombreEmpresa,co.nit,co.codigoCIIU,co.nombreGerente,co.email,co.arl,co.direccion,co.telefono,co.duracion,co.departamento,co.idContratante,co.personaContacto,co.cargoPer,co.telefonoCon,co.emailContacto FROM planDeTrabajo AS pt  INNER JOIN contratista AS co INNER JOIN Aprobacion AS a   WHERE pt.idContratista=co.idContratista AND a.idContratista=pt.idContratista AND  pt.evidencia IS NULL AND co.idContratante= ? AND  pt.mes = ? AND YEAR(fechaFin) = ? GROUP BY pt.idContratista;";
         PreparedStatement ps = Conexion.conection().prepareStatement(sql);
         ps.setInt(1,idContratante);
         ps.setString(2,mes);
+        ps.setInt(3,year);
         ResultSet rs = ps.executeQuery();
         while(rs.next()) {
             Contratista con = new Contratista();
@@ -250,9 +252,9 @@ public List<PlanDeTrabajo>consultarActividadesdelPlanDeTrabajo(int idContratista
 
     return contratistaList;
     }
-    public List<Contratista> sinRegistrodeActividad(int idContratante)throws SQLException,ClassNotFoundException{
+    public List<Contratista> sinRegistrodeActividad(int idContratante,String mes, int year)throws SQLException,ClassNotFoundException{
         List<Contratista> contratistaList=new LinkedList<>();
-        String sql="SELECT co.idContratista,co.nombreEmpresa,co.nit,co.codigoCIIU,co.nombreGerente,co.email,co.arl,co.direccion,co.telefono,co.duracion,co.departamento,co.idContratante,co.personaContacto,co.cargoPer,co.telefonoCon,co.emailContacto  FROM (contratista AS co INNER JOIN Aprobacion AS a ON a.idContratista=co.idContratista) LEFT JOIN planDeTrabajo AS pt ON pt.idContratista=co.idContratista WHERE co.idContratante =  ? AND pt.idContratista IS NULL ;";
+        String sql="SELECT co.idContratista,co.nombreEmpresa,co.nit,co.codigoCIIU,co.nombreGerente,co.email,co.arl,co.direccion,co.telefono,co.duracion,co.departamento,co.idContratante,co.personaContacto,co.cargoPer,co.telefonoCon,co.emailContacto  FROM contratista AS co INNER JOIN Aprobacion AS a ON a.idContratista=co.idContratista WHERE co.idContratante = ? ;";
         PreparedStatement ps = Conexion.conection().prepareStatement(sql);
         ps.setInt(1,idContratante);
         ResultSet rs = ps.executeQuery();
@@ -276,10 +278,27 @@ public List<PlanDeTrabajo>consultarActividadesdelPlanDeTrabajo(int idContratista
             con.setEmailContacto(rs.getString("emailContacto"));
             contratistaList.add(con);
         }
+        for (Contratista contra:contratistaList){
+            String sql2="SELECT COUNT(*) AS registro FROM planDeTrabajo WHERE  idContratista= ? AND mes= ? AND YEAR(fechaFin) = ?  ; ";
+            PreparedStatement ps2 = Conexion.conection().prepareStatement(sql2);
+            ps2.setInt(1,contra.getId());
+            ps2.setString(2,mes);
+            ps2.setInt(3,year);
+            ResultSet rs2 = ps2.executeQuery();
+            int registro=0;
+            while (rs2.next()){
 
+                registro=rs2.getInt("registro");
+
+            }
+            if (registro!=0){
+               contratistaList.remove(contra);
+            }
+            ps.close();
+
+
+        }
         return contratistaList;
-
-
     }
     public boolean consultarRegistro(int id,int idContratista) throws SQLException, ClassNotFoundException {
         boolean flag=false;
@@ -299,6 +318,7 @@ public List<PlanDeTrabajo>consultarActividadesdelPlanDeTrabajo(int idContratista
         else{
             flag=true;
         }
+        ps.close();
 
         return flag;
     }
