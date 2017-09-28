@@ -64,7 +64,7 @@ $scope.add = function(notificacion,mes,year){
         case 2:
         console.log("sin soporte")
         $scope.banderaSinSoporte=true;
-        $scope.noti=notifacionSinSoporte.query({idContratante:$localStorage.contratanteLogeado.idContratante,mes:mes.name})
+        $scope.noti=notifacionSinSoporte.query({idContratante:$localStorage.contratanteLogeado.idContratante,mes:mes.name,year:year.name})
         break;
 
 

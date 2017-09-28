@@ -1,7 +1,10 @@
 package com.example.Controllers;
 
 import com.example.Models.Documento;
+import com.example.Models.SeguridadSocial;
 import com.example.Services.ManejoDeContratistasBD;
+import com.example.Services.ManejoDeSeguridadSocial;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -27,9 +30,11 @@ import java.util.logging.Logger;
 @RestController
 @RequestMapping(value="/app/seguridadSocial")
 public class SeguridadSocialController {
+    @Autowired
+    public ManejoDeSeguridadSocial manejoDeSeguridadSocial;
 
-    @RequestMapping(path = "/{idContratista}/{idContratante}/{mes}",method = RequestMethod.POST)
-    public ResponseEntity<?> InsertarImagen(@PathVariable Integer idContratista, @PathVariable Integer idContratante,@PathVariable String mes
+    @RequestMapping(path = "/{idContratista}/{idContratante}/{mes}/{cambios}",method = RequestMethod.POST)
+    public ResponseEntity<?> InsertarImagen(@PathVariable Integer idContratista, @PathVariable Integer idContratante,@PathVariable String mes,@PathVariable String cambios
             , MultipartHttpServletRequest request){
 
         ResponseEntity a;
@@ -37,16 +42,20 @@ public class SeguridadSocialController {
 
             Iterator<String> itr = request.getFileNames();
             List<File> archivos=new LinkedList<>();
+            SeguridadSocial seguridadSocial=new SeguridadSocial();
+            seguridadSocial.setArchivos(archivos);
+            seguridadSocial.setIdContratista(idContratista);
+            seguridadSocial.setIdContratante(idContratante);
+            seguridadSocial.setMes(mes);
+            seguridadSocial.setCambios(cambios);
             while(itr.hasNext()) {
                 String uploadedFile = itr.next();
                 MultipartFile file = request.getFile(uploadedFile);
                 File fileForDB=convert(file);
-                archivos.add(fileForDB);
-
-                System.out.println("tamo aqui "+ fileForDB.getName());
-
+                seguridadSocial.getArchivos().add(fileForDB);
 
             }
+            manejoDeSeguridadSocial.agregarSeguridadSocial(seguridadSocial);
             a = new ResponseEntity<>(HttpStatus.ACCEPTED);
 
         } catch (Exception ex) {

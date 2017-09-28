@@ -38,7 +38,7 @@ $scope.subirArchivo = function(ev,file,file2,mes,textArea){
     console.log(file2);
     console.log(textArea);
      if("undefined" !== typeof file && "undefined" !== typeof file2 && "undefined" !== typeof mes && "undefined" !== typeof textArea){
-    var uploadUrl = 'http://localhost:8080/app/seguridadSocial/'+ $localStorage.userLogeado.idContratista + "/"+ $localStorage.userLogeado.idContratante +  "/"+ mes.name;
+    var uploadUrl = 'http://localhost:8080/app/seguridadSocial/'+ $localStorage.userLogeado.idContratista + "/"+ $localStorage.userLogeado.idContratante +  "/"+ mes.name +  "/"+ textArea;
     $scope.list=[];
     $scope.list.push(file);
     $scope.list.push(file2);
