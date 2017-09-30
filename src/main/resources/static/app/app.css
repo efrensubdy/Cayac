@@ -24,10 +24,8 @@
   padding-right: 0.3em;
 }
 .myImg {
-    border-radius: 5px;
-    cursor: pointer;
-    transition: 0.3s;
-    max-width:100%;
+    width: 150%; /* Full width */
+    height: 150%;
     height: auto;
     margin-top:5px;
 }
