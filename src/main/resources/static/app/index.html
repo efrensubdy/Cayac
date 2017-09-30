@@ -28,13 +28,11 @@
   </div>
 </header>
 
+<div class="navbar">
 <nav id="mainNav" class="navbar  navbar-inverse navbar-fixed-top affix-top">
   <div class="container-fluid">
     <div class="navbar-header">
       <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#myNavbar">
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
       </button>
       <a class="navbar-brand kaushan neon header-t" style="color: white" href="#">Cayac!</a>
     </div>
@@ -211,8 +209,9 @@
     </div>
   </div>
 </nav>
+</div>
 
-
+<section>
 <div class="w3-container">
 <div class="row">
   <div class="col-sm-2">
@@ -329,12 +328,15 @@
   </div>
 
   <div class="col-sm-10">
-    <div class="w3-container" ng-view></div>
+
+    <div class="container" ng-view>
+
+    </div>
   </div>
 </div>
 
 </div>
-
+</section>
 
 <br>
 <br>
@@ -357,9 +359,7 @@
   </div>
 </footer>
 
-<!-- In production use:
 <script src="//ajax.googleapis.com/ajax/libs/angularjs/x.x.x/angular.min.js"></script>
--->
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
 <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
 <script src="bower_components/angular/angular.js"></script>
@@ -372,8 +372,6 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.0/jquery-ui.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-google-chart/1.0.0-beta.1/ng-google-chart.js" type="text/javascript"></script>
-
-<!-- minified for production -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-google-chart/1.0.0-beta.1/ng-google-chart.min.js" type="text/javascript"></script>
 <script src="app.js"></script>
 <script src="menu.js"></script>
