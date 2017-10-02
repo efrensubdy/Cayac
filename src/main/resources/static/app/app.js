@@ -30,6 +30,7 @@ angular.module('myApp', [
   'myApp.mensajeria',
   'myApp.facturacion',
   'myApp.seguridadSocial',
+  'myApp.indicadores',
   'myApp.login',
   'myApp.login2',
   'myApp.login3',

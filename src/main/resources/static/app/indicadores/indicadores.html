@@ -1,0 +1,127 @@
+<div>
+<div  ng-controller="indicadoresCtrl as ctrl">
+    <div class="w3-container w3-center">
+        <div class="container align-middle text-center">
+            <div class="row">
+                <div class="col-xs-9">
+                    <h4 class="titulos"><b>INDICADORES</b></h4>
+                    <br>
+                    <p>DILIGENCIE LOS INDICADORES</p>
+                    <br>
+                    <div class="row">
+                        <div class="col-sm-4">
+                          <label class="titulos">NOMBRE </label>
+                            <span ng-model="name">{{name}}</span>
+                        </div>
+                        <div class="col-sm-4">
+                            <label class="titulos">RESPONSABLE </label>
+                            <input class="form-control" type="text" name="responsable" id="responsable" placeholder="Responsable del Contratista" ng-model="responsable">
+                        </div>
+                        <div class="col-sm-4">
+                            <label class="titulos">DEPARTAMENTO </label>
+                            <input class="form-control" type="text" name="departamento" id="departamento" placeholder="departamento Responsable " ng-model="departamento">
+                        </div>
+                    </div>
+                    <br>
+                    <br>
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <label class="titulos">PERIODO REPORTADO</label>
+                            <select class="form-control" ng-model="mes" data-placeholder="seleccione el mes" ng-change="simple()">
+                                <option ng-value="todo" ng-repeat="todo in meses">{{todo.name}}</option>
+
+                            </select>
+                        </div>
+                        <div class="col-sm-6">
+                            <label class="titulos">ACTIVIDAD OPERACIONAL</label>
+                            <input class="form-control" type="text" name="actividad" id="actividad" placeholder="actividad del Contratista" ng-model="actividad">
+                        </div>
+                    </div>
+                    <br>
+                    <br>
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <label class="titulos">DILIGENCIE EL RESULTADO DE CADA INDICADOR</label>
+                        </div>
+
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <label class="titulos">SEVERIDAD DE LOS ACCIDENTES LABORALES</label>
+                        </div>
+                        <div class="col-sm-6">
+
+                            <input class="form-control" type="number" name="severidad" id="severidad" placeholder="numero de severidad" ng-model="severidad">
+                        </div>
+                    </div>
+                    <br>
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <label class="titulos">FRECUENCIA DE LOS ACCIDENTES LABORALES</label>
+                        </div>
+                        <div class="col-sm-6">
+
+                            <input class="form-control" type="number" name="frecuencia" id="frecuencia" placeholder="numero de frecuencia" ng-model="frecuencia">
+
+                        </div>
+                    </div>
+                    <br>
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <label class="titulos">MORTALIDAD DE ACCIDENTES LABORALES</label>
+                        </div>
+                        <div class="col-sm-6">
+
+                            <input class="form-control" type="number" name="mortalidad" id="mortalidad" placeholder="numero de mortalidad" ng-model="mortalidad">
+
+                        </div>
+                    </div>
+                    <br>
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <label class="titulos">PREVALENCIA DE LA ENFERMEDAD LABORAL</label>
+                        </div>
+                        <div class="col-sm-6">
+
+                            <input class="form-control" type="number" name="prevalencia" id="prevalencia" placeholder="numero de prevalencia" ng-model="prevalencia">
+
+                        </div>
+                    </div>
+                    <br>
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <label class="titulos">INCIDENCIA DE LA ENFERMEDAD LABORAL</label>
+                        </div>
+                        <div class="col-sm-6">
+
+                            <input class="form-control" type="number" name="icidencia" id="icidencia" placeholder="numero de icidencia" ng-model="icidencia">
+
+                        </div>
+                    </div>
+                    <br>
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <label class="titulos">AUSENTISMO</label>
+                        </div>
+                        <div class="col-sm-6">
+
+                            <input class="form-control" type="number" name="ausentismo" id="ausentismo" placeholder="numero de ausentismo" ng-model="ausentismo">
+
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <button class="btn btn-primary" ng-click="add(contraName,responsable,departamento,mes,actividad,severidad,frecuencia,mortalidad,prevalencia,icidencia,ausentismo)">Agregar indicadores</button>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+    </div>
+</div>
+</div>
+

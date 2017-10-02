@@ -18,6 +18,15 @@ public class Usuario {
     public String rol;
     public int idAdministrador;
     public boolean isFinalista;
+    public String nombreEmpresa;
+
+    public String getNombreEmpresa() {
+        return nombreEmpresa;
+    }
+
+    public void setNombreEmpresa(String nombreEmpresa) {
+        this.nombreEmpresa = nombreEmpresa;
+    }
 
     public boolean isFinalista() {
         return isFinalista;

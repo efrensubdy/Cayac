@@ -242,6 +242,12 @@ color: #575756;
   vertical-align:bottom;
 }
 
+body {
+
+margin:0;
+
+}
+
 .bg {
     /* The image used */
     background-image: url("img/Recurso 2.png");

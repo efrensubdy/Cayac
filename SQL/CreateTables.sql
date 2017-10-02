@@ -391,9 +391,13 @@ CREATE TABLE `seguridadsocial` (
   `id` INT(11) NOT NULL AUTO_INCREMENT,
   `mes` VARCHAR(50) NOT NULL,
   `fechaDeSubida` DATE NOT NULL,
-  `contenido` VARCHAR(500) NOT NULL,
+  `seguridadSocial` VARCHAR(500) NOT NULL,
   `idContratista` INT(11) NOT NULL,
   `idContratante` INT(11) NOT NULL,
+  `personal` VARCHAR(500) NOT NULL,
+  `cambios` VARCHAR(500) NOT NULL,
+  `tipo1` VARCHAR(50) NOT NULL,
+  `tipo2` VARCHAR(50) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `contratista` (`idContratista`),
   KEY `contratante` (`idContratante`),
@@ -401,6 +405,27 @@ CREATE TABLE `seguridadsocial` (
   CONSTRAINT `contratista` FOREIGN KEY (`idContratista`) REFERENCES `contratista` (`idContratista`)
 ) ENGINE=INNODB DEFAULT CHARSET=latin1;
 
+CREATE TABLE `Indicadores` (
+  `id` INT(11) NOT NULL AUTO_INCREMENT,
+  `nombreContra` VARCHAR(100) NOT NULL,
+  `periodo` VARCHAR(100) NOT NULL,
+  `responsable` VARCHAR(100) NOT NULL,
+  `departamento` VARCHAR(100) NOT NULL,
+  `actividad` VARCHAR(100) NOT NULL,
+  `severidad` INT(100) NOT NULL,
+  `frecuencia` INT(100) NOT NULL,
+  `mortalidad` INT(100) NOT NULL,
+  `prevalencia` INT(100) NOT NULL,
+  `incidencia` INT(100) NOT NULL,
+  `ausentismo` INT(100) NOT NULL,
+  `idContratista` INT(11) NOT NULL,
+  `idContratante` INT(11) NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `Contratista_Indicador` (`idContratista`),
+  KEY `Contratante_Indicador` (`idContratante`),
+  CONSTRAINT `Contratante_Indicador` FOREIGN KEY (`idContratante`) REFERENCES `contratante` (`idContratante`),
+  CONSTRAINT `Contratista_Indicador` FOREIGN KEY (`idContratista`) REFERENCES `contratista` (`idContratista`)
+) ENGINE=INNODB DEFAULT CHARSET=latin1;
 
 -- create Admins ---
 
