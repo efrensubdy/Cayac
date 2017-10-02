@@ -280,8 +280,8 @@ public class ContratanteDB {
             nuevoContrato.setIdContratante(rs.getInt("idContratante"));
             nuevoContrato.setTipoContrato(rs.getString("tipoContrato"));
             nuevoContrato.setTipo(rs.getString("tipo1"));
-            nuevoContrato.setTipo(rs.getString("tipo2"));
-            nuevoContrato.setTipo(rs.getString("tipo3"));
+            nuevoContrato.setTipo2(rs.getString("tipo2"));
+            nuevoContrato.setTipo3(rs.getString("tipo3"));
             contratos.add(nuevoContrato);
         }
         ps.close();
@@ -370,8 +370,8 @@ public class ContratanteDB {
             nuevoContrato.setIdContratante(rs.getInt("idContratante"));
             nuevoContrato.setTipoContrato(rs.getString("tipoContrato"));
             nuevoContrato.setTipo(rs.getString("tipo1"));
-            nuevoContrato.setTipo(rs.getString("tipo2"));
-            nuevoContrato.setTipo(rs.getString("tipo3"));
+            nuevoContrato.setTipo2(rs.getString("tipo2"));
+            nuevoContrato.setTipo3(rs.getString("tipo3"));
             contratosPorFecha.add(nuevoContrato);
         }
         ps.close();
