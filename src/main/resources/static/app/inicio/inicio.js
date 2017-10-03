@@ -35,11 +35,10 @@ $scope.mousem=function(){
 
   if($scope.count  % 2 == 0 ){
 
-  console.log("Soy par");
   $scope.url= "img/Recurso 16.png";
   }
   else{
-  console.log("no soy par");
+
   $scope.url= "img/Recurso 17.png";
   }
   $scope.count= $scope.count + 1;
@@ -49,11 +48,11 @@ $scope.mousem2=function(){
 
   if($scope.count2  % 2 == 0 ){
 
-  console.log("Soy par");
+
   $scope.url2= "img/Recurso 18.png";
   }
   else{
-  console.log("no soy par");
+
   $scope.url2= "img/Recurso 19.png";
   }
 
@@ -63,11 +62,10 @@ $scope.mousem3=function(){
 
   if($scope.count3  % 2 == 0 ){
 
-  console.log("Soy par");
   $scope.url3= "img/Recurso 20.png";
   }
   else{
-  console.log("no soy par");
+
   $scope.url3= "img/Recurso 21.png";
   }
 

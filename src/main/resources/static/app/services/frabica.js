@@ -338,6 +338,9 @@ angular.module('services.listFactory', ['ngRoute','ngResource'])
         .factory('aproba', function($resource) {
                                            return $resource('/app/planDeTrabajo/aprobacion/:id');
                                        })
+        .factory('indicador', function($resource) {
+                                                   return $resource('/app/indicador/Indicadores/:id');
+                                               })
         .factory('aprobaPLanDeTrabajo', function($resource) {
                                                    return $resource('/app/planDeTrabajo/aprobacionDePlanDeTrabajo/:id');
                                                })

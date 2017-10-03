@@ -121,39 +121,12 @@ WHERE d.idFinalista IS  NULL OR d.idFinalista IS NOT NULL;
 SELECT DISTINCT  re.idrequisitosdeejecuiondefextrasestaticosprevio,r.idRequisitosDeEjecuionSugeridosextrasPrevio,r.requisito,d.estado FROM (sys.requisitosdeejecuiondefextrasestaticosprevio AS re INNER JOIN sys.requisitosdeejecuionextrasestaticosprevio AS r ON  re.idRequisito =r.idRequisitosDeEjecuionSugeridosextrasPrevio AND re.idCategoria= 1 AND re.idContratante= 2) LEFT JOIN sys.documentosestaticospreviosextras AS d  ON re.idCategoria= 1 AND re.idRequisito=d.idRequisito
 WHERE d.idFinalista IS  NULL OR d.idFinalista IS NOT NULL;
 
--- Estado Requisitos Ejecucion Sugeridos
-SELECT DISTINCT  re.idrequisitosdeejecuiondefsugeridosestaticosejecucionactividades,r.idrequisitosdeejecuionsugeridosestaticosEjecucionActividades,r.requisito,d.estado FROM (sys.requisitosdeejecuiondefsugeridosestaticosejecucionactividades AS re INNER JOIN sys.requisitosdeejecuionsugeridosestaticosejecucionactividades AS r ON  re.idRequisito =r.idrequisitosdeejecuionsugeridosestaticosEjecucionActividades AND re.idCategoria= 1 AND re.idContratante= 2) LEFT JOIN sys.documentosestaticosejecsug AS d  ON re.idCategoria= 1 AND re.idrequisitosdeejecuiondefsugeridosestaticosejecucionactividades=d.idRequisito
-WHERE d.idFinalista IS  NULL OR d.idFinalista IS NOT NULL;
-
--- Estado Requisitos Ejecucion Extras
-SELECT DISTINCT  re.idrequisitosdeejecuionextrasestaticosejecucionactividades,r.idrequisitosdeejecuionextrasestaticosEjecucionActividades,r.requisito,d.estado FROM (sys.requisitosdeejecuionextrasdefestaticosejecucionactividades AS re INNER JOIN sys.requisitosdeejecuionextrasestaticosejecucionactividades AS r ON  re.idRequisito =r.idrequisitosdeejecuionextrasestaticosEjecucionActividades AND re.idCategoria= 1 AND re.idContratante= 2) LEFT JOIN sys.documentosestaticosejecext AS d  ON re.idCategoria= 1 AND re.idrequisitosdeejecuionextrasestaticosejecucionactividades=d.idRequisito
-WHERE d.idFinalista IS  NULL OR d.idFinalista IS NOT NULL;
-
--- Estado Requisitos Finalización Sugeridos
-SELECT DISTINCT  re.defFinalizaactiv,r.idrequisitosdeejecuionsugeridosestaticosFinalizacionDeActivdades,r.requisito,d.estado FROM (sys.ejecuionsugeridosestaticosdeffinalizaciondeactivdades AS re INNER JOIN sys.requisitosdeejecuionsugeridosestaticosfinalizaciondeactivdades AS r ON  re.idRequisito =r.idrequisitosdeejecuionsugeridosestaticosFinalizacionDeActivdades AND re.idCategoria= 1 AND re.idContratante= 2) LEFT JOIN sys.documentosestaticosfinalisug AS d  ON re.idCategoria= 1 AND re.defFinalizaactiv=d.idRequisito
-WHERE d.idFinalista IS  NULL OR d.idFinalista IS NOT NULL;
-
--- Estado Requisitos Finalizacion Extras
-SELECT DISTINCT  re.idejecuionextrassestaticosdeffinalizaciondeactivdades,r.idrequisitosdeejecuionextrasestaticosFinalizacionDeActivdades,r.requisito,d.estado FROM (sys.ejecuionextrassestaticosdeffinalizaciondeactivdades AS re INNER JOIN sys.requisitosdeejecuionextrasestaticosfinalizaciondeactivdades AS r ON  re.idRequisito =r.idrequisitosdeejecuionextrasestaticosFinalizacionDeActivdades AND re.idCategoria= 1 AND re.idContratante= 2) LEFT JOIN sys.documentosestaticosfinaliext AS d  ON re.idCategoria= 1 AND re.idejecuionextrassestaticosdeffinalizaciondeactivdades=d.idRequisito
-WHERE d.idFinalista IS  NULL OR d.idFinalista IS NOT NULL;
-
 
 -- *
 
 SELECT DISTINCT  re.idrequisitosdeejecuiondefsugeridosestaticosprevio,r.idRequisitosDeEjecuionSugeridosEstaticosPrevio,r.requisito,d.estado  FROM (sys.requisitosdeejecuiondefsugeridosestaticosprevio AS re INNER JOIN sys.requisitosdeejecuionsugeridosestaticosprevio AS r ON  re.idRequsito =r.idRequisitosDeEjecuionSugeridosEstaticosPrevio AND re.idCategoria= 1 AND re.idContratante= 2) LEFT JOIN sys.documentosestaticospreviosobli AS d  ON re.idCategoria= 1 AND re.idrequisitosdeejecuiondefsugeridosestaticosprevio=d.idRequisito
 WHERE d.idFinalista IS NOT NULL;
 
- -- def.idContratante,re.idCategoria,re.requisito,re.apodo, d.idRequisito, d.idFinalista
-SELECT DISTINCT *   FROM (requidinadefpresug AS def INNER JOIN requidinapresug AS re ON def.idRequisito=re.id AND re.idCategoria = 1 AND def.idContratante=2)LEFT JOIN documentosDinamicosPrevios AS d ON def.idCategoria=1 AND d.idFinalista=3  AND def.id=d.idRequisito
-WHERE d.idFinalista IS  NULL 
-GROUP BY d.idRequisito; 
-
-SELECT DISTINCT *   FROM (requidinadefpresug AS def INNER JOIN requidinapresug AS re ON def.idRequisito=re.id AND re.idCategoria = 1 AND def.idContratante=2)LEFT JOIN documentosDinamicosPrevios AS d ON def.idCategoria=1 AND d.idFinalista=3  AND def.id=d.idRequisito
-WHERE d.idFinalista IS  NULL AND re.apodo != "MATRIZ DE PELIGROS"
-GROUP BY d.idRequisito; 
-SELECT * FROM finalista;
-SELECT * FROM contratista;
-SELECT * FROM  documentosDinamicosPrevios
 
 DELETE FROM documentosDinamicosPrevios WHERE id =1 OR id=2;
 
@@ -185,41 +158,6 @@ SELECT * FROM (sys.requisitosdeejecuiondefextrasestaticosprevio AS re INNER JOIN
 WHERE d.idFinalista IS  NULL;
 
 
--- Requisitos Ejecucion sugeridos cumplidos -
-SELECT rs.idrequisitosdeejecuiondefsugeridosestaticosejecucionactividades,i.idFinalista,r.requisito,r.idrequisitosdeejecuionsugeridosestaticosEjecucionActividades,i.tipo FROM (sys.requisitosdeejecuiondefsugeridosestaticosejecucionactividades AS rs INNER JOIN sys.requisitosdeejecuionsugeridosestaticosejecucionactividades AS r ON rs.idRequisito =r.idrequisitosdeejecuionsugeridosestaticosEjecucionActividades AND rs.idCategoria= 1 AND rs.idContratante= 2) LEFT JOIN sys.documentosestaticosejecsug AS i  ON  rs.idCategoria= 1 AND i.idFinalista= 1 AND rs.idContratante= 2 AND rs.idrequisitosdeejecuiondefsugeridosestaticosejecucionactividades=i.idRequisito WHERE i.idFinalista IS NOT  NULL;
-
--- Requisitos Ejecucion sugeridos No cumplidos -
-SELECT * FROM (sys.requisitosdeejecuiondefsugeridosestaticosejecucionactividades AS rs INNER JOIN sys.requisitosdeejecuionsugeridosestaticosejecucionactividades AS r ON rs.idRequisito =r.idrequisitosdeejecuionsugeridosestaticosEjecucionActividades AND rs.idCategoria= 1 AND rs.idContratante= 2) LEFT JOIN sys.documentosestaticosejecsug AS i  ON  rs.idCategoria= 1 AND i.idFinalista= 1 AND rs.idContratante= 2 AND rs.idrequisitosdeejecuiondefsugeridosestaticosejecucionactividades=i.idRequisito WHERE i.idFinalista IS  NULL;
-
-
--- Requisitos Ejecucion Extras cumplidos -
-SELECT re.idrequisitosdeejecuionextrasestaticosejecucionactividades,d.idFinalista,r.idrequisitosdeejecuionextrasestaticosEjecucionActividades,r.requisito FROM (sys.requisitosdeejecuionextrasdefestaticosejecucionactividades AS re INNER JOIN sys.requisitosdeejecuionextrasestaticosejecucionactividades AS r ON re.idRequisito =r.idrequisitosdeejecuionextrasestaticosEjecucionActividades AND re.idCategoria=1 AND re.idContratante=2) LEFT JOIN sys.documentosestaticosejecext AS d  ON re.idCategoria=1 AND d.idFinalista=1 AND re.idContratante= 2 AND re.idrequisitosdeejecuionextrasestaticosejecucionactividades=d.idRequisito
-WHERE d.idFinalista IS NOT  NULL;
-
--- Requisitos Ejecucion Extras No cumplidos -
-SELECT * FROM (sys.requisitosdeejecuionextrasdefestaticosejecucionactividades AS re INNER JOIN sys.requisitosdeejecuionextrasestaticosejecucionactividades AS r ON re.idRequisito =r.idrequisitosdeejecuionextrasestaticosEjecucionActividades AND re.idCategoria=1 AND re.idContratante=2) LEFT JOIN sys.documentosestaticosejecext AS d  ON re.idCategoria=1 AND d.idFinalista=2 AND re.idContratante= 2 AND re.idrequisitosdeejecuionextrasestaticosejecucionactividades=d.idRequisito
-WHERE d.idFinalista IS  NULL;
-
-
-
--- Requisitos Finalizacion Sugeridos cumplidos -
-SELECT rs.defFinalizaactiv,i.idFinalista,r.requisito,r.idrequisitosdeejecuionsugeridosestaticosFinalizacionDeActivdades,i.tipo FROM (sys.ejecuionsugeridosestaticosdeffinalizaciondeactivdades AS rs INNER JOIN sys.requisitosdeejecuionsugeridosestaticosfinalizaciondeactivdades AS r ON rs.idRequisito =r.idrequisitosdeejecuionsugeridosestaticosFinalizacionDeActivdades AND rs.idCategoria= 1 AND rs.idContratante= 2) LEFT JOIN sys.documentosestaticosfinalisug AS i  ON  rs.idCategoria= 1 AND i.idFinalista= 1 AND rs.idContratante= 2 AND rs.defFinalizaactiv=i.idRequisito WHERE i.idFinalista IS NOT  NULL;
-
--- Requisitos Finalizacion Sugeridos No  cumplidos -
-SELECT * FROM (sys.ejecuionsugeridosestaticosdeffinalizaciondeactivdades AS rs INNER JOIN sys.requisitosdeejecuionsugeridosestaticosfinalizaciondeactivdades AS r ON rs.idRequisito =r.idrequisitosdeejecuionsugeridosestaticosFinalizacionDeActivdades AND rs.idCategoria= 1 AND rs.idContratante= 2) LEFT JOIN sys.documentosestaticosfinalisug AS i  ON  rs.idCategoria= 1 AND i.idFinalista= 1 AND rs.idContratante= 2 AND rs.defFinalizaactiv=i.idRequisito WHERE i.idFinalista IS  NULL;
-
-
-
--- Requisitos Finalizacion Extras cumplidos --
-SELECT re.idejecuionextrassestaticosdeffinalizaciondeactivdades,d.idFinalista,r.idrequisitosdeejecuionextrasestaticosFinalizacionDeActivdades,r.requisito FROM (sys.ejecuionextrassestaticosdeffinalizaciondeactivdades AS re INNER JOIN sys.requisitosdeejecuionextrasestaticosfinalizaciondeactivdades AS r ON re.idRequisito =r.idrequisitosdeejecuionextrasestaticosFinalizacionDeActivdades AND re.idCategoria=1 AND re.idContratante=2) LEFT JOIN sys.documentosestaticosfinaliext AS d  ON re.idCategoria=1 AND d.idFinalista=1 AND re.idContratante= 2 AND re.idejecuionextrassestaticosdeffinalizaciondeactivdades=d.idRequisito
-WHERE d.idFinalista IS NOT  NULL;
-
-
--- Requisitos Finalizacion Extras No cumplidos --
-SELECT * FROM (sys.ejecuionextrassestaticosdeffinalizaciondeactivdades AS re INNER JOIN sys.requisitosdeejecuionextrasestaticosfinalizaciondeactivdades AS r ON re.idRequisito =r.idrequisitosdeejecuionextrasestaticosFinalizacionDeActivdades AND re.idCategoria=1 AND re.idContratante=2) LEFT JOIN sys.documentosestaticosfinaliext AS d  ON re.idCategoria=1 AND d.idFinalista=1 AND re.idContratante= 2 AND re.idejecuionextrassestaticosdeffinalizaciondeactivdades=d.idRequisito
-WHERE d.idFinalista IS NULL;
-
--- --------------------------------------------------------------------------------------------------------
 
 
 SELECT * FROM sys.finalista INNER JOIN sys.contratista WHERE finalista.idContratista=contratista.idContratista;
@@ -254,4 +192,68 @@ SELECT co.idContratista,co.nombreEmpresa,co.nit,co.codigoCIIU,co.nombreGerente,c
 
 
 
+
+
+
+SELECT co.idContratista,co.nombreEmpresa,co.nit,co.codigoCIIU,co.nombreGerente,co.email,co.arl,co.direccion,co.telefono,co.duracion,co.departamento,co.idContratante,co.personaContacto,co.cargoPer,co.telefonoCon,co.emailContacto  FROM contratista AS co INNER JOIN Aprobacion as a on a.idContratista=co.idContratista where co.idContratante = 3;
+SELECT * from planDeTrabajo where year(fechaFin) = 2017 ;
+
+select count(*) as registro from planDeTrabajo where  idContratista=5 and mes= "SEPTIEMBRE" and YEAR(fechaFin) = 2017 ;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+SELECT * FROM contratista AS co INNER JOIN Aprobacion AS a ON a.idContratista=co.idContratista 
+INNER JOIN planDeTrabajo AS pt ON pt.idContratista=co.idContratista WHERE co.idContratante = 3 AND pt.idContratista is null;
+    
+
+SELECT co.idContratista,co.nombreEmpresa,co.nit,co.codigoCIIU,co.nombreGerente,co.email,co.arl,co.direccion,co.telefono,co.duracion,co.departamento,co.idContratante,co.personaContacto,co.cargoPer,co.telefonoCon,co.emailContacto  FROM (contratista AS co INNER JOIN Aprobacion AS a ON a.idContratista=co.idContratista) LEFT JOIN planDeTrabajo AS pt ON pt.idContratista=co.idContratista WHERE co.idContratante =  3 AND pt.idContratista IS NULL
+
+INSERT INTO mese (non)  VALUES  ("FEBRERO");
+INSERT INTO mese (non)  VALUES  ("MARZO");
+INSERT INTO mese (non)  VALUES  ("ABRIL");
+INSERT INTO mese (non)  VALUES  ("MAYO");
+INSERT INTO mese (non)  VALUES  ("JUNIO");
+INSERT INTO mese (non)  VALUES  ("JULIO");
+INSERT INTO mese (non)  VALUES  ("AGOSTO");
+INSERT INTO mese (non)  VALUES  ("SEPTIEMBRE");
+INSERT INTO mese (non)  VALUES  ("OCTUBRE");
+INSERT INTO mese (non)  VALUES  ("NOVIEMBRE");
+INSERT INTO mese (non)  VALUES  ("DICIEMBRE");
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
 

@@ -11,6 +11,7 @@
                     <div class="row">
                         <div class="col-sm-4">
                           <label class="titulos">NOMBRE </label>
+                            <br>
                             <span ng-model="name">{{name}}</span>
                         </div>
                         <div class="col-sm-4">
@@ -109,9 +110,10 @@
 
                         </div>
                     </div>
+                    <br>
                     <div class="row">
                         <div class="col-sm-12">
-                            <button class="btn btn-primary" ng-click="add(contraName,responsable,departamento,mes,actividad,severidad,frecuencia,mortalidad,prevalencia,icidencia,ausentismo)">Agregar indicadores</button>
+                            <button class="btn btn-primary" ng-click="add($event,name,responsable,departamento,mes,actividad,severidad,frecuencia,mortalidad,prevalencia,icidencia,ausentismo)">Agregar indicadores</button>
                         </div>
 
                     </div>
