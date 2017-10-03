@@ -1,9 +1,10 @@
-<!DOCTYPE html>
-<html lang="en">
-<body>
+
+<div class="w3-container">
 <div  ng-controller="inicioCtrl as ctrl">
-    <div class="w3-container">
-        <div class="container align-middle text-center">
+    <div class="w3-container w3-center">
+        <div class="container text-center">
+          <div class="row">
+              <div class="col-xs-9">
             <div class="row">
                 <div class="col-sm-12">
                     <h4 class="titulos"><b>BIENVIENIDO AL SOFTWARE CAYAC</b></h4>
@@ -15,12 +16,7 @@
                 <div class="col-sm-4">
                     <div class="row bottom">
                         <h4 class="titulos"><b>CONTRATISTA</b></h4>
-                        <img src="img/Recurso 14.png" width="250px" height="250px">
-                    </div>
-                    <div class="row">
-                        <br>
-                        <button class="button button1" type="submit"  ng-click="a()" >Ingreso Candidato</button>
-                        <button class="button button1" type="submit"  ng-click="b()">Ingreso Contratista</button>
+                        <img src="{{url2}}" width="250px" height="250px" ng-mousemove="mousem2()" ng-init="count2=0" ng-click="b()" >
                     </div>
                 </div>
                 <div class="col-sm-4">
@@ -30,12 +26,17 @@
                     </div>
                 </div>
                 <div class="col-sm-4">
+                    <div class="row bottom">
+                        <h4 class="titulos"><b>CANDIDATOS</b></h4>
+                        <img src="{{url3}}" width="250px" height="250px" ng-mousemove="mousem3()" ng-init="count3=0" ng-click="a()" >
+                    </div>
 
 
                 </div>
             </div>
+          </div>
         </div>
     </div>
+    </div>
 </div>
-</body>
-</html>
+</div>
