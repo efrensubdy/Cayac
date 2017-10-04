@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.sql.SQLException;
+import java.util.List;
 
 /**
  * Created by HSEQ on 03/10/2017.
@@ -20,5 +21,15 @@ public class ManejadorDeIndicadores implements AdministradorDeIndicadores {
     @Override
     public void insertarIndicador(Indicador indicador) throws SQLException, ClassNotFoundException {
         indicadorDB.insertarIndicador(indicador);
+    }
+
+    @Override
+    public List<Indicador> indicadoresPorContratista(int idContratista, int idContratante) throws SQLException, ClassNotFoundException {
+        return indicadorDB.traerIndicadoresPorFinalista(idContratista, idContratante);
+    }
+
+    @Override
+    public List<Indicador> indicadoresPorContratistaMes(int idContratista, String mes) throws SQLException, ClassNotFoundException {
+        return indicadorDB.indicadoresPorMes(idContratista,mes);
     }
 }

@@ -31,6 +31,7 @@ angular.module('myApp', [
   'myApp.facturacion',
   'myApp.seguridadSocial',
   'myApp.indicadores',
+  'myApp.gestionDeIndicadores',
   'myApp.login',
   'myApp.login2',
   'myApp.login3',

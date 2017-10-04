@@ -9,8 +9,33 @@ angular.module('myApp.indicadores', ['ngRoute'])
   });
 }])
 
-.controller('indicadoresCtrl', ['$timeout', '$q', '$scope','$log','$rootScope','$localStorage','$sessionStorage','$mdDialog','indicador',function($timeout, $q, $scope,$log,$rootScope,$localStorage,$sessionStorage,$mdDialog,indicador) {
+.controller('indicadoresCtrl', ['$timeout', '$q', '$scope','$log','$rootScope','$localStorage','$sessionStorage','$mdDialog','indicador','indContr',function($timeout, $q, $scope,$log,$rootScope,$localStorage,$sessionStorage,$mdDialog,indicador,indContr) {
+$scope.bandera1=false;
+$scope.bandera2=false;
 $scope.name=$localStorage.userLogeado.nombreEmpresa;
+$scope.opciones=[
+ { id: 1, name: 'AGREGAR INDICADORES'},
+ { id: 2, name: 'CONSULTAR INDICADORES'},
+
+];
+
+$scope.simple2 = function(item){
+   switch(item.id){
+        case 1:
+        $scope.bandera1=true;
+        $scope.bandera2=false;
+
+        break;
+        case 2:
+        $scope.bandera1=false;
+        $scope.bandera2=true;
+        $scope.table=indContr.query({idContratista:$localStorage.userLogeado.idContratista,idContratante:$localStorage.userLogeado.idContratante})
+        break;
+
+   }
+
+
+}
 $scope.meses=[
  { id: 1, name: 'ENERO'},
  { id: 2, name: 'FEBRERO'},
@@ -81,6 +106,38 @@ $scope.add = function(ev,contraName,responsable,departamento,mes,actividad,sever
 
 
 }
+$scope.showAlert=function(ev,client){
+            $rootScope.client=client
+            $mdDialog.show({
+                  //Controlador del mensajes con operaciones definido en la parte de abajo
+                  controller: DialogController2,
+                   //permite la comunicacion con el html que despliega el boton requisitos
+                    templateUrl: 'test/detalleIndicador.html',
+                    parent: angular.element(document.body),
+                    targetEvent: ev,
+                     clickOutsideToClose:true,
+                     fullscreen: $scope.customFullscreen // Only for -xs, -sm breakpoints.
+                                })
+
+          }
+
+ function DialogController2($scope, $mdDialog, $rootScope){
+            $scope.client= $rootScope.client;
+
+            $scope.hide = function() {
+                         $mdDialog.hide();
+                       };
+                       //funcion para cerral el mensaje
+             $scope.cancel = function() {
+                         $mdDialog.cancel();
+                       };
+
+
+
+
+           }
+
+
 
 
 

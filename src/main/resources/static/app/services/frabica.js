@@ -112,6 +112,14 @@ angular.module('services.listFactory', ['ngRoute','ngResource'])
               return $resource('/app/planDeTrabajo/mensajesContr/:idContratista/:idContratante')
 
                     })
+          .factory('indContr', function($resource) {
+                        return $resource('/app/indicador/indicadoresContra/:idContratista/:idContratante')
+
+                              })
+           .factory('indMes', function($resource) {
+                                   return $resource('/app/indicador/indicadoresPorMes/:idContratista/:mes')
+
+                                         })
          //Fabrica que trae todos los contratos pertencientes al contratante
          .factory('contratos', function($resource) {
                        return $resource('/app/contratos/:idContratante');

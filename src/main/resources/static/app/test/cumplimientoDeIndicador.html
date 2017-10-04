@@ -1,0 +1,93 @@
+<md-dialog id="attribute-dialog" aria-label="Cumplidos">
+    <form>
+        <md-toolbar>
+            <div class="md-toolbar-tools">
+                <h1>Detalle de Indicadores</h1>
+                <span flex></span>
+                <md-button class="md-icon-button" ng-click="cancel()">
+                    <md-icon md-font-library="material-icons">highlight_off</md-icon>
+                </md-button>
+            </div>
+        </md-toolbar>
+        <md-dialog-content>
+            <md-tabs md-dynamic-height md-border-bottom>
+                <md-tab label="Datos">
+                    <md-content class="md-padding">
+                        <div class="md-dialog-content">
+
+                            <table class="table table-bordered table-hover table-condensed">
+                                <thead>
+                                <tr class="titulos">
+                                    <th>Tipo de Información</th>
+                                    <th>Información</th>
+                                </tr>
+                                <tbody ng-repeat="client in listadoIndicadores">
+                                <tr class="texto">
+                                    <td><b>Nombre de Contratista</b> </td>
+                                    <td>{{client.nombreContra}}</td>
+                                </tr>
+                                <tr class="texto">
+                                    <td><b> Periodo</b></td>
+                                    <td>{{client.mes}}</td>
+                                </tr>
+                                <tr class="texto">
+                                    <td><b>Responsable</b></td>
+                                    <td>{{client.responsable}}</td>
+                                </tr>
+                                <tr class="texto">
+                                    <td><b>Actividad Operacionales</b> </td>
+                                    <td>{{client.actividad}}</td>
+                                </tr>
+                                <tr class="texto">
+                                    <td><b>Departamento</b> </td>
+                                    <td>{{client.departamento}}</td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </md-content>
+                </md-tab>
+                <md-tab label="Indicadores">
+                    <md-content class="md-padding">
+                        <div class="md-dialog-content">
+
+                            <table class="table table-bordered table-hover table-condensed">
+                                <thead>
+                                <tr class="titulos">
+                                    <th>Nombre del Indicador</th>
+                                    <th>Puntaje</th>
+                                </tr>
+                                <tbody ng-repeat="client in listadoIndicadores">
+                            <tr class="texto">
+                                <td><b>Severidad de los Accidentes Laborales</b> </td>
+                                <td>{{client.severidad}}</td>
+                            </tr>
+                            <tr class="texto">
+                                <td><b> Frecuencia de los Accidentes Laborales </b> </td>
+                                <td>{{client.frecuencia}}</td>
+                            </tr>
+                            <tr class="texto">
+                                <td><b> Mortalidad de los Accidentes Laborales </b> </td>
+                                <td>{{client.mortalidad}}</td>
+                            </tr>
+                            <tr class="texto">
+                                <td><b> Prevalencia de la Enfermedad Laboral </b> </td>
+                                <td>{{client.prevalencia}}</td>
+                            </tr>
+                            <tr class="texto">
+                                <td><b> Incidencia de la Enfermedad Laboral </b> </td>
+                                <td>{{client.incidencia}}</td>
+                            </tr>
+                            <tr class="texto">
+                                <td><b> Ausentismo</b> </td>
+                                <td>{{client.ausentismo}}</td>
+                            </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </md-content>
+                </md-tab>
+            </md-tabs>
+        </md-dialog-content>
+    </form>
+</md-dialog>

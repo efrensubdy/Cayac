@@ -35,6 +35,7 @@
   <script src="registroServicio/registroServicio.js"></script>
   <script src="planDeTrabajo/planDeTrabajo.js"></script>
   <script src="gestionDeActividades/gestionDeActividades.js"></script>
+  <script src="gestionDeIndicadores/gestionDeIndicadores.js"></script>
   <script src="notificaciones/notificaciones.js"></script>
   <script src="mensajeria/mensajeria.js"></script>
   <script src="facturacion/facturacion.js"></script>
@@ -86,7 +87,6 @@
     <div class="collapse navbar-collapse" id="myNavbar">
       <ul class="nav navbar-nav navbar-left">
         <li><a class="text-primary" ng-show="bandera3"  href="#!/view4">Registrar Contratantes</a></li>
-        <li><a class="text-primary" ng-show="bandera||bandera2" href="#!/view1">Home</a></li>
         <li><a class="text-primary" ng-show="bandera" href="#!/view6">Cambiar Contraseña</a></li>
         <li><a class="text-primary" ng-show="bandera2" href="#!/view7">Cambiar Contraseña</a></li>
         <li><a class="text-primary" ng-show="bandera2 && !banderaEjecucion"  href="#!/view9">Soportes Seleccion</a></li>
@@ -95,7 +95,6 @@
             <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             Objeto del Proyecto
             </button>
-
             <ul class="dropdown-menu">
               <li><a class="text-primary" ng-show="bandera" href="#!/registroServicio">Registrar Servicio a Contratar</a> </li>
               <li><a class="text-primary"  ng-show="bandera"  href="#!/view13">Registrar Proyecto</a></li>
@@ -104,25 +103,7 @@
           </div>
         </div>
         </li>
-        <li ng-show="banderaEjecucion" class="btn-toolbar"> <div class="btn-toolbar">
-          <div class="btn-group navbar-btn">
-            <button type="button" onclick="window.location.href='#!/subirDocumentosEstaticos'" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              Documentos
-            </button>
-          </div>
-        </div>
-        </li>
-
-        <li ng-show="banderaEjecucion" class="btn-toolbar"> <div class="btn-toolbar">
-          <div class="btn-group navbar-btn">
-            <button type="button" class="btn btn-primary dropdown-toggle" onclick="window.location.href='#!/planDeTrabajo'" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              Plan de Trabajo
-            </button>
-          </div>
-        </div>
-        </li>
         <li role="separator" class="divider"></li>
-
         <li ng-show="bandera" class="btn-toolbar"> <div class="btn-toolbar">
           <div class="btn-group navbar-btn">
             <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -162,6 +143,7 @@
                 <ul class="dropdown-menu">
                   <li><a class="text-primary"  ng-show="bandera" class="example" href="#!/ejecucionCNCE">Gestión Estatica</a> </li>
                   <li><a class="text-primary"  ng-show="bandera" class="example" href="#!/gestionDeActividades">Gestión de Actividades</a></li>
+                  <li><a class="text-primary" ng-show="bandera" class="example" href="#!/gestionDeIndicadores">Gestión de Indicadores</a></li>
                 </ul>
               </li>
               <li role="separator" class="divider"></li>
