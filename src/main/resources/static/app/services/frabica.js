@@ -132,7 +132,7 @@ angular.module('services.listFactory', ['ngRoute','ngResource'])
                                          return $resource('/app/contratos/enEjecucion/:idContratante');
                                      })
       .factory('fechaContrato', function($resource) {
-                             return $resource('/app/contratos/fecha/:fechaInicio/:fechaFin');
+                             return $resource('/app/contratos/fecha/:fechaInicio/:fechaFin/:idContratante');
                          })
        .factory('pFinales', function($resource) {
                        return $resource('/app/finalista/:idContratante/:idContrato');

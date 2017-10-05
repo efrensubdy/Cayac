@@ -96,8 +96,8 @@ public class ContratoController {
 
     }
 
-    @RequestMapping(value = "fecha/{fechaInicio}/{fechaFin}", method = RequestMethod.GET)
-    public ResponseEntity<?> porFecha(@PathVariable String fechaInicio, @PathVariable String fechaFin) {
+    @RequestMapping(value = "fecha/{fechaInicio}/{fechaFin}/{idContratante}", method = RequestMethod.GET)
+    public ResponseEntity<?> porFecha(@PathVariable String fechaInicio, @PathVariable String fechaFin,@PathVariable int idContratante) {
 
         ResponseEntity a;
         try {
@@ -108,7 +108,7 @@ public class ContratoController {
             Date parsed2 = (formatter.parse(fechaFin));
             java.sql.Date sqlInicio = new java.sql.Date(parsed.getTime());
             java.sql.Date sqlFin = new java.sql.Date(parsed2.getTime());
-            return new ResponseEntity<>(manejoDeContratoBD.contratosPorFecha(sqlInicio, sqlFin), HttpStatus.ACCEPTED);
+            return new ResponseEntity<>(manejoDeContratoBD.contratosPorFecha(sqlInicio, sqlFin,idContratante), HttpStatus.ACCEPTED);
 
         } catch (Exception ex) {
             Logger.getLogger(Controller.class.getName()).log(Level.SEVERE, null, ex);

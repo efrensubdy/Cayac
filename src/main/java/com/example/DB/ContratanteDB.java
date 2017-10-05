@@ -353,13 +353,14 @@ public class ContratanteDB {
         return contratoQueDevuelvo;
 
     }
-    public List<Contrato>contratosPorFecha(java.sql.Date fechaInicio, java.sql.Date fechaFin)throws SQLException,ClassNotFoundException{
+    public List<Contrato>contratosPorFecha(java.sql.Date fechaInicio, java.sql.Date fechaFin, int idContratante)throws SQLException,ClassNotFoundException{
      List<Contrato>contratosPorFecha=new LinkedList<>();
         String sql ="SELECT * FROM  contrato \n" +
-                "WHERE (fechaInicio > ? OR fechaFin < ?);";
+                "WHERE (fechaInicio > ? OR fechaFin < ?)AND idContratante = ?;";
         PreparedStatement ps = Conexion.conection().prepareStatement(sql);
         ps.setDate(1,fechaInicio);
         ps.setDate(2,fechaFin);
+        ps.setInt(3,idContratante);
         ResultSet rs = ps.executeQuery();
         while(rs.next()){
             Contrato nuevoContrato=new Contrato();

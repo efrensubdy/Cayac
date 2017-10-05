@@ -36,7 +36,7 @@ $scope.detalle=function(item){
     detalle(item);
 }
 $scope.buscar=function(a,b){
-$scope.listado= fechaContrato.query({fechaInicio:a,fechaFin:b});
+$scope.listado= fechaContrato.query({fechaInicio:a,fechaFin:b,idContratante:$localStorage.contratanteLogeado.idContratante});
 $scope.permisoFecha=true;
 
 }

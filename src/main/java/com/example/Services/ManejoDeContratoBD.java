@@ -30,8 +30,8 @@ public class ManejoDeContratoBD implements AdministradorDeContratos {
     }
 
     @Override
-    public List<Contrato> contratosPorFecha(Date fechaInicio, Date fechaFin) throws SQLException, ClassNotFoundException {
-        return contratanteDB.contratosPorFecha(fechaInicio, fechaFin);
+    public List<Contrato> contratosPorFecha(Date fechaInicio, Date fechaFin,int idContratante) throws SQLException, ClassNotFoundException {
+        return contratanteDB.contratosPorFecha(fechaInicio, fechaFin,idContratante);
     }
 
     @Override
