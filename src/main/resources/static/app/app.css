@@ -189,6 +189,12 @@ color: #575756;
 
 
 }
+html {
+  height: 100%;
+}
+body {
+  min-height: 100%;
+}
 .bg {
     /* The image used */
     background-image: url("img/Recurso 2.png");
@@ -197,7 +203,7 @@ color: #575756;
     height: 100%;
     margin: 0;
     padding: 0;
-
+     overflow: scroll;
     /* Center and scale the image nicely */
      background-position: 70% 130%;
     background-repeat: no-repeat;
