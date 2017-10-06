@@ -29,7 +29,17 @@ public class ManejadorDeIndicadores implements AdministradorDeIndicadores {
     }
 
     @Override
-    public List<Indicador> indicadoresPorContratistaMes(int idContratista, String mes) throws SQLException, ClassNotFoundException {
-        return indicadorDB.indicadoresPorMes(idContratista,mes);
+    public List<Indicador> indicadoresPorContratistaMes(int idContratista, String mes,int year) throws SQLException, ClassNotFoundException {
+        return indicadorDB.indicadoresPorMes(idContratista,mes,year);
+    }
+
+    @Override
+    public List<Indicador> reportesPorMes(int idContratante, String mes,int year) throws SQLException, ClassNotFoundException {
+        return indicadorDB.reportePorMes(idContratante, mes, year);
+    }
+
+    @Override
+    public List<Indicador> reportesPorYear(int idContratante, int year) throws SQLException, ClassNotFoundException {
+        return indicadorDB.reportePorAño(idContratante, year);
     }
 }

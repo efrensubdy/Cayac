@@ -10,7 +10,25 @@ angular.module('myApp.gestionDeIndicadores', ['ngRoute'])
 }])
 
 .controller('gestionDeIndicadoresCtrl', ['$timeout', '$q', '$scope','$log','$rootScope','$localStorage','$sessionStorage','$mdDialog','finalesDefinitivos','contratosEnEjecucion','indMes',function($timeout, $q, $scope,$log,$rootScope,$localStorage,$sessionStorage,$mdDialog,finalesDefinitivos,contratosEnEjecucion,indMes) {
-
+$scope.years=[
+     { id: 10, name: 2009},
+     { id: 11, name: 2010},
+     { id: 12, name: 2011},
+     { id: 13, name: 2012},
+     { id: 14, name: 2013},
+     { id: 15, name: 2014},
+     { id: 16, name: 2015},
+     { id: 17, name: 2016},
+     { id: 18, name: 2017},
+     { id: 19, name: 2018},
+     { id: 20, name: 2019},
+     { id: 21, name: 2020},
+     { id: 22, name: 2021},
+     { id: 23, name: 2022},
+     { id: 24, name: 2023},
+     { id: 25, name: 2024},
+     { id: 26, name: 2026},
+                ];
 $scope.meses=[
  { id: 1, name: 'ENERO'},
  { id: 2, name: 'FEBRERO'},
@@ -33,9 +51,9 @@ $scope.add=function(){
                 $scope.flag=true;
                 }
 
-$scope.showAlert=function(ev, client,mes){
+$scope.showAlert=function(ev, client,mes,year){
 $rootScope.client=client;
-$rootScope.listadoIndicadores=indMes.query({idContratista:client.id,mes:mes.name});
+$rootScope.listadoIndicadores=indMes.query({idContratista:client.id,mes:mes.name,year:year.name});
 $mdDialog.show({
             //Controlador del mensajes con operaciones definido en la parte de abajo
             controller: DialogController,

@@ -19,7 +19,7 @@ import java.util.List;
 public class IndicadorDB {
 
     public void insertarIndicador(Indicador indicador)throws SQLException,ClassNotFoundException{
-        String sql="INSERT INTO Indicadores (nombreContra,periodo,responsable,departamento,actividad,severidad,frecuencia,mortalidad,prevalencia,incidencia,ausentismo,idContratista,idContratante) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?)";
+        String sql="INSERT INTO Indicadores (nombreContra,periodo,responsable,departamento,actividad,severidad,frecuencia,mortalidad,prevalencia,incidencia,ausentismo,idContratista,idContratante,año) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
         Connection con = Conexion.conection();
         PreparedStatement ps=con.prepareStatement(sql);
         ps.setString(1,indicador.getNombreContra());
@@ -35,18 +35,20 @@ public class IndicadorDB {
         ps.setFloat(11,indicador.getAusentismo());
         ps.setInt(12,indicador.getIdContratista());
         ps.setInt(13,indicador.getIdContratante());
+        ps.setInt(14,indicador.getYear());
         ps.execute();
         ps.close();
         con.close();
 
 
     }
-    public List<Indicador>indicadoresPorMes(int idContratista, String mes)throws SQLException,ClassNotFoundException {
+    public List<Indicador>indicadoresPorMes(int idContratista, String mes,int year)throws SQLException,ClassNotFoundException {
         List<Indicador>indicadors=new LinkedList<>();
-        String sql="SELECT * FROM Indicadores WHERE idContratista = ? AND periodo = ?;";
+        String sql="SELECT * FROM Indicadores WHERE idContratista = ? AND periodo = ? AND año = ?;";
         PreparedStatement ps = Conexion.conection().prepareStatement(sql);
         ps.setInt(1,idContratista);
         ps.setString(2,mes);
+        ps.setInt(3,year);
         ResultSet rs = ps.executeQuery();
         while (rs.next()) {
             Indicador indicador=new Indicador();
@@ -64,6 +66,7 @@ public class IndicadorDB {
             indicador.setAusentismo(rs.getFloat("ausentismo"));
             indicador.setIdContratista(rs.getInt("idContratista"));
             indicador.setIdContratante(rs.getInt("idContratante"));
+            indicador.setYear(rs.getInt("año"));
             indicadors.add(indicador);
 
         }
@@ -92,8 +95,121 @@ public class IndicadorDB {
             indicador.setAusentismo(rs.getFloat("ausentismo"));
             indicador.setIdContratista(rs.getInt("idContratista"));
             indicador.setIdContratante(rs.getInt("idContratante"));
+            indicador.setYear(rs.getInt("año"));
             indicadors.add(indicador);
         }
+        return indicadors;
+    }
+    public List<Indicador>reportePorMes(int idContratante,String mes,int year)throws SQLException,ClassNotFoundException{
+       List<Indicador>indicadors=new LinkedList<>();
+        String sql="SELECT * FROM Indicadores WHERE idContratante = ? AND periodo = ? AND año = ?;";
+        PreparedStatement ps = Conexion.conection().prepareStatement(sql);
+        ps.setInt(1,idContratante);
+        ps.setString(2,mes);
+        ps.setInt(3,year);
+        ResultSet rs = ps.executeQuery();
+        while (rs.next()) {
+            Indicador indicador=new Indicador();
+            indicador.setId(rs.getInt("id"));
+            indicador.setNombreContra(rs.getString("nombreContra"));
+            indicador.setMes(rs.getString("periodo"));
+            indicador.setResponsable(rs.getString("responsable"));
+            indicador.setDepartamento(rs.getString("departamento"));
+            indicador.setActividad(rs.getString("actividad"));
+            indicador.setSeveridad(rs.getFloat("severidad"));
+            indicador.setFrecuencia(rs.getFloat("frecuencia"));
+            indicador.setMortalidad(rs.getFloat("mortalidad"));
+            indicador.setPrevalencia(rs.getFloat("prevalencia"));
+            indicador.setIncidencia(rs.getFloat("incidencia"));
+            indicador.setAusentismo(rs.getFloat("ausentismo"));
+            indicador.setIdContratista(rs.getInt("idContratista"));
+            indicador.setIdContratante(rs.getInt("idContratante"));
+            indicador.setYear(rs.getInt("año"));
+            indicadors.add(indicador);
+
+        }
+        Indicador indicadorResultdo=new Indicador();
+        indicadorResultdo.setSeveridad((float) 0);
+        indicadorResultdo.setFrecuencia((float) 0);
+        indicadorResultdo.setMortalidad((float) 0);
+        indicadorResultdo.setPrevalencia((float) 0);
+        indicadorResultdo.setIncidencia((float) 0);
+        indicadorResultdo.setAusentismo((float)0);
+        for (Indicador i:indicadors){
+            indicadorResultdo.setSeveridad(indicadorResultdo.getSeveridad()+i.getSeveridad());
+            indicadorResultdo.setFrecuencia(indicadorResultdo.getFrecuencia()+i.getFrecuencia());
+            indicadorResultdo.setMortalidad(indicadorResultdo.getMortalidad()+i.getMortalidad());
+            indicadorResultdo.setPrevalencia(indicadorResultdo.getPrevalencia()+i.getPrevalencia());
+            indicadorResultdo.setIncidencia(indicadorResultdo.getIncidencia()+i.getIncidencia());
+            indicadorResultdo.setAusentismo(indicadorResultdo.getAusentismo()+i.getAusentismo());
+        }
+        indicadorResultdo.setSeveridad(indicadorResultdo.getSeveridad()/indicadors.size());
+        indicadorResultdo.setFrecuencia(indicadorResultdo.getFrecuencia()/indicadors.size());
+        indicadorResultdo.setMortalidad(indicadorResultdo.getMortalidad()/indicadors.size());
+        indicadorResultdo.setPrevalencia(indicadorResultdo.getPrevalencia()/indicadors.size());
+        indicadorResultdo.setIncidencia(indicadorResultdo.getIncidencia()/indicadors.size());
+        indicadorResultdo.setAusentismo(indicadorResultdo.getAusentismo()/indicadors.size());
+        indicadors=new LinkedList<>();
+        indicadorResultdo.setIdContratante(idContratante);
+        indicadorResultdo.setMes(mes);
+        indicadorResultdo.setYear(year);
+        indicadors.add(indicadorResultdo);
+       return indicadors;
+    }
+    public List<Indicador>reportePorAño(int idContratante,int year)throws SQLException,ClassNotFoundException{
+        List<Indicador>indicadors=new LinkedList<>();
+        String sql="SELECT * FROM Indicadores WHERE idContratante = ? AND año = ?;";
+        PreparedStatement ps = Conexion.conection().prepareStatement(sql);
+        ps.setInt(1,idContratante);
+        ps.setInt(2,year);
+
+        ResultSet rs = ps.executeQuery();
+        while (rs.next()) {
+            Indicador indicador=new Indicador();
+            indicador.setId(rs.getInt("id"));
+            indicador.setNombreContra(rs.getString("nombreContra"));
+            indicador.setMes(rs.getString("periodo"));
+            indicador.setResponsable(rs.getString("responsable"));
+            indicador.setDepartamento(rs.getString("departamento"));
+            indicador.setActividad(rs.getString("actividad"));
+            indicador.setSeveridad(rs.getFloat("severidad"));
+            indicador.setFrecuencia(rs.getFloat("frecuencia"));
+            indicador.setMortalidad(rs.getFloat("mortalidad"));
+            indicador.setPrevalencia(rs.getFloat("prevalencia"));
+            indicador.setIncidencia(rs.getFloat("incidencia"));
+            indicador.setAusentismo(rs.getFloat("ausentismo"));
+            indicador.setIdContratista(rs.getInt("idContratista"));
+            indicador.setIdContratante(rs.getInt("idContratante"));
+            indicador.setYear(rs.getInt("año"));
+            indicadors.add(indicador);
+
+        }
+        Indicador indicadorResultdo=new Indicador();
+        indicadorResultdo.setSeveridad((float) 0);
+        indicadorResultdo.setFrecuencia((float) 0);
+        indicadorResultdo.setMortalidad((float) 0);
+        indicadorResultdo.setPrevalencia((float) 0);
+        indicadorResultdo.setIncidencia((float) 0);
+        indicadorResultdo.setAusentismo((float)0);
+        for (Indicador i:indicadors){
+            indicadorResultdo.setSeveridad(indicadorResultdo.getSeveridad()+i.getSeveridad());
+            indicadorResultdo.setFrecuencia(indicadorResultdo.getFrecuencia()+i.getFrecuencia());
+            indicadorResultdo.setMortalidad(indicadorResultdo.getMortalidad()+i.getMortalidad());
+            indicadorResultdo.setPrevalencia(indicadorResultdo.getPrevalencia()+i.getPrevalencia());
+            indicadorResultdo.setIncidencia(indicadorResultdo.getIncidencia()+i.getIncidencia());
+            indicadorResultdo.setAusentismo(indicadorResultdo.getAusentismo()+i.getAusentismo());
+        }
+        indicadorResultdo.setSeveridad(indicadorResultdo.getSeveridad()/indicadors.size());
+        indicadorResultdo.setFrecuencia(indicadorResultdo.getFrecuencia()/indicadors.size());
+        indicadorResultdo.setMortalidad(indicadorResultdo.getMortalidad()/indicadors.size());
+        indicadorResultdo.setPrevalencia(indicadorResultdo.getPrevalencia()/indicadors.size());
+        indicadorResultdo.setIncidencia(indicadorResultdo.getIncidencia()/indicadors.size());
+        indicadorResultdo.setAusentismo(indicadorResultdo.getAusentismo()/indicadors.size());
+        indicadors=new LinkedList<>();
+        indicadorResultdo.setIdContratante(idContratante);
+        indicadorResultdo.setYear(year);
+        indicadors.add(indicadorResultdo);
+
         return indicadors;
     }
 

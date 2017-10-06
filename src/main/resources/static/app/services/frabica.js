@@ -117,9 +117,17 @@ angular.module('services.listFactory', ['ngRoute','ngResource'])
 
                               })
            .factory('indMes', function($resource) {
-                                   return $resource('/app/indicador/indicadoresPorMes/:idContratista/:mes')
+                                   return $resource('/app/indicador/indicadoresPorMes/:idContratista/:mes/:year')
 
                                          })
+            .factory('repMes', function($resource) {
+                                               return $resource('/app/indicador/reportesPorMes/:idContratante/:mes/:year')
+
+                                                     })
+             .factory('repYear', function($resource) {
+                                                           return $resource('/app/indicador/reportesPorYear/:idContratante/:year')
+
+                                                                 })
          //Fabrica que trae todos los contratos pertencientes al contratante
          .factory('contratos', function($resource) {
                        return $resource('/app/contratos/:idContratante');

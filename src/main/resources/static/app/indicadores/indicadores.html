@@ -75,14 +75,21 @@
                     <br>
                     <br>
                     <div class="row">
-                        <div class="col-sm-6">
+                        <div class="col-sm-4">
                             <label class="titulos">PERIODO REPORTADO</label>
                             <select class="form-control" ng-model="mes" data-placeholder="seleccione el mes" ng-change="simple()">
                                 <option ng-value="todo" ng-repeat="todo in meses">{{todo.name}}</option>
 
                             </select>
                         </div>
-                        <div class="col-sm-6">
+                        <div class="col-sm-4">
+                            <label class="titulos">AÑO REPORTADO</label>
+                            <select class="form-control" ng-model="year" data-placeholder="seleccione el mes">
+                                <option ng-value="todo" ng-repeat="todo in years">{{todo.name}}</option>
+
+                            </select>
+                        </div>
+                        <div class="col-sm-4">
                             <label class="titulos">ACTIVIDAD OPERACIONAL</label>
                             <input class="form-control" type="text" name="actividad" id="actividad" placeholder="actividad del Contratista" ng-model="actividad">
                         </div>
@@ -164,7 +171,7 @@
                     <br>
                     <div class="row">
                         <div class="col-sm-12">
-                            <button class="btn btn-primary" ng-click="add($event,name,responsable,departamento,mes,actividad,severidad,frecuencia,mortalidad,prevalencia,icidencia,ausentismo)">Agregar indicadores</button>
+                            <button class="btn btn-primary" ng-click="add($event,name,responsable,departamento,mes,actividad,severidad,frecuencia,mortalidad,prevalencia,icidencia,ausentismo,year)">Agregar indicadores</button>
                         </div>
 
                     </div>

@@ -18,6 +18,15 @@ public Float incidencia;
 public Float ausentismo;
 public int idContratista;
 public int idContratante;
+public int year;
+
+    public int getYear() {
+        return year;
+    }
+
+    public void setYear(int year) {
+        this.year = year;
+    }
 
     public int getId() {
         return id;

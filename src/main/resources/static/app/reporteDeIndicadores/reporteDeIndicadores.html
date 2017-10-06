@@ -1,0 +1,139 @@
+<div class="w3-container">
+<div  ng-controller="reporteDeIndicadoresCtrl as ctrl">
+    <div class="w3-container w3-center">
+        <div class="container text-center ">
+            <div class="row">
+                <div class="col-xs-9">
+                    <h4 class="titulos"><b>REPORTE DE INDICADORES</b></h4>
+
+                </div>
+
+            </div>
+            <div class="row">
+                <div class="col-xs-9">
+                    <p class="texto">ESCOJA EL REPORTE QUE QUIERE OBSERVAR </p>
+                    <select class="form-control" ng-model="opcion" data-placeholder="seleccione una opcion" ng-change="simple(opcion)">
+                        <option ng-value="todo" ng-repeat="todo in opciones">{{todo.name}}</option>
+
+                    </select>
+                </div>
+
+            </div>
+            <br>
+            <br>
+            <div class="row" ng-show="mensual">
+                <div class="col-xs-9">
+                    <label class="titulos">SELECCIONE EL MES Y EL AÑO DEL REPORTE</label>
+                    <div class="row">
+                    <div class="col-sm-6">
+                        <label class="titulos">MES</label>
+                    <select class="form-control" ng-model="mes" data-placeholder="seleccione el mes">
+                        <option ng-value="todo" ng-repeat="todo in meses">{{todo.name}}</option>
+
+                    </select>
+                    </div>
+                    <div class="col-sm-6">
+                        <label class="titulos">AÑO</label>
+                    <select class="form-control" ng-model="year" data-placeholder="seleccione el mes">
+                        <option ng-value="todo" ng-repeat="todo in years">{{todo.name}}</option>
+
+                    </select>
+                    </div>
+                    </div>
+                    <br>
+                    <button class="btn btn-primary" ng-click="soporteDeMes(mes,year)">GENERAR REPORTE</button>
+                    <br>
+                    <br>
+                    <div class="table-responsive" ng-show="bandera1">
+                        <table class="table table-bordered table-hover table-condensed">
+                            <thead>
+                            <tr class="titulos">
+                                <th>Nombre del Indicador</th>
+                                <th>Puntaje</th>
+                            </tr>
+                            <tbody ng-repeat="client in reporMes">
+                            <tr class="texto">
+                                <td><b>Severidad de los Accidentes Laborales</b> </td>
+                                <td>{{client.severidad}}</td>
+                            </tr>
+                            <tr class="texto">
+                                <td><b> Frecuencia de los Accidentes Laborales </b> </td>
+                                <td>{{client.frecuencia}}</td>
+                            </tr>
+                            <tr class="texto">
+                                <td><b> Mortalidad de los Accidentes Laborales </b> </td>
+                                <td>{{client.mortalidad}}</td>
+                            </tr>
+                            <tr class="texto">
+                                <td><b> Prevalencia de la Enfermedad Laboral </b> </td>
+                                <td>{{client.prevalencia}}</td>
+                            </tr>
+                            <tr class="texto">
+                                <td><b> Incidencia de la Enfermedad Laboral </b> </td>
+                                <td>{{client.incidencia}}</td>
+                            </tr>
+                            <tr class="texto">
+                                <td><b> Ausentismo</b> </td>
+                                <td>{{client.ausentismo}}</td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="row" ng-show="anual">
+                <div class="col-xs-9">
+                    <label class="titulos">SELECCIONE EL AÑO DEL REPORTE</label>
+                    <select class="form-control" ng-model="yea" data-placeholder="seleccione el mes">
+                        <option ng-value="todo" ng-repeat="todo in years">{{todo.name}}</option>
+
+                    </select>
+                    <br>
+                    <button class="btn btn-primary" ng-click="soporteDeYear(yea)">GENERAR REPORTE</button>
+                    <br>
+                    <br>
+                    <div class="table-responsive" ng-show="bandera2">
+                        <table class="table table-bordered table-hover table-condensed">
+                            <thead>
+                            <tr class="titulos">
+                                <th>Nombre del Indicador</th>
+                                <th>Puntaje</th>
+                            </tr>
+                            <tbody ng-repeat="client in reporYear">
+                            <tr class="texto">
+                                <td><b>Severidad de los Accidentes Laborales</b> </td>
+                                <td>{{client.severidad}}</td>
+                            </tr>
+                            <tr class="texto">
+                                <td><b> Frecuencia de los Accidentes Laborales </b> </td>
+                                <td>{{client.frecuencia}}</td>
+                            </tr>
+                            <tr class="texto">
+                                <td><b> Mortalidad de los Accidentes Laborales </b> </td>
+                                <td>{{client.mortalidad}}</td>
+                            </tr>
+                            <tr class="texto">
+                                <td><b> Prevalencia de la Enfermedad Laboral </b> </td>
+                                <td>{{client.prevalencia}}</td>
+                            </tr>
+                            <tr class="texto">
+                                <td><b> Incidencia de la Enfermedad Laboral </b> </td>
+                                <td>{{client.incidencia}}</td>
+                            </tr>
+                            <tr class="texto">
+                                <td><b> Ausentismo</b> </td>
+                                <td>{{client.ausentismo}}</td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+

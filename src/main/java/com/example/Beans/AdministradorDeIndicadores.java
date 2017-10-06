@@ -11,5 +11,7 @@ import java.util.List;
 public interface AdministradorDeIndicadores {
     public void insertarIndicador(Indicador indicador)throws SQLException,ClassNotFoundException;
     public List<Indicador> indicadoresPorContratista(int idContratista, int idContratante)throws SQLException,ClassNotFoundException;
-    public List<Indicador> indicadoresPorContratistaMes(int idContratista, String mes)throws SQLException,ClassNotFoundException;
+    public List<Indicador> indicadoresPorContratistaMes(int idContratista, String mes,int year)throws SQLException,ClassNotFoundException;
+    public List<Indicador> reportesPorMes(int idContratante, String mes,int year)throws SQLException,ClassNotFoundException;
+    public List<Indicador> reportesPorYear(int idContratante, int year)throws SQLException,ClassNotFoundException;
 }
