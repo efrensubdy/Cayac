@@ -71,8 +71,6 @@ public class FinalistDB {
             System.out.println("PERMISSION DENIED");
         }
 
-        int idFinalista=traerIdFinalista(finalista.getIdContratista());
-        updateContrato(idFinalista,finalista.getIdContrato());
     }
     public void insertarFinalista(Finalista finalista)throws SQLException,ClassNotFoundException,IOException{
         java.util.Date utilDate = new Date();
@@ -113,6 +111,11 @@ public class FinalistDB {
 
         int idFinalista=traerIdFinalista(finalista.getIdContratista());
         updateContrato(idFinalista,finalista.getIdContrato());
+    }
+    public void insertarFinalistaDeSeleccion(Finalista finalista)throws SQLException,ClassNotFoundException{
+        updateContrato(finalista.getIdFinalista(),finalista.getIdContrato());
+
+
     }
     public void  updateContrato(int idFinalista,int idContrato)throws SQLException,ClassNotFoundException{
         String sql = "UPDATE  contrato set idFinalista = ? where idContrato =? ";
@@ -182,6 +185,41 @@ public class FinalistDB {
         PreparedStatement ps = Conexion.conection().prepareStatement(sql);
         ps.setInt(1,idContrante);
         ps.setInt(2,idContrato);
+        ResultSet rs = ps.executeQuery();
+        while(rs.next()){
+            Contratista con=new Contratista();
+            con.setIdFinalista(rs.getInt("idFinalista"));
+            con.setId(rs.getInt("idContratista"));
+            con.setNombreEmpresa(rs.getString("nombreEmpresa"));
+            con.setNit(rs.getString("nit"));
+            con.setCodigoCIIU(rs.getString("codigoCIIU"));
+            con.setNombreDeGerenteGeneral(rs.getString("nombreGerente"));
+            con.setEmail(rs.getString("email"));
+            con.setArl(String.valueOf( rs.getInt("arl")));
+            con.setDireccion(rs.getString("direccion"));
+            con.setTelefono(rs.getNString("telefono"));
+            con.setDuracionContrato(Integer.valueOf(rs.getString("duracion")));
+            con.setDepartamento(String.valueOf(rs.getInt("departamento")));
+            con.setContratante(rs.getInt("idContratante"));
+            con.setPersonContacto(rs.getString("personaContacto"));
+            con.setCargoPersonaContacto(rs.getString("cargoPer"));
+            con.setTelefonoPersonaContacto(rs.getString("telefonoCon"));
+            con.setEmailContacto(rs.getString("emailContacto"));
+            con.setIdContrato(rs.getInt("idContrato"));
+            con.setIdCategoria(contratistasBD.traerCategoria(rs.getInt("idContratista")));
+            con.setCumplidos(contratistasBD.obtenerCumplidos(con.getId(),con.getIdCategoria(),con.getContratante()));
+
+            contratistas.add(con);
+        }
+        ps.close();
+        Conexion.conection().close();
+        return contratistas;
+    }
+    public  List<Contratista> consultarFinalistasSeleccion(int idContrante) throws ClassNotFoundException, SQLException{
+        List<Contratista> contratistas = new LinkedList<>();
+        String sql ="SELECT t2.idFinalista, t1.idContratista,t1.nombreEmpresa,t1.nit,t1.codigoCIIU,t1.nombreGerente,t1.email,t1.arl,t1.direccion,t1.telefono,t1.duracion,t1.departamento,t1.idContratante,t1.personaContacto,t1.cargoPer,t1.telefonoCon,t1.emailContacto,t3.idContrato     FROM  (contratista AS t1 LEFT JOIN finalista AS t2 ON t1.idContratista=t2.idContratista) LEFT JOIN contrato AS t3 ON t3.idFinalista=t2.idFinalista WHERE t3.idFinalista IS NULL AND t1.idContratante = ? AND t2.idFinalista IS NOT NULL;";
+        PreparedStatement ps = Conexion.conection().prepareStatement(sql);
+        ps.setInt(1,idContrante);
         ResultSet rs = ps.executeQuery();
         while(rs.next()){
             Contratista con=new Contratista();

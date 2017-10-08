@@ -33,6 +33,7 @@ angular.module('myApp', [
   'myApp.indicadores',
   'myApp.gestionDeIndicadores',
   'myApp.reporteDeIndicadores',
+  'myApp.aCFinSelec',
   'myApp.login',
   'myApp.login2',
   'myApp.login3',

@@ -86,7 +86,7 @@ angular.module('myApp.view10', ['ngRoute'])
            }
            $scope.agregarFinalista=function(ev){
                   console.log($rootScope.idContrato);
-                  var finalista={idContratista:$rootScope.cliente.id,idContrato:$rootScope.idContrato}
+                  var finalista={idContratista:$rootScope.cliente.id}
                   finalistas.save(finalista);
                   $mdDialog.show(
                      $mdDialog.alert()

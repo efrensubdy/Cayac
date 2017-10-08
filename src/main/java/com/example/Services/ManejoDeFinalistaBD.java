@@ -19,7 +19,12 @@ public class ManejoDeFinalistaBD implements AdministradorDeFinalistas{
     public FinalistDB finalistDB;
     @Override
     public void InsertarFinalista(Finalista finalista) throws SQLException, ClassNotFoundException,IOException {
-        finalistDB.insertarFinalista(finalista);
+        finalistDB.insertarFinalista2(finalista);
+    }
+
+    @Override
+    public void insertarFinalistaSeleccion(Finalista finalista) throws SQLException, ClassNotFoundException, IOException {
+        finalistDB.insertarFinalistaDeSeleccion(finalista);
     }
 
     @Override
@@ -47,6 +52,11 @@ public class ManejoDeFinalistaBD implements AdministradorDeFinalistas{
     @Override
     public List<Contratista> finalistas(int idContratante,int idContrato) throws SQLException, ClassNotFoundException {
         return finalistDB.consultarFinalistas(idContratante,idContrato);
+    }
+
+    @Override
+    public List<Contratista> finalistasSeleccion(int idContratante) throws SQLException, ClassNotFoundException {
+        return finalistDB.consultarFinalistasSeleccion(idContratante);
     }
 
     @Override

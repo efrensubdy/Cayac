@@ -1,0 +1,43 @@
+
+<div class="w3-container">
+<div  ng-controller="View1Ctrl as ctrl">
+    <div class="w3-container w3-center">
+        <div class="container text-center">
+            <div class="row">
+                <div class="col-xs-9">
+                    <h4 class="titulos"><b>ASIGNE AL FINALISTA DE SELECCIÓN UN CONTRATO DE LOS DISPONIBLES</b></h4>
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <label class="titulos">CONTRATOS DISPONIBLES</label>
+                            <input class="form-control" type="text"  placeholder="A que contrato pertenece el contratista" name="contrato" list="contrat" ng-model="contrato">
+                            <datalist id="contrat">
+                                <select name="contrat" ng-model="select">
+                                    <option value="" disabled selected>Escoja El contrato al que va pertenecer su contratista</option>
+                                    <option ng-repeat="todo in listado"  value="{{todo.idContrato}}" ng-model="selectedOption">{{todo.nombreContrato}}</option>
+                                </select>
+                            </datalist>
+
+                        </div>
+                        <div class="col-sm-6">
+                            <label class="titulos">FINALISTAS DISPONIBLES</label>
+                            <input class="form-control" type="text"  placeholder="A que contrato pertenece el contratista" name="selc" list="selc" ng-model="selecc">
+                            <datalist id="selc">
+                                <select name="selc" ng-model="select">
+                                    <option value="" disabled selected>Escoja El contrato al que va pertenecer su contratista</option>
+                                    <option ng-repeat="todo in listado2"  value="{{todo.idFinalista}}" ng-model="selectedOption">{{todo.nombreEmpresa}}</option>
+                                </select>
+                            </datalist>
+                        </div>
+
+                    </div>
+                    <br>
+                    <br>
+                    <button class="btn btn-primary" ng-click="asignar($event,contrato,selecc)">ASIGNAR</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+</div>
+

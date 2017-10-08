@@ -12,11 +12,13 @@ import java.util.List;
  */
 public interface AdministradorDeFinalistas {
     public void InsertarFinalista(Finalista finalista)throws SQLException,ClassNotFoundException,IOException;
+    public void insertarFinalistaSeleccion(Finalista finalista)throws SQLException,ClassNotFoundException,IOException;
     public void InsertarManual(Contratista con)throws SQLException,ClassNotFoundException,IOException;
     public void insertarPrevioSugerido(RequisitoObligatorio nuevoPrevioSugerido)throws SQLException,ClassNotFoundException;
     public void insertarPrevioExtra(RequisitoExtra nuevoPrevioExtra)throws SQLException,ClassNotFoundException;
     public List<Contratista> posiblesFinalistas(int idContratante,int idContrato)throws SQLException,ClassNotFoundException;
     public List<Contratista>finalistas(int idContratante,int idContrato)throws SQLException,ClassNotFoundException;
+    public List<Contratista>finalistasSeleccion(int idContratante)throws SQLException,ClassNotFoundException;
     public List<Requisito>llenarPreviosSugeridos(int idContratante, int idCategoria)throws SQLException,ClassNotFoundException;
     public List<RequisitoExtra> llenarPreviosExtras(int idContratante, int idCategoria)throws SQLException,ClassNotFoundException;
     public List<RequisitoObligatorio>previosDefinitivosSugeridos(int idContratante, int idCategoria)throws SQLException,ClassNotFoundException;

@@ -145,9 +145,12 @@ angular.module('services.listFactory', ['ngRoute','ngResource'])
        .factory('pFinales', function($resource) {
                        return $resource('/app/finalista/:idContratante/:idContrato');
                    })
-         .factory('finalesDefinitivos', function($resource) {
-                               return $resource('/app/finalista/definitivo/:idContratante/:idContrato');
+         .factory('finalesSeleccion', function($resource) {
+                               return $resource('/app/finalista/deSeleccion/:idContratante');
                            })
+         .factory('finalesDefinitivos', function($resource) {
+                                        return $resource('/app/finalista/definitivo/:idContratante/:idContrato');
+                                    })
         //Fabrica que se comunica con el controlador de contratista trallendo los requisitos sugeridos cumplidos
 
        .factory('rCumplidos', function($resource) {
@@ -343,6 +346,9 @@ angular.module('services.listFactory', ['ngRoute','ngResource'])
         .factory('registroManualFinalista', function($resource) {
                            return $resource('/app/finalista/manual/:id');
                        })
+        .factory('selecFin', function($resource) {
+                                   return $resource('/app/finalista/selecFin/:id');
+                               })
        //Esta fabrica se encarga de mandar un objeto de tipo contratista
        // para su futura agregacion
         .factory('nuevoContrato', function($resource) {

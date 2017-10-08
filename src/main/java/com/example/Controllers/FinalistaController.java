@@ -49,6 +49,20 @@ public class FinalistaController {
         }
         return a;
     }
+    @RequestMapping(value = "deSeleccion/{idContratante}", method = RequestMethod.GET)
+    public ResponseEntity<?>obtenerFinalistasDeSeleccion(@PathVariable int idContratante){
+
+        ResponseEntity a;
+        try {
+            //obtener datos que se enviarán a través del API
+            a = new ResponseEntity<>(manejoDeFinalistaBD.finalistasSeleccion(idContratante),HttpStatus.ACCEPTED);
+
+        } catch (Exception ex) {
+            Logger.getLogger(Controller.class.getName()).log(Level.SEVERE, null, ex);
+            return new ResponseEntity<>("Error bla bla bla",HttpStatus.NOT_FOUND);
+        }
+        return a;
+    }
     @RequestMapping(value = "previosSugeridos/{idContratante}/{idCategoria}", method = RequestMethod.GET)
     public ResponseEntity<?>obtenePreviosSugeridos(@PathVariable int idContratante,@PathVariable int idCategoria){
 
@@ -98,6 +112,21 @@ public class FinalistaController {
         try {
             //obtener datos que se enviarán a través del API
             manejoDeFinalistaBD.InsertarManual(contratista);
+            a = new ResponseEntity<>(HttpStatus.ACCEPTED);
+
+        } catch (Exception ex) {
+            Logger.getLogger(Controller.class.getName()).log(Level.SEVERE, null, ex);
+            return new ResponseEntity<>("Error bla bla bla",HttpStatus.NOT_FOUND);
+        }
+        return a;
+    }
+    @RequestMapping(value="selecFin",method = RequestMethod.POST)
+    public ResponseEntity<?> registroManual(@RequestBody Finalista finalista){
+        ResponseEntity a;
+        try {
+            //obtener datos que se enviarán a través del API
+            System.out.println("llego");
+            manejoDeFinalistaBD.insertarFinalistaSeleccion(finalista);
             a = new ResponseEntity<>(HttpStatus.ACCEPTED);
 
         } catch (Exception ex) {
