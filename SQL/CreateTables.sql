@@ -420,12 +420,13 @@ CREATE TABLE `Indicadores` (
   `ausentismo` FLOAT NOT NULL,
   `idContratista` INT(11) NOT NULL,
   `idContratante` INT(11) NOT NULL,
+  `año` INT(11) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `Contratista_Indicador` (`idContratista`),
   KEY `Contratante_Indicador` (`idContratante`),
   CONSTRAINT `Contratante_Indicador` FOREIGN KEY (`idContratante`) REFERENCES `contratante` (`idContratante`),
   CONSTRAINT `Contratista_Indicador` FOREIGN KEY (`idContratista`) REFERENCES `contratista` (`idContratista`)
-) ENGINE=INNODB DEFAULT CHARSET=latin1;
+) ENGINE=INNODB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
 
 -- create Admins ---
 

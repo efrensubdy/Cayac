@@ -128,6 +128,10 @@ angular.module('services.listFactory', ['ngRoute','ngResource'])
                                                            return $resource('/app/indicador/reportesPorYear/:idContratante/:year')
 
                                                                  })
+           .factory('sRIndi', function($resource) {
+                                                          return $resource('/app/indicador/sinRegistro/:idContratante/:mes/:year')
+
+                                                                })
          //Fabrica que trae todos los contratos pertencientes al contratante
          .factory('contratos', function($resource) {
                        return $resource('/app/contratos/:idContratante');

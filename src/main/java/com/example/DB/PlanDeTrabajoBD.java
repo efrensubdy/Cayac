@@ -293,11 +293,11 @@ public List<PlanDeTrabajo>consultarActividadesdelPlanDeTrabajo(int idContratista
             }
             if (registro!=0){
                contratistaList.remove(contra);
-            }
-            ps.close();
 
+            }
 
         }
+        ps.close();
         return contratistaList;
     }
     public boolean consultarRegistro(int id,int idContratista) throws SQLException, ClassNotFoundException {

@@ -59,7 +59,7 @@
                                 <tr ng-repeat="todo in listillo | orderBy:propertyName:reverse">
                                     <td >{{todo.nombreEmpresa}}</td>
                                     <td >
-                                        <button  class="btn btn-primary" ng-click="showAlert($event,todo,mes)" >
+                                        <button  class="btn btn-primary" ng-click="showAlert($event,todo,mes,year)" >
                                             Resumen
                                         </button>
 

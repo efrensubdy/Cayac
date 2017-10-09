@@ -1,6 +1,7 @@
 package com.example.DB;
 
 import com.example.Models.Conexion;
+import com.example.Models.Contratista;
 import com.example.Models.Indicador;
 import com.example.Models.PlanDeTrabajo;
 import org.springframework.stereotype.Service;
@@ -211,6 +212,58 @@ public class IndicadorDB {
         indicadors.add(indicadorResultdo);
 
         return indicadors;
+    }
+    public List<Contratista> sinRegistroDeIndicador(int idContratante, String mes, int year)throws SQLException,ClassNotFoundException{
+        List<Contratista> contratistaList=new LinkedList<>();
+        List<Contratista>contratistaEntrega=new LinkedList<>();
+        String sql="SELECT co.idContratista,co.nombreEmpresa,co.nit,co.codigoCIIU,co.nombreGerente,co.email,co.arl,co.direccion,co.telefono,co.duracion,co.departamento,co.idContratante,co.personaContacto,co.cargoPer,co.telefonoCon,co.emailContacto  FROM contratista  AS co INNER JOIN finalista AS f  ON co.idContratista = f.idContratista  WHERE co.idContratante =  ? ";
+        PreparedStatement ps = Conexion.conection().prepareStatement(sql);
+        ps.setInt(1,idContratante);
+        ResultSet rs = ps.executeQuery();
+        while(rs.next()) {
+            Contratista con = new Contratista();
+            con.setId(rs.getInt("idContratista"));
+            con.setNombreEmpresa(rs.getString("nombreEmpresa"));
+            con.setNit(rs.getString("nit"));
+            con.setCodigoCIIU(rs.getString("codigoCIIU"));
+            con.setNombreDeGerenteGeneral(rs.getString("nombreGerente"));
+            con.setEmail(rs.getString("email"));
+            con.setArl(String.valueOf(rs.getInt("arl")));
+            con.setDireccion(rs.getString("direccion"));
+            con.setTelefono(rs.getNString("telefono"));
+            con.setDuracionContrato(Integer.valueOf(rs.getString("duracion")));
+            con.setDepartamento(String.valueOf(rs.getInt("departamento")));
+            con.setContratante(rs.getInt("idContratante"));
+            con.setPersonContacto(rs.getString("personaContacto"));
+            con.setCargoPersonaContacto(rs.getString("cargoPer"));
+            con.setTelefonoPersonaContacto(rs.getString("telefonoCon"));
+            con.setEmailContacto(rs.getString("emailContacto"));
+            contratistaList.add(con);
+        }
+        System.out.println(contratistaList.size());
+       for (Contratista contra:contratistaList){
+           System.out.println(contra.getId());
+            String sql2="SELECT  COUNT(*) AS registro FROM Indicadores WHERE  idContratista= ? AND periodo= ? AND año = ? ; ";
+            PreparedStatement ps2 = Conexion.conection().prepareStatement(sql2);
+            ps2.setInt(1,contra.getId());
+            ps2.setString(2,mes);
+            ps2.setInt(3,year);
+            ResultSet rs2 = ps2.executeQuery();
+            int registro=0;
+            while (rs2.next()){
+
+               registro=rs2.getInt("registro");
+
+            }
+            boolean f =registro!=0;
+           if (!f){
+
+               contratistaEntrega.add(contra);
+           }
+
+        }
+        ps.close();
+        return contratistaEntrega;
     }
 
 }

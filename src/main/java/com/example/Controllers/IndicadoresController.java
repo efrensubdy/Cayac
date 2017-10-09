@@ -92,4 +92,18 @@ public class IndicadoresController {
         }
         return a;
     }
+    @RequestMapping(value = "sinRegistro/{idContratante}/{mes}/{year}", method = RequestMethod.GET)
+    public ResponseEntity<?>sinRegistroDeIndicador(@PathVariable int idContratante, @PathVariable String mes,@PathVariable int year){
+
+        ResponseEntity a;
+        try {
+            //obtener datos que se enviarán a través del API
+            a = new ResponseEntity<>(manejadorDeIndicadores.sinRegistroDeIndicador(idContratante,mes,year),HttpStatus.ACCEPTED);
+
+        } catch (Exception ex) {
+            Logger.getLogger(Controller.class.getName()).log(Level.SEVERE, null, ex);
+            return new ResponseEntity<>("Error bla bla bla",HttpStatus.NOT_FOUND);
+        }
+        return a;
+    }
 }

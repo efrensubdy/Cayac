@@ -9,11 +9,12 @@ angular.module('myApp.notificaciones', ['ngRoute'])
   });
 }])
 
-.controller('notificacionesCtrl', ['$mdDialog','$timeout', '$q', '$scope','$log','$rootScope','$localStorage','$sessionStorage','notifacionSinSoporte','mensajeContratista','notifacionSinRegistro',function($mdDialog,$timeout, $q, $scope,$log,$rootScope,$localStorage,$sessionStorage,notifacionSinSoporte,mensajeContratista,notifacionSinRegistro) {
+.controller('notificacionesCtrl', ['$mdDialog','$timeout', '$q', '$scope','$log','$rootScope','$localStorage','$sessionStorage','notifacionSinSoporte','mensajeContratista','notifacionSinRegistro','sRIndi',function($mdDialog,$timeout, $q, $scope,$log,$rootScope,$localStorage,$sessionStorage,notifacionSinSoporte,mensajeContratista,notifacionSinRegistro,sRIndi) {
 
  $scope.notificaciones=[
     {id:1,nombre:'CONTRATISTAS SIN ACTIVDADES REGISTRADAS'},
     {id:2,nombre:'CONTRATISTAS CON ACTIVIDADES PERO SIN SOPORTE'},
+    {id:3,nombre:'CONTRATISTAS SIN INDICADORES REGISTRADOS'}
 
   ];
 
@@ -66,6 +67,9 @@ $scope.add = function(notificacion,mes,year){
         $scope.banderaSinSoporte=true;
         $scope.noti=notifacionSinSoporte.query({idContratante:$localStorage.contratanteLogeado.idContratante,mes:mes.name,year:year.name})
         break;
+        case 3:
+        $scope.banderaSinSoporte=true;
+         $scope.noti=sRIndi.query({idContratante:$localStorage.contratanteLogeado.idContratante,mes:mes.name,year:year.name})
 
 
     }

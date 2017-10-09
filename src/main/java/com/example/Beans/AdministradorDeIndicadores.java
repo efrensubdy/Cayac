@@ -1,5 +1,6 @@
 package com.example.Beans;
 
+import com.example.Models.Contratista;
 import com.example.Models.Indicador;
 
 import java.sql.SQLException;
@@ -14,4 +15,6 @@ public interface AdministradorDeIndicadores {
     public List<Indicador> indicadoresPorContratistaMes(int idContratista, String mes,int year)throws SQLException,ClassNotFoundException;
     public List<Indicador> reportesPorMes(int idContratante, String mes,int year)throws SQLException,ClassNotFoundException;
     public List<Indicador> reportesPorYear(int idContratante, int year)throws SQLException,ClassNotFoundException;
+    public List<Contratista> sinRegistroDeIndicador(int idContatante, String mes,int year) throws SQLException,ClassNotFoundException;
+
 }

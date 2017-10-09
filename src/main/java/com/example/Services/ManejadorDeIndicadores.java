@@ -2,6 +2,7 @@ package com.example.Services;
 
 import com.example.Beans.AdministradorDeIndicadores;
 import com.example.DB.IndicadorDB;
+import com.example.Models.Contratista;
 import com.example.Models.Indicador;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -41,5 +42,10 @@ public class ManejadorDeIndicadores implements AdministradorDeIndicadores {
     @Override
     public List<Indicador> reportesPorYear(int idContratante, int year) throws SQLException, ClassNotFoundException {
         return indicadorDB.reportePorAño(idContratante, year);
+    }
+
+    @Override
+    public List<Contratista> sinRegistroDeIndicador(int idContatante, String mes, int year) throws SQLException, ClassNotFoundException {
+        return indicadorDB.sinRegistroDeIndicador(idContatante, mes, year);
     }
 }
