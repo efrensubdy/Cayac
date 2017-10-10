@@ -40,6 +40,25 @@ $scope.meses=[
  { id: 12, name: 'DICIEMBRE'},
 
             ];
+ $scope.years=[
+      { id: 10, name: 2009},
+      { id: 11, name: 2010},
+      { id: 12, name: 2011},
+      { id: 13, name: 2012},
+      { id: 14, name: 2013},
+      { id: 15, name: 2014},
+      { id: 16, name: 2015},
+      { id: 17, name: 2016},
+      { id: 18, name: 2017},
+      { id: 19, name: 2018},
+      { id: 20, name: 2019},
+      { id: 21, name: 2020},
+      { id: 22, name: 2021},
+      { id: 23, name: 2022},
+      { id: 24, name: 2023},
+      { id: 25, name: 2024},
+      { id: 26, name: 2026},
+                 ];
   $scope.opciones=[
     {id:1,nombre:'REGISTRAR ACTIVIDADES'},
     {id:2,nombre:'SUBIR SOPORTES'},
@@ -51,7 +70,7 @@ $scope.meses=[
         $scope.banderaActividad=true;
 
   }
-  $scope.op=function(item,mes){
+  $scope.op=function(item,mes,year){
          switch(item.id){
             case 1:
                $scope.bandera1=true;
@@ -59,13 +78,13 @@ $scope.meses=[
                $scope.bandera3=false;
                break;
             case 2:
-               $scope.table2=actividadPlan.query({idContratista:$localStorage.userLogeado.idContratista,mes:mes.name});
+               $scope.table2=actividadPlan.query({idContratista:$localStorage.userLogeado.idContratista,mes:mes.name,year:year.name});
                $scope.bandera4=true;
                $scope.bandera1=false;
                $scope.bandera3=false;
                break;
            case 3:
-               $scope.table3=actividadPlan.query({idContratista:$localStorage.userLogeado.idContratista,mes:mes.name});
+               $scope.table3=actividadPlan.query({idContratista:$localStorage.userLogeado.idContratista,mes:mes.name,year:year.name});
                $scope.bandera4=false;
 
                $scope.bandera3=true;
@@ -75,10 +94,20 @@ $scope.meses=[
          }
 
   }
-  $scope.add=function(ev,fechaInicio,fechaFin,nombre,mes){
+  $scope.add=function(ev,fechaInicio,fechaFin,nombre,mes,year){
 
-    var plan={"nombre":nombre,"mes":mes,"fechaInicio":fechaInicio,"fechaFin":fechaFin,"idContratista":$localStorage.userLogeado.idContratista};
+    var plan={"nombre":nombre,"mes":mes,"fechaInicio":fechaInicio,"fechaFin":fechaFin,"idContratista":$localStorage.userLogeado.idContratista,"year":year};
     plandeTrabajo.save(plan);
+    $mdDialog.show(
+                                 $mdDialog.alert()
+                                   .parent(angular.element(document.querySelector('#popupContainer')))
+                                   .clickOutsideToClose(true)
+                                   .title('Actividad del Plan de trabajo registrada')
+                                   .textContent('Recuerde subir el soporte de esta actividad.')
+                                   .ariaLabel('Alert Dialog Demo')
+                                   .ok('ok!')
+                                   .targetEvent(ev)
+                               );
 
   }
   $scope.subirDocumento=function(item,file){

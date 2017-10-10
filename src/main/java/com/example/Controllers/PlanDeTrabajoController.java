@@ -26,13 +26,13 @@ public class PlanDeTrabajoController {
     @Autowired
     public ManejoDePlanesDeTrabajoBD manejoDePlanesDeTrabajoBD;
 
-    @RequestMapping(value = "actpC/{idContratista}/{mes}", method = RequestMethod.GET)
-    public ResponseEntity<?>obtenerActividadesDeContratisttas(@PathVariable int idContratista, @PathVariable String mes){
+    @RequestMapping(value = "actpC/{idContratista}/{mes}/{year}", method = RequestMethod.GET)
+    public ResponseEntity<?>obtenerActividadesDeContratisttas(@PathVariable int idContratista, @PathVariable String mes,@PathVariable int year){
 
         ResponseEntity a;
         try {
             //obtener datos que se enviarán a través del API
-            a = new ResponseEntity<>(manejoDePlanesDeTrabajoBD.traerActividadesPorContratista(idContratista,mes),HttpStatus.ACCEPTED);
+            a = new ResponseEntity<>(manejoDePlanesDeTrabajoBD.traerActividadesPorContratista(idContratista,mes,year),HttpStatus.ACCEPTED);
 
         } catch (Exception ex) {
             Logger.getLogger(Controller.class.getName()).log(Level.SEVERE, null, ex);
@@ -40,13 +40,13 @@ public class PlanDeTrabajoController {
         }
         return a;
     }
-    @RequestMapping(value = "conSopor/{idContratista}/{mes}", method = RequestMethod.GET)
-    public ResponseEntity<?>obtenerActividadesDeContratisttasConSOPORTE(@PathVariable int idContratista, @PathVariable String mes){
+    @RequestMapping(value = "conSopor/{idContratista}/{mes}/{year}", method = RequestMethod.GET)
+    public ResponseEntity<?>obtenerActividadesDeContratisttasConSOPORTE(@PathVariable int idContratista, @PathVariable String mes, @PathVariable int year){
 
         ResponseEntity a;
         try {
             //obtener datos que se enviarán a través del API
-            a = new ResponseEntity<>(manejoDePlanesDeTrabajoBD.traerActividadesPorContratistaConSoporte(idContratista,mes),HttpStatus.ACCEPTED);
+            a = new ResponseEntity<>(manejoDePlanesDeTrabajoBD.traerActividadesPorContratistaConSoporte(idContratista,mes,year),HttpStatus.ACCEPTED);
 
         } catch (Exception ex) {
             Logger.getLogger(Controller.class.getName()).log(Level.SEVERE, null, ex);
@@ -54,13 +54,13 @@ public class PlanDeTrabajoController {
         }
         return a;
     }
-    @RequestMapping(value = "sinSopor/{idContratista}/{mes}", method = RequestMethod.GET)
-    public ResponseEntity<?>obtenerActividadesDeContratisttassinSOPORTE(@PathVariable int idContratista, @PathVariable String mes){
+    @RequestMapping(value = "sinSopor/{idContratista}/{mes}/{year}", method = RequestMethod.GET)
+    public ResponseEntity<?>obtenerActividadesDeContratisttassinSOPORTE(@PathVariable int idContratista, @PathVariable String mes,@PathVariable int year){
 
         ResponseEntity a;
         try {
             //obtener datos que se enviarán a través del API
-            a = new ResponseEntity<>(manejoDePlanesDeTrabajoBD.traerActividadesPorContratistaSinSoporte(idContratista,mes),HttpStatus.ACCEPTED);
+            a = new ResponseEntity<>(manejoDePlanesDeTrabajoBD.traerActividadesPorContratistaSinSoporte(idContratista,mes,year),HttpStatus.ACCEPTED);
 
         } catch (Exception ex) {
             Logger.getLogger(Controller.class.getName()).log(Level.SEVERE, null, ex);
@@ -110,13 +110,13 @@ public class PlanDeTrabajoController {
         }
         return a;
     }
-    @RequestMapping(value = "aprobadoPlanDeTrabajo/{idContratista}/{idContratante}/{mes}", method = RequestMethod.GET)
-    public ResponseEntity<?>obtenerAprobacionDePlanDeTrabajoContratisttas(@PathVariable int idContratista, @PathVariable int idContratante,@PathVariable String mes){
+    @RequestMapping(value = "aprobadoPlanDeTrabajo/{idContratista}/{idContratante}/{mes}/{year}", method = RequestMethod.GET)
+    public ResponseEntity<?>obtenerAprobacionDePlanDeTrabajoContratisttas(@PathVariable int idContratista, @PathVariable int idContratante,@PathVariable String mes,@PathVariable int year){
 
         ResponseEntity a;
         try {
             //obtener datos que se enviarán a través del API
-            a = new ResponseEntity<>(manejoDePlanesDeTrabajoBD.tieneAprobacionPlandeTrabajo(idContratista,idContratante,mes),HttpStatus.ACCEPTED);
+            a = new ResponseEntity<>(manejoDePlanesDeTrabajoBD.tieneAprobacionPlandeTrabajo(idContratista,idContratante,mes,year),HttpStatus.ACCEPTED);
 
         } catch (Exception ex) {
             Logger.getLogger(Controller.class.getName()).log(Level.SEVERE, null, ex);

@@ -8,6 +8,15 @@ public class Aprobacion {
     public int idContratista;
     public int idContratante;
     public String mes;
+    public int year;
+
+    public int getYear() {
+        return year;
+    }
+
+    public void setYear(int year) {
+        this.year = year;
+    }
 
     public String getMes() {
         return mes;

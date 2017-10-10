@@ -2,6 +2,7 @@ package com.example.Services;
 
 import com.example.Beans.AdministradorDeIndicadores;
 import com.example.DB.IndicadorDB;
+import com.example.Models.Aprobacion;
 import com.example.Models.Contratista;
 import com.example.Models.Indicador;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,6 +23,11 @@ public class ManejadorDeIndicadores implements AdministradorDeIndicadores {
     @Override
     public void insertarIndicador(Indicador indicador) throws SQLException, ClassNotFoundException {
         indicadorDB.insertarIndicador(indicador);
+    }
+
+    @Override
+    public void insertarAprobacionDeIndicador(Aprobacion aprobacion) throws SQLException, ClassNotFoundException {
+        indicadorDB.insertarAprobacionDeIndicador(aprobacion);
     }
 
     @Override
@@ -47,5 +53,10 @@ public class ManejadorDeIndicadores implements AdministradorDeIndicadores {
     @Override
     public List<Contratista> sinRegistroDeIndicador(int idContatante, String mes, int year) throws SQLException, ClassNotFoundException {
         return indicadorDB.sinRegistroDeIndicador(idContatante, mes, year);
+    }
+
+    @Override
+    public boolean tieneAprobacionElIndicador(int idContratista, int idContratante, String mes, int year) throws SQLException, ClassNotFoundException {
+        return indicadorDB.tieneAprobacionElIndicador(idContratista, idContratante, mes, year);
     }
 }

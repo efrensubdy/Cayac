@@ -36,6 +36,20 @@ public class IndicadoresController {
         }
         return a;
     }
+    @RequestMapping(value ="aprobacionIndicadores",method = RequestMethod.POST)
+    public ResponseEntity<?> agregarAprobacionDeIndicador(@RequestBody Aprobacion aprobacion){
+
+        ResponseEntity a;
+        try {
+            //obtener datos que se enviarán a través del API
+           manejadorDeIndicadores.insertarAprobacionDeIndicador(aprobacion);
+            a = new ResponseEntity<>(HttpStatus.ACCEPTED);
+        } catch (Exception ex) {
+            Logger.getLogger(Controller.class.getName()).log(Level.SEVERE, null, ex);
+            return new ResponseEntity<>("Error bla bla bla",HttpStatus.NOT_FOUND);
+        }
+        return a;
+    }
     @RequestMapping(value = "indicadoresContra/{idContratista}/{idContratante}", method = RequestMethod.GET)
     public ResponseEntity<?>indicadoresPorContratista(@PathVariable int idContratista, @PathVariable int idContratante){
 
@@ -43,6 +57,20 @@ public class IndicadoresController {
         try {
             //obtener datos que se enviarán a través del API
             a = new ResponseEntity<>(manejadorDeIndicadores.indicadoresPorContratista(idContratista,idContratante),HttpStatus.ACCEPTED);
+
+        } catch (Exception ex) {
+            Logger.getLogger(Controller.class.getName()).log(Level.SEVERE, null, ex);
+            return new ResponseEntity<>("Error bla bla bla",HttpStatus.NOT_FOUND);
+        }
+        return a;
+    }
+    @RequestMapping(value = "aprobadoIndicador/{idContratista}/{idContratante}/{mes}/{year}", method = RequestMethod.GET)
+    public ResponseEntity<?>obtenerAprobacionDeIndicadorContratisttas(@PathVariable int idContratista, @PathVariable int idContratante,@PathVariable String mes,@PathVariable int year){
+
+        ResponseEntity a;
+        try {
+            //obtener datos que se enviarán a través del API
+            a = new ResponseEntity<>(manejadorDeIndicadores.tieneAprobacionElIndicador(idContratista,idContratante,mes,year),HttpStatus.ACCEPTED);
 
         } catch (Exception ex) {
             Logger.getLogger(Controller.class.getName()).log(Level.SEVERE, null, ex);

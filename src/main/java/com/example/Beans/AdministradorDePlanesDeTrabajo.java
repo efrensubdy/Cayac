@@ -15,14 +15,14 @@ public interface AdministradorDePlanesDeTrabajo {
     public void agregarAprobaciondePlanTrabajo(Aprobacion aprobacion)throws SQLException,ClassNotFoundException;
     public void agregarMensaje(Mensaje mensaje)throws SQLException,ClassNotFoundException;
     public void actualizarSoporte(Documento doc)throws SQLException,ClassNotFoundException,IOException;
-    public List<PlanDeTrabajo>traerActividadesPorContratista(int idContratista,String mes)throws SQLException,ClassNotFoundException;
-    public List<PlanDeTrabajo>traerActividadesPorContratistaConSoporte(int idContratista,String mes)throws SQLException,ClassNotFoundException;
-    public List<PlanDeTrabajo>traerActividadesPorContratistaSinSoporte(int idContratista,String mes)throws SQLException,ClassNotFoundException;
+    public List<PlanDeTrabajo>traerActividadesPorContratista(int idContratista,String mes,int year)throws SQLException,ClassNotFoundException;
+    public List<PlanDeTrabajo>traerActividadesPorContratistaConSoporte(int idContratista,String mes,int year)throws SQLException,ClassNotFoundException;
+    public List<PlanDeTrabajo>traerActividadesPorContratistaSinSoporte(int idContratista,String mes,int year)throws SQLException,ClassNotFoundException;
     public List<Mensaje>consultarMensajesPorContratista(int idContratista,int idContratante)throws SQLException,ClassNotFoundException;
     public List<Contratista>pendientesSinSoporte(int idContratante,String mes,int year) throws SQLException,ClassNotFoundException;
     public List<Contratista>sinRegistro(int idContratante,String mes,int year) throws SQLException,ClassNotFoundException;
     public boolean tieneAprobacion(int idContratista,int idContratante)throws SQLException,ClassNotFoundException;
-    public boolean tieneAprobacionPlandeTrabajo(int idContratista,int idContratante,String mes)throws SQLException,ClassNotFoundException;
+    public boolean tieneAprobacionPlandeTrabajo(int idContratista,int idContratante,String mes,int year)throws SQLException,ClassNotFoundException;
 
 
 }

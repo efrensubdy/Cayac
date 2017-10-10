@@ -14,6 +14,15 @@ public Date fechaFin;
 public String evidencia;
 public String mes;
 public boolean estado;
+public int year;
+
+    public int getYear() {
+        return year;
+    }
+
+    public void setYear(int year) {
+        this.year = year;
+    }
 
     public boolean isEstado() {
         return estado;

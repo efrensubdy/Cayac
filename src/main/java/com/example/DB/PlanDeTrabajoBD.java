@@ -24,7 +24,7 @@ public void agregarPlanDeTrabajo(PlanDeTrabajo plan)throws SQLException,ClassNot
     System.out.println(plan.getNombre());
     java.util.Date utilDate = new Date();
     java.sql.Date date = new java.sql.Date(utilDate.getTime());
-    String sql="INSERT INTO planDeTrabajo (mes,actividad,fechaInicio,fechaFin,evidencia,idContratista,fechaDeRegistro) VALUES (?,?,?,?,?,?,?)";
+    String sql="INSERT INTO planDeTrabajo (mes,actividad,fechaInicio,fechaFin,evidencia,idContratista,fechaDeRegistro,year) VALUES (?,?,?,?,?,?,?,?)";
     Connection con =  Conexion.conection();
     PreparedStatement ps=con.prepareStatement(sql);
     ps.setString(1,plan.getMes());
@@ -34,6 +34,7 @@ public void agregarPlanDeTrabajo(PlanDeTrabajo plan)throws SQLException,ClassNot
     ps.setNull(5, Types.VARCHAR);
     ps.setInt(6,plan.getIdContratista());
     ps.setDate(7,date);
+    ps.setInt(8,plan.getYear());
     ps.execute();
     ps.close();
     con.close();
@@ -56,14 +57,15 @@ public boolean tieneAprobacion( int idContratista,int idContratante)throws SQLEx
     }
   return flag;
 }
-    public boolean tieneAprobacionPlanDeTrabajo( int idContratista,int idContratante,String mes)throws SQLException,ClassNotFoundException{
+    public boolean tieneAprobacionPlanDeTrabajo( int idContratista,int idContratante,String mes,int year)throws SQLException,ClassNotFoundException{
         boolean flag=false;
         int registro=0;
-        String sql="SELECT COUNT(*) AS registro FROM aprobarplandetrabajo WHERE idContratista = ? AND idContratante =? AND mes=?";
+        String sql="SELECT COUNT(*) AS registro FROM aprobarplandetrabajo WHERE idContratista = ? AND idContratante =? AND mes=? and year= ?";
         PreparedStatement ps = Conexion.conection().prepareStatement(sql);
         ps.setInt(1,idContratista);
         ps.setInt(2,idContratante);
         ps.setString(3,mes);
+        ps.setInt(4,year);
         ResultSet rs =ps.executeQuery();
         while (rs.next()){
             registro=rs.getInt("registro");
@@ -90,12 +92,13 @@ public void agregarAprobacion(Aprobacion aprobacion)throws SQLException,ClassNot
 }
     public void agregarAprobaciondePlanDeTrabajo(Aprobacion aprobacion)throws SQLException,ClassNotFoundException{
         System.out.println("plan de trabajo");
-       String sql="INSERT INTO aprobarplandetrabajo (mes,idContratista,idContratante) VALUES (?,?,?)";
+       String sql="INSERT INTO aprobarplandetrabajo (mes,idContratista,idContratante,year) VALUES (?,?,?,?)";
         Connection con =Conexion.conection();
         PreparedStatement ps=con.prepareStatement(sql);
         ps.setString(1,aprobacion.getMes());
         ps.setInt(2,aprobacion.getIdContratista());
         ps.setInt(3,aprobacion.getIdContratante());
+        ps.setInt(4,aprobacion.getYear());
         ps.execute();
         ps.close();
         con.close();
@@ -132,12 +135,13 @@ public List<Mensaje>consultarMensajesContratista(int idContratista,int idContrat
     }
     return mensajeList;
 }
-public List<PlanDeTrabajo>consultarActividadesdelPlanDeTrabajo(int idContratista,String mes)throws SQLException,ClassNotFoundException {
+public List<PlanDeTrabajo>consultarActividadesdelPlanDeTrabajo(int idContratista,String mes,int year)throws SQLException,ClassNotFoundException {
     List<PlanDeTrabajo> planDeTrabajoList = new LinkedList<>();
-    String sql="SELECT * FROM planDeTrabajo WHERE idContratista = ? AND mes = ?;";
+    String sql="SELECT * FROM planDeTrabajo WHERE idContratista = ? AND mes = ? and year = ?;";
     PreparedStatement ps = Conexion.conection().prepareStatement(sql);
     ps.setInt(1,idContratista);
     ps.setString(2,mes);
+    ps.setInt(3,year);
     ResultSet rs = ps.executeQuery();
     while (rs.next()){
         PlanDeTrabajo planDeTrabajo=new PlanDeTrabajo();
@@ -154,18 +158,20 @@ public List<PlanDeTrabajo>consultarActividadesdelPlanDeTrabajo(int idContratista
         planDeTrabajo.setIdContratista(rs.getInt("idContratista"));
         planDeTrabajo.setFechaInicio(rs.getDate("fechaInicio"));
         planDeTrabajo.setFechaFin(rs.getDate("fechaFin"));
+        planDeTrabajo.setYear(rs.getInt("year"));
         planDeTrabajoList.add(planDeTrabajo);
 
     }
 
     return planDeTrabajoList;
 }
-    public List<PlanDeTrabajo>consultarActividadesdelPlanDeTrabajoConSoporte(int idContratista,String mes)throws SQLException,ClassNotFoundException {
+    public List<PlanDeTrabajo>consultarActividadesdelPlanDeTrabajoConSoporte(int idContratista,String mes, int year)throws SQLException,ClassNotFoundException {
         List<PlanDeTrabajo> planDeTrabajoList = new LinkedList<>();
-        String sql="SELECT * FROM planDeTrabajo WHERE idContratista = ? AND mes = ?;";
+        String sql="SELECT * FROM planDeTrabajo WHERE idContratista = ? AND mes = ? AND year = ?;";
         PreparedStatement ps = Conexion.conection().prepareStatement(sql);
         ps.setInt(1,idContratista);
         ps.setString(2,mes);
+        ps.setInt(3,year);
         ResultSet rs = ps.executeQuery();
         while (rs.next()){
             PlanDeTrabajo planDeTrabajo=new PlanDeTrabajo();
@@ -182,6 +188,7 @@ public List<PlanDeTrabajo>consultarActividadesdelPlanDeTrabajo(int idContratista
             planDeTrabajo.setIdContratista(rs.getInt("idContratista"));
             planDeTrabajo.setFechaInicio(rs.getDate("fechaInicio"));
             planDeTrabajo.setFechaFin(rs.getDate("fechaFin"));
+            planDeTrabajo.setYear(rs.getInt("year"));
             if (planDeTrabajo.isEstado()){
                 planDeTrabajoList.add(planDeTrabajo);
             }
@@ -191,12 +198,13 @@ public List<PlanDeTrabajo>consultarActividadesdelPlanDeTrabajo(int idContratista
 
         return planDeTrabajoList;
     }
-    public List<PlanDeTrabajo>consultarActividadesdelPlanDeTrabajoSinSoporte(int idContratista,String mes)throws SQLException,ClassNotFoundException {
+    public List<PlanDeTrabajo>consultarActividadesdelPlanDeTrabajoSinSoporte(int idContratista,String mes,int year)throws SQLException,ClassNotFoundException {
         List<PlanDeTrabajo> planDeTrabajoList = new LinkedList<>();
-        String sql="SELECT * FROM planDeTrabajo WHERE idContratista = ? AND mes = ?;";
+        String sql="SELECT * FROM planDeTrabajo WHERE idContratista = ? AND mes = ? AND year = ?;";
         PreparedStatement ps = Conexion.conection().prepareStatement(sql);
         ps.setInt(1,idContratista);
         ps.setString(2,mes);
+        ps.setInt(3,year);
         ResultSet rs = ps.executeQuery();
         while (rs.next()){
             PlanDeTrabajo planDeTrabajo=new PlanDeTrabajo();
@@ -213,6 +221,7 @@ public List<PlanDeTrabajo>consultarActividadesdelPlanDeTrabajo(int idContratista
             planDeTrabajo.setIdContratista(rs.getInt("idContratista"));
             planDeTrabajo.setFechaInicio(rs.getDate("fechaInicio"));
             planDeTrabajo.setFechaFin(rs.getDate("fechaFin"));
+            planDeTrabajo.setYear(rs.getInt("year"));
             if (!planDeTrabajo.isEstado()){
                 planDeTrabajoList.add(planDeTrabajo);
             }
@@ -223,7 +232,7 @@ public List<PlanDeTrabajo>consultarActividadesdelPlanDeTrabajo(int idContratista
     }
     public List<Contratista>pendientesSinSoporte(int idContratante , String mes, int year )throws SQLException,ClassNotFoundException{
         List<Contratista> contratistaList=new LinkedList<>();
-        String sql="SELECT co.idContratista,co.nombreEmpresa,co.nit,co.codigoCIIU,co.nombreGerente,co.email,co.arl,co.direccion,co.telefono,co.duracion,co.departamento,co.idContratante,co.personaContacto,co.cargoPer,co.telefonoCon,co.emailContacto FROM planDeTrabajo AS pt  INNER JOIN contratista AS co INNER JOIN Aprobacion AS a   WHERE pt.idContratista=co.idContratista AND a.idContratista=pt.idContratista AND  pt.evidencia IS NULL AND co.idContratante= ? AND  pt.mes = ? AND YEAR(fechaFin) = ? GROUP BY pt.idContratista;";
+        String sql="SELECT co.idContratista,co.nombreEmpresa,co.nit,co.codigoCIIU,co.nombreGerente,co.email,co.arl,co.direccion,co.telefono,co.duracion,co.departamento,co.idContratante,co.personaContacto,co.cargoPer,co.telefonoCon,co.emailContacto FROM planDeTrabajo AS pt  INNER JOIN contratista AS co INNER JOIN Aprobacion AS a   WHERE pt.idContratista=co.idContratista AND a.idContratista=pt.idContratista AND  pt.evidencia IS NULL AND co.idContratante= ? AND  pt.mes = ? AND pt.year = ? GROUP BY pt.idContratista;";
         PreparedStatement ps = Conexion.conection().prepareStatement(sql);
         ps.setInt(1,idContratante);
         ps.setString(2,mes);
@@ -279,7 +288,7 @@ public List<PlanDeTrabajo>consultarActividadesdelPlanDeTrabajo(int idContratista
             contratistaList.add(con);
         }
         for (Contratista contra:contratistaList){
-            String sql2="SELECT COUNT(*) AS registro FROM planDeTrabajo WHERE  idContratista= ? AND mes= ? AND YEAR(fechaFin) = ?  ; ";
+            String sql2="SELECT COUNT(*) AS registro FROM planDeTrabajo WHERE  idContratista= ? AND mes= ? AND year = ?  ; ";
             PreparedStatement ps2 = Conexion.conection().prepareStatement(sql2);
             ps2.setInt(1,contra.getId());
             ps2.setString(2,mes);

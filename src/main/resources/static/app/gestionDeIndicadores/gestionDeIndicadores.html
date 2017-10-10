@@ -12,20 +12,20 @@
                             <div class="col-sm-4">
                                 <input class="form-control" type="text"  placeholder="A que contrato va a hacer la revision" name="contrato" list="contratos" ng-model="contrato">
                                 <datalist id="contratos">
-                                    <select name="contratos" ng-model="select">
+                                    <select name="contratos" ng-model="select" ng-change="resul()">
                                         <option value="" disabled selected>Escoja un  contrato de los existentes </option>
                                         <option ng-repeat="todo in listado"  value="{{todo.idContrato}}" ng-model="selectedOption">{{todo.nombreContrato}}</option>
                                     </select>
                                 </datalist>
                             </div>
                             <div class="col-sm-4">
-                                <select class="form-control" ng-model="mes" data-placeholder="seleccione el mes" ng-change="simple()">
+                                <select class="form-control" ng-model="mes" data-placeholder="seleccione el mes" ng-change="resul()">
                                     <option ng-value="todo" ng-repeat="todo in meses">{{todo.name}}</option>
 
                                 </select>
                             </div>
                             <div class="col-sm-4">
-                                <select class="form-control" ng-model="year" data-placeholder="seleccione el mes">
+                                <select class="form-control" ng-model="year" data-placeholder="seleccione el mes" ng-change="resul()">
                                     <option ng-value="todo" ng-repeat="todo in years">{{todo.name}}</option>
 
                                 </select>

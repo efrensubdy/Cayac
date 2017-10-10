@@ -9,7 +9,7 @@ angular.module('myApp.gestionDeIndicadores', ['ngRoute'])
   });
 }])
 
-.controller('gestionDeIndicadoresCtrl', ['$timeout', '$q', '$scope','$log','$rootScope','$localStorage','$sessionStorage','$mdDialog','finalesDefinitivos','contratosEnEjecucion','indMes',function($timeout, $q, $scope,$log,$rootScope,$localStorage,$sessionStorage,$mdDialog,finalesDefinitivos,contratosEnEjecucion,indMes) {
+.controller('gestionDeIndicadoresCtrl', ['$timeout', '$q', '$scope','$log','$rootScope','$localStorage','$sessionStorage','$mdDialog','finalesDefinitivos','contratosEnEjecucion','indMes','aprobarIndicador',function($timeout, $q, $scope,$log,$rootScope,$localStorage,$sessionStorage,$mdDialog,finalesDefinitivos,contratosEnEjecucion,indMes,aprobarIndicador) {
 $scope.years=[
      { id: 10, name: 2009},
      { id: 11, name: 2010},
@@ -50,10 +50,14 @@ $scope.add=function(){
                 $scope.listillo=finalesDefinitivos.query({idContratante:$localStorage.contratanteLogeado.idContratante,idContrato:$scope.contrato})
                 $scope.flag=true;
                 }
-
+$scope.resul=function(){
+    $scope.flag=false;
+}
 $scope.showAlert=function(ev, client,mes,year){
 $rootScope.client=client;
 $rootScope.listadoIndicadores=indMes.query({idContratista:client.id,mes:mes.name,year:year.name});
+$rootScope.mes=mes;
+$rootScope.year=year;
 $mdDialog.show({
             //Controlador del mensajes con operaciones definido en la parte de abajo
             controller: DialogController,
@@ -67,6 +71,18 @@ $mdDialog.show({
 }
 
 function DialogController($scope, $mdDialog, $rootScope, $http) {
+var k=function(idContratante, idContratista,mes,year){
+                      var url= "http://localhost:8080/app/indicador/aprobadoIndicador/"+idContratista+"/"+idContratante +"/"+mes +"/"+year ;
+                      console.log(url);
+                       var a;
+                    a=$http.get(url).then(function(response) {
+                                    $scope.objeto=response.data;
+                                    console.log(response.data);
+                                    return response.data;
+                                 })
+          return a;
+}
+k($localStorage.contratanteLogeado.idContratante,$rootScope.client.id,$rootScope.mes.name,$rootScope.year.name);
 $scope.listadoIndicadores=$rootScope.listadoIndicadores;
  $scope.hide = function() {
                        $mdDialog.hide();
@@ -76,7 +92,23 @@ $scope.listadoIndicadores=$rootScope.listadoIndicadores;
                        $mdDialog.cancel();
                      };
 
+    $scope.aprobarInd= function(client,ev){
+         console.log(client);
+         var aprobacion={idContratista:client.idContratista,idContratante:$localStorage.contratanteLogeado.idContratante,mes:$rootScope.mes.name,year:$rootScope.year.name};
+         aprobarIndicador.save(aprobacion);
+         $mdDialog.show(
+                             $mdDialog.alert()
+                               .parent(angular.element(document.querySelector('#popupContainer')))
+                               .clickOutsideToClose(true)
+                               .title('Aprobacion de Candidato completo')
+                               .textContent('Este contratistra podrá facturar el mes indicado.')
+                               .ariaLabel('Alert Dialog Demo')
+                               .ok('ok!')
+                               .targetEvent(ev)
+                           );
 
+
+    }
 
 
 }

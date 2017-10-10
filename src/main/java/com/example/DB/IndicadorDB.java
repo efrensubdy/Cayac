@@ -1,9 +1,6 @@
 package com.example.DB;
 
-import com.example.Models.Conexion;
-import com.example.Models.Contratista;
-import com.example.Models.Indicador;
-import com.example.Models.PlanDeTrabajo;
+import com.example.Models.*;
 import org.springframework.stereotype.Service;
 
 import java.sql.Connection;
@@ -42,6 +39,39 @@ public class IndicadorDB {
         con.close();
 
 
+    }
+    public void insertarAprobacionDeIndicador(Aprobacion aprobacion)throws SQLException,ClassNotFoundException{
+        String sql="INSERT INTO aprobarindicadores (idContratista,idContratante,mes,year) VALUES (?,?,?,?)" ;
+        Connection con = Conexion.conection();
+        PreparedStatement ps=con.prepareStatement(sql);
+        ps.setInt(1,aprobacion.getIdContratista());
+        ps.setInt(2,aprobacion.getIdContratante());
+        ps.setString(3,aprobacion.getMes());
+        ps.setInt(4,aprobacion.getYear());
+        ps.execute();
+        ps.close();
+        con.close();
+
+    }
+    public boolean tieneAprobacionElIndicador( int idContratista,int idContratante,String mes,int year)throws SQLException,ClassNotFoundException{
+        boolean flag=false;
+        int registro=0;
+        String sql="SELECT COUNT(*) AS registro FROM aprobarindicadores WHERE idContratista = ? AND idContratante =? AND mes=? AND year = ?";
+        PreparedStatement ps = Conexion.conection().prepareStatement(sql);
+        ps.setInt(1,idContratista);
+        ps.setInt(2,idContratante);
+        ps.setString(3,mes);
+        ps.setInt(4,year);
+        ResultSet rs =ps.executeQuery();
+        while (rs.next()){
+            registro=rs.getInt("registro");
+
+        }
+        if(registro !=0){
+            flag=true;
+
+        }
+        return flag;
     }
     public List<Indicador>indicadoresPorMes(int idContratista, String mes,int year)throws SQLException,ClassNotFoundException {
         List<Indicador>indicadors=new LinkedList<>();

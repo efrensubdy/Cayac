@@ -428,6 +428,19 @@ CREATE TABLE `Indicadores` (
   CONSTRAINT `Contratista_Indicador` FOREIGN KEY (`idContratista`) REFERENCES `contratista` (`idContratista`)
 ) ENGINE=INNODB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
 
+CREATE TABLE `aprobarindicadores` (
+  `id` INT(11) NOT NULL AUTO_INCREMENT,
+  `idContratista` INT(11) NOT NULL,
+  `idContratante` INT(11) NOT NULL,
+  `mes` VARCHAR(100) NOT NULL,
+  `year` INT(11) NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `idContratista_a` (`idContratista`),
+  KEY `idContratante_b` (`idContratante`),
+  CONSTRAINT `idContratante_b` FOREIGN KEY (`idContratante`) REFERENCES `contratante` (`idContratante`),
+  CONSTRAINT `idContratista_a` FOREIGN KEY (`idContratista`) REFERENCES `contratista` (`idContratista`)
+) ENGINE=INNODB DEFAULT CHARSET=latin1;
+
 -- create Admins ---
 
 

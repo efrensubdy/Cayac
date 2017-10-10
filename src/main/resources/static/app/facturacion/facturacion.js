@@ -11,8 +11,19 @@ angular.module('myApp.facturacion', ['ngRoute'])
 
 .controller('facturacionCtrl', ['$http','$timeout', '$q', '$scope','$log','$rootScope','$localStorage','$sessionStorage',function($http,$timeout, $q, $scope,$log,$rootScope,$localStorage,$sessionStorage) {
 $scope.banderaConsulta=false;
-var q=function(idContratante, idContratista,mes){
-                      var url= "http://localhost:8080/app/planDeTrabajo/aprobadoPlanDeTrabajo/"+idContratista+"/"+idContratante +"/"+mes ;
+var q=function(idContratante, idContratista,mes,year){
+                      var url= "http://localhost:8080/app/planDeTrabajo/aprobadoPlanDeTrabajo/"+idContratista+"/"+idContratante +"/"+mes +"/"+year ;
+                      console.log(url);
+                       var a;
+                    a=$http.get(url).then(function(response) {
+                                    $scope.objeto= $scope.objeto && response.data;
+                                    console.log(response.data);
+                                    return response.data;
+                                 })
+          return a;
+       }
+var k=function(idContratante, idContratista,mes,year){
+                      var url= "http://localhost:8080/app/indicador/aprobadoIndicador/"+idContratista+"/"+idContratante +"/"+mes +"/"+year ;
                       console.log(url);
                        var a;
                     a=$http.get(url).then(function(response) {
@@ -22,9 +33,10 @@ var q=function(idContratante, idContratista,mes){
                                  })
           return a;
        }
-$scope.consultar =function(mes){
+$scope.consultar =function(mes,year){
 $scope.banderaConsulta=true;
-q($localStorage.userLogeado.idContratante,$localStorage.userLogeado.idContratista,mes.name);
+q($localStorage.userLogeado.idContratante,$localStorage.userLogeado.idContratista,mes.name,year.name);
+k($localStorage.userLogeado.idContratante,$localStorage.userLogeado.idContratista,mes.name,year.name);
 
 }
 $scope.meses=[
@@ -43,6 +55,24 @@ $scope.meses=[
 
             ];
 
-
+ $scope.years=[
+      { id: 10, name: 2009},
+      { id: 11, name: 2010},
+      { id: 12, name: 2011},
+      { id: 13, name: 2012},
+      { id: 14, name: 2013},
+      { id: 15, name: 2014},
+      { id: 16, name: 2015},
+      { id: 17, name: 2016},
+      { id: 18, name: 2017},
+      { id: 19, name: 2018},
+      { id: 20, name: 2019},
+      { id: 21, name: 2020},
+      { id: 22, name: 2021},
+      { id: 23, name: 2022},
+      { id: 24, name: 2023},
+      { id: 25, name: 2024},
+      { id: 26, name: 2026},
+                 ];
 
 }]);

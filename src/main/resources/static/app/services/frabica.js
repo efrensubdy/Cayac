@@ -89,15 +89,15 @@ angular.module('services.listFactory', ['ngRoute','ngResource'])
                                     return $resource('/app/contractor/categoria/:idContrato/:idCategoria');
                                 })
          .factory('actividadPlan', function($resource) {
-                       return $resource('/app/planDeTrabajo/actpC/:idContratista/:mes')
+                       return $resource('/app/planDeTrabajo/actpC/:idContratista/:mes/:year')
 
                                         })
          .factory('actividadConSoporte', function($resource) {
-                                return $resource('/app/planDeTrabajo/conSopor/:idContratista/:mes')
+                                return $resource('/app/planDeTrabajo/conSopor/:idContratista/:mes/:year')
 
                                                  })
          .factory('actividadSinSoporte', function($resource) {
-                                         return $resource('/app/planDeTrabajo/sinSopor/:idContratista/:mes')
+                                         return $resource('/app/planDeTrabajo/sinSopor/:idContratista/:mes/:year')
 
                                                           })
          .factory('notifacionSinSoporte', function($resource) {
@@ -367,6 +367,9 @@ angular.module('services.listFactory', ['ngRoute','ngResource'])
         .factory('indicador', function($resource) {
                                                    return $resource('/app/indicador/Indicadores/:id');
                                                })
+        .factory('aprobarIndicador', function($resource) {
+                                                           return $resource('/app/indicador/aprobacionIndicadores/:id');
+                                                       })
         .factory('aprobaPLanDeTrabajo', function($resource) {
                                                    return $resource('/app/planDeTrabajo/aprobacionDePlanDeTrabajo/:id');
                                                })

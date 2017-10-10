@@ -9,7 +9,7 @@
                         <h4 class="w3-center" ><b>REVISE LAS ACTIVIDADES PROGRAMADAS DE SUS CONTRATISTAS</b></h4>
                         <p class="w3-center"><b>ESCOJA EL CONTRATO Y EL MES SOBRE EL CUAL REALIZARÁ LA REVISIÓN</b></p>
                         <div class="row">
-                            <div class="col-sm-6">
+                            <div class="col-sm-4">
                                 <input class="form-control" type="text"  placeholder="A que contrato va a hacer la revision" name="contrato" list="contratos" ng-model="contrato">
                                 <datalist id="contratos">
                                     <select name="contratos" ng-model="select">
@@ -18,9 +18,15 @@
                                     </select>
                                 </datalist>
                             </div>
-                            <div class="col-sm-6">
+                            <div class="col-sm-4">
                                 <select class="form-control" ng-model="mes" data-placeholder="seleccione el mes" ng-change="simple()">
                                     <option ng-value="todo" ng-repeat="todo in meses">{{todo.name}}</option>
+
+                                </select>
+                            </div>
+                            <div class="col-sm-4">
+                                <select class="form-control" ng-model="year" data-placeholder="seleccione el mes">
+                                    <option ng-value="todo" ng-repeat="todo in years">{{todo.name}}</option>
 
                                 </select>
                             </div>
@@ -53,7 +59,7 @@
                         <tr ng-repeat="todo in listillo | orderBy:propertyName:reverse">
                             <td >{{todo.nombreEmpresa}}</td>
                             <td >
-                                <button  class="btn btn-primary" ng-click="showAlert($event,todo,mes)" >
+                                <button  class="btn btn-primary" ng-click="showAlert($event,todo,mes,year)" >
                                     Resumen
                                 </button>
 

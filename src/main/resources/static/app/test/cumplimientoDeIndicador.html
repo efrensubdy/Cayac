@@ -53,7 +53,7 @@
                 </md-tab>
                 <md-tab label="Indicadores">
                     <md-content class="md-padding">
-                        <div class="md-dialog-content">
+                        <div class="md-dialog-content" ng-repeat="client in listadoIndicadores">
 
                             <table class="table table-bordered table-hover table-condensed">
                                 <thead>
@@ -61,7 +61,7 @@
                                     <th>Nombre del Indicador</th>
                                     <th>Puntaje</th>
                                 </tr>
-                                <tbody ng-repeat="client in listadoIndicadores">
+                                <tbody >
                             <tr class="texto">
                                 <td><b>Severidad de los Accidentes Laborales</b> </td>
                                 <td>{{client.severidad}}</td>
@@ -86,9 +86,13 @@
                                 <td><b> Ausentismo</b> </td>
                                 <td>{{client.ausentismo}}</td>
                             </tr>
+
                                 </tbody>
                             </table>
+
+                            <md-button class="md-primary md-raised md-hue-2" ng-click="aprobarInd(client,$event)" ng-show="!objeto">Aprobar Indicadores</md-button>
                         </div>
+
                     </md-content>
                 </md-tab>
             </md-tabs>

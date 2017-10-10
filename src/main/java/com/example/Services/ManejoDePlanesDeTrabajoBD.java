@@ -43,18 +43,18 @@ public class ManejoDePlanesDeTrabajoBD implements AdministradorDePlanesDeTrabajo
     }
 
     @Override
-    public List<PlanDeTrabajo> traerActividadesPorContratista(int idContratista,String mes) throws SQLException, ClassNotFoundException {
-        return planDeTrabajoBD.consultarActividadesdelPlanDeTrabajo(idContratista,mes);
+    public List<PlanDeTrabajo> traerActividadesPorContratista(int idContratista,String mes,int year) throws SQLException, ClassNotFoundException {
+        return planDeTrabajoBD.consultarActividadesdelPlanDeTrabajo(idContratista,mes,year);
     }
 
     @Override
-    public List<PlanDeTrabajo> traerActividadesPorContratistaConSoporte(int idContratista, String mes) throws SQLException, ClassNotFoundException {
-        return planDeTrabajoBD.consultarActividadesdelPlanDeTrabajoConSoporte(idContratista, mes);
+    public List<PlanDeTrabajo> traerActividadesPorContratistaConSoporte(int idContratista, String mes,int year) throws SQLException, ClassNotFoundException {
+        return planDeTrabajoBD.consultarActividadesdelPlanDeTrabajoConSoporte(idContratista, mes,year);
     }
 
     @Override
-    public List<PlanDeTrabajo> traerActividadesPorContratistaSinSoporte(int idContratista, String mes) throws SQLException, ClassNotFoundException {
-        return planDeTrabajoBD.consultarActividadesdelPlanDeTrabajoSinSoporte(idContratista, mes);
+    public List<PlanDeTrabajo> traerActividadesPorContratistaSinSoporte(int idContratista, String mes,int year) throws SQLException, ClassNotFoundException {
+        return planDeTrabajoBD.consultarActividadesdelPlanDeTrabajoSinSoporte(idContratista, mes,year);
     }
 
     @Override
@@ -78,7 +78,7 @@ public class ManejoDePlanesDeTrabajoBD implements AdministradorDePlanesDeTrabajo
     }
 
     @Override
-    public boolean tieneAprobacionPlandeTrabajo(int idContratista, int idContratante, String mes) throws SQLException, ClassNotFoundException {
-        return planDeTrabajoBD.tieneAprobacionPlanDeTrabajo(idContratista, idContratante, mes);
+    public boolean tieneAprobacionPlandeTrabajo(int idContratista, int idContratante, String mes,int year) throws SQLException, ClassNotFoundException {
+        return planDeTrabajoBD.tieneAprobacionPlanDeTrabajo(idContratista, idContratante, mes,year);
     }
 }

@@ -1,5 +1,6 @@
 package com.example.Beans;
 
+import com.example.Models.Aprobacion;
 import com.example.Models.Contratista;
 import com.example.Models.Indicador;
 
@@ -11,10 +12,12 @@ import java.util.List;
  */
 public interface AdministradorDeIndicadores {
     public void insertarIndicador(Indicador indicador)throws SQLException,ClassNotFoundException;
+    public void insertarAprobacionDeIndicador(Aprobacion aprobacion)throws SQLException,ClassNotFoundException;
     public List<Indicador> indicadoresPorContratista(int idContratista, int idContratante)throws SQLException,ClassNotFoundException;
     public List<Indicador> indicadoresPorContratistaMes(int idContratista, String mes,int year)throws SQLException,ClassNotFoundException;
     public List<Indicador> reportesPorMes(int idContratante, String mes,int year)throws SQLException,ClassNotFoundException;
     public List<Indicador> reportesPorYear(int idContratante, int year)throws SQLException,ClassNotFoundException;
     public List<Contratista> sinRegistroDeIndicador(int idContatante, String mes,int year) throws SQLException,ClassNotFoundException;
+    public boolean tieneAprobacionElIndicador(int idContratista,int idContratante,String mes,int year) throws SQLException,ClassNotFoundException;
 
 }

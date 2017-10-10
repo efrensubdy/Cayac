@@ -10,21 +10,35 @@
                     <p class="texto">ESCOGE UNO DE LOS MESES QUE SE LE PRESENTAN A CONTINUACIÓN
                     </p>
                     <div class="row">
-                        <div class="col-sm-12">
+                        <div class="col-sm-6">
+                            <label class="texto"><b>MES DE FACTURACIÓN</b></label>
                             <select class="form-control" ng-model="mes" data-placeholder="seleccione el mes" ng-change="simple()">
                                 <option ng-value="todo" ng-repeat="todo in meses">{{todo.name}}</option>
 
                             </select>
                             <br>
-                            <button class="btn btn-primary" ng-click="consultar(mes)">Generar Paz y salvo</button>
+
+                        </div>
+                        <div class="col-sm-6">
+                            <label class="texto"><b>AÑO DE FACTURACIÓN</b></label>
+                            <select class="form-control" ng-model="year" data-placeholder="seleccione el mes">
+                                <option ng-value="todo" ng-repeat="todo in years">{{todo.name}}</option>
+
+                            </select>
                         </div>
 
+
+                    </div>
+                    <br>
+                    <br>
+                    <div class="row">
+                        <button class="btn btn-primary center-block" ng-click="consultar(mes,year)">Generar Paz y salvo</button>
                     </div>
                     <br>
                     <br>
                     <div class="row" ng-show="banderaConsulta">
                         <div class="col-sm-12" ng-show="!objeto">
-                            <p>EL CONTRATANTE NO HA APROBADO ESTE MES DE {{mes.name}} DE ACTIVIDADES POR LO TANTO NO HAY PAZ Y SALVO</p>
+                            <p>EL CONTRATANTE NO HA APROBADO ESTE MES DE {{mes.name}} DE ACTIVIDADES POR LO TANTO NO HAY PAZ Y SALVO. ESTO PUEDE DEBERSE A QUE USTED TIENE PENDIENTE SOPORTES DE ACTIVIDADES O REGISTROS DE INDICADORES </p>
                         </div>
                         <div class="col-sm-12" ng-show="objeto">
                             <p>EL CONTRATANTE  HA APROBADO QUE EN ESTE MES DE {{mes.name}} EL CONTRATISTA CUMPLIO CON SU PLAN DE TRABAJO DEL MES
