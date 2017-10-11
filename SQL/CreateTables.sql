@@ -441,6 +441,47 @@ CREATE TABLE `aprobarindicadores` (
   CONSTRAINT `idContratista_a` FOREIGN KEY (`idContratista`) REFERENCES `contratista` (`idContratista`)
 ) ENGINE=INNODB DEFAULT CHARSET=latin1;
 
+CREATE TABLE `accidentes` (
+  `id` INT(11) NOT NULL AUTO_INCREMENT,
+  `descripcion` VARCHAR(800) NOT NULL,
+  `primerApellido` VARCHAR(100) NOT NULL,
+  `segundoApellido` VARCHAR(100) NOT NULL,
+  `primerNombre` VARCHAR(100) NOT NULL,
+  `segundoNombre` VARCHAR(100) NOT NULL,
+  `identificacion` VARCHAR(30) NOT NULL,
+  `numero` INT(20) NOT NULL,
+  `nacimiento` DATE NOT NULL,
+  `sexo` VARCHAR(100) NOT NULL,
+  `departamento` VARCHAR(100) NOT NULL,
+  `muni` VARCHAR(100) NOT NULL,
+  `zonas` VARCHAR(100) NOT NULL,
+  `cargo` VARCHAR(100) NOT NULL,
+  `ingreso` DATE NOT NULL,
+  `accidente` DATE NOT NULL,
+  `hora` VARCHAR(50) NOT NULL,
+  `diaSe` VARCHAR(50) NOT NULL,
+  `jornada` VARCHAR(50) NOT NULL,
+  `sino` VARCHAR(50) NOT NULL,
+  `tipoA` VARCHAR(200) NOT NULL,
+  `lugari` VARCHAR(200) NOT NULL,
+  `depa` VARCHAR(100) NOT NULL,
+  `mun` VARCHAR(100) NOT NULL,
+  `zon` VARCHAR(100) NOT NULL,
+  `si2` VARCHAR(50) NOT NULL,
+  `tipoB` VARCHAR(200) NOT NULL,
+  `lesion` VARCHAR(200) NOT NULL,
+  `mecanismo` VARCHAR(200) NOT NULL,
+  `parte` VARCHAR(200) NOT NULL,
+  `agente` VARCHAR(200) NOT NULL,
+  `idContratista` INT(11) NOT NULL,
+  `idContratante` INT(11) NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `idContratista_Accidente` (`idContratista`),
+  KEY `idContratante_Accidente` (`idContratante`),
+  CONSTRAINT `idContratante_Accidente` FOREIGN KEY (`idContratante`) REFERENCES `contratante` (`idContratante`),
+  CONSTRAINT `idContratista_Accidente` FOREIGN KEY (`idContratista`) REFERENCES `contratista` (`idContratista`)
+) ENGINE=INNODB DEFAULT CHARSET=latin1;
+
 -- create Admins ---
 
 

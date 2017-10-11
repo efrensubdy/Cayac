@@ -159,6 +159,12 @@ color: #3E7CB3;
 color: #4DA1D9;
 
 }
+.texto5{
+
+color: #575756;
+font-size: 80%;
+
+}
 td{
 
 color: #575756;
@@ -215,7 +221,7 @@ body {
 
 footer {
     position: fixed;
-    height: 100px;
+    height: 50px;
     bottom: 0;
     width: 100%;
 }

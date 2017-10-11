@@ -367,6 +367,9 @@ angular.module('services.listFactory', ['ngRoute','ngResource'])
         .factory('indicador', function($resource) {
                                                    return $resource('/app/indicador/Indicadores/:id');
                                                })
+        .factory('acciDente', function($resource) {
+                                                           return $resource('/app/accidente/acci/:id');
+                                                       })
         .factory('aprobarIndicador', function($resource) {
                                                            return $resource('/app/indicador/aprobacionIndicadores/:id');
                                                        })

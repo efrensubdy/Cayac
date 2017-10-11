@@ -34,6 +34,7 @@ angular.module('myApp', [
   'myApp.gestionDeIndicadores',
   'myApp.reporteDeIndicadores',
   'myApp.aCFinSelec',
+  'myApp.accidentes',
   'myApp.login',
   'myApp.login2',
   'myApp.login3',
