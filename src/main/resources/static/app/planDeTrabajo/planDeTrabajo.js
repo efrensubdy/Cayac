@@ -11,7 +11,8 @@ angular.module('myApp.planDeTrabajo', ['ngRoute'])
 
 .controller('planDeTrabajoCtrl', ['$timeout', '$q', '$scope','$http','$log','$rootScope','$localStorage','$sessionStorage','plandeTrabajo','actividadPlan','fileUpload',function($timeout, $q, $scope,$http,$log,$rootScope,$localStorage,$sessionStorage,plandeTrabajo,actividadPlan,fileUpload) {
 var q=function(idContratante, idContratista){
-                      var url= "http://localhost:8080/app/planDeTrabajo/aprobado/"+idContratista+"/"+idContratante ;
+                      //var url= "http://localhost:8080/app/planDeTrabajo/aprobado/"+idContratista+"/"+idContratante ;
+                      var url= "http://ec2-35-163-21-208.us-west-2.compute.amazonaws.com:8080/app/planDeTrabajo/aprobado/"+idContratista+"/"+idContratante ;
                        var a;
                     a=$http.get(url).then(function(response) {
                                     $scope.objeto=response.data;
@@ -113,7 +114,8 @@ $scope.meses=[
   $scope.subirDocumento=function(item,file){
     console.log(item);
     console.log(file);
-    var uploadUrl = 'http://localhost:8080/app/planDeTrabajo/'+ item.id + "/"+ $localStorage.userLogeado.idContratista;
+    //var uploadUrl = 'http://localhost:8080/app/planDeTrabajo/'+ item.id + "/"+ $localStorage.userLogeado.idContratista;
+    var uploadUrl = 'http://ec2-35-163-21-208.us-west-2.compute.amazonaws.com:8080/app/planDeTrabajo/'+ item.id + "/"+ $localStorage.userLogeado.idContratista;
     console.log(uploadUrl);
     fileUpload.uploadFileToUrl(file,uploadUrl);
 

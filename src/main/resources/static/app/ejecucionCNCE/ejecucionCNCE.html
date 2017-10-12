@@ -1,12 +1,12 @@
 
 <div class="w3-container">
-    <div class="container text-center ">
+    <div class="container align-middle text-center">
 
     <form >
         <div class="row">
             <div class="col-xs-9">
-                <h4 class="w3-center" ><b>REVISE LO QUE SUBIERON SUS CONTRATISTAS</b></h4>
-            <p class="w3-center"><b>ESCOJA EL CONTRATO SOBRE EL CUAL REALIZARÁ LA REVISIÓN</b></p>
+                <h4 class="titulos" ><b>REVISE LO QUE SUBIERON SUS CONTRATISTAS</b></h4>
+            <p class="texto"><b>ESCOJA EL CONTRATO SOBRE EL CUAL REALIZARÁ LA REVISIÓN</b></p>
 
                 <input class="form-control" type="text"  placeholder="A que contrato va a hacer la revision" name="contrato" list="contratos" ng-model="contrato">
                 <datalist id="contratos">
@@ -34,16 +34,16 @@
 <br>
     <div class="container text-center" ng-show="flag">
       <div class="col-xs-9">
-      <p>EN LA SIGUIENTE TABLA ENCONTRARÁ A LOS CONTRATISTAS PERTENECIENTES AL CONTRATO</p>
+      <p class="texto">EN LA SIGUIENTE TABLA ENCONTRARÁ A LOS CONTRATISTAS PERTENECIENTES AL CONTRATO</p>
           <div class="table-responsive">
             <table class="table table-bordered table-hover table-condensed">
               <tbody>
-                <tr >
+                <tr class="titulos">
                   <th >Nombre de Empresa</th>
                     <th >Análisis</th>
 
               </tr>
-                <tr ng-repeat="todo in listillo | orderBy:propertyName:reverse">
+                <tr class="texto" ng-repeat="todo in listillo | orderBy:propertyName:reverse">
                     <td >{{todo.nombreEmpresa}}</td>
                     <td >
                         <button class="btn button1" ng-click="showAlert($event,todo)" >

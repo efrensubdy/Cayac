@@ -6,8 +6,8 @@
         <div class="container text-center ">
                 <div class="row">
                     <div class="col-xs-9">
-                        <h4 class="w3-center" ><b>REVISE LAS ACTIVIDADES PROGRAMADAS DE SUS CONTRATISTAS</b></h4>
-                        <p class="w3-center"><b>ESCOJA EL CONTRATO Y EL MES SOBRE EL CUAL REALIZARÁ LA REVISIÓN</b></p>
+                        <h4 class="titulos" ><b>REVISE LAS ACTIVIDADES PROGRAMADAS DE SUS CONTRATISTAS</b></h4>
+                        <p class="texto"><b>ESCOJA EL CONTRATO Y EL MES SOBRE EL CUAL REALIZARÁ LA REVISIÓN</b></p>
                         <div class="row">
                             <div class="col-sm-4">
                                 <input class="form-control" type="text"  placeholder="A que contrato va a hacer la revision" name="contrato" list="contratos" ng-model="contrato">
@@ -51,12 +51,12 @@
                     <div class="table-responsive">
                     <table class="table table-bordered table-hover table-condensed">
                         <tbody>
-                        <tr >
+                        <tr  class="titulos">
                             <th >Nombre de Empresa</th>
                             <th >Análisis</th>
 
                         </tr>
-                        <tr ng-repeat="todo in listillo | orderBy:propertyName:reverse">
+                        <tr class="texto" ng-repeat="todo in listillo | orderBy:propertyName:reverse">
                             <td >{{todo.nombreEmpresa}}</td>
                             <td >
                                 <button  class="btn btn-primary" ng-click="showAlert($event,todo,mes,year)" >

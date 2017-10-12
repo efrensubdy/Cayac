@@ -9,7 +9,7 @@ angular.module('myApp.accidentes', ['ngRoute'])
   });
 }])
 
-.controller('accidentesCtrl', ['$timeout', '$q', '$scope','$log','$rootScope','$localStorage','$sessionStorage','$mdDialog','acciDente',function($timeout, $q, $scope,$log,$rootScope,$localStorage,$sessionStorage,$mdDialog,acciDente) {
+.controller('accidentesCtrl', ['$timeout', '$q', '$scope','$log','$rootScope','$localStorage','$sessionStorage','$mdDialog','acciDente','accPorContra',function($timeout, $q, $scope,$log,$rootScope,$localStorage,$sessionStorage,$mdDialog,acciDente,accPorContra) {
 $scope.bandera1=false;
 $scope.bandera2=false;
 
@@ -183,6 +183,7 @@ $scope.simple2 = function(item){
         case 2:
         $scope.bandera1=false;
         $scope.bandera2=true;
+        $scope.tablaAcc=accPorContra.query({idContratista:$localStorage.userLogeado.idContratista,idContratante:$localStorage.userLogeado.idContratante});
 
         break;
 
@@ -192,7 +193,7 @@ $scope.simple2 = function(item){
 $scope.add=function(ev,textArea,primerApellido,segundoApellido,primerNombre,segundoNombre,identificacion,numero,nacimiento,sexo,departamento,muni,zonas,cargo,ingreso,accidente,hora,diaSe,jornada,sino,tipoA,lugari,depa,mun,zon,si2,tipoB,lesion,mecanismo,parte,agente){
 
 if ("undefined" !== typeof textArea && "undefined" !== typeof primerApellido && "undefined" !== typeof segundoApellido && "undefined" !== typeof primerNombre && "undefined" !== typeof segundoNombre &&"undefined" !== typeof identificacion &&"undefined" !== typeof numero &&"undefined" !== typeof nacimiento && "undefined" !== typeof sexo &&  "undefined" !== typeof departamento && "undefined" !== typeof muni &&"undefined" !== typeof zonas &&"undefined" !== typeof cargo && "undefined" !== typeof ingreso &&  "undefined" !== typeof accidente && "undefined" !== typeof hora && "undefined" !== typeof diaSe && "undefined" !== typeof jornada && "undefined" !== typeof sino && "undefined" !== typeof tipoA && "undefined" !== typeof lugari && "undefined" !== typeof depa && "undefined" !== typeof mun && "undefined" !== typeof zon && "undefined" !== typeof si2 && "undefined" !== typeof tipoB && "undefined" !== typeof lesion && "undefined" !== typeof mecanismo && "undefined" !== typeof parte && "undefined" !== typeof agente ){
-    var acciden={descripcion:textArea,primerApellido:primerApellido,segundoApellido:segundoApellido,primerNombre:primerApellido,segundoNombre:segundoNombre,identificacion:identificacion,numero:numero,nacimiento:nacimiento,sexo:sexo,departamento:departamento,muni:muni,zonas:zonas,cargo:cargo,ingreso:ingreso,accidente:accidente,hora:hora,diaSe:diaSe,jornada:jornada,sino:sino,tipoA:tipoA,lugari:lugari,depa:depa,mun:mun,zon:zon,si2:si2,tipoB:tipoB,lesion:lesion,mecanismo:mecanismo,parte:parte,agente:agente};
+    var acciden={descripcion:textArea,primerApellido:primerApellido,segundoApellido:segundoApellido,primerNombre:primerApellido,segundoNombre:segundoNombre,identificacion:identificacion,numero:numero,nacimiento:nacimiento,sexo:sexo,departamento:departamento,muni:muni,zonas:zonas,cargo:cargo,ingreso:ingreso,accidente:accidente,hora:hora,diaSe:diaSe,jornada:jornada,sino:sino,tipoA:tipoA,lugari:lugari,depa:depa,mun:mun,zon:zon,si2:si2,tipoB:tipoB,lesion:lesion,mecanismo:mecanismo,parte:parte,agente:agente,idContratista:$localStorage.userLogeado.idContratista,idContratante:$localStorage.userLogeado.idContratante};
     acciDente.save(acciden);
     $mdDialog.show(
          $mdDialog.alert()
@@ -281,5 +282,35 @@ else{
 
 
 }
+$scope.showAlert=function(ev,client){
+            $rootScope.client=client
+            $mdDialog.show({
+                  //Controlador del mensajes con operaciones definido en la parte de abajo
+                  controller: DialogController2,
+                   //permite la comunicacion con el html que despliega el boton requisitos
+                    templateUrl: 'test/detalleDeAccidente.html',
+                    parent: angular.element(document.body),
+                    targetEvent: ev,
+                     clickOutsideToClose:true,
+                     fullscreen: $scope.customFullscreen // Only for -xs, -sm breakpoints.
+                                })
+
+          }
+ function DialogController2($scope, $mdDialog, $rootScope){
+            $scope.client= $rootScope.client;
+
+            $scope.hide = function() {
+                         $mdDialog.hide();
+                       };
+                       //funcion para cerral el mensaje
+             $scope.cancel = function() {
+                         $mdDialog.cancel();
+                       };
+
+
+
+
+           }
+
 
 }]);

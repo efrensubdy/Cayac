@@ -1,13 +1,15 @@
+<div>
+<div class="w3-container w3-center ">
+    <div class="container align-middle text-center">
 
-<div class="w3-container ">
-    <div class="container">
-        <h4  ><b>REVISE A SUS CONTRATISTAS</b></h4>
     <form>
         <div class="form-group">
            <div class="row">
             <div class="col-xs-9">
-            <h4 ><b>ESCOJA EL CONTRATO SOBRE EL CUAL QUIERE VER LOS CONTRATISTAS</b></h4>
-            <p><b>EN PARTE DE ABAJO ECONTRARÁ UNA LISTA DE TODOS SUS CONTRATOS DISPONIBLES</b> </p>
+                <h4 class="titulos"><b>REVISE A SUS CONTRATISTAS</b></h4>
+            <label class="texto"><b>ESCOJA EL CONTRATO SOBRE EL CUAL QUIERE VER LOS CONTRATISTAS</b></label>
+            <p class="texto"><b>EN PARTE DE ABAJO ECONTRARÁ UNA LISTA DE TODOS SUS CONTRATOS DISPONIBLES</b> </p>
+                <div class="col-sm-11">
                 <input class="form-control" type="text"  placeholder="Contratos Existentes" name="contrato" list="contratos" ng-model="contrato">
                 <datalist id="contratos">
                     <select name="contratos" ng-model="select">
@@ -15,19 +17,18 @@
                         <option ng-repeat="todo in listado"  value="{{todo.idContrato}}" ng-model="selectedOption">{{todo.nombreContrato}}</option>
                     </select></datalist>
                 <br>
+                </div>
+                <div class="col-sm-11">
+                    <button class="btn btn-primary center-block" type="submit" ng-click="add()">Consultar</button>
+                </div>
             </div>
            </div>
-            <div class="row">
-                <br>
-                <button class="button button1 " type="submit" ng-click="add()">Consultar</button>
-            </div>
         </div>
     </form>
     <br>
 
-    <div class="w3-container align-middle" ng-show="flag">
-        <h4>FINALISTAS DEFINITIVOS</h4>
-
+    <div class="row"  ng-show="flag">
+        <div class="container">
         <div class="w3-container">
             <div class="col-xs-9">
                 <div class="table-responsive">
@@ -41,7 +42,7 @@
                 <tr class="texto"  ng-repeat="todo in listado | orderBy:propertyName:reverse">
                     <td>{{todo.nombreEmpresa}}</td>
                     <td>
-                        <button  class="btn button1"  ng-click="showAlert2($event,todo)">
+                        <button  class="btn btn-primary"  ng-click="showAlert2($event,todo)">
                             Detalle Contratista
                         </button>
                     </td>
@@ -54,8 +55,9 @@
         </div>
     </div>
     </div>
+    </div>
 </div>
-
+</div>
 <br>
 <br>
 <br>

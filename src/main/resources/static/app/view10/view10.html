@@ -1,12 +1,14 @@
 
-<div class="w3-container">
-   <div class="container text-left ">
-       <h4 class="align-middle"><b>REVISE LO QUE SUBIERON SUS CANDIDATOS</b></h4>
-    <form>
-        <div class="form-group">
-            <p class="w3-left"><b>ESCOJA EL CONTRATO SOBRE EL CUAL REALIZARÁ LA REVISIÓN</b></p>
-            <div>
-                <div class="col-xs-10">
+<div class="w3-container w3-center">
+    <div class="container align-middle text-center">
+
+        <div class="row">
+            <div class="col-xs-9">
+
+            <div class="col-sm-11">
+                <h4 class="titulos"><b>REVISE LO QUE SUBIERON SUS CANDIDATOS</b></h4>
+                <p class="texto"><b>ESCOJA EL CONTRATO SOBRE EL CUAL REALIZARÁ LA REVISIÓN</b></p>
+
                 <input class="form-control" type="text"  placeholder="A que contrato le va aplicar los requisitos" name="contrato" list="contratos" ng-model="contrato">
                 <datalist id="contratos">
                     <select name="contratos" ng-model="select">
@@ -16,34 +18,33 @@
                 </datalist>
                     <br>
                     <br>
-                    <button class="btn button1 align-middle" type="submit" ng-click="add()">Consultar</button>
+                    <button class="btn btn-primary center-block " type="submit" ng-click="add()">Consultar</button>
             </div>
             </div>
 
         </div>
-    </form>
-
    </div>
 </div>
 <br>
 <br>
-    <div class="container text-left" ng-show="flag">
+<div class="w3-container w3-center">
+    <div class="container align-middle text-center" ng-show="flag">
         <div class="row">
-            <div class="col-xs-10">
-        <p><b>EN LA SIGUIENTE TABLA ENCONTRARÁ A LOS CONTRATISTAS PERTENECIENTES AL CONTRATO</b></p>
+            <div class="col-xs-9">
+        <p class="texto"><b>EN LA SIGUIENTE TABLA ENCONTRARÁ A LOS CONTRATISTAS PERTENECIENTES AL CONTRATO</b></p>
              <div class="table-responsive">
             <table class="table table-bordered table-hover table-condensed">
               <tbody>
                 <tr >
-                    <th class="w3-center"><b>Nombre de Empresa</b></th>
-                    <th class="w3-center"><b> Detalle Comportamiento</b></th>
+                    <th class="titulos"><b>Nombre de Empresa</b></th>
+                    <th class="titulos"><b> Detalle Comportamiento</b></th>
 
 
               </tr>
                 <tr  ng-repeat="todo in listillo | orderBy:propertyName:reverse">
-                    <td class="w3-center">{{todo.nombreEmpresa}}</td>
-                    <td class="w3-center">
-                        <md-button button class="btn button1" ng-click="showAlert($event,todo)" >
+                    <td class="texto">{{todo.nombreEmpresa}}</td>
+                    <td class="texto">
+                        <md-button button class="btn btn-primary" ng-click="showAlert($event,todo)" >
                             Resumen
                         </md-button>
                     </td>

@@ -112,6 +112,10 @@ angular.module('services.listFactory', ['ngRoute','ngResource'])
               return $resource('/app/planDeTrabajo/mensajesContr/:idContratista/:idContratante')
 
                     })
+           .factory('accPorContra', function($resource) {
+                         return $resource('/app/accidente/accxContra/:idContratista/:idContratante')
+
+                               })
           .factory('indContr', function($resource) {
                         return $resource('/app/indicador/indicadoresContra/:idContratista/:idContratante')
 

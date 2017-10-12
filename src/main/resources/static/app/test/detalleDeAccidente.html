@@ -1,0 +1,170 @@
+<md-dialog id="attribute-dialog" aria-label="Detalle">
+    <form>
+        <md-toolbar>
+            <div class="md-toolbar-tools">
+                <h1>Detalles</h1>
+                <span flex></span>
+                <md-button class="md-icon-button" ng-click="cancel()">
+                    <md-icon md-font-library="material-icons">highlight_off</md-icon>
+                </md-button>
+            </div>
+        </md-toolbar>
+        <md-dialog-content>
+            <md-tabs md-dynamic-height md-border-bottom>
+                <md-tab label="II.INFORMACIÓN PERSONA">
+                    <md-content class="md-padding">
+                        <div class="md-dialog-content">
+                            <table class="table table-sm   table-bordered table-hover table-condensed  text-justify">
+                                <thead>
+                                <tr class="titulos">
+                                    <th>Contenido</th>
+                                    <th>Información</th>
+                                </tr>
+                                <tbody>
+                                <tr class="texto">
+                                    <td><b>Descripcion</b> </td>
+                                    <td>{{client.descripcion}}</td>
+                                </tr>
+                                <tr class="texto">
+                                    <td><b> Primer Apellido</b></td>
+                                    <td>{{client.primerApellido}}</td>
+                                </tr>
+                                <tr class="texto">
+                                    <td><b> Segundo Apellido</b></td>
+                                    <td>{{client.segundoApellido}}</td>
+                                </tr>
+                                <tr class="texto">
+                                    <td><b>Primer Nombre</b></td>
+                                    <td>{{client.primerNombre}}</td>
+                                </tr>
+                                <tr class="texto">
+                                    <td><b>Segundo Nombre </b> </td>
+                                    <td>{{client.segundoNombre}}</td>
+                                </tr>
+                                <tr class="texto">
+                                    <td><b>Tipo de Identificacion</b> </td>
+                                    <td>{{client.identificacion}}</td>
+                                </tr>
+                                <tr class="texto">
+                                    <td><b>Número</b> </td>
+                                    <td>{{client.numero}}</td>
+                                </tr>
+                                <tr class="texto">
+                                    <td><b> Fecha de Nacimiento</b> </td>
+                                    <td>{{client.nacimiento}}</td>
+                                </tr>
+                                <tr class="texto">
+                                    <td><b> Sexo </b> </td>
+                                    <td>{{client.sexo}}</td>
+                                </tr>
+                                <tr class="texto">
+                                    <td><b> Departamento de Origen </b> </td>
+                                    <td>{{client.departamento}}</td>
+                                </tr>
+                                <tr class="texto">
+                                    <td><b> Municipio de Origen </b> </td>
+                                    <td>{{client.muni}}</td>
+                                </tr>
+                                <tr class="texto">
+                                    <td><b> Zona de Origen</b> </td>
+                                    <td>{{client.zonas}}</td>
+                                </tr>
+                                <tr class="texto">
+                                    <td><b> Cargo de Accidentado</b> </td>
+                                    <td>{{client.cargo}}</td>
+                                </tr>
+                                <tr class="texto">
+                                    <td><b>Fecha de Ingreso a la Empresa</b> </td>
+                                    <td>{{client.ingreso}}</td>
+                                </tr>
+                                </tbody>
+                                </thead>
+                            </table>
+                        </div>
+                    </md-content>
+                </md-tab>
+                <md-tab label="III.SOBRE EL ACCIDENTE">
+                    <md-content class="md-padding">
+                        <div class="md-dialog-content">
+                            <table class="table table-sm   table-bordered table-hover table-condensed  text-justify">
+                                <thead>
+                                <tr class="titulos">
+                                    <th>Contenido</th>
+                                    <th>Información</th>
+                                </tr>
+                                <tbody>
+                                <tr class="texto">
+                                    <td><b>Fecha del Accidente</b> </td>
+                                    <td>{{client.accidente}}</td>
+                                </tr>
+                                <tr class="texto">
+                                    <td><b>Hora del Accidente</b></td>
+                                    <td>{{client.hora}}</td>
+                                </tr>
+                                <tr class="texto">
+                                    <td><b> Día de la semana del Accidente</b></td>
+                                    <td>{{client.diaSe}}</td>
+                                </tr>
+                                <tr class="texto">
+                                    <td><b>Jornada del Accidente</b></td>
+                                    <td>{{client.jornada}}</td>
+                                </tr>
+                                <tr class="texto">
+                                    <td><b>Tipo de Accidente </b> </td>
+                                    <td>{{client.tipoA}}</td>
+                                </tr>
+                                <tr class="texto">
+                                    <td><b>Lugar donde Ocurre el accidente</b> </td>
+                                    <td>{{client.lugari}}</td>
+                                </tr>
+                                <tr class="texto">
+                                    <td><b>Departamento donde Ocurre el Accidente</b> </td>
+                                    <td>{{client.depa}}</td>
+                                </tr>
+                                <tr class="texto">
+                                    <td><b> Municipio donde Ocurre el Accidente </b> </td>
+                                    <td>{{client.mun}}</td>
+                                </tr>
+                                <tr class="texto">
+                                    <td><b> Zona donde Ocurre el Accidente </b> </td>
+                                    <td>{{client.zon}}</td>
+                                </tr>
+                                <tr class="texto">
+                                    <td><b> Causo La Muerte al Trabajador </b> </td>
+                                    <td>{{client.si2}}</td>
+                                </tr>
+                                <tr class="texto">
+                                    <td><b>Sitio donde ocurre el Accidente </b> </td>
+                                    <td>{{client.tipoB}}</td>
+                                </tr>
+                                <tr class="texto">
+                                    <td><b> Tipo de Lesión</b> </td>
+                                    <td>{{client.lesion}}</td>
+                                </tr>
+                                <tr class="texto">
+                                    <td><b> Mecanismo o forma del Accidente</b> </td>
+                                    <td>{{client.mecanismo}}</td>
+                                </tr>
+                                <tr class="texto">
+                                    <td><b> Mecanismo o forma del Accidente</b> </td>
+                                    <td>{{client.mecanismo}}</td>
+                                </tr>
+                                <tr class="texto">
+                                    <td><b> Parte del Cuerpo Afectada</b> </td>
+                                    <td>{{client.parte}}</td>
+                                </tr>
+                                <tr class="texto">
+                                    <td><b> Agente del Accidente</b> </td>
+                                    <td>{{client.agente}}</td>
+                                </tr>
+                                </tbody>
+                                </thead>
+                            </table>
+                        </div>
+                    </md-content>
+                </md-tab>
+
+            </md-tabs>
+        </md-dialog-content>
+    </form>
+</md-dialog>
