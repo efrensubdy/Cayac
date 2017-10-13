@@ -66,7 +66,8 @@ angular.module('myApp.view10', ['ngRoute'])
                 console.log(item.idContratista,item.id)
           }
           var q=function(idContratista,idRequisitoSugerido){
-                       var url= "http://localhost:8080/app/imagenes/"+idContratista+"/"+idRequisitoSugerido ;
+                       //var url= "http://localhost:8080/app/imagenes/"+idContratista+"/"+idRequisitoSugerido ;
+                       var url= "http://ec2-35-163-21-208.us-west-2.compute.amazonaws.com:8080/app/imagenes/"+idContratista+"/"+idRequisitoSugerido ;
                        $http.get(url).then(function(response) {
                                      $scope.extension=response.data;
 

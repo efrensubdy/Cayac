@@ -1,26 +1,24 @@
-
-<div class="w3-container">
-<div class="container align-middle ">
-
-
-    <div class="container align-middle " >
-        <form >
-            <div class="form-group">
-                <h3 ><b>GESTIÓN DE REQUISITOS</b></h3>
+<div>
+<div class="w3-container w3-center">
+<div class="container align-middle text-center">
+<div class="row">
+    <div class="col-xs-9">
                 <br>
-                <p ><b>EN ESTA VISTA PODRA AGREGAR LOS REQUISITOS A CADA CATEGORIA,ESCOJA UNA DE LAS CATEGORIAS MENCIONADAS A CONTINUACIÓN</b></p>
-                <div class="container">
-                   <div class="col-xs-7">
+                <div class="row">
+                    <div class="col-xs-9">
+
+                       <h3  class="titulos"><b>GESTIÓN DE REQUISITOS</b></h3>
+                       <p  class="texto"><b>EN ESTA VISTA PODRA AGREGAR LOS REQUISITOS A CADA CATEGORIA,ESCOJA UNA DE LAS CATEGORIAS MENCIONADAS A CONTINUACIÓN</b></p>
                     <select class="form-control" ng-click="function1()" data-placeholder="Categoria a la que le va aplicar los requisitos" name="singleSelect" ng-model="idCategoria">
                         <option value="1">Categoria 1</option>
                         <option value="2">Categoria 2</option>
                         <option value="3">Categoria 3</option>
                         <option value="4">Categoria 4</option>
                     </select>
-                   </div>
+                    </div>
                 </div>
                 <br>
-                <div class="container" ng-show="banderaCategoria1" >
+                <div class="row" ng-show="banderaCategoria1" >
                     <div >
                         <h2 class="texto">Categoria 1</h2>
                     </div>
@@ -33,7 +31,7 @@
                     <button class="button button3" type="submit" ng-click="showAlert($event)">Requisitos Estaticos</button>
 
                 </div>
-                <div class="container" ng-show="banderaCategoria2" >
+                <div class="row" ng-show="banderaCategoria2" >
                     <div>
                         <h2 class="texto2">Categoria 2</h2>
                     </div>
@@ -46,7 +44,7 @@
                     <button class="button button2" type="submit" ng-click="showAlert($event)">Requisitos Estaticos</button>
 
                 </div>
-                <div class="container" ng-show="banderaCategoria3" >
+                <div class="row" ng-show="banderaCategoria3" >
                     <div >
                         <h2 class="texto3">Categoria 3</h2>
                     </div>
@@ -61,7 +59,7 @@
                     <button class="button button1" type="submit" ng-click="showAlert($event)">Requisitos Estaticos</button>
 
                 </div>
-                <div class="container" ng-show="banderaCategoria4" >
+                <div class="row" ng-show="banderaCategoria4" >
                     <div>
                         <h2 class="texto4">Categoria 4</h2>
                     </div>
@@ -78,7 +76,7 @@
                <br>
                 <br>
 
-                <div class="container" ng-show="banderaET">
+                <div class="row" ng-show="banderaET">
                     <div class="col-xs-9">
                     <select class="form-control"  data-placeholder="Categoria a la que le va aplicar los requisitos" name="singleSelect" ng-model="ciclo" ng-click="activated(ciclo)">
                         <option value="1">REQUISITOS</option>
@@ -91,7 +89,7 @@
                     <br>
                     <br>
 
-                    <div class="container" ng-show="lonPrevio">
+                    <div class="row" ng-show="lonPrevio">
                         <div class="col-xs-9">
                             <br>
                             <div class="table-responsive">
@@ -127,7 +125,7 @@
                         </div>
                        </div>
 
-                    <div class="container" ng-show="banderaDef">
+                    <div class="row" ng-show="banderaDef">
                         <div class="col-xs-9">
                             <div class="table-responsive">
                         <table class="table table-sm table-bordered table-hover table-condensed  text-justify">
@@ -158,10 +156,8 @@
                 </div>
 
 
-
-            </div>
-
-       </form>
     </div>
+</div>
+</div>
 </div>
 </div>

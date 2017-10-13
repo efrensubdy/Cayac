@@ -13,7 +13,8 @@ angular.module('myApp.gestionDeActividades', ['ngRoute'])
 
 var q=function(idContratante, idContratista){
 console.log("dsds")
- var url= "http://localhost:8080/app/planDeTrabajo/aprobado/"+idContratista+"/"+idContratante ;
+ //var url= "http://localhost:8080/app/planDeTrabajo/aprobado/"+idContratista+"/"+idContratante ;
+ var url= "http://ec2-35-163-21-208.us-west-2.compute.amazonaws.com:8080/app/planDeTrabajo/aprobado/"+idContratista+"/"+idContratante ;
   var a;
     a=$http.get(url).then(function(response) {
                $rootScope.o=response.data;
@@ -96,7 +97,8 @@ function DialogController($scope, $mdDialog, $rootScope, $http) {
  $scope.listadoActividad2=$rootScope.lista2;
  console.log($scope.listadoActividad);
  var q=function(idContratante, idContratista,mes,year){
-                       var url= "http://localhost:8080/app/planDeTrabajo/aprobadoPlanDeTrabajo/"+idContratista+"/"+idContratante +"/"+mes +"/"+year;
+                       //var url= "http://localhost:8080/app/planDeTrabajo/aprobadoPlanDeTrabajo/"+idContratista+"/"+idContratante +"/"+mes +"/"+year;
+                       var url= "http://ec2-35-163-21-208.us-west-2.compute.amazonaws.com:8080/app/planDeTrabajo/aprobadoPlanDeTrabajo/"+idContratista+"/"+idContratante +"/"+mes +"/"+year;
                        console.log(url);
                         var a;
                      a=$http.get(url).then(function(response) {
