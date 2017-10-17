@@ -1,0 +1,300 @@
+
+<div>
+<div  ng-controller="estandaresMinimosCtrl as ctrl">
+    <div class="w3-container w3-center">
+        <div class="container align-middle text-center">
+            <div class="row">
+                <div class="col-xs-9">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-xs-9">
+                            <h4 class="titulos"><b>ESTANDARES MÍNIMOS</b></h4>
+                                <p class="texto">ESCOJA UNA DE LAS OPCIONES PRESENTADAS A CONTINUACIÓN</p>
+                                <select class="form-control" ng-model="opcion" data-placeholder="" ng-change="simple2(opcion)">
+                                    <option ng-value="todo" ng-repeat="todo in opciones">{{todo.name}}</option>
+
+                                </select>
+                            </div>
+
+                        </div>
+                        <br>
+                        <br>
+                        <div class="row" ng-show="bandera2">
+                            <div class="col-xs-9">
+                                <label class="titulos">CONSULTA DE ESTANDARES MÍNIMOS</label>
+                                <br>
+
+                            </div>
+
+                        </div>
+                        <div class="row" ng-show="bandera1">
+                            <div class="col-xs-9">
+
+                                <label class="titulos">REGISTRO DE ESTANDARES MÍNIMOS</label>
+                                <div class="table-responsive">
+                                    <p class="titulos">I. PLANEAR</p>
+                                    <table class="table table-bordered table-hover table-condensed">
+                                        <tbody>
+                                        <tr class="titulos" >
+                                            <th colspan="2" >
+                                                1.   RECURSOS (10%)
+
+                                            </th>
+
+
+                                        </tr>
+                                        <tr class="texto">
+
+                                            <td >E1.1 Estándar: Recursos financieros, técnicos humanos y de otra índole (4%)
+                                            </td>
+                                            <td><input type="number" class="form-control" ng-model="recursos"></td>
+                                        </tr>
+                                        <tr class="texto">
+                                            <td >E1.2 Estándar: Capacitación  en el Sistema de Gestión de la Seguridad y Salud (6%)
+
+                                            </td>
+                                            <td><input type="number" class="form-control" ng-model="capacitacion"></td>
+
+                                        </tr>
+                                        </tbody>
+
+                                    </table>
+                                    <br>
+                                    <table class="table table-bordered table-hover table-condensed">
+                                        <tbody>
+                                        <tr class="titulos" >
+                                            <th colspan="2" >
+                                                2. GESTIÓN INTEGRAL DEL SISTEMA DE LA SEGURIDAD Y SALUD EN EL TRABAJO (15%)
+
+                                            </th>
+
+
+                                        </tr>
+                                        <tr class="texto">
+
+                                            <td >E2.1 Estándar: Política de Seguridad y Salud en el Trabajo (1%)
+
+                                            </td>
+                                            <td><input type="number" class="form-control" ng-model="politica"></td>
+                                        </tr>
+                                        <tr class="texto">
+                                            <td >E2.2 Estándar: Objetivos del Sistema de Gestión de la Seguridad y Salud en el Trabajo SG-SST (1%)
+                                            </td>
+                                            <td><input type="number" class="form-control" ng-model="objetivos"></td>
+
+                                        </tr>
+                                        <tr class="texto">
+                                            <td >E2.3 Estándar: Evaluación inicial del Sistema de Gestión – Seguridad y Salud en el Trabajo (1%)
+
+                                            </td>
+                                            <td><input type="number" class="form-control" ng-model="evaInicial"></td>
+
+                                        </tr>
+                                        <tr class="texto">
+                                            <td >E2.4 Estándar: Plan Anual de Trabajo (2%)
+                                            </td>
+                                            <td><input type="number" class="form-control" ng-model="planAnual"></td>
+
+                                        </tr>
+                                        <tr class="texto">
+                                            <td >E2.5 Estándar: Conservación de la documentación (2%)
+                                            </td>
+                                            <td><input type="number" class="form-control" ng-model="documen"></td>
+
+                                        </tr>
+                                        <tr class="texto">
+                                            <td >E2.6 Estándar: Rendición de cuentas (1%)
+
+                                            </td>
+                                            <td><input type="number" class="form-control" ng-model="cuentas"></td>
+
+                                        </tr>
+                                        <tr class="texto">
+                                            <td >E2.7 Estándar: Normatividad nacional vigente y aplicable en materia de seguridad y salud en el trabajo. (2%)
+
+
+                                            </td>
+                                            <td><input type="number" class="form-control" ng-model="normatividad"></td>
+
+                                        </tr>
+                                        <tr class="texto">
+                                            <td >E2.8 Estándar:Mecanismos de comunicación. (1%)
+                                            </td>
+                                            <td><input type="number" class="form-control" ng-model="mecanismos"></td>
+
+                                        </tr>
+                                        <tr class="texto">
+                                            <td >E2.9 Estándar: Adquisiciones (1%)
+                                            </td>
+                                            <td><input type="number" class="form-control" ng-model="adquisiones"></td>
+
+                                        </tr>
+                                        <tr class="texto">
+                                            <td >E2.10 Estándar: Contratación (2%)
+
+                                            </td>
+                                            <td><input type="number" class="form-control" ng-model="contrataciones"></td>
+
+                                        </tr>
+                                        <tr class="texto">
+                                            <td >E2.11 Estándar: Gestión del cambio (1%)
+
+                                            </td>
+                                            <td><input type="number" class="form-control" ng-model="cambios"></td>
+
+                                        </tr>
+                                        </tbody>
+
+                                    </table>
+                                    <br>
+                                    <p class="titulos">II. HACER
+                                    </p>
+                                    <table class="table table-bordered table-hover table-condensed">
+                                        <tbody>
+                                        <tr class="titulos" >
+                                            <th colspan="2" >
+                                                3.   GESTION DE LA SALUD (20%)
+
+                                            </th>
+
+
+                                        </tr>
+                                        <tr class="texto">
+
+                                            <td >E3.1 Estándar: Condiciones de salud en el trabajo (9%)
+
+                                            </td>
+                                            <td><input type="number" class="form-control" ng-model="condiciones"></td>
+                                        </tr>
+                                        <tr class="texto">
+                                            <td >E3.2 Estándar: Registro, reporte e investigación de las enfermedades laborales, incidentes y accidentes del trabajo (5%)
+                                            </td>
+                                            <td><input type="number" class="form-control" ng-model="registro"></td>
+
+                                        </tr>
+                                        <tr class="texto">
+                                            <td >E3.3 Estándar: Mecanismos de vigilancia de las condiciones de salud de los trabajadores (6%)
+
+                                            </td>
+                                            <td><input type="number" class="form-control" ng-model="vigilancia"></td>
+
+                                        </tr>
+                                        </tbody>
+
+                                    </table>
+                                    <br>
+                                    <table class="table table-bordered table-hover table-condensed">
+                                        <tbody>
+                                        <tr class="titulos" >
+                                            <th colspan="2" >
+                                                4.   GESTION DE PELIGROS Y RIESGOS (30%)
+
+                                            </th>
+
+
+                                        </tr>
+                                        <tr class="texto">
+
+                                            <td >E4.1 Estándar: Identificación de peligros, evaluación y valoración de los riesgos (15%)
+
+                                            </td>
+                                            <td><input type="number" class="form-control" ng-model="peligros"></td>
+                                        </tr>
+                                        <tr class="texto">
+                                            <td >E4.2 Estándar: Medidas de prevención y control para intervenir los peligros /riesgos (15%)
+                                            </td>
+                                            <td><input type="number" class="form-control" ng-model="prevencion"></td>
+
+                                        </tr>
+                                        </tbody>
+
+                                    </table>
+                                    <br>
+                                    <table class="table table-bordered table-hover table-condensed">
+                                        <tbody>
+                                        <tr class="titulos" >
+                                            <th colspan="2" >
+                                                5.   GESTION DE AMENAZAS (10%)
+                                            </th>
+
+
+                                        </tr>
+                                        <tr class="texto">
+
+                                            <td >E5.1 Estándar: Plan de prevención, preparación y respuesta ante emergencias (10%)
+
+
+                                            </td>
+                                            <td><input type="number" class="form-control" ng-model="planPrevencion"></td>
+                                        </tr>
+                                        </tr>
+                                        </tbody>
+
+                                    </table>
+                                    <br>
+                                    <p class="titulos">III.VERIFICAR
+                                    </p>
+                                    <table class="table table-bordered table-hover table-condensed">
+                                        <tbody>
+                                        <tr class="titulos" >
+                                            <th colspan="2" >
+                                                6. VERIFICACIÓN DEL SISTEMA DE GESTION EN SEGURIDAD Y SALUD EN EL TRABAJO (5%)
+
+                                            </th>
+
+
+                                        </tr>
+                                        <tr class="texto">
+
+                                            <td >E6.1 Estándar: Gestión y resultados del SG-SST (5%)
+
+
+
+                                            </td>
+                                            <td><input type="number" class="form-control" ng-model="gestion"></td>
+                                        </tr>
+                                        </tr>
+                                        </tbody>
+
+                                    </table>
+                                    <br>
+                                    <p class="titulos">IV. ACTUAR
+                                    </p>
+                                    <table class="table table-bordered table-hover table-condensed">
+                                        <tbody>
+                                        <tr class="titulos" >
+                                            <th colspan="2" >
+                                                7.   MEJORAMIENTO (10%)
+
+
+                                            </th>
+
+
+                                        </tr>
+                                        <tr class="texto">
+
+                                            <td >E7.1 Estándar: Acciones preventivas y correctivas con base en los resultados del SG- SST. (10%)
+                                            </td>
+                                            <td><input type="number" class="form-control" ng-model="accionesPreven"></td>
+                                        </tr>
+                                        </tr>
+                                        </tbody>
+
+                                    </table>
+                                    <br>
+
+                                </div>
+                                <button class="btn btn-primary center-block" ng-click="add($event,recursos,capacitacion,politica,objetivos,evaInicial,planAnual,documen,cuentas,normatividad,mecanismos,adquisiones,contrataciones,cambios,condiciones,registro,vigilancia,peligros,prevencion,planPrevencion,gestion,accionesPreven)">REGISTRAR ACTIVIDAD</button>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+

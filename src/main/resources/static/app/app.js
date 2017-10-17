@@ -34,6 +34,7 @@ angular.module('myApp', [
   'myApp.gestionDeIndicadores',
   'myApp.reporteDeIndicadores',
   'myApp.gestionDeAccidentes',
+  'myApp.estandaresMinimos',
   'myApp.aCFinSelec',
   'myApp.accidentes',
   'myApp.login',

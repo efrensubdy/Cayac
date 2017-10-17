@@ -9,7 +9,7 @@ angular.module('myApp.planDeTrabajo', ['ngRoute'])
   });
 }])
 
-.controller('planDeTrabajoCtrl', ['$timeout', '$q', '$scope','$http','$log','$rootScope','$localStorage','$sessionStorage','plandeTrabajo','actividadPlan','fileUpload',function($timeout, $q, $scope,$http,$log,$rootScope,$localStorage,$sessionStorage,plandeTrabajo,actividadPlan,fileUpload) {
+.controller('planDeTrabajoCtrl', ['$timeout', '$q', '$scope','$http','$log','$rootScope','$localStorage','$sessionStorage','plandeTrabajo','actividadPlan','fileUpload','$mdDialog',function($timeout, $q, $scope,$http,$log,$rootScope,$localStorage,$sessionStorage,plandeTrabajo,actividadPlan,fileUpload,$mdDialog) {
 var q=function(idContratante, idContratista){
                       //var url= "http://localhost:8080/app/planDeTrabajo/aprobado/"+idContratista+"/"+idContratante ;
                       var url= "http://ec2-35-163-21-208.us-west-2.compute.amazonaws.com:8080/app/planDeTrabajo/aprobado/"+idContratista+"/"+idContratante ;
@@ -99,6 +99,10 @@ $scope.meses=[
 
     var plan={"nombre":nombre,"mes":mes,"fechaInicio":fechaInicio,"fechaFin":fechaFin,"idContratista":$localStorage.userLogeado.idContratista,"year":year};
     plandeTrabajo.save(plan);
+    $scope.nombre='';
+    $scope.mes='';
+    $scope.fechaInicio='';
+    $scope.fechaFin='';
     $mdDialog.show(
                                  $mdDialog.alert()
                                    .parent(angular.element(document.querySelector('#popupContainer')))
@@ -110,6 +114,8 @@ $scope.meses=[
                                    .targetEvent(ev)
                                );
 
+
+
   }
   $scope.subirDocumento=function(item,file){
     console.log(item);
@@ -118,6 +124,17 @@ $scope.meses=[
     var uploadUrl = 'http://ec2-35-163-21-208.us-west-2.compute.amazonaws.com:8080/app/planDeTrabajo/'+ item.id + "/"+ $localStorage.userLogeado.idContratista;
     console.log(uploadUrl);
     fileUpload.uploadFileToUrl(file,uploadUrl);
+    $mdDialog.show(
+                                     $mdDialog.alert()
+                                       .parent(angular.element(document.querySelector('#popupContainer')))
+                                       .clickOutsideToClose(true)
+                                       .title('Reporte de Actividad registrado')
+                                       .textContent('Recuerde subir todos los soportes.')
+                                       .ariaLabel('Alert Dialog Demo')
+                                       .ok('ok!')
+                                       .targetEvent(ev)
+                                   );
+
 
 
   }

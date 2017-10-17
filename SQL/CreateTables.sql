@@ -482,6 +482,40 @@ CREATE TABLE `accidentes` (
   CONSTRAINT `idContratista_Accidente` FOREIGN KEY (`idContratista`) REFERENCES `contratista` (`idContratista`)
 ) ENGINE=INNODB DEFAULT CHARSET=latin1;
 
+CREATE TABLE `estandaresMinimos` (
+  `id` INT(11) NOT NULL AUTO_INCREMENT,
+  `recursos` FLOAT NOT NULL,
+  `capacitacion` FLOAT NOT NULL,
+  `politica` FLOAT NOT NULL,
+  `objetivos` FLOAT NOT NULL,
+  `evaInicial` FLOAT NOT NULL,
+  `planAnual` FLOAT NOT NULL,
+  `documen` FLOAT NOT NULL,
+  `cuentas` FLOAT NOT NULL,
+  `normatividad` FLOAT NOT NULL,
+  `mecanismos` FLOAT NOT NULL,
+  `adquisiones` FLOAT NOT NULL,
+  `contrataciones` FLOAT NOT NULL,
+  `cambios` FLOAT NOT NULL,
+  `condiciones` FLOAT NOT NULL,
+  `registro` FLOAT NOT NULL,
+  `vigilancia` FLOAT NOT NULL,
+  `peligros` FLOAT NOT NULL,
+  `prevencion` FLOAT NOT NULL,
+  `planPrevencion` FLOAT NOT NULL,
+  `gestion` FLOAT NOT NULL,
+  `accionesPreven` FLOAT NOT NULL,
+  `idContratista` INT(11) NOT NULL,
+  `idContratante` INT(11) NOT NULL,
+  `fechaDeRegistro` DATE NOT NULL,
+  KEY `id` (`id`),
+  KEY `idContratista_Estandares` (`idContratista`),
+  KEY `idContratante_Estandares` (`idContratante`),
+  CONSTRAINT `idContratante_Estandares` FOREIGN KEY (`idContratante`) REFERENCES `contratante` (`idContratante`),
+  CONSTRAINT `idContratista_Estandares` FOREIGN KEY (`idContratista`) REFERENCES `contratista` (`idContratista`)
+) ENGINE=INNODB DEFAULT CHARSET=latin1;
+
+
 -- create Admins ---
 
 
