@@ -23,6 +23,38 @@
                             <div class="col-xs-9">
                                 <label class="titulos">CONSULTA DE ESTANDARES MÍNIMOS</label>
                                 <br>
+                                <div class="table-responsive">
+                                    <label class="titulos">RESULTADO GLOBAL</label>
+                                    <table class="table table-bordered table-hover table-condensed">
+                                        <tbody >
+                                        <tr  class="titulos">
+                                            <th>REGISTRO</th>
+                                            <th> ITEM</th>
+                                            <th>TOTAL REQUERIDO</th>
+                                            <th>TOTAL CALIFICACION</th>
+                                            <th>FECHA DE REGISTRO</th>
+                                            <th>DETALLE</th>
+                                        </tr>
+                                        <tr ng-repeat="todo in listadoEstandaresMinimos | orderBy:propertyName:reverse">
+                                            <td>EM #{{todo.id}}</td>
+                                            <td > TOTAL GLOBAL</td>
+                                            <td >
+                                                100 %
+
+                                            </td>
+                                            <td>
+                                                {{todo.recursos + todo.capacitacion  + todo.politica + todo.objetivos + todo.evaInicial + todo.planAnual + todo.documen + todo.cuentas + todo.normatividad + todo.mecanismos + todo.adquisiones + todo.contrataciones + todo.cambios + todo.condiciones + todo.registro + todo.vigilancia + todo.peligros + todo.prevencion + todo.planPrevencion + todo.gestion + todo.accionesPreven }} %
+                                            </td>
+                                            <td>{{todo.fechaDeRegistro}}</td>
+                                            <td ><button class="btn btn-primary" ng-click="showAlert($event,todo)">
+                                                Detalles
+                                            </button></td>
+                                        </tr>
+                                        </tbody>
+
+                                    </table>
+
+                                </div>
 
                             </div>
 
