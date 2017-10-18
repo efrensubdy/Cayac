@@ -1,0 +1,107 @@
+
+<div>
+<div  ng-controller="gestionDeEstandaresCtrl as ctrl">
+    <div class="w3-container w3-center">
+        <div class="container text-center">
+            <div class="row">
+                <div class="col-xs-9">
+                    <h4 class="titulos" ><b>REVISE LOS ESTANDARES MÍNIMOS REGISTRADOS POR SUS CONTRATISTAS</b></h4>
+                    <p class="texto"><b>ESCOJA EL CONTRATO, SOBRE EL CUAL REALIZARÁ LA REVISIÓN</b></p>
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <input class="form-control" type="text"  placeholder="A que contrato va a hacer la revision" name="contrato" list="contratos" ng-model="contrato">
+                            <datalist id="contratos">
+                                <select name="contratos" ng-model="select" ng-change="resul()">
+                                    <option value="" disabled selected>Escoja un  contrato de los existentes </option>
+                                    <option ng-repeat="todo in listado"  value="{{todo.idContrato}}" ng-model="selectedOption">{{todo.nombreContrato}}</option>
+                                </select>
+                            </datalist>
+                            <br>
+                            <button class="btn btn-primary align-middle" type="submit" ng-click="add()">Consultar</button>
+                        </div>
+                    </div>
+                    <br>
+                    <div class="row" ng-show="flag">
+                        <div class="container">
+                            <div class="col-xs-9">
+                                <div class="table-responsive">
+                                    <table class="table table-bordered table-hover table-condensed">
+                                        <tbody>
+                                        <tr >
+                                            <th >Nombre de Empresa</th>
+                                            <th >Análisis</th>
+
+                                        </tr>
+                                        <tr ng-repeat="todo in listillo | orderBy:propertyName:reverse">
+                                            <td >{{todo.nombreEmpresa}}</td>
+                                            <td >
+                                                <button  class="btn btn-primary" ng-click="traerEstandares(todo)" >
+                                                    Estandares
+                                                </button>
+
+                                            </td>
+                                        </tr>
+
+                                        </tbody>
+
+                                    </table>
+
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="row" ng-show="bandera2">
+                           <label class="titulos">CONSULTA DE ESTANDARES MÍNIMOS</label>
+                            <br>
+                            <div class="table-responsive">
+                                <label class="titulos">RESULTADO GLOBAL</label>
+                                <table class="table table-bordered table-hover table-condensed">
+                                    <tbody >
+                                    <tr  class="titulos">
+                                        <th>REGISTRO</th>
+                                        <th> ITEM</th>
+                                        <th>TOTAL REQUERIDO</th>
+                                        <th>TOTAL CALIFICACION</th>
+                                        <th>FECHA DE REGISTRO</th>
+                                        <th>DETALLE</th>
+                                    </tr>
+                                    <tr ng-repeat="todo in listadoEstandaresMinimos | orderBy:propertyName:reverse">
+                                        <td>EM #{{todo.id}}</td>
+                                        <td > TOTAL GLOBAL</td>
+                                        <td >
+                                            100 %
+
+                                        </td>
+                                        <td>
+                                            {{todo.recursos + todo.capacitacion  + todo.politica + todo.objetivos + todo.evaInicial + todo.planAnual + todo.documen + todo.cuentas + todo.normatividad + todo.mecanismos + todo.adquisiones + todo.contrataciones + todo.cambios + todo.condiciones + todo.registro + todo.vigilancia + todo.peligros + todo.prevencion + todo.planPrevencion + todo.gestion + todo.accionesPreven }} %
+                                        </td>
+                                        <td>{{todo.fechaDeRegistro}}</td>
+                                        <td ><button class="btn btn-primary" ng-click="showAlert($event,todo)">
+                                            Detalles
+                                        </button>
+                                            <button class="btn btn-primary" ng-click="showAlert($event,todo)">
+                                                Graficos
+                                            </button>
+                                        </td>
+                                    </tr>
+                                    </tbody>
+
+                                </table>
+
+                            </div>
+
+                    </div>
+
+                </div>
+            </div>
+
+            </div>
+        </div>
+
+
+
+    </div>
+</div>
+</div>
+

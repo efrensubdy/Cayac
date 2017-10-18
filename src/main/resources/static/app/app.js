@@ -37,6 +37,7 @@ angular.module('myApp', [
   'myApp.estandaresMinimos',
   'myApp.aCFinSelec',
   'myApp.accidentes',
+  'myApp.gestionDeEstandares',
   'myApp.login',
   'myApp.login2',
   'myApp.login3',
