@@ -1,0 +1,47 @@
+<md-dialog id="attribute-dialog" aria-label="Cumplidos">
+    <form>
+        <md-toolbar>
+            <div class="md-toolbar-tools">
+                <h1>Detalle de Estandares</h1>
+                <span flex></span>
+                <md-button class="md-icon-button" ng-click="cancel()">
+                    <md-icon md-font-library="material-icons">highlight_off</md-icon>
+                </md-button>
+            </div>
+        </md-toolbar>
+        <md-dialog-content>
+            <md-tabs md-dynamic-height md-border-bottom>
+                <md-tab label="I. PLANEAR">
+                    <md-content class="md-padding">
+                        <div class="md-dialog-content">
+                            <div google-chart chart="myChartObject" style="height:400px; width:800px;"></div>
+                        </div>
+                    </md-content>
+                </md-tab>
+                <md-tab label="II. HACER">
+                    <md-content class="md-padding">
+                        <div class="md-dialog-content" >
+                            <div google-chart chart="myChartObject2" style="height:400px; width:800px;"></div>
+                        </div>
+
+                    </md-content>
+                </md-tab>
+                <md-tab label="III.VERIFICAR Y  IV. ACTUAR">
+                    <md-content class="md-padding">
+                        <div class="md-dialog-content" >
+                            <div google-chart chart="myChartObject3" style="height:400px; width:800px;"></div>
+                        </div>
+                    </md-content>
+                </md-tab>
+                <md-tab label="VII TOTALES">
+                    <md-content class="md-padding">
+                        <div class="md-dialog-content" >
+                            <div google-chart chart="myChartObject4" style="height:400px; width:800px;"></div>
+                        </div>
+                    </md-content>
+                </md-tab>
+            </md-tabs>
+
+        </md-dialog-content>
+    </form>
+</md-dialog>
