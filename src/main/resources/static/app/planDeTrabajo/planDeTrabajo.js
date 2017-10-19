@@ -100,7 +100,6 @@ $scope.meses=[
     var plan={"nombre":nombre,"mes":mes,"fechaInicio":fechaInicio,"fechaFin":fechaFin,"idContratista":$localStorage.userLogeado.idContratista,"year":year};
     plandeTrabajo.save(plan);
     $scope.nombre='';
-    $scope.mes='';
     $scope.fechaInicio='';
     $scope.fechaFin='';
     $mdDialog.show(
@@ -132,7 +131,7 @@ $scope.meses=[
     }
 
   }
-  $scope.subirDocumento=function(item,file){
+  $scope.subirDocumento=function(ev,item,file){
     console.log(item);
     console.log(file);
     if ("undefined" !== typeof file){

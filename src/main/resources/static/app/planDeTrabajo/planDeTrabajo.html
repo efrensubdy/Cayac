@@ -101,7 +101,7 @@
                                 <td>{{todo.nombre}}</td>
                                 <td><input class="form-control" type="file" file-model="myFile"/></file-model>
                                     <br>
-                                    <button type="button" class="button button1 w3-center" ng-click="subirDocumento(todo,myFile)" ng-model="tablita">Subir</button></td>
+                                    <button type="button" class="button button1 w3-center" ng-click="subirDocumento($event,todo,myFile)" ng-model="tablita">Subir</button></td>
                                 <td>
                                     <div ng-show="{{todo.estado}}" class="w3-col" style="width:50px"><a href="{{todo.evidencia}}" download><i class="w3-xxlarge fa fa-check-square"></i></a></div>
                                     <div ng-show="{{!todo.estado}}" class="w3-col" style="width:50px"><a href="{{todo.evidencia}}" download><i class="w3-xxlarge fa fa-exclamation-triangle"></i></a></div>
