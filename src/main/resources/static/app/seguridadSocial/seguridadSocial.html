@@ -8,15 +8,22 @@
                     <p class="texto"><b>EN ESTE ESPACIO PODRÁ SUBIR LA SEGURIDAD SOCIAL </b></p>
                     <div class="row">
                         <div class="col-sm-12">
-                            <p>ESCOJA EL MES SOBRE EL CUAL SUBIRA LA SEGURIDAD SOCIAL</p>
-                            <select class="form-control" ng-model="mes" data-placeholder="seleccione el mes" ng-change="simple()">
-                                <option ng-value="todo" ng-repeat="todo in meses">{{todo.name}}</option>
+                            <p>ESCOJA LO QUE QUIERE HACER</p>
+                            <select class="form-control" ng-model="opcion" data-placeholder="seleccione el mes" ng-change="simple(opcion)">
+                                <option ng-value="todo" ng-repeat="todo in opciones">{{todo.name}}</option>
                             </select>
                             <br>
                         </div>
                     </div>
                     <div class="row" ng-show="banderaMes">
                         <br>
+                        <div class="col-sm-12">
+                            <p>ESCOJA EL MES SOBRE EL CUAL SUBIRA LA SEGURIDAD SOCIAL</p>
+                            <select class="form-control" ng-model="mes" data-placeholder="seleccione el mes" >
+                                <option ng-value="todo" ng-repeat="todo in meses">{{todo.name}}</option>
+                            </select>
+                            <br>
+                        </div>
                         <div class="col-sm-4" >
                             <div>
                                 <label class="texto">SUBA ACÁ EL DOCUMENTO DE LA SEGURIDAD SOCIAL</label>
@@ -39,6 +46,9 @@
                             </div>
                         </div>
                         <button type="button" class="btn btn-primary align-middle" ng-click="subirArchivo($event,myDoc,myDoc2,mes,textArea)" ng-model="tablita">Subir</button>
+                    </div>
+                    <div class="row" ng-show="bandera2">
+                        <label class="titulos">CONSULTE SUS SEGURIDADES SOCIALES</label>
                     </div>
                 </div>
             </div>

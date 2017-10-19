@@ -57,7 +57,7 @@ angular.module('myApp.login3', ['ngRoute'])
 
       //var url2="http://localhost:8080/app/login/contratista/categoria/" + $scope.email +"/" + $scope.password;
 
-        var url2="http://ec2-35-163-21-208.us-west-2.compute.amazonaws.com:8080/app/login/contratista/categoria/" + $scope.email +"/" + $scope.password;
+       var url2="http://ec2-35-163-21-208.us-west-2.compute.amazonaws.com:8080/app/login/contratista/categoria/" + $scope.email +"/" + $scope.password;
            $http.get(url2).then(function(response){
                                  t=response.data;
                                  console.log(t);

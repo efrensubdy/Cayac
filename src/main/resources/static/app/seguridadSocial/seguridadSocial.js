@@ -10,8 +10,13 @@ angular.module('myApp.seguridadSocial', ['ngRoute'])
 }])
 
 .controller('seguridadSocialCtrl', ['$mdDialog','$timeout', '$q', '$scope','$log','$rootScope','$localStorage','$sessionStorage','contratoUpload',function($mdDialog,$timeout, $q, $scope,$log,$rootScope,$localStorage,$sessionStorage,contratoUpload) {
+$scope.opciones=[
+ { id: 1, name: 'REGISTRAR SEGURIDAD SOCIAL'},
+ { id: 2, name: 'CONSULTAR SEGURIDAD SOCIAL '},
 
+];
 $scope.banderaMes=false;
+$scope.bandera2=false;
 $scope.meses=[
  { id: 1, name: 'ENERO'},
  { id: 2, name: 'FEBRERO'},
@@ -27,9 +32,17 @@ $scope.meses=[
  { id: 12, name: 'DICIEMBRE'},
 
             ];
- $scope.simple= function(){
-       $scope.banderaMes= true;
-
+ $scope.simple= function(item){
+       switch(item.id){
+            case 1:
+            $scope.banderaMes= true;
+            $scope.bandera2=false;
+            break;
+            case 2:
+            $scope.banderaMes= false;
+            $scope.bandera2=true;
+            break;
+       }
 
  }
 $scope.subirArchivo = function(ev,file,file2,mes,textArea){
