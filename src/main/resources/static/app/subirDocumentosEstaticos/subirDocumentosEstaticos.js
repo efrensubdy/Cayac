@@ -13,6 +13,7 @@ angular.module('myApp.subirDocumentosEstaticos', ['ngRoute'])
        $scope.file = "";
 
        $scope.agregarEstaticosSugeridosPrevios = function(ev,item) {
+            if ("undefined" !== typeof $scope.myDocSugeridoPrevio){
             var file = $scope.myDocSugeridoPrevio;
             //var uploadUrl = 'http://localhost:8080/app/docEstaticos/'+ $localStorage.userLogeado.idFinalista + "/"+ item.id + "/"+ $localStorage.userLogeado.idContratista + "/previoSugerido" ;
             var uploadUrl = 'http://ec2-35-163-21-208.us-west-2.compute.amazonaws.com:8080/app/docEstaticos/'+ $localStorage.userLogeado.idFinalista + "/"+ item.id + "/"+ $localStorage.userLogeado.idContratista + "/previoSugerido" ;
@@ -29,9 +30,26 @@ angular.module('myApp.subirDocumentosEstaticos', ['ngRoute'])
                         .targetEvent(ev)
                                                );
 
+            }
+            else{
+                 $mdDialog.show(
+                           $mdDialog.alert()
+                           .parent(angular.element(document.querySelector('#popupContainer')))
+                           .clickOutsideToClose(true)
+                           .title('No subido !!!')
+                           .textContent('Su archivo no  se he subido correctamente.')
+                           .ariaLabel('Alert Dialog Demo')
+                           .ok('ok!')
+                            .targetEvent(ev)
+
+                 );
+
+            }
 
         };
         $scope.agregarEstaticosExtrasPrevios = function(ev,item) {
+
+                    if ("undefined" !== typeof $scope.myDocExtraPrevio){
                     var file = $scope.myDocExtraPrevio;
                     console.log(file);
                     console.log(item.id)
@@ -49,7 +67,21 @@ angular.module('myApp.subirDocumentosEstaticos', ['ngRoute'])
                                .ok('ok!')
                                 .targetEvent(ev)
                                                        );
+                    }
+                    else{
+                          $mdDialog.show(
+                                 $mdDialog.alert()
+                                 .parent(angular.element(document.querySelector('#popupContainer')))
+                                 .clickOutsideToClose(true)
+                                 .title('No subido !!!')
+                                 .textContent('Su archivo no  se he subido correctamente.')
+                                 .ariaLabel('Alert Dialog Demo')
+                                 .ok('ok!')
+                                  .targetEvent(ev)
 
+                          );
+
+                    }
 
                 };
 

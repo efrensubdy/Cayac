@@ -96,7 +96,7 @@ $scope.meses=[
 
   }
   $scope.add=function(ev,fechaInicio,fechaFin,nombre,mes,year){
-
+    if ("undefined" !== typeof nombre &&"undefined" !== typeof mes && "undefined" !== typeof fechaInicio && "undefined" !== typeof fechaFin && "undefined" !== typeof year ){
     var plan={"nombre":nombre,"mes":mes,"fechaInicio":fechaInicio,"fechaFin":fechaFin,"idContratista":$localStorage.userLogeado.idContratista,"year":year};
     plandeTrabajo.save(plan);
     $scope.nombre='';
@@ -104,22 +104,38 @@ $scope.meses=[
     $scope.fechaInicio='';
     $scope.fechaFin='';
     $mdDialog.show(
-                                 $mdDialog.alert()
-                                   .parent(angular.element(document.querySelector('#popupContainer')))
-                                   .clickOutsideToClose(true)
-                                   .title('Actividad del Plan de trabajo registrada')
-                                   .textContent('Recuerde subir el soporte de esta actividad.')
-                                   .ariaLabel('Alert Dialog Demo')
-                                   .ok('ok!')
-                                   .targetEvent(ev)
-                               );
+         $mdDialog.alert()
+           .parent(angular.element(document.querySelector('#popupContainer')))
+           .clickOutsideToClose(true)
+           .title('Actividad del Plan de trabajo registrada')
+           .textContent('Recuerde subir el soporte de esta actividad.')
+           .ariaLabel('Alert Dialog Demo')
+           .ok('ok!')
+           .targetEvent(ev)
+       );
+
+    }
+    else{
+        $mdDialog.show(
+                 $mdDialog.alert()
+                   .parent(angular.element(document.querySelector('#popupContainer')))
+                   .clickOutsideToClose(true)
+                   .title('Algún dato esta erroneo intente de nuevo')
+                   .textContent('Recuerde llenar todos los cambios')
+                   .ariaLabel('Alert Dialog Demo')
+                   .ok('ok!')
+                   .targetEvent(ev)
+               );
 
 
+
+    }
 
   }
   $scope.subirDocumento=function(item,file){
     console.log(item);
     console.log(file);
+    if ("undefined" !== typeof file){
     //var uploadUrl = 'http://localhost:8080/app/planDeTrabajo/'+ item.id + "/"+ $localStorage.userLogeado.idContratista;
     var uploadUrl = 'http://ec2-35-163-21-208.us-west-2.compute.amazonaws.com:8080/app/planDeTrabajo/'+ item.id + "/"+ $localStorage.userLogeado.idContratista;
     console.log(uploadUrl);
@@ -135,7 +151,21 @@ $scope.meses=[
                                        .targetEvent(ev)
                                    );
 
+    }
+    else{
 
+    $mdDialog.show(
+         $mdDialog.alert()
+               .parent(angular.element(document.querySelector('#popupContainer')))
+               .clickOutsideToClose(true)
+               .title('Reporte de Actividad No  registrado')
+               .textContent('Recuerde Subir un archivo valido')
+               .ariaLabel('Alert Dialog Demo')
+               .ok('ok!')
+               .targetEvent(ev)
+           );
+
+    }
 
   }
 

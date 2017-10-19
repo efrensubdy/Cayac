@@ -32,6 +32,7 @@ angular.module('myApp.view9', ['ngRoute'])
                                   })
            }
         $scope.agregar = function(ev,item) {
+            if ("undefined" !== typeof $scope.myFile){
             var file = $scope.myFile;
 
             //var uploadUrl = 'http://localhost:8080/app/imagenes/'+ $localStorage.userLogeado.idContratista + "/"+ item.id;
@@ -48,12 +49,30 @@ angular.module('myApp.view9', ['ngRoute'])
                         .targetEvent(ev)
                                                );
 
+            }
+            else{
+                   $mdDialog.show(
+                     $mdDialog.alert()
+                      .parent(angular.element(document.querySelector('#popupContainer')))
+                      .clickOutsideToClose(true)
+                       .title('No subido !!!')
+                       .textContent('Su archivo no  se he subido correctamente.')
+                       .ariaLabel('Alert Dialog Demo')
+                       .ok('ok!')
+                        .targetEvent(ev)
 
+                                                    );
+
+
+
+
+            }
 
 
         };
         $scope.agregar2 = function(ev,item) {
                     var file = $scope.myFile;
+                    if ("undefined" !== typeof $scope.myFile){
                     console.log(file);
                     console.log(item.id)
                     //var uploadUrl = 'http://localhost:8080/app/documento/'+ $localStorage.userLogeado.idContratista+ "/"+ item.id;
@@ -71,7 +90,23 @@ angular.module('myApp.view9', ['ngRoute'])
 
                                                     );
 
+                    }
+                    else{
+                        $mdDialog.show(
+                                             $mdDialog.alert()
+                                              .parent(angular.element(document.querySelector('#popupContainer')))
+                                                                  .clickOutsideToClose(true)
+                                                                   .title('No subido !!!')
+                                                                   .textContent('Su archivo no  se he subido correctamente.')
+                                                                   .ariaLabel('Alert Dialog Demo')
+                                                                   .ok('ok!')
+                                                                    .targetEvent(ev)
 
+                                                                            );
+
+
+
+                    }
 
                 };
 
