@@ -26,4 +26,9 @@ public class ManejoDeSeguridadSocial implements AdministradorDeSeguridadSocial {
     public List<SeguridadSocial> traerSeguridadSocialPorContratista(int idContratista) throws SQLException, ClassNotFoundException {
         return seguridadSocialBD.traerSeguridadSocial(idContratista);
     }
+
+    @Override
+    public List<SeguridadSocial> traerSeguridadSocialPorContratistaAlContratante(int idContratista, String mes, int year) throws SQLException, ClassNotFoundException {
+        return seguridadSocialBD.traerSeguridadSocialAlContratante(idContratista, mes, year);
+    }
 }

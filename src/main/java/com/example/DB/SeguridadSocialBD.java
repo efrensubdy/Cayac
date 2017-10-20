@@ -136,6 +136,30 @@ public class SeguridadSocialBD {
      ps.close();
      return seguridadSocialList;
  }
+    public List<SeguridadSocial> traerSeguridadSocialAlContratante(int idContratista,String mes , int year)throws SQLException,ClassNotFoundException{
+        List<SeguridadSocial>seguridadSocialList=new LinkedList<>();
+        String sql ="SELECT * FROM  seguridadsocial where idContratista = ? AND mes= ? AND year= ?";
+        PreparedStatement ps = Conexion.conection().prepareStatement(sql);
+        ps.setInt(1,idContratista);
+        ps.setString(2,mes);
+        ps.setInt(3,year);
+        ResultSet rs = ps.executeQuery();
+        while(rs.next()){
+            SeguridadSocial seguridadSocial =new SeguridadSocial();
+            seguridadSocial.setId(rs.getInt("id"));
+            seguridadSocial.setMes(rs.getString("mes"));
+            seguridadSocial.setFechaDeSubida(rs.getDate("fechaDeSubida"));
+            seguridadSocial.setSeguridadSocial(rs.getString("seguridadSocial"));
+            seguridadSocial.setIdContratista(rs.getInt("idContratista"));
+            seguridadSocial.setIdContratante(rs.getInt("idContratante"));
+            seguridadSocial.setPersonal(rs.getString("personal"));
+            seguridadSocial.setCambios(rs.getString("cambios"));
+            seguridadSocial.setYear(rs.getInt("year"));
+            seguridadSocialList.add(seguridadSocial);
+        }
+        ps.close();
+        return seguridadSocialList;
+    }
 
 
     private  String getFileExtension(File fullName) {

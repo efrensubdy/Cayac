@@ -12,5 +12,5 @@ import java.util.List;
 public interface AdministradorDeSeguridadSocial {
     public void agregarSeguridadSocial(SeguridadSocial seguridadSocial) throws SQLException, ClassNotFoundException,IOException;
     public List<SeguridadSocial>traerSeguridadSocialPorContratista(int idContratista)throws SQLException,ClassNotFoundException;
-
+    public List<SeguridadSocial>traerSeguridadSocialPorContratistaAlContratante(int idContratista,String mes,int year)throws SQLException,ClassNotFoundException;
 }

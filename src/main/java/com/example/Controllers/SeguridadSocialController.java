@@ -79,6 +79,20 @@ public class SeguridadSocialController {
         }
         return a;
     }
+    @RequestMapping(value = "socialContratante/{idContratista}/{mes}/{year}", method = RequestMethod.GET)
+    public ResponseEntity<?>seguridadSocialContratante(@PathVariable int idContratista,@PathVariable String mes,@PathVariable int year){
+
+        ResponseEntity a;
+        try {
+            //obtener datos que se enviarán a través del API
+            a = new ResponseEntity<>(manejoDeSeguridadSocial.traerSeguridadSocialPorContratistaAlContratante(idContratista,mes,year),HttpStatus.ACCEPTED);
+
+        } catch (Exception ex) {
+            Logger.getLogger(Controller.class.getName()).log(Level.SEVERE, null, ex);
+            return new ResponseEntity<>("Error bla bla bla",HttpStatus.NOT_FOUND);
+        }
+        return a;
+    }
     private File convert(MultipartFile file) throws IOException {
         File convFile = new File(file.getOriginalFilename());
         convFile.createNewFile();

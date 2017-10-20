@@ -128,6 +128,10 @@ angular.module('services.listFactory', ['ngRoute','ngResource'])
                                    return $resource('/app/indicador/indicadoresPorMes/:idContratista/:mes/:year')
 
                                          })
+            .factory('seguriContratante', function($resource) {
+                                               return $resource('/app/seguridadSocial/socialContratante/:idContratista/:mes/:year')
+
+                                                     })
             .factory('repMes', function($resource) {
                                                return $resource('/app/indicador/reportesPorMes/:idContratante/:mes/:year')
 

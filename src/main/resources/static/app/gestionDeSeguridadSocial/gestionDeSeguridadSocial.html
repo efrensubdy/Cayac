@@ -1,0 +1,75 @@
+<div>
+<div  ng-controller="seguridadSocialCtrl as ctrl">
+    <div class="w3-container w3-center">
+        <div class="container align-middle text-center">
+            <div class="row">
+                <div class="col-xs-9">
+                    <h4 class="titulos"><b>SEGURIDAD SOCIAL </b></h4>
+                    <p class="texto"><b>EN ESTE ESPACIO PODRÁ REVISAR  LA SEGURIDAD SOCIAL REGISTRADA POR SU CONTRATISTA</b></p>
+                    <div class="row">
+                        <div class="col-sm-4">
+                            <input class="form-control" type="text"  placeholder="A que contrato va a hacer la revision" name="contrato" list="contratos" ng-model="contrato">
+                            <datalist id="contratos">
+                                <select name="contratos" ng-model="select" ng-change="resul()">
+                                    <option value="" disabled selected>Escoja un  contrato de los existentes </option>
+                                    <option ng-repeat="todo in listado"  value="{{todo.idContrato}}" ng-model="selectedOption">{{todo.nombreContrato}}</option>
+                                </select>
+                            </datalist>
+                        </div>
+                        <div class="col-sm-4">
+                            <select class="form-control" ng-model="mes" data-placeholder="seleccione el mes" ng-change="resul()">
+                                <option ng-value="todo" ng-repeat="todo in meses">{{todo.name}}</option>
+
+                            </select>
+                        </div>
+                        <div class="col-sm-4">
+                            <select class="form-control" ng-model="year" data-placeholder="seleccione el mes" ng-change="resul()">
+                                <option ng-value="todo" ng-repeat="todo in years">{{todo.name}}</option>
+
+                            </select>
+                        </div>
+                        <br>
+                        <br>
+                        <div class="col-sm-12">
+                                <br>
+                                <button class="btn btn-primary center-block" type="submit" ng-click="add(contrato)">Consultar</button>
+                                <br>
+                        </div>
+
+
+                    </div>
+
+                    <div class="row" ng-show="flag">
+                        <label class="titulos">CONSULTE SUS SEGURIDADES SOCIALES</label>
+                        <br>
+                        <div class="table-responsive">
+                            <table class="table table-bordered table-hover table-condensed">
+                                <tbody>
+                                <tr >
+                                    <th >Nombre de Empresa</th>
+                                    <th >Análisis</th>
+
+                                </tr>
+                                <tr ng-repeat="todo in listillo | orderBy:propertyName:reverse">
+                                    <td >{{todo.nombreEmpresa}}</td>
+                                    <td >
+                                        <button  class="btn btn-primary" ng-click="showAlert($event,todo,mes,year)" >
+                                            Resumen
+                                        </button>
+
+                                    </td>
+                                </tr>
+
+                                </tbody>
+
+                            </table>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+

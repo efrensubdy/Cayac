@@ -38,6 +38,7 @@ angular.module('myApp', [
   'myApp.aCFinSelec',
   'myApp.accidentes',
   'myApp.gestionDeEstandares',
+  'myApp.gestionDeSeguridadSocial',
   'myApp.login',
   'myApp.login2',
   'myApp.login3',

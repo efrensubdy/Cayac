@@ -1,0 +1,45 @@
+<md-dialog id="attribute-dialog" aria-label="Cumplidos">
+    <form>
+        <md-toolbar>
+            <div class="md-toolbar-tools">
+                <h1>Detalle de Indicadores</h1>
+                <span flex></span>
+                <md-button class="md-icon-button" ng-click="cancel()">
+                    <md-icon md-font-library="material-icons">highlight_off</md-icon>
+                </md-button>
+            </div>
+        </md-toolbar>
+        <md-dialog-content>
+            <md-tabs md-dynamic-height md-border-bottom>
+                <md-tab label="Datos">
+                    <md-content class="md-padding">
+                        <div class="md-dialog-content">
+
+                            <table class="table table-bordered table-hover table-condensed">
+                                <tbody>
+                                <tr >
+                                    <th >fecha de Registro</th>
+                                    <th >seguridad Social</th>
+                                    <th>Personal</th>
+
+                                </tr>
+                                <tr ng-repeat="todo in listadoSeguridad | orderBy:propertyName:reverse">
+                                    <td >{{todo.fechaDeSubida}}</td>
+                                    <td >
+                                        <div  class="w3-col" style="width:50px"><a href="{{todo.seguridadSocial}}" download><i class="w3-xxlarge fa fa-check-square"></i></a></div>
+
+                                    </td>
+                                    <td>
+                                        <div  class="w3-col" style="width:50px"><a href="{{todo.personal}}" download><i class="w3-xxlarge fa fa-check-square"></i></a></div>
+                                    </td>
+                                </tr>
+
+                                </tbody>
+                            </table>
+                        </div>
+                    </md-content>
+                </md-tab>
+            </md-tabs>
+        </md-dialog-content>
+    </form>
+</md-dialog>
