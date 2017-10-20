@@ -9,7 +9,7 @@ angular.module('myApp.seguridadSocial', ['ngRoute'])
   });
 }])
 
-.controller('seguridadSocialCtrl', ['$mdDialog','$timeout', '$q', '$scope','$log','$rootScope','$localStorage','$sessionStorage','contratoUpload',function($mdDialog,$timeout, $q, $scope,$log,$rootScope,$localStorage,$sessionStorage,contratoUpload) {
+.controller('seguridadSocialCtrl', ['$mdDialog','$timeout', '$q', '$scope','$log','$rootScope','$localStorage','$sessionStorage','contratoUpload','sPorContra',function($mdDialog,$timeout, $q, $scope,$log,$rootScope,$localStorage,$sessionStorage,contratoUpload,sPorContra) {
 $scope.opciones=[
  { id: 1, name: 'REGISTRAR SEGURIDAD SOCIAL'},
  { id: 2, name: 'CONSULTAR SEGURIDAD SOCIAL '},
@@ -32,6 +32,26 @@ $scope.meses=[
  { id: 12, name: 'DICIEMBRE'},
 
             ];
+$scope.years=[
+     { id: 10, name: 2009},
+     { id: 11, name: 2010},
+     { id: 12, name: 2011},
+     { id: 13, name: 2012},
+     { id: 14, name: 2013},
+     { id: 15, name: 2014},
+     { id: 16, name: 2015},
+     { id: 17, name: 2016},
+     { id: 18, name: 2017},
+     { id: 19, name: 2018},
+     { id: 20, name: 2019},
+     { id: 21, name: 2020},
+     { id: 22, name: 2021},
+     { id: 23, name: 2022},
+     { id: 24, name: 2023},
+     { id: 25, name: 2024},
+     { id: 26, name: 2026},
+                ];
+
  $scope.simple= function(item){
        switch(item.id){
             case 1:
@@ -41,18 +61,19 @@ $scope.meses=[
             case 2:
             $scope.banderaMes= false;
             $scope.bandera2=true;
+            $scope.tablaSeguridadSocial=sPorContra.query({idContratista:$localStorage.userLogeado.idContratista});
             break;
        }
 
  }
-$scope.subirArchivo = function(ev,file,file2,mes,textArea){
+$scope.subirArchivo = function(ev,file,file2,mes,textArea,year){
     console.log(file);
     console.log(mes);
     console.log(file2);
     console.log(textArea);
-     if("undefined" !== typeof file && "undefined" !== typeof file2 && "undefined" !== typeof mes && "undefined" !== typeof textArea){
-    //var uploadUrl = 'http://localhost:8080/app/seguridadSocial/'+ $localStorage.userLogeado.idContratista + "/"+ $localStorage.userLogeado.idContratante +  "/"+ mes.name +  "/"+ textArea;
-    var uploadUrl = 'http://ec2-35-163-21-208.us-west-2.compute.amazonaws.com:8080/app/seguridadSocial/'+ $localStorage.userLogeado.idContratista + "/"+ $localStorage.userLogeado.idContratante +  "/"+ mes.name +  "/"+ textArea;
+     if("undefined" !== typeof file && "undefined" !== typeof file2 && "undefined" !== typeof mes && "undefined" !== typeof textArea && "undefined" !== typeof year ){
+    //var uploadUrl = 'http://localhost:8080/app/seguridadSocial/'+ $localStorage.userLogeado.idContratista + "/"+ $localStorage.userLogeado.idContratante +  "/"+ mes.name +  "/"+ textArea +  "/"+ year.name;
+    var uploadUrl = 'http://ec2-35-163-21-208.us-west-2.compute.amazonaws.com:8080/app/seguridadSocial/'+ $localStorage.userLogeado.idContratista + "/"+ $localStorage.userLogeado.idContratante +  "/"+ mes.name +  "/"+ textArea +  "/"+ year;
     $scope.list=[];
     $scope.list.push(file);
     $scope.list.push(file2);

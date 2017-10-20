@@ -14,7 +14,17 @@ public int idContratante;
 public List<File> archivos;
 public String seguridadSocial;
 public String personal;
+
 public String cambios;
+public int year;
+
+    public int getYear() {
+        return year;
+    }
+
+    public void setYear(int year) {
+        this.year = year;
+    }
 
     public int getId() {
         return id;

@@ -1,5 +1,6 @@
 package com.example.DB;
 
+import com.example.Models.ARL;
 import com.example.Models.Conexion;
 import com.example.Models.SeguridadSocial;
 import org.apache.commons.io.FileUtils;
@@ -12,6 +13,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Date;
+import java.util.LinkedList;
+import java.util.List;
 
 /**
  * Created by HSEQ on 28/09/2017.
@@ -51,7 +54,7 @@ public class SeguridadSocialBD {
          java.sql.Date date = new java.sql.Date(utilDate.getTime());
          String fileType = getFileExtension(seguridadSocial.getArchivos().get(0));
          String fileType2= getFileExtension(seguridadSocial.getArchivos().get(1));
-         String sql = "INSERT INTO seguridadsocial (mes,fechaDeSubida,seguridadSocial,idContratista,idContratante,personal,cambios,tipo1,tipo2) VALUES(?,?,?,?,?,?,?,?,?)";
+         String sql = "INSERT INTO seguridadsocial (mes,fechaDeSubida,seguridadSocial,idContratista,idContratante,personal,cambios,tipo1,tipo2,year) VALUES(?,?,?,?,?,?,?,?,?,?)";
          Connection con =  Conexion.conection();
          seguridadSocial.setPersonal("Repository/Contratista/"+seguridadSocial.getIdContratista()+"/dinamico/"+seguridadSocial.getMes()+"personal" +"."+fileType2);
          seguridadSocial.setSeguridadSocial("Repository/Contratista/"+seguridadSocial.getIdContratista()+"/dinamico/"+seguridadSocial.getMes()+"SS" +"."+fileType);
@@ -73,6 +76,7 @@ public class SeguridadSocialBD {
          ps.setString(7,seguridadSocial.getCambios());
          ps.setString(8,fileType);
          ps.setString(9,fileType2);
+         ps.setInt(10,seguridadSocial.getYear());
          ps.execute();
          ps.close();
          con.close();
@@ -110,10 +114,35 @@ public class SeguridadSocialBD {
 
 
  }
+ public List<SeguridadSocial> traerSeguridadSocial(int idContratista)throws SQLException,ClassNotFoundException{
+        List<SeguridadSocial>seguridadSocialList=new LinkedList<>();
+     String sql ="SELECT * FROM  seguridadsocial where idContratista = ?";
+     PreparedStatement ps = Conexion.conection().prepareStatement(sql);
+     ps.setInt(1,idContratista);
+     ResultSet rs = ps.executeQuery();
+     while(rs.next()){
+         SeguridadSocial seguridadSocial =new SeguridadSocial();
+         seguridadSocial.setId(rs.getInt("id"));
+         seguridadSocial.setMes(rs.getString("mes"));
+         seguridadSocial.setFechaDeSubida(rs.getDate("fechaDeSubida"));
+         seguridadSocial.setSeguridadSocial(rs.getString("seguridadSocial"));
+         seguridadSocial.setIdContratista(rs.getInt("idContratista"));
+         seguridadSocial.setIdContratante(rs.getInt("idContratante"));
+         seguridadSocial.setPersonal(rs.getString("personal"));
+         seguridadSocial.setCambios(rs.getString("cambios"));
+         seguridadSocial.setYear(rs.getInt("year"));
+          seguridadSocialList.add(seguridadSocial);
+     }
+     ps.close();
+     return seguridadSocialList;
+ }
+
+
     private  String getFileExtension(File fullName) {
         String fileName = fullName.getName();
         int dotIndex = fileName.lastIndexOf('.');
         return (dotIndex == -1) ? "" : fileName.substring(dotIndex + 1);
     }
+
 
 }

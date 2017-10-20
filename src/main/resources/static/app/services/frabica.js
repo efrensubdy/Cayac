@@ -140,6 +140,10 @@ angular.module('services.listFactory', ['ngRoute','ngResource'])
                                                           return $resource('/app/indicador/sinRegistro/:idContratante/:mes/:year')
 
                                                                 })
+           .factory('sPorContra', function($resource) {
+                                                                     return $resource('/app/seguridadSocial/segContra/:idContratista')
+
+                                                                           })
          //Fabrica que trae todos los contratos pertencientes al contratante
          .factory('contratos', function($resource) {
                        return $resource('/app/contratos/:idContratante');

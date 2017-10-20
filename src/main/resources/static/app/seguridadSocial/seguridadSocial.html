@@ -17,8 +17,15 @@
                     </div>
                     <div class="row" ng-show="banderaMes">
                         <br>
-                        <div class="col-sm-12">
-                            <p>ESCOJA EL MES SOBRE EL CUAL SUBIRA LA SEGURIDAD SOCIAL</p>
+                        <div class="col-sm-6">
+                            <p class="texto">AÑO REPORTADO</p>
+                            <select class="form-control" ng-model="year" data-placeholder="seleccione el mes">
+                                <option ng-value="todo" ng-repeat="todo in years">{{todo.name}}</option>
+
+                            </select>
+                        </div>
+                        <div class="col-sm-6">
+                            <p class="texto">PERIODO REPORTADO</p>
                             <select class="form-control" ng-model="mes" data-placeholder="seleccione el mes" >
                                 <option ng-value="todo" ng-repeat="todo in meses">{{todo.name}}</option>
                             </select>
@@ -45,10 +52,34 @@
                                 <br>
                             </div>
                         </div>
-                        <button type="button" class="btn btn-primary align-middle" ng-click="subirArchivo($event,myDoc,myDoc2,mes,textArea)" ng-model="tablita">Subir</button>
+                        <button type="button" class="btn btn-primary align-middle" ng-click="subirArchivo($event,myDoc,myDoc2,mes,textArea,year)" ng-model="tablita">Subir</button>
                     </div>
                     <div class="row" ng-show="bandera2">
                         <label class="titulos">CONSULTE SUS SEGURIDADES SOCIALES</label>
+                        <br>
+                        <div class="table-responsive">
+                            <table class="table table-bordered table-hover table-condensed">
+                                <tbody>
+                                <tr >
+                                    <th >fecha de Registro</th>
+                                    <th >seguridad Social</th>
+                                    <th>Personal</th>
+
+                                </tr>
+                                <tr ng-repeat="todo in tablaSeguridadSocial | orderBy:propertyName:reverse">
+                                    <td >{{todo.fechaDeSubida}}</td>
+                                    <td >
+                                        <div  class="w3-col" style="width:50px"><a href="{{todo.seguridadSocial}}" download><i class="w3-xxlarge fa fa-check-square"></i></a></div>
+
+                                    </td>
+                                    <td>
+                                        <div  class="w3-col" style="width:50px"><a href="{{todo.personal}}" download><i class="w3-xxlarge fa fa-check-square"></i></a></div>
+                                    </td>
+                                </tr>
+
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
                 </div>
             </div>

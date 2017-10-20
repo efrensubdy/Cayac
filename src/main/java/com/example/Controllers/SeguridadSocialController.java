@@ -33,8 +33,8 @@ public class SeguridadSocialController {
     @Autowired
     public ManejoDeSeguridadSocial manejoDeSeguridadSocial;
 
-    @RequestMapping(path = "/{idContratista}/{idContratante}/{mes}/{cambios}",method = RequestMethod.POST)
-    public ResponseEntity<?> InsertarImagen(@PathVariable Integer idContratista, @PathVariable Integer idContratante,@PathVariable String mes,@PathVariable String cambios
+    @RequestMapping(path = "/{idContratista}/{idContratante}/{mes}/{cambios}/{year}",method = RequestMethod.POST)
+    public ResponseEntity<?> InsertarImagen(@PathVariable Integer idContratista, @PathVariable Integer idContratante,@PathVariable String mes,@PathVariable String cambios,@PathVariable int year
             , MultipartHttpServletRequest request){
 
         ResponseEntity a;
@@ -48,6 +48,7 @@ public class SeguridadSocialController {
             seguridadSocial.setIdContratante(idContratante);
             seguridadSocial.setMes(mes);
             seguridadSocial.setCambios(cambios);
+            seguridadSocial.setYear(year);
             while(itr.hasNext()) {
                 String uploadedFile = itr.next();
                 MultipartFile file = request.getFile(uploadedFile);
@@ -57,6 +58,20 @@ public class SeguridadSocialController {
             }
             manejoDeSeguridadSocial.agregarSeguridadSocial(seguridadSocial);
             a = new ResponseEntity<>(HttpStatus.ACCEPTED);
+
+        } catch (Exception ex) {
+            Logger.getLogger(Controller.class.getName()).log(Level.SEVERE, null, ex);
+            return new ResponseEntity<>("Error bla bla bla",HttpStatus.NOT_FOUND);
+        }
+        return a;
+    }
+    @RequestMapping(value = "segContra/{idContratista}", method = RequestMethod.GET)
+    public ResponseEntity<?>indicadoresPorContratista(@PathVariable int idContratista){
+
+        ResponseEntity a;
+        try {
+            //obtener datos que se enviarán a través del API
+            a = new ResponseEntity<>(manejoDeSeguridadSocial.traerSeguridadSocialPorContratista(idContratista),HttpStatus.ACCEPTED);
 
         } catch (Exception ex) {
             Logger.getLogger(Controller.class.getName()).log(Level.SEVERE, null, ex);
