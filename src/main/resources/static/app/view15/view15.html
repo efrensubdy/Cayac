@@ -25,7 +25,7 @@
     </div>
     <br>
     <br>
-    <div class="container text-center" ng-show="nombreClick">
+    <div class="row text-center" ng-show="nombreClick">
         <br>
         <br>
         <div class="container">
@@ -47,7 +47,7 @@
         </div>
     </div>
 
-    <div class="container text-center" ng-show="fechaClick">
+    <div class="row text-center" ng-show="fechaClick">
         <br>
         <p class="text-center">
             ESCOJA EL RANGO EN EL CUAL VA MIRAR SUS CONTRATOS
@@ -75,7 +75,7 @@
         <button class="btn btn-primary center-block" type="submit" ng-click="buscar($event,fecha.fechaInicio | date:'yyyy-MM-dd',fecha.fechaFin | date:'yyyy-MM-dd')">buscar</button>
     </div>
     <br>
-    <div class="container align-middle" ng-show="permisoTable">
+    <div class="row align-middle" ng-show="permisoTable">
         <div class="col-xs-11">
          <div class="table-responsive">
         <table class="table table-bordered table-hover table-condensed">
@@ -103,7 +103,7 @@
         </div>
         </div>
     </div>
-<div class="container" ng-show="permisoFecha">
+<div class="row" ng-show="permisoFecha">
     <div class="col-xs-11">
         <div class="table-responsive">
     <table class="table table-bordered table-hover table-condensed">
