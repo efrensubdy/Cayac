@@ -32,7 +32,7 @@
                         <br>
                         <div class="col-sm-12">
                                 <br>
-                                <button class="btn btn-primary center-block" type="submit" ng-click="add($event,contrato,mes,year)">Consultar</button>
+                                <button class="btn btn-primary center-block" type="submit" ng-click="add(contrato)">Consultar</button>
                                 <br>
                         </div>
 
@@ -53,7 +53,9 @@
                                 <tr ng-repeat="todo in listillo | orderBy:propertyName:reverse">
                                     <td >{{todo.nombreEmpresa}}</td>
                                     <td >
-
+                                        <button  class="btn btn-primary" ng-click="showAlert($event,todo,mes,year)" >
+                                            Resumen
+                                        </button>
 
                                     </td>
                                 </tr>
