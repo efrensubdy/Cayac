@@ -1,0 +1,71 @@
+<div>
+    <div  ng-controller="seguridadSocialCtrl as ctrl">
+        <div class="w3-container w3-center">
+            <div class="container align-middle text-center">
+                <div class="row">
+                    <div class="col-xs-9">
+                        <h4 class="titulos"><b>REGISTRO DE AUDITORIA </b></h4>
+                        <p class="texto"><b>EN ESTE ESPACIO PODRÁ REGISTRAR LA AUDITORIA REALIZADA A  SU CONTRATISTA</b></p>
+                        <div class="row">
+                            <div class="col-sm-4">
+                                <input class="form-control" type="text"  placeholder="A que contrato va a hacer la revision" name="contrato" list="contratos" ng-model="contrato">
+                                <datalist id="contratos">
+                                    <select name="contratos" ng-model="select" ng-change="resul()">
+                                        <option value="" disabled selected>Escoja un  contrato de los existentes </option>
+                                        <option ng-repeat="todo in listado"  value="{{todo.idContrato}}" ng-model="selectedOption">{{todo.nombreContrato}}</option>
+                                    </select>
+                                </datalist>
+                            </div>
+                            <div class="col-sm-4">
+                                <select class="form-control" ng-model="mes" data-placeholder="seleccione el mes" ng-change="resul()">
+                                    <option ng-value="todo" ng-repeat="todo in meses">{{todo.name}}</option>
+
+                                </select>
+                            </div>
+                            <div class="col-sm-4">
+                                <select class="form-control" ng-model="year" data-placeholder="seleccione el mes" ng-change="resul()">
+                                    <option ng-value="todo" ng-repeat="todo in years">{{todo.name}}</option>
+
+                                </select>
+                            </div>
+                            <br>
+                            <br>
+                            <div class="col-sm-12">
+                                <br>
+                                <button class="btn btn-primary center-block" type="submit" ng-click="add($event,contrato,year,mes)">Consultar</button>
+                                <br>
+                            </div>
+                        </div>
+                        <div class="row" ng-show="flag">
+                            <label class="titulos">REGISTRE LA AUDITORIA AL CONTRATISTA CORRESPONDIENTE</label>
+                            <br>
+                            <div class="table-responsive">
+                                <table class="table table-bordered table-hover table-condensed">
+                                    <tbody>
+                                    <tr  class="titulos">
+                                        <th >Nombre de Empresa</th>
+                                        <th >Registro de Auditoria</th>
+
+                                    </tr>
+                                    <tr ng-repeat="todo in listillo | orderBy:propertyName:reverse">
+                                        <td >{{todo.nombreEmpresa}}</td>
+                                        <td >
+                                            <label class="texto"><b>El archivo debe ser en pdf y no exceder los 20 mb</b></label>
+                                            <input class="form-control" type="file" file-model="myFile"/></file-model>
+                                            <br>
+                                            <button class="btn btn-primary" ng-click="upload($event,myFile,year,mes,todo)">subir</button>
+                                        </td>
+                                    </tr>
+
+                                    </tbody>
+
+                                </table>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

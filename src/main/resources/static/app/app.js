@@ -39,6 +39,7 @@ angular.module('myApp', [
   'myApp.accidentes',
   'myApp.gestionDeEstandares',
   'myApp.gestionDeSeguridadSocial',
+  'myApp.registroDeAuditoria',
   'myApp.login',
   'myApp.login2',
   'myApp.login3',

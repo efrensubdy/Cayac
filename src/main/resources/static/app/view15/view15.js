@@ -35,15 +35,32 @@ $scope.function1=function(){
 $scope.detalle=function(item){
     detalle(item);
 }
-$scope.buscar=function(a,b){
+$scope.buscar=function(ev,a,b){
+if("undefined" !== typeof a && "undefined" !== typeof b ){
 $scope.listado= fechaContrato.query({fechaInicio:a,fechaFin:b,idContratante:$localStorage.contratanteLogeado.idContratante});
 $scope.permisoFecha=true;
+}
+else{
+     $mdDialog.show(
+                                $mdDialog.alert()
+                                  .parent(angular.element(document.querySelector('#popupContainer')))
+                                  .clickOutsideToClose(true)
+                                  .title('Hubo un error')
+                                  .textContent('alguno de los datos se ecuentra sin escoger.')
+                                  .ariaLabel('Alert Dialog Demo')
+                                  .ok('intente de nuevo!')
+                                  .targetEvent(ev)
+                          );
+
+
+}
 
 }
 
 
- var detalle=function(item){
+ var detalle=function(ev,item){
     console.log(item);
+    if("undefined" !== typeof item){
     //var url = "http://localhost:8080/app/contratos/id/" + item;
     var url = "http://ec2-35-163-21-208.us-west-2.compute.amazonaws.com:8080/app/contratos/id/" + item;
           $http.get(url).then(function(response) {
@@ -51,6 +68,22 @@ $scope.permisoFecha=true;
                    console.log(response.data)
                    return response.data;
                 }).then(p);
+
+    }
+    else{
+        $mdDialog.show(
+                $mdDialog.alert()
+                  .parent(angular.element(document.querySelector('#popupContainer')))
+                  .clickOutsideToClose(true)
+                  .title('Hubo un error')
+                  .textContent('alguno de los datos se ecuentra sin escoger.')
+                  .ariaLabel('Alert Dialog Demo')
+                  .ok('intente de nuevo!')
+                  .targetEvent(ev)
+          );
+
+
+    }
 }
 var p=function(){
         console.log(d);

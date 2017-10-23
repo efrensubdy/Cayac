@@ -19,10 +19,25 @@ angular.module('myApp.view14', ['ngRoute'])
               $scope.reverse = ($scope.propertyName === propertyName) ? !$scope.reverse : false;
               $scope.propertyName = propertyName;
             };
- $scope.add=function(ev){
-
+ $scope.add=function(ev,contrato){
+if("undefined" !== typeof contrato){
  $scope.listado2=pFinales.query({idContratante:$localStorage.contratanteLogeado.idContratante,idContrato:$scope.contrato})
  $scope.flag=true;
+ }
+ else{
+    $mdDialog.show(
+            $mdDialog.alert()
+              .parent(angular.element(document.querySelector('#popupContainer')))
+              .clickOutsideToClose(true)
+              .title('Hubo un error')
+              .textContent('alguno de los datos se ecuentra sin escoger.')
+              .ariaLabel('Alert Dialog Demo')
+              .ok('intente de nuevo!')
+              .targetEvent(ev)
+      );
+
+
+ }
 
  }
 

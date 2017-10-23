@@ -13,10 +13,25 @@ angular.module('myApp.gestionDeAccidentes', ['ngRoute'])
 $scope.flag=false
 $scope.bandera3=false
 $scope.listado=contratosEnEjecucion.query({idContratante:$localStorage.contratanteLogeado.idContratante});
-$scope.add=function(){
+$scope.add=function(ev,contrato){
+                if("undefined" !== typeof contrato){
                 $scope.listillo=finalesDefinitivos.query({idContratante:$localStorage.contratanteLogeado.idContratante,idContrato:$scope.contrato})
                 $scope.flag=true;
                 $scope.bandera3=false;
+                }
+                else{
+                    $mdDialog.show(
+                                            $mdDialog.alert()
+                                              .parent(angular.element(document.querySelector('#popupContainer')))
+                                              .clickOutsideToClose(true)
+                                              .title('Hubo un error')
+                                              .textContent('alguno de los datos se ecuentra sin escoger.')
+                                              .ariaLabel('Alert Dialog Demo')
+                                              .ok('intente de nuevo!')
+                                              .targetEvent(ev)
+                                        );
+
+                }
                 }
 
 $scope.traerAccidentes=function(client){

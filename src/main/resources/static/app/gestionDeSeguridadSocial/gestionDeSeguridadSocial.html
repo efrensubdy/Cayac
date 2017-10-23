@@ -32,7 +32,7 @@
                         <br>
                         <div class="col-sm-12">
                                 <br>
-                                <button class="btn btn-primary center-block" type="submit" ng-click="add(contrato)">Consultar</button>
+                                <button class="btn btn-primary center-block" type="submit" ng-click="add($event,contrato,mes,year)">Consultar</button>
                                 <br>
                         </div>
 
@@ -45,7 +45,7 @@
                         <div class="table-responsive">
                             <table class="table table-bordered table-hover table-condensed">
                                 <tbody>
-                                <tr >
+                                <tr class="titulos">
                                     <th >Nombre de Empresa</th>
                                     <th >Análisis</th>
 
@@ -53,9 +53,7 @@
                                 <tr ng-repeat="todo in listillo | orderBy:propertyName:reverse">
                                     <td >{{todo.nombreEmpresa}}</td>
                                     <td >
-                                        <button  class="btn btn-primary" ng-click="showAlert($event,todo,mes,year)" >
-                                            Resumen
-                                        </button>
+
 
                                     </td>
                                 </tr>

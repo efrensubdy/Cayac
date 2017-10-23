@@ -41,7 +41,7 @@
             </datalist>
 
             <br>
-            <button class="btn btn-primary center-block" type="submit" ng-click="detalle(contrato)">Detalle</button>
+            <button class="btn btn-primary center-block" type="submit" ng-click="detalle($event,contrato)">Detalle</button>
             </div>
         </div>
         </div>
@@ -72,7 +72,7 @@
 
         </div>
         <br>
-        <button class="btn btn-primary center-block" type="submit" ng-click="buscar(fecha.fechaInicio | date:'yyyy-MM-dd',fecha.fechaFin | date:'yyyy-MM-dd')">buscar</button>
+        <button class="btn btn-primary center-block" type="submit" ng-click="buscar($event,fecha.fechaInicio | date:'yyyy-MM-dd',fecha.fechaFin | date:'yyyy-MM-dd')">buscar</button>
     </div>
     <br>
     <div class="container align-middle" ng-show="permisoTable">
