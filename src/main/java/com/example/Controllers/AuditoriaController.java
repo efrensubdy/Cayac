@@ -2,6 +2,8 @@ package com.example.Controllers;
 
 import com.example.Models.Auditoria;
 import com.example.Models.SeguridadSocial;
+import com.example.Services.ManejadorDeAuditoria;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -27,7 +29,8 @@ import java.util.logging.Logger;
 @RestController
 @RequestMapping(value="/app/auditoria")
 public class AuditoriaController {
-
+    @Autowired
+    public ManejadorDeAuditoria manejadorDeAuditoria;
     @RequestMapping(path = "/{idContratista}/{idContratante}/{mes}/{year}",method = RequestMethod.POST)
     public ResponseEntity<?> InsertarImagen(@PathVariable Integer idContratista, @PathVariable Integer idContratante, @PathVariable String mes, @PathVariable int year
             , MultipartHttpServletRequest request){
@@ -47,11 +50,10 @@ public class AuditoriaController {
                 String uploadedFile = itr.next();
                 MultipartFile file = request.getFile(uploadedFile);
                 File fileForDB=convert(file);
-                auditoria.getArchivos().add(fileForDB);
-                System.out.println(fileForDB.getName());
+                auditoria.setFile(fileForDB);
 
             }
-
+            manejadorDeAuditoria.insertarAuditoria(auditoria);
             a = new ResponseEntity<>(HttpStatus.ACCEPTED);
 
         } catch (Exception ex) {

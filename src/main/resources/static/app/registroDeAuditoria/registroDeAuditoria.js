@@ -10,7 +10,25 @@ angular.module('myApp.registroDeAuditoria', ['ngRoute'])
 }])
 
 .controller('registroDeAuditoriaCtrl', ['$timeout', '$q', '$scope','$log','$rootScope','$localStorage','$sessionStorage','contratosEnEjecucion','finalesDefinitivos','$mdDialog','fileUpload',function($timeout, $q, $scope,$log,$rootScope,$localStorage,$sessionStorage,contratosEnEjecucion,finalesDefinitivos,$mdDialog,fileUpload) {
+$scope.opciones=[
+ { id: 1, name: 'REGISTRAR AUDITORIA '},
+ { id: 2, name: 'CONSULTAR AUDITORIA'},
 
+];
+
+$scope.simple= function(item){
+       switch(item.id){
+            case 1:
+                $scope.bandera1=true;
+                $scope.flag2=false;
+            break;
+            case 2:
+               $scope.flag2=true;
+                $scope.bandera1=false;
+            break;
+       }
+
+ }
 
 $scope.meses=[
  { id: 1, name: 'ENERO'},
@@ -48,11 +66,14 @@ $scope.years=[
                 ];
 
 $scope.listado=contratosEnEjecucion.query({idContratante:$localStorage.contratanteLogeado.idContratante});
-$scope.flag=false
+$scope.flag=false;
+$scope.flag2=false;
 $scope.add=function(ev,contrato,year,mes){
+                $scope.flag2=false;
                 if("undefined" !== typeof contrato && "undefined" !== typeof year && "undefined" !== typeof mes){
                 $scope.listillo=finalesDefinitivos.query({idContratante:$localStorage.contratanteLogeado.idContratante,idContrato:contrato})
                 $scope.flag=true;
+
                 }
                 else{
                     $mdDialog.show(
@@ -68,6 +89,10 @@ $scope.add=function(ev,contrato,year,mes){
 
 
                 }
+ }
+ $scope.add2=function(ev,contrato,year,mes){
+
+
  }
  $scope.upload=function(ev,file,year,month,client){
     console.log(file);

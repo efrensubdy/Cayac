@@ -515,6 +515,21 @@ CREATE TABLE `estandaresMinimos` (
   CONSTRAINT `idContratista_Estandares` FOREIGN KEY (`idContratista`) REFERENCES `contratista` (`idContratista`)
 ) ENGINE=INNODB DEFAULT CHARSET=latin1;
 
+CREATE TABLE `auditoria` (
+  `id` INT(11) NOT NULL AUTO_INCREMENT,
+  `auditoria` VARCHAR(500) NOT NULL,
+  `idContratista` INT(11) NOT NULL,
+  `idContratante` INT(11) NOT NULL,
+  `mes` VARCHAR(500) NOT NULL,
+  `year` INT(20) NOT NULL,
+  `date` DATE NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `idContratista_Auditoria` (`idContratista`),
+  KEY `idContratante_Auditoria` (`idContratante`),
+  CONSTRAINT `idContratante_Auditoria` FOREIGN KEY (`idContratante`) REFERENCES `contratante` (`idContratante`),
+  CONSTRAINT `idContratista_Auditoria` FOREIGN KEY (`idContratista`) REFERENCES `contratista` (`idContratista`)
+) ENGINE=INNODB DEFAULT CHARSET=latin1;
+
 
 -- create Admins ---
 
