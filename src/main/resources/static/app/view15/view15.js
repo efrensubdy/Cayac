@@ -32,8 +32,8 @@ $scope.function1=function(){
 
 }
 
-$scope.detalle=function(item){
-    detalle(item);
+$scope.detalle=function(ev,item){
+    detalle(ev,item);
 }
 $scope.buscar=function(ev,a,b){
 if("undefined" !== typeof a && "undefined" !== typeof b ){
