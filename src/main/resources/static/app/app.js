@@ -40,6 +40,7 @@ angular.module('myApp', [
   'myApp.gestionDeEstandares',
   'myApp.gestionDeSeguridadSocial',
   'myApp.registroDeAuditoria',
+  'myApp.auditoria',
   'myApp.login',
   'myApp.login2',
   'myApp.login3',

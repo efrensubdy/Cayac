@@ -1,0 +1,113 @@
+
+
+<div>
+<div  ng-controller="auditoriaCtrl as ctrl">
+    <div class="w3-container w3-center">
+        <div class="container align-middle text-center">
+            <div class="row">
+                <div class="col-xs-9">
+                    <h4 class="titulos"><b>AUDITORIA </b></h4>
+                    <p class="texto"><b>EN ESTE ESPACIO PODRÁ REALIZAR MÚLTIPLES OPERACIONES SOBRE LAS AUDITORIAS </b></p>
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <p >ESCOJA LO QUE QUIERE HACER</p>
+                            <select class="form-control" ng-model="opcion" data-placeholder="seleccione el mes" ng-change="simple(opcion)">
+                                <option ng-value="todo" ng-repeat="todo in opciones">{{todo.name}}</option>
+                            </select>
+                            <br>
+                        </div>
+                    </div>
+                    <div class="row" ng-show="bandera1">
+                        <label class="titulos">REGISTRAR NO CONFORMIDADES</label>
+                        <p class="texto">PRIMERO REVISE SI TIENE UNA AUDITORIA</p>
+                        <div class="col-sm-6">
+                            <p class="titulos">AÑO REPORTADO</p>
+                            <select class="form-control" ng-model="year" data-placeholder="seleccione el mes">
+                                <option ng-value="todo" ng-repeat="todo in years">{{todo.name}}</option>
+
+                            </select>
+                        </div>
+                        <div class="col-sm-6">
+                            <p class="titulos">PERIODO REPORTADO</p>
+                            <select class="form-control" ng-model="mes" data-placeholder="seleccione el mes" >
+                                <option ng-value="todo" ng-repeat="todo in meses">{{todo.name}}</option>
+                            </select>
+                            <br>
+                        </div>
+                        <button type="button" class="btn btn-primary align-middle" ng-click="consultarAuditoria($event,mes,year)" ng-model="tablita">Consultar</button>
+
+                        <br>
+                        <div class="col-sm-12" ng-repeat="todo in tableContra" ng-show="bandera7">
+                            <br>
+                            <div  class="w3-col">
+                                <br>
+                                <div class="row">
+                                    <label class="titulos">AUDITORIA #{{todo.id}} del {{todo.fecha}}</label>
+                                </div>
+                               <div class="row">
+                                <a href="{{todo.auditoria}}" download><i  ng-click="agregarNo(todo,mes,year)" class="fa fa-file-pdf-o" style="font-size:60px;text:titulos"></i></a>
+
+                               </div>
+                                <br>
+                                <br>
+                            </div>
+                            <br>
+                            <br>
+                            <div class="row" ng-show="bandera8">
+                                <br>
+                                <br>
+                                <br>
+                                <label class="texto">ESCRIBA LA NO CONFORMIDAD</label>
+                                <textarea class="form-control texto"  id="comment" ng-model="textArea"></textarea>
+                                <br>
+                                <button type="button" class="btn btn-primary center-block" ng-click="noConfor($event,textArea)" >agregar</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row" ng-show="bandera2">
+                        <br>
+                        <label class="titulos">REGISTRAR CAUSAS</label>
+                    </div>
+                    <div class="row" ng-show="bandera3">
+                        <label class="titulos">REGISTRAR ACCIONES</label>
+                    </div>
+                    <div class="row" ng-show="bandera4">
+                        <label class="titulos">CONSULTAR NO CONFORMIDADES</label>
+                        <br>
+                        <div class="table-responsive">
+                            <table class="table table-bordered table-hover table-condensed">
+                                <tbody>
+                                <tr  class="titulos">
+                                    <th >#</th>
+                                    <th >Descripcion</th>
+                                    <th>Año</th>
+                                    <th>Mes</th>
+
+                                </tr>
+                                <tr ng-repeat="todo in listadoDeNoConformidades">
+                                    <td >{{todo.id}}</td>
+                                    <td >{{todo.noConformidad}}</td>
+                                    <td>{{todo.mes}}</td>
+                                    <td>
+                                     {{todo.year}}
+                                    </td>
+                                </tr>
+                                </tbody>
+
+                            </table>
+
+                        </div>
+                    </div>
+                    <div class="row" ng-show="bandera5">
+                        <label class="titulos">CONSULTAR CAUSAS</label>
+                    </div>
+                    <div class="row" ng-show="bandera6">
+                        <label class="titulos">CONSULTAR ACCIONES</label>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+

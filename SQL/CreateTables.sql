@@ -531,6 +531,21 @@ CREATE TABLE `auditoria` (
 ) ENGINE=INNODB DEFAULT CHARSET=latin1;
 
 
+CREATE TABLE `noConformidad` (
+  `id` INT(11) NOT NULL AUTO_INCREMENT,
+  `noConformidad` VARCHAR(1000) NOT NULL,
+  `idAuditoria` INT(11) NOT NULL,
+  `idContratista` INT(11) NOT NULL,
+  `mes` VARCHAR(50) NOT NULL,
+  `year` INT(50) NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `idContratista` (`idContratista`),
+  KEY `idAuditoria` (`idAuditoria`),
+  CONSTRAINT `idAuditoria` FOREIGN KEY (`idAuditoria`) REFERENCES `auditoria` (`id`),
+  CONSTRAINT `idContratista` FOREIGN KEY (`idContratista`) REFERENCES `contratista` (`idContratista`)
+) ENGINE=INNODB DEFAULT CHARSET=latin1;
+
+
 -- create Admins ---
 
 

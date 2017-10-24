@@ -9,10 +9,10 @@ angular.module('myApp.registroDeAuditoria', ['ngRoute'])
   });
 }])
 
-.controller('registroDeAuditoriaCtrl', ['$timeout', '$q', '$scope','$log','$rootScope','$localStorage','$sessionStorage','contratosEnEjecucion','finalesDefinitivos','$mdDialog','fileUpload',function($timeout, $q, $scope,$log,$rootScope,$localStorage,$sessionStorage,contratosEnEjecucion,finalesDefinitivos,$mdDialog,fileUpload) {
+.controller('registroDeAuditoriaCtrl', ['$timeout', '$q', '$scope','$log','$rootScope','$localStorage','$sessionStorage','contratosEnEjecucion','finalesDefinitivos','$mdDialog','fileUpload','audiPorContra',function($timeout, $q, $scope,$log,$rootScope,$localStorage,$sessionStorage,contratosEnEjecucion,finalesDefinitivos,$mdDialog,fileUpload,audiPorContra) {
 $scope.opciones=[
  { id: 1, name: 'REGISTRAR AUDITORIA '},
- { id: 2, name: 'CONSULTAR AUDITORIA'},
+ { id: 2, name: 'CONSULTAR AUDITORIAS'},
 
 ];
 
@@ -23,8 +23,10 @@ $scope.simple= function(item){
                 $scope.flag2=false;
             break;
             case 2:
-               $scope.flag2=true;
-                $scope.bandera1=false;
+              $scope.flag2=true;
+              $scope.bandera1=false;
+              $scope.listadoAuditorias=audiPorContra.query({idContratante:$localStorage.contratanteLogeado.idContratante})
+
             break;
        }
 

@@ -148,6 +148,15 @@ angular.module('services.listFactory', ['ngRoute','ngResource'])
                                                                      return $resource('/app/seguridadSocial/segContra/:idContratista')
 
                                                                            })
+           .factory('audiPorContra', function($resource) {
+                                  return $resource('/app/auditoria/audi/:idContratante');
+                              })
+           .factory('auditoriaContratis', function($resource) {
+                                             return $resource('/app/auditoria/audi/:idContratista/:mes/:year');
+                                         })
+          .factory('noPorContra', function($resource) {
+                                            return $resource('/app/noConformidad/porContra/:idContratista');
+                                        })
          //Fabrica que trae todos los contratos pertencientes al contratante
          .factory('contratos', function($resource) {
                        return $resource('/app/contratos/:idContratante');
@@ -380,6 +389,9 @@ angular.module('services.listFactory', ['ngRoute','ngResource'])
         .factory('aproba', function($resource) {
                                            return $resource('/app/planDeTrabajo/aprobacion/:id');
                                        })
+         .factory('noConformidad', function($resource) {
+                                                   return $resource('/app/noConformidad/registro/:id');
+                                               })
         .factory('indicador', function($resource) {
                                                    return $resource('/app/indicador/Indicadores/:id');
                                                })

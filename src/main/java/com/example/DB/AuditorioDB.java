@@ -96,12 +96,46 @@ public class AuditorioDB {
         }
 
     }
-    public List<Auditoria>traerAuditoriasPorContratante()throws SQLException,ClassNotFoundException{
+    public List<Auditoria>traerAuditoriasPorContratante(int idContratante)throws SQLException,ClassNotFoundException{
         List<Auditoria>auditoriaList=new LinkedList<>();
-        String sql ="SELECT auditoria.id,auditoria.auditoria,auditoria.idContratista, auditoria.mes,auditoria.year,auditoria.date,contratista.nombreEmpresa FROM auditoria INNER JOIN contratista ON auditoria.idContratista=contratista.idContratista WHERE auditoria.idContratista= ? AND auditoria.mes= ? AND auditoria.year=? AND auditoria.idContratante =?;";
+        String sql ="SELECT auditoria.id,auditoria.auditoria,auditoria.idContratista, auditoria.mes,auditoria.year,auditoria.date,contratista.nombreEmpresa FROM auditoria INNER JOIN contratista ON auditoria.idContratista=contratista.idContratista WHERE auditoria.idContratante =?;";
         PreparedStatement ps = Conexion.conection().prepareStatement(sql);
+        ps.setInt(1,idContratante);
         ResultSet rs = ps.executeQuery();
         while(rs.next()){
+            Auditoria auditoria=new Auditoria();
+            auditoria.setId(rs.getInt("id"));
+            auditoria.setAuditoria(rs.getString("auditoria"));
+            auditoria.setIdContratista(rs.getInt("idContratista"));
+            auditoria.setMes(rs.getString("mes"));
+            auditoria.setYear(rs.getInt("year"));
+            auditoria.setFecha(rs.getDate("date"));
+            auditoria.setNombreEmpresa(rs.getString("nombreEmpresa"));
+            auditoriaList.add(auditoria);
+        }
+        ps.close();
+
+
+        return auditoriaList;
+    }
+    public List<Auditoria>traerAuditoriasPorContratista(int idContratista,String mes,int year)throws SQLException,ClassNotFoundException{
+        List<Auditoria>auditoriaList=new LinkedList<>();
+        String sql ="SELECT auditoria.id,auditoria.auditoria,auditoria.idContratista, auditoria.mes,auditoria.year,auditoria.date,contratista.nombreEmpresa FROM auditoria INNER JOIN contratista ON auditoria.idContratista=contratista.idContratista WHERE auditoria.idContratista =? AND auditoria.mes =? AND auditoria.year =? ;";
+        PreparedStatement ps = Conexion.conection().prepareStatement(sql);
+        ps.setInt(1,idContratista);
+        ps.setString(2,mes);
+        ps.setInt(3,year);
+        ResultSet rs = ps.executeQuery();
+        while(rs.next()){
+            Auditoria auditoria=new Auditoria();
+            auditoria.setId(rs.getInt("id"));
+            auditoria.setAuditoria(rs.getString("auditoria"));
+            auditoria.setIdContratista(rs.getInt("idContratista"));
+            auditoria.setMes(rs.getString("mes"));
+            auditoria.setYear(rs.getInt("year"));
+            auditoria.setFecha(rs.getDate("date"));
+            auditoria.setNombreEmpresa(rs.getString("nombreEmpresa"));
+            auditoriaList.add(auditoria);
         }
         ps.close();
 

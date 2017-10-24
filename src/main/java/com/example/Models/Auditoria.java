@@ -1,6 +1,7 @@
 package com.example.Models;
 
 import java.io.File;
+import java.sql.Date;
 import java.util.List;
 
 /**
@@ -15,6 +16,15 @@ public class Auditoria {
     public String mes;
     public int year;
     public String nombreEmpresa;
+    public Date fecha;
+
+    public Date getFecha() {
+        return fecha;
+    }
+
+    public void setFecha(Date fecha) {
+        this.fecha = fecha;
+    }
 
     public String getNombreEmpresa() {
         return nombreEmpresa;
