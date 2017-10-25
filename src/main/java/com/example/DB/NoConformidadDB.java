@@ -34,7 +34,6 @@ public class NoConformidadDB {
     }
     public List<NoConformidad>traerNoConformidadesPorContratista(int idContratista)throws SQLException,ClassNotFoundException{
         List<NoConformidad>noConformidadList=new LinkedList<>();
-        List<ARL> arls = new LinkedList<>();
         String sql ="SELECT * FROM  noConformidad WHERE idContratista = ?";
         PreparedStatement ps = Conexion.conection().prepareStatement(sql);
         ps.setInt(1,idContratista);

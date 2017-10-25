@@ -157,6 +157,9 @@ angular.module('services.listFactory', ['ngRoute','ngResource'])
           .factory('noPorContra', function($resource) {
                                             return $resource('/app/noConformidad/porContra/:idContratista');
                                         })
+          .factory('caPorContra', function($resource) {
+                                                      return $resource('/app/causa/porContra/:idContratista/:idNoConformidad');
+                                                  })
          //Fabrica que trae todos los contratos pertencientes al contratante
          .factory('contratos', function($resource) {
                        return $resource('/app/contratos/:idContratante');
@@ -392,6 +395,9 @@ angular.module('services.listFactory', ['ngRoute','ngResource'])
          .factory('noConformidad', function($resource) {
                                                    return $resource('/app/noConformidad/registro/:id');
                                                })
+          .factory('causa', function($resource) {
+                                                           return $resource('/app/causa/registro/:id');
+                                                       })
         .factory('indicador', function($resource) {
                                                    return $resource('/app/indicador/Indicadores/:id');
                                                })

@@ -67,6 +67,19 @@
                     <div class="row" ng-show="bandera2">
                         <br>
                         <label class="titulos">REGISTRAR CAUSAS</label>
+                        <p >ESCOJA UNA DE LAS NO CONFORMIDADES DE LO CONTRATRIO NO PODRÁ AGREGAR CAUSAS</p>
+                        <select class="form-control" ng-model="opcion2" data-placeholder="seleccione el mes" ng-change="simple2(opcion2)">
+                            <option ng-value="todo" ng-repeat="todo in listadoDeNoConformidades">{{todo.noConformidad}}</option>
+                        </select>
+                        <br>
+                        <div class="row" ng-show="bandera9">
+                            <br>
+
+                            <label class="texto">ESCRIBA LA CAUSA DE ESTA NO CONFORMIDAD</label>
+                            <textarea class="form-control texto" ng-model="text"></textarea>
+                            <br>
+                            <button type="button" class="btn btn-primary center-block" ng-click="causa($event,text)" >agregar</button>
+                        </div>
                     </div>
                     <div class="row" ng-show="bandera3">
                         <label class="titulos">REGISTRAR ACCIONES</label>
@@ -80,8 +93,8 @@
                                 <tr  class="titulos">
                                     <th >#</th>
                                     <th >Descripcion</th>
-                                    <th>Año</th>
                                     <th>Mes</th>
+                                    <th>Año</th>
 
                                 </tr>
                                 <tr ng-repeat="todo in listadoDeNoConformidades">
@@ -100,6 +113,23 @@
                     </div>
                     <div class="row" ng-show="bandera5">
                         <label class="titulos">CONSULTAR CAUSAS</label>
+                        <p >ESCOJA UNA DE LAS NO CONFORMIDADES DE LO CONTRATRIO NO PODRÁ AGREGAR CAUSAS</p>
+                        <select class="form-control" ng-model="opcion3" data-placeholder="seleccione el mes" ng-change="simple3(opcion3)">
+                            <option ng-value="todo" ng-repeat="todo in listadoDeNoConformidades">{{todo.noConformidad}}</option>
+                        </select>
+                        <br>
+                        <div class="table-responsive" ng-show="bandera10">
+                            <table class="table table-bordered table-hover table-condensed">
+                                <tbody>
+                                <tr  class="titulos">
+                                    <th >Causa</th>
+                                </tr>
+                                <tr ng-repeat="todo in tablaDeCausas">
+                                    <td >{{todo.causa}}</td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
                     <div class="row" ng-show="bandera6">
                         <label class="titulos">CONSULTAR ACCIONES</label>

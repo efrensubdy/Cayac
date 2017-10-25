@@ -9,7 +9,7 @@ angular.module('myApp.auditoria', ['ngRoute'])
   });
 }])
 
-.controller('auditoriaCtrl', ['$timeout', '$q', '$scope','$log','$rootScope','$localStorage','$sessionStorage','$mdDialog','auditoriaContratis','noConformidad','noPorContra',function($timeout, $q, $scope,$log,$rootScope,$localStorage,$sessionStorage,$mdDialog,auditoriaContratis,noConformidad,noPorContra) {
+.controller('auditoriaCtrl', ['$timeout', '$q', '$scope','$log','$rootScope','$localStorage','$sessionStorage','$mdDialog','auditoriaContratis','noConformidad','noPorContra','causa','caPorContra',function($timeout, $q, $scope,$log,$rootScope,$localStorage,$sessionStorage,$mdDialog,auditoriaContratis,noConformidad,noPorContra,causa,caPorContra) {
 
 $scope.bandera1=false;
 $scope.bandera2=false;
@@ -19,6 +19,7 @@ $scope.bandera5=false;
 $scope.bandera6=false;
 $scope.bandera7=false;
 $rootScope.bandera8=false;
+$rootScope.bandera9=false;
 
 $scope.opciones=[
  { id: 1, name: 'REGISTRAR NO CONFORMIDADES'},
@@ -87,7 +88,7 @@ $scope.simple= function(item){
             $scope.bandera6=false;
             $scope.bandera7=false;
             $rootScope.bandera8=false;
-
+            $scope.listadoDeNoConformidades=noPorContra.query({idContratista:$localStorage.userLogeado.idContratista})
             break;
             case 3:
             $scope.bandera1=false;
@@ -109,7 +110,6 @@ $scope.simple= function(item){
             $scope.bandera6=false;
             $scope.bandera7=false;
             $rootScope.bandera8=false;
-            $scope.listadoDeNoConformidades=noPorContra.query({idContratista:$localStorage.userLogeado.idContratista})
 
             break;
             case 5:
@@ -121,7 +121,7 @@ $scope.simple= function(item){
             $scope.bandera6=false;
             $scope.bandera7=false;
             $rootScope.bandera8=false;
-
+            $scope.listadoDeNoConformidades=noPorContra.query({idContratista:$localStorage.userLogeado.idContratista});
             break;
             case 6:
             $scope.bandera1=false;
@@ -136,6 +136,57 @@ $scope.simple= function(item){
        }
 
  }
+ $scope.simple2= function(item){
+ console.log(item);
+ $rootScope.noConformidadActual=item;
+ $rootScope.bandera9=true;
+
+ }
+ $scope.simple3=function(item){
+ console.log(item);
+ if("undefined" !== typeof item){
+ $rootScope.bandera10=true;
+ $scope.tablaDeCausas=caPorContra.query({idContratista:$localStorage.userLogeado.idContratista,idNoConformidad:item.id})
+ }
+
+ }
+ $scope.causa=function(ev,item){
+ console.log(item);
+    if("undefined" !== typeof item){
+        var object ={idContratista:$localStorage.userLogeado.idContratista,causa:item,idNoConformidad:$rootScope.noConformidadActual.id}
+        causa.save(object);
+        $mdDialog.show({
+                              //Controlador del mensajes con operaciones definido en la parte de abajo
+                              controller: DialogController,
+                               //permite la comunicacion con el html que despliega el boton requisitos
+                               templateUrl: 'test/mensajeDeca.html',
+                               parent: angular.element(document.body),
+                               targetEvent: ev,
+                               clickOutsideToClose:true,
+                               fullscreen: $scope.customFullscreen // Only for -xs, -sm breakpoints.
+                  })
+
+     }
+    else{
+        $mdDialog.show(
+                            $mdDialog.alert()
+                            .parent(angular.element(document.querySelector('#popupContainer')))
+                            .clickOutsideToClose(true)
+                            .title('Algún dato quedo mal registrado')
+                            .textContent('Recuerde llenar todos los campos.')
+                            .ariaLabel('Alert Dialog Demo')
+                            .ok('intente de nuevo!')
+                            .targetEvent(ev)
+                        );
+
+
+    }
+ $rootScope.text='';
+
+
+
+ }
+
  $scope.consultarAuditoria=function(ev,mes,year){
     if("undefined" !== typeof mes && "undefined" !== typeof year){
         $mdDialog.show(
@@ -222,12 +273,17 @@ $scope.simple= function(item){
 
                           };
                           //funcion para cerral el mensaje
-                $scope.cancel = function() {
+       $scope.cancel = function() {
                             $mdDialog.cancel();
                             $rootScope.bandera8=false;
                             
                           };
 
+        $scope.cancel2 = function() {
+                                   $mdDialog.cancel();
+                                   $rootScope.bandera9=false;
+
+                                 };
 
 
  }
