@@ -22,6 +22,7 @@ $scope.bandera6=false;
 $scope.bandera7=false;
 $rootScope.bandera8=false;
 $rootScope.bandera9=false;
+$rootScope.bandera10=false;
 $scope.bandera11=false;
 
 $scope.opciones=[
@@ -84,6 +85,7 @@ $scope.simple= function(item){
               $scope.take2=false;
               $scope.take3=false;
               $rootScope.bandera9=false;
+              $rootScope.bandera10=false;
               $scope.bandera11=false;
             break;
             case 2:
@@ -96,6 +98,7 @@ $scope.simple= function(item){
             $scope.bandera7=false;
             $rootScope.bandera8=false;
             $rootScope.bandera9=false;
+            $rootScope.bandera10=false;
             $scope.bandera11=false;
             $scope.listadoDeNoConformidades=noPorContra.query({idContratista:$localStorage.userLogeado.idContratista})
             $scope.take=false;
@@ -116,6 +119,7 @@ $scope.simple= function(item){
             $scope.take2=false;
             $scope.take3=false;
             $rootScope.bandera9=false;
+            $rootScope.bandera10=false;
             $scope.bandera11=false;
             $scope.listadoDeNoConformidades=noPorContra.query({idContratista:$localStorage.userLogeado.idContratista})
 
@@ -134,6 +138,7 @@ $scope.simple= function(item){
             $scope.take2=false;
             $scope.take3=false;
             $rootScope.bandera9=false;
+            $rootScope.bandera10=false;
             $scope.bandera11=false;
 
             break;
@@ -150,6 +155,7 @@ $scope.simple= function(item){
             $scope.take2=false;
             $scope.take3=false;
             $rootScope.bandera9=false;
+            $rootScope.bandera10=false;
             $scope.bandera11=false;
             $scope.listadoDeNoConformidades=noPorContra.query({idContratista:$localStorage.userLogeado.idContratista});
             break;
@@ -166,6 +172,7 @@ $scope.simple= function(item){
             $scope.take2=false;
             $scope.take3=false;
             $rootScope.bandera9=false;
+            $rootScope.bandera10=false;
             $scope.bandera11=false;
             $scope.listadoDeNoConformidades=noPorContra.query({idContratista:$localStorage.userLogeado.idContratista});
             break;
