@@ -1,6 +1,6 @@
 package com.example.DB;
 
-import com.example.Models.ARL;
+
 import com.example.Models.Conexion;
 import com.example.Models.NoConformidad;
 import org.springframework.stereotype.Service;

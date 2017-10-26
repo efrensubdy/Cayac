@@ -1,11 +1,9 @@
 package com.example.DB;
 
-import com.example.Models.ARL;
+
 import com.example.Models.Causa;
 import com.example.Models.Conexion;
-import com.example.Models.NoConformidad;
 import org.springframework.stereotype.Service;
-
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -42,6 +40,7 @@ public class CausaDB {
         ResultSet rs = ps.executeQuery();
         while(rs.next()){
            Causa causa=new Causa();
+           causa.setId(rs.getInt("id"));
            causa.setCausa(rs.getString("causa"));
            causa.setIdContratista(rs.getInt("idContratista"));
            causa.setIdNoConformidad(rs.getInt("idNoConformidad"));

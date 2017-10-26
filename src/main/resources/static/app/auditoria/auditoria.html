@@ -67,7 +67,7 @@
                     <div class="row" ng-show="bandera2">
                         <br>
                         <label class="titulos">REGISTRAR CAUSAS</label>
-                        <p >ESCOJA UNA DE LAS NO CONFORMIDADES DE LO CONTRATRIO NO PODRÁ AGREGAR CAUSAS</p>
+                        <p  class="texto">ESCOJA UNA DE LAS NO CONFORMIDADES DE LO CONTRATRIO NO PODRÁ AGREGAR CAUSAS</p>
                         <select class="form-control" ng-model="opcion2" data-placeholder="seleccione el mes" ng-change="simple2(opcion2)">
                             <option ng-value="todo" ng-repeat="todo in listadoDeNoConformidades">{{todo.noConformidad}}</option>
                         </select>
@@ -83,6 +83,37 @@
                     </div>
                     <div class="row" ng-show="bandera3">
                         <label class="titulos">REGISTRAR ACCIONES</label>
+
+                        <p  class="texto">ESCOJA UNA DE LAS NO CONFORMIDADES DE LO CONTRATRIO NO SE  DESPLEGARÁN LAS CAUSAS</p>
+                        <select class="form-control" ng-model="opcion4" data-placeholder="seleccione el mes" ng-change="simple4(opcion4)">
+                            <option ng-value="todo" ng-repeat="todo in listadoDeNoConformidades">{{todo.noConformidad}}</option>
+                        </select>
+                        <br>
+                        <div ng-show="take">
+                        <p  class="texto">ESCOJA LA CAUSA QUE SE VERÁ AFECTADA CON LA ACCIÓN</p>
+                        <select class="form-control" ng-model="opcion5" data-placeholder="seleccione el mes" ng-change="simple5(opcion5)">
+                            <option ng-value="todo" ng-repeat="todo in tablaDeCausas">{{todo.causa}}</option>
+                        </select>
+                        </div>
+                        <br>
+                        <div ng-show="take2">
+                            <div class="col-sm-6">
+                                <label class="titulos">NOMBRE DE LA ACCIÓN</label>
+                                <input type="text" class="form-control" ng-model="nombreAccion">
+                            </div>
+                            <div class="col-sm-6">
+                                <label class="titulos">REGISTRO DE LA ACCIÓN</label>
+                                <input class="form-control" type="file" file-model="myFile"/></file-model>
+                            </div>
+                            <br>
+                            <div class="col-sm-12">
+                                <br>
+                                <button type="button" class="btn btn-primary center-block" ng-click="salvarAccion(opcion5,nombreAccion,myFile,$event)" >agregar</button>
+                            </div>
+
+
+                        </div>
+
                     </div>
                     <div class="row" ng-show="bandera4">
                         <label class="titulos">CONSULTAR NO CONFORMIDADES</label>
@@ -133,6 +164,38 @@
                     </div>
                     <div class="row" ng-show="bandera6">
                         <label class="titulos">CONSULTAR ACCIONES</label>
+                        <p  class="texto">ESCOJA UNA DE LAS NO CONFORMIDADES PARA DESPLEGAR LAS CAUSAS</p>
+                        <select class="form-control" ng-model="opcion6" data-placeholder="seleccione el mes" ng-change="simple6(opcion6)">
+                            <option ng-value="todo" ng-repeat="todo in listadoDeNoConformidades">{{todo.noConformidad}}</option>
+                        </select>
+                        <br>
+                        <div ng-show="take3">
+                            <p  class="texto">ESCOJA LA CAUSA SOBRE LAS CUALES CONSULTARA  LAS ACCIONES</p>
+                            <select class="form-control" ng-model="opcion7" data-placeholder="seleccione el mes" ng-change="simple7(opcion7)">
+                                <option ng-value="todo" ng-repeat="todo in tablaDeCausas">{{todo.causa}}</option>
+                            </select>
+                        </div>
+                        <br>
+
+                        <div class="table-responsive" ng-show="bandera11">
+                            <table class="table table-bordered table-hover table-condensed">
+                                <tbody>
+                                <tr  class="titulos">
+                                    <th >id</th>
+                                    <th>Nombre</th>
+                                    <th>Fecha</th>
+                                    <th>Registro</th>
+                                </tr>
+                                <tr ng-repeat="todo in tableAcciones">
+                                    <td >{{todo.id}}</td>
+                                    <td>{{todo.nombre}}</td>
+                                    <td>{{todo.date}}</td>
+                                    <td> <div  class="w3-col" style="width:50px"><a href="{{todo.registro2}}" download><i class="w3-xxlarge fa fa-check-square"></i></a></div></td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
                     </div>
                 </div>
             </div>

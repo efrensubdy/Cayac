@@ -9,8 +9,10 @@ angular.module('myApp.auditoria', ['ngRoute'])
   });
 }])
 
-.controller('auditoriaCtrl', ['$timeout', '$q', '$scope','$log','$rootScope','$localStorage','$sessionStorage','$mdDialog','auditoriaContratis','noConformidad','noPorContra','causa','caPorContra',function($timeout, $q, $scope,$log,$rootScope,$localStorage,$sessionStorage,$mdDialog,auditoriaContratis,noConformidad,noPorContra,causa,caPorContra) {
-
+.controller('auditoriaCtrl', ['$timeout', '$q', '$scope','$log','$rootScope','$localStorage','$sessionStorage','$mdDialog','auditoriaContratis','noConformidad','noPorContra','causa','caPorContra','fileUpload','accionContra',function($timeout, $q, $scope,$log,$rootScope,$localStorage,$sessionStorage,$mdDialog,auditoriaContratis,noConformidad,noPorContra,causa,caPorContra,fileUpload,accionContra) {
+$scope.take=false;
+$scope.take2=false;
+$scope.take3=false;
 $scope.bandera1=false;
 $scope.bandera2=false;
 $scope.bandera3=false;
@@ -20,6 +22,7 @@ $scope.bandera6=false;
 $scope.bandera7=false;
 $rootScope.bandera8=false;
 $rootScope.bandera9=false;
+$scope.bandera11=false;
 
 $scope.opciones=[
  { id: 1, name: 'REGISTRAR NO CONFORMIDADES'},
@@ -99,6 +102,7 @@ $scope.simple= function(item){
             $scope.bandera6=false;
             $scope.bandera7=false;
             $rootScope.bandera8=false;
+            $scope.listadoDeNoConformidades=noPorContra.query({idContratista:$localStorage.userLogeado.idContratista})
 
             break;
             case 4:
@@ -132,6 +136,7 @@ $scope.simple= function(item){
             $scope.bandera6=true;
             $scope.bandera7=false;
             $rootScope.bandera8=false;
+            $scope.listadoDeNoConformidades=noPorContra.query({idContratista:$localStorage.userLogeado.idContratista});
             break;
        }
 
@@ -150,6 +155,69 @@ $scope.simple= function(item){
  }
 
  }
+ $scope.simple4=function(item){
+
+    $scope.tablaDeCausas=caPorContra.query({idContratista:$localStorage.userLogeado.idContratista,idNoConformidad:item.id})
+    $scope.take=true;
+
+ }
+ $scope.simple5=function(item){
+    $scope.take2=true;
+
+ }
+  $scope.simple6=function(item){
+
+     $scope.tablaDeCausas=caPorContra.query({idContratista:$localStorage.userLogeado.idContratista,idNoConformidad:item.id})
+     $scope.take3=true;
+
+  }
+  $scope.simple7=function(item,item2){
+    $scope.tableAcciones=accionContra.query({idContratista:$localStorage.userLogeado.idContratista,idCausa:item.id})
+    $scope.bandera11=true;
+
+  }
+ $scope.salvarAccion = function(op,accion,file,ev){
+    console.log(op);
+    console.log(file);
+    if("undefined" !== typeof file && "undefined" !== typeof op && "undefined" !== typeof accion ){
+        //var uploadUrl = 'http://localhost:8080/app/accion/'+ $localStorage.userLogeado.idContratista + "/"+ op.id + "/"+ accion;
+        var uploadUrl = 'http://ec2-35-163-21-208.us-west-2.compute.amazonaws.com:8080/app/accion/'+ $localStorage.userLogeado.idContratista + "/"+ op.id + "/"+ accion;
+        console.log(uploadUrl);
+            fileUpload.uploadFileToUrl(file,uploadUrl);
+            $mdDialog.show(
+                                             $mdDialog.alert()
+                                               .parent(angular.element(document.querySelector('#popupContainer')))
+                                               .clickOutsideToClose(true)
+                                               .title('Accion registrada')
+                                               .textContent('Recuerde subir todas las acciones pertinentes.')
+                                               .ariaLabel('Alert Dialog Demo')
+                                               .ok('ok!')
+                                               .targetEvent(ev)
+                                           );
+
+
+
+    }
+    else{
+         $mdDialog.show(
+                        $mdDialog.alert()
+                        .parent(angular.element(document.querySelector('#popupContainer')))
+                        .clickOutsideToClose(true)
+                        .title('Algún dato quedo mal registrado')
+                        .textContent('Recuerde llenar todos los campos.')
+                        .ariaLabel('Alert Dialog Demo')
+                        .ok('intente de nuevo!')
+                        .targetEvent(ev)
+                    );
+
+
+    }
+
+
+
+ }
+
+
  $scope.causa=function(ev,item){
  console.log(item);
     if("undefined" !== typeof item){
@@ -289,4 +357,24 @@ $scope.simple= function(item){
  }
 
 
-}]);
+}])
+.directive('fileModel', ['$parse', function ($parse) {
+      return {
+             restrict: 'A',
+             link: function(scope, element, attrs) {
+                 var model, modelSetter;
+
+                 attrs.$observe('fileModel', function(fileModel){
+                     model = $parse(attrs.fileModel);
+                     modelSetter = model.assign;
+                 });
+
+                 element.bind('change', function(){
+                     scope.$apply(function(){
+                         modelSetter(scope.$parent, element[0].files[0]);
+                     });
+                 });
+             }
+         };
+
+ }]);
