@@ -80,7 +80,11 @@ $scope.simple= function(item){
               $scope.bandera6=false;
               $scope.bandera7=false;
               $rootScope.bandera8=false;
-
+              $scope.take=false;
+              $scope.take2=false;
+              $scope.take3=false;
+              $rootScope.bandera9=false;
+              $scope.bandera11=false;
             break;
             case 2:
             $scope.bandera1=false;
@@ -91,7 +95,13 @@ $scope.simple= function(item){
             $scope.bandera6=false;
             $scope.bandera7=false;
             $rootScope.bandera8=false;
+            $rootScope.bandera9=false;
+            $scope.bandera11=false;
             $scope.listadoDeNoConformidades=noPorContra.query({idContratista:$localStorage.userLogeado.idContratista})
+            $scope.take=false;
+            $scope.take2=false;
+            $scope.take3=false;
+
             break;
             case 3:
             $scope.bandera1=false;
@@ -102,7 +112,13 @@ $scope.simple= function(item){
             $scope.bandera6=false;
             $scope.bandera7=false;
             $rootScope.bandera8=false;
+            $scope.take=false;
+            $scope.take2=false;
+            $scope.take3=false;
+            $rootScope.bandera9=false;
+            $scope.bandera11=false;
             $scope.listadoDeNoConformidades=noPorContra.query({idContratista:$localStorage.userLogeado.idContratista})
+
 
             break;
             case 4:
@@ -114,6 +130,11 @@ $scope.simple= function(item){
             $scope.bandera6=false;
             $scope.bandera7=false;
             $rootScope.bandera8=false;
+            $scope.take=false;
+            $scope.take2=false;
+            $scope.take3=false;
+            $rootScope.bandera9=false;
+            $scope.bandera11=false;
 
             break;
             case 5:
@@ -125,6 +146,11 @@ $scope.simple= function(item){
             $scope.bandera6=false;
             $scope.bandera7=false;
             $rootScope.bandera8=false;
+            $scope.take=false;
+            $scope.take2=false;
+            $scope.take3=false;
+            $rootScope.bandera9=false;
+            $scope.bandera11=false;
             $scope.listadoDeNoConformidades=noPorContra.query({idContratista:$localStorage.userLogeado.idContratista});
             break;
             case 6:
@@ -136,6 +162,11 @@ $scope.simple= function(item){
             $scope.bandera6=true;
             $scope.bandera7=false;
             $rootScope.bandera8=false;
+            $scope.take=false;
+            $scope.take2=false;
+            $scope.take3=false;
+            $rootScope.bandera9=false;
+            $scope.bandera11=false;
             $scope.listadoDeNoConformidades=noPorContra.query({idContratista:$localStorage.userLogeado.idContratista});
             break;
        }
@@ -143,8 +174,10 @@ $scope.simple= function(item){
  }
  $scope.simple2= function(item){
  console.log(item);
+ if("undefined" !== typeof item){
  $rootScope.noConformidadActual=item;
  $rootScope.bandera9=true;
+ }
 
  }
  $scope.simple3=function(item){
@@ -156,24 +189,29 @@ $scope.simple= function(item){
 
  }
  $scope.simple4=function(item){
-
+    if("undefined" !== typeof item){
     $scope.tablaDeCausas=caPorContra.query({idContratista:$localStorage.userLogeado.idContratista,idNoConformidad:item.id})
     $scope.take=true;
-
+    }
  }
  $scope.simple5=function(item){
+ if("undefined" !== typeof item){
     $scope.take2=true;
+    }
 
  }
   $scope.simple6=function(item){
-
+    if("undefined" !== typeof item){
      $scope.tablaDeCausas=caPorContra.query({idContratista:$localStorage.userLogeado.idContratista,idNoConformidad:item.id})
      $scope.take3=true;
+     }
 
   }
-  $scope.simple7=function(item,item2){
+  $scope.simple7=function(item){
+    if("undefined" !== typeof item){
     $scope.tableAcciones=accionContra.query({idContratista:$localStorage.userLogeado.idContratista,idCausa:item.id})
     $scope.bandera11=true;
+    }
 
   }
  $scope.salvarAccion = function(op,accion,file,ev){
