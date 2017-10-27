@@ -557,6 +557,20 @@ CREATE TABLE `causa` (
   CONSTRAINT `idContratista_noConformidad` FOREIGN KEY (`idNoConformidad`) REFERENCES `noConformidad` (`id`)
 ) ENGINE=INNODB DEFAULT CHARSET=latin1;
 
+CREATE TABLE `accion` (
+  `id` INT(11) NOT NULL AUTO_INCREMENT,
+  `idContratista` INT(11) NOT NULL,
+  `idCausa` INT(11) NOT NULL,
+  `nombre` VARCHAR(500) NOT NULL,
+  `registro` VARCHAR(500) NOT NULL,
+  `date` DATE NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `idContratista_Accion` (`idContratista`),
+  KEY `idCausa_Causa` (`idCausa`),
+  CONSTRAINT `idCausa_Causa` FOREIGN KEY (`idCausa`) REFERENCES `causa` (`id`),
+  CONSTRAINT `idContratista_Accion` FOREIGN KEY (`idContratista`) REFERENCES `contratista` (`idContratista`)
+) ENGINE=INNODB DEFAULT CHARSET=latin1;
+
 
 -- create Admins ---
 

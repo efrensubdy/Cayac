@@ -410,6 +410,9 @@ angular.module('services.listFactory', ['ngRoute','ngResource'])
         .factory('acciDente', function($resource) {
                                                            return $resource('/app/accidente/acci/:id');
                                                        })
+        .factory('registroDeAccion', function($resource) {
+                                                                   return $resource('/app/accion/Registro/:id');
+                                                               })
         .factory('aprobarIndicador', function($resource) {
                                                            return $resource('/app/indicador/aprobacionIndicadores/:id');
                                                        })

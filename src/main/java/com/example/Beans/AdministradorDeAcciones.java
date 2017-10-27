@@ -11,6 +11,7 @@ import java.util.List;
  */
 public interface AdministradorDeAcciones {
     public void registrarAccion(Accion accion)throws SQLException,ClassNotFoundException,IOException;
+    public void registrarOActualizarSoporte(Accion accion)throws SQLException,ClassNotFoundException,IOException;
     public List<Accion>traerAccionesPorContratista(int idContratista, int idCausa)throws SQLException,ClassNotFoundException;
 
 }

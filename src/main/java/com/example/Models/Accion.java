@@ -13,6 +13,15 @@ public class Accion {
     public int idCausa;
     public Date date;
     public String registro2;
+    public boolean estado;
+
+    public boolean isEstado() {
+        return estado;
+    }
+
+    public void setEstado(boolean estado) {
+        this.estado = estado;
+    }
 
     public String getNombre() {
         return nombre;

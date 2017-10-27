@@ -30,8 +30,8 @@ import java.util.logging.Logger;
 public class AccionController {
     @Autowired
     public ManejadorDeAcciones manejadorDeAcciones;
-    @RequestMapping(path = "/{idContratista}/{idCausa}/{nombre}",method = RequestMethod.POST)
-    public ResponseEntity<?> InsertarImagen(@PathVariable Integer idContratista, @PathVariable Integer idCausa, @PathVariable String nombre
+    @RequestMapping(path = "/{idContratista}/{idCausa}/{id}",method = RequestMethod.POST)
+    public ResponseEntity<?> InsertarImagen(@PathVariable Integer idContratista, @PathVariable Integer idCausa, @PathVariable Integer id
             , MultipartHttpServletRequest request){
 
         ResponseEntity a;
@@ -39,16 +39,16 @@ public class AccionController {
 
             Iterator<String> itr = request.getFileNames();
             Accion accion=new Accion();
+            accion.setId(id);
             accion.setIdContratista(idContratista);
             accion.setIdCausa(idCausa);
-            accion.setNombre(nombre);
             while(itr.hasNext()) {
                 String uploadedFile = itr.next();
                 MultipartFile file = request.getFile(uploadedFile);
                 File fileForDB=convert(file);
                 accion.setRegistro(fileForDB);
             }
-            manejadorDeAcciones.registrarAccion(accion);
+            manejadorDeAcciones.registrarOActualizarSoporte(accion);
             a = new ResponseEntity<>(HttpStatus.ACCEPTED);
 
         } catch (Exception ex) {
@@ -65,6 +65,21 @@ public class AccionController {
             //obtener datos que se enviarán a través del API
             a = new ResponseEntity<>(manejadorDeAcciones.traerAccionesPorContratista(idContratista, idCausa),HttpStatus.ACCEPTED);
 
+        } catch (Exception ex) {
+            Logger.getLogger(Controller.class.getName()).log(Level.SEVERE, null, ex);
+            return new ResponseEntity<>("Error bla bla bla",HttpStatus.NOT_FOUND);
+        }
+        return a;
+    }
+    @RequestMapping(value ="Registro",method = RequestMethod.POST)
+    public ResponseEntity<?> agregarIndicador(@RequestBody Accion accion){
+
+        ResponseEntity a;
+        try {
+            //obtener datos que se enviarán a través del API
+
+            manejadorDeAcciones.registrarAccion(accion);
+            a = new ResponseEntity<>(HttpStatus.ACCEPTED);
         } catch (Exception ex) {
             Logger.getLogger(Controller.class.getName()).log(Level.SEVERE, null, ex);
             return new ResponseEntity<>("Error bla bla bla",HttpStatus.NOT_FOUND);

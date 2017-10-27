@@ -19,6 +19,11 @@ public class ManejadorDeAcciones implements AdministradorDeAcciones {
     public AccionDB accionDB;
     @Override
     public void registrarAccion(Accion accion) throws SQLException, ClassNotFoundException,IOException {
+        accionDB.insertarAccion2(accion);
+    }
+
+    @Override
+    public void registrarOActualizarSoporte(Accion accion) throws SQLException, ClassNotFoundException, IOException {
         accionDB.insertarAccion(accion);
     }
 
