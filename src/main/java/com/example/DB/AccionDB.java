@@ -155,6 +155,46 @@ public class AccionDB {
 
         return accionList;
     }
+    public List<Accion> traerAccionesConRegistro(int idContratista,int idCausa)throws SQLException,ClassNotFoundException{
+        List<Accion>accionList=new LinkedList<>();
+        String sql ="SELECT * FROM accion LEFT JOIN causa ON causa.id = accion.idCausa WHERE accion.idContratista= ? AND accion.idCausa= ? AND accion.registro IS NOT NULL";
+        PreparedStatement ps = Conexion.conection().prepareStatement(sql);
+        ps.setInt(1,idContratista);
+        ps.setInt(2,idCausa);
+        ResultSet rs = ps.executeQuery();
+        while(rs.next()){
+            Accion accion = new Accion();
+            accion.setId(rs.getInt("id"));
+            accion.setIdContratista(rs.getInt("idContratista"));
+            accion.setIdCausa(rs.getInt("idCausa"));
+            accion.setRegistro2(rs.getString("registro"));
+            accion.setNombre(rs.getString("nombre"));
+            accion.setDate(rs.getDate("date"));
+            accionList.add(accion);
+        }
+
+
+        return accionList;
+    }
+    public List<Accion> traerAccionesSinRegistro(int idContratista,int idCausa)throws SQLException,ClassNotFoundException{
+        List<Accion>accionList=new LinkedList<>();
+        String sql ="SELECT * FROM accion LEFT JOIN causa ON causa.id = accion.idCausa WHERE accion.idContratista= ? AND accion.idCausa= ? AND accion.registro IS NULL";
+        PreparedStatement ps = Conexion.conection().prepareStatement(sql);
+        ps.setInt(1,idContratista);
+        ps.setInt(2,idCausa);
+        ResultSet rs = ps.executeQuery();
+        while(rs.next()){
+            Accion accion = new Accion();
+            accion.setId(rs.getInt("id"));
+            accion.setIdContratista(rs.getInt("idContratista"));
+            accion.setIdCausa(rs.getInt("idCausa"));
+            accion.setRegistro2(rs.getString("registro"));
+            accion.setNombre(rs.getString("nombre"));
+            accion.setDate(rs.getDate("date"));
+            accionList.add(accion);
+        }
+        return accionList;
+    }
     private  String getFileExtension(File fullName) {
         String fileName = fullName.getName();
         int dotIndex = fileName.lastIndexOf('.');

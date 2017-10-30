@@ -31,4 +31,14 @@ public class ManejadorDeAcciones implements AdministradorDeAcciones {
     public List<Accion> traerAccionesPorContratista(int idContratista, int idCausa) throws SQLException, ClassNotFoundException {
         return accionDB.traerAccionesPorCausa(idContratista,idCausa);
     }
+
+    @Override
+    public List<Accion> traerAccionesPorContratistaConRegistro(int idContratista, int idCausa) throws SQLException, ClassNotFoundException {
+        return accionDB.traerAccionesConRegistro(idContratista, idCausa);
+    }
+
+    @Override
+    public List<Accion> traerAccionesPorContratistaSinRegistro(int idContratista, int idCausa) throws SQLException, ClassNotFoundException {
+        return accionDB.traerAccionesSinRegistro(idContratista,idCausa);
+    }
 }

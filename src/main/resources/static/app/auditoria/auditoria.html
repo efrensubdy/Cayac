@@ -114,6 +114,8 @@
                         <label class="titulos">CONSULTAR NO CONFORMIDADES</label>
                         <br>
                         <div class="table-responsive">
+                            <p class="titulos">EN LA SIGUIENTE TABLA ENCONTRARÁ LAS NO CONFORMIDADES REGISTRADAS</p>
+                            <br>
                             <table class="table table-bordered table-hover table-condensed">
                                 <tbody>
                                 <tr  class="titulos">
@@ -145,6 +147,8 @@
                         </select>
                         <br>
                         <div class="table-responsive" ng-show="bandera10">
+                            <p class="titulos">EN LA SIGUIENTE TABLA ENCONTRARÁ LAS CAUSAS PERTENECIENTES A LA NO CONFORMIDAD ESCOGIDA</p>
+                            <br>
                             <table class="table table-bordered table-hover table-condensed">
                                 <tbody>
                                 <tr  class="titulos">
@@ -173,6 +177,8 @@
                         <br>
 
                         <div class="table-responsive" ng-show="bandera11">
+                            <p class="titulos">EN LA SIGUIENTE TABLA ENCONTRARÁ LAS ACCIONES PERTENECIENTES A LA CAUSA ESCOGIDA</p>
+                            <br>
                             <table class="table table-bordered table-hover table-condensed">
                                 <tbody>
                                 <tr  class="titulos">
@@ -235,6 +241,45 @@
                                 </tbody>
                             </table>
                         </div>
+                    </div>
+                    <div class="row" ng-show="bandera14">
+                        <label class="titulos">CUMPLIMIENTO DE PROGRAMA </label>
+                        <p  class="texto">ESCOJA UNA DE LAS OPCIONES A CONTINUACIÓN</p>
+                        <select class="form-control" ng-model="opcionC" data-placeholder="seleccione el mes" ng-change="simpleOpCionC(opcionC)">
+                            <option ng-value="todo" ng-repeat="todo in opcionesDeCumplimiento">{{todo.name}}</option>
+                        </select>
+                        <br>
+                        <div class="row" ng-show="c1">
+                            <p  class="texto">ESCOJA UNA DE LAS NO CONFORMIDADES PARA DESPLEGAR LAS CAUSAS</p>
+                            <select class="form-control" ng-model="opcionC1" data-placeholder="seleccione el mes" ng-change="simpleC1(opcionC1)">
+                                <option ng-value="todo" ng-repeat="todo in listadoDeNoConformidades">{{todo.noConformidad}}</option>
+                            </select>
+                            <br>
+                            <div ng-show="takec1">
+                                <p  class="texto">ESCOJA LA CAUSA SOBRE LAS CUALES REGISTRO  LAS ACCIONES</p>
+                                <select class="form-control" ng-model="op10" data-placeholder="seleccione el mes" ng-change="tak(op10)">
+                                    <option ng-value="todo" ng-repeat="todo in tablaDeCausas">{{todo.causa}}</option>
+                                </select>
+                            </div>
+                            <br>
+                            <div class="eq-c titulos" ng-show="indicador">
+                                <i> INDICADOR DE CUMPLIMIENTO DE PLAN DE ACCIÓN  =</i>
+                                <div class="fraction">
+                                    <span class="fup"><i>TOTAL DE ACCIONES PLANTEADAS</i></span>
+                                    <span class="bar">/</span>
+                                    <span class="fdn"><i>TOTAL DE ACCIONES EJECUTADAS</i></span>
+                                </div>
+                                * 100 % = {{(accionConRegistro.length / (accionConRegistro.length + accionSinRegistro.length))* 100 }} %
+                            </div>
+                        </div>
+                        <div class="row" ng-show="c2">
+                            <div class="col-sm-6">
+                            <label class="titulos">INDICADOR DE CIERRE DE NO CONFORMIDADES = TOTAL NO CONFORMIDADES CERRADAS /TOTAL NO CONFORMIDADES  * 100 % = </label>
+                            </div>
+
+                        </div>
+
+
                     </div>
                 </div>
             </div>

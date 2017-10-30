@@ -163,6 +163,12 @@ angular.module('services.listFactory', ['ngRoute','ngResource'])
           .factory('accionContra', function($resource) {
                                                                 return $resource('/app/accion/porContra/:idContratista/:idCausa');
                                                             })
+          .factory('accionConRegistro', function($resource) {
+                                                                          return $resource('/app/accion/conRegistro/:idContratista/:idCausa');
+                                                                      })
+            .factory('accionSinRegistro', function($resource) {
+                                                                          return $resource('/app/accion/sinRegistro/:idContratista/:idCausa');
+                                                                      })
          //Fabrica que trae todos los contratos pertencientes al contratante
          .factory('contratos', function($resource) {
                        return $resource('/app/contratos/:idContratante');

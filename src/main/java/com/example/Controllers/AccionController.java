@@ -71,6 +71,34 @@ public class AccionController {
         }
         return a;
     }
+    @RequestMapping(value = "conRegistro/{idContratista}/{idCausa}", method = RequestMethod.GET)
+    public ResponseEntity<?>obtenerAccionesPorContratistaConRegistro(@PathVariable int idContratista,@PathVariable int idCausa){
+
+        ResponseEntity a;
+        try {
+            //obtener datos que se enviarán a través del API
+            a = new ResponseEntity<>(manejadorDeAcciones.traerAccionesPorContratistaConRegistro(idContratista, idCausa),HttpStatus.ACCEPTED);
+
+        } catch (Exception ex) {
+            Logger.getLogger(Controller.class.getName()).log(Level.SEVERE, null, ex);
+            return new ResponseEntity<>("Error bla bla bla",HttpStatus.NOT_FOUND);
+        }
+        return a;
+    }
+    @RequestMapping(value = "sinRegistro/{idContratista}/{idCausa}", method = RequestMethod.GET)
+    public ResponseEntity<?>obtenerAccionesPorContratistaSinRegistro(@PathVariable int idContratista,@PathVariable int idCausa){
+
+        ResponseEntity a;
+        try {
+            //obtener datos que se enviarán a través del API
+            a = new ResponseEntity<>(manejadorDeAcciones.traerAccionesPorContratistaSinRegistro(idContratista, idCausa),HttpStatus.ACCEPTED);
+
+        } catch (Exception ex) {
+            Logger.getLogger(Controller.class.getName()).log(Level.SEVERE, null, ex);
+            return new ResponseEntity<>("Error bla bla bla",HttpStatus.NOT_FOUND);
+        }
+        return a;
+    }
     @RequestMapping(value ="Registro",method = RequestMethod.POST)
     public ResponseEntity<?> agregarIndicador(@RequestBody Accion accion){
 
