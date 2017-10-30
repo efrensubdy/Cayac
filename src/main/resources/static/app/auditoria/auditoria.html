@@ -265,9 +265,9 @@
                             <div class="eq-c titulos" ng-show="indicador">
                                 <i> INDICADOR DE CUMPLIMIENTO DE PLAN DE ACCIÓN  =</i>
                                 <div class="fraction">
-                                    <span class="fup"><i>TOTAL DE ACCIONES PLANTEADAS</i></span>
+                                    <span class="fup"><i>TOTAL DE ACCIONES EJECUTADAS</i></span>
                                     <span class="bar">/</span>
-                                    <span class="fdn"><i>TOTAL DE ACCIONES EJECUTADAS</i></span>
+                                    <span class="fdn"><i>TOTAL DE ACCIONES  PLANTEADAS</i></span>
                                 </div>
                                 * 100 % = {{(accionConRegistro.length / (accionConRegistro.length + accionSinRegistro.length))* 100 }} %
                                 <br>
@@ -276,8 +276,17 @@
                             </div>
                         </div>
                         <div class="row" ng-show="c2">
-                            <div class="col-sm-6">
-                            <label class="titulos">INDICADOR DE CIERRE DE NO CONFORMIDADES = TOTAL NO CONFORMIDADES CERRADAS /TOTAL NO CONFORMIDADES  * 100 % = </label>
+                            <div class="eq-c titulos">
+                                <i> INDICADOR DE CIERRE DE NO CONFORMIDADES  =</i>
+                                <div class="fraction">
+                                    <span class="fup"><i>TOTAL DE NO CONFORMIDADES CERRADAS</i></span>
+                                    <span class="bar">/</span>
+                                    <span class="fdn"><i>TOTAL DE NO CONFORMIDADES PLANTEADAS</i></span>
+                                </div>
+                                * 100 % = {{(listadoNoConforCerradas.length / listadoDeNoConformidades.length)* 100 }} %
+                                <br>
+                                <br>
+                                <button class="btn btn-primary center-block" ng-click="cerrarNoConformidad(opcionC1)" ng-hide="objeto" ng-show="!objeto">CERRAR LA NO CONFORMIDAD</button>
                             </div>
 
                         </div>

@@ -164,6 +164,29 @@ public class AccionDB {
 
 
     }
+    public List<Cierre>actividadesCerradas(int idContratista)throws SQLException,ClassNotFoundException{
+
+        List<Cierre> cierreList = new LinkedList<>();
+        String sql ="SELECT * FROM  cierreDeNoConfor where idContratista = ?";
+        PreparedStatement ps = Conexion.conection().prepareStatement(sql);
+        ps.setInt(1,idContratista);
+        ResultSet rs = ps.executeQuery();
+
+        while(rs.next()){
+            Cierre cierre = new Cierre();
+            cierre.setId(rs.getInt("id"));
+            cierre.setIdNoConformidad(rs.getInt("idNoConformidad"));
+            cierre.setIdContratista(rs.getInt("idContratista"));
+            cierreList.add(cierre);
+
+        }
+        ps.close();
+
+        return cierreList;
+
+
+
+    }
     public List<Accion> traerAccionesPorCausa(int idContratista, int idCausa) throws SQLException,ClassNotFoundException{
         List<Accion>accionList=new LinkedList<>();
         String sql ="SELECT * FROM accion WHERE idContratista =? AND idCausa = ?";

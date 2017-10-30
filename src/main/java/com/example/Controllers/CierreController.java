@@ -17,7 +17,7 @@ import java.util.logging.Logger;
  */
 @RestController
 @RequestMapping(value="/app/cierre")
-public class cierreController {
+public class CierreController {
     @Autowired
     public ManejadorDeAcciones manejadorDeAcciones;
     @RequestMapping(value ="registro",method = RequestMethod.POST)
@@ -42,6 +42,20 @@ public class cierreController {
         try {
             //obtener datos que se enviarán a través del API
             a = new ResponseEntity<>(manejadorDeAcciones.actividadIsClose(idNoConformidad, idContratista),HttpStatus.ACCEPTED);
+
+        } catch (Exception ex) {
+            Logger.getLogger(Controller.class.getName()).log(Level.SEVERE, null, ex);
+            return new ResponseEntity<>("Error bla bla bla",HttpStatus.NOT_FOUND);
+        }
+        return a;
+    }
+    @RequestMapping(value = "isCl/{idContratista}", method = RequestMethod.GET)
+    public ResponseEntity<?>obtenerCerradas(@PathVariable int idContratista){
+
+        ResponseEntity a;
+        try {
+            //obtener datos que se enviarán a través del API
+            a = new ResponseEntity<>(manejadorDeAcciones.traerNoConforCerradas(idContratista),HttpStatus.ACCEPTED);
 
         } catch (Exception ex) {
             Logger.getLogger(Controller.class.getName()).log(Level.SEVERE, null, ex);

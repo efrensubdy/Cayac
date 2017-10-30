@@ -9,7 +9,7 @@ angular.module('myApp.auditoria', ['ngRoute'])
   });
 }])
 
-.controller('auditoriaCtrl', ['$http','$timeout', '$q', '$scope','$log','$rootScope','$localStorage','$sessionStorage','$mdDialog','auditoriaContratis','noConformidad','noPorContra','causa','caPorContra','fileUpload','accionContra','registroDeAccion','accionConRegistro','accionSinRegistro','cierre',function($http,$timeout, $q, $scope,$log,$rootScope,$localStorage,$sessionStorage,$mdDialog,auditoriaContratis,noConformidad,noPorContra,causa,caPorContra,fileUpload,accionContra,registroDeAccion,accionConRegistro,accionSinRegistro,cierre) {
+.controller('auditoriaCtrl', ['$http','$timeout', '$q', '$scope','$log','$rootScope','$localStorage','$sessionStorage','$mdDialog','auditoriaContratis','noConformidad','noPorContra','causa','caPorContra','fileUpload','accionContra','registroDeAccion','accionConRegistro','accionSinRegistro','cierre','noConforCerradas',function($http,$timeout, $q, $scope,$log,$rootScope,$localStorage,$sessionStorage,$mdDialog,auditoriaContratis,noConformidad,noPorContra,causa,caPorContra,fileUpload,accionContra,registroDeAccion,accionConRegistro,accionSinRegistro,cierre,noConforCerradas) {
 $scope.take=false;
 $scope.take2=false;
 $scope.take3=false;
@@ -317,6 +317,8 @@ $scope.simple= function(item){
         $scope.c2=true;
          $scope.takeC1 = false;
          $scope.indicador=false;
+         $scope.listadoDeNoConformidades=noPorContra.query({idContratista:$localStorage.userLogeado.idContratista});
+         $scope.listadoNoConforCerradas=noConforCerradas.query({idContratista:$localStorage.userLogeado.idContratista});
         break;
 
 

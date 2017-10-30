@@ -18,4 +18,5 @@ public interface AdministradorDeAcciones {
     public List<Accion>traerAccionesPorContratista(int idContratista, int idCausa)throws SQLException,ClassNotFoundException;
     public List<Accion>traerAccionesPorContratistaConRegistro(int idContratista, int idCausa)throws SQLException,ClassNotFoundException;
     public List<Accion>traerAccionesPorContratistaSinRegistro(int idContratista, int idCausa)throws SQLException,ClassNotFoundException;
+    public List<Cierre>traerNoConforCerradas(int idContratista)throws SQLException,ClassNotFoundException;
 }

@@ -52,4 +52,9 @@ public class ManejadorDeAcciones implements AdministradorDeAcciones {
     public List<Accion> traerAccionesPorContratistaSinRegistro(int idContratista, int idCausa) throws SQLException, ClassNotFoundException {
         return accionDB.traerAccionesSinRegistro(idContratista,idCausa);
     }
+
+    @Override
+    public List<Cierre> traerNoConforCerradas(int idContratista) throws SQLException, ClassNotFoundException {
+        return accionDB.actividadesCerradas(idContratista);
+    }
 }
