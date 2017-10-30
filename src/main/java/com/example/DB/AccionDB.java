@@ -2,6 +2,7 @@ package com.example.DB;
 
 import com.example.Models.ARL;
 import com.example.Models.Accion;
+import com.example.Models.Cierre;
 import com.example.Models.Conexion;
 import org.apache.commons.io.FileUtils;
 import org.springframework.stereotype.Service;
@@ -59,6 +60,41 @@ public class AccionDB {
 
 
 
+    }
+    public void registrarCierre(Cierre cierre)throws SQLException,ClassNotFoundException{
+        java.util.Date utilDate = new Date();
+        java.sql.Date date = new java.sql.Date(utilDate.getTime());
+        String sql = "INSERT INTO cierreDeNoConfor (idNoConformidad,idContratista,date) VALUES(?,?,?)";
+        Connection con = Conexion.conection();
+        PreparedStatement ps = con.prepareStatement(sql);
+        ps.setInt(1, cierre.getIdNoConformidad());
+        ps.setInt(2, cierre.getIdContratista());
+        ps.setDate(3, date);
+        ps.execute();
+        ps.close();
+        con.close();
+
+    }
+    public boolean consultarRegistroDeCierre(int idNoConformidad,int idContratista) throws SQLException, ClassNotFoundException {
+        boolean flag = false;
+        String sql = "select count(*) as registro from cierreDeNoConfor where idNoConformidad = ? and idContratista=?;";
+        PreparedStatement ps = Conexion.conection().prepareStatement(sql);
+        ps.setInt(1, idNoConformidad);
+        ps.setInt(2, idContratista);
+        ResultSet rs = ps.executeQuery();
+        int registro = 0;
+        while (rs.next()) {
+            registro = rs.getInt("registro");
+
+        }
+        if (registro == 0) {
+            flag = false;
+        } else {
+            flag = true;
+        }
+        ps.close();
+
+        return flag;
     }
     public boolean consultarRegistro(int id,int idContratista,int idCausa) throws SQLException, ClassNotFoundException {
         boolean flag = false;

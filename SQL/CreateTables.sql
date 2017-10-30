@@ -571,6 +571,20 @@ CREATE TABLE `accion` (
   CONSTRAINT `idContratista_Accion` FOREIGN KEY (`idContratista`) REFERENCES `contratista` (`idContratista`)
 ) ENGINE=INNODB DEFAULT CHARSET=latin1;
 
+CREATE TABLE `cierreDeNoConfor` (
+  `id` INT(11) NOT NULL AUTO_INCREMENT,
+  `idNoConformidad` INT(11) NOT NULL,
+  `idContratista` INT(11) NOT NULL,
+  `date` DATE NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `cierre_NoConformidad` (`idNoConformidad`),
+  KEY `cierre_idContratista` (`idContratista`),
+  CONSTRAINT `cierre_NoConformidad` FOREIGN KEY (`idNoConformidad`) REFERENCES `noConformidad` (`id`),
+  CONSTRAINT `cierre_idContratista` FOREIGN KEY (`idContratista`) REFERENCES `contratista` (`idContratista`)
+) ENGINE=INNODB DEFAULT CHARSET=latin1;
+
+
+
 
 -- create Admins ---
 

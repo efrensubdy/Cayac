@@ -3,6 +3,7 @@ package com.example.Services;
 import com.example.Beans.AdministradorDeAcciones;
 import com.example.DB.AccionDB;
 import com.example.Models.Accion;
+import com.example.Models.Cierre;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -25,6 +26,16 @@ public class ManejadorDeAcciones implements AdministradorDeAcciones {
     @Override
     public void registrarOActualizarSoporte(Accion accion) throws SQLException, ClassNotFoundException, IOException {
         accionDB.insertarAccion(accion);
+    }
+
+    @Override
+    public void registrarCierre(Cierre cierre) throws SQLException, ClassNotFoundException {
+        accionDB.registrarCierre(cierre);
+    }
+
+    @Override
+    public boolean actividadIsClose(int idNoConformidad, int idContratista) throws SQLException, ClassNotFoundException {
+        return accionDB.consultarRegistroDeCierre(idNoConformidad, idContratista);
     }
 
     @Override

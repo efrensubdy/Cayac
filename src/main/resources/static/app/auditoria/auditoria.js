@@ -9,7 +9,7 @@ angular.module('myApp.auditoria', ['ngRoute'])
   });
 }])
 
-.controller('auditoriaCtrl', ['$timeout', '$q', '$scope','$log','$rootScope','$localStorage','$sessionStorage','$mdDialog','auditoriaContratis','noConformidad','noPorContra','causa','caPorContra','fileUpload','accionContra','registroDeAccion','accionConRegistro','accionSinRegistro',function($timeout, $q, $scope,$log,$rootScope,$localStorage,$sessionStorage,$mdDialog,auditoriaContratis,noConformidad,noPorContra,causa,caPorContra,fileUpload,accionContra,registroDeAccion,accionConRegistro,accionSinRegistro) {
+.controller('auditoriaCtrl', ['$http','$timeout', '$q', '$scope','$log','$rootScope','$localStorage','$sessionStorage','$mdDialog','auditoriaContratis','noConformidad','noPorContra','causa','caPorContra','fileUpload','accionContra','registroDeAccion','accionConRegistro','accionSinRegistro','cierre',function($http,$timeout, $q, $scope,$log,$rootScope,$localStorage,$sessionStorage,$mdDialog,auditoriaContratis,noConformidad,noPorContra,causa,caPorContra,fileUpload,accionContra,registroDeAccion,accionConRegistro,accionSinRegistro,cierre) {
 $scope.take=false;
 $scope.take2=false;
 $scope.take3=false;
@@ -31,6 +31,19 @@ $scope.bandera14=false;
 $scope.c1=false;
 $scope.c2=false;
 $scope.indicador=false;
+
+var q=function(idNoConformidad, idContratista){
+                      //var url= "http://localhost:8080/app/cierre/isClose/"+idNoConformidad+"/"+idContratista;
+                      var url= "http://ec2-35-163-21-208.us-west-2.compute.amazonaws.com:8080/app/cierre/isClose/"+idNoConformidad+"/"+idContratista;
+                      console.log(url);
+                       var a;
+                    a=$http.get(url).then(function(response) {
+                                    $scope.objeto= response.data;
+                                    console.log(response.data);
+                                    return response.data;
+                                 })
+          return a;
+       }
 
 $scope.opciones=[
  { id: 1, name: 'REGISTRAR NO CONFORMIDADES'},
@@ -314,6 +327,7 @@ $scope.simple= function(item){
  $scope.simpleC1 =function(opcionC1){
     if("undefined" !== typeof opcionC1){
         $scope.takec1 =true;
+        q(opcionC1.id,$localStorage.userLogeado.idContratista);
         $scope.tablaDeCausas=caPorContra.query({idContratista:$localStorage.userLogeado.idContratista,idNoConformidad:opcionC1.id})
 
     }
@@ -458,7 +472,13 @@ $scope.simple= function(item){
 
  }
 
+$scope.cerrarNoConformidad=function(item){
+    console.log(item);
+    var cie ={idContratista:$localStorage.userLogeado.idContratista,idNoConformidad:item.id};
+    cierre.save(cie);
 
+
+}
  $scope.causa=function(ev,item){
  console.log(item);
     if("undefined" !== typeof item){
