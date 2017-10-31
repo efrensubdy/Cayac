@@ -157,6 +157,9 @@ angular.module('services.listFactory', ['ngRoute','ngResource'])
           .factory('noPorContra', function($resource) {
                                             return $resource('/app/noConformidad/porContra/:idContratista');
                                         })
+       .factory('noPorContraAuditoria', function($resource) {
+                                                   return $resource('/app/noConformidad/porContra/:idContratista/:idAuditoria');
+                                               })
           .factory('caPorContra', function($resource) {
                                                       return $resource('/app/causa/porContra/:idContratista/:idNoConformidad');
                                                   })
@@ -172,6 +175,9 @@ angular.module('services.listFactory', ['ngRoute','ngResource'])
         .factory('noConforCerradas', function($resource) {
                                                return $resource('/app/cierre/isCl/:idContratista');
                                                                               })
+        .factory('noConforCerradasConAuditoria', function($resource) {
+                                                       return $resource('/app/cierre/isCl/:idContratista/:idAuditoria');
+                                                                                      })
          //Fabrica que trae todos los contratos pertencientes al contratante
          .factory('contratos', function($resource) {
                        return $resource('/app/contratos/:idContratante');

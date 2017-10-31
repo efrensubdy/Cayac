@@ -57,4 +57,9 @@ public class ManejadorDeAcciones implements AdministradorDeAcciones {
     public List<Cierre> traerNoConforCerradas(int idContratista) throws SQLException, ClassNotFoundException {
         return accionDB.actividadesCerradas(idContratista);
     }
+
+    @Override
+    public List<Cierre> traerNoConforCerradas(int idContratista, int idAuditaria) throws SQLException, ClassNotFoundException {
+        return accionDB.actividadesCerradas(idContratista, idAuditaria);
+    }
 }

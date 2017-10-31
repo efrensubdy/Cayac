@@ -1,0 +1,239 @@
+
+
+<div class="w3-container">
+<div  ng-controller="gestionAuditoriaCtrl as ctrl">
+    <div class="w3-container w3-center">
+        <div class="container text-center ">
+                <div class="row">
+                    <div class="col-xs-9">
+                        <h4 class="titulos" ><b>REVISE El COMPORTAMIENTO DE LAS AUDITORIAS REGISTRADAS</b></h4>
+                        <p class="texto"><b>ESCOJA EL CONTRATO Y EL MES SOBRE EL CUAL REALIZARÁ LA REVISIÓN</b></p>
+                        <div class="row">
+                            <div class="col-sm-4">
+                                <input class="form-control" type="text"  placeholder="A que contrato va a hacer la revision" name="contrato" list="contratos" ng-model="contrato" ng-change="ocultarTodo()">
+                                <datalist id="contratos">
+                                    <select name="contratos" ng-model="select">
+                                        <option value="" disabled selected>Escoja un  contrato de los existentes </option>
+                                        <option ng-repeat="todo in listado"  value="{{todo.idContrato}}" ng-model="selectedOption">{{todo.nombreContrato}}</option>
+                                    </select>
+                                </datalist>
+                            </div>
+                            <div class="col-sm-4">
+                                <select class="form-control" ng-model="mes" data-placeholder="seleccione el mes" ng-change="ocultarTodo()" >
+                                    <option ng-value="todo" ng-repeat="todo in meses">{{todo.name}}</option>
+
+                                </select>
+                            </div>
+                            <div class="col-sm-4">
+                                <select class="form-control" ng-model="year" data-placeholder="seleccione el mes" ng-change="ocultarTodo()">
+                                    <option ng-value="todo" ng-repeat="todo in years">{{todo.name}}</option>
+
+                                </select>
+                            </div>
+                        </div>
+
+                        <br>
+                        <br>
+                    </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-9">
+                    <button class="btn btn-primary align-middle" type="submit" ng-click="add($event,contrato,mes,year)">Consultar</button>
+                      <br>
+                    </div>
+                    </div>
+                </div>
+        <br>
+        <br>
+        <div class="w3-container" ng-show="flag">
+            <div class="container">
+                <div class="col-xs-9">
+                    <div class="table-responsive">
+                    <table class="table table-bordered table-hover table-condensed">
+                        <tbody>
+                        <tr  class="titulos">
+                            <th >Nombre de Empresa</th>
+                            <th >Análisis</th>
+
+                        </tr>
+                        <tr class="texto" ng-repeat="todo in listillo | orderBy:propertyName:reverse">
+                            <td >{{todo.nombreEmpresa}}</td>
+                            <td >
+                                <button  class="btn btn-primary" ng-click="desplieguedeAuditora(todo,mes,year)" >
+                                    Resumen
+                                </button>
+
+                            </td>
+                        </tr>
+
+                        </tbody>
+
+                    </table>
+
+                </div>
+               <div ng-show="auditorias">
+                   <p class="titulos" >ESCOJA UNA DE LAS AUDITORIAS PARA EL MES Y EL AÑO QUE ELEGIO ANTERIORMENTE</p>
+                   <select class="form-control" ng-model="auditoria" data-placeholder="seleccione el mes" ng-change="cambiarOpcion(auditoria)">
+                       <option ng-value="todo" ng-repeat="todo in tableContra">{{todo.fecha}}</option>
+
+                   </select>
+                   <br>
+                   <div class="row" ng-show="banOpciones">
+                       <br>
+                       <p class="titulos" >ESCOJA LO QUE QUIERE HACER</p>
+                       <select class="form-control" ng-model="opcion" data-placeholder="seleccione el mes" ng-change="changeOp(opcion)" >
+                           <option ng-value="todo" ng-repeat="todo in opciones">{{todo.name}}</option>
+                       </select>
+                       <br>
+                       <div class="row" ng-show="op1">
+                           <label class="titulos">CONSULTAR NO CONFORMIDADES</label>
+                           <br>
+                           <div class="table-responsive">
+                               <p class="titulos">EN LA SIGUIENTE TABLA ENCONTRARÁ LAS NO CONFORMIDADES REGISTRADAS</p>
+                               <br>
+                               <table class="table table-bordered table-hover table-condensed">
+                                   <tbody>
+                                   <tr  class="titulos">
+                                       <th >#</th>
+                                       <th >Descripcion</th>
+                                       <th>Mes</th>
+                                       <th>Año</th>
+
+                                   </tr>
+                                   <tr ng-repeat="todo in listadoDeNoConformidades">
+                                       <td >{{todo.id}}</td>
+                                       <td >{{todo.noConformidad}}</td>
+                                       <td>{{todo.mes}}</td>
+                                       <td>
+                                           {{todo.year}}
+                                       </td>
+                                   </tr>
+                                   </tbody>
+
+                               </table>
+
+                           </div>
+                       </div>
+                       <div class="row" ng-show="op2">
+                           <label class="titulos">CONSULTAR CAUSAS</label>
+                           <p >ESCOJA UNA DE LAS NO CONFORMIDADES DE LO CONTRATRIO NO PODRÁ AGREGAR CAUSAS</p>
+                           <select class="form-control" ng-model="noConformidad" data-placeholder="seleccione el mes" ng-change="despliegueDeNoConformidades(noConformidad)">
+                               <option ng-value="todo" ng-repeat="todo in listadoDeNoConformidades">{{todo.noConformidad}}</option>
+                           </select>
+                           <br>
+                           <div class="table-responsive" ng-show="causas">
+                               <p class="titulos">EN LA SIGUIENTE TABLA ENCONTRARÁ LAS CAUSAS PERTENECIENTES A LA NO CONFORMIDAD ESCOGIDA</p>
+                               <br>
+                               <table class="table table-bordered table-hover table-condensed">
+                                   <tbody>
+                                   <tr  class="titulos">
+                                       <th >Causa</th>
+                                   </tr>
+                                   <tr ng-repeat="todo in tablaDeCausas">
+                                       <td >{{todo.causa}}</td>
+                                   </tr>
+                                   </tbody>
+                               </table>
+                           </div>
+                       </div>
+                       <div class="row" ng-show="op3">
+                           <label class="titulos">CONSULTAR ACCIONES</label>
+                           <p  class="texto">ESCOJA UNA DE LAS NO CONFORMIDADES PARA DESPLEGAR LAS CAUSAS</p>
+                           <select class="form-control" ng-model="noconfor" data-placeholder="seleccione el mes" ng-change="desCausa(noconfor)">
+                               <option ng-value="todo" ng-repeat="todo in listadoDeNoConformidades">{{todo.noConformidad}}</option>
+                           </select>
+                           <br>
+                           <div ng-show="cau">
+                               <p  class="texto">ESCOJA LA CAUSA SOBRE LAS CUALES CONSULTARA  LAS ACCIONES</p>
+                               <select class="form-control" ng-model="ca" data-placeholder="seleccione el mes" ng-change="desplegarAcciones(ca)">
+                                   <option ng-value="todo" ng-repeat="todo in tablaDeCausas">{{todo.causa}}</option>
+                               </select>
+                           </div>
+                           <br>
+                           <div class="table-responsive" ng-show="acciones">
+                               <p class="titulos">EN LA SIGUIENTE TABLA ENCONTRARÁ LAS ACCIONES PERTENECIENTES A LA CAUSA ESCOGIDA</p>
+                               <br>
+                               <table class="table table-bordered table-hover table-condensed">
+                                   <tbody>
+                                   <tr  class="titulos">
+                                       <th >id</th>
+                                       <th>Nombre</th>
+                                       <th>Fecha</th>
+                                       <th>Registro</th>
+                                   </tr>
+                                   <tr ng-repeat="todo in tableAcciones">
+                                       <td >{{todo.id}}</td>
+                                       <td>{{todo.nombre}}</td>
+                                       <td>{{todo.date}}</td>
+                                       <td>
+                                           <div ng-show="{{todo.estado}}" class="w3-col" style="width:50px"><a href="{{todo.registro2}}" download><i class="w3-xxlarge fa fa-check-square"></i></a></div>
+                                           <div ng-show="{{!todo.estado}}" class="w3-col" style="width:50px"><a href="{{todo.registro2}}" download><i class="w3-xxlarge fa fa-exclamation-triangle"></i></a></div>
+
+                                       </td>
+                                   </tr>
+                                   </tbody>
+                               </table>
+                           </div>
+                       </div>
+                       <div class="row" ng-show="op4">
+                           <label class="titulos">CUMPLIMIENTO DE PROGRAMA</label>
+                           <p  class="texto">ESCOJA UNA DE LAS OPCIONES A CONTINUACIÓN</p>
+                           <select class="form-control" ng-model="opcionC" data-placeholder="seleccione el mes" ng-change="cambiarDeOpCionC(opcionC)">
+                               <option ng-value="todo" ng-repeat="todo in opcionesDeCumplimiento">{{todo.name}}</option>
+                           </select>
+                           <br>
+                           <div class="row" ng-show="c1">
+                               <p  class="texto">ESCOJA UNA DE LAS NO CONFORMIDADES PARA DESPLEGAR LAS CAUSAS</p>
+                               <select class="form-control" ng-model="noConformidadIn" data-placeholder="seleccione el mes" ng-change="desplegarCausasDeIndicadores(noConformidadIn)">
+                                   <option ng-value="todo" ng-repeat="todo in listadoDeNoConformidades">{{todo.noConformidad}}</option>
+                               </select>
+                               <br>
+                               <div ng-show="causas2">
+                                   <p  class="texto">ESCOJA LA CAUSA SOBRE LAS CUALES REGISTRO  LAS ACCIONES</p>
+                                   <select class="form-control" ng-model="causales" data-placeholder="seleccione el mes" ng-change="accionesCausales(causales)">
+                                       <option ng-value="todo" ng-repeat="todo in tablaDeCausas">{{todo.causa}}</option>
+                                   </select>
+                               </div>
+                               <br>
+                               <div class="eq-c titulos" ng-show="indicador">
+                                   <i> INDICADOR DE CUMPLIMIENTO DE PLAN DE ACCIÓN  =</i>
+                                   <div class="fraction">
+                                       <span class="fup"><i>TOTAL DE ACCIONES EJECUTADAS</i></span>
+                                       <span class="bar">/</span>
+                                       <span class="fdn"><i>TOTAL DE ACCIONES  PLANTEADAS</i></span>
+                                   </div>
+                                   * 100 % = {{(accionConRegistro.length / (accionConRegistro.length + accionSinRegistro.length))* 100 }} %
+                                   <br>
+                                   <br>
+                                   <button class="btn btn-primary center-block" ng-click="cerrarNoConformidad(opcionC1)" ng-hide="objeto" ng-show="!objeto">CERRAR LA NO CONFORMIDAD</button>
+                               </div>
+
+                           </div>
+                           <div class="row" ng-show="c2">
+                               <div class="eq-c titulos">
+                                   <i> INDICADOR DE CIERRE DE NO CONFORMIDADES  =</i>
+                                   <div class="fraction">
+                                       <span class="fup"><i>TOTAL DE NO CONFORMIDADES CERRADAS</i></span>
+                                       <span class="bar">/</span>
+                                       <span class="fdn"><i>TOTAL DE NO CONFORMIDADES PLANTEADAS</i></span>
+                                   </div>
+                                   * 100 % = {{(listadoNoConforCerradas.length / listadoDeNoConformidades.length)* 100 }} %
+                                   <br>
+                                   <br>
+                               </div>
+                           </div>
+                       </div>
+
+                   </div>
+                   </div>
+
+               </div>
+
+
+            </div>
+
+        </div>
+        </div>
+</div>
+</div>
+</div>

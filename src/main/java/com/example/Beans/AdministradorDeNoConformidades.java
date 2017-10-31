@@ -11,4 +11,5 @@ import java.util.List;
 public interface  AdministradorDeNoConformidades {
     public void agregarNoConformidad(NoConformidad noConformidad)throws SQLException,ClassNotFoundException;
     public List<NoConformidad>traerNoConformidadesPorContratistas(int idContratista)throws SQLException,ClassNotFoundException;
+    public List<NoConformidad>traerNoConformidadesPorContratistasyAuditoria(int idContratista,int idAuditoria)throws SQLException,ClassNotFoundException;
 }

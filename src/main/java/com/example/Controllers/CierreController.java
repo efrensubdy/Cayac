@@ -63,5 +63,19 @@ public class CierreController {
         }
         return a;
     }
+    @RequestMapping(value = "isCl/{idContratista}/{idAuditoria}", method = RequestMethod.GET)
+    public ResponseEntity<?>obtenerCerradas(@PathVariable int idContratista,@PathVariable int idAuditoria){
+
+        ResponseEntity a;
+        try {
+            //obtener datos que se enviarán a través del API
+            a = new ResponseEntity<>(manejadorDeAcciones.traerNoConforCerradas(idContratista,idAuditoria),HttpStatus.ACCEPTED);
+
+        } catch (Exception ex) {
+            Logger.getLogger(Controller.class.getName()).log(Level.SEVERE, null, ex);
+            return new ResponseEntity<>("Error bla bla bla",HttpStatus.NOT_FOUND);
+        }
+        return a;
+    }
 
 }

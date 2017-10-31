@@ -51,5 +51,26 @@ public class NoConformidadDB {
         ps.close();
         return noConformidadList;
     }
+    public List<NoConformidad>traerNoConformidadesPorContratistayAuditoria(int idContratista,int idAuditoria)throws SQLException,ClassNotFoundException{
+        List<NoConformidad>noConformidadList=new LinkedList<>();
+        String sql ="SELECT noConformidad.id , noConformidad.idAuditoria, noConformidad.idContratista,noConformidad.year,noConformidad.mes, noConformidad.noConformidad  FROM noConformidad INNER JOIN auditoria ON auditoria.id = noConformidad.idAuditoria AND noConformidad.idAuditoria = ? AND noConformidad.idContratista= ?";
+        PreparedStatement ps = Conexion.conection().prepareStatement(sql);
+        ps.setInt(1,idAuditoria);
+        ps.setInt(2,idContratista);
+        ResultSet rs = ps.executeQuery();
+        while(rs.next()){
+            NoConformidad noConformidad=new NoConformidad();
+            noConformidad.setId(rs.getInt("id"));
+            noConformidad.setIdAuditoria(rs.getInt("idAuditoria"));
+            noConformidad.setIdContratista(rs.getInt("idContratista"));
+            noConformidad.setYear(rs.getInt("year"));
+            noConformidad.setMes(rs.getString("mes"));
+            noConformidad.setNoConformidad(rs.getString("noConformidad"));
+            noConformidadList.add(noConformidad);
+        }
+        ps.close();
+        return noConformidadList;
+    }
+
 
 }

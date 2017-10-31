@@ -17,7 +17,7 @@ import java.util.logging.Logger;
  */
 @RestController
 @RequestMapping(value="/app/noConformidad")
-public class noConformidadController {
+public class NoConformidadController {
     @Autowired
     public ManejoDeNoConformidades manejoDeNoConformidades;
 
@@ -37,12 +37,26 @@ public class noConformidadController {
         return a;
     }
     @RequestMapping(value = "porContra/{idContratista}", method = RequestMethod.GET)
-    public ResponseEntity<?>obtenerAprobacionDeContratisttas(@PathVariable int idContratista){
+    public ResponseEntity<?>obtenerNoConformidadesPorContratista(@PathVariable int idContratista){
 
         ResponseEntity a;
         try {
             //obtener datos que se enviarán a través del API
             a = new ResponseEntity<>(manejoDeNoConformidades.traerNoConformidadesPorContratistas(idContratista),HttpStatus.ACCEPTED);
+
+        } catch (Exception ex) {
+            Logger.getLogger(Controller.class.getName()).log(Level.SEVERE, null, ex);
+            return new ResponseEntity<>("Error bla bla bla",HttpStatus.NOT_FOUND);
+        }
+        return a;
+    }
+    @RequestMapping(value = "porContra/{idContratista}/{idAuditoria}", method = RequestMethod.GET)
+    public ResponseEntity<?>obtenerNoConformidadesPorContratistayAuditoria(@PathVariable int idContratista, @PathVariable int idAuditoria){
+
+        ResponseEntity a;
+        try {
+            //obtener datos que se enviarán a través del API
+            a = new ResponseEntity<>(manejoDeNoConformidades.traerNoConformidadesPorContratistasyAuditoria(idContratista, idAuditoria),HttpStatus.ACCEPTED);
 
         } catch (Exception ex) {
             Logger.getLogger(Controller.class.getName()).log(Level.SEVERE, null, ex);
