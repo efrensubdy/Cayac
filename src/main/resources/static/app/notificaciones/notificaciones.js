@@ -54,6 +54,10 @@ angular.module('myApp.notificaciones', ['ngRoute'])
      { id: 26, name: 2026},
                 ];
 $scope.banderaSinSoporte=false;
+$scope.ocultarTodo=function(){
+    $scope.banderaSinSoporte=false;
+
+}
 $scope.add = function(notificacion,mes,year){
 
     switch(notificacion.id){

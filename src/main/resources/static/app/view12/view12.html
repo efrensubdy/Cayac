@@ -10,7 +10,7 @@
             <label class="texto"><b>ESCOJA EL CONTRATO SOBRE EL CUAL QUIERE VER LOS CONTRATISTAS</b></label>
             <p class="texto"><b>EN PARTE DE ABAJO ECONTRARÁ UNA LISTA DE TODOS SUS CONTRATOS DISPONIBLES</b> </p>
                 <div class="col-sm-11">
-                <input class="form-control" type="text"  placeholder="Contratos Existentes" name="contrato" list="contratos" ng-model="contrato">
+                <input class="form-control" type="text"  placeholder="Contratos Existentes" name="contrato" list="contratos" ng-change="ocultarTodo()" ng-model="contrato">
                 <datalist id="contratos">
                     <select name="contratos" ng-model="select">
                         <option value="" disabled selected>Contratos existentes </option>

@@ -10,6 +10,13 @@ angular.module('myApp.gestionDeIndicadores', ['ngRoute'])
 }])
 
 .controller('gestionDeIndicadoresCtrl', ['$timeout', '$q', '$scope','$log','$rootScope','$localStorage','$sessionStorage','$mdDialog','finalesDefinitivos','contratosEnEjecucion','indMes','aprobarIndicador',function($timeout, $q, $scope,$log,$rootScope,$localStorage,$sessionStorage,$mdDialog,finalesDefinitivos,contratosEnEjecucion,indMes,aprobarIndicador) {
+$scope.ocultarTodo=function(){
+    $scope.flag=false;
+}
+
+
+
+
 $scope.years=[
      { id: 10, name: 2009},
      { id: 11, name: 2010},

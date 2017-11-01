@@ -8,7 +8,7 @@
                     <p class="texto"><b>EN ESTE ESPACIO PODRÁ REVISAR  LA SEGURIDAD SOCIAL REGISTRADA POR SU CONTRATISTA</b></p>
                     <div class="row">
                         <div class="col-sm-4">
-                            <input class="form-control" type="text"  placeholder="A que contrato va a hacer la revision" name="contrato" list="contratos" ng-model="contrato">
+                            <input class="form-control" type="text"  placeholder="A que contrato va a hacer la revision" name="contrato" list="contratos" ng-change="resul()" ng-model="contrato">
                             <datalist id="contratos">
                                 <select name="contratos" ng-model="select" ng-change="resul()">
                                     <option value="" disabled selected>Escoja un  contrato de los existentes </option>
@@ -40,7 +40,7 @@
                     </div>
 
                     <div class="row" ng-show="flag">
-                        <label class="titulos">CONSULTE SUS SEGURIDADES SOCIALES</label>
+                        <label class="titulos">EN LA SIGUIENTE TABLA APARECE UN RESUMEN DE LOS QUE SUBIO LA EMPRESA CONTRATISTA</label>
                         <br>
                         <div class="table-responsive">
                             <table class="table table-bordered table-hover table-condensed">

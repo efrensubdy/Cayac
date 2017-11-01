@@ -10,7 +10,7 @@
                         <p class="texto"><b>ESCOJA EL CONTRATO , EL MES Y EL AÑO SOBRE EL CUAL REALIZARÁ LA REVISIÓN</b></p>
                         <div class="row">
                             <div class="col-sm-4">
-                                <input class="form-control" type="text"  placeholder="A que contrato va a hacer la revision" name="contrato" list="contratos" ng-model="contrato">
+                                <input class="form-control" type="text"  placeholder="A que contrato va a hacer la revision" name="contrato" list="contratos" ng-change="resul()" ng-model="contrato">
                                 <datalist id="contratos">
                                     <select name="contratos" ng-model="select" ng-change="resul()">
                                         <option value="" disabled selected>Escoja un  contrato de los existentes </option>

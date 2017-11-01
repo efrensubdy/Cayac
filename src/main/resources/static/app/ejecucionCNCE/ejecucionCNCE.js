@@ -20,6 +20,12 @@ angular.module('myApp.ejecucionCNCE', ['ngRoute'])
             $scope.reverse = ($scope.propertyName === propertyName) ? !$scope.reverse : false;
             $scope.propertyName = propertyName;
           };
+
+        $scope.ocultarTodo=function(){
+            $scope.flag=false;
+
+
+        }
         $scope.add=function(ev,contrato){
                 if("undefined" !== typeof contrato){
                 $scope.listillo=finalesDefinitivos.query({idContratante:$localStorage.contratanteLogeado.idContratante,idContrato:$scope.contrato})

@@ -10,7 +10,9 @@ angular.module('myApp.view12', ['ngRoute'])
 }])
 
 .controller('View12Ctrl', ['$localStorage','$sessionStorage','$mdDialog','$rootScope','$scope','finalesDefinitivos','contratos','contratosEnEjecucion',function($localStorage,$sessionStorage,$mdDialog,$rootScope,$scope,finalesDefinitivos,contratos,contratosEnEjecucion) {
-
+$scope.ocultarTodo=function(){
+    $scope.flag=false;
+}
  $scope.listado=contratosEnEjecucion.query({idContratante:$localStorage.contratanteLogeado.idContratante})
         $scope.seleccionados=[];
         $scope.propertyName = 'nombreEmpresa';

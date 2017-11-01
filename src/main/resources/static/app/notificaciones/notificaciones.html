@@ -15,21 +15,21 @@
                         <br>
                         <div class="col-sm-4">
                             <p class="texto"><b>ESCOJA EL TIPO DE NOTIFICACIÓN QUE DESEA RECIBIR</b></p>
-                            <select class="form-control" ng-model="notificacion" placeholder="Tipo de Notificación" ng-change="simple(notificacion)">
+                            <select class="form-control" ng-model="notificacion" placeholder="Tipo de Notificación" ng-change="ocultarTodo()">
                             <option ng-value="todo" ng-repeat="todo in notificaciones">{{todo.nombre}}</option>
 
                             </select>
                         </div>
                         <div class="col-sm-4">
                             <p class="texto"><b>ESCOJA EL MES PARA LA  NOTIFICACIÓN</b></p>
-                            <select class="form-control" ng-model="mes" data-placeholder="seleccione el mes">
+                            <select class="form-control" ng-model="mes" data-placeholder="seleccione el mes" ng-change="ocultarTodo()">
                                 <option ng-value="todo" ng-repeat="todo in meses">{{todo.name}}</option>
 
                             </select>
                         </div>
                         <div class="col-sm-4">
                             <p class="texto"><b>ESCOJA EL AÑO PARA LA NOTIFICACIÓN</b></p>
-                            <select class="form-control" ng-model="year" data-placeholder="seleccione el mes">
+                            <select class="form-control" ng-model="year" data-placeholder="seleccione el mes" ng-change="ocultarTodo()">
                                 <option ng-value="todo" ng-repeat="todo in years">{{todo.name}}</option>
 
                             </select>

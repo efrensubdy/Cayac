@@ -8,7 +8,7 @@
                 <h4 class="titulos" ><b>REVISE LO QUE SUBIERON SUS CONTRATISTAS</b></h4>
             <p class="texto"><b>ESCOJA EL CONTRATO SOBRE EL CUAL REALIZARÁ LA REVISIÓN</b></p>
 
-                <input class="form-control" type="text"  placeholder="A que contrato va a hacer la revision" name="contrato" list="contratos" ng-model="contrato">
+                <input class="form-control" type="text"  placeholder="A que contrato va a hacer la revision" name="contrato" list="contratos" ng-change="ocultarTodo()" ng-model="contrato">
                 <datalist id="contratos">
                     <select name="contratos" ng-model="select">
                         <option value="" disabled selected>Escoja un  contrato de los existentes </option>

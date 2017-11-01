@@ -14,6 +14,12 @@ angular.module('myApp.gestionDeEstandares', ['ngRoute'])
 $scope.listado=contratosEnEjecucion.query({idContratante:$localStorage.contratanteLogeado.idContratante});
 $scope.flag=false
 $scope.bandera2=false
+$scope.ocultarTodo=function(){
+    $scope.flag=false
+    $scope.bandera2=false
+
+}
+
 $scope.add=function(){
                 $scope.listillo=finalesDefinitivos.query({idContratante:$localStorage.contratanteLogeado.idContratante,idContrato:$scope.contrato})
                 $scope.flag=true;
@@ -84,7 +90,7 @@ $scope.showAlert2=function(ev,client){
                          };
 
                $scope.myChartObject = {};
-                               $scope.myChartObject.type = "PieChart";
+                               $scope.myChartObject.type = "ColumnChart";
 
                                $scope.myChartObject.data = {"cols": [
                                                                           {id: "t", label: "Topping", type: "string"},
@@ -107,7 +113,7 @@ $scope.showAlert2=function(ev,client){
 
 
                 $scope.myChartObject2 = {};
-                           $scope.myChartObject2.type = "PieChart";
+                           $scope.myChartObject2.type = "ColumnChart";
 
                            $scope.myChartObject2.data = {"cols": [
                                           {id: "t", label: "Topping", type: "string"},
@@ -133,7 +139,7 @@ $scope.showAlert2=function(ev,client){
 
 
                $scope.myChartObject3 = {};
-                      $scope.myChartObject3.type = "PieChart";
+                      $scope.myChartObject3.type = "ColumnChart";
 
                       $scope.myChartObject3.data = {"cols": [
                                      {id: "t", label: "Topping", type: "string"},
@@ -160,7 +166,7 @@ $scope.showAlert2=function(ev,client){
 
 
                     $scope.myChartObject4 = {};
-                                          $scope.myChartObject4.type = "PieChart";
+                                          $scope.myChartObject4.type = "ColumnChart";
 
                                           $scope.myChartObject4.data = {"cols": [
                                                          {id: "t", label: "Topping", type: "string"},

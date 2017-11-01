@@ -12,6 +12,10 @@ angular.module('myApp.gestionDeAccidentes', ['ngRoute'])
 .controller('gestionDeAccidentesCtrl', ['$timeout', '$q', '$scope','$log','$rootScope','$localStorage','$sessionStorage','finalesDefinitivos','contratosEnEjecucion','accPorContra','$mdDialog',function($timeout, $q, $scope,$log,$rootScope,$localStorage,$sessionStorage,finalesDefinitivos,contratosEnEjecucion,accPorContra,$mdDialog) {
 $scope.flag=false
 $scope.bandera3=false
+$scope.ocultarTodo=function(){
+    $scope.flag=false;
+    $scope.bandera3=false;
+}
 $scope.listado=contratosEnEjecucion.query({idContratante:$localStorage.contratanteLogeado.idContratante});
 $scope.add=function(ev,contrato){
                 if("undefined" !== typeof contrato){
