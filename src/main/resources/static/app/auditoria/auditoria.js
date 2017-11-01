@@ -9,7 +9,7 @@ angular.module('myApp.auditoria', ['ngRoute'])
   });
 }])
 
-.controller('auditoriaCtrl', ['$http','$timeout', '$q', '$scope','$log','$rootScope','$localStorage','$sessionStorage','$mdDialog','auditoriaContratis','noConformidad','noPorContra','causa','caPorContra','fileUpload','accionContra','registroDeAccion','accionConRegistro','accionSinRegistro','cierre','noConforCerradas',function($http,$timeout, $q, $scope,$log,$rootScope,$localStorage,$sessionStorage,$mdDialog,auditoriaContratis,noConformidad,noPorContra,causa,caPorContra,fileUpload,accionContra,registroDeAccion,accionConRegistro,accionSinRegistro,cierre,noConforCerradas) {
+.controller('auditoriaCtrl', ['$http','$timeout', '$q', '$scope','$log','$rootScope','$localStorage','$sessionStorage','$mdDialog','auditoriaContratis','noConformidad','noPorContra','causa','caPorContra','fileUpload','accionContra','registroDeAccion','accionConRegistro','accionSinRegistro','cierre','noConforCerradas','noPorContraAuditoria','noConforCerradasConAuditoria',function($http,$timeout, $q, $scope,$log,$rootScope,$localStorage,$sessionStorage,$mdDialog,auditoriaContratis,noConformidad,noPorContra,causa,caPorContra,fileUpload,accionContra,registroDeAccion,accionConRegistro,accionSinRegistro,cierre,noConforCerradas,noPorContraAuditoria,noConforCerradasConAuditoria) {
 $scope.take=false;
 $scope.take2=false;
 $scope.take3=false;
@@ -31,7 +31,8 @@ $scope.bandera14=false;
 $scope.c1=false;
 $scope.c2=false;
 $scope.indicador=false;
-
+$scope.indiCierre=false;
+$scope.auditoras=false;
 var q=function(idNoConformidad, idContratista){
                       //var url= "http://localhost:8080/app/cierre/isClose/"+idNoConformidad+"/"+idContratista;
                       var url= "http://ec2-35-163-21-208.us-west-2.compute.amazonaws.com:8080/app/cierre/isClose/"+idNoConformidad+"/"+idContratista;
@@ -123,6 +124,8 @@ $scope.simple= function(item){
               $scope.c2=false;
               $scope.takeC1 = false;
               $scope.indicador=false;
+              $scope.indiCierre=false;
+              $scope.auditoras=false;
             break;
             case 2:
             $scope.bandera1=false;
@@ -148,6 +151,8 @@ $scope.simple= function(item){
             $scope.c2=false;
             $scope.takeC1 = false;
             $scope.indicador=false;
+            $scope.indiCierre=false;
+            $scope.auditoras=false;
            break;
             case 3:
             $scope.bandera1=false;
@@ -173,6 +178,8 @@ $scope.simple= function(item){
             $scope.c2=false;
             $scope.takeC1 = false;
             $scope.indicador=false;
+            $scope.indiCierre=false;
+            $scope.auditoras=false;
             break;
             case 4:
             $scope.bandera1=false;
@@ -197,6 +204,8 @@ $scope.simple= function(item){
             $scope.c2=false;
             $scope.takeC1 = false;
             $scope.indicador=false;
+            $scope.indiCierre=false;
+            $scope.auditoras=false;
             break;
             case 5:
             $scope.bandera1=false;
@@ -222,6 +231,8 @@ $scope.simple= function(item){
             $scope.c2=false;
             $scope.takeC1 = false;
             $scope.indicador=false;
+            $scope.indiCierre=false;
+            $scope.auditoras=false;
             break;
             case 6:
             $scope.bandera1=false;
@@ -247,6 +258,8 @@ $scope.simple= function(item){
             $scope.c2=false;
             $scope.takeC1 = false;
             $scope.indicador=false;
+            $scope.indiCierre=false;
+            $scope.auditoras=false;
             break;
 
             case 7:
@@ -273,6 +286,8 @@ $scope.simple= function(item){
             $scope.c2=false;
             $scope.takeC1 = false;
             $scope.indicador=false;
+            $scope.indiCierre=false;
+            $scope.auditoras=false;
             break;
             case 8:
             $scope.bandera1=false;
@@ -297,6 +312,8 @@ $scope.simple= function(item){
              $scope.c2=false;
              $scope.takeC1 = false;
              $scope.indicador=false;
+             $scope.indiCierre=false;
+             $scope.auditoras=false;
             break;
        }
 
@@ -310,6 +327,7 @@ $scope.simple= function(item){
          $scope.listadoDeNoConformidades=noPorContra.query({idContratista:$localStorage.userLogeado.idContratista});
           $scope.takeC1 =false;
           $scope.indicador=false;
+          $scope.auditoras=false;
 
         break;
         case 2:
@@ -317,13 +335,32 @@ $scope.simple= function(item){
         $scope.c2=true;
          $scope.takeC1 = false;
          $scope.indicador=false;
-         $scope.listadoDeNoConformidades=noPorContra.query({idContratista:$localStorage.userLogeado.idContratista});
-         $scope.listadoNoConforCerradas=noConforCerradas.query({idContratista:$localStorage.userLogeado.idContratista});
+         $scope.auditoras=false;
         break;
 
 
       }
 
+
+ }
+ $scope.cambiarOpcion =function(item){
+
+     $scope.listadoDeNoConformidades=noPorContraAuditoria.query({idContratista:$localStorage.userLogeado.idContratista,idAuditoria:item.id});
+     $scope.listadoNoConforCerradas=noConforCerradasConAuditoria.query({idContratista:$localStorage.userLogeado.idContratista,idAuditoria:item.id});
+     $scope.indiCierre=true;
+
+
+
+ }
+ $scope.consultarAuditoria2=function(mes,year){
+    $scope.tableContra=auditoriaContratis.query({idContratista:$localStorage.userLogeado.idContratista,mes:mes.name,year:year.name});
+    $scope.auditoras=true;
+
+
+ }
+ $scope.ocultarTodo=function(){
+  $scope.indiCierre=false;
+  $scope.auditoria=false
 
  }
  $scope.simpleC1 =function(opcionC1){

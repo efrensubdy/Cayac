@@ -276,7 +276,35 @@
                             </div>
                         </div>
                         <div class="row" ng-show="c2">
-                            <div class="eq-c titulos">
+                            <div class="col-sm-6">
+                                <label>SELECCIONE EL MES DE LA AUDITORIA</label>
+                                <select class="form-control" ng-model="mes" data-placeholder="seleccione el mes" ng-change="ocultarTodo()" >
+                                    <option ng-value="todo" ng-repeat="todo in meses">{{todo.name}}</option>
+
+                                </select>
+                            </div>
+                            <div class="col-sm-6">
+                                <label>SELECCIONE EL AÑO DE LA AUDITORIA</label>
+                                <select class="form-control" ng-model="year" data-placeholder="seleccione el mes" ng-change="ocultarTodo()">
+                                    <option ng-value="todo" ng-repeat="todo in years">{{todo.name}}</option>
+
+                                </select>
+                            </div>
+                            <br>
+                                <div class="col-sm-12">
+                                <br>
+                                <button class="btn btn-primary center-block" ng-click="consultarAuditoria2(mes,year)">BUSCAR</button>
+                            </div>
+                            <br>
+                            <div class="col-sm-12" ng-show="auditoras">
+                             <br>
+                             <label>A CONTINUACIÓN ENCONTRARÁ UNA LISTA CON LAS AUDITORIAS DISPONIBLES</label>
+                            <select class="form-control" ng-model="auditoria" data-placeholder="seleccione el mes" ng-change="cambiarOpcion(auditoria)" >
+                                <option ng-value="todo" ng-repeat="todo in tableContra">{{todo.fecha}}</option>
+
+                            </select>
+                            </div>
+                            <div class="eq-c titulos" ng-show="indiCierre">
                                 <i> INDICADOR DE CIERRE DE NO CONFORMIDADES  =</i>
                                 <div class="fraction">
                                     <span class="fup"><i>TOTAL DE NO CONFORMIDADES CERRADAS</i></span>
@@ -286,8 +314,8 @@
                                 * 100 % = {{(listadoNoConforCerradas.length / listadoDeNoConformidades.length)* 100 }} %
                                 <br>
                                 <br>
-                                <button class="btn btn-primary center-block" ng-click="cerrarNoConformidad(opcionC1)" ng-hide="objeto" ng-show="!objeto">CERRAR LA NO CONFORMIDAD</button>
                             </div>
+                        </div>
 
                         </div>
 
