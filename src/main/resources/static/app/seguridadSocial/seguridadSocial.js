@@ -67,11 +67,7 @@ $scope.years=[
 
  }
 $scope.subirArchivo = function(ev,file,file2,mes,textArea,year){
-    console.log(file);
-    console.log(mes);
-    console.log(file2);
-    console.log(textArea);
-     if("undefined" !== typeof file && "undefined" !== typeof file2 && "undefined" !== typeof mes && "undefined" !== typeof textArea && "undefined" !== typeof year ){
+     if("undefined" !== typeof file && "undefined" !== typeof file2 && "undefined" !== typeof mes && "undefined" !== typeof textArea && "undefined" !== typeof year &&  file.name != file2.name ){
     //var uploadUrl = 'http://localhost:8080/app/seguridadSocial/'+ $localStorage.userLogeado.idContratista + "/"+ $localStorage.userLogeado.idContratante +  "/"+ mes.name +  "/"+ textArea +  "/"+ year.name;
     var uploadUrl = 'http://ec2-35-163-21-208.us-west-2.compute.amazonaws.com:8080/app/seguridadSocial/'+ $localStorage.userLogeado.idContratista + "/"+ $localStorage.userLogeado.idContratante +  "/"+ mes.name +  "/"+ textArea +  "/"+ year.name;
     $scope.list=[];
@@ -79,13 +75,25 @@ $scope.subirArchivo = function(ev,file,file2,mes,textArea,year){
     $scope.list.push(file2);
     contratoUpload.uploadFileToUrl($scope.list, uploadUrl);
         $scope.banderaMes = false;
+     $mdDialog.show(
+                    $mdDialog.alert()
+                    .parent(angular.element(document.querySelector('#popupContainer')))
+                    .clickOutsideToClose(true)
+                    .title('Exito')
+                    .textContent('Seguridad Social Totalmente registrada.')
+                    .ariaLabel('Alert Dialog Demo')
+                    .ok('intente de nuevo!')
+                    .targetEvent(ev)
+                );
+
+
      }
      else{
             $mdDialog.show(
                 $mdDialog.alert()
                 .parent(angular.element(document.querySelector('#popupContainer')))
                 .clickOutsideToClose(true)
-                .title('Algún dato quedo mal registrado')
+                .title('Algún dato quedo mal registrado,recuerde que los archivos no deben ser iguales')
                 .textContent('Recuerde llenar todos los campos.')
                 .ariaLabel('Alert Dialog Demo')
                 .ok('intente de nuevo!')

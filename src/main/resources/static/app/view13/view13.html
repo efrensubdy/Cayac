@@ -2,26 +2,25 @@
 <div  ng-controller="View13Ctrl" class="w3-container">
     <div class="container ">
         <div class="row">
+            <div class="col-xs-9">
             <div class="col-sm-12">
-                <div class="col-xs-11 text-center">
-                <label class="w3-center">REGISTRE SU CONTRATO</label>
+                <label class="w3-center titulos">REGISTRE SU PROYECTO</label>
                 <p></p>
-                </div>
-            </div>
-            <div class="col-sm-6">
-                <div class="col-xs-10">
-                <label for="email">TIPO DE CONTRATO</label>
-                <select class="form-control" ng-model="contrato.tipoContrato" placeholder="Escoja el tipo de Contrato">
-                    <option ng-value="todo.name" ng-repeat="todo in options">{{ todo.name }}</option>
-                </select>
-                </div>
 
             </div>
             <div class="col-sm-6">
-                <div class="col-xs-10">
-                <label >NOMBRE DEL CONTRATO</label>
+                <label class="titulos" for="email">TIPO DE CONTRATO</label>
+                <select class="form-control" ng-model="contrato.tipoContrato" placeholder="Escoja el tipo de Contrato">
+                    <option ng-value="todo.name" ng-repeat="todo in options">{{ todo.name }}</option>
+                </select>
+
+            </div>
+            <div class="col-sm-6">
+
+                <label class="titulos" >NOMBRE DEL CONTRATO</label>
                 <input ng-model="contrato.nombreContrato" type="text" class="form-control" id="email">
-                </div>
+
+            </div>
             </div>
             </div>
 
@@ -29,58 +28,58 @@
 
     <div class="container">
         <form>
+            <div class="col-xs-9">
             <div class="form-group">
-                <div class="col-xs-11">
-                <label>RUT</label>
+
+                <label class="titulos">RUT</label>
                 <input type="file" class="form-control"  file-model="myFile" name="myFile"/>
                 <p></p>
-                </div>
             </div>
-            
             <div class="form-group">
-                <div class="col-xs-11">
-                <label>CAMARA DE COMERCIO</label>
+                <label class="titulos">CAMARA DE COMERCIO</label>
                 <input type="file" class="form-control"  file-model="myFile2" name="myFile2"/>
                 <p></p>
-                </div>
 
             </div>
             
             <div class="form-group">
-                <div class="col-xs-11">
-                <label>CEDULA DEL REPRESENTANTE</label>
+                <label class="titulos">CEDULA DEL REPRESENTANTE</label>
                 <input type="file" class="form-control"  file-model="myFile3" name="myFile3"/>
                 <p></p>
-                </div>
+
+            </div>
             </div>
         </form>
     </div>
     
     <div class="container">
         <div class="row">
+            <div class="col-xs-9">
                 <div class="col-sm-4">
-                    <div class="col-xs-9">
-                    <label>FECHA DE INICIO DE CONTRATO</label>
+
+                    <label class="titulos">FECHA DE INICIO DE CONTRATO</label>
                     <input type="date"  class="form-control"  ng-model="contrato.fechaInicio" md-placeholder="Fecha Iniciación " ng-required="true">
-                    </div>
+
                 </div>
                 <div class="col-sm-4">
-                    <div class="col-xs-9">
-                    <label>FECHA DE FIN DE CONTRATO</label>
+
+                    <label class="titulos">FECHA DE FIN DE CONTRATO</label>
                     <input type="date" class="form-control"   ng-model="contrato.fechaFin" md-placeholder="Fecha Iniciación " ng-required="true">
-                    </div>
                 </div>
                 <div class="col-sm-4">
-                    <div class="col-xs-9">
-                    <label>FECHA DE INICIO DE ACTIVIDADES</label>
+                    <label class="titulos">FECHA DE INICIO DE ACTIVIDADES</label>
                     <input type="date" class="form-control" ng-model="contrato.fechaInicioDeActividades" md-placeholder="Fecha Iniciación " ng-required="true">
                     <p></p>
                     </div>
+
+            </div>
                 </div>
         </div>
         <br>
         <div class="row">
+            <div class="col-xs-9">
             <button class="btn btn-primary center-block" ng-click="add($event,contrato.fechaInicio | date:'yyyy-MM-dd',contrato.fechaFin | date:'yyyy-MM-dd',contrato.fechaInicioDeActividades | date:'yyyy-MM-dd')">REGISTRAR CONTRATO</button>
+            </div>
         </div>
 
        </div>

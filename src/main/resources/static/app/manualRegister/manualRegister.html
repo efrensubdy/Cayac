@@ -2,15 +2,18 @@
 <div class="w3-container">
     <div class="container align-middle text-center">
         <div class="row">
-            <div class="col-sm-12">
-                <h4 class="text-primary"><b>Registre al Contratista</b></h4>
-            </div>
+            <div class="col-xs-9">
+                <div class="col-sm-12">
+                    <h4 class="text-primary"><b>Registre al Contratista</b></h4>
+                </div>
+             </div>
         </div>
         <br>
         <div class="row">
+            <div class="col-xs-9">
             <div class="col-sm-6">
-                <div class="col-xs-9">
-                <label>Asigne al Contratista un contrato</label>
+
+                <label>Asignar un contrato al contratista</label>
                 <input class="form-control" type="text"  placeholder="A que contrato pertenece el contratista" name="contrato" list="contrat" ng-model="contrato">
                 <datalist id="contrat">
                     <select name="contrat" ng-model="select">
@@ -19,42 +22,37 @@
                     </select>
                 </datalist>
                 </div>
-            </div>
-
             <div class="col-sm-6">
-                <div class="col-xs-9">
                 <label for="nombreEmpresa">Nombre de la  Empresa Contratista</label>
                 <input class="form-control" type="text" name="firstname" id="nombreEmpresa" placeholder="nombre de su empresa" ng-model="nombreEmpresa">
-                </div>
             </div>
+        </div>
         </div>
         <br>
         <div class="row">
+            <div class="col-xs-9">
             <div class="col-sm-6">
-                <div class="col-xs-9">
+
                 <label for="email">Correo Electrónico para ingresar a Cayac</label>
                 <input class="form-control" type="email" name="email" id="email"  placeholder="email please.."  ng-model="email" >
-                </div>
             </div>
             <div class="col-sm-6">
-                <div class="col-xs-9">
                 <label>Contraseña para Cayac</label>
                 <input class="form-control" type="password" name="pasword" placeholder="nueva Contraseña.." ng-model="password">
-                </div>
             </div>
+        </div>
         </div>
         <br>
         <div class="row">
+            <div class="col-xs-9">
             <div class="col-sm-6">
-                <div class="col-xs-9">
+
                 <label>Duración del Contrato</label>
                 <select class="form-control" aria-label="Select 1" ng-model="duracionContrato" placeholder="Numero de Duracion">
                     <option ng-value="todo" ng-repeat="todo in options">{{ todo.name }}</option>
                 </select>
                 </div>
-            </div>
             <div class="col-sm-6">
-                <div class="col-xs-9">
                 <label>Codigo CIIU de su Empresa</label>
                 <input class="form-control" type="text"  placeholder="Código CIIU de su empresa" name="codigoCIIU" list="codigoCII" ng-model="codigoCIIU">
                 <button type="button" class="btn btn-primary navbar-btn" ng-click="alertCodigo(listini,codigoCIIU)">Detalle</button>
@@ -70,39 +68,37 @@
         </div>
         <br>
         <div class="row">
+            <div class="col-xs-9">
             <div class="col-sm-6">
-                <div class="col-xs-9">
+
                 <label>NIT Empresa Contratista</label>
                 <input class="form-control"   name="nit" placeholder="NIT de su empresa" ng-model="nit">
                 </div>
-            </div>
             <div class="col-sm-6">
-                <div class="col-xs-9">
                 <label>Direccion de la Empresa Contratista</label>
                 <input class="form-control"   name="direccion" placeholder="direccion de su empresa Contratista " ng-model="direccion">
-                </div>
             </div>
+        </div>
         </div>
         <br>
         <div class="row">
+            <div class="col-xs-9">
             <div class="col-sm-6">
-                <div class="col-xs-9">
+
                 <label>Telefono Empresa Contratista</label>
                 <input class="form-control"   name="telefono" placeholder="numero telefonico de la empresa" ng-model="telefono">
-                </div>
-
             </div>
             <div class="col-sm-6">
-                <div class="col-xs-9">
                 <label>Gerente General de la Empresa Contratista</label>
                 <input class="form-control"   name="gerenteGeneral" placeholder="Nombre del Gerente General de su empresa Contratista" ng-model="nombreDeGerenteGeneral">
-                </div>
             </div>
+        </div>
         </div>
         <br>
         <div class="row">
+            <div class="col-xs-9">
             <div class="col-sm-6">
-                <div class="col-xs-9">
+
                 <label>ARL Empresa Contratista</label>
                 <input class="form-control" type="text"  placeholder="ARL de su empresa" name="arl" list="arl" ng-model="arl">
                 <datalist id="arl">
@@ -118,10 +114,8 @@
                         <option value="Alfa">Alfa</option>
                     </select>
                 </datalist>
-                </div>
             </div>
             <div class="col-sm-6">
-                <div class="col-xs-9">
                 <label>Departamento de la Empresa Contratista</label>
                 <input class="form-control" type="text"  name="departamentos" list="departamentos" placeholder="departamento de su empresa" ng-model="departamento">
                 <datalist id="departamentos">
@@ -163,39 +157,42 @@
         </div>
         <br>
         <div class="row">
+            <div class="col-xs-9">
             <div class="col-sm-6">
-                <div class="col-xs-9">
+
                 <label>Nombre Persona Contacto Empresa Contratista</label>
                 <input class="form-control" type="text" name="personContacto"  placeholder="Nombre de Persona de Contacto de Empresa Contratista.."  ng-model="personContacto" >
-                </div>
             </div>
             <div class="col-sm-6">
-                <div class="col-xs-9">
                 <label>Cargo Persona Contacto de la Empresa Contratista</label>
                 <input class="form-control" type="text" name="cargoPersonaContacto"  placeholder="Cargo de Persona Contacto de la Empresa.."  ng-model="cargoPersonaContacto" >
-                </div>
             </div>
+        </div>
         </div>
         <br>
         <div class="row">
+            <div class="col-xs-9">
             <div class="col-sm-6">
-                <div class="col-xs-9">
                 <label>Telefono persona Contacto Empresa Contratista</label>
                 <input class="form-control" type="text" name="telefonoPersonaContacto"  placeholder="telefono persona Contacto.."  ng-model="telefonoPersonaContacto" >
                 </div>
-            </div>
             <div class="col-sm-6">
-                <div class="col-xs-9">
                 <label for="emailContacto">Email persona Contacto Empresa Contratista</label>
                 <input class="form-control" type="email" name="emailContacto" id="emailContacto" placeholder="Email persona Contacto.."  ng-model="emailContacto" >
-                </div>
             </div>
+        <br>
+
+    </div>
         </div>
         <br>
-        <div class="col-xs-9">
-        <button class="btn btn-primary btn-block" type="submit" ng-click="add($event)">Registrar</button>
+        <div class="row">
+            <div class="col-xs-9">
+            <div class="col-sm-12">
+                <button class="btn btn-primary center" type="submit" ng-click="add($event)">Registrar</button>
+            </div>
+            </div>
+
         </div>
-    </div>
 
 </div>
 
