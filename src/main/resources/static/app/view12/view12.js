@@ -43,6 +43,7 @@ angular.module('myApp.view12', ['ngRoute'])
 
      $scope.showAlert2=function(ev,client){
                 $rootScope.client=client
+                console.log(client);
                 $mdDialog.show({
                       //Controlador del mensajes con operaciones definido en la parte de abajo
                       controller: DialogController2,
@@ -59,6 +60,23 @@ angular.module('myApp.view12', ['ngRoute'])
 
       function DialogController2($scope, $mdDialog, $rootScope){
                 $scope.client= $rootScope.client;
+                switch ($scope.client.duracionContrato){
+                    case 0 :
+                        $scope.duracion= 'MENOS DE UN MES';
+                    break;
+                    case 1 :
+                         $scope.duracion= 'MAS DE TRES MESES';
+                      break;
+                    case 2 :
+                         $scope.duracion= 'MAS DE 6 MESES';
+                     break;
+                    case 3 :
+                         $scope.duracion= 'MAS DE UN AÑO';
+                     break;
+
+
+
+                }
 
                 $scope.hide = function() {
                              $mdDialog.hide();
