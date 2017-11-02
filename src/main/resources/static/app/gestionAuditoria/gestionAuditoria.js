@@ -198,6 +198,8 @@ $scope.years=[
              $scope.listadoDeNoConformidades=noPorContraAuditoria.query({idContratista:$rootScope.item.id,idAuditoria:$rootScope.auditoria.id});
              $scope.causas2 =false;
              $scope.indicador=false;
+             $scope.grafico=false;
+             $scope.grafico2=true;
             break;
             case 2:
             $scope.c1=false;
@@ -206,6 +208,8 @@ $scope.years=[
             $scope.listadoNoConforCerradas=noConforCerradasConAuditoria.query({idContratista:$rootScope.item.id,idAuditoria:$rootScope.auditoria.id});
             $scope.causas2 =false;
             $scope.indicador=false;
+            $scope.grafico=false;
+            $scope.grafico2=true;
             break;
 
 
@@ -228,5 +232,34 @@ $scope.years=[
      }
 
 }
+$scope.displayMap=function(a,b){
+$scope.myChartObject = {};
+    $scope.myChartObject.type = "Gauge";
+
+    $scope.myChartObject.options = {
+      width: 200,
+      height: 200,
+      redFrom: 90,
+      redTo: 100,
+      yellowFrom: 75,
+      yellowTo: 90,
+      minorTicks: 5
+    };
+
+    $scope.myChartObject.data = [
+      ['Label', 'Value '],
+      ['INDICADOR%', Math.round(a)]
+
+    ];
+    if (b==1){
+    $scope.grafico = true;
+    }
+    else{
+    $scope.grafico2=true;
+
+    }
+
+ }
+
 
 }]);

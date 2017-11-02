@@ -195,7 +195,7 @@
                                    </select>
                                </div>
                                <br>
-                               <div class="eq-c titulos" ng-show="indicador">
+                               <div class="eq-c titulos" ng-show="indicador" ng-click="displayMap((accionConRegistro.length / (accionConRegistro.length + accionSinRegistro.length))* 100,2)">
                                    <i> INDICADOR DE CUMPLIMIENTO DE PLAN DE ACCIÓN  =</i>
                                    <div class="fraction">
                                        <span class="fup"><i>TOTAL DE ACCIONES EJECUTADAS</i></span>
@@ -205,12 +205,23 @@
                                    * 100 % = {{(accionConRegistro.length / (accionConRegistro.length + accionSinRegistro.length))* 100 }} %
                                    <br>
                                    <br>
-                                   <button class="btn btn-primary center-block" ng-click="cerrarNoConformidad(opcionC1)" ng-hide="objeto" ng-show="!objeto">CERRAR LA NO CONFORMIDAD</button>
+                                   <div class="row" ng-show="grafico2">
+                                       <div class="col-sm-6">
+                                           <br>
+                                           <br>
+                                           <label class="titulos"></label>
+                                       </div>
+                                       <div class="col-sm-6">
+                                           <div class="center-block" ng-show="grafico2" google-chart chart="myChartObject" style="height:130px; width:100%;margin: 0 auto;"></div>
+                                       </div>
+                                   </div>
+
                                </div>
+
 
                            </div>
                            <div class="row" ng-show="c2">
-                               <div class="eq-c titulos">
+                               <div class="eq-c titulos" ng-click="displayMap((listadoNoConforCerradas.length / listadoDeNoConformidades.length)* 100 ,1)">
                                    <i> INDICADOR DE CIERRE DE NO CONFORMIDADES  =</i>
                                    <div class="fraction">
                                        <span class="fup"><i>TOTAL DE NO CONFORMIDADES CERRADAS</i></span>
@@ -220,6 +231,17 @@
                                    * 100 % = {{(listadoNoConforCerradas.length / listadoDeNoConformidades.length)* 100 }} %
                                    <br>
                                    <br>
+
+                               </div>
+                               <div class="row" ng-show="grafico">
+                                   <div class="col-sm-6">
+                                       <br>
+                                       <br>
+                                       <label class="titulos"></label>
+                                   </div>
+                                   <div class="col-sm-6">
+                                       <div class="center-block" ng-show="grafico" google-chart chart="myChartObject" style="height:130px; width:100%;margin: 0 auto;"></div>
+                                   </div>
                                </div>
                            </div>
                        </div>
