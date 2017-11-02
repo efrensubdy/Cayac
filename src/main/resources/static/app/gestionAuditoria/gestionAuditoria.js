@@ -228,6 +228,8 @@ $scope.years=[
             $scope.accionConRegistro=accionConRegistro.query({idContratista:$rootScope.item.id,idCausa:op10.id});
             $scope.accionSinRegistro=accionSinRegistro.query({idContratista:$rootScope.item.id,idCausa:op10.id});
             $scope.indicador=true;
+            $scope.grafico=false;
+            $scope.grafico2=false;
 
      }
 
