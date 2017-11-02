@@ -253,9 +253,11 @@ $scope.myChartObject = {};
     ];
     if (b==1){
     $scope.grafico = true;
+    $scope.grafico2=false;
     }
     else{
     $scope.grafico2=true;
+    $scope.grafico=false;
 
     }
 
