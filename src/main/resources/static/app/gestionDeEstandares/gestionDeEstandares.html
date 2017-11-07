@@ -136,6 +136,7 @@
                                 <tbody >
                                 <tr  class="titulos">
                                     <th>NOMBRE DE EMPRESA</th>
+                                    <th>NOMBRE DE CONTRATO</th>
                                     <th> ITEM</th>
                                     <th>TOTAL REQUERIDO</th>
                                     <th>TOTAL CALIFICACION</th>
@@ -144,6 +145,7 @@
                                 </tr>
                                 <tr ng-repeat="todo in listadoEstandaresMinimos | orderBy:propertyName:reverse">
                                     <td>{{todo.nombreEmpresa}}</td>
+                                    <td>{{todo.nombreContrato}}</td>
                                     <td > TOTAL GLOBAL</td>
                                     <td >
                                         100 %

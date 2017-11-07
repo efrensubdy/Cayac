@@ -6,7 +6,17 @@ import java.sql.Date;
  * Created by HSEQ on 17/10/2017.
  */
 public class EstandarMinimo {
-  public String nombreEmpresa;
+ public String nombreContrato;
+
+ public String getNombreContrato() {
+  return nombreContrato;
+ }
+
+ public void setNombreContrato(String nombreContrato) {
+  this.nombreContrato = nombreContrato;
+ }
+
+ public String nombreEmpresa;
    public float recursos;
     public float capacitacion;
 
