@@ -124,6 +124,10 @@ angular.module('services.listFactory', ['ngRoute','ngResource'])
                                   return $resource('/app/estandares/estandaresContra/:idContratista/:idContratante')
 
                                         })
+          .factory('estByMonthYear', function($resource) {
+                                            return $resource('/app/estandares/byMonthAndYear/:month/:year')
+
+                                                  })
            .factory('indMes', function($resource) {
                                    return $resource('/app/indicador/indicadoresPorMes/:idContratista/:mes/:year')
 

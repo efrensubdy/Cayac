@@ -92,4 +92,44 @@ public class EstandaresDB {
 
         return estandarMinimos;
     }
+    public List<EstandarMinimo>consultarEstandaresMinimosCompletos(int mes,int year)throws ClassNotFoundException,SQLException{
+        List<EstandarMinimo> estandarMinimos=new LinkedList<>();
+        String sql=" SELECT  * FROM estandaresMinimos AS es INNER JOIN  contratista AS c ON es.idContratista=c.idContratista  WHERE MONTH(fechaDeRegistro)= ? AND YEAR(fechaDeRegistro)= ? ;";
+        PreparedStatement ps = Conexion.conection().prepareStatement(sql);
+        ps.setInt(1,mes);
+        ps.setInt(2,year);
+        ResultSet rs = ps.executeQuery();
+        while (rs.next()) {
+            EstandarMinimo estandarMinimo=new EstandarMinimo();
+            estandarMinimo.setId(rs.getInt("id"));
+            estandarMinimo.setRecursos(rs.getFloat("recursos"));
+            estandarMinimo.setPolitica(rs.getFloat("politica"));
+            estandarMinimo.setObjetivos(rs.getFloat("objetivos"));
+            estandarMinimo.setEvaInicial(rs.getFloat("evaInicial"));
+            estandarMinimo.setPlanAnual(rs.getFloat("planAnual"));
+            estandarMinimo.setDocumen(rs.getFloat("documen"));
+            estandarMinimo.setCuentas(rs.getFloat("cuentas"));
+            estandarMinimo.setNormatividad(rs.getFloat("normatividad"));
+            estandarMinimo.setMecanismos(rs.getFloat("mecanismos"));
+            estandarMinimo.setAdquisiones(rs.getFloat("adquisiones"));
+            estandarMinimo.setContrataciones(rs.getFloat("contrataciones"));
+            estandarMinimo.setCambios(rs.getFloat("cambios"));
+            estandarMinimo.setCondiciones(rs.getFloat("condiciones"));
+            estandarMinimo.setRegistro(rs.getFloat("registro"));
+            estandarMinimo.setVigilancia(rs.getFloat("vigilancia"));
+            estandarMinimo.setPeligros(rs.getFloat("peligros"));
+            estandarMinimo.setPrevencion(rs.getFloat("prevencion"));
+            estandarMinimo.setPlanPrevencion(rs.getFloat("planPrevencion"));
+            estandarMinimo.setAccionesPreven(rs.getFloat("accionesPreven"));
+            estandarMinimo.setGestion(rs.getFloat("gestion"));
+            estandarMinimo.setIdContratista(rs.getInt("idContratista"));
+            estandarMinimo.setIdContratante(rs.getInt("idContratante"));
+            estandarMinimo.setFechaDeRegistro(rs.getDate("fechaDeRegistro"));
+            estandarMinimo.setNombreEmpresa(rs.getString("nombreEmpresa"));
+            estandarMinimos.add(estandarMinimo);
+
+        }
+
+        return estandarMinimos;
+    }
 }

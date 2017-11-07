@@ -11,6 +11,6 @@ import java.util.List;
 public interface AdministradorDeEstandares {
 public void insertarEstandar(EstandarMinimo estandarMinimo)throws ClassNotFoundException,SQLException;
 public List<EstandarMinimo>consultarEstandarMinimoPorContratista(int idContratista,int idContratante)throws ClassNotFoundException,SQLException;
-
+    public List<EstandarMinimo>consultarEstandarMinimoByMonthAndYear(int mes,int year)throws ClassNotFoundException,SQLException;
 
 }

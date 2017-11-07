@@ -25,4 +25,9 @@ public class ManejadorDeEstandares implements AdministradorDeEstandares {
     public List<EstandarMinimo> consultarEstandarMinimoPorContratista(int idContratista, int idContratante) throws ClassNotFoundException, SQLException {
         return estandaresDB.consultarEstandaresMinimosPorContratista(idContratista, idContratante);
     }
+
+    @Override
+    public List<EstandarMinimo> consultarEstandarMinimoByMonthAndYear(int mes, int year) throws ClassNotFoundException, SQLException {
+        return estandaresDB.consultarEstandaresMinimosCompletos(mes, year);
+    }
 }

@@ -6,9 +6,17 @@
             <div class="row">
                 <div class="col-xs-9">
                     <h4 class="titulos" ><b>REVISE LOS ESTANDARES MÍNIMOS REGISTRADOS POR SUS CONTRATISTAS</b></h4>
-                    <p class="texto"><b>ESCOJA EL CONTRATO, SOBRE EL CUAL REALIZARÁ LA REVISIÓN</b></p>
+                    <p class="texto">ESCOJA UNA DE LAS OPCIONES A ACONTINUACIÓN </p>
                     <div class="row">
+                        <select class="form-control" ng-model="notificacion" placeholder="Tipo de Notificación" ng-change="cambiarOpcion(notificacion)">
+                            <option ng-value="todo" ng-repeat="todo in notificaciones">{{todo.nombre}}</option>
+
+                        </select>
+                    </div>
+                    <br>
+                    <div class="row" ng-show="op1">
                         <div class="col-sm-12">
+                            <p class="texto"><b>ESCOJA EL CONTRATO, SOBRE EL CUAL REALIZARÁ LA REVISIÓN</b></p>
                             <input class="form-control" type="text"  placeholder="A que contrato va a hacer la revision" name="contrato" list="contratos" ng-change="ocultarTodo()" ng-model="contrato">
                             <datalist id="contratos">
                                 <select name="contratos" ng-model="select" ng-change="resul()">
@@ -18,6 +26,33 @@
                             </datalist>
                             <br>
                             <button class="btn btn-primary align-middle" type="submit" ng-click="add()">Consultar</button>
+                        </div>
+                    </div>
+                    <br>
+                    <div class="row" ng-show="op2">
+                        <div class="col-sm-12">
+                           <label class="texto">ESCOJA EL MES Y EL  AÑO </label>
+                            <br>
+                            <div class="col-sm-6">
+                                <p class="texto"><b>ESCOJA EL MES PARA LA  NOTIFICACIÓN</b></p>
+                                <select class="form-control" ng-model="mes" data-placeholder="seleccione el mes" ng-change="ocultarTodo()">
+                                    <option ng-value="todo" ng-repeat="todo in meses">{{todo.name}}</option>
+
+                                </select>
+                            </div>
+                            <div class="col-sm-6">
+                                <p class="texto"><b>ESCOJA EL AÑO PARA LA NOTIFICACIÓN</b></p>
+                                <select class="form-control" ng-model="year" data-placeholder="seleccione el mes" ng-change="ocultarTodo()">
+                                    <option ng-value="todo" ng-repeat="todo in years">{{todo.name}}</option>
+
+                                </select>
+                            </div>
+                            <br>
+                            <div class="col-sm-12">
+                                <br>
+                                <button class="btn btn-primary align-middle" type="submit" ng-click="byMonthAndYear(mes,year)">Consultar</button>
+
+                            </div>
                         </div>
                     </div>
                     <br>
@@ -90,6 +125,47 @@
                                 </table>
 
                             </div>
+
+                    </div>
+                    <div class="row" ng-show="bandera3">
+                        <label class="titulos">CONSULTA DE ESTANDARES MÍNIMOS</label>
+                        <br>
+                        <div class="table-responsive">
+                            <label class="titulos">RESULTADO GLOBAL</label>
+                            <table class="table table-bordered table-hover table-condensed">
+                                <tbody >
+                                <tr  class="titulos">
+                                    <th>NOMBRE DE EMPRESA</th>
+                                    <th> ITEM</th>
+                                    <th>TOTAL REQUERIDO</th>
+                                    <th>TOTAL CALIFICACION</th>
+                                    <th>FECHA DE REGISTRO</th>
+                                    <th>DETALLE</th>
+                                </tr>
+                                <tr ng-repeat="todo in listadoEstandaresMinimos | orderBy:propertyName:reverse">
+                                    <td>{{todo.nombreEmpresa}}</td>
+                                    <td > TOTAL GLOBAL</td>
+                                    <td >
+                                        100 %
+
+                                    </td>
+                                    <td>
+                                        {{todo.recursos + todo.capacitacion  + todo.politica + todo.objetivos + todo.evaInicial + todo.planAnual + todo.documen + todo.cuentas + todo.normatividad + todo.mecanismos + todo.adquisiones + todo.contrataciones + todo.cambios + todo.condiciones + todo.registro + todo.vigilancia + todo.peligros + todo.prevencion + todo.planPrevencion + todo.gestion + todo.accionesPreven }} %
+                                    </td>
+                                    <td>{{todo.fechaDeRegistro}}</td>
+                                    <td ><button class="btn btn-primary" ng-click="showAlert($event,todo)">
+                                        Detalles
+                                    </button>
+                                        <button class="btn btn-primary" ng-click="showAlert2($event,todo)">
+                                            Graficos
+                                        </button>
+                                    </td>
+                                </tr>
+                                </tbody>
+
+                            </table>
+
+                        </div>
 
                     </div>
 

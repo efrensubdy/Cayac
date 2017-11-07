@@ -9,7 +9,78 @@ angular.module('myApp.gestionDeEstandares', ['ngRoute'])
   });
 }])
 
-.controller('gestionDeEstandaresCtrl', ['$timeout', '$q', '$scope','$log','$rootScope','$localStorage','$sessionStorage','$mdDialog','contratosEnEjecucion','finalesDefinitivos','estContr',function($timeout, $q, $scope,$log,$rootScope,$localStorage,$sessionStorage,$mdDialog,contratosEnEjecucion,finalesDefinitivos,estContr) {
+.controller('gestionDeEstandaresCtrl', ['$timeout', '$q', '$scope','$log','$rootScope','$localStorage','$sessionStorage','$mdDialog','contratosEnEjecucion','finalesDefinitivos','estContr','estByMonthYear',function($timeout, $q, $scope,$log,$rootScope,$localStorage,$sessionStorage,$mdDialog,contratosEnEjecucion,finalesDefinitivos,estContr,estByMonthYear) {
+$scope.op2=false;
+$scope.op1=false;
+$scope.notificaciones=[
+    {id:1,nombre:'POR CONTRATO'},
+    {id:2,nombre:'POR CONTRATISTAS'},
+
+
+  ];
+  $scope.meses=[
+   { id: 1, name: 'ENERO'},
+   { id: 2, name: 'FEBRERO'},
+   { id: 3, name: 'MARZO'},
+   { id: 4, name: 'ABRIL'},
+   { id: 5, name: 'MAYO'},
+   { id: 6, name: 'JUNIO'},
+   { id: 7, name: 'JULIO'},
+   { id: 8, name: 'AGOSTO'},
+   { id: 9, name: 'SEPTIEMBRE'},
+   { id: 10, name: 'OCTUBRE'},
+   { id: 11, name: 'NOVIEMBRE'},
+   { id: 12, name: 'DICIEMBRE'},
+
+              ];
+  $scope.years=[
+     { id: 10, name: 2009},
+     { id: 11, name: 2010},
+     { id: 12, name: 2011},
+     { id: 13, name: 2012},
+     { id: 14, name: 2013},
+     { id: 15, name: 2014},
+     { id: 16, name: 2015},
+     { id: 17, name: 2016},
+     { id: 18, name: 2017},
+     { id: 19, name: 2018},
+     { id: 20, name: 2019},
+     { id: 21, name: 2020},
+     { id: 22, name: 2021},
+     { id: 23, name: 2022},
+     { id: 24, name: 2023},
+     { id: 25, name: 2024},
+     { id: 26, name: 2026},
+                ];
+$scope.cambiarOpcion = function(notificacion){
+
+    switch(notificacion.id){
+        case 1:
+        $scope.op1=true;
+        $scope.op2=false;
+         $scope.flag=false
+            $scope.bandera2=false
+            $scope.bandera3=false;
+        break;
+        case 2:
+        $scope.op1=false;
+        $scope.op2=true;
+         $scope.flag=false
+            $scope.bandera2=false
+            $scope.bandera3=false;
+        break;
+
+    }
+
+}
+$scope.byMonthAndYear=function(mes,year){
+
+console.log(mes);
+console.log(year)
+$scope.listadoEstandaresMinimos=estByMonthYear.query({month:mes.id,year:year.name});
+$scope.bandera3=true;
+
+}
 
 $scope.listado=contratosEnEjecucion.query({idContratante:$localStorage.contratanteLogeado.idContratante});
 $scope.flag=false
@@ -17,6 +88,7 @@ $scope.bandera2=false
 $scope.ocultarTodo=function(){
     $scope.flag=false
     $scope.bandera2=false
+    $scope.bandera3=false;
 
 }
 
