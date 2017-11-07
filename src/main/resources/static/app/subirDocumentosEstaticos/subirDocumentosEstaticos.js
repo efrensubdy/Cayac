@@ -9,7 +9,7 @@ angular.module('myApp.subirDocumentosEstaticos', ['ngRoute'])
   });
 }])
 
-.controller('subirDocumentosEstaticosCtrl', ['$localStorage','$sessionStorage','$http','$parse','$scope','$rootScope','$mdDialog','fileUpload','estadoPreviosSugeridos','estadoPreviosExtras',function($localStorage,$sessionStorage,$http,$parse,$scope,$rootScope,$mdDialog,fileUpload,estadoPreviosSugeridos,estadoPreviosExtras) {
+.controller('subirDocumentosEstaticosCtrl', ['$route','$localStorage','$sessionStorage','$http','$parse','$scope','$rootScope','$mdDialog','fileUpload','estadoPreviosSugeridos','estadoPreviosExtras',function($route,$localStorage,$sessionStorage,$http,$parse,$scope,$rootScope,$mdDialog,fileUpload,estadoPreviosSugeridos,estadoPreviosExtras) {
        $scope.file = "";
 
        $scope.agregarEstaticosSugeridosPrevios = function(ev,item) {
@@ -94,6 +94,11 @@ angular.module('myApp.subirDocumentosEstaticos', ['ngRoute'])
           $scope.reverse = ($scope.propertyName === propertyName) ? !$scope.reverse : false;
           $scope.propertyName = propertyName;
         };
+        $scope.resfresh=function(){
+            $route.reload();
+
+
+        }
 
 
 }])

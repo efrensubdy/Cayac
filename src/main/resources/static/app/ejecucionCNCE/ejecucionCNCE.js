@@ -116,6 +116,16 @@ angular.module('myApp.ejecucionCNCE', ['ngRoute'])
            $scope.aprobar=function(){
                  console.log($rootScope.user);
                  aproba.save({idContratista:$rootScope.user.id,idContratante:$localStorage.contratanteLogeado.idContratante})
+                 $mdDialog.show(
+                                      $mdDialog.alert()
+                                        .parent(angular.element(document.querySelector('#popupContainer')))
+                                        .clickOutsideToClose(true)
+                                        .title('APROBADO')
+                                        .textContent('Ahora este contratante podrá relizar las actividades del plan de trabajo.')
+                                        .ariaLabel('Alert Dialog Demo')
+                                        .ok('ok!')
+                                        .targetEvent(ev)
+                                    );
 
 
            }
