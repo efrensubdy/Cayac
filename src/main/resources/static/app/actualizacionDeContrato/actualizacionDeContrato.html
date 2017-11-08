@@ -1,0 +1,67 @@
+
+<div>
+<div  ng-controller="actualizacionDeContratoCtrl as ctrl">
+    <div class="w3-container w3-center">
+        <div class="container align-middle text-center">
+            <div class="row">
+                <div class="col-xs-9">
+                    <h4 class="titulos" ><b>ACTUALIZE SU CONTRATO</b></h4>
+                    <p class="texto"><b>ESCOJA EL CONTRATO SOBRE EL CUAL REALIZARÁ LA ACTUALIZACION</b></p>
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <select class="form-control" ng-model="contrato" data-placeholder="seleccione el mes" ng-change="ocultarTodo()">
+                                <option ng-value="todo" ng-repeat="todo in listado">{{todo.nombreContrato}}</option>
+
+                            </select>
+                        </div>
+                    </div>
+                    <br>
+                    <div class="row" ng-show="banderaOpciones">
+                        <div class="col-sm-12">
+                            <p class="texto"><b>ESCOJA EL DOCUMENTO QUE DESEA ACTUALIZAR</b></p>
+                            <select class="form-control" ng-model="notificacion" data-placeholder="seleccione el mes" ng-change="add(contrato,notificacion)">
+                                <option ng-value="todo" ng-repeat="todo in notificaciones">{{todo.nombre}}</option>
+
+                            </select>
+                        </div>
+                    </div>
+                    <br>
+                    <div class="row" ng-show="bandera2">
+                        <div class="table-responsive">
+                            <table class="table table-bordered table-hover table-condensed">
+                                <tbody>
+                                <tr class="titulos" >
+                                    <th >Contrato</th>
+                                    <th>Documento a cambiar</th>
+                                    <th >Actualice su archivo</th>
+
+                                </tr>
+                                <tr class="texto">
+                                    <td >{{contrato2.nombreContrato}}</td>
+                                    <td>{{notificacion2.nombre}}</td>
+                                    <td >
+                                        <input class="form-control" type="file" file-model="myFile"/></file-model>
+                                        <br>
+                                        <button type="button" class="btn btn-primary center-block" ng-click="refreshFile($event,myFile,contrato,notificacion)" >agregar</button>
+                                    </td>
+                                </tr>
+
+                                </tbody>
+
+                            </table>
+
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+            </div>
+                    <br>
+                </div>
+             </div>
+        </div>
+    </div>
+</div>
+</div>
+

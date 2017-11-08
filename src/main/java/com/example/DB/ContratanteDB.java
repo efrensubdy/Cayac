@@ -237,6 +237,8 @@ public class ContratanteDB {
                 FileUtils.moveFile(f,q);
                 break;
 
+
+
             }
 
 
@@ -244,6 +246,26 @@ public class ContratanteDB {
 
         }
 
+
+    }
+    public void actualizarRut(Contrato contrato)throws SQLException,ClassNotFoundException,IOException{
+        List<Contrato> contratoLinkedList=new LinkedList<>();
+        contratoLinkedList=consultarContratos(contrato.getIdContratante());
+        Contrato contratoBucado =new Contrato();
+        for (Contrato c: contratoLinkedList){
+          if (c.getIdContrato()==contrato.getIdContrato()){
+              contratoBucado=c;
+              System.out.println(contratoBucado.getNombreContrato());
+          }
+        }
+
+        File q=new File("src/main/resources/static/app/Repository/Contratante/"+contrato.getIdContratante() + "/rut" + contratoBucado.getNombreContrato() +contrato.getFechaInicio()  + "."+ getFileExtension(contrato.getFile()) )  ;
+        if (q.isFile()) {
+           FileUtils.deleteQuietly(q);
+        }
+        File f=contrato.getFile();
+        q=new File("src/main/resources/static/app/Repository/Contratante/"+contrato.getIdContratante() + "/rut" + contratoBucado.getNombreContrato() +contrato.getFechaInicio()  + "."+ getFileExtension(contrato.getFile()))  ;
+        FileUtils.moveFile(f,q);
 
     }
     public List<Contrato> consultarContratos( int idContratante ) throws ClassNotFoundException, SQLException{

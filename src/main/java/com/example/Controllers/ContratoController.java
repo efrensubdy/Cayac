@@ -162,6 +162,42 @@ public class ContratoController {
         }
         return a;
     }
+    @RequestMapping(value="rut/{idContratante}/{fechaInicio}/{idContrato}", method = RequestMethod.POST)
+    public ResponseEntity<?>actualizarRut(@PathVariable int idContratante,@PathVariable String fechaInicio,@PathVariable int idContrato,
+                                               MultipartHttpServletRequest request) {
+
+        ResponseEntity a;
+        try {
+            //obtener datos que se enviarán a través del API
+            //manejoDeContratoBD.agregarContrato(contrato);
+            //org.springframework.web.multipart.MultipartHttpServletRequest
+            Iterator<String> itr = request.getFileNames();
+            Contrato nuevoContrato=new Contrato();
+            SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
+            Date parsed = formatter.parse(fechaInicio);
+            java.sql.Date sqlInicio = new java.sql.Date(parsed.getTime());
+            nuevoContrato.setFechaInicio(sqlInicio);
+            nuevoContrato.setIdContrato(idContrato);
+            nuevoContrato.setIdContratante(idContratante);
+            while(itr.hasNext()) {
+                String uploadedFile = itr.next();
+                MultipartFile file = request.getFile(uploadedFile);
+                File fileForDB=convert(file);
+                nuevoContrato.setFile(fileForDB);
+                String fileName = fileForDB.getName();
+
+
+
+            }
+            manejoDeContratoBD.actualizarRut(nuevoContrato);
+            a = new ResponseEntity<>(HttpStatus.ACCEPTED);
+
+        } catch (Exception ex) {
+            Logger.getLogger(Controller.class.getName()).log(Level.SEVERE, null, ex);
+            return new ResponseEntity<>("Error bla bla bla", HttpStatus.NOT_FOUND);
+        }
+        return a;
+    }
 
 
     private File convert(MultipartFile file) throws IOException {

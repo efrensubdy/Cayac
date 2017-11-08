@@ -21,6 +21,15 @@ public class Contrato {
     public String estado;
     public String tipo2;
     public String tipo3;
+    public File file;
+
+    public File getFile() {
+        return file;
+    }
+
+    public void setFile(File file) {
+        this.file = file;
+    }
 
     public String getTipo2() {
         return tipo2;

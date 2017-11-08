@@ -13,6 +13,7 @@ import java.util.List;
  */
 public interface AdministradorDeContratos {
     public void agregarContrato(Contrato contrato)throws SQLException,ClassNotFoundException,IOException;
+    public void actualizarRut(Contrato contrato)throws SQLException,ClassNotFoundException,IOException;
     public List<Contrato>obtenerContratos(int idContratante)throws SQLException,ClassNotFoundException;
     public List<Contrato>contratosPorFecha(java.sql.Date fechaInicio,java.sql.Date fechaFin,int idContratante)throws SQLException,ClassNotFoundException;
     public List<Contrato>contratosEjecucion(int idContratante)throws SQLException,ClassNotFoundException;
