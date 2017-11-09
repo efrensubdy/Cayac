@@ -9,7 +9,22 @@ angular.module('myApp.indicadores', ['ngRoute'])
   });
 }])
 
-.controller('indicadoresCtrl', ['$timeout', '$q', '$scope','$log','$rootScope','$localStorage','$sessionStorage','$mdDialog','indicador','indContr',function($timeout, $q, $scope,$log,$rootScope,$localStorage,$sessionStorage,$mdDialog,indicador,indContr) {
+.controller('indicadoresCtrl', ['$location', '$q', '$scope','$log','$rootScope','$localStorage','$sessionStorage','$mdDialog','indicador','indContr',function($location, $q, $scope,$log,$rootScope,$localStorage,$sessionStorage,$mdDialog,indicador,indContr) {
+if ("undefined" === typeof $localStorage.userLogeado || "undefined" !== typeof $localStorage.contratanteLogeado){
+         $mdDialog.show(
+                          $mdDialog.alert()
+                            .parent(angular.element(document.querySelector('#popupContainer')))
+                            .clickOutsideToClose(true)
+                            .title('Error')
+                            .textContent('Usted no ha iniciado sesión.')
+                            .ariaLabel('Alert Dialog Demo')
+                            .ok('ok!')
+                            .targetEvent()
+                    );
+        $location.path("inicio");
+
+
+}
 $scope.bandera1=false;
 $scope.bandera2=false;
 $scope.name=$localStorage.userLogeado.nombreEmpresa;

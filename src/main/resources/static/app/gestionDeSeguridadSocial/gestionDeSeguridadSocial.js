@@ -9,8 +9,22 @@ angular.module('myApp.gestionDeSeguridadSocial', ['ngRoute'])
   });
 }])
 
-.controller('gestionDeSeguridadSocialCtrl', ['$timeout', '$q', '$scope','$log','$rootScope','$localStorage','$sessionStorage','contratosEnEjecucion','finalesDefinitivos','$mdDialog','seguriContratante',function($timeout, $q, $scope,$log,$rootScope,$localStorage,$sessionStorage,contratosEnEjecucion,finalesDefinitivos,$mdDialog,seguriContratante) {
+.controller('gestionDeSeguridadSocialCtrl', ['$location', '$q', '$scope','$log','$rootScope','$localStorage','$sessionStorage','contratosEnEjecucion','finalesDefinitivos','$mdDialog','seguriContratante',function($location, $q, $scope,$log,$rootScope,$localStorage,$sessionStorage,contratosEnEjecucion,finalesDefinitivos,$mdDialog,seguriContratante) {
+if ("undefined" === typeof $localStorage.userLogeado || "undefined" !== typeof $localStorage.contratanteLogeado){
+         $mdDialog.show(
+                          $mdDialog.alert()
+                            .parent(angular.element(document.querySelector('#popupContainer')))
+                            .clickOutsideToClose(true)
+                            .title('Error')
+                            .textContent('Usted no ha iniciado sesión.')
+                            .ariaLabel('Alert Dialog Demo')
+                            .ok('ok!')
+                            .targetEvent()
+                    );
+        $location.path("inicio");
 
+
+}
 $scope.meses=[
  { id: 1, name: 'ENERO'},
  { id: 2, name: 'FEBRERO'},

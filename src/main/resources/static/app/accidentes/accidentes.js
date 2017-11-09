@@ -9,7 +9,23 @@ angular.module('myApp.accidentes', ['ngRoute'])
   });
 }])
 
-.controller('accidentesCtrl', ['$timeout', '$q', '$scope','$log','$rootScope','$localStorage','$sessionStorage','$mdDialog','acciDente','accPorContra',function($timeout, $q, $scope,$log,$rootScope,$localStorage,$sessionStorage,$mdDialog,acciDente,accPorContra) {
+.controller('accidentesCtrl', ['$location','$timeout', '$q', '$scope','$log','$rootScope','$localStorage','$sessionStorage','$mdDialog','acciDente','accPorContra',function($location,$timeout, $q, $scope,$log,$rootScope,$localStorage,$sessionStorage,$mdDialog,acciDente,accPorContra) {
+if ("undefined" === typeof $localStorage.userLogeado || "undefined" !== typeof $localStorage.contratanteLogeado){
+         $mdDialog.show(
+                          $mdDialog.alert()
+                            .parent(angular.element(document.querySelector('#popupContainer')))
+                            .clickOutsideToClose(true)
+                            .title('Error')
+                            .textContent('Usted no ha iniciado sesión.')
+                            .ariaLabel('Alert Dialog Demo')
+                            .ok('ok!')
+                            .targetEvent()
+                    );
+        $location.path("inicio");
+
+
+}
+
 $scope.bandera1=false;
 $scope.bandera2=false;
 

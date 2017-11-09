@@ -9,8 +9,22 @@ angular.module('myApp.actualizacionDeContrato', ['ngRoute'])
   });
 }])
 
-.controller('actualizacionDeContratoCtrl', ['$timeout', '$q', '$scope','$log','$rootScope','$localStorage','$sessionStorage','$mdDialog','contratosEnEjecucion','fileUpload',function($timeout, $q, $scope,$log,$rootScope,$localStorage,$sessionStorage,$mdDialog,contratosEnEjecucion,fileUpload) {
+.controller('actualizacionDeContratoCtrl', ['$location', '$q', '$scope','$log','$rootScope','$localStorage','$sessionStorage','$mdDialog','contratosEnEjecucion','fileUpload',function($location, $q, $scope,$log,$rootScope,$localStorage,$sessionStorage,$mdDialog,contratosEnEjecucion,fileUpload) {
+if ("undefined" === typeof $localStorage.userLogeado || "undefined" !== typeof $localStorage.contratanteLogeado){
+         $mdDialog.show(
+                          $mdDialog.alert()
+                            .parent(angular.element(document.querySelector('#popupContainer')))
+                            .clickOutsideToClose(true)
+                            .title('Error')
+                            .textContent('Usted no ha iniciado sesión.')
+                            .ariaLabel('Alert Dialog Demo')
+                            .ok('ok!')
+                            .targetEvent()
+                    );
+        $location.path("inicio");
 
+
+}
 $scope.banderaOpciones=false;
 $scope.bandera2=false;
 $scope.notificaciones=[

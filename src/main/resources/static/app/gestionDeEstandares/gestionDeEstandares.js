@@ -9,7 +9,22 @@ angular.module('myApp.gestionDeEstandares', ['ngRoute'])
   });
 }])
 
-.controller('gestionDeEstandaresCtrl', ['$timeout', '$q', '$scope','$log','$rootScope','$localStorage','$sessionStorage','$mdDialog','contratosEnEjecucion','finalesDefinitivos','estContr','estByMonthYear',function($timeout, $q, $scope,$log,$rootScope,$localStorage,$sessionStorage,$mdDialog,contratosEnEjecucion,finalesDefinitivos,estContr,estByMonthYear) {
+.controller('gestionDeEstandaresCtrl', ['$location', '$q', '$scope','$log','$rootScope','$localStorage','$sessionStorage','$mdDialog','contratosEnEjecucion','finalesDefinitivos','estContr','estByMonthYear',function($location, $q, $scope,$log,$rootScope,$localStorage,$sessionStorage,$mdDialog,contratosEnEjecucion,finalesDefinitivos,estContr,estByMonthYear) {
+if ("undefined" === typeof $localStorage.userLogeado || "undefined" !== typeof $localStorage.contratanteLogeado){
+         $mdDialog.show(
+                          $mdDialog.alert()
+                            .parent(angular.element(document.querySelector('#popupContainer')))
+                            .clickOutsideToClose(true)
+                            .title('Error')
+                            .textContent('Usted no ha iniciado sesión.')
+                            .ariaLabel('Alert Dialog Demo')
+                            .ok('ok!')
+                            .targetEvent()
+                    );
+        $location.path("inicio");
+
+
+}
 $scope.op2=false;
 $scope.op1=false;
 $scope.notificaciones=[

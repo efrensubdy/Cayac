@@ -9,8 +9,22 @@ angular.module('myApp.aCFinSelec', ['ngRoute'])
   });
 }])
 
-.controller('aCFinSelecCtrl', ['$timeout', '$q', '$scope','$log','$rootScope','$localStorage','$sessionStorage','contratosEjecucion','finalesSeleccion','$mdDialog','selecFin',function($timeout, $q, $scope,$log,$rootScope,$localStorage,$sessionStorage,contratosEjecucion,finalesSeleccion,$mdDialog,selecFin) {
+.controller('aCFinSelecCtrl', ['$location', '$q', '$scope','$log','$rootScope','$localStorage','$sessionStorage','contratosEjecucion','finalesSeleccion','$mdDialog','selecFin',function($location, $q, $scope,$log,$rootScope,$localStorage,$sessionStorage,contratosEjecucion,finalesSeleccion,$mdDialog,selecFin) {
+if ("undefined" === typeof $localStorage.userLogeado || "undefined" !== typeof $localStorage.contratanteLogeado){
+         $mdDialog.show(
+                          $mdDialog.alert()
+                            .parent(angular.element(document.querySelector('#popupContainer')))
+                            .clickOutsideToClose(true)
+                            .title('Error')
+                            .textContent('Usted no ha iniciado sesión.')
+                            .ariaLabel('Alert Dialog Demo')
+                            .ok('ok!')
+                            .targetEvent()
+                    );
+        $location.path("inicio");
 
+
+}
  $scope.listado=contratosEjecucion.query({idContratante:$localStorage.contratanteLogeado.idContratante})
  $scope.listado2=finalesSeleccion.query({idContratante:$localStorage.contratanteLogeado.idContratante});
 

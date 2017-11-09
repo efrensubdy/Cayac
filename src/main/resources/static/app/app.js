@@ -85,6 +85,7 @@ $qProvider.errorOnUnhandledRejections(false);
        console.log("AT THIS MOMENT NOTBODY IS IN CAYAC")
        $rootScope.bandera=false;
        $rootScope.bandera2=false;
+
    }
    $scope.logout = function () {
                           $http.post('/logout',{}).then(successCallback, errorCallback);

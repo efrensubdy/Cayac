@@ -9,8 +9,22 @@ angular.module('myApp.gestionAuditoria', ['ngRoute'])
   });
 }])
 
-.controller('gestionAuditoriaCtrl', ['$timeout', '$q', '$scope','$log','$rootScope','$localStorage','$sessionStorage','contratosEnEjecucion','finalesDefinitivos','auditoriaContratis','noPorContraAuditoria','caPorContra','accionContra','noConforCerradasConAuditoria','accionConRegistro','accionSinRegistro',function($timeout, $q, $scope,$log,$rootScope,$localStorage,$sessionStorage,contratosEnEjecucion,finalesDefinitivos,auditoriaContratis,noPorContraAuditoria,caPorContra,accionContra,noConforCerradasConAuditoria,accionConRegistro,accionSinRegistro) {
+.controller('gestionAuditoriaCtrl', ['$mdDialog','$location', '$q', '$scope','$log','$rootScope','$localStorage','$sessionStorage','contratosEnEjecucion','finalesDefinitivos','auditoriaContratis','noPorContraAuditoria','caPorContra','accionContra','noConforCerradasConAuditoria','accionConRegistro','accionSinRegistro',function($mdDialog,$location, $q, $scope,$log,$rootScope,$localStorage,$sessionStorage,contratosEnEjecucion,finalesDefinitivos,auditoriaContratis,noPorContraAuditoria,caPorContra,accionContra,noConforCerradasConAuditoria,accionConRegistro,accionSinRegistro) {
+if ("undefined" === typeof $localStorage.userLogeado || "undefined" !== typeof $localStorage.contratanteLogeado){
+         $mdDialog.show(
+                          $mdDialog.alert()
+                            .parent(angular.element(document.querySelector('#popupContainer')))
+                            .clickOutsideToClose(true)
+                            .title('Error')
+                            .textContent('Usted no ha iniciado sesión.')
+                            .ariaLabel('Alert Dialog Demo')
+                            .ok('ok!')
+                            .targetEvent()
+                    );
+        $location.path("inicio");
 
+
+}
 $scope.listado=contratosEnEjecucion.query({idContratante:$localStorage.contratanteLogeado.idContratante});
 $scope.flag=false
 $scope.auditorias=false;

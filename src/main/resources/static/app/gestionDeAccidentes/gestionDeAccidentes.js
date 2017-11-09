@@ -9,7 +9,22 @@ angular.module('myApp.gestionDeAccidentes', ['ngRoute'])
   });
 }])
 
-.controller('gestionDeAccidentesCtrl', ['$timeout', '$q', '$scope','$log','$rootScope','$localStorage','$sessionStorage','finalesDefinitivos','contratosEnEjecucion','accPorContra','$mdDialog',function($timeout, $q, $scope,$log,$rootScope,$localStorage,$sessionStorage,finalesDefinitivos,contratosEnEjecucion,accPorContra,$mdDialog) {
+.controller('gestionDeAccidentesCtrl', ['$location', '$q', '$scope','$log','$rootScope','$localStorage','$sessionStorage','finalesDefinitivos','contratosEnEjecucion','accPorContra','$mdDialog',function($location, $q, $scope,$log,$rootScope,$localStorage,$sessionStorage,finalesDefinitivos,contratosEnEjecucion,accPorContra,$mdDialog) {
+if ("undefined" === typeof $localStorage.userLogeado || "undefined" !== typeof $localStorage.contratanteLogeado){
+         $mdDialog.show(
+                          $mdDialog.alert()
+                            .parent(angular.element(document.querySelector('#popupContainer')))
+                            .clickOutsideToClose(true)
+                            .title('Error')
+                            .textContent('Usted no ha iniciado sesión.')
+                            .ariaLabel('Alert Dialog Demo')
+                            .ok('ok!')
+                            .targetEvent()
+                    );
+        $location.path("inicio");
+
+
+}
 $scope.flag=false
 $scope.bandera3=false
 $scope.ocultarTodo=function(){

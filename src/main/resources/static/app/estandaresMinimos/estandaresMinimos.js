@@ -9,7 +9,22 @@ angular.module('myApp.estandaresMinimos', ['ngRoute'])
   });
 }])
 
-.controller('estandaresMinimosCtrl', ['$timeout', '$q', '$scope','$log','$rootScope','$localStorage','$sessionStorage','$mdDialog','estandar','estContr',function($timeout, $q, $scope,$log,$rootScope,$localStorage,$sessionStorage,$mdDialog,estandar,estContr) {
+.controller('estandaresMinimosCtrl', ['$location', '$q', '$scope','$log','$rootScope','$localStorage','$sessionStorage','$mdDialog','estandar','estContr',function($location, $q, $scope,$log,$rootScope,$localStorage,$sessionStorage,$mdDialog,estandar,estContr) {
+if ("undefined" === typeof $localStorage.userLogeado || "undefined" !== typeof $localStorage.contratanteLogeado){
+                 $mdDialog.show(
+                                  $mdDialog.alert()
+                                    .parent(angular.element(document.querySelector('#popupContainer')))
+                                    .clickOutsideToClose(true)
+                                    .title('Error')
+                                    .textContent('Usted no ha iniciado sesión.')
+                                    .ariaLabel('Alert Dialog Demo')
+                                    .ok('ok!')
+                                    .targetEvent()
+                            );
+                $location.path("inicio");
+
+
+        }
 $scope.bandera1=false;
 $scope.bandera2=false;
 $scope.opciones=[

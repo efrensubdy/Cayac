@@ -14,21 +14,24 @@
             <div class="row">
                 <div class="col-xs-9">
                     <div class="table-responsive">
-                    <table class="table table-bordered table-hover table-condensed">
+                    <table class="table borderless table-hover">
                         <thead>
                         <tr class="titulos">
-                            <th>NUMERO</th>
-                            <th>MENSAJE</th>
+                            <th class="text-center">¿ Eliminar ?</th>
+                            <th class="text-center">BANDEJA DE ENTRADA</th>
                         </tr>
                         </thead>
                         <tbody>
                         <tr class="texto"  ng-repeat="todo in listadoMensajes" >
-                            <td>{{todo.id}}</td>
+                            <td><md-checkbox   aria-label="Checkbox 1"  ng-model="selected" ng-change="deleteMessage(selected,todo)">
+                            </md-checkbox></td>
                             <td>{{todo.mensaje}}</td>
 
                         </tr>
                         </tbody>
                     </table>
+
+                        <div ng-show="trash" class="w3-col center-block" style="width:50px" ng-click="messageDelete($event)"><i class="w3-xxlarge titulos fa fa-trash"></i></a></div>
                     </div>
 
                 </div>

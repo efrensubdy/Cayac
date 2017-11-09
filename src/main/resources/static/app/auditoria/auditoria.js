@@ -9,7 +9,22 @@ angular.module('myApp.auditoria', ['ngRoute'])
   });
 }])
 
-.controller('auditoriaCtrl', ['$http','$timeout', '$q', '$scope','$log','$rootScope','$localStorage','$sessionStorage','$mdDialog','auditoriaContratis','noConformidad','noPorContra','causa','caPorContra','fileUpload','accionContra','registroDeAccion','accionConRegistro','accionSinRegistro','cierre','noConforCerradas','noPorContraAuditoria','noConforCerradasConAuditoria',function($http,$timeout, $q, $scope,$log,$rootScope,$localStorage,$sessionStorage,$mdDialog,auditoriaContratis,noConformidad,noPorContra,causa,caPorContra,fileUpload,accionContra,registroDeAccion,accionConRegistro,accionSinRegistro,cierre,noConforCerradas,noPorContraAuditoria,noConforCerradasConAuditoria) {
+.controller('auditoriaCtrl', ['$http','$location', '$q', '$scope','$log','$rootScope','$localStorage','$sessionStorage','$mdDialog','auditoriaContratis','noConformidad','noPorContra','causa','caPorContra','fileUpload','accionContra','registroDeAccion','accionConRegistro','accionSinRegistro','cierre','noConforCerradas','noPorContraAuditoria','noConforCerradasConAuditoria',function($http,$location, $q, $scope,$log,$rootScope,$localStorage,$sessionStorage,$mdDialog,auditoriaContratis,noConformidad,noPorContra,causa,caPorContra,fileUpload,accionContra,registroDeAccion,accionConRegistro,accionSinRegistro,cierre,noConforCerradas,noPorContraAuditoria,noConforCerradasConAuditoria) {
+if ("undefined" === typeof $localStorage.userLogeado || "undefined" !== typeof $localStorage.contratanteLogeado){
+         $mdDialog.show(
+                          $mdDialog.alert()
+                            .parent(angular.element(document.querySelector('#popupContainer')))
+                            .clickOutsideToClose(true)
+                            .title('Error')
+                            .textContent('Usted no ha iniciado sesión.')
+                            .ariaLabel('Alert Dialog Demo')
+                            .ok('ok!')
+                            .targetEvent()
+                    );
+        $location.path("inicio");
+
+
+}
 $scope.take=false;
 $scope.take2=false;
 $scope.take3=false;

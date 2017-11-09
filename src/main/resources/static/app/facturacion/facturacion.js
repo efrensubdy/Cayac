@@ -9,7 +9,22 @@ angular.module('myApp.facturacion', ['ngRoute'])
   });
 }])
 
-.controller('facturacionCtrl', ['$http','$timeout', '$q', '$scope','$log','$rootScope','$localStorage','$sessionStorage',function($http,$timeout, $q, $scope,$log,$rootScope,$localStorage,$sessionStorage) {
+.controller('facturacionCtrl', ['$http','$location', '$q', '$scope','$log','$rootScope','$localStorage','$sessionStorage','$mdDialog',function($http,$location, $q, $scope,$log,$rootScope,$localStorage,$sessionStorage,$mdDialog) {
+if ("undefined" === typeof $localStorage.userLogeado || "undefined" !== typeof $localStorage.contratanteLogeado){
+         $mdDialog.show(
+                          $mdDialog.alert()
+                            .parent(angular.element(document.querySelector('#popupContainer')))
+                            .clickOutsideToClose(true)
+                            .title('Error')
+                            .textContent('Usted no ha iniciado sesión.')
+                            .ariaLabel('Alert Dialog Demo')
+                            .ok('ok!')
+                            .targetEvent()
+                    );
+        $location.path("inicio");
+
+
+}
 $scope.banderaConsulta=false;
 var q=function(idContratante, idContratista,mes,year){
                       //var url= "http://localhost:8080/app/planDeTrabajo/aprobadoPlanDeTrabajo/"+idContratista+"/"+idContratante +"/"+mes +"/"+year ;

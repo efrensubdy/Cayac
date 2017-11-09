@@ -9,8 +9,22 @@ angular.module('myApp.ejecucionCNCE', ['ngRoute'])
   });
 }])
 
-.controller('ejecucionCNCECtrl', ['$localStorage','$sessionStorage','$http','$scope','$rootScope','$mdDialog','contratosEnEjecucion','finalesDefinitivos','psC','psNC','peC','peNC','aproba',function($localStorage,$sessionStorage,$http,$scope,$rootScope,$mdDialog,contratosEnEjecucion,finalesDefinitivos,psC,psNC,peC,peNC,aproba) {
+.controller('ejecucionCNCECtrl', ['$location','$localStorage','$sessionStorage','$http','$scope','$rootScope','$mdDialog','contratosEnEjecucion','finalesDefinitivos','psC','psNC','peC','peNC','aproba',function($location,$localStorage,$sessionStorage,$http,$scope,$rootScope,$mdDialog,contratosEnEjecucion,finalesDefinitivos,psC,psNC,peC,peNC,aproba) {
+        if ("undefined" === typeof $localStorage.userLogeado || "undefined" !== typeof $localStorage.contratanteLogeado){
+                 $mdDialog.show(
+                                  $mdDialog.alert()
+                                    .parent(angular.element(document.querySelector('#popupContainer')))
+                                    .clickOutsideToClose(true)
+                                    .title('Error')
+                                    .textContent('Usted no ha iniciado sesión.')
+                                    .ariaLabel('Alert Dialog Demo')
+                                    .ok('ok!')
+                                    .targetEvent()
+                            );
+                $location.path("inicio");
 
+
+        }
         $scope.listado=contratosEnEjecucion.query({idContratante:$localStorage.contratanteLogeado.idContratante})
         $scope.flag=false;
         $scope.seleccionados=[];
