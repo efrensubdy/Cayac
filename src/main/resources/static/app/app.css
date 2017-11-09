@@ -219,6 +219,10 @@ body {
     display:block;
 }
 
+.th {
+   text-align: center;
+}
+
 footer {
     position: fixed;
     height: 50px;
