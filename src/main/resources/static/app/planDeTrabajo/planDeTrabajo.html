@@ -99,7 +99,9 @@
                             <tbody>
                             <tr class="texto" ng-repeat="todo in table2" >
                                 <td>{{todo.nombre}}</td>
-                                <td><input class="form-control" type="file" file-model="myFile"/></file-model>
+                                <td>
+                                    <p class="titulos">EL ARCHIVO DEBE SER EN FORMATO PDF Y NO EXCEDER LOS 20 MB</p>
+                                    <input class="form-control" type="file" file-model="myFile"/></file-model>
                                     <br>
                                     <button type="button" class="button button1 w3-center" ng-click="subirDocumento($event,todo,myFile)" ng-model="tablita">Subir</button></td>
                                 <td>
