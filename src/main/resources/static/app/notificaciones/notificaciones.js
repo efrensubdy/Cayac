@@ -9,8 +9,22 @@ angular.module('myApp.notificaciones', ['ngRoute'])
   });
 }])
 
-.controller('notificacionesCtrl', ['$mdDialog','$timeout', '$q', '$scope','$log','$rootScope','$localStorage','$sessionStorage','notifacionSinSoporte','mensajeContratista','notifacionSinRegistro','sRIndi',function($mdDialog,$timeout, $q, $scope,$log,$rootScope,$localStorage,$sessionStorage,notifacionSinSoporte,mensajeContratista,notifacionSinRegistro,sRIndi) {
+.controller('notificacionesCtrl', ['$mdDialog','$location', '$q', '$scope','$log','$rootScope','$localStorage','$sessionStorage','notifacionSinSoporte','mensajeContratista','notifacionSinRegistro','sRIndi',function($mdDialog,$location, $q, $scope,$log,$rootScope,$localStorage,$sessionStorage,notifacionSinSoporte,mensajeContratista,notifacionSinRegistro,sRIndi) {
+if ("undefined" === typeof $localStorage.userLogeado || "undefined" !== typeof $localStorage.contratanteLogeado){
+         $mdDialog.show(
+                          $mdDialog.alert()
+                            .parent(angular.element(document.querySelector('#popupContainer')))
+                            .clickOutsideToClose(true)
+                            .title('Error')
+                            .textContent('Usted no ha iniciado sesión.')
+                            .ariaLabel('Alert Dialog Demo')
+                            .ok('ok!')
+                            .targetEvent()
+                    );
+        $location.path("inicio");
 
+
+}
  $scope.notificaciones=[
     {id:1,nombre:'CONTRATISTAS SIN ACTIVDADES REGISTRADAS'},
     {id:2,nombre:'CONTRATISTAS CON ACTIVIDADES PERO SIN SOPORTE'},

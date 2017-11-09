@@ -10,9 +10,24 @@ angular.module('myApp.view4', ['ngRoute'])
 }])
 
 
-.controller('View4Ctrl', ['$location','$scope', 'contratantes','$mdDialog','activity', function ($location,$scope, contratantes,$mdDialog,activity)  {
+.controller('View4Ctrl', ['$location','$scope', 'contratantes','$mdDialog','activity','$localStorage', function ($location,$scope, contratantes,$mdDialog,activity,$localStorage)  {
       //la funcion add se encarga de recibir los datos del nuevo contratante y agregarlo a la fabrica de
       //contratantes y también limpia el formulario
+      if ("undefined" === typeof $localStorage.userLogeado || "undefined" !== typeof $localStorage.contratanteLogeado){
+               $mdDialog.show(
+                                $mdDialog.alert()
+                                  .parent(angular.element(document.querySelector('#popupContainer')))
+                                  .clickOutsideToClose(true)
+                                  .title('Error')
+                                  .textContent('Usted no ha iniciado sesión.')
+                                  .ariaLabel('Alert Dialog Demo')
+                                  .ok('ok!')
+                                  .targetEvent()
+                          );
+              $location.path("inicio");
+
+
+      }
       $scope.listini=activity.query();
       $scope.add=function(ev){
         console.log($scope.departamento);

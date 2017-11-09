@@ -10,7 +10,21 @@ angular.module('myApp.manualRegister', ['ngRoute'])
 }])
 
 .controller('manualRegisterCtrl', ['$localStorage','$sessionStorage','$location','$scope','$rootScope','$mdDialog','finalistas','registroManualFinalista','contratosEjecucion','activity',function($localStorage,$sessionStorage,$location,$scope,$rootScope,$mdDialog,finalistas,registroManualFinalista,contratosEjecucion,activity) {
+    if ("undefined" === typeof $localStorage.userLogeado || "undefined" !== typeof $localStorage.contratanteLogeado){
+             $mdDialog.show(
+                              $mdDialog.alert()
+                                .parent(angular.element(document.querySelector('#popupContainer')))
+                                .clickOutsideToClose(true)
+                                .title('Error')
+                                .textContent('Usted no ha iniciado sesión.')
+                                .ariaLabel('Alert Dialog Demo')
+                                .ok('ok!')
+                                .targetEvent()
+                        );
+            $location.path("inicio");
 
+
+    }
       $scope.listado=contratosEjecucion.query({idContratante:$localStorage.contratanteLogeado.idContratante})
       $scope.listini=activity.query();
       $scope.options = [

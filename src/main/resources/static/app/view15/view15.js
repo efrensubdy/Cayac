@@ -9,8 +9,22 @@ angular.module('myApp.view15', ['ngRoute'])
   });
 }])
 
-.controller('View15Ctrl', ['$localStorage','$sessionStorage','$scope','$rootScope','contratos','fechaContrato','$mdDialog','$http',function($localStorage,$sessionStorage,$scope,$rootScope,contratos,fechaContrato,$mdDialog,$http) {
+.controller('View15Ctrl', ['$location','$localStorage','$sessionStorage','$scope','$rootScope','contratos','fechaContrato','$mdDialog','$http',function($location,$localStorage,$sessionStorage,$scope,$rootScope,contratos,fechaContrato,$mdDialog,$http) {
+if ("undefined" === typeof $localStorage.userLogeado || "undefined" !== typeof $localStorage.contratanteLogeado){
+                 $mdDialog.show(
+                                  $mdDialog.alert()
+                                    .parent(angular.element(document.querySelector('#popupContainer')))
+                                    .clickOutsideToClose(true)
+                                    .title('Error')
+                                    .textContent('Usted no ha iniciado sesión.')
+                                    .ariaLabel('Alert Dialog Demo')
+                                    .ok('ok!')
+                                    .targetEvent()
+                            );
+                $location.path("inicio");
 
+
+        }
 
 $scope.fecha={}
 $scope.listado=contratos.query({idContratante:$localStorage.contratanteLogeado.idContratante})

@@ -9,7 +9,23 @@ angular.module('myApp.view13', ['ngRoute'])
   });
 }])
 
-.controller('View13Ctrl', ['$localStorage','$sessionStorage','$scope','$rootScope','$http','$mdDialog','nuevoContrato','fileUpload','$q','contratoUpload',function($localStorage,$sessionStorage,$scope,$rootScope,$http,$mdDialog,nuevoContrato,fileUpload,$q,contratoUpload) {
+.controller('View13Ctrl', ['$location','$localStorage','$sessionStorage','$scope','$rootScope','$http','$mdDialog','nuevoContrato','fileUpload','$q','contratoUpload',function($location,$localStorage,$sessionStorage,$scope,$rootScope,$http,$mdDialog,nuevoContrato,fileUpload,$q,contratoUpload) {
+
+if ("undefined" === typeof $localStorage.userLogeado || "undefined" !== typeof $localStorage.contratanteLogeado){
+                 $mdDialog.show(
+                                  $mdDialog.alert()
+                                    .parent(angular.element(document.querySelector('#popupContainer')))
+                                    .clickOutsideToClose(true)
+                                    .title('Error')
+                                    .textContent('Usted no ha iniciado sesión.')
+                                    .ariaLabel('Alert Dialog Demo')
+                                    .ok('ok!')
+                                    .targetEvent()
+                            );
+                $location.path("inicio");
+
+
+        }
 $scope.contrato={};
 $scope.options = [
                             { id: 1, name: 'Contrato' },

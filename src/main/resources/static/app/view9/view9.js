@@ -9,7 +9,22 @@ angular.module('myApp.view9', ['ngRoute'])
   });
 }])
 
-.controller('View9Ctrl', ['$localStorage','$sessionStorage','$http','$parse','$scope','$rootScope','$mdDialog','rObligatorio','rExtra','imagenes','fileUpload','obtainExtension','rEstadoR','rEstadoE',function($localStorage,$sessionStorage,$http,$parse,$scope,$rootScope,$mdDialog,rObligatorio,rExtra,imagenes,fileUpload,obtainExtension,rEstadoR,rEstadoE) {
+.controller('View9Ctrl', ['$location','$localStorage','$sessionStorage','$http','$parse','$scope','$rootScope','$mdDialog','rObligatorio','rExtra','imagenes','fileUpload','obtainExtension','rEstadoR','rEstadoE',function($location,$localStorage,$sessionStorage,$http,$parse,$scope,$rootScope,$mdDialog,rObligatorio,rExtra,imagenes,fileUpload,obtainExtension,rEstadoR,rEstadoE) {
+        if ("undefined" === typeof $localStorage.userLogeado || "undefined" !== typeof $localStorage.contratanteLogeado){
+                 $mdDialog.show(
+                                  $mdDialog.alert()
+                                    .parent(angular.element(document.querySelector('#popupContainer')))
+                                    .clickOutsideToClose(true)
+                                    .title('Error')
+                                    .textContent('Usted no ha iniciado sesión.')
+                                    .ariaLabel('Alert Dialog Demo')
+                                    .ok('ok!')
+                                    .targetEvent()
+                            );
+                $location.path("inicio");
+
+
+        }
         $scope.file = "";
            var q=function(idContratante, idCategoria){
                        //var url= "http://localhost:8080/app/limites/"+idContratante+"/"+idCategoria ;

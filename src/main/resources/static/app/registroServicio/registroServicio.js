@@ -9,8 +9,22 @@ angular.module('myApp.registroServicio', ['ngRoute'])
   });
 }])
 
-.controller('registroServicioCtrl', ['$timeout', '$q', '$scope','$log','$rootScope','$localStorage','$sessionStorage','registroServ','$mdDialog',function($timeout, $q, $scope,$log,$rootScope,$localStorage,$sessionStorage,registroServ,$mdDialog) {
+.controller('registroServicioCtrl', ['$location', '$q', '$scope','$log','$rootScope','$localStorage','$sessionStorage','registroServ','$mdDialog',function($location, $q, $scope,$log,$rootScope,$localStorage,$sessionStorage,registroServ,$mdDialog) {
+if ("undefined" === typeof $localStorage.userLogeado || "undefined" !== typeof $localStorage.contratanteLogeado){
+         $mdDialog.show(
+                          $mdDialog.alert()
+                            .parent(angular.element(document.querySelector('#popupContainer')))
+                            .clickOutsideToClose(true)
+                            .title('Error')
+                            .textContent('Usted no ha iniciado sesión.')
+                            .ariaLabel('Alert Dialog Demo')
+                            .ok('ok!')
+                            .targetEvent()
+                    );
+        $location.path("inicio");
 
+
+}
 $scope.add=function(ev){
 
     console.log($scope.nombre);

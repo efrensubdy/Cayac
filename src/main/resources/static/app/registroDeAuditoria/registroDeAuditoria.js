@@ -9,7 +9,22 @@ angular.module('myApp.registroDeAuditoria', ['ngRoute'])
   });
 }])
 
-.controller('registroDeAuditoriaCtrl', ['$timeout', '$q', '$scope','$log','$rootScope','$localStorage','$sessionStorage','contratosEnEjecucion','finalesDefinitivos','$mdDialog','fileUpload','audiPorContra',function($timeout, $q, $scope,$log,$rootScope,$localStorage,$sessionStorage,contratosEnEjecucion,finalesDefinitivos,$mdDialog,fileUpload,audiPorContra) {
+.controller('registroDeAuditoriaCtrl', ['$location', '$q', '$scope','$log','$rootScope','$localStorage','$sessionStorage','contratosEnEjecucion','finalesDefinitivos','$mdDialog','fileUpload','audiPorContra',function($location, $q, $scope,$log,$rootScope,$localStorage,$sessionStorage,contratosEnEjecucion,finalesDefinitivos,$mdDialog,fileUpload,audiPorContra) {
+if ("undefined" === typeof $localStorage.userLogeado || "undefined" !== typeof $localStorage.contratanteLogeado){
+         $mdDialog.show(
+                          $mdDialog.alert()
+                            .parent(angular.element(document.querySelector('#popupContainer')))
+                            .clickOutsideToClose(true)
+                            .title('Error')
+                            .textContent('Usted no ha iniciado sesión.')
+                            .ariaLabel('Alert Dialog Demo')
+                            .ok('ok!')
+                            .targetEvent()
+                    );
+        $location.path("inicio");
+
+
+}
 $scope.opciones=[
  { id: 1, name: 'REGISTRAR AUDITORIA '},
  { id: 2, name: 'CONSULTAR AUDITORIAS'},

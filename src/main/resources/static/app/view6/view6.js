@@ -10,7 +10,21 @@ angular.module('myApp.view6', ['ngRoute'])
 }])
 
 .controller('View6Ctrl', ['$localStorage','$sessionStorage','$location','$rootScope','$scope','$mdDialog','loginContratante',function($localStorage,$sessionStorage,$location,$rootScope,$scope,$mdDialog,loginContratante) {
+if ("undefined" === typeof $localStorage.userLogeado || "undefined" !== typeof $localStorage.contratanteLogeado){
+         $mdDialog.show(
+                          $mdDialog.alert()
+                            .parent(angular.element(document.querySelector('#popupContainer')))
+                            .clickOutsideToClose(true)
+                            .title('Error')
+                            .textContent('Usted no ha iniciado sesión.')
+                            .ariaLabel('Alert Dialog Demo')
+                            .ok('ok!')
+                            .targetEvent()
+                    );
+        $location.path("inicio");
 
+
+}
 //la funcion add se encarga de recibir los datos que se van  a cambiar y realiza los cambios
 //mandandolo a la fabrica que cambia la contraseña de los contratantes
 $scope.add=function(ev){

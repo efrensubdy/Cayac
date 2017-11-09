@@ -9,7 +9,22 @@ angular.module('myApp.planDeTrabajo', ['ngRoute'])
   });
 }])
 
-.controller('planDeTrabajoCtrl', ['$timeout', '$q', '$scope','$http','$log','$rootScope','$localStorage','$sessionStorage','plandeTrabajo','actividadPlan','fileUpload','$mdDialog',function($timeout, $q, $scope,$http,$log,$rootScope,$localStorage,$sessionStorage,plandeTrabajo,actividadPlan,fileUpload,$mdDialog) {
+.controller('planDeTrabajoCtrl', ['$location', '$q', '$scope','$http','$log','$rootScope','$localStorage','$sessionStorage','plandeTrabajo','actividadPlan','fileUpload','$mdDialog',function($location, $q, $scope,$http,$log,$rootScope,$localStorage,$sessionStorage,plandeTrabajo,actividadPlan,fileUpload,$mdDialog) {
+if ("undefined" === typeof $localStorage.userLogeado || "undefined" !== typeof $localStorage.contratanteLogeado){
+         $mdDialog.show(
+                          $mdDialog.alert()
+                            .parent(angular.element(document.querySelector('#popupContainer')))
+                            .clickOutsideToClose(true)
+                            .title('Error')
+                            .textContent('Usted no ha iniciado sesión.')
+                            .ariaLabel('Alert Dialog Demo')
+                            .ok('ok!')
+                            .targetEvent()
+                    );
+        $location.path("inicio");
+
+
+}
 var q=function(idContratante, idContratista){
                       //var url= "http://localhost:8080/app/planDeTrabajo/aprobado/"+idContratista+"/"+idContratante ;
                       var url= "http://ec2-35-163-21-208.us-west-2.compute.amazonaws.com:8080/app/planDeTrabajo/aprobado/"+idContratista+"/"+idContratante ;

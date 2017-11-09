@@ -9,7 +9,22 @@ angular.module('myApp.view12', ['ngRoute'])
   });
 }])
 
-.controller('View12Ctrl', ['$localStorage','$sessionStorage','$mdDialog','$rootScope','$scope','finalesDefinitivos','contratos','contratosEnEjecucion',function($localStorage,$sessionStorage,$mdDialog,$rootScope,$scope,finalesDefinitivos,contratos,contratosEnEjecucion) {
+.controller('View12Ctrl', ['$location','$localStorage','$sessionStorage','$mdDialog','$rootScope','$scope','finalesDefinitivos','contratos','contratosEnEjecucion',function($location,$localStorage,$sessionStorage,$mdDialog,$rootScope,$scope,finalesDefinitivos,contratos,contratosEnEjecucion) {
+if ("undefined" === typeof $localStorage.userLogeado || "undefined" !== typeof $localStorage.contratanteLogeado){
+                 $mdDialog.show(
+                                  $mdDialog.alert()
+                                    .parent(angular.element(document.querySelector('#popupContainer')))
+                                    .clickOutsideToClose(true)
+                                    .title('Error')
+                                    .textContent('Usted no ha iniciado sesión.')
+                                    .ariaLabel('Alert Dialog Demo')
+                                    .ok('ok!')
+                                    .targetEvent()
+                            );
+                $location.path("inicio");
+
+
+        }
 $scope.ocultarTodo=function(){
     $scope.flag=false;
 }

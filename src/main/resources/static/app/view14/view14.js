@@ -9,7 +9,22 @@ angular.module('myApp.view14', ['ngRoute'])
   });
 }])
 
-.controller('View14Ctrl', ['$localStorage','$sessionStorage','$scope','$rootScope','$http','$mdDialog','contratantesContrato','pFinales','serviciosConContratista',function($localStorage,$sessionStorage,$scope,$rootScope,$http,$mdDialog,contratantesContrato,pFinales,serviciosConContratista) {
+.controller('View14Ctrl', ['$location','$localStorage','$sessionStorage','$scope','$rootScope','$http','$mdDialog','contratantesContrato','pFinales','serviciosConContratista',function($location,$localStorage,$sessionStorage,$scope,$rootScope,$http,$mdDialog,contratantesContrato,pFinales,serviciosConContratista) {
+ if ("undefined" === typeof $localStorage.userLogeado || "undefined" !== typeof $localStorage.contratanteLogeado){
+                  $mdDialog.show(
+                                   $mdDialog.alert()
+                                     .parent(angular.element(document.querySelector('#popupContainer')))
+                                     .clickOutsideToClose(true)
+                                     .title('Error')
+                                     .textContent('Usted no ha iniciado sesión.')
+                                     .ariaLabel('Alert Dialog Demo')
+                                     .ok('ok!')
+                                     .targetEvent()
+                             );
+                 $location.path("inicio");
+
+
+         }
  console.log($localStorage.contratanteLogeado.idContratante);
  $scope.listado=serviciosConContratista.query({idContratante:$localStorage.contratanteLogeado.idContratante});
  $scope.flag=false;

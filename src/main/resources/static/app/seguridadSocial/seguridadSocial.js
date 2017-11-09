@@ -9,7 +9,22 @@ angular.module('myApp.seguridadSocial', ['ngRoute'])
   });
 }])
 
-.controller('seguridadSocialCtrl', ['$mdDialog','$timeout', '$q', '$scope','$log','$rootScope','$localStorage','$sessionStorage','contratoUpload','sPorContra',function($mdDialog,$timeout, $q, $scope,$log,$rootScope,$localStorage,$sessionStorage,contratoUpload,sPorContra) {
+.controller('seguridadSocialCtrl', ['$mdDialog','$location', '$q', '$scope','$log','$rootScope','$localStorage','$sessionStorage','contratoUpload','sPorContra',function($mdDialog,$location, $q, $scope,$log,$rootScope,$localStorage,$sessionStorage,contratoUpload,sPorContra) {
+if ("undefined" === typeof $localStorage.userLogeado || "undefined" !== typeof $localStorage.contratanteLogeado){
+         $mdDialog.show(
+                          $mdDialog.alert()
+                            .parent(angular.element(document.querySelector('#popupContainer')))
+                            .clickOutsideToClose(true)
+                            .title('Error')
+                            .textContent('Usted no ha iniciado sesión.')
+                            .ariaLabel('Alert Dialog Demo')
+                            .ok('ok!')
+                            .targetEvent()
+                    );
+        $location.path("inicio");
+
+
+}
 $scope.opciones=[
  { id: 1, name: 'REGISTRAR SEGURIDAD SOCIAL'},
  { id: 2, name: 'CONSULTAR SEGURIDAD SOCIAL '},

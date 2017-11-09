@@ -9,7 +9,22 @@ angular.module('myApp.registrarRequisitosEjecucion', ['ngRoute'])
   });
 }])
 
-.controller('registrarRequisitosEjecucionCtrl', ['$localStorage','$sessionStorage','$mdDialog','$rootScope', '$http', '$scope','$q','previos','previosExtras','insertarPrevioSugerido','insertarPrevioExtra','defPreviosSugeridos','defPreviosExtras','eliminarPS','eliminarPE',function($localStorage,$sessionStorage,$mdDialog,$rootScope, $http, $scope,$q,previos,previosExtras,insertarPrevioSugerido,insertarPrevioExtra,defPreviosSugeridos,defPreviosExtras,eliminarPS,eliminarPE) {
+.controller('registrarRequisitosEjecucionCtrl', ['$location','$localStorage','$sessionStorage','$mdDialog','$rootScope', '$http', '$scope','$q','previos','previosExtras','insertarPrevioSugerido','insertarPrevioExtra','defPreviosSugeridos','defPreviosExtras','eliminarPS','eliminarPE',function($location,$localStorage,$sessionStorage,$mdDialog,$rootScope, $http, $scope,$q,previos,previosExtras,insertarPrevioSugerido,insertarPrevioExtra,defPreviosSugeridos,defPreviosExtras,eliminarPS,eliminarPE) {
+ if ("undefined" === typeof $localStorage.userLogeado || "undefined" !== typeof $localStorage.contratanteLogeado){
+          $mdDialog.show(
+                           $mdDialog.alert()
+                             .parent(angular.element(document.querySelector('#popupContainer')))
+                             .clickOutsideToClose(true)
+                             .title('Error')
+                             .textContent('Usted no ha iniciado sesión.')
+                             .ariaLabel('Alert Dialog Demo')
+                             .ok('ok!')
+                             .targetEvent()
+                     );
+         $location.path("inicio");
+
+
+ }
  $scope.listPrevioSugerido=[];
  $scope.listAllPrevioSugerido=[];
  $scope.listPrevioExtra=[];

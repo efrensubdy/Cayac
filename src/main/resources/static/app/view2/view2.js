@@ -11,6 +11,21 @@ angular.module('myApp.view2', ['ngRoute'])
 
 
 .controller('View2Ctrl', ['$localStorage','$sessionStorage','$mdDialog','$location','$rootScope','$scope', 'contratistas','contratosEjecucion','activity','serviciosAContrar', function ($localStorage,$sessionStorage,$mdDialog,$location,$rootScope,$scope, contratistas,contratosEjecucion,activity,serviciosAContrar)  {
+      if ("undefined" === typeof $localStorage.userLogeado || "undefined" !== typeof $localStorage.contratanteLogeado){
+               $mdDialog.show(
+                                $mdDialog.alert()
+                                  .parent(angular.element(document.querySelector('#popupContainer')))
+                                  .clickOutsideToClose(true)
+                                  .title('Error')
+                                  .textContent('Usted no ha iniciado sesión.')
+                                  .ariaLabel('Alert Dialog Demo')
+                                  .ok('ok!')
+                                  .targetEvent()
+                          );
+              $location.path("inicio");
+
+
+      }
       $scope.listado=serviciosAContrar.query({idContratante:$localStorage.contratanteLogeado.idContratante})
       $scope.listini=activity.query();
       $scope.options = [

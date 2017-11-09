@@ -9,7 +9,22 @@ angular.module('myApp.reporteDeIndicadores', ['ngRoute'])
   });
 }])
 
-.controller('reporteDeIndicadoresCtrl', ['$timeout', '$q', '$scope','$log','$rootScope','$localStorage','$sessionStorage','repMes','repYear',function($timeout, $q, $scope,$log,$rootScope,$localStorage,$sessionStorage,repMes,repYear) {
+.controller('reporteDeIndicadoresCtrl', ['$location', '$q', '$scope','$log','$rootScope','$localStorage','$sessionStorage','repMes','repYear','$mdDialog',function($location, $q, $scope,$log,$rootScope,$localStorage,$sessionStorage,repMes,repYear,$mdDialog) {
+if ("undefined" === typeof $localStorage.userLogeado || "undefined" !== typeof $localStorage.contratanteLogeado){
+         $mdDialog.show(
+                          $mdDialog.alert()
+                            .parent(angular.element(document.querySelector('#popupContainer')))
+                            .clickOutsideToClose(true)
+                            .title('Error')
+                            .textContent('Usted no ha iniciado sesión.')
+                            .ariaLabel('Alert Dialog Demo')
+                            .ok('ok!')
+                            .targetEvent()
+                    );
+        $location.path("inicio");
+
+
+}
 $scope.mensual=false;
  $scope.anual=false;
  $scope.bandera1=false;

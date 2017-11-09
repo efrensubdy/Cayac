@@ -9,8 +9,22 @@ angular.module('myApp.view3', ['ngRoute'])
   });
 }])
 
-.controller('View3Ctrl', ['$localStorage','$sessionStorage','requisitosEEliminar','contratantesCategoria','$rootScope','$scope','contratos', 'contratantesContrato','requisitos','extras','requisitosObligatorios','requisitosExtras','rObligatorio','rExtra','fabrica','$mdDialog','limites','requisitosOEliminar','$http','fechaLimiteContratante',function($localStorage,$sessionStorage,requisitosEEliminar,contratantesCategoria,$rootScope,$scope,contratos,contratantesContrato,requisitos,extras,requisitosObligatorios,requisitosExtras,rObligatorio,rExtra,fabrica,$mdDialog,limites,requisitosOEliminar,$http,fechaLimiteContratante) {
+.controller('View3Ctrl', ['$location','$localStorage','$sessionStorage','requisitosEEliminar','contratantesCategoria','$rootScope','$scope','contratos', 'contratantesContrato','requisitos','extras','requisitosObligatorios','requisitosExtras','rObligatorio','rExtra','fabrica','$mdDialog','limites','requisitosOEliminar','$http','fechaLimiteContratante',function($location,$localStorage,$sessionStorage,requisitosEEliminar,contratantesCategoria,$rootScope,$scope,contratos,contratantesContrato,requisitos,extras,requisitosObligatorios,requisitosExtras,rObligatorio,rExtra,fabrica,$mdDialog,limites,requisitosOEliminar,$http,fechaLimiteContratante) {
+        if ("undefined" === typeof $localStorage.userLogeado || "undefined" !== typeof $localStorage.contratanteLogeado){
+                 $mdDialog.show(
+                                  $mdDialog.alert()
+                                    .parent(angular.element(document.querySelector('#popupContainer')))
+                                    .clickOutsideToClose(true)
+                                    .title('Error')
+                                    .textContent('Usted no ha iniciado sesión.')
+                                    .ariaLabel('Alert Dialog Demo')
+                                    .ok('ok!')
+                                    .targetEvent()
+                            );
+                $location.path("inicio");
 
+
+        }
         $scope.flag=false;
         $scope.propertyName = 'nombreEmpresa';
         $scope.reverse = true;

@@ -9,7 +9,23 @@ angular.module('myApp.subirDocumentosEstaticos', ['ngRoute'])
   });
 }])
 
-.controller('subirDocumentosEstaticosCtrl', ['$route','$localStorage','$sessionStorage','$http','$parse','$scope','$rootScope','$mdDialog','fileUpload','estadoPreviosSugeridos','estadoPreviosExtras',function($route,$localStorage,$sessionStorage,$http,$parse,$scope,$rootScope,$mdDialog,fileUpload,estadoPreviosSugeridos,estadoPreviosExtras) {
+.controller('subirDocumentosEstaticosCtrl', ['$location','$route','$localStorage','$sessionStorage','$http','$parse','$scope','$rootScope','$mdDialog','fileUpload','estadoPreviosSugeridos','estadoPreviosExtras',function($location,$route,$localStorage,$sessionStorage,$http,$parse,$scope,$rootScope,$mdDialog,fileUpload,estadoPreviosSugeridos,estadoPreviosExtras) {
+       if ("undefined" === typeof $localStorage.userLogeado || "undefined" !== typeof $localStorage.contratanteLogeado){
+                $mdDialog.show(
+                                 $mdDialog.alert()
+                                   .parent(angular.element(document.querySelector('#popupContainer')))
+                                   .clickOutsideToClose(true)
+                                   .title('Error')
+                                   .textContent('Usted no ha iniciado sesión.')
+                                   .ariaLabel('Alert Dialog Demo')
+                                   .ok('ok!')
+                                   .targetEvent()
+                           );
+               $location.path("inicio");
+
+
+       }
+
        $scope.file = "";
 
        $scope.agregarEstaticosSugeridosPrevios = function(ev,item) {
