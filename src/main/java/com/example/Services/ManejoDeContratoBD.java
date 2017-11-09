@@ -30,6 +30,16 @@ public class ManejoDeContratoBD implements AdministradorDeContratos {
     }
 
     @Override
+    public void actualizarCamaraDeComercio(Contrato contrato) throws SQLException, ClassNotFoundException, IOException {
+        contratanteDB.actualizarCamaraDeComercio(contrato);
+    }
+
+    @Override
+    public void actualizarCedulaDelRepresentante(Contrato contrato) throws SQLException, ClassNotFoundException, IOException {
+        contratanteDB.actualizarCedulaDelRepresentante(contrato);
+    }
+
+    @Override
     public List<Contrato> obtenerContratos(int idContratante) throws SQLException, ClassNotFoundException {
         return contratanteDB.consultarContratos(idContratante);
     }
