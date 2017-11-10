@@ -10,7 +10,7 @@ angular.module('myApp.view10', ['ngRoute'])
 }])
 
 .controller('View10Ctrl', ['$location','$localStorage','$sessionStorage','rExtra','rObligatorio','$http','$scope','$rootScope','$mdDialog','serviciosConContratista','contratantesContrato','rCumplidos','rExtras','rNoCumplidos','rExtrasNC','pFinales','finalistas',function($location,$localStorage,$sessionStorage,rExtra,rObligatorio,$http,$scope,$rootScope,$mdDialog,serviciosConContratista,contratantesContrato,rCumplidos,rExtras,rNoCumplidos,rExtrasNC,pFinales,finalistas) {
-        if ("undefined" === typeof $localStorage.userLogeado || "undefined" !== typeof $localStorage.contratanteLogeado){
+        if ("undefined" === typeof $localStorage.userLogeado && "undefined" === typeof $localStorage.contratanteLogeado){
                          $mdDialog.show(
                                           $mdDialog.alert()
                                             .parent(angular.element(document.querySelector('#popupContainer')))

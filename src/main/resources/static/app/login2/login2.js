@@ -11,6 +11,12 @@ angular.module('myApp.login2', ['ngRoute'])
 
 
 .controller('Login2Ctrl', ['$localStorage','$sessionStorage','$location','$rootScope','$scope', '$mdDialog','$http', function ($localStorage,$sessionStorage,$location,$rootScope,$scope,$mdDialog,$http){
+      if ("undefined" !== typeof $localStorage.userLogeado || "undefined" !== typeof $localStorage.contratanteLogeado){
+
+                     $location.path("/view1");
+
+
+             }
       $scope.progressBandera=false;
       $scope.value=0;
       var auntenticado=function(ev){
@@ -60,9 +66,9 @@ angular.module('myApp.login2', ['ngRoute'])
         }
       }
 
- // var url2="http://localhost:8080/app/login/contratante/categoria/" + $scope.email +"/" + $scope.password;
+//  var url2="http://localhost:8080/app/login/contratante/categoria/" + $scope.email +"/" + $scope.password;
 
-   var url2="http://ec2-35-163-21-208.us-west-2.compute.amazonaws.com:8080/app/login/contratante/categoria/" + $scope.email +"/" + $scope.password;
+  var url2="http://ec2-35-163-21-208.us-west-2.compute.amazonaws.com:8080/app/login/contratante/categoria/" + $scope.email +"/" + $scope.password;
 
       $http.get(url2).then(function(response){
                                            t=response.data;

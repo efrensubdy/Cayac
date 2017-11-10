@@ -10,7 +10,7 @@ angular.module('myApp.estandaresMinimos', ['ngRoute'])
 }])
 
 .controller('estandaresMinimosCtrl', ['$location', '$q', '$scope','$log','$rootScope','$localStorage','$sessionStorage','$mdDialog','estandar','estContr',function($location, $q, $scope,$log,$rootScope,$localStorage,$sessionStorage,$mdDialog,estandar,estContr) {
-if ("undefined" === typeof $localStorage.userLogeado || "undefined" !== typeof $localStorage.contratanteLogeado){
+if ("undefined" === typeof $localStorage.userLogeado && "undefined" === typeof $localStorage.contratanteLogeado){
                  $mdDialog.show(
                                   $mdDialog.alert()
                                     .parent(angular.element(document.querySelector('#popupContainer')))

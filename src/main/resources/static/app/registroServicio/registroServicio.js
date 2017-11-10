@@ -10,7 +10,7 @@ angular.module('myApp.registroServicio', ['ngRoute'])
 }])
 
 .controller('registroServicioCtrl', ['$location', '$q', '$scope','$log','$rootScope','$localStorage','$sessionStorage','registroServ','$mdDialog',function($location, $q, $scope,$log,$rootScope,$localStorage,$sessionStorage,registroServ,$mdDialog) {
-if ("undefined" === typeof $localStorage.userLogeado || "undefined" !== typeof $localStorage.contratanteLogeado){
+if ("undefined" === typeof $localStorage.userLogeado && "undefined" === typeof $localStorage.contratanteLogeado){
          $mdDialog.show(
                           $mdDialog.alert()
                             .parent(angular.element(document.querySelector('#popupContainer')))

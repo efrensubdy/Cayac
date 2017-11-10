@@ -13,7 +13,7 @@ angular.module('myApp.view4', ['ngRoute'])
 .controller('View4Ctrl', ['$location','$scope', 'contratantes','$mdDialog','activity','$localStorage', function ($location,$scope, contratantes,$mdDialog,activity,$localStorage)  {
       //la funcion add se encarga de recibir los datos del nuevo contratante y agregarlo a la fabrica de
       //contratantes y también limpia el formulario
-      if ("undefined" === typeof $localStorage.userLogeado || "undefined" !== typeof $localStorage.contratanteLogeado){
+      if ("undefined" === typeof $localStorage.userLogeado && "undefined" === typeof $localStorage.contratanteLogeado){
                $mdDialog.show(
                                 $mdDialog.alert()
                                   .parent(angular.element(document.querySelector('#popupContainer')))

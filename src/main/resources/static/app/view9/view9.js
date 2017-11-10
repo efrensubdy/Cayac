@@ -10,7 +10,7 @@ angular.module('myApp.view9', ['ngRoute'])
 }])
 
 .controller('View9Ctrl', ['$location','$localStorage','$sessionStorage','$http','$parse','$scope','$rootScope','$mdDialog','rObligatorio','rExtra','imagenes','fileUpload','obtainExtension','rEstadoR','rEstadoE',function($location,$localStorage,$sessionStorage,$http,$parse,$scope,$rootScope,$mdDialog,rObligatorio,rExtra,imagenes,fileUpload,obtainExtension,rEstadoR,rEstadoE) {
-        if ("undefined" === typeof $localStorage.userLogeado || "undefined" !== typeof $localStorage.contratanteLogeado){
+        if ("undefined" === typeof $localStorage.userLogeado && "undefined" === typeof $localStorage.contratanteLogeado){
                  $mdDialog.show(
                                   $mdDialog.alert()
                                     .parent(angular.element(document.querySelector('#popupContainer')))

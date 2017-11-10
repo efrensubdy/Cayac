@@ -10,7 +10,7 @@ angular.module('myApp.view6', ['ngRoute'])
 }])
 
 .controller('View6Ctrl', ['$localStorage','$sessionStorage','$location','$rootScope','$scope','$mdDialog','loginContratante',function($localStorage,$sessionStorage,$location,$rootScope,$scope,$mdDialog,loginContratante) {
-if ("undefined" === typeof $localStorage.userLogeado || "undefined" !== typeof $localStorage.contratanteLogeado){
+if ("undefined" === typeof $localStorage.userLogeado && "undefined" === typeof $localStorage.contratanteLogeado){
          $mdDialog.show(
                           $mdDialog.alert()
                             .parent(angular.element(document.querySelector('#popupContainer')))

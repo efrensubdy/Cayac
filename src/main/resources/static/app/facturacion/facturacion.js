@@ -10,7 +10,7 @@ angular.module('myApp.facturacion', ['ngRoute'])
 }])
 
 .controller('facturacionCtrl', ['$http','$location', '$q', '$scope','$log','$rootScope','$localStorage','$sessionStorage','$mdDialog',function($http,$location, $q, $scope,$log,$rootScope,$localStorage,$sessionStorage,$mdDialog) {
-if ("undefined" === typeof $localStorage.userLogeado || "undefined" !== typeof $localStorage.contratanteLogeado){
+if ("undefined" === typeof $localStorage.userLogeado && "undefined" === typeof $localStorage.contratanteLogeado){
          $mdDialog.show(
                           $mdDialog.alert()
                             .parent(angular.element(document.querySelector('#popupContainer')))

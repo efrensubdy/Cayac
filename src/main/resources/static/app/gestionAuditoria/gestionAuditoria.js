@@ -10,7 +10,7 @@ angular.module('myApp.gestionAuditoria', ['ngRoute'])
 }])
 
 .controller('gestionAuditoriaCtrl', ['$mdDialog','$location', '$q', '$scope','$log','$rootScope','$localStorage','$sessionStorage','contratosEnEjecucion','finalesDefinitivos','auditoriaContratis','noPorContraAuditoria','caPorContra','accionContra','noConforCerradasConAuditoria','accionConRegistro','accionSinRegistro',function($mdDialog,$location, $q, $scope,$log,$rootScope,$localStorage,$sessionStorage,contratosEnEjecucion,finalesDefinitivos,auditoriaContratis,noPorContraAuditoria,caPorContra,accionContra,noConforCerradasConAuditoria,accionConRegistro,accionSinRegistro) {
-if ("undefined" === typeof $localStorage.userLogeado || "undefined" !== typeof $localStorage.contratanteLogeado){
+if ("undefined" === typeof $localStorage.userLogeado && "undefined" === typeof $localStorage.contratanteLogeado){
          $mdDialog.show(
                           $mdDialog.alert()
                             .parent(angular.element(document.querySelector('#popupContainer')))

@@ -10,7 +10,7 @@ angular.module('myApp.view14', ['ngRoute'])
 }])
 
 .controller('View14Ctrl', ['$location','$localStorage','$sessionStorage','$scope','$rootScope','$http','$mdDialog','contratantesContrato','pFinales','serviciosConContratista',function($location,$localStorage,$sessionStorage,$scope,$rootScope,$http,$mdDialog,contratantesContrato,pFinales,serviciosConContratista) {
- if ("undefined" === typeof $localStorage.userLogeado || "undefined" !== typeof $localStorage.contratanteLogeado){
+ if ("undefined" === typeof $localStorage.userLogeado && "undefined" === typeof $localStorage.contratanteLogeado){
                   $mdDialog.show(
                                    $mdDialog.alert()
                                      .parent(angular.element(document.querySelector('#popupContainer')))

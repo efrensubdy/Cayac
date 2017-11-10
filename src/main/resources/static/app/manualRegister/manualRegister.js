@@ -10,7 +10,7 @@ angular.module('myApp.manualRegister', ['ngRoute'])
 }])
 
 .controller('manualRegisterCtrl', ['$localStorage','$sessionStorage','$location','$scope','$rootScope','$mdDialog','finalistas','registroManualFinalista','contratosEjecucion','activity',function($localStorage,$sessionStorage,$location,$scope,$rootScope,$mdDialog,finalistas,registroManualFinalista,contratosEjecucion,activity) {
-    if ("undefined" === typeof $localStorage.userLogeado || "undefined" !== typeof $localStorage.contratanteLogeado){
+    if ("undefined" === typeof $localStorage.userLogeado && "undefined" === typeof $localStorage.contratanteLogeado){
              $mdDialog.show(
                               $mdDialog.alert()
                                 .parent(angular.element(document.querySelector('#popupContainer')))
