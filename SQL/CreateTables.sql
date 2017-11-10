@@ -346,10 +346,14 @@ CREATE TABLE `inboxContratante` (
   `id` INT(11) NOT NULL AUTO_INCREMENT,
   `mensaje` VARCHAR(500) NOT NULL,
   `idContratante` INT(11) NOT NULL,
+  `idContratista` INT(11) NOT NULL,
+  `nombreEmpresa` VARCHAR(500) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `mail_Contratante` (`idContratante`),
-  CONSTRAINT `mail_Contratante` FOREIGN KEY (`idContratante`) REFERENCES `contratante` (`idContratante`)
-) ENGINE=INNODB DEFAULT CHARSET=latin1;
+  KEY `mail_Contratista` (`idContratista`),
+  CONSTRAINT `mail_Contratante` FOREIGN KEY (`idContratante`) REFERENCES `contratante` (`idContratante`),
+  CONSTRAINT `mail_Contratista` FOREIGN KEY (`idContratista`) REFERENCES `contratista` (`idContratista`)
+) ENGINE=INNODB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
 
 CREATE TABLE `inboxContratista` (
   `id` INT(11) NOT NULL AUTO_INCREMENT,
@@ -572,18 +576,16 @@ CREATE TABLE `accion` (
 ) ENGINE=INNODB DEFAULT CHARSET=latin1;
 
 CREATE TABLE `cierreDeNoConfor` (
-  `id` INT(11) NOT NULL AUTO_INCREMENT,
-  `idNoConformidad` INT(11) NOT NULL,
-  `idContratista` INT(11) NOT NULL,
-  `date` DATE NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `idNoConformidad` int(11) NOT NULL,
+  `idContratista` int(11) NOT NULL,
+  `date` date NOT NULL,
   PRIMARY KEY (`id`),
   KEY `cierre_NoConformidad` (`idNoConformidad`),
   KEY `cierre_idContratista` (`idContratista`),
   CONSTRAINT `cierre_NoConformidad` FOREIGN KEY (`idNoConformidad`) REFERENCES `noConformidad` (`id`),
   CONSTRAINT `cierre_idContratista` FOREIGN KEY (`idContratista`) REFERENCES `contratista` (`idContratista`)
-) ENGINE=INNODB DEFAULT CHARSET=latin1;
-
-
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 
 -- create Admins ---

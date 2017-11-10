@@ -38,6 +38,11 @@ public class ManejoDePlanesDeTrabajoBD implements AdministradorDePlanesDeTrabajo
     }
 
     @Override
+    public void agregarMensajeContratante(Mensaje mensaje) throws SQLException, ClassNotFoundException {
+        planDeTrabajoBD.agregarMensajeContratante(mensaje);
+    }
+
+    @Override
     public void actualizarSoporte(Documento doc) throws SQLException, ClassNotFoundException, IOException {
         planDeTrabajoBD.actualizarSoporte(doc);
     }

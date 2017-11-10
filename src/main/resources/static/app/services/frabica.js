@@ -369,8 +369,8 @@ angular.module('services.listFactory', ['ngRoute','ngResource'])
         .factory('eliminarPS', function($resource) {
                return $resource('/app/eliminar/eliminarPS/:idRequisito/:idContratante');
                                                                             })
-        .factory('eliminarPE', function($resource) {
-              return $resource('/app/eliminar/eliminarPE/:idRequisito/:idContratante');
+        .factory('eliminarMessagesContratistas', function($resource) {
+              return $resource('/app/eliminarMessages/eliminarMContratista/:idMessage');
                                                                             })
 
         //Esta fabrica manda las imagenes, los documentos Y las fechas para luego se almacenen
@@ -441,6 +441,10 @@ angular.module('services.listFactory', ['ngRoute','ngResource'])
         .factory('mensajeContratista', function($resource) {
                                                    return $resource('/app/planDeTrabajo/mensaje/:id');
                                                })
+
+        .factory('mensajeContratante', function($resource) {
+                                                           return $resource('/app/planDeTrabajo/mensajeContratante/:id');
+                                                       })
         .factory('cierre', function($resource) {
                                                            return $resource('/app/cierre/registro/:id');
                                                        })

@@ -9,7 +9,7 @@ angular.module('myApp.mensajeria', ['ngRoute'])
   });
 }])
 
-.controller('mensajeriaCtrl', ['$location','$route','$timeout', '$q', '$scope','$log','$rootScope','$localStorage','$sessionStorage','$mdDialog','mensajeContr',function($location,$route,$timeout, $q, $scope,$log,$rootScope,$localStorage,$sessionStorage,$mdDialog,mensajeContr) {
+.controller('mensajeriaCtrl', ['$location','$route','$timeout', '$q', '$scope','$log','$rootScope','$localStorage','$sessionStorage','$mdDialog','mensajeContr','eliminarMessagesContratistas','mensajeContratante',function($location,$route,$timeout, $q, $scope,$log,$rootScope,$localStorage,$sessionStorage,$mdDialog,mensajeContr,eliminarMessagesContratistas,mensajeContratante) {
     if ("undefined" === typeof $localStorage.userLogeado && "undefined" === typeof $localStorage.contratanteLogeado){
          $mdDialog.show(
                           $mdDialog.alert()
@@ -58,21 +58,34 @@ angular.module('myApp.mensajeria', ['ngRoute'])
 
         }
   }
+ var eliminarMessages=function(lista){
+                var total=lista.length;
+                 for (var i=0;i<total;i++){
+
+                          eliminarMessagesContratistas.remove({"idMessage":lista[i].id});
+
+                 }
+
+             }
   $scope.messageDelete=function(ev){
+          eliminarMessages($scope.deleteMessagesList);
+
     $mdDialog.show(
           $mdDialog.alert()
             .parent(angular.element(document.querySelector('#popupContainer')))
             .clickOutsideToClose(true)
-            .title('Sus Requisitos han sido eliminados')
-            .textContent('Podrá seguir eliminando requisitos si lo desea.')
+            .title('El mensaje ha sido Eliminado')
+            .textContent('Recuerde solo eliminar los mensajes luego de cumplir con el.')
             .ariaLabel('Alert Dialog Demo')
-            .ok('Aplique mas requisitos!')
+            .ok('ok!')
             .targetEvent(ev)
     );
+    $route.reload();
 
 
 
   }
+
 
 
     function containsObject(obj, list) {
@@ -86,8 +99,41 @@ angular.module('myApp.mensajeria', ['ngRoute'])
                      return false;
                   }
 
+$scope.showAlert=function(ev){
+
+     $mdDialog.show({
+                 //Controlador del mensajes con operaciones definido en la parte de abajo
+                 controller: DialogController,
+                  //permite la comunicacion con el html que despliega el boton requisitos
+                  templateUrl: 'test/mensajeDeContratante.html',
+                  parent: angular.element(document.body),
+                  targetEvent: ev,
+                  clickOutsideToClose:true,
+                  fullscreen: $scope.customFullscreen // Only for -xs, -sm breakpoints.
+     })
+}
+function DialogController($scope, $mdDialog, $rootScope, $http) {
+    $scope.mensaje=true;
+    $scope.show=function(){
+        $scope.mensaje=true;
+    }
+    $scope.hide = function() {
+       $mdDialog.hide();
+     };
+                         //funcion para cerral el mensaje
+   $scope.cancel = function() {
+       $mdDialog.cancel();
+     };
+    $scope.envio=function(item){
+        var mensaje={mensaje:item,idContratante:$localStorage.userLogeado.idContratante,idContratista:$localStorage.userLogeado.idContratista,nombreEmpresa:$localStorage.userLogeado.nombreEmpresa}
+        mensajeContratante.save(mensaje);
+        $scope.textArea= '';
+        $scope.mensaje=false;
+
+    }
 
 
+}
 
 
 }]);

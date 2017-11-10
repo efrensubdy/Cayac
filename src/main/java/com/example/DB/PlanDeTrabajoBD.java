@@ -115,9 +115,20 @@ public void agregarMensaje(Mensaje mensaje)throws SQLException,ClassNotFoundExce
     ps.close();
     con.close();
 
-
-
 }
+    public void agregarMensajeContratante(Mensaje mensaje)throws SQLException,ClassNotFoundException{
+        String sql="INSERT INTO inboxContratante (mensaje,idContratante,idContratista,nombreEmpresa) VALUES (?,?,?,?)";
+        Connection con =Conexion.conection();
+        PreparedStatement ps=con.prepareStatement(sql);
+        ps.setString(1,mensaje.getMensaje());
+        ps.setInt(2,mensaje.getIdContratante());
+        ps.setInt(3,mensaje.getIdContratista());
+        ps.setString(4,mensaje.getNombreEmpresa());
+        ps.execute();
+        ps.close();
+        con.close();
+
+    }
 public List<Mensaje>consultarMensajesContratista(int idContratista,int idContratante)throws SQLException,ClassNotFoundException{
     List<Mensaje>mensajeList=new LinkedList<>();
     String sql="SELECT * FROM inboxContratista WHERE idContratista = ? AND idContratante = ?;";

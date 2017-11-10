@@ -1,5 +1,6 @@
 
 -- select all--
+SELECT  * FROM contratista INNER JOIN finalista ON contratista.idContratista = finalista.idContratista WHERE idContratante = 2;
 SELECT * FROM aprobarplandetrabajo;
 SELECT * FROM inboxContratista;
 SELECT * FROM planDeTrabajo;

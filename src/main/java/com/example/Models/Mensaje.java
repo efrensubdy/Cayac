@@ -6,6 +6,16 @@ package com.example.Models;
 public class Mensaje {
     public String mensaje;
     public int idContratante;
+
+    public String getNombreEmpresa() {
+        return nombreEmpresa;
+    }
+
+    public void setNombreEmpresa(String nombreEmpresa) {
+        this.nombreEmpresa = nombreEmpresa;
+    }
+
+    public String nombreEmpresa;
     public int id;
 
     public int getId() {

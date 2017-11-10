@@ -32,5 +32,16 @@ public class EliminarRequisitosDB {
         ps.close();
         con.close();
     }
+    public void eliminarMessagesContratistas(int idMessages)throws SQLException,ClassNotFoundException{
+        String sql = "DELETE FROM inboxContratista WHERE id= ? ";
+        Connection con =  Conexion.conection();
+        PreparedStatement ps = con.prepareStatement(sql);
+        ps.setInt(1,idMessages);
+        ps.execute();
+        ps.close();
+        con.close();
+
+
+    }
 
 }

@@ -9,5 +9,6 @@ import java.sql.SQLException;
 public interface AdministradorDeEliminaciones {
     public void eliminarPrevioSugerido(int idRequisito,int idContratante)throws SQLException,ClassNotFoundException;
     public void eliminarPrevioExtra(int idRequisito,int idContratante)throws SQLException,ClassNotFoundException;
+    public void eliminarMessagesContratistas(int idMessages)throws SQLException,ClassNotFoundException;
 
 }

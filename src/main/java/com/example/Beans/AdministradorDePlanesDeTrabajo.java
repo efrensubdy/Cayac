@@ -14,6 +14,7 @@ public interface AdministradorDePlanesDeTrabajo {
     public void agregarAprobacion(Aprobacion aprobacion)throws SQLException,ClassNotFoundException;
     public void agregarAprobaciondePlanTrabajo(Aprobacion aprobacion)throws SQLException,ClassNotFoundException;
     public void agregarMensaje(Mensaje mensaje)throws SQLException,ClassNotFoundException;
+    public void agregarMensajeContratante(Mensaje mensaje)throws SQLException,ClassNotFoundException;
     public void actualizarSoporte(Documento doc)throws SQLException,ClassNotFoundException,IOException;
     public List<PlanDeTrabajo>traerActividadesPorContratista(int idContratista,String mes,int year)throws SQLException,ClassNotFoundException;
     public List<PlanDeTrabajo>traerActividadesPorContratistaConSoporte(int idContratista,String mes,int year)throws SQLException,ClassNotFoundException;
