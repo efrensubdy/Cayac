@@ -99,13 +99,13 @@ angular.module('myApp.mensajeriaContratante', ['ngRoute'])
                      return false;
                   }
 
-$scope.showAlert=function(ev){
-
+$scope.showAlert=function(ev,client){
+     $rootScope.client=client;
      $mdDialog.show({
                  //Controlador del mensajes con operaciones definido en la parte de abajo
                  controller: DialogController,
                   //permite la comunicacion con el html que despliega el boton requisitos
-                  templateUrl: 'test/mensajeDeContratante.html',
+                  templateUrl: 'test/mensajeDeContratista.html',
                   parent: angular.element(document.body),
                   targetEvent: ev,
                   clickOutsideToClose:true,
@@ -113,6 +113,7 @@ $scope.showAlert=function(ev){
      })
 }
 function DialogController($scope, $mdDialog, $rootScope, $http) {
+    $scope.client=$rootScope.client;
     $scope.mensaje=true;
     $scope.show=function(){
         $scope.mensaje=true;
@@ -125,10 +126,11 @@ function DialogController($scope, $mdDialog, $rootScope, $http) {
        $mdDialog.cancel();
      };
     $scope.envio=function(item){
-        var mensaje={mensaje:item,idContratante:$localStorage.userLogeado.idContratante,idContratista:$localStorage.userLogeado.idContratista,nombreEmpresa:$localStorage.userLogeado.nombreEmpresa}
-        mensajeContratante.save(mensaje);
+        var mensaje={mensaje:item,idContratante:$localStorage.contratanteLogeado.idContratante,idContratista:$scope.client.idContratista}
+        mensajeContratista.save(mensaje);
         $scope.textArea= '';
         $scope.mensaje=false;
+
 
     }
 

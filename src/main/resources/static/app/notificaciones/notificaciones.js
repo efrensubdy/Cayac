@@ -132,6 +132,14 @@ function DialogController($scope, $mdDialog, $rootScope, $http) {
         $scope.mensaje=false;
 
     }
+    $scope.envio2=function(item){
+
+            var mensaje={mensaje:item,idContratante:$localStorage.contratanteLogeado.idContratante,idContratista:$scope.client.idContratista}
+            mensajeContratista.save(mensaje);
+            $scope.textArea= '';
+            $scope.mensaje=false;
+
+        }
 
 
 }
