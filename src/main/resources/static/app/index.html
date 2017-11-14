@@ -53,6 +53,7 @@
   <script src="gestionAuditoria/gestionAuditoria.js"></script>
   <script src="actualizacionDeContrato/actualizacionDeContrato.js"></script>
   <script src="mensajeriaContratante/mensajeriaContratante.js"></script>
+  <script src="diagnostico/diagnostico.js"></script>
   <script src="login/login.js"></script>
   <script src="inicio/inicio.js"></script>
   <script src="login2/login2.js"></script>
@@ -349,6 +350,13 @@
               <div class="row">
                 <div class="col-sm-1"><span class="glyphicon glyphicon-eye-open"></span></div>
                 <div class="col-sm-1">Inicio Cayac</div>
+              </div>
+            </a></li>
+          <li ng-hide="bandera||bandera2||bandera3 ||banderaEjecucion">
+            <a href="#!/diagnostico">
+              <div class="row">
+                <div class="col-sm-1"><span class="glyphicon glyphicon glyphicon-gift"></span></div>
+                <div class="col-sm-1">Diagnóstico</div>
               </div>
             </a></li>
         </ul>
