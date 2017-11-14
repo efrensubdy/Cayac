@@ -68,6 +68,11 @@ public class ManejoDePlanesDeTrabajoBD implements AdministradorDePlanesDeTrabajo
     }
 
     @Override
+    public List<Mensaje> consultarMensajesPorContratante(int idContratante) throws SQLException, ClassNotFoundException {
+        return planDeTrabajoBD.consultarMensajesContratante(idContratante);
+    }
+
+    @Override
     public List<Contratista> pendientesSinSoporte(int idContratante, String mes, int year) throws SQLException, ClassNotFoundException {
         return planDeTrabajoBD.pendientesSinSoporte(idContratante, mes, year);
     }

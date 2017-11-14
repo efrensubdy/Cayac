@@ -138,6 +138,20 @@ public class PlanDeTrabajoController {
         }
         return a;
     }
+    @RequestMapping(value = "mensajesContratante/{idContratante}", method = RequestMethod.GET)
+    public ResponseEntity<?>obtenerMensajesDeContratantes( @PathVariable int idContratante){
+
+        ResponseEntity a;
+        try {
+            //obtener datos que se enviarán a través del API
+            a = new ResponseEntity<>(manejoDePlanesDeTrabajoBD.consultarMensajesPorContratante(idContratante),HttpStatus.ACCEPTED);
+
+        } catch (Exception ex) {
+            Logger.getLogger(Controller.class.getName()).log(Level.SEVERE, null, ex);
+            return new ResponseEntity<>("Error bla bla bla",HttpStatus.NOT_FOUND);
+        }
+        return a;
+    }
     @RequestMapping(value ="aprobacion",method = RequestMethod.POST)
     public ResponseEntity<?> agregarAprobacion(@RequestBody Aprobacion aprobacion){
 

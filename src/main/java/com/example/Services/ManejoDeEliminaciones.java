@@ -29,4 +29,9 @@ public class ManejoDeEliminaciones implements AdministradorDeEliminaciones {
         eliminarRequisitosDB.eliminarMessagesContratistas(idMessages);
     }
 
+    @Override
+    public void eliminarMessagesContratante(int idMessages) throws SQLException, ClassNotFoundException {
+        eliminarRequisitosDB.eliminarMessagesContratante(idMessages);
+    }
+
 }

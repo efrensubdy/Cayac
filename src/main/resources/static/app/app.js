@@ -46,6 +46,7 @@ angular.module('myApp', [
   'myApp.login2',
   'myApp.login3',
   'myApp.actualizacionDeContrato',
+  'myApp.mensajeriaContratante',
   'services.listFactory',
   'myApp.version'
 ]).

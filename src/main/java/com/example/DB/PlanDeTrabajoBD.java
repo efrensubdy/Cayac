@@ -146,6 +146,22 @@ public List<Mensaje>consultarMensajesContratista(int idContratista,int idContrat
     }
     return mensajeList;
 }
+    public List<Mensaje>consultarMensajesContratante(int idContratante)throws SQLException,ClassNotFoundException{
+        List<Mensaje>mensajeList=new LinkedList<>();
+        String sql="SELECT * FROM inboxContratante WHERE  idContratante = ?;";
+        PreparedStatement ps = Conexion.conection().prepareStatement(sql);
+        ps.setInt(1,idContratante);
+        ResultSet rs = ps.executeQuery();
+        while (rs.next()) {
+            Mensaje mensajeDb = new Mensaje();
+            mensajeDb.setId(rs.getInt("id"));
+            mensajeDb.setIdContratante(rs.getInt("idContratante"));
+            mensajeDb.setIdContratista(rs.getInt("idContratista"));
+            mensajeDb.setMensaje(rs.getString("mensaje"));
+            mensajeList.add(mensajeDb);
+        }
+        return mensajeList;
+    }
 public List<PlanDeTrabajo>consultarActividadesdelPlanDeTrabajo(int idContratista,String mes,int year)throws SQLException,ClassNotFoundException {
     List<PlanDeTrabajo> planDeTrabajoList = new LinkedList<>();
     String sql="SELECT * FROM planDeTrabajo WHERE idContratista = ? AND mes = ? and year = ?;";

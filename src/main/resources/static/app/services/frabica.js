@@ -112,6 +112,10 @@ angular.module('services.listFactory', ['ngRoute','ngResource'])
               return $resource('/app/planDeTrabajo/mensajesContr/:idContratista/:idContratante')
 
                     })
+           .factory('mensajeCtante', function($resource) {
+                  return $resource('/app/planDeTrabajo/mensajesContratante/:idContratante')
+
+                        })
            .factory('accPorContra', function($resource) {
                          return $resource('/app/accidente/accxContra/:idContratista/:idContratante')
 
@@ -212,7 +216,7 @@ angular.module('services.listFactory', ['ngRoute','ngResource'])
 
 
                    })
-       //Fabrica que se comunica con el controlador de contratista trallendo los requisitos sugeridos cumplidos
+       //Fabrica que se comunica con el controlador de comntratista trallendo los requisitos sugeridos cumplidos
         .factory('rNoCumplidos', function($resource) {
                                return $resource('/app/contractor/requisitoNC/:idContratista/:idCategoria/:idContratante')
 
@@ -372,7 +376,9 @@ angular.module('services.listFactory', ['ngRoute','ngResource'])
         .factory('eliminarMessagesContratistas', function($resource) {
               return $resource('/app/eliminarMessages/eliminarMContratista/:idMessage');
                                                                             })
-
+        .factory('eliminarMessagesContratantes', function($resource) {
+                      return $resource('/app/eliminarMessages/eliminarMContratante/:idMessage');
+                                                                                    })
         //Esta fabrica manda las imagenes, los documentos Y las fechas para luego se almacenen
        .factory('imagenes', function($resource) {
                                             return $resource('/app/imagenes/:id');
