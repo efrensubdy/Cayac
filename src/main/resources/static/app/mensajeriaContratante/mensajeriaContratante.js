@@ -9,7 +9,7 @@ angular.module('myApp.mensajeriaContratante', ['ngRoute'])
   });
 }])
 
-.controller('mensajeriaContratanteCtrl', ['$location','$route','$timeout', '$q', '$scope','$log','$rootScope','$localStorage','$sessionStorage','$mdDialog','mensajeContr','eliminarMessagesContratantes','mensajeCtante',function($location,$route,$timeout, $q, $scope,$log,$rootScope,$localStorage,$sessionStorage,$mdDialog,mensajeContr,eliminarMessagesContratantes,mensajeCtante) {
+.controller('mensajeriaContratanteCtrl', ['$location','$route','$timeout', '$q', '$scope','$log','$rootScope','$localStorage','$sessionStorage','$mdDialog','mensajeContr','eliminarMessagesContratantes','mensajeCtante','mensajeContratista',function($location,$route,$timeout, $q, $scope,$log,$rootScope,$localStorage,$sessionStorage,$mdDialog,mensajeContr,eliminarMessagesContratantes,mensajeCtante,mensajeContratista) {
     if ("undefined" === typeof $localStorage.userLogeado && "undefined" === typeof $localStorage.contratanteLogeado){
          $mdDialog.show(
                           $mdDialog.alert()
