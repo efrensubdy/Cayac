@@ -3,7 +3,7 @@
   <div class="container">
 
    <div class="container">
-       <div class="col-xs-10">
+       <div class="col-xs-9">
        <h4 class="w3-center "><b>CONSULTA DE CONTRATOS</b></h4>
        <p class=" w3-center"><b>EN ESTA VISTA PODRA CONSULTAR SUS CONTRATOS</b></p>
       <p class=" w3-center">ESCOJA ALGUNA DE LAS OPCIONES QUE SE LE PRESENTAN A CONTINUACIÓN</p>
@@ -13,7 +13,7 @@
         <div class="row">
            <div class="col-sm-12">
             <div class="container">
-                <div class="col-xs-10">
+                <div class="col-xs-9">
                 <select class="form-control" ng-click="function1()" name="singleSelect" ng-model="tipoContrato">
                         <option value="nombre" >Nombre</option>
                         <option value="fecha" >Fecha</option>
@@ -31,14 +31,13 @@
         <div class="container">
             <br>
             <br>
-            <div class="col-xs-10">
-            <input class="form-control" type="text"  placeholder="Nombre o numero del contrato" name="contrato" list="contratos" ng-model="contrato">
-            <datalist id="contratos">
-                <select name="contratos" ng-model="select">
-                    <option value="" disabled selected>Escoja el contrato que va consultar</option>
-                    <option ng-repeat="todo in listado"  value="{{todo.idContrato}}" ng-model="selectedOption">{{todo.nombreContrato}}</option>
-                </select>
-            </datalist>
+            <div class="col-xs-9">
+                <div layout="column" layout-align="center center">
+                    <md-select placeholder="Assign to user" ng-model="contrato"  style="min-width: 200px;">
+                        <md-option ng-value="contrato" ng-repeat="contrato in listado">{{contrato.nombreContrato}}</md-option>
+                    </md-select>
+                    <p class="md-caption">You have assigned the task to: {{ contrato ? contrato.nombreContrato : 'No one yet' }}</p>
+                </div>
 
             <br>
             <button class="btn btn-primary center-block" type="submit" ng-click="detalle($event,contrato)">Detalle</button>
@@ -76,7 +75,7 @@
     </div>
     <br>
     <div class="row align-middle" ng-show="permisoTable">
-        <div class="col-xs-11">
+        <div class="col-xs-9">
          <div class="table-responsive">
         <table class="table table-bordered table-hover table-condensed">
             <tbody>
@@ -104,7 +103,7 @@
         </div>
     </div>
 <div class="row" ng-show="permisoFecha">
-    <div class="col-xs-11">
+    <div class="col-xs-9">
         <div class="table-responsive">
     <table class="table table-bordered table-hover table-condensed">
         <tbody>

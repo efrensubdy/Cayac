@@ -75,8 +75,8 @@ else{
  var detalle=function(ev,item){
     console.log(item);
     if("undefined" !== typeof item){
-    //var url = "http://localhost:8080/app/contratos/id/" + item;
-    var url = "http://ec2-35-163-21-208.us-west-2.compute.amazonaws.com:8080/app/contratos/id/" + item;
+   // var url = "http://localhost:8080/app/contratos/id/" + item.idContrato;
+   var url = "http://ec2-35-163-21-208.us-west-2.compute.amazonaws.com:8080/app/contratos/id/" + tem.idContrato;
           $http.get(url).then(function(response) {
                    d=response.data;
                    console.log(response.data)

@@ -10,7 +10,12 @@
                     <h4 class="text-primary"><b>DIAGNÓSTICO</b></h4>
                     </div>
                     <div class="row">
-                        <div class="col-sm-12" ng-repeat="todo in preguntas">
+                        <div class="col-sm-12">
+                            <div class="col-xs-9">
+                                <input> <!--nombre de la empresa, nombre de quien , telefono, correo-->
+                            </div>
+                        </div>
+                            <div class="col-sm-12" ng-repeat="todo in preguntas">
                             <div class="col-xs-9">
                                 <p  class="texto" align="justify"><b class="titulos">{{todo.id}}.</b>{{todo.nombre}}</p>
                                 <md-radio-group layout="row" ng-model="select" ng-change="operation(select)">
