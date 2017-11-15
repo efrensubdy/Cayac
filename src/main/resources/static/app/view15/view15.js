@@ -45,6 +45,9 @@ $scope.function1=function(){
 
 
 }
+$scope.loadContratos=function(){
+     $scope.listado=contratos.query({idContratante:$localStorage.contratanteLogeado.idContratante})
+}
 
 $scope.detalle=function(ev,item){
     detalle(ev,item);

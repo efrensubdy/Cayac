@@ -26,6 +26,9 @@ angular.module('myApp.view10', ['ngRoute'])
 
                 }
         $scope.listado=serviciosConContratista.query({idContratante:$localStorage.contratanteLogeado.idContratante})
+        $scope.loadContratos=function(){
+              $scope.listado=serviciosConContratista.query({idContratante:$localStorage.contratanteLogeado.idContratante})
+        }
         $scope.flag=false;
         $scope.seleccionados=[];
         $scope.propertyName = 'cumplidos';

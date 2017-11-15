@@ -25,8 +25,12 @@ if ("undefined" === typeof $localStorage.userLogeado && "undefined" === typeof $
 
 
         }
+$scope.loadContratos=function(){
+     $scope.listado=contratosEnEjecucion.query({idContratante:$localStorage.contratanteLogeado.idContratante});
+}
 $scope.ocultarTodo=function(){
     $scope.flag=false;
+
 }
  $scope.listado=contratosEnEjecucion.query({idContratante:$localStorage.contratanteLogeado.idContratante})
         $scope.seleccionados=[];
