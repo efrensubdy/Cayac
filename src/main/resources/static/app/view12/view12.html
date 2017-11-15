@@ -39,7 +39,7 @@
                     <th>Finalistas Definitivos</th>
 
                 </tr>
-                <tr class="texto"  ng-repeat="todo in listado | orderBy:propertyName:reverse">
+                <tr class="texto"  ng-repeat="todo in listado2 | orderBy:propertyName:reverse">
                     <td>{{todo.nombreEmpresa}}</td>
                     <td>
                         <button  class="btn btn-primary"  ng-click="showAlert2($event,todo)">
