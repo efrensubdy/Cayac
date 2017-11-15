@@ -4,20 +4,17 @@
 
    <div class="container">
        <div class="col-xs-9">
-       <h4 class="w3-center "><b>CONSULTA DE CONTRATOS</b></h4>
-       <p class=" w3-center"><b>EN ESTA VISTA PODRA CONSULTAR SUS CONTRATOS</b></p>
-      <p class=" w3-center">ESCOJA ALGUNA DE LAS OPCIONES QUE SE LE PRESENTAN A CONTINUACIÓN</p>
-        <div class="container text-center " >
-
-        </div>
         <div class="row">
            <div class="col-sm-12">
             <div class="container">
                 <div class="col-xs-9">
-                <select class="form-control" ng-click="function1()" name="singleSelect" ng-model="tipoContrato">
-                        <option value="nombre" >Nombre</option>
-                        <option value="fecha" >Fecha</option>
-                    </select>
+                    <h4 class="w3-center titulos "><b>CONSULTA DE CONTRATOS</b></h4>
+                    <p class=" w3-center texto"><b>EN ESTA VISTA PODRA CONSULTAR SUS CONTRATOS</b></p>
+                    <p class=" w3-center texto">ESCOJA ALGUNA DE LAS OPCIONES QUE SE LE PRESENTAN A CONTINUACIÓN</p>
+                    <md-select  ng-change="function1()" class="titulos" placeholder="Escoja una de las opciones " style="min-width: 200px;" ng-model="tipoContrato">
+                        <md-option value="nombre" >Nombre</md-option>
+                        <md-option value="fecha" >Fecha</md-option>
+                    </md-select>
                 </div>
             </div>
            </div>
@@ -33,10 +30,10 @@
             <br>
             <div class="col-xs-9">
                 <div layout="column" layout-align="center center">
-                    <md-select placeholder="Assign to user" ng-model="contrato"  style="min-width: 200px;">
+                    <md-select class="titulos" placeholder="Assign to user" ng-model="contrato"  style="min-width: 200px;">
                         <md-option ng-value="contrato" ng-repeat="contrato in listado">{{contrato.nombreContrato}}</md-option>
                     </md-select>
-                    <p class="md-caption">You have assigned the task to: {{ contrato ? contrato.nombreContrato : 'No one yet' }}</p>
+                    <p class="md-caption titulos">El Contrato fue accinado a: {{ contrato ? contrato.nombreContrato : 'Nadie todavía' }}</p>
                 </div>
 
             <br>
