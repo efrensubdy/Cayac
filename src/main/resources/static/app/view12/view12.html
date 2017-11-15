@@ -6,16 +6,16 @@
         <div class="form-group">
            <div class="row">
             <div class="col-xs-9">
-                <h4 class="titulos"><b>REVISE A SUS CONTRATISTAS</b></h4>
-            <label class="texto"><b>ESCOJA EL CONTRATO SOBRE EL CUAL QUIERE VER LOS CONTRATISTAS</b></label>
+                <h4 class="titulos"><b>CONSULTE A SUS CONTRATISTAS</b></h4>
+            <label class="texto"><b>ESCOJA EL CONTRATO SOBRE EL CUAL QUIERE VER AL CONTRATISTAS</b></label>
             <p class="texto"><b>EN PARTE DE ABAJO ECONTRARÁ UNA LISTA DE TODOS SUS CONTRATOS DISPONIBLES</b> </p>
                 <div class="col-sm-11">
-                <input class="form-control" type="text"  placeholder="Contratos Existentes" name="contrato" list="contratos" ng-change="ocultarTodo()" ng-model="contrato">
-                <datalist id="contratos">
-                    <select name="contratos" ng-model="select">
-                        <option value="" disabled selected>Contratos existentes </option>
-                        <option ng-repeat="todo in listado"  value="{{todo.idContrato}}" ng-model="selectedOption">{{todo.nombreContrato}}</option>
-                    </select></datalist>
+                    <div layout="column" layout-align="center center">
+                        <md-select class="titulos" placeholder="Asignar Contrato" ng-model="contrato"  style="min-width: 200px;" ng-change="ocultarTodo()">
+                            <md-option ng-value="contrato" ng-repeat="contrato in listado">{{contrato.nombreContrato}}</md-option>
+                        </md-select>
+                        <p class="md-caption titulos">El Contrato fue accinado a: {{ contrato ? contrato.nombreContrato : 'Nadie todavía' }}</p>
+                    </div>
                 <br>
                 </div>
                 <div class="col-sm-11">

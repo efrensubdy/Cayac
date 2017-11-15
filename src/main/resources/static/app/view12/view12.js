@@ -39,7 +39,7 @@ $scope.ocultarTodo=function(){
 
          $scope.add=function(ev,contrato){
                         if("undefined" !== typeof contrato){
-                        $scope.listado=finalesDefinitivos.query({idContratante:$localStorage.contratanteLogeado.idContratante,idContrato:contrato});
+                        $scope.listado=finalesDefinitivos.query({idContratante:$localStorage.contratanteLogeado.idContratante,idContrato:contrato.idContrato});
                         $scope.flag=true;
                         }
                         else{
