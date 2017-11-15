@@ -30,7 +30,7 @@
             <br>
             <div class="col-xs-9">
                 <div layout="column" layout-align="center center">
-                    <md-select class="titulos" placeholder="Assign to user" ng-model="contrato"  style="min-width: 200px;">
+                    <md-select class="titulos" placeholder="Asignar Contrato" ng-model="contrato"  style="min-width: 200px;">
                         <md-option ng-value="contrato" ng-repeat="contrato in listado">{{contrato.nombreContrato}}</md-option>
                     </md-select>
                     <p class="md-caption titulos">El Contrato fue accinado a: {{ contrato ? contrato.nombreContrato : 'Nadie todavía' }}</p>

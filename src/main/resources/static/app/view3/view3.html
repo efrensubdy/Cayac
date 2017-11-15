@@ -9,12 +9,12 @@
           <h4 class="titulos" ><b>GESTIÓN DE REQUISITOS DE SELECCIÓN</b></h4>
           <p class="texto"><b>EN ESTA VISTA PODRA AGREGAR LOS REQUISITOS A CADA CATEGORIA,ESCOJA UNA DE LAS CATEGORIAS MENCIONADAS A CONTINUACIÓN</b></p>
           <div class="col-sm-12">
-            <select class="form-control push-right" ng-click="function1()" data-placeholder="Categoria a la que le va aplicar los requisitos" name="singleSelect" ng-model="idCategoria">
-              <option value="1">Categoria 1</option>
-              <option value="2">Categoria 2</option>
-              <option value="3">Categoria 3</option>
-              <option value="4">Categoria 4</option>
-            </select>
+            <md-select class="titulos" placeholder="Escoja una de las opciones " style="min-width: 200px;" ng-change="function1()"  ng-model="idCategoria">
+              <md-option value="1">Categoria 1</md-option>
+              <md-option value="2">Categoria 2</md-option>
+              <md-option value="3">Categoria 3</md-option>
+              <md-option value="4">Categoria 4</md-option>
+            </md-select>
           </div>
           <div class="row">
           <div class="col-xs-9">
@@ -85,11 +85,11 @@
       <div ng-show="banderaLista">
 
 
-          <select class="form-control"  data-placeholder="¿QUE QUIEREN HACER CON ESTA CATEGORIA?" name="singleSelect" ng-model="ciclo" ng-click="activated(ciclo)">
-            <option value="1">ESTABLECER FECHA</option>
-            <option value="2">AGREGAR REQUISITOS</option>
-            <option value="3">DEFINITIVOS</option>
-          </select>
+          <md-select class="titulos" placeholder="Escoja una de las opciones " style="min-width: 200px;"   ng-model="ciclo" ng-change="activated(ciclo)">
+            <md-option value="1">ESTABLECER FECHA</md-option>
+            <md-option value="2">AGREGAR REQUISITOS</md-option>
+            <md-option value="3">DEFINITIVOS</md-option>
+          </md-select>
         </div>
           <br>
           <br>
