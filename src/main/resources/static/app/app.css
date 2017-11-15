@@ -218,7 +218,11 @@ body {
     padding-top: 40px;
     display:block;
 }
+.imr {
+    display: block;
+    margin: auto;
 
+}
 .borderless td, .borderless th {
     border: none;
 }
