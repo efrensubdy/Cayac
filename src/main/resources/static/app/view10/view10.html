@@ -7,15 +7,14 @@
 
             <div class="col-sm-11">
                 <h4 class="titulos"><b>REVISE LO QUE SUBIERON SUS CANDIDATOS</b></h4>
-                <p class="texto"><b>ESCOJA EL CONTRATO SOBRE EL CUAL REALIZARÁ LA REVISIÓN</b></p>
+                <p class="texto"><b>ESCOJA EL SERVICIO SOBRE EL CUAL REALIZARÁ LA REVISIÓN</b></p>
 
-                <input class="form-control" type="text"  placeholder="A que contrato le va aplicar los requisitos" name="contrato" list="contratos" ng-model="contrato">
-                <datalist id="contratos">
-                    <select name="contratos" ng-model="select">
-                        <option value="" disabled selected>Escoja el contrato  para el cual </option>
-                        <option ng-repeat="todo in listado"  value="{{todo.id}}" ng-model="selectedOption">{{todo.nombre}}</option>
-                    </select>
-                </datalist>
+                <div layout="column" layout-align="center center">
+                    <md-select class="titulos" placeholder="Asignar Servicio" ng-model="contrato"  style="min-width: 200px;">
+                        <md-option ng-value="contrato" ng-repeat="contrato in listado">{{contrato.nombre}}</md-option>
+                    </md-select>
+                    <p class="md-caption titulos">El Servicio fue accinado a: {{ contrato ? contrato.nombre : 'Nadie todavía' }}</p>
+                </div>
                     <br>
                     <br>
                     <button class="btn btn-primary center-block " type="submit" ng-click="add($event,contrato)">Consultar</button>
@@ -44,9 +43,9 @@
                 <tr  ng-repeat="todo in listillo | orderBy:propertyName:reverse">
                     <td class="texto">{{todo.nombreEmpresa}}</td>
                     <td class="texto">
-                        <md-button button class="btn btn-primary" ng-click="showAlert($event,todo)" >
+                        <button button class="btn btn-primary" ng-click="showAlert($event,todo)" >
                             Resumen
-                        </md-button>
+                        </button>
                     </td>
                 </tr>
 

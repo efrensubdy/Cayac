@@ -36,7 +36,8 @@ angular.module('myApp.view10', ['ngRoute'])
           };
         $scope.add=function(ev,contrato){
                 if("undefined" !== typeof contrato){
-                $scope.listillo=pFinales.query({idContratante:$localStorage.contratanteLogeado.idContratante,idContrato:$scope.contrato})
+                console.log(contrato)
+                $scope.listillo=pFinales.query({idContratante:$localStorage.contratanteLogeado.idContratante,idContrato:$scope.contrato.id})
                $rootScope.idContrato=$scope.contrato;
                 $scope.flag=true;
                 $rootScope.idCategoria=$scope.idCategoria
