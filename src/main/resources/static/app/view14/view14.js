@@ -36,7 +36,7 @@ angular.module('myApp.view14', ['ngRoute'])
             };
  $scope.add=function(ev,contrato){
 if("undefined" !== typeof contrato){
- $scope.listado2=pFinales.query({idContratante:$localStorage.contratanteLogeado.idContratante,idContrato:$scope.contrato})
+ $scope.listado2=pFinales.query({idContratante:$localStorage.contratanteLogeado.idContratante,idContrato:$scope.contrato.id})
  $scope.flag=true;
  }
  else{
@@ -53,6 +53,13 @@ if("undefined" !== typeof contrato){
 
 
  }
+
+ }
+ $scope.loadContratos=function(){
+      $scope.listado=serviciosConContratista.query({idContratante:$localStorage.contratanteLogeado.idContratante});
+ }
+ $scope.ocultarTodo=function(){
+     $scope.flag=false;
 
  }
 

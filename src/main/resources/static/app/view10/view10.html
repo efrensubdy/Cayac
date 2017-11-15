@@ -13,7 +13,7 @@
                     <md-select class="titulos" placeholder="Asignar Servicio" ng-model="contrato"  md-on-open="loadContratos()" style="min-width: 200px;">
                         <md-option ng-value="contrato" ng-repeat="contrato in listado">{{contrato.nombre}}</md-option>
                     </md-select>
-                    <p class="md-caption titulos">El Servicio fue accinado a: {{ contrato ? contrato.nombre : 'Nadie todavía' }}</p>
+                    <p class="md-caption titulos">El Servicio seleccionado fue: {{ contrato ? contrato.nombre : 'Nadie todavía' }}</p>
                 </div>
                     <br>
                     <br>

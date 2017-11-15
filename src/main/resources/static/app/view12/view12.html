@@ -14,7 +14,7 @@
                         <md-select class="titulos" placeholder="Asignar Contrato" ng-model="contrato"  style="min-width: 200px;" md-on-open="loadContratos()" ng-change="ocultarTodo()">
                             <md-option ng-value="contrato" ng-repeat="contrato in listado">{{contrato.nombreContrato}}</md-option>
                         </md-select>
-                        <p class="md-caption titulos">El Contrato fue accinado a: {{ contrato ? contrato.nombreContrato : 'Nadie todavía' }}</p>
+                        <p class="md-caption titulos">El Contrato escogido fue {{ contrato ? contrato.nombreContrato : 'Nadie todavía' }}</p>
                     </div>
                 <br>
                 </div>

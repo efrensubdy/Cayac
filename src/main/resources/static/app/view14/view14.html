@@ -6,13 +6,12 @@
             <h4  class="titulos"><b>CONSULTAR CANDIDATOS</b></h4>
             <p class="texto"><b>ESCOJA UNO DE LOS SERVICIOS A CONTRATAR PRESENTADOS A CONTINUACIÓN</b></p>
                 <div class="col-sm-11">
-                <input class="form-control" type="text"  placeholder="A que contrato pertenece el contratista" name="contrato" list="contratos" ng-model="contrato">
-                <datalist id="contratos">
-                    <select name="contratos" ng-model="select">
-                        <option value="" disabled selected>Escoja El servicio a contratar al que va pertenecer el candidato</option>
-                        <option ng-repeat="todo in listado"  value="{{todo.id}}" ng-model="selectedOption">{{todo.nombre}}</option>
-                    </select>
-                </datalist>
+                    <div layout="column" layout-align="center center">
+                        <md-select class="titulos" placeholder="Asignar Servicio" ng-change="ocultarTodo()" ng-model="contrato"  md-on-open="loadContratos()" style="min-width: 200px;">
+                            <md-option ng-value="contrato" ng-repeat="contrato in listado">{{contrato.nombre}}</md-option>
+                        </md-select>
+                        <p class="md-caption titulos">El Servicio seleccionado fue: {{ contrato ? contrato.nombre : 'Nadie todavía' }}</p>
+                    </div>
                 </div>
 
         </div>
