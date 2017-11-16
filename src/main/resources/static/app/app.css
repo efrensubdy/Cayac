@@ -219,8 +219,9 @@ body {
     display:block;
 }
 .imr {
-    display: block;
-    margin: auto;
+
+    max-width: 100%;
+    height: auto;
 
 }
 .mypanel {
