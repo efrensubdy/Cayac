@@ -228,6 +228,9 @@ body {
    overflow-x: auto;
 
 }
+.panel-resizable:active {
+    height: 1px;
+}
 .borderless td, .borderless th {
     border: none;
 }
