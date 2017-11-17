@@ -373,6 +373,9 @@ angular.module('services.listFactory', ['ngRoute','ngResource'])
         .factory('eliminarPS', function($resource) {
                return $resource('/app/eliminar/eliminarPS/:idRequisito/:idContratante');
                                                                             })
+        .factory('eliminarPE', function($resource) {
+                      return $resource('/app/eliminar/eliminarPE/:idRequisito/:idContratante');
+                                                                                    })
         .factory('eliminarMessagesContratistas', function($resource) {
               return $resource('/app/eliminarMessages/eliminarMContratista/:idMessage');
                                                                             })

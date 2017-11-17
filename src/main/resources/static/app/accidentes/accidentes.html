@@ -9,10 +9,10 @@
                     <div class="col-xs-9">
                     <h4 class="text-primary"><b>ACCIDENTES</b></h4>
                         <p class="texto">ESCOJA UNA DE LAS OPCIONES PRESENTADAS A CONTINUACIÓN</p>
-                        <select class="form-control" ng-model="opcion" data-placeholder="" ng-change="simple2(opcion)">
-                            <option ng-value="todo" ng-repeat="todo in opciones">{{todo.name}}</option>
+                        <md-select class="titulos" placeholder="Escoger Opcion " ng-model="opcion"  ng-change="simple2(opcion)">
+                            <md-option ng-value="todo" ng-repeat="todo in opciones">{{todo.name}}</md-option>
 
-                        </select>
+                        </md-select>
 
                     </div>
                 </div>
@@ -59,10 +59,10 @@
                          <div class="row">
                              <div class="col-sm-3">
                                  <p class="titulos">IDENTIFICACION</p>
-                                 <select class="form-control" ng-model="identificacion" data-placeholder="">
-                                     <option ng-value="todo.name" ng-repeat="todo in tipoDeIdentificacion">{{todo.name}}</option>
+                                 <md-select class="titulos" placeholder="Escoger Opcion" ng-model="identificacion" >
+                                     <md-option ng-value="todo.name" ng-repeat="todo in tipoDeIdentificacion">{{todo.name}}</md-option>
 
-                                 </select>
+                                 </md-select>
                              </div>
                              <div class="col-sm-3">
                                  <p class="titulos">NUMERO</p>
@@ -74,10 +74,10 @@
                              </div>
                              <div class="col-sm-3">
                                  <p class="titulos">SEXO</p>
-                                 <select class="form-control" ng-model="sex" data-placeholder="">
-                                     <option ng-value="todo.name" ng-repeat="todo in sexo">{{todo.name}}</option>
+                                 <md-select class="titulos" placeholder="Escoger Opcion" ng-model="sex" >
+                                     <md-option ng-value="todo.name" ng-repeat="todo in sexo">{{todo.name}}</md-option>
 
-                                 </select>
+                                 </md-select>
                              </div>
 
 
@@ -86,41 +86,40 @@
                          <div class="row">
                              <div class="col-sm-3">
                                  <p class="titulos">DEPARTAMENTO</p>
-                                 <input class="form-control" type="text"  name="departamentos" list="departamentos" placeholder="departamento de su empresa" ng-model="departamento">
-                                 <datalist id="departamentos">
-                                     <select name="departamentos" class="w3-select"  data-placeholder="departamento de la empresa"  >
-                                         <option value="" disabled selected>Escoja un Departamento</option>
-                                         <option value="Bogotá D.C">Bogotá D.C</option>
-                                         <option value="La Guajira">La Guajira</option>
-                                         <option value="Magdalena">Magdalena</option>
-                                         <option value="Guaviare">Guaviare</option>
-                                         <option value="Boyaca">Boyaca</option>
-                                         <option value="Valle del Cauca">Valle del Cauca</option>
-                                         <option value="Amazonas">Amazonas</option>
-                                         <option value="Meta">Meta</option>
-                                         <option value="Antioquia">Antioquia</option>
-                                         <option value="Cuaca">Cuaca</option>
-                                         <option value="Caldas">Caldas</option>
-                                         <option value="Caqueta">Caqueta</option>
-                                         <option value="Casanare">Casanare</option>
-                                         <option value="Cesar">Cesar</option>
-                                         <option value="Choco">Choco</option>
-                                         <option value="Cordoba">Cordoba</option>
-                                         <option value="Guanía">Guanía</option>
-                                         <option value="Huila">Huila</option>
-                                         <option value="Nariño">Nariño</option>
-                                         <option value="Norte de Santander">Norte de Santander</option>
-                                         <option value="Putumayo">Putumayo</option>
-                                         <option value="Quindio">Quindio</option>
-                                         <option value="San Andrés">San Andrés</option>
-                                         <option value="Santander">Santander</option>
-                                         <option value="Sucre">Sucre</option>
-                                         <option value="Tolima">Tolima</option>
-                                         <option value="Vaupes">Vaupes</option>
-                                         <option value="Vichada">Vichada</option>
-                                         <option value="Popayan">Popayan</option>
-                                     </select>
-                                 </datalist>
+                                 <div layout="column" layout-align="center center">
+                                     <md-select class="titulos" placeholder="departamento de su empresa" ng-model="departamento"  style="min-width: 200px;">
+                                         <md-option value="Bogotá D.C">Bogotá D.C</md-option>
+                                         <md-option value="La Guajira">La Guajira</md-option>
+                                         <md-option value="Magdalena">Magdalena</md-option>
+                                         <md-option value="Guaviare">Guaviare</md-option>
+                                         <md-option value="Boyaca">Boyaca</md-option>
+                                         <md-option value="Valle del Cauca">Valle del Cauca</md-option>
+                                         <md-option value="Amazonas">Amazonas</md-option>
+                                         <md-option value="Meta">Meta</md-option>
+                                         <md-option value="Antioquia">Antioquia</md-option>
+                                         <md-option value="Cuaca">Cuaca</md-option>
+                                         <md-option value="Caldas">Caldas</md-option>
+                                         <md-option value="Caqueta">Caqueta</md-option>
+                                         <md-option value="Casanare">Casanare</md-option>
+                                         <md-option value="Cesar">Cesar</md-option>
+                                         <md-option value="Choco">Choco</md-option>
+                                         <md-option value="Cordoba">Cordoba</md-option>
+                                         <md-option value="Guanía">Guanía</md-option>
+                                         <md-option value="Huila">Huila</md-option>
+                                         <md-option value="Nariño">Nariño</md-option>
+                                         <md-option value="Norte de Santander">Norte de Santander</md-option>
+                                         <md-option value="Putumayo">Putumayo</md-option>
+                                         <md-option value="Quindio">Quindio</md-option>
+                                         <md-option value="San Andrés">San Andrés</md-option>
+                                         <md-option value="Santander">Santander</md-option>
+                                         <md-option value="Sucre">Sucre</md-option>
+                                         <md-option value="Tolima">Tolima</md-option>
+                                         <md-option value="Vaupes">Vaupes</md-option>
+                                         <md-option value="Vichada">Vichada</md-option>
+                                         <md-option value="Popayan">Popayan</md-option>
+                                     </md-select>
+                                     <p class="md-caption titulos">El Departamento escogido fue {{ departamento ? departamento : 'Nadie todavía' }}</p>
+                                 </div>
                              </div>
                              <div class="col-sm-3">
                                  <p class="titulos">MUNICIPIO</p>
@@ -128,10 +127,10 @@
                              </div>
                              <div class="col-sm-3">
                                  <p class="titulos">ZONA</p>
-                                 <select class="form-control" ng-model="zonas" data-placeholder="">
-                                     <option ng-value="todo.name" ng-repeat="todo in zona">{{todo.name}}</option>
+                                 <md-select class="titulos" placeholder="zona" ng-model="zonas" data-placeholder="">
+                                     <md-option ng-value="todo.name" ng-repeat="todo in zona">{{todo.name}}</md-option>
 
-                                 </select>
+                                 </md-select>
                              </div>
                              <div class="col-sm-3">
                                  <p class="titulos">CARGO</p>
@@ -157,34 +156,34 @@
                              </div>
                              <div class="col-sm-3">
                                  <p class="titulos">HORA ACCIDENTE</p>
-                                 <select class="form-control" ng-model="hora" data-placeholder="">
-                                     <option ng-value="todo.name" ng-repeat="todo in horas">{{todo.name}}</option>
+                                 <md-select  class="titulos" placeholder="hora" ng-model="hora" >
+                                     <md-option ng-value="todo.name" ng-repeat="todo in horas">{{todo.name}}</md-option>
 
-                                 </select>
+                                 </md-select>
                              </div>
                              <div class="col-sm-3">
                                  <p class="titulos">DIA SEMANA</p>
-                                 <select class="form-control" ng-model="diaSe" data-placeholder="">
-                                     <option ng-value="todo.name" ng-repeat="todo in dias">{{todo.name}}</option>
+                                 <md-select class="titulos" placeholder="Día" ng-model="diaSe" >
+                                     <md-option ng-value="todo.name" ng-repeat="todo in dias">{{todo.name}}</md-option>
 
-                                 </select>
+                                 </md-select>
                              </div>
                          </div>
                          <br>
                          <div class="row">
                              <div class="col-sm-6">
                                  <p class="titulos">JORNADA </p>
-                                 <select class="form-control" ng-model="jornada" data-placeholder="">
-                                 <option ng-value="todo.name" ng-repeat="todo in jornadas">{{todo.name}}</option>
+                                 <md-select class="titulos" placeholder="jornada" ng-model="jornada">
+                                 <md-option ng-value="todo.name" ng-repeat="todo in jornadas">{{todo.name}}</md-option>
 
-                                 </select>
+                                 </md-select>
                              </div>
                              <div class="col-sm-6">
                                  <p class="titulos">ESTABA REALIZANDO SU LABOR HABITUAL ?</p>
-                                 <select class="form-control" ng-model="sino" data-placeholder="">
-                                     <option ng-value="todo.name" ng-repeat="todo in sinos">{{todo.name}}</option>
+                                 <md-select class="titulos" ng-model="sino" placeholder="escoja">
+                                     <md-option ng-value="todo.name" ng-repeat="todo in sinos">{{todo.name}}</md-option>
 
-                                 </select>
+                                 </md-select>
                              </div>
 
                          </div>
@@ -192,17 +191,17 @@
                          <div class="row">
                              <div class="col-sm-6">
                                  <p class="titulos">TIPO DE ACCIDENTE </p>
-                                 <select class="form-control" ng-model="tipoA" data-placeholder="">
-                                     <option ng-value="todo.name" ng-repeat="todo in tipoDeAccidente">{{todo.name}}</option>
+                                 <md-select class="titulos" placeholder="tipo" ng-model="tipoA" >
+                                     <md-option ng-value="todo.name" ng-repeat="todo in tipoDeAccidente">{{todo.name}}</md-option>
 
-                                 </select>
+                                 </md-select>
                              </div>
                              <div class="col-sm-6">
                                  <p class="titulos">LUGAR DONDE OCURRE EL ACCIDENTE</p>
-                                 <select class="form-control" ng-model="lugari" data-placeholder="">
-                                     <option ng-value="todo.name" ng-repeat="todo in lugar">{{todo.name}}</option>
+                                 <md-select class="titulos" ng-model="lugari" placeholder="lugar">
+                                     <md-option ng-value="todo.name" ng-repeat="todo in lugar">{{todo.name}}</md-option>
 
-                                 </select>
+                                 </md-select>
                              </div>
 
                          </div>
@@ -210,41 +209,40 @@
                          <div class="row">
                              <div class="col-sm-3">
                                  <p class="titulos">DEPARTAMENTO</p>
-                                 <input class="form-control" type="text"  name="depa" list="depa" placeholder="departamento" ng-model="depa">
-                                 <datalist id="depa">
-                                     <select name="depa" class="w3-select"  data-placeholder="departamento de la empresa"  >
-                                         <option value="" disabled selected>Escoja un Departamento</option>
-                                         <option value="Bogotá D.C">Bogotá D.C</option>
-                                         <option value="La Guajira">La Guajira</option>
-                                         <option value="Magdalena">Magdalena</option>
-                                         <option value="Guaviare">Guaviare</option>
-                                         <option value="Boyaca">Boyaca</option>
-                                         <option value="Valle del Cauca">Valle del Cauca</option>
-                                         <option value="Amazonas">Amazonas</option>
-                                         <option value="Meta">Meta</option>
-                                         <option value="Antioquia">Antioquia</option>
-                                         <option value="Cuaca">Cuaca</option>
-                                         <option value="Caldas">Caldas</option>
-                                         <option value="Caqueta">Caqueta</option>
-                                         <option value="Casanare">Casanare</option>
-                                         <option value="Cesar">Cesar</option>
-                                         <option value="Choco">Choco</option>
-                                         <option value="Cordoba">Cordoba</option>
-                                         <option value="Guanía">Guanía</option>
-                                         <option value="Huila">Huila</option>
-                                         <option value="Nariño">Nariño</option>
-                                         <option value="Norte de Santander">Norte de Santander</option>
-                                         <option value="Putumayo">Putumayo</option>
-                                         <option value="Quindio">Quindio</option>
-                                         <option value="San Andrés">San Andrés</option>
-                                         <option value="Santander">Santander</option>
-                                         <option value="Sucre">Sucre</option>
-                                         <option value="Tolima">Tolima</option>
-                                         <option value="Vaupes">Vaupes</option>
-                                         <option value="Vichada">Vichada</option>
-                                         <option value="Popayan">Popayan</option>
-                                     </select>
-                                 </datalist>
+                                 <div layout="column" layout-align="center center">
+                                     <md-select class="titulos" placeholder="departamento de su empresa" ng-model="depa"  style="min-width: 200px;">
+                                         <md-option value="Bogotá D.C">Bogotá D.C</md-option>
+                                         <md-option value="La Guajira">La Guajira</md-option>
+                                         <md-option value="Magdalena">Magdalena</md-option>
+                                         <md-option value="Guaviare">Guaviare</md-option>
+                                         <md-option value="Boyaca">Boyaca</md-option>
+                                         <md-option value="Valle del Cauca">Valle del Cauca</md-option>
+                                         <md-option value="Amazonas">Amazonas</md-option>
+                                         <md-option value="Meta">Meta</md-option>
+                                         <md-option value="Antioquia">Antioquia</md-option>
+                                         <md-option value="Cuaca">Cuaca</md-option>
+                                         <md-option value="Caldas">Caldas</md-option>
+                                         <md-option value="Caqueta">Caqueta</md-option>
+                                         <md-option value="Casanare">Casanare</md-option>
+                                         <md-option value="Cesar">Cesar</md-option>
+                                         <md-option value="Choco">Choco</md-option>
+                                         <md-option value="Cordoba">Cordoba</md-option>
+                                         <md-option value="Guanía">Guanía</md-option>
+                                         <md-option value="Huila">Huila</md-option>
+                                         <md-option value="Nariño">Nariño</md-option>
+                                         <md-option value="Norte de Santander">Norte de Santander</md-option>
+                                         <md-option value="Putumayo">Putumayo</md-option>
+                                         <md-option value="Quindio">Quindio</md-option>
+                                         <md-option value="San Andrés">San Andrés</md-option>
+                                         <md-option value="Santander">Santander</md-option>
+                                         <md-option value="Sucre">Sucre</md-option>
+                                         <md-option value="Tolima">Tolima</md-option>
+                                         <md-option value="Vaupes">Vaupes</md-option>
+                                         <md-option value="Vichada">Vichada</md-option>
+                                         <md-option value="Popayan">Popayan</md-option>
+                                     </md-select>
+                                     <p class="md-caption titulos">El Departamento escogido fue {{ departamento ? depa : 'Nadie todavía' }}</p>
+                                 </div>
                              </div>
                              <div class="col-sm-3">
                                  <p class="titulos">MUNICIPIO</p>
@@ -252,17 +250,17 @@
                              </div>
                              <div class="col-sm-3">
                                  <p class="titulos">ZONA</p>
-                                 <select class="form-control" ng-model="zon" data-placeholder="">
-                                     <option ng-value="todo.name" ng-repeat="todo in zona">{{todo.name}}</option>
+                                 <md-select class="titulos" ng-model="zon" placeholder="zona">
+                                     <md-option ng-value="todo.name" ng-repeat="todo in zona">{{todo.name}}</md-option>
 
-                                 </select>
+                                 </md-select>
                              </div>
                              <div class="col-sm-3">
                                  <p class="titulos">CAUSO LA MUERTE</p>
-                                 <select class="form-control" ng-model="si2" data-placeholder="">
-                                     <option ng-value="todo.name" ng-repeat="todo in sinos2">{{todo.name}}</option>
+                                 <md-select class="titulos"  ng-model="si2" placeholder="opcion">
+                                     <md-option ng-value="todo.name" ng-repeat="todo in sinos2">{{todo.name}}</md-option>
 
-                                 </select>
+                                 </md-select>
 
                              </div>
                          </div>
@@ -271,17 +269,17 @@
                          <div class="row">
                              <div class="col-sm-6">
                                  <p class="titulos">INDIQUE EL SITIO (DONDE COURRIO ?) </p>
-                                 <select class="form-control" ng-model="tipoB" data-placeholder="">
-                                     <option ng-value="todo.name" ng-repeat="todo in sitio">{{todo.name}}</option>
+                                 <md-select class="tiulos" ng-model="tipoB" placeholder="sitio">
+                                     <md-option ng-value="todo.name" ng-repeat="todo in sitio">{{todo.name}}</md-option>
 
-                                 </select>
+                                 </md-select>
                              </div>
                              <div class="col-sm-6">
                                  <p class="titulos">TIPO DE LESIÓN</p>
-                                 <select class="form-control" ng-model="lesion" data-placeholder="">
-                                     <option ng-value="todo.name" ng-repeat="todo in lesiones">{{todo.name}}</option>
+                                 <md-select class="titulos" ng-model="lesion" placeholder="tipo">
+                                     <md-option ng-value="todo.name" ng-repeat="todo in lesiones">{{todo.name}}</md-option>
 
-                                 </select>
+                                 </md-select>
                              </div>
 
                          </div>
@@ -289,24 +287,24 @@
                          <div class="row">
                              <div class="col-sm-4">
                                  <p class="titulos">MECANISMO O FORMA DE ACCIDENTE </p>
-                                 <select class="form-control" ng-model="mecanismo" data-placeholder="">
-                                     <option ng-value="todo.name" ng-repeat="todo in mecanismos">{{todo.name}}</option>
+                                 <md-select class="titulos" ng-model="mecanismo" placeholder="mecanismo">
+                                     <md-option ng-value="todo.name" ng-repeat="todo in mecanismos">{{todo.name}}</md-option>
 
-                                 </select>
+                                 </md-select>
                              </div>
                              <div class="col-sm-4">
                                  <p class="titulos">PARTE DEL CUERPO APARENTEMENTE AFECTADA</p>
-                                 <select class="form-control" ng-model="parte" data-placeholder="">
-                                     <option ng-value="todo.name" ng-repeat="todo in partes">{{todo.name}}</option>
+                                 <md-select class="titulos" ng-model="parte" placeholder="parte">
+                                     <md-option ng-value="todo.name" ng-repeat="todo in partes">{{todo.name}}</md-option>
 
-                                 </select>
+                                 </md-select>
                              </div>
                              <div class="col-sm-4">
                                  <p class="titulos">AGENTE DEL ACCIDENTE ¿CON QUE? </p>
-                                 <select class="form-control" ng-model="agente" data-placeholder="">
-                                     <option ng-value="todo.name" ng-repeat="todo in agentes">{{todo.name}}</option>
+                                 <md-select class="titulos" ng-model="agente" placeholder="agente">
+                                     <md-option ng-value="todo.name" ng-repeat="todo in agentes">{{todo.name}}</md-option>
 
-                                 </select>
+                                 </md-select>
                              </div>
 
                          </div>
