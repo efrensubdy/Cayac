@@ -9,7 +9,7 @@ angular.module('myApp.actualizacionDeContrato', ['ngRoute'])
   });
 }])
 
-.controller('actualizacionDeContratoCtrl', ['$location', '$q', '$scope','$log','$rootScope','$localStorage','$sessionStorage','$mdDialog','contratosEnEjecucion','fileUpload',function($location, $q, $scope,$log,$rootScope,$localStorage,$sessionStorage,$mdDialog,contratosEnEjecucion,fileUpload) {
+.controller('actualizacionDeContratoCtrl', ['$location', '$q', '$scope','$log','$rootScope','$localStorage','$sessionStorage','$mdDialog','contratosEnEjecucion','fileUpload','contratos',function($location, $q, $scope,$log,$rootScope,$localStorage,$sessionStorage,$mdDialog,contratosEnEjecucion,fileUpload,contratos) {
 if ("undefined" === typeof $localStorage.userLogeado && "undefined" === typeof $localStorage.contratanteLogeado){
          $mdDialog.show(
                           $mdDialog.alert()
@@ -39,7 +39,7 @@ $scope.ocultarTodo=function(){
     $scope.bandera2=false;
 
 }
-$scope.listado=contratosEnEjecucion.query({idContratante:$localStorage.contratanteLogeado.idContratante});
+$scope.listado=contratos.query({idContratante:$localStorage.contratanteLogeado.idContratante});
 
 $scope.add=function(contrato,notificacion){
 
