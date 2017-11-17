@@ -121,26 +121,22 @@ angular.module('myApp.registrarRequisitosEjecucion', ['ngRoute'])
                   }
                    $scope.listadoPrevioExtra=previosExtras.query({idContratante:$localStorage.contratanteLogeado.idContratante,idCategoria:$scope.idCategoria})
                   $scope.listadoPrevioSugerido=previos.query({idContratante:$localStorage.contratanteLogeado.idContratante,idCategoria:$scope.idCategoria});
-                  $scope.lonEjec=false;
-                  $scope.lonEjecEx=false;
-                  $scope.lonFi=false;
-                  $scope.lonFiEx=false
-                  $scope.banderaDef=false;
+
+
                   $scope.mensajillo1=false;
                   $scope.mensajillo3=false;
                   $scope.mensajillo5=false;
+                  $scope.banderaDef=false;
 
                 break;
                 case "2":
                 $scope.defPreviosSugeridos=defPreviosSugeridos.query({idContratante:$localStorage.contratanteLogeado.idContratante,idCategoria:$rootScope.idCategoria});
                 $scope.defPreviosExtras=defPreviosExtras.query({idContratante:$localStorage.contratanteLogeado.idContratante,idCategoria:$rootScope.idCategoria});
 
-                $scope.lonEjec=false
-                $scope.lonEjecEx=false
+
                 $scope.lonPrevio=false;
                 $scope.lonPrevioEx=false;
-                $scope.lonFi=false;
-                $scope.lonFiEx=false
+
                 $scope.banderaDef=true;
                 $scope.mensajillo1=false;
                 $scope.mensajillo3=false;
@@ -334,7 +330,8 @@ angular.module('myApp.registrarRequisitosEjecucion', ['ngRoute'])
             var eliminarPreviosSugeridos=function(lista){
                var total=lista.length;
                 for (var i=0;i<total;i++){
-                         eliminarPS.remove({"idContratante":$localStorage.contratanteLogeado.idContratante,"idRequisito":lista[i].idRequisito});
+                     // console.log(lista[i].idRequisito);
+                       eliminarPS.remove({"idContratante":$localStorage.contratanteLogeado.idContratante,"idRequisito":lista[i].idRequisito});
 
                 }
 
