@@ -42,7 +42,7 @@ angular.module('myApp.ejecucionCNCE', ['ngRoute'])
         }
         $scope.add=function(ev,contrato){
                 if("undefined" !== typeof contrato){
-                $scope.listillo=finalesDefinitivos.query({idContratante:$localStorage.contratanteLogeado.idContratante,idContrato:$scope.contrato})
+                $scope.listillo=finalesDefinitivos.query({idContratante:$localStorage.contratanteLogeado.idContratante,idContrato:contrato})
                 $scope.flag=true;
                 $rootScope.idCategoria=$scope.idCategoria
                 $rootScope.idContrato=$scope.idContrato

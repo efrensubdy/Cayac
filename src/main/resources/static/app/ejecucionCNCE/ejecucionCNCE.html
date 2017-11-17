@@ -7,14 +7,12 @@
             <div class="col-xs-9">
                 <h4 class="titulos" ><b>REVISE LO QUE SUBIERON SUS CONTRATISTAS</b></h4>
             <p class="texto"><b>ESCOJA EL CONTRATO SOBRE EL CUAL REALIZARÁ LA REVISIÓN</b></p>
-
-                <input class="form-control" type="text"  placeholder="A que contrato va a hacer la revision" name="contrato" list="contratos" ng-change="ocultarTodo()" ng-model="contrato">
-                <datalist id="contratos">
-                    <select name="contratos" ng-model="select">
-                        <option value="" disabled selected>Escoja un  contrato de los existentes </option>
-                        <option ng-repeat="todo in listado"  value="{{todo.idContrato}}" ng-model="selectedOption">{{todo.nombreContrato}}</option>
-                    </select>
-                </datalist>
+                <div layout="column" layout-align="center center">
+                    <md-select class="titulos" placeholder="Asignar Contrato" ng-model="contrato"  style="min-width: 200px;" md-on-open="loadContratos()" ng-change="ocultarTodo()">
+                        <md-option ng-value="contrato" ng-repeat="contrato in listado">{{contrato.nombreContrato}}</md-option>
+                    </md-select>
+                    <p class="md-caption titulos">El Contrato escogido fue {{ contrato ? contrato.nombreContrato : 'Nadie todavía' }}</p>
+                </div>
                 <br>
                 <br>
             </div>
@@ -22,7 +20,7 @@
         </div>
         <div class="row">
             <div class="col-xs-9">
-                <button class="btn btn-primary align-middle" type="submit" ng-click="add($event,contrato)">Consultar</button>
+                <button class="btn btn-primary align-middle" type="submit" ng-click="add($event,contrato.idContrato)">Consultar</button>
             </div>
         </div>
     </form>
