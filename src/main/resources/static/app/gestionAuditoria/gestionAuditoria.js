@@ -89,7 +89,7 @@ $scope.years=[
 
  $scope.add=function(ev,contrato,mes,year){
      if("undefined" !== typeof contrato && "undefined" !== typeof year && "undefined" !== typeof mes){
-     $scope.listillo=finalesDefinitivos.query({idContratante:$localStorage.contratanteLogeado.idContratante,idContrato:$scope.contrato})
+     $scope.listillo=finalesDefinitivos.query({idContratante:$localStorage.contratanteLogeado.idContratante,idContrato:contrato})
 
      $scope.flag=true;
      $rootScope.idCategoria=$scope.idCategoria

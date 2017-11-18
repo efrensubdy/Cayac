@@ -299,7 +299,7 @@
                             <div class="col-sm-12" ng-show="auditoras">
                              <br>
                              <label>A CONTINUACIÓN ENCONTRARÁ UNA LISTA CON LAS AUDITORIAS DISPONIBLES</label>
-                            <md-select class="form-control" ng-model="auditoria" placeholder="seleccione una auditoria" ng-change="cambiarOpcion(auditoria)" >
+                            <md-select class="titulos" ng-model="auditoria" placeholder="seleccione una auditoria" ng-change="cambiarOpcion(auditoria)" >
                                 <md-option ng-value="todo" ng-repeat="todo in tableContra">{{todo.fecha}}</md-option>
 
                             </md-select>

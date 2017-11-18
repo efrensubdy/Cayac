@@ -10,25 +10,24 @@
                         <p class="texto"><b>ESCOJA EL CONTRATO Y EL MES SOBRE EL CUAL REALIZARÁ LA REVISIÓN</b></p>
                         <div class="row">
                             <div class="col-sm-4">
-                                <input class="form-control" type="text"  placeholder="A que contrato va a hacer la revision" name="contrato" list="contratos" ng-model="contrato" ng-change="ocultarTodo()">
-                                <datalist id="contratos">
-                                    <select name="contratos" ng-model="select">
-                                        <option value="" disabled selected>Escoja un  contrato de los existentes </option>
-                                        <option ng-repeat="todo in listado"  value="{{todo.idContrato}}" ng-model="selectedOption">{{todo.nombreContrato}}</option>
-                                    </select>
-                                </datalist>
+                                <div layout="column" layout-align="center center">
+                                    <md-select class="titulos" placeholder="Asignar Contrato" ng-model="contrato"  style="min-width: 200px;" md-on-open="loadContratos()" ng-change="ocultarTodo()">
+                                        <md-option ng-value="contrato" ng-repeat="contrato in listado">{{contrato.nombreContrato}}</md-option>
+                                    </md-select>
+                                    <p class="md-caption titulos">El Contrato escogido fue {{ contrato ? contrato.nombreContrato : 'Nadie todavía' }}</p>
+                                </div>
                             </div>
                             <div class="col-sm-4">
-                                <select class="form-control" ng-model="mes" data-placeholder="seleccione el mes" ng-change="ocultarTodo()" >
-                                    <option ng-value="todo" ng-repeat="todo in meses">{{todo.name}}</option>
+                                <md-select class="titulos" ng-model="mes" placeholder="seleccione el mes" ng-change="ocultarTodo()" >
+                                    <md-option ng-value="todo" ng-repeat="todo in meses">{{todo.name}}</md-option>
 
-                                </select>
+                                </md-select>
                             </div>
                             <div class="col-sm-4">
-                                <select class="form-control" ng-model="year" data-placeholder="seleccione el mes" ng-change="ocultarTodo()">
-                                    <option ng-value="todo" ng-repeat="todo in years">{{todo.name}}</option>
+                                <md-select class="titulos" ng-model="year" -placeholder="seleccione el año" ng-change="ocultarTodo()">
+                                    <md-option ng-value="todo" ng-repeat="todo in years">{{todo.name}}</md-option>
 
-                                </select>
+                                </md-select>
                             </div>
                         </div>
 
@@ -38,7 +37,7 @@
                     </div>
                     <div class="row">
                         <div class="col-xs-9">
-                    <button class="btn btn-primary align-middle" type="submit" ng-click="add($event,contrato,mes,year)">Consultar</button>
+                    <button class="btn btn-primary align-middle" type="submit" ng-click="add($event,contrato.idContrato,mes,year)">Consultar</button>
                       <br>
                     </div>
                     </div>
@@ -73,17 +72,17 @@
                 </div>
                <div ng-show="auditorias">
                    <p class="titulos" >ESCOJA UNA DE LAS AUDITORIAS PARA EL MES Y EL AÑO QUE ELEGIO ANTERIORMENTE</p>
-                   <select class="form-control" ng-model="auditoria" data-placeholder="seleccione el mes" ng-change="cambiarOpcion(auditoria)">
-                       <option ng-value="todo" ng-repeat="todo in tableContra">{{todo.fecha}}</option>
+                   <md-select class="titulos" ng-model="auditoria" placeholder="seleccione auditoria" ng-change="cambiarOpcion(auditoria)">
+                       <md-option ng-value="todo" ng-repeat="todo in tableContra">{{todo.fecha}}</md-option>
 
-                   </select>
+                   </md-select>
                    <br>
                    <div class="row" ng-show="banOpciones">
                        <br>
                        <p class="titulos" >ESCOJA LO QUE QUIERE HACER</p>
-                       <select class="form-control" ng-model="opcion" data-placeholder="seleccione el mes" ng-change="changeOp(opcion)" >
-                           <option ng-value="todo" ng-repeat="todo in opciones">{{todo.name}}</option>
-                       </select>
+                       <md-select class="titulos" ng-model="opcion" placeholder="seleccione una opción" ng-change="changeOp(opcion)" >
+                           <md-option ng-value="todo" ng-repeat="todo in opciones">{{todo.name}}</md-option>
+                       </md-select>
                        <br>
                        <div class="row" ng-show="op1">
                            <label class="titulos">CONSULTAR NO CONFORMIDADES</label>
@@ -117,9 +116,9 @@
                        <div class="row" ng-show="op2">
                            <label class="titulos">CONSULTAR CAUSAS</label>
                            <p >ESCOJA UNA DE LAS NO CONFORMIDADES DE LO CONTRATRIO NO PODRÁ AGREGAR CAUSAS</p>
-                           <select class="form-control" ng-model="noConformidad" data-placeholder="seleccione el mes" ng-change="despliegueDeNoConformidades(noConformidad)">
-                               <option ng-value="todo" ng-repeat="todo in listadoDeNoConformidades">{{todo.noConformidad}}</option>
-                           </select>
+                           <md-select class="titulos" ng-model="noConformidad" placeholder="seleccione la no Conformidad" ng-change="despliegueDeNoConformidades(noConformidad)">
+                               <md-option ng-value="todo" ng-repeat="todo in listadoDeNoConformidades">{{todo.noConformidad}}</md-option>
+                           </md-select>
                            <br>
                            <div class="table-responsive" ng-show="causas">
                                <p class="titulos">EN LA SIGUIENTE TABLA ENCONTRARÁ LAS CAUSAS PERTENECIENTES A LA NO CONFORMIDAD ESCOGIDA</p>
@@ -139,15 +138,15 @@
                        <div class="row" ng-show="op3">
                            <label class="titulos">CONSULTAR ACCIONES</label>
                            <p  class="texto">ESCOJA UNA DE LAS NO CONFORMIDADES PARA DESPLEGAR LAS CAUSAS</p>
-                           <select class="form-control" ng-model="noconfor" data-placeholder="seleccione el mes" ng-change="desCausa(noconfor)">
-                               <option ng-value="todo" ng-repeat="todo in listadoDeNoConformidades">{{todo.noConformidad}}</option>
-                           </select>
+                           <md-select class="titulos" ng-model="noconfor" placeholder="seleccione la no conformidad" ng-change="desCausa(noconfor)">
+                               <md-option ng-value="todo" ng-repeat="todo in listadoDeNoConformidades">{{todo.noConformidad}}</md-option>
+                           </md-select>
                            <br>
                            <div ng-show="cau">
                                <p  class="texto">ESCOJA LA CAUSA SOBRE LAS CUALES CONSULTARA  LAS ACCIONES</p>
-                               <select class="form-control" ng-model="ca" data-placeholder="seleccione el mes" ng-change="desplegarAcciones(ca)">
-                                   <option ng-value="todo" ng-repeat="todo in tablaDeCausas">{{todo.causa}}</option>
-                               </select>
+                               <md-select class="titulos" ng-model="ca" placeholder="seleccione la Causa " ng-change="desplegarAcciones(ca)">
+                                   <md-option ng-value="todo" ng-repeat="todo in tablaDeCausas">{{todo.causa}}</md-option>
+                               </md-select>
                            </div>
                            <br>
                            <div class="table-responsive" ng-show="acciones">
@@ -178,21 +177,21 @@
                        <div class="row" ng-show="op4">
                            <label class="titulos">CUMPLIMIENTO DE PROGRAMA</label>
                            <p  class="texto">ESCOJA UNA DE LAS OPCIONES A CONTINUACIÓN</p>
-                           <select class="form-control" ng-model="opcionC" data-placeholder="seleccione el mes" ng-change="cambiarDeOpCionC(opcionC)">
-                               <option ng-value="todo" ng-repeat="todo in opcionesDeCumplimiento">{{todo.name}}</option>
-                           </select>
+                           <md-select class="titulos" ng-model="opcionC" placeholder="seleccione una opción " ng-change="cambiarDeOpCionC(opcionC)">
+                               <md-option ng-value="todo" ng-repeat="todo in opcionesDeCumplimiento">{{todo.name}}</md-option>
+                           </md-select>
                            <br>
                            <div class="row" ng-show="c1">
                                <p  class="texto">ESCOJA UNA DE LAS NO CONFORMIDADES PARA DESPLEGAR LAS CAUSAS</p>
-                               <select class="form-control" ng-model="noConformidadIn" data-placeholder="seleccione el mes" ng-change="desplegarCausasDeIndicadores(noConformidadIn)">
-                                   <option ng-value="todo" ng-repeat="todo in listadoDeNoConformidades">{{todo.noConformidad}}</option>
-                               </select>
+                               <md-select class="titulos" ng-model="noConformidadIn" placeholder="seleccione la no conformidad" ng-change="desplegarCausasDeIndicadores(noConformidadIn)">
+                                   <md-option ng-value="todo" ng-repeat="todo in listadoDeNoConformidades">{{todo.noConformidad}}</md-option>
+                               </md-select>
                                <br>
                                <div ng-show="causas2">
                                    <p  class="texto">ESCOJA LA CAUSA SOBRE LAS CUALES REGISTRO  LAS ACCIONES</p>
-                                   <select class="form-control" ng-model="causales" data-placeholder="seleccione el mes" ng-change="accionesCausales(causales)">
-                                       <option ng-value="todo" ng-repeat="todo in tablaDeCausas">{{todo.causa}}</option>
-                                   </select>
+                                   <md-select class="titulos" ng-model="causales" data-placeholder="seleccione una de las causas" ng-change="accionesCausales(causales)">
+                                       <md-option ng-value="todo" ng-repeat="todo in tablaDeCausas">{{todo.causa}}</md-option>
+                                   </md-select>
                                </div>
                                <br>
                                <div class="eq-c titulos" ng-show="indicador" ng-click="displayMap((accionConRegistro.length / (accionConRegistro.length + accionSinRegistro.length))* 100,2)">

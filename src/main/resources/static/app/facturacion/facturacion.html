@@ -12,19 +12,19 @@
                     <div class="row">
                         <div class="col-sm-6">
                             <label class="texto"><b>MES DE FACTURACIÓN</b></label>
-                            <select class="form-control" ng-model="mes" data-placeholder="seleccione el mes" ng-change="simple()">
-                                <option ng-value="todo" ng-repeat="todo in meses">{{todo.name}}</option>
+                            <md-select class="titulos" ng-model="mes" data-placeholder="seleccione el mes" ng-change="simple()">
+                                <md-option ng-value="todo" ng-repeat="todo in meses">{{todo.name}}</md-option>
 
-                            </select>
+                            </md-select>
                             <br>
 
                         </div>
                         <div class="col-sm-6">
                             <label class="texto"><b>AÑO DE FACTURACIÓN</b></label>
-                            <select class="form-control" ng-model="year" data-placeholder="seleccione el mes">
-                                <option ng-value="todo" ng-repeat="todo in years">{{todo.name}}</option>
+                            <md-select class="titulos" ng-model="year" data-placeholder="seleccione el mes">
+                                <md-option ng-value="todo" ng-repeat="todo in years">{{todo.name}}</md-option>
 
-                            </select>
+                            </md-select>
                         </div>
 
 
