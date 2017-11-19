@@ -36,7 +36,7 @@ angular.module('myApp.login2', ['ngRoute'])
         }
         else if ($localStorage.contratanteLogeado.estado && $localStorage.contratanteLogeado.rol =="administrador"){
 
-                     console.log("entre a admin")
+
                      $rootScope.bandera3 =$localStorage.contratanteLogeado.estado ;
 
 
@@ -72,7 +72,7 @@ var url2="http://ec2-35-163-21-208.us-west-2.compute.amazonaws.com:8080/app/logi
 
       $http.get(url2).then(function(response){
                                            t=response.data;
-                                           console.log(response.data);
+
 
                                        $localStorage.contratanteLogeado=t;
 

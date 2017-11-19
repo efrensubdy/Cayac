@@ -32,7 +32,7 @@ $scope.asignar= function(ev,contrato,selc){
 
 if("undefined" !== typeof contrato && "undefined" !== typeof selc){
 var finalista={idFinalista:selc,idContrato:contrato};
-console.log(finalista);
+
 selecFin.save(finalista)
 $mdDialog.show(
                               $mdDialog.alert()

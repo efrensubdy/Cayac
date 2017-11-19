@@ -51,11 +51,11 @@ $scope.auditoras=false;
 var q=function(idNoConformidad, idContratista){
                       //var url= "http://localhost:8080/app/cierre/isClose/"+idNoConformidad+"/"+idContratista;
                       var url= "http://ec2-35-163-21-208.us-west-2.compute.amazonaws.com:8080/app/cierre/isClose/"+idNoConformidad+"/"+idContratista;
-                      console.log(url);
+
                        var a;
                     a=$http.get(url).then(function(response) {
                                     $scope.objeto= response.data;
-                                    console.log(response.data);
+
                                     return response.data;
                                  })
           return a;
@@ -399,7 +399,7 @@ $scope.simple= function(item){
 
  }
  $scope.simple2= function(item){
- console.log(item);
+
  if("undefined" !== typeof item){
  $rootScope.noConformidadActual=item;
  $rootScope.bandera9=true;
@@ -407,7 +407,7 @@ $scope.simple= function(item){
 
  }
  $scope.simple3=function(item){
- console.log(item);
+
  if("undefined" !== typeof item){
  $rootScope.bandera10=true;
  $scope.tablaDeCausas=caPorContra.query({idContratista:$localStorage.userLogeado.idContratista,idNoConformidad:item.id})
@@ -491,7 +491,7 @@ $scope.simple= function(item){
     if("undefined" !== typeof file && "undefined" !== typeof op && "undefined" !== typeof op ){
         //var uploadUrl = 'http://localhost:8080/app/accion/'+ $localStorage.userLogeado.idContratista + "/"+ op.id + "/"+ item.id
         var uploadUrl = 'http://ec2-35-163-21-208.us-west-2.compute.amazonaws.com:8080/app/accion/'+ $localStorage.userLogeado.idContratista + "/"+ op.id + "/"+ item.id ;
-        console.log(uploadUrl);
+
         fileUpload.uploadFileToUrl(file,uploadUrl);
             $mdDialog.show(
                                              $mdDialog.alert()
@@ -527,14 +527,14 @@ $scope.simple= function(item){
  }
 
 $scope.cerrarNoConformidad=function(item){
-    console.log(item);
+
     var cie ={idContratista:$localStorage.userLogeado.idContratista,idNoConformidad:item.id};
     cierre.save(cie);
 
 
 }
  $scope.causa=function(ev,item){
- console.log(item);
+
     if("undefined" !== typeof item){
         var object ={idContratista:$localStorage.userLogeado.idContratista,causa:item,idNoConformidad:$rootScope.noConformidadActual.id}
         causa.save(object);
@@ -612,12 +612,12 @@ $scope.cerrarNoConformidad=function(item){
  }
  $scope.noConfor=function(ev,textArea){
     $scope.textArea="mnnbnbjhgjguytuttytu";
-    console.log($scope.textArea)
+
     if("undefined" !== typeof textArea){
     var object ={idContratista:$localStorage.userLogeado.idContratista,noConformidad:textArea,mes:$rootScope.mes.name,year:$rootScope.year.name,idAuditoria:$rootScope.item.id}
     noConformidad.save(object);
 
-    console.log(object)
+
     textArea='';
      $mdDialog.show({
                       //Controlador del mensajes con operaciones definido en la parte de abajo
