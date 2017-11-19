@@ -9,12 +9,12 @@
 
                        <h3  class="titulos"><b>GESTIÓN DE REQUISITOS</b></h3>
                        <p  class="texto"><b>EN ESTA VISTA PODRA AGREGAR LOS REQUISITOS A CADA CATEGORIA,ESCOJA UNA DE LAS CATEGORIAS MENCIONADAS A CONTINUACIÓN</b></p>
-                    <select class="form-control" ng-click="function1()" data-placeholder="Categoria a la que le va aplicar los requisitos" name="singleSelect" ng-model="idCategoria">
-                        <option value="1">Categoria 1</option>
-                        <option value="2">Categoria 2</option>
-                        <option value="3">Categoria 3</option>
-                        <option value="4">Categoria 4</option>
-                    </select>
+                    <md-select class="titulos" ng-change="function1()" placeholder="Categoria a la que le va aplicar los requisitos" name="singleSelect" ng-model="idCategoria">
+                        <md-option value="1">Categoria 1</md-option>
+                        <md-option value="2">Categoria 2</md-option>
+                        <md-option value="3">Categoria 3</md-option>
+                        <md-option value="4">Categoria 4</md-option>
+                    </md-select>
                     </div>
                 </div>
                 <br>
@@ -78,11 +78,11 @@
 
                 <div class="row" ng-show="banderaET">
                     <div class="col-xs-9">
-                    <select class="form-control"  data-placeholder="Categoria a la que le va aplicar los requisitos" name="singleSelect" ng-model="ciclo" ng-click="activated(ciclo)">
-                        <option value="1">REQUISITOS</option>
-                        <option value="2">DEFINITIVOS</option>
+                    <md-select class="titulos"  data-placeholder="Seleccione la acción que realizará al escoger la opción" name="singleSelect" ng-model="ciclo" ng-change="activated(ciclo)">
+                        <md-option value="1">REQUISITOS</md-option>
+                        <md-option value="2">DEFINITIVOS</md-option>
 
-                    </select>
+                    </md-select>
                     </div>
 
                     <br>
@@ -116,7 +116,7 @@
                            </table>
                             </div>
 
-                        <md-button class="md-primary md-raised md-hue-2" ng-click="aplicarPrevioSugerido($event)">Aplicar Requisitos</md-button>
+                        <button class="btn btn-primary" ng-click="aplicarPrevioSugerido($event)">Aplicar Requisitos</button>
 
                         <div ng-show="mensajillo1">
                                <label>DEBE SELECCIONAR AL MENOS UN REQUISITO</label>

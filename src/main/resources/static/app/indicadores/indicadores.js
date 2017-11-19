@@ -89,7 +89,7 @@ $scope.add = function(ev,contraName,responsable,departamento,mes,actividad,sever
 
     if("undefined" !== typeof contraName && "undefined" !== typeof responsable && "undefined" !== typeof departamento && "undefined" !== typeof mes && "undefined" !== typeof actividad && "undefined" !== typeof severidad && "undefined" !== typeof frecuencia && "undefined" !== typeof mortalidad && "undefined" !== typeof prevalencia && "undefined" !== typeof icidencia && "undefined" !== typeof ausentismo && "undefined" !== typeof year  ){
          var indicadori ={"nombreContra":contraName,"mes":mes.name,"responsable":responsable,"departamento":departamento,"actividad":actividad,"severidad":severidad,"frecuencia":frecuencia,"mortalidad":mortalidad,"prevalencia":prevalencia,"incidencia":icidencia,"ausentismo":ausentismo,"idContratista":$localStorage.userLogeado.idContratista,"idContratante":$localStorage.userLogeado.idContratante,"year":year.name}
-         indicador.save(indicadori);
+       indicador.save(indicadori);
          $mdDialog.show(
                               $mdDialog.alert()
                                 .parent(angular.element(document.querySelector('#popupContainer')))

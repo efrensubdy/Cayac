@@ -107,8 +107,8 @@ $scope.ocultarTodo=function(){
 
 }
 
-$scope.add=function(){
-                $scope.listillo=finalesDefinitivos.query({idContratante:$localStorage.contratanteLogeado.idContratante,idContrato:$scope.contrato})
+$scope.add=function(contrato){
+                $scope.listillo=finalesDefinitivos.query({idContratante:$localStorage.contratanteLogeado.idContratante,idContrato:contrato})
                 $scope.flag=true;
                 }
 $scope.resul=function(){

@@ -8,24 +8,23 @@
                     <h4 class="titulos" ><b>REVISE LOS ESTANDARES MÍNIMOS REGISTRADOS POR SUS CONTRATISTAS</b></h4>
                     <p class="texto">ESCOJA UNA DE LAS OPCIONES A ACONTINUACIÓN </p>
                     <div class="row">
-                        <select class="form-control" ng-model="notificacion" placeholder="Tipo de Notificación" ng-change="cambiarOpcion(notificacion)">
-                            <option ng-value="todo" ng-repeat="todo in notificaciones">{{todo.nombre}}</option>
+                        <md-select class="titulos" ng-model="notificacion" placeholder="escoja una opción" ng-change="cambiarOpcion(notificacion)">
+                            <md-option ng-value="todo" ng-repeat="todo in notificaciones">{{todo.nombre}}</md-option>
 
-                        </select>
+                        </md-select>
                     </div>
                     <br>
                     <div class="row" ng-show="op1">
                         <div class="col-sm-12">
                             <p class="texto"><b>ESCOJA EL CONTRATO, SOBRE EL CUAL REALIZARÁ LA REVISIÓN</b></p>
-                            <input class="form-control" type="text"  placeholder="A que contrato va a hacer la revision" name="contrato" list="contratos" ng-change="ocultarTodo()" ng-model="contrato">
-                            <datalist id="contratos">
-                                <select name="contratos" ng-model="select" ng-change="resul()">
-                                    <option value="" disabled selected>Escoja un  contrato de los existentes </option>
-                                    <option ng-repeat="todo in listado"  value="{{todo.idContrato}}" ng-model="selectedOption">{{todo.nombreContrato}}</option>
-                                </select>
-                            </datalist>
+                            <div layout="column" layout-align="center center">
+                                <md-select class="titulos" placeholder="Asignar Contrato" ng-model="contrato"  style="min-width: 200px;" md-on-open="loadContratos()" ng-change="ocultarTodo()">
+                                    <md-option ng-value="contrato" ng-repeat="contrato in listado">{{contrato.nombreContrato}}</md-option>
+                                </md-select>
+                                <p class="md-caption titulos">El Contrato escogido fue {{ contrato ? contrato.nombreContrato : 'Nadie todavía' }}</p>
+                            </div>
                             <br>
-                            <button class="btn btn-primary align-middle" type="submit" ng-click="add()">Consultar</button>
+                            <button class="btn btn-primary align-middle" type="submit" ng-click="add(contrato.idContrato)">Consultar</button>
                         </div>
                     </div>
                     <br>
@@ -35,17 +34,17 @@
                             <br>
                             <div class="col-sm-6">
                                 <p class="texto"><b>ESCOJA EL MES PARA LA  NOTIFICACIÓN</b></p>
-                                <select class="form-control" ng-model="mes" data-placeholder="seleccione el mes" ng-change="ocultarTodo()">
-                                    <option ng-value="todo" ng-repeat="todo in meses">{{todo.name}}</option>
+                                <md-select class="titulos" ng-model="mes" placeholder="seleccione el mes" ng-change="ocultarTodo()">
+                                    <md-option ng-value="todo" ng-repeat="todo in meses">{{todo.name}}</md-option>
 
-                                </select>
+                                </md-select>
                             </div>
                             <div class="col-sm-6">
                                 <p class="texto"><b>ESCOJA EL AÑO PARA LA NOTIFICACIÓN</b></p>
-                                <select class="form-control" ng-model="year" data-placeholder="seleccione el mes" ng-change="ocultarTodo()">
-                                    <option ng-value="todo" ng-repeat="todo in years">{{todo.name}}</option>
+                                <md-select class="titulos" ng-model="year" placeholder="seleccione el año" ng-change="ocultarTodo()">
+                                    <md-option ng-value="todo" ng-repeat="todo in years">{{todo.name}}</md-option>
 
-                                </select>
+                                </md-select>
                             </div>
                             <br>
                             <div class="col-sm-12">

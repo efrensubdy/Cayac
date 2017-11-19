@@ -40,6 +40,7 @@ $scope.simple= function(item){
             case 2:
               $scope.flag2=true;
               $scope.bandera1=false;
+              $scope.flag=false;
               $scope.listadoAuditorias=audiPorContra.query({idContratante:$localStorage.contratanteLogeado.idContratante})
 
             break;
@@ -88,7 +89,7 @@ $scope.flag2=false;
 $scope.add=function(ev,contrato,year,mes){
                 $scope.flag2=false;
                 if("undefined" !== typeof contrato && "undefined" !== typeof year && "undefined" !== typeof mes){
-                $scope.listillo=finalesDefinitivos.query({idContratante:$localStorage.contratanteLogeado.idContratante,idContrato:contrato})
+                $scope.listillo=finalesDefinitivos.query({idContratante:$localStorage.contratanteLogeado.idContratante,idContrato:contrato.idContrato})
                 $scope.flag=true;
 
                 }

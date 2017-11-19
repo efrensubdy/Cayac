@@ -12,10 +12,10 @@
             <div class="row">
                 <div class="col-xs-9">
                     <p class="texto">ESCOJA EL REPORTE QUE QUIERE OBSERVAR </p>
-                    <select class="form-control" ng-model="opcion" data-placeholder="seleccione una opcion" ng-change="simple(opcion)">
-                        <option ng-value="todo" ng-repeat="todo in opciones">{{todo.name}}</option>
+                    <md-select class="titulos" ng-model="opcion" placeholder="seleccione una opcion" ng-change="simple(opcion)">
+                        <md-option ng-value="todo" ng-repeat="todo in opciones">{{todo.name}}</md-option>
 
-                    </select>
+                    </md-select>
                 </div>
 
             </div>
@@ -27,17 +27,17 @@
                     <div class="row">
                     <div class="col-sm-6">
                         <label class="titulos">MES</label>
-                    <select class="form-control" ng-model="mes" data-placeholder="seleccione el mes">
-                        <option ng-value="todo" ng-repeat="todo in meses">{{todo.name}}</option>
+                    <md-select class="titulos" ng-model="mes" data-placeholder="seleccione el mes">
+                        <md-option ng-value="todo" ng-repeat="todo in meses">{{todo.name}}</md-option>
 
-                    </select>
+                    </md-select>
                     </div>
                     <div class="col-sm-6">
                         <label class="titulos">AÑO</label>
-                    <select class="form-control" ng-model="year" data-placeholder="seleccione el mes">
-                        <option ng-value="todo" ng-repeat="todo in years">{{todo.name}}</option>
+                    <md-select class="titulos" ng-model="year" data-placeholder="seleccione el mes">
+                        <md-option ng-value="todo" ng-repeat="todo in years">{{todo.name}}</md-option>
 
-                    </select>
+                    </md-select>
                     </div>
                     </div>
                     <br>
@@ -86,10 +86,10 @@
             <div class="row" ng-show="anual">
                 <div class="col-xs-9">
                     <label class="titulos">SELECCIONE EL AÑO DEL REPORTE</label>
-                    <select class="form-control" ng-model="yea" data-placeholder="seleccione el mes">
-                        <option ng-value="todo" ng-repeat="todo in years">{{todo.name}}</option>
+                    <md-select class="titulos" ng-model="yea" data-placeholder="seleccione el mes">
+                        <md-option ng-value="todo" ng-repeat="todo in years">{{todo.name}}</md-option>
 
-                    </select>
+                    </md-select>
                     <br>
                     <button class="btn btn-primary" ng-click="soporteDeYear(yea)">GENERAR REPORTE</button>
                     <br>

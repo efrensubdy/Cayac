@@ -15,24 +15,24 @@
                         <br>
                         <div class="col-sm-4">
                             <p class="texto"><b>ESCOJA EL TIPO DE NOTIFICACIÓN QUE DESEA RECIBIR</b></p>
-                            <select class="form-control" ng-model="notificacion" placeholder="Tipo de Notificación" ng-change="ocultarTodo()">
-                            <option ng-value="todo" ng-repeat="todo in notificaciones">{{todo.nombre}}</option>
+                            <md-select class="titulos" ng-model="notificacion" placeholder="Seleccione el Tipo de Notificación" ng-change="ocultarTodo()">
+                            <md-option ng-value="todo" ng-repeat="todo in notificaciones">{{todo.nombre}}</md-option>
 
-                            </select>
+                            </md-select>
                         </div>
                         <div class="col-sm-4">
                             <p class="texto"><b>ESCOJA EL MES PARA LA  NOTIFICACIÓN</b></p>
-                            <select class="form-control" ng-model="mes" data-placeholder="seleccione el mes" ng-change="ocultarTodo()">
-                                <option ng-value="todo" ng-repeat="todo in meses">{{todo.name}}</option>
+                            <md-select class="titulos" ng-model="mes" placeholder="seleccione el mes" ng-change="ocultarTodo()">
+                                <md-option ng-value="todo" ng-repeat="todo in meses">{{todo.name}}</md-option>
 
-                            </select>
+                            </md-select>
                         </div>
                         <div class="col-sm-4">
                             <p class="texto"><b>ESCOJA EL AÑO PARA LA NOTIFICACIÓN</b></p>
-                            <select class="form-control" ng-model="year" data-placeholder="seleccione el mes" ng-change="ocultarTodo()">
-                                <option ng-value="todo" ng-repeat="todo in years">{{todo.name}}</option>
+                            <md-select class="titulos" ng-model="year" placeholder="seleccione el año" ng-change="ocultarTodo()">
+                                <md-option ng-value="todo" ng-repeat="todo in years">{{todo.name}}</md-option>
 
-                            </select>
+                            </md-select>
                         </div>
                 </div>
             </div>

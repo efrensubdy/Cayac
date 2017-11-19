@@ -64,7 +64,7 @@ $scope.listado=contratosEnEjecucion.query({idContratante:$localStorage.contratan
 $scope.flag=false
 $scope.add=function(ev,contrato,mes,year){
                 if("undefined" !== typeof contrato && "undefined" !== typeof year && "undefined" !== typeof mes){
-                $scope.listillo=finalesDefinitivos.query({idContratante:$localStorage.contratanteLogeado.idContratante,idContrato:contrato})
+                $scope.listillo=finalesDefinitivos.query({idContratante:$localStorage.contratanteLogeado.idContratante,idContrato:contrato.idContrato})
                 $scope.flag=true;
                 }
                 else{

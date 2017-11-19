@@ -11,7 +11,12 @@ angular.module('myApp.login3', ['ngRoute'])
 
 
 .controller('Login3Ctrl', ['$localStorage','$sessionStorage','$location','$rootScope','$scope','$mdDialog','$http','rObligatorio', function ($localStorage,$sessionStorage,$location,$rootScope,$scope,$mdDialog,$http,rObligatorio){
+      if ("undefined" !== typeof $localStorage.userLogeado){
 
+                           $location.path("/view1");
+
+
+       }
       $scope.banderaCandidato=$localStorage.banderaCandidato;
       $scope.banderaContratista= $localStorage.banderaContratista;
       $scope.progressBandera=false;
