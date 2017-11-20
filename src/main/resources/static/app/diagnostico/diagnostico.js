@@ -31,7 +31,7 @@ $scope.add=false;
 $rootScope.resultado = 0;
  $scope.preguntas=[
     {id:1,number:"primeraPregunta",nombre:'¿LA EMPRESA CUENTA CON UN PROCEDIMIENTO DOCUMENTADO QUE ADICIONAL A LA SELECCIÓN Y CONTRATACIÓN INCLUYA EL SEGUIMIENTO DEL DESEMPEÑO DE LOS CONTRATISTAS DURANTE EL DESARROLLO DE LAS ACTIVIDADES OBJETO DEL CONTRATO?'},
-    {id:2,number:"SegundaPregunta",nombre:'¿LA EMPRESA REALIZA EL SEGUIMIENTO DEL DESEMPEÑO DE LOS CONTRATISTA INCLUYENDO LOS ASPECTOS DE SEGURIDAD Y SALUD EN EL TRABAJO DURANTE EL DESARROLLO DE LAS ACTIVIDADES OBJETO DEL CONTRATO?'},
+    {id:2,number:"segundaPregunta",nombre:'¿LA EMPRESA REALIZA EL SEGUIMIENTO DEL DESEMPEÑO DE LOS CONTRATISTA INCLUYENDO LOS ASPECTOS DE SEGURIDAD Y SALUD EN EL TRABAJO DURANTE EL DESARROLLO DE LAS ACTIVIDADES OBJETO DEL CONTRATO?'},
     {id:3,number:"terceraPregunta",nombre:'¿LA EMPRESA TIENE UN MECANISMO QUE FACILITE EL CUMPLIMIENTO DE LAS NORMAS DE SEGURIDAD Y SALUD EN EL TRABAJO POR PARTE DE LOS CONTRATISTAS DURANTE EL DESARROLLO DE LAS ACTIVIDADES OBJETO DEL CONTRATO?'},
     {id:4,number:"cuartaPregunta",nombre:'¿LA EMPRESA ESTABLECE CANALES DE COMUNICACIÓN PARA LA GESTIÓN DE SEGURIDAD Y SALUD EN EL TRABAJO CON LOS CONTRATISTAS DURANTE EL DESARROLLO DE LAS ACTIVIDADES OBJETO DEL CONTRATO?'},
     {id:5,number:"quintaPregunta",nombre:'¿LA EMPRESA VERIFICA ANTES DEL INICIO DEL TRABAJO Y PERIÓDICAMENTE, EL CUMPLIMIENTO DE LA OBLIGACIÓN DE AFILIACIÓN AL SISTEMA GENERAL DE RIESGOS LABORALES, CONSIDERANDO LA ROTACIÓN DEL PERSONAL POR PARTE DE LOS CONTRATISTAS, DE CONFORMIDAD CON LA NORMATIVIDAD VIGENTE?'},
@@ -51,11 +51,10 @@ $rootScope.resultado = 0;
 
 
   $scope.analizar = function(){
-        $scope.resultado=$scope.answers.primeraPregunta;
-        console.log($scope.resultado);
-        $scope.global =Math.round(($rootScope.resultado *100)/17)
+        $scope.resultado=parseInt($scope.answers.primeraPregunta) + parseInt($scope.answers.segundaPregunta) + parseInt($scope.answers.terceraPregunta) + parseInt($scope.answers.cuartaPregunta) + parseInt($scope.answers.quintaPregunta) + parseInt($scope.answers.sextaPregunta) + parseInt($scope.answers.septimaPregunta) + parseInt($scope.answers.octavaPregunta) + parseInt($scope.answers.novenaPregunta)  + parseInt($scope.answers.decimaPregunta)  + parseInt($scope.answers.decimoPrimeraPregunta) + parseInt( $scope.answers.decimoSegundaPregunta) + parseInt($scope.answers.decimoTerceraPregunta) + parseInt($scope.answers.decimoCuartaPregunta) + parseInt($scope.answers.decimoQuintaPregunta) + parseInt($scope.answers.decimoSextaPregunta) + parseInt($scope.answers.decimoSeptimaPregunta);
+        $scope.global =Math.round(($scope.resultado *100)/17)
         $scope.add = true;
-        //console.log($scope.answers);
+
         //diagnostico.save($scope.answers);
 
 
