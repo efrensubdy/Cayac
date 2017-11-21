@@ -48,17 +48,281 @@ $rootScope.resultado = 0;
     {id:16,number:"decimoSextaPregunta",nombre:'¿LA EMPRESA TIENE ACCESO A TODOS Y CADA UNO DE LOS REGISTROS QUE EVIDENCIEN LA EJECUCIÓN DE ACTIVIDADES DE SEGURIDAD Y SALUD EN EL TRABAJO QUE REALICE EL CONTRATISTA DURANTE EL DESARROLLO DE LAS ACTIVIDADES OBJETO DEL CONTRATO DENTRO DE LAS INSTALACIONES, SEDES O CENTROS DE TRABAJO DE LA EMPRESA O ENTIDAD CONTRATANTE?'},
     {id:17,number:"decimoSeptimaPregunta",nombre:'¿LA EMPRESA DISPONE DE INFORMACIÓN EN TIEMPO REAL CON ESTADÍSTICAS Y GRÁFICOS ILUSTRATIVOS QUE DEMUESTRAN EL GRADO DE CUMPLIMIENTO DE LOS REQUISITOS LEGALES Y DE OTRA ÍNDOLE PERTINENTES POR PARTE DE LOS CONTRATISTAS DURANTE EL DESARROLLO DE LAS ACTIVIDADES OBJETO DEL CONTRATO DENTRO DE LAS INSTALACIONES, SEDES O CENTROS DE TRABAJO DE LA EMPRESA O ENTIDAD CONTRATANTE?'},
   ];
+  $rootScope.preguntas = $scope.preguntas;
 
 
-  $scope.analizar = function(){
+  $scope.analizar = function(nombreEmpresa,nombreEmpleado,telefono,email){
         $scope.resultado=parseInt($scope.answers.primeraPregunta) + parseInt($scope.answers.segundaPregunta) + parseInt($scope.answers.terceraPregunta) + parseInt($scope.answers.cuartaPregunta) + parseInt($scope.answers.quintaPregunta) + parseInt($scope.answers.sextaPregunta) + parseInt($scope.answers.septimaPregunta) + parseInt($scope.answers.octavaPregunta) + parseInt($scope.answers.novenaPregunta)  + parseInt($scope.answers.decimaPregunta)  + parseInt($scope.answers.decimoPrimeraPregunta) + parseInt( $scope.answers.decimoSegundaPregunta) + parseInt($scope.answers.decimoTerceraPregunta) + parseInt($scope.answers.decimoCuartaPregunta) + parseInt($scope.answers.decimoQuintaPregunta) + parseInt($scope.answers.decimoSextaPregunta) + parseInt($scope.answers.decimoSeptimaPregunta);
         $scope.global =Math.round(($scope.resultado *100)/17)
         $scope.add = true;
+        $scope.answers.nombreEmpresa=nombreEmpresa;
+        $scope.answers.nombreEmpleado=nombreEmpleado;
+        $scope.answers.telefono=telefono;
+        $scope.answers.email=email;
+        console.log($scope.answers)
+        diagnostico.save($scope.answers);
+        $rootScope.answers = $scope.answers;
+        $rootScope.global =$scope.global
 
-        //diagnostico.save($scope.answers);
 
 
 
+  }
+  $scope.showAlert2=function(ev){
+
+      $mdDialog.show({
+            //Controlador del mensajes con operaciones definido en la parte de abajo
+           controller: DialogController2,
+             //permite la comunicacion con el html que despliega el boton requisitos
+           templateUrl: 'test/resumenDiagnostico.html',
+           parent: angular.element(document.body),
+           targetEvent: ev,
+           clickOutsideToClose:true,
+           fullscreen: $scope.customFullscreen // Only for -xs, -sm breakpoints.
+                          })
+
+  }
+  function DialogController2($scope, $mdDialog, $rootScope){
+        $scope.answers = $rootScope.answers;
+        $scope.preguntas = $rootScope.preguntas;
+        $scope.preguntasSi=[];
+        $scope.preguntasNo=[];
+        $scope.global = $rootScope.global;
+        $scope.hide = function() {
+           $mdDialog.hide();
+        };
+                                   //funcion para cerral el mensaje
+        $scope.cancel = function() {
+           $mdDialog.cancel();
+         }
+         switch($scope.answers.primeraPregunta){
+            case "1":
+             $scope.preguntasSi.push($scope.preguntas[0])
+
+             break;
+            case "0":
+            $scope.preguntasNo.push($scope.preguntas[0])
+
+            break;
+         }
+         switch($scope.answers.segundaPregunta){
+                     case "1":
+                      $scope.preguntasSi.push($scope.preguntas[1])
+
+                      break;
+                     case "0":
+                     $scope.preguntasNo.push($scope.preguntas[1])
+
+
+
+                     break;
+         }
+         switch($scope.answers.terceraPregunta){
+                  case "1":
+                   $scope.preguntasSi.push($scope.preguntas[2])
+
+                   break;
+                  case "0":
+                  $scope.preguntasNo.push($scope.preguntas[2])
+
+
+
+                  break;
+         }
+         switch($scope.answers.cuartaPregunta){
+                              case "1":
+                               $scope.preguntasSi.push($scope.preguntas[3])
+
+                               break;
+                              case "0":
+                              $scope.preguntasNo.push($scope.preguntas[3])
+
+
+
+                              break;
+          }
+          switch($scope.answers.quintaPregunta){
+                    case "1":
+                     $scope.preguntasSi.push($scope.preguntas[4])
+
+                     break;
+                    case "0":
+                    $scope.preguntasNo.push($scope.preguntas[4])
+
+
+
+                    break;
+          }
+          switch($scope.answers.sextaPregunta){
+                              case "1":
+                               $scope.preguntasSi.push($scope.preguntas[5])
+
+                               break;
+                              case "0":
+                              $scope.preguntasNo.push($scope.preguntas[5])
+
+
+
+                              break;
+          }
+          switch($scope.answers.septimaPregunta){
+                              case "1":
+                               $scope.preguntasSi.push($scope.preguntas[6])
+
+                               break;
+                              case "0":
+                              $scope.preguntasNo.push($scope.preguntas[6])
+
+
+
+                              break;
+          }
+          switch($scope.answers.octavaPregunta){
+                        case "1":
+                         $scope.preguntasSi.push($scope.preguntas[7])
+
+                         break;
+                        case "0":
+                        $scope.preguntasNo.push($scope.preguntas[7])
+
+
+
+                        break;
+                    }
+           switch($scope.answers.novenaPregunta){
+                                  case "1":
+                                   $scope.preguntasSi.push($scope.preguntas[8])
+
+                                   break;
+                                  case "0":
+                                  $scope.preguntasNo.push($scope.preguntas[8])
+
+
+
+                                  break;
+                              }
+
+           switch($scope.answers.decimaPregunta){
+                                             case "1":
+                                              $scope.preguntasSi.push($scope.preguntas[9])
+
+                                              break;
+                                             case "0":
+                                             $scope.preguntasNo.push($scope.preguntas[9])
+
+
+
+                                             break;
+                                         }
+           switch($scope.answers.decimoPrimeraPregunta){
+                                                        case "1":
+                                                         $scope.preguntasSi.push($scope.preguntas[10])
+
+                                                         break;
+                                                        case "0":
+                                                        $scope.preguntasNo.push($scope.preguntas[10])
+
+                                                        break;
+                                                    }
+            switch($scope.answers.decimoSegundaPregunta){
+                                             case "1":
+                                              $scope.preguntasSi.push($scope.preguntas[11])
+
+                                              break;
+                                             case "0":
+                                             $scope.preguntasNo.push($scope.preguntas[11])
+
+
+
+                                             break;
+                                         }
+
+
+            switch($scope.answers.decimoTerceraPregunta){
+                                                         case "1":
+                                                          $scope.preguntasSi.push($scope.preguntas[12])
+
+                                                          break;
+                                                         case "0":
+                                                         $scope.preguntasNo.push($scope.preguntas[12])
+
+
+
+                                                         break;
+                                                     }
+            switch($scope.answers.decimoCuartaPregunta){
+                                                         case "1":
+                                                          $scope.preguntasSi.push($scope.preguntas[13])
+
+                                                          break;
+                                                         case "0":
+                                                         $scope.preguntasNo.push($scope.preguntas[13])
+
+
+
+                                                         break;
+                                                       }
+            switch($scope.answers.decimoQuintaPregunta){
+                             case "1":
+                              $scope.preguntasSi.push($scope.preguntas[14])
+
+                              break;
+                             case "0":
+                             $scope.preguntasNo.push($scope.preguntas[14])
+
+
+
+                             break;
+                         }
+            switch($scope.answers.decimoSextaPregunta){
+                                         case "1":
+                                          $scope.preguntasSi.push($scope.preguntas[15])
+
+                                          break;
+                                         case "0":
+                                         $scope.preguntasNo.push($scope.preguntas[15])
+
+
+
+                                         break;
+                                     }
+
+            switch($scope.answers.decimoSeptimaPregunta){
+                                                     case "1":
+                                                      $scope.preguntasSi.push($scope.preguntas[16])
+
+                                                      break;
+                                                     case "0":
+                                                     $scope.preguntasNo.push($scope.preguntas[16])
+
+
+
+                                                     break;
+                                                 }
+
+
+            $scope.a=Math.round(($scope.preguntasSi.length*100)/17);
+            $scope.b=Math.round(($scope.preguntasNo.length*100)/17);
+            $scope.myChartObject = {};
+                            $scope.myChartObject.type = "ColumnChart";
+
+                            $scope.myChartObject.data = {"cols": [
+                                                                       {id: "t", label: "Topping", type: "string"},
+                                                                       {id: "s", label: "Analisis", type: "number"}
+                                                                   ], "rows": [
+                                                                       {c: [
+                                                                           {v: "Cumplidos % "},
+                                                                           {v: $scope.a},
+                                                                       ]},
+                                                                       {c: [
+                                                                           {v: "No Cumplidos %"},
+                                                                           {v: $scope.b},
+                                                                       ]}
+                                                                   ]};
+
+                             $scope.myChartObject.options = {
+                                                       'title': 'Estadisticas Requisitos Estaticos'
+                                                   };
 
   }
 

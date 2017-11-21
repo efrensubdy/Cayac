@@ -2,6 +2,8 @@ package com.example.Controllers;
 
 import com.example.Models.Accidente;
 import com.example.Models.Diagnostico;
+import com.example.Services.ManejadorDeDiagnosticos;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -19,6 +21,8 @@ import java.util.logging.Logger;
 @RestController
 @RequestMapping(value="/app/diagnostico")
 public class DiagnosticoController {
+    @Autowired
+    public ManejadorDeDiagnosticos manejadorDeDiagnosticos;
     @RequestMapping(value ="diag",method = RequestMethod.POST)
     public ResponseEntity<?> agregarIndicador(@RequestBody Diagnostico diagnostico){
 
@@ -26,7 +30,7 @@ public class DiagnosticoController {
         try {
             //obtener datos que se enviarán a través del API
 
-            System.out.println(diagnostico.getPrimeraPregunta());
+            manejadorDeDiagnosticos.insertarDiagnostico(diagnostico);
             a = new ResponseEntity<>(HttpStatus.ACCEPTED);
         } catch (Exception ex) {
             Logger.getLogger(Controller.class.getName()).log(Level.SEVERE, null, ex);

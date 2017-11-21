@@ -20,6 +20,43 @@ public class Diagnostico {
     public int decimoCuartaPregunta;
     public int decimoQuintaPregunta;
     public int decimoSextaPregunta;
+    public int decimoSeptimaPregunta;
+    public String nombreEmpresa;
+    public String nombreEmpleado;
+    public String telefono;
+    public String email;
+
+    public void setNombreEmpresa(String nombreEmpresa) {
+        this.nombreEmpresa = nombreEmpresa;
+    }
+
+    public String getNombreEmpleado() {
+        return nombreEmpleado;
+    }
+
+    public void setNombreEmpleado(String nombreEmpleado) {
+        this.nombreEmpleado = nombreEmpleado;
+    }
+
+    public String getTelefono() {
+        return telefono;
+    }
+
+    public void setTelefono(String telefono) {
+        this.telefono = telefono;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getNombreEmpresa() {
+        return nombreEmpresa;
+    }
 
     public int getPrimeraPregunta() {
         return primeraPregunta;
@@ -157,5 +194,5 @@ public class Diagnostico {
         this.decimoSeptimaPregunta = decimoSeptimaPregunta;
     }
 
-    public int decimoSeptimaPregunta;
+
 }

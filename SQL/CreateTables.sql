@@ -576,17 +576,42 @@ CREATE TABLE `accion` (
 ) ENGINE=INNODB DEFAULT CHARSET=latin1;
 
 CREATE TABLE `cierreDeNoConfor` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `idNoConformidad` int(11) NOT NULL,
-  `idContratista` int(11) NOT NULL,
-  `date` date NOT NULL,
+  `id` INT(11) NOT NULL AUTO_INCREMENT,
+  `idNoConformidad` INT(11) NOT NULL,
+  `idContratista` INT(11) NOT NULL,
+  `date` DATE NOT NULL,
   PRIMARY KEY (`id`),
   KEY `cierre_NoConformidad` (`idNoConformidad`),
   KEY `cierre_idContratista` (`idContratista`),
   CONSTRAINT `cierre_NoConformidad` FOREIGN KEY (`idNoConformidad`) REFERENCES `noConformidad` (`id`),
   CONSTRAINT `cierre_idContratista` FOREIGN KEY (`idContratista`) REFERENCES `contratista` (`idContratista`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=INNODB DEFAULT CHARSET=latin1;
 
+CREATE TABLE `diagnostico` (
+  `id` INT(11) NOT NULL AUTO_INCREMENT,
+  `nombreEmpresa` VARCHAR(200) NOT NULL,
+  `nombreEmpleado` VARCHAR(200) NOT NULL,
+  `telefono` VARCHAR(200) NOT NULL,
+  `email` VARCHAR(200) NOT NULL,
+  `primeraPregunta` INT(11) NOT NULL,
+  `SegundaPregunta` INT(11) NOT NULL,
+  `terceraPregunta` INT(11) NOT NULL,
+  `cuartaPregunta` INT(11) NOT NULL,
+  `quintaPregunta` INT(11) NOT NULL,
+  `sextaPregunta` INT(11) NOT NULL,
+  `septimaPregunta` INT(11) NOT NULL,
+  `octavaPregunta` INT(11) NOT NULL,
+  `novenaPregunta` INT(11) NOT NULL,
+  `decimaPregunta` INT(11) NOT NULL,
+  `decimoPrimeraPregunta` INT(11) NOT NULL,
+  `decimoSegundaPregunta` INT(11) NOT NULL,
+  `decimoTerceraPregunta` INT(11) NOT NULL,
+  `decimoCuartaPregunta` INT(11) NOT NULL,
+  `decimoQuintaPregunta` INT(11) NOT NULL,
+  `decimoSextaPregunta` INT(11) NOT NULL,
+  `decimoSeptimaPregunta` INT(11) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=INNODB DEFAULT CHARSET=latin1;
 
 -- create Admins ---
 
