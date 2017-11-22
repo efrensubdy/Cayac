@@ -1,3 +1,5 @@
+DROP TABLE diagnostico;
+DROP TABLE cierreDeNoConfor;
 DROP TABLE accion;
 DROP TABLE causa;
 DROP TABLE noConformidad;
@@ -28,6 +30,7 @@ DROP TABLE contrato;
 DROP TABLE usuarios;
 DROP TABLE categoria;
 DROP TABLE finalista;
+DROP TABLE aprobarplandetrabajo;
 DROP TABLE contratista;
 DROP TABLE servicioacontratar;
 DROP TABLE contratante;
