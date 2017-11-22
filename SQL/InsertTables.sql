@@ -45,7 +45,7 @@ INSERT INTO ciudad VALUES (29,"Mitu");
 INSERT INTO ciudad VALUES (30,"Puerto Carreño");
 INSERT INTO ciudad VALUES (31,"Cauca");
 
-DELETE FROM contratante WHERE idContratante=1;
+
  
 INSERT INTO departamento VALUES (1,"Bogotá D.C",1);
 INSERT INTO departamento VALUES(2,"La Guajira",2);
@@ -103,14 +103,10 @@ INSERT INTO extras VALUES (4,"TERMINAR MATRICES",3);
 INSERT INTO extras VALUES (5,"TOMAR DECISIONES",4);
 
 
- LOAD DATA LOCAL INFILE "/Users/HSEQ/Documents/ActividadesEconomicas.csv" INTO TABLE activdadeconomica
+ LOAD DATA LOCAL INFILE "/Users/acer/Documents/ActividadesEconomicas.csv" INTO TABLE activdadeconomica
  FIELDS TERMINATED BY ';'
  LINES TERMINATED BY '\n';
  
- 
- LOAD DATA LOCAL INFILE "/Users/User/Documents/ActividadesEconomicas.csv" INTO TABLE activdadeconomica
- FIELDS TERMINATED BY ';'
- LINES TERMINATED BY '\n'; 
  
  
   LOAD DATA LOCAL INFILE "/Users/HSEQ/Documents/requisitosSeleccion.csv" INTO TABLE requisitos
