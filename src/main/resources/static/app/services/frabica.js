@@ -64,6 +64,10 @@ angular.module('services.listFactory', ['ngRoute','ngResource'])
     })
      //A partir de este punto los metodos son de tipo GET para estas Fabricas
         // Fabrica que se comunica con el controlador de Contratantes trallendo todos los contratantes
+       .factory('diagnosticoGerencia', function($resource) {
+                       return $resource('/app/diagnostico/diagnosticoGerencia/:id');
+                   })
+
        .factory('contratantes', function($resource) {
                 return $resource('/app/contractor/:idContratante');
             })

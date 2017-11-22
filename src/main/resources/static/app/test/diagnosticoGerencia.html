@@ -1,0 +1,79 @@
+<md-dialog id="attribute-dialog" aria-label="Requisitos">
+    <form>
+        <md-toolbar>
+            <div class="md-toolbar-tools">
+                <h1>Detalles</h1>
+                <span flex></span>
+                <md-button class="md-icon-button" ng-click="cancel()">
+                    <md-icon md-font-library="material-icons">highlight_off</md-icon>
+                </md-button>
+            </div>
+        </md-toolbar>
+        <md-dialog-content>
+            <md-tabs md-dynamic-height md-border-bottom>
+                <md-tab label="Respuestas si ">
+                    <md-content class="md-padding">
+                        <div class="md-dialog-content">
+                            <table class="table table-sm   table-bordered table-hover table-condensed  text-justify">
+                                <thead>
+                                <tr class="titulos">
+
+                                    <th>Pregunta</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr ng-repeat="todo in preguntasSi">
+                                    <td>{{todo.nombre}}</td>
+                                </tr>
+
+                                </tbody>
+                            </table>
+                        </div>
+
+                    </md-content>
+
+
+                </md-tab>
+                <md-tab label="Respuestas No">
+                    <md-content class="md-padding">
+                        <div class="md-dialog-content">
+                            <table class="table table-sm   table-bordered table-hover table-condensed  text-justify">
+                                <thead>
+                                <tr class="titulos">
+                                    <th>Pregunta</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr ng-repeat="todo in preguntasNo">
+                                    <td>{{todo.nombre}}</td>
+                                </tr>
+
+                                </tbody>
+                            </table>
+                        </div>
+
+                    </md-content>
+
+
+                </md-tab>
+                <md-tab label="Gráfico">
+                    <md-content class="md-padding">
+                        <div class="md-dialog-content">
+                            <div  google-chart chart="myChartObject" width="500" height="320"></div>
+                            <label> Cumplimiento al {{global}}% </label>
+                        </div>
+
+                    </md-content>
+
+
+                </md-tab>
+            </md-tabs>
+        </md-dialog-content>
+
+
+
+
+    </form>
+
+
+</md-dialog>

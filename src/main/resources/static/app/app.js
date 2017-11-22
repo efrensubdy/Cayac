@@ -48,6 +48,7 @@ angular.module('myApp', [
   'myApp.actualizacionDeContrato',
   'myApp.mensajeriaContratante',
   'myApp.diagnostico',
+  'myApp.revisionDeDiagnostico',
   'services.listFactory',
   'myApp.version'
 ]).
@@ -60,7 +61,7 @@ $qProvider.errorOnUnhandledRejections(false);
 .controller('logout',['$rootScope','$scope', '$http','$location','$localStorage','$sessionStorage',function($rootScope,$scope,$http,$location,$localStorage,$sessionStorage)  {
    $scope.$storage = $localStorage;
 
-   if ("undefined" === typeof $localStorage.userLogeado && "undefined" !== typeof $localStorage.contratanteLogeado && $localStorage.contratanteLogeado.rol=="Contratante"  ) {
+   if ("undefined" === typeof $localStorage.userLogeado && "undefined" !== typeof $localStorage.contratanteLogeado && $localStorage.contratanteLogeado.rol=="Contratante" && $localStorage.contratanteLogeado.idContratante != 4  ) {
        console.log("AT THIS MOMENT I'M CONTRACTOR")
        $rootScope.bandera=$localStorage.contratanteLogeado.estado;
 
@@ -82,6 +83,14 @@ $qProvider.errorOnUnhandledRejections(false);
            $rootScope.bandera2=false;
            $rootScope.bandera3 = $localStorage.contratanteLogeado.estado;
            $rootScope.bandera=false;
+    }
+    else if("undefined" !== typeof $localStorage.contratanteLogeado && "undefined" === typeof $localStorage.userLogeado && $localStorage.contratanteLogeado.idContratante==4){
+
+               console.log("AT THIS MOMENT I'M ERNESTO")
+                $rootScope.bandera=$localStorage.contratanteLogeado.estado;
+                $rootScope.bandera4=$localStorage.contratanteLogeado.estado;
+                $rootScope.bandera2=false;
+                $rootScope.bandera3=false;
     }
    else{
        console.log("AT THIS MOMENT NOTBODY IS IN CAYAC")
@@ -108,6 +117,7 @@ $qProvider.errorOnUnhandledRejections(false);
             $location.path("inicio");
             delete $localStorage.contratanteLogeado;
             delete $scope.$storage;
+             $rootScope.bandera4=false;
             console.log($localStorage.contratanteLogeado);
 
 

@@ -1,12 +1,16 @@
 package com.example.DB;
 
+import com.example.Models.ARL;
 import com.example.Models.Conexion;
 import com.example.Models.Diagnostico;
 import org.springframework.stereotype.Service;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.LinkedList;
+import java.util.List;
 
 @Service
 public class DiagnosticoDB {
@@ -39,7 +43,45 @@ public class DiagnosticoDB {
         ps.execute();
         ps.close();
         con.close();
+}
+public List<Diagnostico>traerDiagnosticosParaGerencia()throws SQLException,ClassNotFoundException {
+List<Diagnostico> diagnosticoList=new LinkedList<>();
 
-
+    String sql ="SELECT * FROM  diagnostico";
+    PreparedStatement ps = Conexion.conection().prepareStatement(sql);
+    ResultSet rs = ps.executeQuery();
+    while(rs.next()){
+        Diagnostico diagnostico = new Diagnostico();
+        diagnostico.setNombreEmpresa(rs.getString("nombreEmpresa"));
+        diagnostico.setNombreEmpleado(rs.getString("nombreEmpleado"));
+        diagnostico.setTelefono(rs.getString("telefono"));
+        diagnostico.setEmail(rs.getString("email"));
+        diagnostico.setPrimeraPregunta(rs.getInt("primeraPregunta"));
+        diagnostico.setSegundaPregunta(rs.getInt("SegundaPregunta"));
+        diagnostico.setTerceraPregunta(rs.getInt("terceraPregunta"));
+        diagnostico.setCuartaPregunta(rs.getInt("cuartaPregunta"));
+        diagnostico.setQuintaPregunta(rs.getInt("quintaPregunta"));
+        diagnostico.setSextaPregunta(rs.getInt("sextaPregunta"));
+        diagnostico.setSeptimaPregunta(rs.getInt("septimaPregunta"));
+        diagnostico.setOctavaPregunta(rs.getInt("octavaPregunta"));
+        diagnostico.setNovenaPregunta(rs.getInt("novenaPregunta"));
+        diagnostico.setDecimaPregunta(rs.getInt("decimaPregunta"));
+        diagnostico.setDecimoPrimeraPregunta(rs.getInt("decimoPrimeraPregunta"));
+        diagnostico.setDecimoSegundaPregunta(rs.getInt("decimoSegundaPregunta"));
+        diagnostico.setDecimoTerceraPregunta(rs.getInt("decimoTerceraPregunta"));
+        diagnostico.setDecimoCuartaPregunta(rs.getInt("decimoCuartaPregunta"));
+        diagnostico.setDecimoQuintaPregunta(rs.getInt("decimoQuintaPregunta"));
+        diagnostico.setDecimoSextaPregunta(rs.getInt("decimoSextaPregunta"));
+        diagnostico.setDecimoSeptimaPregunta(rs.getInt("decimoSeptimaPregunta"));
+        diagnosticoList.add(diagnostico);
     }
+    ps.close();
+
+
+
+return diagnosticoList;
+
+}
+
+
 }
