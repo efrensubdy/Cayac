@@ -58,6 +58,10 @@ angular.module('myApp.registrarRequisitosEjecucion', ['ngRoute'])
                      $scope.banderaCategoria3=false;
                      $scope.banderaCategoria4=false;
                      $scope.banderaET=false;
+                     $scope.ciclo=undefined;
+                     $scope.lonPrevio=false;
+                     $scope.banderaDef = false;
+                     $scope.lonPrevioEx=false;
                      break;
                  case "2":
                      $scope.banderaCategoria1=false;
@@ -65,6 +69,10 @@ angular.module('myApp.registrarRequisitosEjecucion', ['ngRoute'])
                      $scope.banderaCategoria3=false;
                      $scope.banderaCategoria4=false;
                      $scope.banderaET=false;
+                     $scope.ciclo=undefined;
+                     $scope.lonPrevio=false;
+                     $scope.lonPrevioEx=false;
+                     $scope.banderaDef = false;
                      break;
                  case "3":
                     $scope.banderaCategoria1=false;
@@ -72,6 +80,10 @@ angular.module('myApp.registrarRequisitosEjecucion', ['ngRoute'])
                     $scope.banderaCategoria3=true;
                     $scope.banderaCategoria4=false;
                     $scope.banderaET=false;
+                    $scope.ciclo=undefined;
+                    $scope.lonPrevio=false;
+                    $scope.banderaDef = false;
+                    $scope.lonPrevioEx=false;
                     break;
                  case "4":
                     $scope.banderaCategoria1=false;
@@ -79,6 +91,10 @@ angular.module('myApp.registrarRequisitosEjecucion', ['ngRoute'])
                     $scope.banderaCategoria3=false;
                     $scope.banderaCategoria4=true;
                     $scope.banderaET=false;
+                    $scope.ciclo=undefined;
+                    $scope.lonPrevio=false;
+                    $scope.banderaDef = false;
+                    $scope.lonPrevioEx=false;
                                  break;
 
              }

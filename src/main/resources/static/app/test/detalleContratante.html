@@ -1,0 +1,66 @@
+<md-dialog id="attribute-dialog" aria-label="Requisitos">
+    <form>
+        <md-toolbar>
+            <div class="md-toolbar-tools">
+                <h1>Detalles</h1>
+                <span flex></span>
+                <md-button class="md-icon-button" ng-click="cancel()">
+                    <md-icon md-font-library="material-icons">highlight_off</md-icon>
+                </md-button>
+            </div>
+        </md-toolbar>
+        <md-dialog-content>
+            <md-tabs md-dynamic-height md-border-bottom>
+                <md-tab label="Info">
+                    <md-content class="md-padding">
+                        <div class="md-dialog-content">
+                            <table class="table table-sm   table-bordered table-hover table-condensed  text-justify">
+                                <thead>
+                                <tr class="titulos">
+                                    <th>Contenido de Empresa</th>
+                                    <th>Información</th>
+                                </tr>
+                                <tbody>
+                                <tr class="texto">
+                                    <td><b>Nombre de Empresa</b> </td>
+                                    <td>{{client.nombreEmpresa}}</td>
+                                </tr>
+                                <tr class="texto">
+                                    <td><b>codigoCIIU</b> </td>
+                                    <td>{{client.codigoCIIU}}</td>
+                                </tr>
+                                <tr class="texto">
+                                    <td><b>Email</b> </td>
+                                    <td>{{client.email}}</td>
+                                </tr>
+
+                                <tr class="texto">
+                                    <td><b> contraseña </b> </td>
+                                    <td>{{client.password}}</td>
+                                </tr>
+                                <tr class="texto">
+                                    <td><b> Telefono </b> </td>
+                                    <td>{{client.telefono}}</td>
+                                </tr>
+                                <tr class="texto">
+                                    <td><b> Representante Legal </b> </td>
+                                    <td>{{client.representanteLegal}}</td>
+                                </tr>
+                                </tbody>
+                                </thead>
+
+                            </table>
+
+                        </div>
+
+                    </md-content>
+
+
+                </md-tab>
+            </md-tabs>
+        </md-dialog-content>
+
+    </form>
+
+
+</md-dialog>

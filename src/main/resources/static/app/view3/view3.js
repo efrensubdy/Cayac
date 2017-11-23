@@ -25,6 +25,7 @@ angular.module('myApp.view3', ['ngRoute'])
 
 
         }
+        $scope.band45=false;
         $scope.flag=false;
         $scope.propertyName = 'nombreEmpresa';
         $scope.reverse = true;
@@ -52,7 +53,11 @@ angular.module('myApp.view3', ['ngRoute'])
                     $scope.banderaCategoria2=false;
                     $scope.banderaCategoria3=false;
                     $scope.banderaCategoria4=false;
+                    $scope.ciclo=undefined;
                     $scope.table1=false;
+                    $scope.table2=false;
+                    $scope.banderaFecha=false;
+                    $scope.band45=false;
 
                     break;
                 case "2":
@@ -60,7 +65,12 @@ angular.module('myApp.view3', ['ngRoute'])
                     $scope.banderaCategoria2=true;
                     $scope.banderaCategoria3=false;
                     $scope.banderaCategoria4=false;
+
+                    $scope.ciclo=undefined;
                     $scope.table1=false;
+                       $scope.table2=false;
+                       $scope.banderaFecha=false;
+                    $scope.band45=false;
 
 
                     break;
@@ -70,7 +80,11 @@ angular.module('myApp.view3', ['ngRoute'])
                    $scope.banderaCategoria3=true;
                    $scope.banderaCategoria4=false;
                    $scope.table1=false;
-
+                   $scope.ciclo=undefined;
+                   $scope.table1=false;
+                    $scope.table2=false;
+                    $scope.banderaFecha=false;
+                    $scope.band45=false;
 
                    break;
                 case "4":
@@ -79,7 +93,10 @@ angular.module('myApp.view3', ['ngRoute'])
                    $scope.banderaCategoria3=false;
                    $scope.banderaCategoria4=true;
                    $scope.table1=false;
-
+                   $scope.table2=false;
+                   $scope.banderaFecha=false;
+                   $scope.ciclo=undefined;
+                    $scope.band45=false;
 
                                 break;
 
@@ -128,6 +145,7 @@ angular.module('myApp.view3', ['ngRoute'])
 
                 $rootScope.idCategoria=$scope.idCategoria;
                 $scope.banderaLista=true;
+                $scope.band45=true;
 
 
               };

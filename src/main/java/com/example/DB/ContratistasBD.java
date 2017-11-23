@@ -129,10 +129,10 @@ public class ContratistasBD {
             nuevoUsuario.setCategoria(1);
         }
         else if(nuevoContratista.getDuracionContrato()>=1 && nivelDeRiesgo<=2){
-            nuevoUsuario.setCategoria(3);
+            nuevoUsuario.setCategoria(2);
         }
         else if (nuevoContratista.getDuracionContrato()<1 && nivelDeRiesgo>=3){
-            nuevoUsuario.setCategoria(2);
+            nuevoUsuario.setCategoria(3);
         }
         else{
             nuevoUsuario.setCategoria(4);

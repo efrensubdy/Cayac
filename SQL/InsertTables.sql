@@ -90,11 +90,21 @@ INSERT INTO categoria VALUES (4,"CATEGORIA B");
 
 
 
-INSERT INTO extras VALUES (1,"LAVAR ROPA",1);
+INSERT INTO extras VALUES (1,"PRUEBA PARA EC1",1,1);
+INSERT INTO extras VALUES (2,"PRUEBA PARA EC1 R1",1,1);
+
+INSERT INTO extras VALUES (3,"PRUEBA PARA EC1",2,1);
+INSERT INTO extras VALUES (4,"PRUEBA PARA EC1 R1",2,1);
+
+INSERT INTO extras VALUES (5,"PRUEBA PARA EC1",3,1);
+INSERT INTO extras VALUES (6,"PRUEBA PARA EC1 R1",3,1);
+
+INSERT INTO extras VALUES (7,"PRUEBA PARA EC1",4,1);
+INSERT INTO extras VALUES (8,"PRUEBA PARA EC1 R1",4,1);
 
 INSERT INTO extras VALUES (2,"SECAR ROPA",1);
 
-INSERT INTO extras VALUES (3,"ELEGIR HERRAMIENTA",2);
+INSERT INTO extras VALUES (3,"",2);
 
 INSERT INTO extras VALUES(6,"LAVAR CEPILLO",2);
 
@@ -109,7 +119,7 @@ INSERT INTO extras VALUES (5,"TOMAR DECISIONES",4);
  
  
  
-  LOAD DATA LOCAL INFILE "/Users/HSEQ/Documents/requisitosSeleccion.csv" INTO TABLE requisitos
+  LOAD DATA LOCAL INFILE "/Users/acer/Documents/requisitosSeleccion.csv" INTO TABLE requisitos
  FIELDS TERMINATED BY ';'
  LINES TERMINATED BY '\n'; 
  LOAD DATA LOCAL INFILE "/Users/User/Documents/requisitosSeleccion.csv" INTO TABLE requisitos
@@ -117,10 +127,10 @@ INSERT INTO extras VALUES (5,"TOMAR DECISIONES",4);
  LINES TERMINATED BY '\n'; 
  
  
- LOAD DATA LOCAL INFILE "/Users/HSEQ/Documents/ejecucionEstaticaPrevia.csv" INTO TABLE requisitosdeejecuionsugeridosestaticosprevio
+ LOAD DATA LOCAL INFILE "/Users/acer/Documents/requerimientos.csv" INTO TABLE requisitosdeejecuionsugeridosestaticosprevio
  FIELDS TERMINATED BY ';'
  LINES TERMINATED BY '\n'; 
-  distinct
+  
  
 INSERT INTO  requisitosdeejecuionsugeridosestaticosprevio (requisito,idCategoria) VALUES ("ACTA DE INICIO DE ACTIVIDADES",1);
 INSERT INTO  requisitosdeejecuionsugeridosestaticosprevio (requisito,idCategoria) VALUES ("ACTA DE INICIO DE ACTIVIDADES",2);

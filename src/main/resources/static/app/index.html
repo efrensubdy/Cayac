@@ -58,6 +58,7 @@
   <script src="inicio/inicio.js"></script>
   <script src="login2/login2.js"></script>
   <script src="login3/login3.js"></script>
+  <script src="controlDeContratantes/controlDeContratantes.js"></script>
   <script src="services/frabica.js"></script>
   <script src="revisionDeDiagnostico/revisionDeDiagnostico.js"></script>
   <script src="components/version/version.js"></script>
@@ -101,7 +102,6 @@
     </div>
     <div class="collapse navbar-collapse" id="myNavbar">
       <ul class="nav navbar-nav navbar-left">
-        <li><a class="text-primary" ng-show="bandera3"  href="#!/view4">Registrar Contratantes</a></li>
         <li><a class="text-primary" ng-show="bandera" href="#!/view6">Cambiar Contraseña</a></li>
         <li><a class="text-primary" ng-show="bandera2" href="#!/view7">Cambiar Contraseña</a></li>
         <li><a class="text-primary" ng-show="bandera2 && !banderaEjecucion"  href="#!/view9">Soportes Seleccion</a></li>
@@ -245,6 +245,22 @@
               <div class="row">
                 <div class="col-sm-1"><span class="glyphicon glyphicon-scale"></span></div>
                 <div class="col-sm-1">Diagnostico</div>
+              </div>
+            </a>
+          </li>
+          <li ng-show="bandera3" role="presentation">
+            <a href="#!/view4">
+              <div class="row">
+                <div class="col-sm-1"><span class="glyphicon glyphicon-registration-mark"></span></div>
+                <div class="col-sm-1">Registrar Contratantes</div>
+              </div>
+            </a>
+          </li>
+          <li ng-show="bandera3" role="presentation">
+            <a href="#!/controlDeContratantes">
+              <div class="row">
+                <div class="col-sm-1"><span class="glyphicon glyphicon-list-alt"></span></div>
+                <div class="col-sm-1">Control de Contratantes</div>
               </div>
             </a>
           </li>

@@ -49,6 +49,7 @@ angular.module('myApp', [
   'myApp.mensajeriaContratante',
   'myApp.diagnostico',
   'myApp.revisionDeDiagnostico',
+  'myApp.controlDeContratantes',
   'services.listFactory',
   'myApp.version'
 ]).
