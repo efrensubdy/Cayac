@@ -226,6 +226,16 @@ angular.module('myApp.view3', ['ngRoute'])
                               agregarBaseDatosSugeridos($scope.listadoSugerido);
                               agregarBaseExtras($scope.listadoExtra);
                               $scope.mensajillo=false;
+                              $mdDialog.show(
+                                          $mdDialog.alert()
+                                          .parent(angular.element(document.querySelector('#popupContainer')))
+                                          .clickOutsideToClose(true)
+                                          .title('Sus Requisitos han quedado establecidos')
+                                          .textContent('el contratista deberá cumplir esto.')
+                                          .ariaLabel('Alert Dialog Demo')
+                                           .ok('Mire Definitivos!')
+                                           .targetEvent(ev)
+                                      );
                               }
                               else if(a==0 && b==0 && a2==0 && b2==0){
                                $scope.mensajillo=true;
@@ -234,6 +244,16 @@ angular.module('myApp.view3', ['ngRoute'])
                               console.log("entre a all sugeridos")
                               agregarBaseDatosSugeridos($scope.listadoAllSugerido);
                               agregarBaseExtras($scope.listadoAllExtra);
+                               $mdDialog.show(
+                                    $mdDialog.alert()
+                                    .parent(angular.element(document.querySelector('#popupContainer')))
+                                    .clickOutsideToClose(true)
+                                    .title('Sus Requisitos han quedado establecidos')
+                                    .textContent('el contratista deberá cumplir esto.')
+                                    .ariaLabel('Alert Dialog Demo')
+                                     .ok('Mire Definitivos!')
+                                     .targetEvent(ev)
+                                );
 
                               $scope.mensajillo=false;
                               }

@@ -349,10 +349,11 @@ public class UsersDB {
     public void llenarRequisitosExtrasPrimeravez(int idContratante, int idCategoria) throws SQLException, ClassNotFoundException {
         requisitosExtras=new LinkedList<>();
         String sql ="select * from (extras as t1) left join requisitosobligatoriosextras as t2 on t1.idExtras=t2.idRequisito and t2.idContratante= ?\n" +
-                "where t2.idRequisitosObligatoriosExtras is null and t1.idCategoria= ?";
+                "where t2.idRequisitosObligatoriosExtras is null and t1.idCategoria= ? AND t1.idContratante = ?";
         PreparedStatement ps = Conexion.conection().prepareStatement(sql);
         ps.setInt(1,idContratante);
         ps.setInt(2,idCategoria);
+        ps.setInt(3,idContratante);
         ResultSet rs = ps.executeQuery();
         while(rs.next()){
             RequisitoExtra nuevoRequisito=new RequisitoExtra();

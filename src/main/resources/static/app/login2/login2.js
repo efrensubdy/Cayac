@@ -11,12 +11,7 @@ angular.module('myApp.login2', ['ngRoute'])
 
 
 .controller('Login2Ctrl', ['$localStorage','$sessionStorage','$location','$rootScope','$scope', '$mdDialog','$http', function ($localStorage,$sessionStorage,$location,$rootScope,$scope,$mdDialog,$http){
-      if ("undefined" !== typeof $localStorage.userLogeado || "undefined" !== typeof $localStorage.contratanteLogeado){
 
-                     $location.path("/view1");
-
-
-             }
       $scope.progressBandera=false;
       $scope.value=0;
       var auntenticado=function(ev){
