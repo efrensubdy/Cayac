@@ -132,12 +132,12 @@ INSERT INTO extras VALUES (5,"TOMAR DECISIONES",4);
  LINES TERMINATED BY '\n'; 
   
  
-INSERT INTO  requisitosdeejecuionsugeridosestaticosprevio (requisito,idCategoria) VALUES ("ACTA DE INICIO DE ACTIVIDADES",1);
-INSERT INTO  requisitosdeejecuionsugeridosestaticosprevio (requisito,idCategoria) VALUES ("ACTA DE INICIO DE ACTIVIDADES",2);
-INSERT INTO  requisitosdeejecuionsugeridosestaticosprevio (requisito,idCategoria) VALUES ("ACTA DE INICIO DE ACTIVIDADES",3);
+INSERT INTO  requisitosdeejecuionsugeridosestaticosprevio (requisito,idCategoria,idContratante) VALUES ("ACTA DE INICIO DE ACTIVIDADES",1);
+INSERT INTO  requisitosdeejecuionsugeridosestaticosprevio (requisito,idCategoria,idContratante) VALUES ("ACTA DE INICIO DE ACTIVIDADES",2);
+INSERT INTO  requisitosdeejecuionsugeridosestaticosprevio (requisito,idCategoria,idContratante) VALUES ("ACTA DE INICIO DE ACTIVIDADES",3);
 INSERT INTO  requisitosdeejecuionsugeridosestaticosprevio (requisito,idCategoria) VALUES ("ACTA DE INICIO DE ACTIVIDADES",4);
  
- INSERT INTO requisitosdeejecuionextrasestaticosprevio(requisito,idCategoria) VALUES ("REQUISITO PREVIO ESTATICO EXTRA 1",1);
- INSERT INTO requisitosdeejecuionextrasestaticosprevio(requisito,idCategoria) VALUES ("REQUISITO PREVIO ESTATICO EXTRA 2",2);
- INSERT INTO requisitosdeejecuionextrasestaticosprevio(requisito,idCategoria) VALUES ("REQUISITO PREVIO ESTATICO EXTRA 3",3);
- INSERT INTO requisitosdeejecuionextrasestaticosprevio(requisito,idCategoria) VALUES ("REQUISITO PREVIO ESTATICO EXTRA 4",4);
+ INSERT INTO requisitosdeejecuionextrasestaticosprevio(requisito,idCategoria,idContratante) VALUES ("REQUISITO PREVIO ESTATICO EXTRA 1 Contratante 2",1,2);
+ INSERT INTO requisitosdeejecuionextrasestaticosprevio(requisito,idCategoria,idContratante) VALUES ("REQUISITO PREVIO ESTATICO EXTRA 2 Contratante 2",2,2);
+ INSERT INTO requisitosdeejecuionextrasestaticosprevio(requisito,idCategoria,idContratante) VALUES ("REQUISITO PREVIO ESTATICO EXTRA 3 Contratante 2",3,2);
+ INSERT INTO requisitosdeejecuionextrasestaticosprevio(requisito,idCategoria,idContratante) VALUES ("REQUISITO PREVIO ESTATICO EXTRA 4 Contratante 2",4,2);

@@ -25,6 +25,7 @@ angular.module('myApp.registrarRequisitosEjecucion', ['ngRoute'])
 
 
  }
+ $scope.idCategoria=undefined;
  $scope.listPrevioSugerido=[];
  $scope.listAllPrevioSugerido=[];
  $scope.listPrevioExtra=[];
@@ -282,6 +283,10 @@ angular.module('myApp.registrarRequisitosEjecucion', ['ngRoute'])
                     .targetEvent(ev)
                 );
                 $scope.banderaET=false;
+                $scope.ciclo = undefined;
+                $scope.lonPrevio = false;
+                $scope.banderaDef = false;
+                $scope.mensajillo1=false;
 
           }
           else if(a==0 && b==0 && a2==0 && b2==0 ){
@@ -304,6 +309,9 @@ angular.module('myApp.registrarRequisitosEjecucion', ['ngRoute'])
                                  .targetEvent(ev)
                              );
              $scope.banderaET=false;
+             $scope.ciclo= undefined;
+             $scope.lonPrevio = false;
+             $scope.banderaDef = false;
 
           }
 

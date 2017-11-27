@@ -10,6 +10,7 @@ angular.module('myApp.view3', ['ngRoute'])
 }])
 
 .controller('View3Ctrl', ['$location','$localStorage','$sessionStorage','requisitosEEliminar','contratantesCategoria','$rootScope','$scope','contratos', 'contratantesContrato','requisitos','extras','requisitosObligatorios','requisitosExtras','rObligatorio','rExtra','fabrica','$mdDialog','limites','requisitosOEliminar','$http','fechaLimiteContratante',function($location,$localStorage,$sessionStorage,requisitosEEliminar,contratantesCategoria,$rootScope,$scope,contratos,contratantesContrato,requisitos,extras,requisitosObligatorios,requisitosExtras,rObligatorio,rExtra,fabrica,$mdDialog,limites,requisitosOEliminar,$http,fechaLimiteContratante) {
+        $scope.idCategoria = undefined;
         if ("undefined" === typeof $localStorage.userLogeado && "undefined" === typeof $localStorage.contratanteLogeado){
                  $mdDialog.show(
                                   $mdDialog.alert()
@@ -236,6 +237,10 @@ angular.module('myApp.view3', ['ngRoute'])
                                            .ok('Mire Definitivos!')
                                            .targetEvent(ev)
                                       );
+                               $scope.table1 = false;
+                               $scope.table2 = false;
+                               $scope.ciclo = undefined;
+                                $scope.mensajillo=false;
                               }
                               else if(a==0 && b==0 && a2==0 && b2==0){
                                $scope.mensajillo=true;
@@ -254,8 +259,10 @@ angular.module('myApp.view3', ['ngRoute'])
                                      .ok('Mire Definitivos!')
                                      .targetEvent(ev)
                                 );
-
-                              $scope.mensajillo=false;
+                                 $scope.table1 = false;
+                                 $scope.table2 = false;
+                                 $scope.ciclo = undefined;
+                                 $scope.mensajillo=false;
                               }
 
 
