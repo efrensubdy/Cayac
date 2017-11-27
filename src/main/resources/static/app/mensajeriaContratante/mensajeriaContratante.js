@@ -112,6 +112,36 @@ $scope.showAlert=function(ev,client){
                   fullscreen: $scope.customFullscreen // Only for -xs, -sm breakpoints.
      })
 }
+$scope.showAlert2=function(ev){
+
+     $mdDialog.show({
+                 //Controlador del mensajes con operaciones definido en la parte de abajo
+                 controller: DialogController2,
+                  //permite la comunicacion con el html que despliega el boton requisitos
+                  templateUrl: 'test/mensajeDirecto.html',
+                  parent: angular.element(document.body),
+                  targetEvent: ev,
+                  clickOutsideToClose:true,
+                  fullscreen: $scope.customFullscreen // Only for -xs, -sm breakpoints.
+     })
+}
+function DialogController2($scope, $mdDialog, $rootScope, $http) {
+    $scope.mensaje=undefined;
+    $scope.show=function(){
+           // $scope.mensaje=true;
+        }
+        $scope.hide = function() {
+           $mdDialog.hide();
+         };
+                             //funcion para cerral el mensaje
+       $scope.cancel = function() {
+           $mdDialog.cancel();
+         };
+
+
+
+
+}
 function DialogController($scope, $mdDialog, $rootScope, $http) {
     $scope.client=$rootScope.client;
     $scope.mensaje=true;

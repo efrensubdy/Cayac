@@ -293,8 +293,7 @@ function DialogController2($scope, $mdDialog, $rootScope){
     
                 $scope.a=Math.round(($scope.preguntasSi.length*100)/17);
                 $scope.b=Math.round(($scope.preguntasNo.length*100)/17);
-                console.log($scope.preguntasSi.length)
-                console.log($scope.preguntasNo.length)
+
                  $scope.myChartObject = {};
                     $scope.myChartObject.type = "ColumnChart";
 

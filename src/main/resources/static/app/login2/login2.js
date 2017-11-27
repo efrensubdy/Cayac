@@ -21,16 +21,16 @@ angular.module('myApp.login2', ['ngRoute'])
       $scope.value=60;
       var p=function(){
 
-        if ($localStorage.contratanteLogeado.estadoDatabase =="activo" && $localStorage.contratanteLogeado.rol =="Contratante" && $localStorage.contratanteLogeado.idContratante!=4){
-
+        if ($localStorage.contratanteLogeado.estadoDatabase =="activo" && $localStorage.contratanteLogeado.rol =="Contratante" && $localStorage.contratanteLogeado.idContratante!=3){
+            console.log("Entre a la primera");
              $rootScope.bandera =$localStorage.contratanteLogeado.estado ;
              $rootScope.idContratante=$localStorage.contratanteLogeado.idContratante;
              delete $localStorage.userLogeado;
              $location.path("/view1");
 
         }
-        else if ($localStorage.contratanteLogeado.estadoDatabase =="activo" && $localStorage.contratanteLogeado.rol =="Contratante" && $localStorage.contratanteLogeado.idContratante==4){
-
+        else if ($localStorage.contratanteLogeado.estadoDatabase =="activo" && $localStorage.contratanteLogeado.rol =="Contratante" && $localStorage.contratanteLogeado.idContratante==3){
+                    console.log("Entre a la 2");
                      $rootScope.bandera =$localStorage.contratanteLogeado.estado ;
                      $rootScope.bandera4 = $localStorage.contratanteLogeado.estado ;
                      $rootScope.idContratante=$localStorage.contratanteLogeado.idContratante;
