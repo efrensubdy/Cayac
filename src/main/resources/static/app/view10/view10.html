@@ -10,7 +10,7 @@
                 <p class="texto"><b>ESCOJA EL SERVICIO SOBRE EL CUAL REALIZARÁ LA REVISIÓN</b></p>
 
                 <div layout="column" layout-align="center center">
-                    <md-select class="titulos" placeholder="Asignar Servicio" ng-model="contrato"  md-on-open="loadContratos()" style="min-width: 200px;">
+                    <md-select aria-label="simpleSelect1" class="titulos" placeholder="Asignar Servicio" ng-model="contrato"  md-on-open="loadContratos()" style="min-width: 200px;">
                         <md-option ng-value="contrato" ng-repeat="contrato in listado">{{contrato.nombre}}</md-option>
                     </md-select>
                     <p class="md-caption titulos">El Servicio seleccionado fue: {{ contrato ? contrato.nombre : 'Nadie todavía' }}</p>

@@ -10,10 +10,10 @@
                             <div class="col-xs-9">
                             <h4 class="titulos"><b>ESTANDARES MÍNIMOS</b></h4>
                                 <p class="texto">ESCOJA UNA DE LAS OPCIONES PRESENTADAS A CONTINUACIÓN</p>
-                                <select class="form-control" ng-model="opcion" data-placeholder="" ng-change="simple2(opcion)">
-                                    <option ng-value="todo" ng-repeat="todo in opciones">{{todo.name}}</option>
+                                <md-select aria-label="simpleSelect1" class="titulos" ng-model="opcion" data-placeholder="" ng-change="simple2(opcion)">
+                                    <md-option ng-value="todo" ng-repeat="todo in opciones">{{todo.name}}</md-option>
 
-                                </select>
+                                </md-select>
                             </div>
 
                         </div>

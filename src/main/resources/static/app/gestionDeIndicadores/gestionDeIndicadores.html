@@ -11,20 +11,20 @@
                         <div class="row">
                             <div class="col-sm-4">
                                 <div layout="column" layout-align="center center">
-                                    <md-select class="titulos" placeholder="Asignar Contrato" ng-model="contrato"  style="min-width: 200px;" ng-change="resul()">
+                                    <md-select aria-label="simpleSelect1" class="titulos" placeholder="Asignar Contrato" ng-model="contrato"  style="min-width: 200px;" ng-change="resul()">
                                         <md-option ng-value="contrato" ng-repeat="contrato in listado">{{contrato.nombreContrato}}</md-option>
                                     </md-select>
                                     <p class="md-caption titulos">El Contrato escogido fue {{ contrato ? contrato.nombreContrato : 'Nadie todavía' }}</p>
                                 </div>
                             </div>
                             <div class="col-sm-4">
-                                <md-select class="titulos" ng-model="mes" placeholder="seleccione el mes" ng-change="resul()">
+                                <md-select aria-label="simpleSelect2" class="titulos" ng-model="mes" placeholder="seleccione el mes" ng-change="resul()">
                                     <md-option ng-value="todo" ng-repeat="todo in meses">{{todo.name}}</md-option>
 
                                 </md-select>
                             </div>
                             <div class="col-sm-4">
-                                <md-select class="titulos" ng-model="year" placeholder="seleccione el año" ng-change="resul()">
+                                <md-select aria-label="simpleSelect3" class="titulos" ng-model="year" placeholder="seleccione el año" ng-change="resul()">
                                     <md-option ng-value="todo" ng-repeat="todo in years">{{todo.name}}</md-option>
 
                                 </md-select>

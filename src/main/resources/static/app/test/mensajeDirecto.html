@@ -14,10 +14,27 @@
                 <md-tab label="Mensaje">
                     <div class="md-dialog-content">
                         <label class="titulos">Escoja el contratista al que va enviar el mensaje </label>
-                        <md-select aria-label="select" class="titulos"  data-placeholder="Seleccione el contratista" name="singleSelect" ng-model="ciclo" >
-
+                        <md-select aria-label="select" class="titulos"  data-placeholder="Seleccione el contratista" name="singleSelect" ng-model="ciclo"  ng-change="show()" >
+                            <md-option ng-value="todo" ng-repeat="todo in listado">{{todo.nombreEmpresa}}</md-option>
 
                         </md-select>
+                    </div>
+                    <div class="md-dialog-content" ng-show="mensaje">
+                        <label class="titulos">MANDE AL CONTRATANTE UN MENSAJE </label>
+                        <div class="form-group">
+                            <label class="titulos" for="comment">Mensaje: </label>
+                            <textarea class="form-control texto" rows="5" id="comment" ng-model="textArea"></textarea>
+                            <br>
+                            <button class="btn btn-primary" ng-click="envio(textArea,ciclo)">Enviar</button>
+                        </div>
+
+                    </div>
+                    <div class="md-dialog-content" ng-show="mensaje2">
+                        <div class="w3-center"><i class="fa fa-question-circle" style="font-size:80px;color:black;text-shadow:2px 2px 4px #000000;"></i></div>
+                        <br>
+                        <label class="titulos">Desea ver Enviar mas Mensajes</label>
+                        <md-button class="md-primary md-raised md-hue-2" ng-click="show()">si</md-button>
+                        <md-button class="md-primary md-raised md-hue-2" ng-click="cancel()">no</md-button>
                     </div>
                 </md-tab>
             </md-tabs>

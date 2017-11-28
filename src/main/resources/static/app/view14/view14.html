@@ -7,7 +7,7 @@
             <p class="texto"><b>ESCOJA UNO DE LOS SERVICIOS A CONTRATAR PRESENTADOS A CONTINUACIÓN</b></p>
                 <div class="col-sm-11">
                     <div layout="column" layout-align="center center">
-                        <md-select class="titulos" placeholder="Asignar Servicio" ng-change="ocultarTodo()" ng-model="contrato"  md-on-open="loadContratos()" style="min-width: 200px;">
+                        <md-select aria-label="simpleSelect1" class="titulos" placeholder="Asignar Servicio" ng-change="ocultarTodo()" ng-model="contrato"  md-on-open="loadContratos()" style="min-width: 200px;">
                             <md-option ng-value="contrato" ng-repeat="contrato in listado">{{contrato.nombre}}</md-option>
                         </md-select>
                         <p class="md-caption titulos">El Servicio seleccionado fue: {{ contrato ? contrato.nombre : 'Nadie todavía' }}</p>

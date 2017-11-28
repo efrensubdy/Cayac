@@ -10,7 +10,7 @@
                     <div class="row">
                         <div class="col-sm-12">
                             <div layout="column" layout-align="center center">
-                                <md-select class="titulos" placeholder="Asignar Contrato" ng-model="contrato"  style="min-width: 200px;" ng-change="ocultarTodo()">
+                                <md-select aria-label="simpleSelect1" class="titulos" placeholder="Asignar Contrato" ng-model="contrato"  style="min-width: 200px;" ng-change="ocultarTodo()">
                                     <md-option ng-value="contrato" ng-repeat="contrato in listado">{{contrato.nombreContrato}}</md-option>
                                 </md-select>
                                 <p class="md-caption titulos">El Contrato escogido fue {{ contrato ? contrato.nombreContrato : 'Nadie todavía' }}</p>
@@ -21,7 +21,7 @@
                     <div class="row" ng-show="banderaOpciones">
                         <div class="col-sm-12">
                             <p class="texto"><b>ESCOJA EL DOCUMENTO QUE DESEA ACTUALIZAR</b></p>
-                            <md-select class="titulos" ng-model="notificacion" placeholder="seleccione" ng-change="add(contrato,notificacion)">
+                            <md-select aria-label="simpleSelect2" class="titulos" ng-model="notificacion" placeholder="seleccione" ng-change="add(contrato,notificacion)">
                                 <md-option ng-value="todo" ng-repeat="todo in notificaciones">{{todo.nombre}}</md-option>
 
                             </md-select>

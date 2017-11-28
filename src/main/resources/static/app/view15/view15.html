@@ -11,7 +11,7 @@
                     <h4 class="w3-center titulos "><b>CONSULTA DE CONTRATOS</b></h4>
                     <p class=" w3-center texto"><b>EN ESTA VISTA PODRA CONSULTAR SUS CONTRATOS</b></p>
                     <p class=" w3-center texto">ESCOJA ALGUNA DE LAS OPCIONES QUE SE LE PRESENTAN A CONTINUACIÓN</p>
-                    <md-select  ng-change="function1()" class="titulos" placeholder="Escoja una de las opciones " style="min-width: 200px;" ng-model="tipoContrato">
+                    <md-select aria-label="simpleSelect1"  ng-change="function1()" class="titulos" placeholder="Escoja una de las opciones " style="min-width: 200px;" ng-model="tipoContrato">
                         <md-option value="nombre" >Nombre</md-option>
                         <md-option value="fecha" >Fecha</md-option>
                     </md-select>
@@ -30,7 +30,7 @@
             <br>
             <div class="col-xs-9">
                 <div layout="column" layout-align="center center">
-                    <md-select class="titulos" placeholder="Asignar Contrato" ng-model="contrato" md-on-open="loadContratos()"  style="min-width: 200px;">
+                    <md-select aria-label="simpleSelect2" class="titulos" placeholder="Asignar Contrato" ng-model="contrato" md-on-open="loadContratos()"  style="min-width: 200px;">
                         <md-option ng-value="contrato" ng-repeat="contrato in listado">{{contrato.nombreContrato}}</md-option>
                     </md-select>
                     <p class="md-caption titulos">El Contrato escogido fue {{ contrato ? contrato.nombreContrato : 'Nadie todavía' }}</p>

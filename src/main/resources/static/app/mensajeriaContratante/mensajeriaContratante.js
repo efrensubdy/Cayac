@@ -9,7 +9,7 @@ angular.module('myApp.mensajeriaContratante', ['ngRoute'])
   });
 }])
 
-.controller('mensajeriaContratanteCtrl', ['$location','$route','$timeout', '$q', '$scope','$log','$rootScope','$localStorage','$sessionStorage','$mdDialog','mensajeContr','eliminarMessagesContratantes','mensajeCtante','mensajeContratista',function($location,$route,$timeout, $q, $scope,$log,$rootScope,$localStorage,$sessionStorage,$mdDialog,mensajeContr,eliminarMessagesContratantes,mensajeCtante,mensajeContratista) {
+.controller('mensajeriaContratanteCtrl', ['$location','$route','$timeout', '$q', '$scope','$log','$rootScope','$localStorage','$sessionStorage','$mdDialog','mensajeContr','eliminarMessagesContratantes','mensajeCtante','mensajeContratista','contratistasPorContratante',function($location,$route,$timeout, $q, $scope,$log,$rootScope,$localStorage,$sessionStorage,$mdDialog,mensajeContr,eliminarMessagesContratantes,mensajeCtante,mensajeContratista,contratistasPorContratante) {
     if ("undefined" === typeof $localStorage.userLogeado && "undefined" === typeof $localStorage.contratanteLogeado){
          $mdDialog.show(
                           $mdDialog.alert()
@@ -33,7 +33,7 @@ angular.module('myApp.mensajeriaContratante', ['ngRoute'])
 
 
     $scope.deleteMessage=function(selected,item){
-        console.log(selected)
+
         if(selected){
         $scope.deleteMessagesList.push(item);
             if( $scope.deleteMessagesList.length >0){
@@ -61,7 +61,7 @@ angular.module('myApp.mensajeriaContratante', ['ngRoute'])
  var eliminarMessages=function(lista){
                 var total=lista.length;
                  for (var i=0;i<total;i++){
-                            console.log(lista[i])
+
                          eliminarMessagesContratantes.remove({"idMessage":lista[i].id});
 
                  }
@@ -126,9 +126,12 @@ $scope.showAlert2=function(ev){
      })
 }
 function DialogController2($scope, $mdDialog, $rootScope, $http) {
-    $scope.mensaje=undefined;
+
+   $scope.listado = contratistasPorContratante.query({"idContratante":$localStorage.contratanteLogeado.idContratante})
+    $scope.mensaje2=false;
     $scope.show=function(){
-           // $scope.mensaje=true;
+           $scope.mensaje=true;
+           $scope.mensaje2= false
         }
         $scope.hide = function() {
            $mdDialog.hide();
@@ -137,6 +140,16 @@ function DialogController2($scope, $mdDialog, $rootScope, $http) {
        $scope.cancel = function() {
            $mdDialog.cancel();
          };
+
+         $scope.envio = function(textArea,client){
+
+            var mensaje={mensaje:textArea,idContratante:$localStorage.contratanteLogeado.idContratante,idContratista:client.id}
+            mensajeContratista.save(mensaje);
+            $scope.mensaje = false;
+            $scope.mensaje2=true
+
+
+         }
 
 
 

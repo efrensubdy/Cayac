@@ -33,6 +33,11 @@ public class ManejoDeContratanteBD implements AdministradorDeContratante {
     }
 
     @Override
+    public List<Contratista> contratistaPorContratante(int idContratante) throws SQLException, ClassNotFoundException {
+        return contratanteDB.contratistasPorContratante(idContratante);
+    }
+
+    @Override
     public List<Contratista> contratistaPorCategoria(int idContrato, int idCategoria) throws SQLException, ClassNotFoundException {
         return  contratanteDB.contratistasPorCategoria(idContrato, idCategoria);
     }

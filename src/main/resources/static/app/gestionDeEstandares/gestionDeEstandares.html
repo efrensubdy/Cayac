@@ -8,7 +8,7 @@
                     <h4 class="titulos" ><b>REVISE LOS ESTANDARES MÍNIMOS REGISTRADOS POR SUS CONTRATISTAS</b></h4>
                     <p class="texto">ESCOJA UNA DE LAS OPCIONES A ACONTINUACIÓN </p>
                     <div class="row">
-                        <md-select class="titulos" ng-model="notificacion" placeholder="escoja una opción" ng-change="cambiarOpcion(notificacion)">
+                        <md-select aria-label="simpleSelect1" class="titulos" ng-model="notificacion" placeholder="escoja una opción" ng-change="cambiarOpcion(notificacion)">
                             <md-option ng-value="todo" ng-repeat="todo in notificaciones">{{todo.nombre}}</md-option>
 
                         </md-select>
@@ -18,7 +18,7 @@
                         <div class="col-sm-12">
                             <p class="texto"><b>ESCOJA EL CONTRATO, SOBRE EL CUAL REALIZARÁ LA REVISIÓN</b></p>
                             <div layout="column" layout-align="center center">
-                                <md-select class="titulos" placeholder="Asignar Contrato" ng-model="contrato"  style="min-width: 200px;" md-on-open="loadContratos()" ng-change="ocultarTodo()">
+                                <md-select aria-label="simpleSelect2" class="titulos" placeholder="Asignar Contrato" ng-model="contrato"  style="min-width: 200px;" md-on-open="loadContratos()" ng-change="ocultarTodo()">
                                     <md-option ng-value="contrato" ng-repeat="contrato in listado">{{contrato.nombreContrato}}</md-option>
                                 </md-select>
                                 <p class="md-caption titulos">El Contrato escogido fue {{ contrato ? contrato.nombreContrato : 'Nadie todavía' }}</p>
@@ -34,14 +34,14 @@
                             <br>
                             <div class="col-sm-6">
                                 <p class="texto"><b>ESCOJA EL MES PARA LA  NOTIFICACIÓN</b></p>
-                                <md-select class="titulos" ng-model="mes" placeholder="seleccione el mes" ng-change="ocultarTodo()">
+                                <md-select aria-label="simpleSelect3" class="titulos" ng-model="mes" placeholder="seleccione el mes" ng-change="ocultarTodo()">
                                     <md-option ng-value="todo" ng-repeat="todo in meses">{{todo.name}}</md-option>
 
                                 </md-select>
                             </div>
                             <div class="col-sm-6">
                                 <p class="texto"><b>ESCOJA EL AÑO PARA LA NOTIFICACIÓN</b></p>
-                                <md-select class="titulos" ng-model="year" placeholder="seleccione el año" ng-change="ocultarTodo()">
+                                <md-select aria-label="simpleSelect4" class="titulos" ng-model="year" placeholder="seleccione el año" ng-change="ocultarTodo()">
                                     <md-option ng-value="todo" ng-repeat="todo in years">{{todo.name}}</md-option>
 
                                 </md-select>

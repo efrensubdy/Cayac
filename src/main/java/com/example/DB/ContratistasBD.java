@@ -270,6 +270,38 @@ public class ContratistasBD {
         ps.close();
         return contratistas;
     }
+    public  List<Contratista> consultarContratistas(int idContratante) throws ClassNotFoundException, SQLException{
+
+        List<Contratista> contratistas = new LinkedList<>();
+        String sql ="SELECT * FROM contratista where idContratante = ?";
+        PreparedStatement ps = Conexion.conection().prepareStatement(sql);
+        ps.setInt(1,idContratante);
+        ResultSet rs = ps.executeQuery();
+        while(rs.next()){
+            Contratista con=new Contratista();
+            con.setId(rs.getInt("idContratista"));
+            con.setNombreEmpresa(rs.getString("nombreEmpresa"));
+            con.setNit(rs.getString("nit"));
+            con.setCodigoCIIU(rs.getString("codigoCIIU"));
+            con.setNombreDeGerenteGeneral(rs.getString("nombreGerente"));
+            con.setEmail(rs.getString("email"));
+            con.setArl(String.valueOf( rs.getInt("arl")));
+            con.setDireccion(rs.getString("direccion"));
+            con.setTelefono(rs.getNString("telefono"));
+            con.setDuracionContrato(Integer.valueOf(rs.getString("duracion")));
+            con.setDepartamento(String.valueOf(rs.getInt("departamento")));
+            con.setContratante(rs.getInt("idContratante"));
+            con.setPersonContacto(rs.getString("personaContacto"));
+            con.setCargoPersonaContacto(rs.getString("cargoPer"));
+            con.setTelefonoPersonaContacto(rs.getString("telefonoCon"));
+            con.setEmailContacto(rs.getString("emailContacto"));
+            con.setIdContrato(rs.getInt("idservicioAContratar"));
+            con.setIdCategoria(traerCategoria(rs.getInt("idContratista")));
+            contratistas.add(con);
+        }
+        ps.close();
+        return contratistas;
+    }
     public Contratista getContratista(String nombreEmpresa)throws SQLException,ClassNotFoundException{
         Contratista contratista=new Contratista();
         List<Contratista>contratistaLinkedList=  consultarContratistas();

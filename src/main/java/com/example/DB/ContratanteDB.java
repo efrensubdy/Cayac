@@ -464,6 +464,10 @@ public class ContratanteDB {
         contratistasBD=new ContratistasBD();
         return contratistasBD.contratistasPorContrante(idContratante, idContrato);
     }
+    public List<Contratista>contratistasPorContratante(int idContratante) throws SQLException, ClassNotFoundException {
+        contratistasBD=new ContratistasBD();
+        return contratistasBD.consultarContratistas(idContratante);
+    }
 
     /**
      *

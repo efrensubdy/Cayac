@@ -12,7 +12,9 @@ import java.util.List;
 public interface AdministradorDeContratante {
 public void registrarContratante(Contratante contratante) throws SQLException, ClassNotFoundException;
 public List<Contratante>obtenerContratantes() throws SQLException, ClassNotFoundException;
-public List<Contratista>contratistaPorContratante(int idContratante, int idContrato) throws SQLException, ClassNotFoundException;public List<Contratista>contratistaPorCategoria( int idContrato,int idCategoria) throws SQLException, ClassNotFoundException;
+public List<Contratista>contratistaPorContratante(int idContratante, int idContrato) throws SQLException, ClassNotFoundException;
+public List<Contratista>contratistaPorContratante(int idContratante) throws SQLException, ClassNotFoundException;
+public List<Contratista>contratistaPorCategoria( int idContrato,int idCategoria) throws SQLException, ClassNotFoundException;
 public List<RequisitoObligatorio> requisitosCumplidos(int idContratista,int idCategoria,int idContratante)throws SQLException, ClassNotFoundException;
 public List<RequisitoObligatorio> requisitosNoCumplidos(int idContratista,int idCategoria,int idContratante)throws SQLException, ClassNotFoundException;
 public List<RequisitoExtra> requisitosExtrasCumplidos(int idContratista,int idCategoria,int idContratante)throws SQLException, ClassNotFoundException;

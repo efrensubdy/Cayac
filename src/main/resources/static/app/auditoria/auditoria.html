@@ -11,7 +11,7 @@
                     <div class="row">
                         <div class="col-sm-12">
                             <p >ESCOJA LO QUE QUIERE HACER</p>
-                            <md-select class="titulos" ng-model="opcion" placeholder="seleccione opción" ng-change="simple(opcion)">
+                            <md-select aria-label="simpleSelect1" class="titulos" ng-model="opcion" placeholder="seleccione opción" ng-change="simple(opcion)">
                                 <md-option ng-value="todo" ng-repeat="todo in opciones">{{todo.name}}</md-option>
                             </md-select>
                             <br>
@@ -22,14 +22,14 @@
                         <p class="texto">PRIMERO REVISE SI TIENE UNA AUDITORIA</p>
                         <div class="col-sm-6">
                             <p class="titulos">AÑO REPORTADO</p>
-                            <md-select class="titulos" ng-model="year" placeholder="seleccione el año">
+                            <md-select aria-label="simpleSelect2" class="titulos" ng-model="year" placeholder="seleccione el año">
                                 <md-option ng-value="todo" ng-repeat="todo in years">{{todo.name}}</md-option>
 
                             </md-select>
                         </div>
                         <div class="col-sm-6">
                             <p class="titulos">PERIODO REPORTADO</p>
-                            <md-select class="titulos" ng-model="mes" placeholder="seleccione el mes" >
+                            <md-select aria-label="simpleSelect3" class="titulos" ng-model="mes" placeholder="seleccione el mes" >
                                 <md-option ng-value="todo" ng-repeat="todo in meses">{{todo.name}}</md-option>
                             </md-select>
                             <br>
@@ -68,7 +68,7 @@
                         <br>
                         <label class="titulos">REGISTRAR CAUSAS</label>
                         <p  class="texto">ESCOJA UNA DE LAS NO CONFORMIDADES DE LO CONTRATRIO NO PODRÁ AGREGAR CAUSAS</p>
-                        <md-select class="titulos" ng-model="opcion2" placeholder="seleccione la no conformidad " ng-change="simple2(opcion2)">
+                        <md-select aria-label="simpleSelect4" class="titulos" ng-model="opcion2" placeholder="seleccione la no conformidad " ng-change="simple2(opcion2)">
                             <md-option ng-value="todo" ng-repeat="todo in listadoDeNoConformidades">{{todo.noConformidad}}</md-option>
                         </md-select>
                         <br>
@@ -85,13 +85,13 @@
                         <label class="titulos">REGISTRAR ACCIONES</label>
 
                         <p  class="texto">ESCOJA UNA DE LAS NO CONFORMIDADES DE LO CONTRATRIO NO SE  DESPLEGARÁN LAS CAUSAS</p>
-                        <md-select class="titulos" ng-model="opcion4" placeholder="seleccione la no conformidad" ng-change="simple4(opcion4)">
+                        <md-select aria-label="simpleSelect6" class="titulos" ng-model="opcion4" placeholder="seleccione la no conformidad" ng-change="simple4(opcion4)">
                             <md-option ng-value="todo" ng-repeat="todo in listadoDeNoConformidades">{{todo.noConformidad}}</md-option>
                         </md-select>
                         <br>
                         <div ng-show="take">
                         <p  class="texto">ESCOJA LA CAUSA QUE SE VERÁ AFECTADA CON LA ACCIÓN</p>
-                        <md-select class="titulos" ng-model="opcion5" data-placeholder="seleccione la causa" ng-change="simple5(opcion5)">
+                        <md-select aria-label="simpleSelect7" class="titulos" ng-model="opcion5" data-placeholder="seleccione la causa" ng-change="simple5(opcion5)">
                             <md-option ng-value="todo" ng-repeat="todo in tablaDeCausas">{{todo.causa}}</md-option>
                         </md-select>
                         </div>
@@ -142,7 +142,7 @@
                     <div class="row" ng-show="bandera5">
                         <label class="titulos">CONSULTAR CAUSAS</label>
                         <p >ESCOJA UNA DE LAS NO CONFORMIDADES DE LO CONTRATRIO NO PODRÁ AGREGAR CAUSAS</p>
-                        <md-select class="titulos" ng-model="opcion3" placeholder="seleccione la no conformidad" ng-change="simple3(opcion3)">
+                        <md-select aria-label="simpleSelect8" class="titulos" ng-model="opcion3" placeholder="seleccione la no conformidad" ng-change="simple3(opcion3)">
                             <md-option ng-value="todo" ng-repeat="todo in listadoDeNoConformidades">{{todo.noConformidad}}</md-option>
                         </md-select>
                         <br>
@@ -164,13 +164,13 @@
                     <div class="row" ng-show="bandera6">
                         <label class="titulos">CONSULTAR ACCIONES</label>
                         <p  class="texto">ESCOJA UNA DE LAS NO CONFORMIDADES PARA DESPLEGAR LAS CAUSAS</p>
-                        <md-select class="titulos" ng-model="opcion6" placeholder="seleccione la no conformidad" ng-change="simple6(opcion6)">
+                        <md-select aria-label="simpleSelect9" class="titulos" ng-model="opcion6" placeholder="seleccione la no conformidad" ng-change="simple6(opcion6)">
                             <md-option ng-value="todo" ng-repeat="todo in listadoDeNoConformidades">{{todo.noConformidad}}</md-option>
                         </md-select>
                         <br>
                         <div ng-show="take3">
                             <p  class="texto">ESCOJA LA CAUSA SOBRE LAS CUALES CONSULTARA  LAS ACCIONES</p>
-                            <md-select class="titulos" ng-model="opcion7" data-placeholder="seleccione la causa" ng-change="simple7(opcion7)">
+                            <md-select aria-label="simpleSelect10" class="titulos" ng-model="opcion7" data-placeholder="seleccione la causa" ng-change="simple7(opcion7)">
                                 <md-option ng-value="todo" ng-repeat="todo in tablaDeCausas">{{todo.causa}}</md-option>
                             </md-select>
                         </div>
@@ -205,13 +205,13 @@
                     <div class="row" ng-show="bandera12">
                         <label class="titulos">SUBA LOS SOPORTES A LAS ACCIONES QUE REALIZO</label>
                         <p  class="texto">ESCOJA UNA DE LAS NO CONFORMIDADES PARA DESPLEGAR LAS CAUSAS</p>
-                        <md-select class="titulos" ng-model="opcion8" placeholder="seleccione la no conformidad" ng-change="simple8(opcion8)">
+                        <md-select aria-label="simpleSelect11" class="titulos" ng-model="opcion8" placeholder="seleccione la no conformidad" ng-change="simple8(opcion8)">
                             <md-option ng-value="todo" ng-repeat="todo in listadoDeNoConformidades">{{todo.noConformidad}}</md-option>
                         </md-select>
                         <br>
                         <div ng-show="take4">
                             <p  class="texto">ESCOJA LA CAUSA SOBRE LAS CUALES REGISTRO  LAS ACCIONES</p>
-                            <md-select class="titulos" ng-model="opcion9" placeholder="seleccione la causa mes" ng-change="simple9(opcion9)">
+                            <md-select aria-label="simpleSelect12" class="titulos" ng-model="opcion9" placeholder="seleccione la causa mes" ng-change="simple9(opcion9)">
                                 <md-option ng-value="todo" ng-repeat="todo in tablaDeCausas">{{todo.causa}}</md-option>
                             </md-select>
                         </div>
@@ -245,19 +245,19 @@
                     <div class="row" ng-show="bandera14">
                         <label class="titulos">CUMPLIMIENTO DE PROGRAMA </label>
                         <p  class="texto">ESCOJA UNA DE LAS OPCIONES A CONTINUACIÓN</p>
-                        <md-select class="titulos" ng-model="opcionC" placeholder="seleccione una opción" ng-change="simpleOpCionC(opcionC)">
+                        <md-select aria-label="simpleSelect13" class="titulos" ng-model="opcionC" placeholder="seleccione una opción" ng-change="simpleOpCionC(opcionC)">
                             <md-option ng-value="todo" ng-repeat="todo in opcionesDeCumplimiento">{{todo.name}}</md-option>
                         </md-select>
                         <br>
                         <div class="row" ng-show="c1">
                             <p  class="texto">ESCOJA UNA DE LAS NO CONFORMIDADES PARA DESPLEGAR LAS CAUSAS</p>
-                            <md-select class="titulos" ng-model="opcionC1" data-placeholder="seleccione la no conformidad" ng-change="simpleC1(opcionC1)">
+                            <md-select aria-label="simpleSelect14" class="titulos" ng-model="opcionC1" data-placeholder="seleccione la no conformidad" ng-change="simpleC1(opcionC1)">
                                 <md-option ng-value="todo" ng-repeat="todo in listadoDeNoConformidades">{{todo.noConformidad}}</md-option>
                             </md-select>
                             <br>
                             <div ng-show="takec1">
                                 <p  class="texto">ESCOJA LA CAUSA SOBRE LAS CUALES REGISTRO  LAS ACCIONES</p>
-                                <md-select class="titulos" ng-model="op10" placeholder="seleccione la causa" ng-change="tak(op10)">
+                                <md-select aria-label="simpleSelect15" class="titulos" ng-model="op10" placeholder="seleccione la causa" ng-change="tak(op10)">
                                     <md-option ng-value="todo" ng-repeat="todo in tablaDeCausas">{{todo.causa}}</md-option>
                                 </md-select>
                             </div>
@@ -278,14 +278,14 @@
                         <div class="row" ng-show="c2">
                             <div class="col-sm-6">
                                 <label>SELECCIONE EL MES DE LA AUDITORIA</label>
-                                <md-select class="titulos" ng-model="mes" data-placeholder="seleccione el mes" ng-change="ocultarTodo()" >
+                                <md-select aria-label="simpleSelect16" class="titulos" ng-model="mes" data-placeholder="seleccione el mes" ng-change="ocultarTodo()" >
                                     <md-option ng-value="todo" ng-repeat="todo in meses">{{todo.name}}</md-option>
 
                                 </md-select>
                             </div>
                             <div class="col-sm-6">
                                 <label>SELECCIONE EL AÑO DE LA AUDITORIA</label>
-                                <md-select class="titulos" ng-model="year" data-placeholder="seleccione el mes" ng-change="ocultarTodo()">
+                                <md-select aria-label="simpleSelect17" class="titulos" ng-model="year" data-placeholder="seleccione el mes" ng-change="ocultarTodo()">
                                     <md-option ng-value="todo" ng-repeat="todo in years">{{todo.name}}</md-option>
 
                                 </md-select>
@@ -299,7 +299,7 @@
                             <div class="col-sm-12" ng-show="auditoras">
                              <br>
                              <label>A CONTINUACIÓN ENCONTRARÁ UNA LISTA CON LAS AUDITORIAS DISPONIBLES</label>
-                            <md-select class="titulos" ng-model="auditoria" placeholder="seleccione una auditoria" ng-change="cambiarOpcion(auditoria)" >
+                            <md-select aria-label="simpleSelect18" class="titulos" ng-model="auditoria" placeholder="seleccione una auditoria" ng-change="cambiarOpcion(auditoria)" >
                                 <md-option ng-value="todo" ng-repeat="todo in tableContra">{{todo.fecha}}</md-option>
 
                             </md-select>

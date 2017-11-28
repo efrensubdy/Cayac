@@ -11,7 +11,7 @@
             <p class="texto"><b>EN PARTE DE ABAJO ECONTRARÁ UNA LISTA DE TODOS SUS CONTRATOS DISPONIBLES</b> </p>
                 <div class="col-sm-11">
                     <div layout="column" layout-align="center center">
-                        <md-select class="titulos" placeholder="Asignar Contrato" ng-model="contrato"  style="min-width: 200px;" md-on-open="loadContratos()" ng-change="ocultarTodo()">
+                        <md-select aria-label="simpleSelect1" class="titulos" placeholder="Asignar Contrato" ng-model="contrato"  style="min-width: 200px;" md-on-open="loadContratos()" ng-change="ocultarTodo()">
                             <md-option ng-value="contrato" ng-repeat="contrato in listado">{{contrato.nombreContrato}}</md-option>
                         </md-select>
                         <p class="md-caption titulos">El Contrato escogido fue {{ contrato ? contrato.nombreContrato : 'Nadie todavía' }}</p>

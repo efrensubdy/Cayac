@@ -92,6 +92,20 @@ public class ContractorController {
         }
         return a;
     }
+    @RequestMapping(value = "contratistasPorContratante/{idContratante}", method = RequestMethod.GET)
+    public ResponseEntity<?>obtenerClientePorContrato(@PathVariable int idContratante){
+
+        ResponseEntity a;
+        try {
+            //obtener datos que se enviarán a través del API
+            a = new ResponseEntity<>(manejoDeContratanteBD.contratistaPorContratante(idContratante),HttpStatus.ACCEPTED);
+
+        } catch (Exception ex) {
+            Logger.getLogger(Controller.class.getName()).log(Level.SEVERE, null, ex);
+            return new ResponseEntity<>("Error bla bla bla",HttpStatus.NOT_FOUND);
+        }
+        return a;
+    }
 
     /**
      * Recurso que se encarga de traer al contratista por la categoria , que peryenece al contrato
