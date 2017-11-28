@@ -27,8 +27,8 @@ if ("undefined" === typeof $localStorage.userLogeado && "undefined" === typeof $
 }
 //la funcion add se encarga de recibir los datos que se van  a cambiar y realiza los cambios
 //mandandolo a la fabrica que cambia la contraseña de los contratantes
-$scope.add=function(ev){
-        var user={"idContratista":$localStorage.userLogeado.idContratista,"password":$scope.password};
+$scope.add=function(ev,contra,password){
+        var user={"idContratista":$localStorage.userLogeado.idContratista,"password":password};
         loginContratista.save(user);
         $scope.contra='';
         $scope.password='';
