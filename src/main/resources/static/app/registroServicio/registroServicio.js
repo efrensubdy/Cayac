@@ -27,8 +27,7 @@ if ("undefined" === typeof $localStorage.userLogeado && "undefined" === typeof $
 }
 $scope.add=function(ev){
 
-    console.log($scope.nombre);
-    console.log($scope.area);
+
     var servicio={"nombre":$scope.nombre,"tipo":$scope.area,"idContratante":$localStorage.contratanteLogeado.idContratante}
     if("undefined" !== typeof $scope.nombre && "undefined" !== typeof $scope.area ){
         registroServ.save(servicio);

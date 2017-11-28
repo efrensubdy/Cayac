@@ -33,7 +33,7 @@ angular.module('myApp.mensajeria', ['ngRoute'])
 
 
     $scope.deleteMessage=function(selected,item){
-        console.log(selected)
+
         if(selected){
         $scope.deleteMessagesList.push(item);
             if( $scope.deleteMessagesList.length >0){

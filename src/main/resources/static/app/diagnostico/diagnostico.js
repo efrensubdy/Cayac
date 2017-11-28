@@ -59,7 +59,7 @@ $rootScope.resultado = 0;
         $scope.answers.nombreEmpleado=nombreEmpleado;
         $scope.answers.telefono=telefono;
         $scope.answers.email=email;
-        console.log($scope.answers)
+
         diagnostico.save($scope.answers);
         $rootScope.answers = $scope.answers;
         $rootScope.global =$scope.global

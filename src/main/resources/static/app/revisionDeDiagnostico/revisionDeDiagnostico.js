@@ -49,7 +49,7 @@ $scope.listadoDeDiagnosticos=diagnosticoGerencia.query();
 
 $scope.showAlert = function(ev,client){
 
-console.log(client);
+
  $scope.resultado=parseInt(client.primeraPregunta) + parseInt(client.segundaPregunta) + parseInt(client.terceraPregunta) + parseInt(client.cuartaPregunta) + parseInt(client.quintaPregunta) + parseInt(client.sextaPregunta) + parseInt(client.septimaPregunta) + parseInt(client.octavaPregunta) + parseInt(client.novenaPregunta)  + parseInt(client.decimaPregunta)  + parseInt(client.decimoPrimeraPregunta) + parseInt( client.decimoSegundaPregunta) + parseInt(client.decimoTerceraPregunta) + parseInt(client.decimoCuartaPregunta) + parseInt(client.decimoQuintaPregunta) + parseInt(client.decimoSextaPregunta) + parseInt(client.decimoSeptimaPregunta);
  $scope.global =Math.round(($scope.resultado *100)/17)
 $rootScope.client = client ;

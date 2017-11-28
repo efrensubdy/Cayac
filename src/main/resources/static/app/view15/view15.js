@@ -83,7 +83,7 @@ else{
    var url = "http://ec2-35-163-21-208.us-west-2.compute.amazonaws.com:8080/app/contratos/id/" + item.idContrato;
           $http.get(url).then(function(response) {
                    d=response.data;
-                   console.log(response.data)
+
                    return response.data;
                 }).then(p);
 

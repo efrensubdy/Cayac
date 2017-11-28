@@ -51,7 +51,7 @@ angular.module('myApp.registrarRequisitosEjecucion', ['ngRoute'])
          $scope.banderaCategoria4=false;
          var anotherDeferred = $q.defer();
          $scope.function1=function(){
-             console.log($scope.idCategoria);
+
              switch ($scope.idCategoria) {
                  case "1":
                      $scope.banderaCategoria1=true;
@@ -101,7 +101,7 @@ angular.module('myApp.registrarRequisitosEjecucion', ['ngRoute'])
              }
              if("undefined" !== typeof $scope.idCategoria ){
              $rootScope.listadoPrevioSugerido=previos.query({idContratante:$localStorage.contratanteLogeado.idContratante,idCategoria:$scope.idCategoria},function(result){
-               console.log(result.length);
+
                if(result.length!=0){
                $rootScope.lonPrevi=true;
 
@@ -126,10 +126,10 @@ angular.module('myApp.registrarRequisitosEjecucion', ['ngRoute'])
          }
          }
          $scope.activated=function(a){
-            console.log(a);
+
             switch(a){
                 case "1":
-                  console.log("entre");
+
 
                   $scope.lonPrevio= $rootScope.listadoPrevioSugerido;
                   if (!$scope.lonprevio){
@@ -237,7 +237,7 @@ angular.module('myApp.registrarRequisitosEjecucion', ['ngRoute'])
 
 
             $scope.eliminar1=function(select1,item){
-                    console.log(item);
+
              if(select1){
                  $scope.eEliminarPrevios.push(item)
                }
@@ -246,11 +246,11 @@ angular.module('myApp.registrarRequisitosEjecucion', ['ngRoute'])
                     if (index > -1) {
                     $scope.eEliminarPrevios.splice(index, 1);
                     }
-                    console.log($scope.eEliminarPrevios);
+
                }
             }
             $scope.eliminar2=function(select2,item){
-                    console.log(item);
+
                 if(select2){
                            $scope.eEliminarPreviosExtras.push(item)
                 }
@@ -259,7 +259,7 @@ angular.module('myApp.registrarRequisitosEjecucion', ['ngRoute'])
                     if (index > -1) {
                           $scope.eEliminarPreviosExtras.splice(index, 1);
                     }
-                     console.log($scope.eEliminarPreviosExtras);
+
                  }
              }
 
@@ -269,7 +269,7 @@ angular.module('myApp.registrarRequisitosEjecucion', ['ngRoute'])
           var a2=$scope.listPrevioExtra.length;
           var b2=$scope.listAllPrevioExtra.length;
           if(a>b || a2>b2){
-             console.log("entre a sugeridos")
+
              agregarBaseDatosPreviosSugeridos($scope.listPrevioSugerido);
             agregarBaseDatosPreviosExtras($scope.listPrevioExtra);
              $mdDialog.show(
@@ -295,7 +295,7 @@ angular.module('myApp.registrarRequisitosEjecucion', ['ngRoute'])
 
           }
           else{
-             console.log("entre a all sugeridos")
+
              agregarBaseDatosPreviosSugeridos($scope.listAllPrevioSugerido);
              agregarBaseDatosPreviosExtras($scope.listAllPrevioExtra);
              $mdDialog.show(
@@ -332,8 +332,7 @@ angular.module('myApp.registrarRequisitosEjecucion', ['ngRoute'])
            var total=lista.length;
            for (var i=0;i<total;i++){
                var requisitoObligatorio={"idContratante":$localStorage.contratanteLogeado.idContratante,"idCategoria":$rootScope.idCategoria,"idRequisito":lista[i].numero};
-               console.log(requisitoObligatorio);
-               console.log(total);
+
                insertarPrevioSugerido.save(requisitoObligatorio);
 
            }
@@ -343,8 +342,7 @@ angular.module('myApp.registrarRequisitosEjecucion', ['ngRoute'])
            var total=lista.length;
               for (var i=0;i<total;i++){
                 var requisitoExtra={"idContratante":$localStorage.contratanteLogeado.idContratante,"idCategoria":$rootScope.idCategoria,"idRequisito":lista[i].id};
-                 console.log(total);
-                 console.log(requisitoExtra);
+
                  insertarPrevioExtra.save(requisitoExtra);
 
               }
@@ -354,7 +352,7 @@ angular.module('myApp.registrarRequisitosEjecucion', ['ngRoute'])
             var eliminarPreviosSugeridos=function(lista){
                var total=lista.length;
                 for (var i=0;i<total;i++){
-                     // console.log(lista[i].idRequisito);
+
                        eliminarPS.remove({"idContratante":$localStorage.contratanteLogeado.idContratante,"idRequisito":lista[i].idRequisito});
 
                 }

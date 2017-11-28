@@ -64,7 +64,7 @@ $scope.ocultarTodo=function(){
 
      $scope.showAlert2=function(ev,client){
                 $rootScope.client=client
-                console.log(client);
+
                 $mdDialog.show({
                       //Controlador del mensajes con operaciones definido en la parte de abajo
                       controller: DialogController2,

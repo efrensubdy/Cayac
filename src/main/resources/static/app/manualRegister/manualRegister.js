@@ -37,7 +37,7 @@ angular.module('myApp.manualRegister', ['ngRoute'])
       $scope.add=function(ev){
       if("undefined" !== typeof $scope.nombreEmpresa && "undefined" !== typeof $scope.duracionContrato.id && "undefined" !== typeof $scope.nit && "undefined" !== typeof $scope.codigoCIIU && "undefined" !== typeof $scope.nombreDeGerenteGeneral && "undefined" !== typeof $scope.email && "undefined" !== typeof $scope.arl && "undefined" !== typeof $scope.direccion && "undefined" !== typeof $scope.departamento && "undefined" !== typeof $scope.password && "undefined" !== typeof $scope.telefono && "undefined" !== typeof $localStorage.contratanteLogeado.idContratante && "undefined" !== typeof $scope.personContacto && "undefined" !== typeof $scope.cargoPersonaContacto && "undefined" !== typeof $scope.telefonoPersonaContacto && "undefined" !== typeof $scope.emailContacto && "undefined" !== typeof $scope.contrato ){
       var contratista={"nombreEmpresa":$scope.nombreEmpresa,"duracionContrato":$scope.duracionContrato.id,"nit":$scope.nit,"codigoCIIU":$scope.codigoCIIU,"nombreDeGerenteGeneral":$scope.nombreDeGerenteGeneral,"email":$scope.email,"arl":$scope.arl,"direccion":$scope.direccion,"departamento":$scope.departamento,"password":$scope.password,"telefono":$scope.telefono,"contratante":$localStorage.contratanteLogeado.idContratante,"personContacto":$scope.personContacto,"cargoPersonaContacto":$scope.cargoPersonaContacto,"telefonoPersonaContacto":$scope.telefonoPersonaContacto,"emailContacto":$scope.emailContacto,"idContrato":$scope.contrato};
-        console.log(contratista);
+
         registroManualFinalista.save(contratista);
         $scope.nombreEmpresa='';
         $scope.duracionContrato='';

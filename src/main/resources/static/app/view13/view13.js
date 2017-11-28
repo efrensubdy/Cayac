@@ -55,7 +55,7 @@ $scope.add=function(ev,a,b,c){
             $scope.listaDocumentos.push($scope.myFile);
             $scope.listaDocumentos.push($scope.myFile2);
             $scope.listaDocumentos.push($scope.myFile3);
-            console.log(uploadUrl)
+
             contratoUpload.uploadFileToUrl($scope.listaDocumentos,uploadUrl);
 
             $scope.contrato.nombreContrato='';

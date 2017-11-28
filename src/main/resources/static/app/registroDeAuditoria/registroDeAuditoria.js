@@ -113,9 +113,7 @@ $scope.add=function(ev,contrato,year,mes){
 
  }
  $scope.upload=function(ev,file,year,month,client){
-    console.log(file);
-    console.log(year);
-    console.log(month);
+
      if("undefined" !== typeof file && "undefined" !== typeof year && "undefined" !== typeof month ){
         //var uploadUrl = 'http://localhost:8080/app/auditoria/'+ client.id + "/"+ $localStorage.contratanteLogeado.idContratante +  "/"+ month.name +  "/"+ year.name;
         var uploadUrl = 'http://ec2-35-163-21-208.us-west-2.compute.amazonaws.com:8080/app/auditoria/'+ client.id + "/"+ $localStorage.contratanteLogeado.idContratante +  "/"+ month.name +  "/"+ year.name

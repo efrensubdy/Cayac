@@ -36,7 +36,7 @@ var q=function(idContratante, idContratista){
           return a;
        }
 q($localStorage.userLogeado.idContratante,$localStorage.userLogeado.idContratista);
- console.log($scope.objeto);
+
 
 
 
@@ -147,12 +147,11 @@ $scope.meses=[
 
   }
   $scope.subirDocumento=function(ev,item,file){
-    console.log(item);
-    console.log(file);
+
     if ("undefined" !== typeof file){
     //var uploadUrl = 'http://localhost:8080/app/planDeTrabajo/'+ item.id + "/"+ $localStorage.userLogeado.idContratista;
     var uploadUrl = 'http://ec2-35-163-21-208.us-west-2.compute.amazonaws.com:8080/app/planDeTrabajo/'+ item.id + "/"+ $localStorage.userLogeado.idContratista;
-    console.log(uploadUrl);
+
     fileUpload.uploadFileToUrl(file,uploadUrl);
     $mdDialog.show(
                                      $mdDialog.alert()

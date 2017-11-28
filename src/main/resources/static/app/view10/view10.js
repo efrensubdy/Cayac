@@ -39,7 +39,7 @@ angular.module('myApp.view10', ['ngRoute'])
           };
         $scope.add=function(ev,contrato){
                 if("undefined" !== typeof contrato){
-                console.log(contrato)
+
                 $scope.listillo=pFinales.query({idContratante:$localStorage.contratanteLogeado.idContratante,idContrato:$scope.contrato.id})
                $rootScope.idContrato=$scope.contrato;
                 $scope.flag=true;
@@ -63,7 +63,7 @@ angular.module('myApp.view10', ['ngRoute'])
 
 
          $scope.showAlert = function(ev,client) {
-           console.log(client);
+
            $rootScope.listado2=rCumplidos.query({idContratista:client.id,idCategoria:client.idCategoria,idContratante:$localStorage.contratanteLogeado.idContratante});
            $rootScope.listado3=rExtras.query({idContratista:client.id,idCategoria:client.idCategoria,idContratante:$localStorage.contratanteLogeado.idContratante});
            $rootScope.listado4=rNoCumplidos.query({idContratista:client.id,idCategoria:client.idCategoria,idContratante:$localStorage.contratanteLogeado.idContratante});
@@ -119,7 +119,7 @@ angular.module('myApp.view10', ['ngRoute'])
 
            }
            $scope.agregarFinalista=function(ev){
-                  console.log($rootScope.idContrato);
+
                   var finalista={idContratista:$rootScope.cliente.id,idContrato:$rootScope.idContrato}
                   finalistas.save(finalista);
                   $mdDialog.show(

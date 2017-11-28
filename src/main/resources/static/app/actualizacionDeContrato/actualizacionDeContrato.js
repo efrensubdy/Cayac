@@ -53,7 +53,7 @@ $scope.refreshFile=function(ev,myFile,contrato,notificacion){
 switch(notificacion.id){
 
  case 1:
-    console.log("rut")
+
  //var uploadUrl = 'http://localhost:8080/app/contratos/rut/'+ contrato.idContratante + "/"+ contrato.fechaInicio + "/"+ contrato.idContrato;
  var uploadUrl = 'http://ec2-35-163-21-208.us-west-2.compute.amazonaws.com:8080/app/contratos/rut/'+ contrato.idContratante + "/"+ contrato.fechaInicio + "/"+ contrato.idContrato;
  fileUpload.uploadFileToUrl(myFile, uploadUrl);

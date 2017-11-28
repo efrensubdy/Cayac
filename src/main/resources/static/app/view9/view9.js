@@ -88,8 +88,7 @@ angular.module('myApp.view9', ['ngRoute'])
         $scope.agregar2 = function(ev,item) {
                     var file = $scope.myFile;
                     if ("undefined" !== typeof $scope.myFile){
-                    console.log(file);
-                    console.log(item.id)
+
                     //var uploadUrl = 'http://localhost:8080/app/documento/'+ $localStorage.userLogeado.idContratista+ "/"+ item.id;
                     var uploadUrl = 'http://ec2-35-163-21-208.us-west-2.compute.amazonaws.com:8080/app/documento/'+ $localStorage.userLogeado.idContratista+ "/"+ item.id;
                     fileUpload.uploadFileToUrl(file, uploadUrl);

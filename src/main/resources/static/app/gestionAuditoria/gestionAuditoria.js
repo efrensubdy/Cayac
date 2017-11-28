@@ -111,7 +111,7 @@ $scope.years=[
 
  }
  $scope.desplieguedeAuditora= function(item,mes,year){
-    console.log(item);
+
     $scope.tableContra=auditoriaContratis.query({idContratista:item.id,mes:mes.name,year:year.name});
     $rootScope.item=item;
     $scope.auditorias=true;

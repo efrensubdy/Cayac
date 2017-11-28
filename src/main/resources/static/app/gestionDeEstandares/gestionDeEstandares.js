@@ -90,8 +90,6 @@ $scope.cambiarOpcion = function(notificacion){
 }
 $scope.byMonthAndYear=function(mes,year){
 
-console.log(mes);
-console.log(year)
 $scope.listadoEstandaresMinimos=estByMonthYear.query({month:mes.id,year:year.name});
 $scope.bandera3=true;
 
@@ -166,7 +164,7 @@ $scope.showAlert2=function(ev,client){
               $scope.client= $rootScope.client;
                $scope.chartWidth = 500;
                $scope.chartHeight = 320;
-              console.log($scope.client);
+
 
               $scope.hide = function() {
                            $mdDialog.hide();

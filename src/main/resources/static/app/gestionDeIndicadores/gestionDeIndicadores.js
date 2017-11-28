@@ -114,11 +114,11 @@ function DialogController($scope, $mdDialog, $rootScope, $http) {
 var k=function(idContratante, idContratista,mes,year){
                       //var url= "http://localhost:8080/app/indicador/aprobadoIndicador/"+idContratista+"/"+idContratante +"/"+mes +"/"+year ;
                       var url= "http://ec2-35-163-21-208.us-west-2.compute.amazonaws.com:8080/app/indicador/aprobadoIndicador/"+idContratista+"/"+idContratante +"/"+mes +"/"+year ;
-                      console.log(url);
+
                        var a;
                     a=$http.get(url).then(function(response) {
                                     $scope.objeto=response.data;
-                                    console.log(response.data);
+
                                     return response.data;
                                  })
           return a;
@@ -134,7 +134,7 @@ $scope.listadoIndicadores=$rootScope.listadoIndicadores;
                      };
 
     $scope.aprobarInd= function(client,ev){
-         console.log(client);
+
          var aprobacion={idContratista:client.idContratista,idContratante:$localStorage.contratanteLogeado.idContratante,mes:$rootScope.mes.name,year:$rootScope.year.name};
          aprobarIndicador.save(aprobacion);
          $mdDialog.show(

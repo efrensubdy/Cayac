@@ -26,7 +26,7 @@ if ("undefined" === typeof $localStorage.userLogeado && "undefined" === typeof $
 
 }
 var q=function(idContratante, idContratista){
-console.log("dsds")
+
  //var url= "http://localhost:8080/app/planDeTrabajo/aprobado/"+idContratista+"/"+idContratante ;
  var url= "http://ec2-35-163-21-208.us-west-2.compute.amazonaws.com:8080/app/planDeTrabajo/aprobado/"+idContratista+"/"+idContratante ;
   var a;
@@ -128,23 +128,22 @@ $scope.showAlert=function(ev, client,mes,year){
 function DialogController($scope, $mdDialog, $rootScope, $http) {
  $scope.listadoActividad=$rootScope.lista1;
  $scope.listadoActividad2=$rootScope.lista2;
- console.log($scope.listadoActividad);
+
  var q=function(idContratante, idContratista,mes,year){
                        //var url= "http://localhost:8080/app/planDeTrabajo/aprobadoPlanDeTrabajo/"+idContratista+"/"+idContratante +"/"+mes +"/"+year;
                        var url= "http://ec2-35-163-21-208.us-west-2.compute.amazonaws.com:8080/app/planDeTrabajo/aprobadoPlanDeTrabajo/"+idContratista+"/"+idContratante +"/"+mes +"/"+year;
-                       console.log(url);
+
                         var a;
                      a=$http.get(url).then(function(response) {
                                      $scope.objeto=response.data;
-                                     console.log(response.data);
+
                                      return response.data;
                                   })
            return a;
         }
  q($localStorage.contratanteLogeado.idContratante,$rootScope.client.id,$rootScope.mes.name,$rootScope.year.name);
  $scope.aprobarPlanDeTrabajo= function(){
-        console.log($rootScope.client);
-        console.log($rootScope.mes);
+
         var aprobadin={"idContratista":$rootScope.client.id,"idContratante":$localStorage.contratanteLogeado.idContratante,"mes":$rootScope.mes.name,"year":$rootScope.year.name}
         aprobaPLanDeTrabajo.save(aprobadin);
         $mdDialog.show(

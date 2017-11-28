@@ -22,7 +22,7 @@ angular.module('myApp.login2', ['ngRoute'])
       var p=function(){
 
         if ($localStorage.contratanteLogeado.estadoDatabase =="activo" && $localStorage.contratanteLogeado.rol =="Contratante" && $localStorage.contratanteLogeado.idContratante!=3){
-            console.log("Entre a la primera");
+
              $rootScope.bandera =$localStorage.contratanteLogeado.estado ;
              $rootScope.idContratante=$localStorage.contratanteLogeado.idContratante;
              delete $localStorage.userLogeado;
@@ -30,7 +30,7 @@ angular.module('myApp.login2', ['ngRoute'])
 
         }
         else if ($localStorage.contratanteLogeado.estadoDatabase =="activo" && $localStorage.contratanteLogeado.rol =="Contratante" && $localStorage.contratanteLogeado.idContratante==3){
-                    console.log("Entre a la 2");
+
                      $rootScope.bandera =$localStorage.contratanteLogeado.estado ;
                      $rootScope.bandera4 = $localStorage.contratanteLogeado.estado ;
                      $rootScope.idContratante=$localStorage.contratanteLogeado.idContratante;
@@ -76,7 +76,7 @@ var url2="http://ec2-35-163-21-208.us-west-2.compute.amazonaws.com:8080/app/logi
 
       $http.get(url2).then(function(response){
                                            t=response.data;
-                                            console.log(t);
+
 
                                        $localStorage.contratanteLogeado=t;
 

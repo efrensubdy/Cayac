@@ -66,7 +66,7 @@ angular.module('myApp.ejecucionCNCE', ['ngRoute'])
 
 
          $scope.showAlert = function(ev,client) {
-           console.log(client);
+
            $rootScope.user=client;
            $rootScope.idClient=client.id;
            $rootScope.listadoCSP=psC.query({idFinalista:client.idFinalista,idCategoria:client.idCategoria,idContratante:$localStorage.contratanteLogeado.idContratante});
@@ -106,7 +106,7 @@ angular.module('myApp.ejecucionCNCE', ['ngRoute'])
                      return a;
                   }
            q($localStorage.contratanteLogeado.idContratante,$rootScope.user.id);
-            console.log($scope.o);
+
 
 
            $scope.hide = function() {
@@ -128,7 +128,7 @@ angular.module('myApp.ejecucionCNCE', ['ngRoute'])
            $scope.bandera2=false;
            $scope.bandera3=false;
            $scope.aprobar=function(){
-                 console.log($rootScope.user);
+
                  aproba.save({idContratista:$rootScope.user.id,idContratante:$localStorage.contratanteLogeado.idContratante})
                  $mdDialog.show(
                                       $mdDialog.alert()

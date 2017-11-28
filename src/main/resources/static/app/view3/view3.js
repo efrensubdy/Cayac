@@ -165,7 +165,7 @@ angular.module('myApp.view3', ['ngRoute'])
               $scope.display = function(selected, item) {
 
                              if(selected){
-                                  console.log(item);
+
                                    $scope.listadoSugerido.push(item);
                              }
                              else if(!selected && containsObject(item, $scope.listadoSugerido)){
@@ -173,7 +173,7 @@ angular.module('myApp.view3', ['ngRoute'])
                                                       if (index > -1) {
                                                           $scope.listadoSugerido.splice(index, 1);
                                                        }
-                                                       console.log( $scope.listadoSugerido);
+
                                                   }
 
                              }
@@ -182,7 +182,7 @@ angular.module('myApp.view3', ['ngRoute'])
               $scope.display2=function(select, item) {
 
                               if(select){
-                                     console.log(item);
+
                                      $scope.listadoExtra.push(item);
 
                               }
@@ -191,7 +191,7 @@ angular.module('myApp.view3', ['ngRoute'])
                                        if (index > -1) {
                                                $scope.listadoExtra.splice(index, 1);
                                                                        }
-                                                  console.log( $scope.listadoExtra);
+
                                    }
 
 
@@ -200,7 +200,7 @@ angular.module('myApp.view3', ['ngRoute'])
                          };
 
                            $scope.all=function(master){
-                                      console.log(master);
+
                                       if(!master){
                                       $scope.selected=true;
                                       $scope.listadoAllSugerido=$rootScope.listado2;
@@ -223,7 +223,7 @@ angular.module('myApp.view3', ['ngRoute'])
                               var a2=$scope.listadoExtra.length;
                                var b2=$scope.listadoAllExtra.length
                               if(a>b || a2>b2){
-                              console.log("entre a sugeridos")
+
                               agregarBaseDatosSugeridos($scope.listadoSugerido);
                               agregarBaseExtras($scope.listadoExtra);
                               $scope.mensajillo=false;
@@ -246,7 +246,7 @@ angular.module('myApp.view3', ['ngRoute'])
                                $scope.mensajillo=true;
                               }
                               else{
-                              console.log("entre a all sugeridos")
+
                               agregarBaseDatosSugeridos($scope.listadoAllSugerido);
                               agregarBaseExtras($scope.listadoAllExtra);
                                $mdDialog.show(
@@ -274,8 +274,7 @@ angular.module('myApp.view3', ['ngRoute'])
                                var total=lista.length;
                               for (var i=0;i<total;i++){
                                   var requisitoObligatorio={"idContratante":$localStorage.contratanteLogeado.idContratante,"idCategoria":$rootScope.idCategoria,"idRequisito":lista[i].numero};
-                                  console.log(requisitoObligatorio);
-                                  console.log(total);
+
                                   requisitosObligatorios.save(requisitoObligatorio);
 
                               }
@@ -290,8 +289,7 @@ angular.module('myApp.view3', ['ngRoute'])
                                           var total=lista.length;
                                          for (var i=0;i<total;i++){
                                            var requisitoExtra={"idContratante":$localStorage.contratanteLogeado.idContratante,"idCategoria":$rootScope.idCategoria,"idRequisito":lista[i].id};
-                                            console.log(total);
-                                            console.log(requisitoExtra);
+
                                             requisitosExtras.save(requisitoExtra);
 
                                          }
@@ -321,7 +319,7 @@ angular.module('myApp.view3', ['ngRoute'])
                                             }
               $scope.display3=function(selected, item) {
                               if(selected){
-                                     console.log(item);
+
                                      $scope.listadoSugeridoE.push(item);
                                      requisitosOEliminar.remove({"idContratante":$localStorage.contratanteLogeado.idContratante,"idRequisito":item.idRequisito});
 
@@ -338,7 +336,7 @@ angular.module('myApp.view3', ['ngRoute'])
 
                        $scope.display4=function(select, item) {
                                    if(select){
-                                      console.log(item)
+
                                       $scope.listadoExtraE.push(item);
                                       requisitosEEliminar.remove({"idContratante":$localStorage.contratanteLogeado.idContratante,"idRequisito":item.idRequisito})
                                    }

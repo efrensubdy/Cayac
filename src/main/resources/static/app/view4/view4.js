@@ -30,7 +30,7 @@ angular.module('myApp.view4', ['ngRoute'])
       }
       $scope.listini=activity.query();
       $scope.add=function(ev){
-        console.log($scope.departamento);
+
 
         var contratante={"nombreEmpresa":$scope.nombreEmpresa,"telefono":$scope.telefono,"email":$scope.email,"password":$scope.password,"departamento":$scope.departamento,"direccion":$scope.direccion,"representanteLegal":$scope.representanteLegal,"codigoCIIU":$scope.codigoCIIU};
         contratantes.save(contratante);
