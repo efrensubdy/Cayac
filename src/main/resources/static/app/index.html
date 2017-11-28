@@ -102,8 +102,7 @@
     </div>
     <div class="collapse navbar-collapse" id="myNavbar">
       <ul class="nav navbar-nav navbar-left">
-        <li><a class="text-primary" ng-show="bandera" href="#!/view6">Cambiar Contraseña</a></li>
-        <li><a class="text-primary" ng-show="bandera2" href="#!/view7">Cambiar Contraseña</a></li>
+
         <li><a class="text-primary" ng-show="bandera2 && !banderaEjecucion"  href="#!/view9">Soportes Seleccion</a></li>
         <li ng-show="bandera" class="btn-toolbar"> <div class="btn-toolbar">
           <div class="btn-group navbar-btn">
@@ -237,6 +236,22 @@
               <div class="row">
                 <div class="col-sm-1"><span class="	glyphicon glyphicon-home"></span></div>
                 <div class="col-sm-1">Inicio</div>
+              </div>
+            </a>
+          </li>
+          <li ng-show="bandera" role="presentation">
+            <a href="#!/view6">
+              <div class="row">
+                <div class="col-sm-1"><span class="glyphicon glyphicon-wrench"></span></div>
+                <div class="col-sm-1">Cambiar Contraseña</div>
+              </div>
+            </a>
+          </li>
+          <li ng-show="bandera2" role="presentation">
+            <a href="#!/view7">
+              <div class="row">
+                <div class="col-sm-1"><span class="glyphicon glyphicon-wrench"></span></div>
+                <div class="col-sm-1">Cambiar Contraseña</div>
               </div>
             </a>
           </li>
