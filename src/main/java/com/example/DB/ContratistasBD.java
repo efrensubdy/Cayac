@@ -273,7 +273,7 @@ public class ContratistasBD {
     public  List<Contratista> consultarContratistas(int idContratante) throws ClassNotFoundException, SQLException{
 
         List<Contratista> contratistas = new LinkedList<>();
-        String sql ="SELECT * FROM contratista where idContratante = ?";
+        String sql ="SELECT * FROM contratista INNER JOIN finalista ON contratista.idContratista = finalista.idContratista where idContratante = ?";
         PreparedStatement ps = Conexion.conection().prepareStatement(sql);
         ps.setInt(1,idContratante);
         ResultSet rs = ps.executeQuery();

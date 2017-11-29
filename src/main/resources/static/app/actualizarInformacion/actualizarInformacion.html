@@ -1,0 +1,101 @@
+
+<div>
+<div  ng-controller="actualizarInformacionCtrl as ctrl">
+    <div class="w3-container w3-center">
+        <div class="container align-middle text-center">
+            <div class="row">
+                <div class="col-xs-9">
+                    <h4 class="titulos" ><b>MODIFIQUE LA INFORMACIÓN DE SU CONTRTISTA</b></h4>
+                    <p class="texto"><b>DEBERÁ LLENAR TODOS LOS CAMPOS NUEVAMENTE A EXCEPCIÓN DEL CONTRATO , EL CORREO Y LA CONTRASEÑA ESTOS CAMPOS YA NO SE PODRÁN MODIFICAR</b></p>
+                    <p>SI EL CONTRATISTA YA HA SUBIDO SOPORTES DOCUMENTALES SERÁ IMPOSIBLE MODIFICAR LA DURACIÓN DEL CONTRATO Y LA ACTIVIDA ECONÓMICA</p>
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div layout="column" layout-align="center center">
+                                <md-select aria-label="select" class="titulos"  placeholder="Seleccione el contratista" name="singleSelect" ng-model="ciclo"  ng-change="show(ciclo)" >
+                                    <md-option ng-value="ciclo" ng-repeat="ciclo in listado">{{ciclo.nombreEmpresa}}</md-option>
+
+                                </md-select>
+                                <p class="md-caption titulos">El Contratista escogido fue {{ ciclo ? ciclo.nombreEmpresa : 'Nadie todavía' }}</p>
+                            </div>
+                        </div>
+                    </div>
+                    <br>
+                    <div class="row" ng-show="conf">
+                        <table class="table table-sm   table-bordered table-hover table-condensed  text-justify">
+                            <thead>
+                            <tr class="titulos">
+                                <th>Contenido de Empresa</th>
+                                <th>Información</th>
+                                <th>Modificar Campo</th>
+                            </tr>
+                            <tbody>
+                            <tr class="texto">
+                                <td><b>Nombre de Empresa</b> </td>
+                                <td>{{client.nombreEmpresa}}</td>
+                                <td></td>
+                            </tr>
+                            <tr class="texto">
+                                <td><b>NIT</b></td>
+                                <td>{{client.nit}}</td>
+                                <td></td>
+                            </tr>
+                            <tr class="texto">
+                                <td><b>Gerente General</b> </td>
+                                <td>{{client.nombreDeGerenteGeneral}}</td>
+                                <td></td>
+                            </tr>
+                            <tr class="texto">
+                                <td><b> ARL </b> </td>
+                                <td>{{client.arl}}</td>
+                                <td></td>
+                            </tr>
+                            <tr class="texto">
+                                <td><b> Direccion </b> </td>
+                                <td>{{client.direccion}}</td>
+                                <td></td>
+                            </tr>
+                            <tr class="texto">
+                                <td><b> Departamento </b> </td>
+                                <td>{{client.departamento}}</td>
+                                <td></td>
+                            </tr>
+                            <tr class="texto">
+                                <td><b> Telefono </b> </td>
+                                <td>{{client.telefono}}</td>
+                                <td></td>
+                            </tr>
+                            <tr class="texto">
+                                <td><b> Persona Contacto </b> </td>
+                                <td>{{client.personContacto}}</td>
+                                <td></td>
+                            </tr>
+                            <tr class="texto">
+                                <td><b> Cargo Persona Contacto </b> </td>
+                                <td>{{client.cargoPersonaContacto}}</td>
+                                <td></td>
+                            </tr>
+                            <tr class="texto">
+                                <td><b> Telefono Persona Contacto </b> </td>
+                                <td>{{client.telefonoPersonaContacto}}</td>
+                                <td></td>
+                            </tr>
+                            <tr class="texto">
+                                <td><b> Email de Contacto </b> </td>
+                                <td>{{client.emailContacto}}</td>
+                                <td></td>
+                            </tr>
+
+                            </tbody>
+                            </thead>
+
+                        </table>
+
+                    </div>
+                </div>
+            </div>
+            </div>
+
+    </div>
+</div>
+</div>
+
