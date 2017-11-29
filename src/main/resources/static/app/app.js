@@ -64,8 +64,9 @@ $qProvider.errorOnUnhandledRejections(false);
 
    if ("undefined" === typeof $localStorage.userLogeado && "undefined" !== typeof $localStorage.contratanteLogeado && $localStorage.contratanteLogeado.rol=="Contratante" && $localStorage.contratanteLogeado.idContratante != 3  ) {
        console.log("AT THIS MOMENT I'M CONTRACTOR")
-       $rootScope.bandera=$localStorage.contratanteLogeado.estado;
 
+       $rootScope.bandera=$localStorage.contratanteLogeado.estado;
+       $rootScope.nombreEmpresaContratante =$localStorage.contratanteLogeado.nombreEmpresa;
        $rootScope.bandera2=false;
        $rootScope.bandera3=false;
 
@@ -73,7 +74,7 @@ $qProvider.errorOnUnhandledRejections(false);
    else if("undefined" === typeof $localStorage.contratanteLogeado && "undefined" !== typeof $localStorage.userLogeado ){
         console.log("AT THIS MOMENT I'M BUILDER")
         $rootScope.bandera2 = $localStorage.userLogeado.estado;
-
+        $rootScope.nombreEmpresa =$localStorage.userLogeado.nombreEmpresa
         $rootScope.banderaEjecucion=$localStorage.userLogeado.finalista;
         $rootScope.bandera=false;
         $rootScope.bandera3=false;
@@ -81,6 +82,7 @@ $qProvider.errorOnUnhandledRejections(false);
    else if("undefined" !== typeof $localStorage.contratanteLogeado && "undefined" === typeof $localStorage.userLogeado && $localStorage.contratanteLogeado.rol=="administrador"){
 
            console.log("AT THIS MOMENT I'M ADMIN")
+            $rootScope.nombreAdmin = $localStorage.contratanteLogeado.email;
            $rootScope.bandera2=false;
            $rootScope.bandera3 = $localStorage.contratanteLogeado.estado;
            $rootScope.bandera=false;
@@ -90,6 +92,7 @@ $qProvider.errorOnUnhandledRejections(false);
                console.log("AT THIS MOMENT I'M ERNESTO")
                 $rootScope.bandera=$localStorage.contratanteLogeado.estado;
                 $rootScope.bandera4=$localStorage.contratanteLogeado.estado;
+                 $rootScope.nombreEmpresa =$localStorage.userLogeado.nombreEmpresa
                 $rootScope.bandera2=false;
                 $rootScope.bandera3=false;
     }

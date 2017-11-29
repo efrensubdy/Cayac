@@ -25,7 +25,10 @@ angular.module('myApp.login2', ['ngRoute'])
 
              $rootScope.bandera =$localStorage.contratanteLogeado.estado ;
              $rootScope.idContratante=$localStorage.contratanteLogeado.idContratante;
+
+             $rootScope.nombreEmpresaContratante =$localStorage.contratanteLogeado.nombreEmpresa;
              delete $localStorage.userLogeado;
+
              $location.path("/view1");
 
         }
@@ -34,6 +37,7 @@ angular.module('myApp.login2', ['ngRoute'])
                      $rootScope.bandera =$localStorage.contratanteLogeado.estado ;
                      $rootScope.bandera4 = $localStorage.contratanteLogeado.estado ;
                      $rootScope.idContratante=$localStorage.contratanteLogeado.idContratante;
+                     $rootScope.nombreEmpresaContratante =$localStorage.contratanteLogeado.nombreEmpresa;
                      delete $localStorage.userLogeado;
                      $location.path("/view1");
 
@@ -42,6 +46,7 @@ angular.module('myApp.login2', ['ngRoute'])
 
 
                      $rootScope.bandera3 =$localStorage.contratanteLogeado.estado ;
+                      $rootScope.nombreAdmin = $localStorage.contratanteLogeado.email;
 
 
                      $location.path("/view1");

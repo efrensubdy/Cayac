@@ -31,6 +31,7 @@ angular.module('myApp.login3', ['ngRoute'])
                          $rootScope.bandera2 = $localStorage.userLogeado.estado;
                          $rootScope.idContratista=$localStorage.userLogeado.idContratista;
                          $rootScope.banderaEjecucion=$localStorage.userLogeado.finalista;
+                         $rootScope.nombreEmpresa =$localStorage.userLogeado.nombreEmpresa
                          $scope.$storage = $localStorage;
                          $rootScope.email=$scope.email;
                          delete $localStorage.contratanteLogeado;

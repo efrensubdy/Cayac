@@ -142,11 +142,12 @@ public class UsersDB {
      */
     public List<Usuario> consultarUsuariosContratante() throws SQLException, ClassNotFoundException {
         List<Usuario> usuarios = new LinkedList<>();
-        String sql ="select con.idContratante ,con.email, con.password, u.idUsuarios, u.estado,u.rol from usuarios as u inner join contratante as con where u.idContratante=con.idContratante";
+        String sql ="select con.nombreEmpresa,con.idContratante ,con.email, con.password, u.idUsuarios, u.estado,u.rol from usuarios as u inner join contratante as con where u.idContratante=con.idContratante";
         PreparedStatement ps = Conexion.conection().prepareStatement(sql);
         ResultSet rs = ps.executeQuery();
         while(rs.next()){
             Usuario u=new Usuario();
+            u.setNombreEmpresa(rs.getString("nombreEmpresa"));
             u.setIdContratante(rs.getInt("idContratante"));
             u.setEmail(rs.getString("email"));
             u.setPassword(rs.getString("password"));
