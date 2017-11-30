@@ -32,63 +32,117 @@
                             <tr class="texto">
                                 <td><b>Nombre de Empresa</b> </td>
                                 <td>{{client.nombreEmpresa}}</td>
-                                <td></td>
+                                <td><input class="form-control" type="text" name="firstname" id="nombreEmpresa" placeholder="nombre de su empresa" ng-model="nombreEmpresa"></td>
                             </tr>
                             <tr class="texto">
                                 <td><b>NIT</b></td>
                                 <td>{{client.nit}}</td>
-                                <td></td>
+                                <td> <input class="form-control"   name="nit" placeholder="NIT de su empresa" ng-model="nit"></td>
                             </tr>
                             <tr class="texto">
                                 <td><b>Gerente General</b> </td>
                                 <td>{{client.nombreDeGerenteGeneral}}</td>
-                                <td></td>
+                                <td> <input class="form-control"   name="gerenteGeneral" placeholder="Nombre del Gerente General de su empresa Contratista" ng-model="nombreDeGerenteGeneral"></td>
                             </tr>
                             <tr class="texto">
                                 <td><b> ARL </b> </td>
-                                <td>{{client.arl}}</td>
-                                <td></td>
+                                <td>{{arl.name}}</td>
+                                <td><input class="form-control" type="text"  placeholder="ARL de su empresa" name="ar" list="ar" ng-model="ar">
+                                    <datalist id="ar">
+                                        <select name="ar" class="w3-select"  data-placeholder="ARL de la empresa"  >
+                                            <option value="" disabled selected>Escoja</option>
+                                            <option value="Sura">Sura</option>
+                                            <option value="Bolivar">Bolivar</option>
+                                            <option value="Equidad">Equidad</option>
+                                            <option value="Aurora">Aurora</option>
+                                            <option value="Colpatria">Colpatria</option>
+                                            <option value="Liberty">Liberty</option>
+                                            <option value="Mapfre">Mapfre</option>
+                                            <option value="Alfa">Alfa</option>
+                                        </select>
+                                    </datalist></td>
                             </tr>
                             <tr class="texto">
                                 <td><b> Direccion </b> </td>
                                 <td>{{client.direccion}}</td>
-                                <td></td>
+                                <td><input class="form-control"   name="direccion" placeholder="direccion de su empresa Contratista " ng-model="direccion"></td>
                             </tr>
                             <tr class="texto">
                                 <td><b> Departamento </b> </td>
-                                <td>{{client.departamento}}</td>
-                                <td></td>
+                                <td>{{departamento.name}}</td>
+                                <td><input class="form-control" type="text"  name="dpto" list="dpto" placeholder="departamento de su empresa" ng-model="dpto">
+                                    <datalist id="dpto">
+                                        <select name="dpto" class="w3-select"  data-placeholder="departamento de la empresa"  >
+                                            <option value="" disabled selected>Escoja un Departamento</option>
+                                            <option value="Bogotá D.C">Bogotá D.C</option>
+                                            <option value="La Guajira">La Guajira</option>
+                                            <option value="Magdalena">Magdalena</option>
+                                            <option value="Guaviare">Guaviare</option>
+                                            <option value="Boyaca">Boyaca</option>
+                                            <option value="Valle del Cauca">Valle del Cauca</option>
+                                            <option value="Amazonas">Amazonas</option>
+                                            <option value="Meta">Meta</option>
+                                            <option value="Antioquia">Antioquia</option>
+                                            <option value="Cauca">Cauca</option>
+                                            <option value="Caldas">Caldas</option>
+                                            <option value="Caqueta">Caqueta</option>
+                                            <option value="Casanare">Casanare</option>
+                                            <option value="Cesar">Cesar</option>
+                                            <option value="Choco">Choco</option>
+                                            <option value="Cordoba">Cordoba</option>
+                                            <option value="Guanía">Guanía</option>
+                                            <option value="Huila">Huila</option>
+                                            <option value="Nariño">Nariño</option>
+                                            <option value="Norte de Santander">Norte de Santander</option>
+                                            <option value="Putumayo">Putumayo</option>
+                                            <option value="Quindio">Quindio</option>
+                                            <option value="San Andrés">San Andrés</option>
+                                            <option value="Santander">Santander</option>
+                                            <option value="Sucre">Sucre</option>
+                                            <option value="Tolima">Tolima</option>
+                                            <option value="Vaupes">Vaupes</option>
+                                            <option value="Vichada">Vichada</option>
+                                            <option value="Bolivar">Bolivar</option>
+
+                                        </select>
+                                    </datalist></td>
                             </tr>
                             <tr class="texto">
                                 <td><b> Telefono </b> </td>
                                 <td>{{client.telefono}}</td>
-                                <td></td>
+                                <td><input class="form-control"   name="telefono" placeholder="numero telefonico de la empresa" ng-model="telefono"></td>
                             </tr>
                             <tr class="texto">
                                 <td><b> Persona Contacto </b> </td>
                                 <td>{{client.personContacto}}</td>
-                                <td></td>
+                                <td> <input class="form-control" type="text" name="personContacto"  placeholder="Nombre de Persona de Contacto de Empresa Contratista.."  ng-model="personContacto" ></td>
                             </tr>
                             <tr class="texto">
                                 <td><b> Cargo Persona Contacto </b> </td>
                                 <td>{{client.cargoPersonaContacto}}</td>
-                                <td></td>
+                                <td><input class="form-control" type="text" name="cargoPersonaContacto"  placeholder="Cargo de Persona Contacto de la Empresa.."  ng-model="cargoPersonaContacto" ></td>
                             </tr>
                             <tr class="texto">
                                 <td><b> Telefono Persona Contacto </b> </td>
                                 <td>{{client.telefonoPersonaContacto}}</td>
-                                <td></td>
+                                <td><input class="form-control" type="text" name="telefonoPersonaContacto"  placeholder="telefono persona Contacto.."  ng-model="telefonoPersonaContacto" ></td>
                             </tr>
                             <tr class="texto">
                                 <td><b> Email de Contacto </b> </td>
                                 <td>{{client.emailContacto}}</td>
-                                <td></td>
+                                <td><input class="form-control" type="email" name="emailContacto" id="emailContacto" placeholder="Email persona Contacto.."  ng-model="emailContacto" ></td>
                             </tr>
 
                             </tbody>
                             </thead>
 
                         </table>
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <button class="btn btn-primary center-block" type="submit" ng-click="add($event,nombreEmpresa,nit,nombreDeGerenteGeneral,ar,direccion,dpto,telefono,personContacto,cargoPersonaContacto,telefonoPersonaContacto,emailContacto,ciclo)">Actualizar</button>
+                                <br>
+                            </div>
+                        </div>
 
                     </div>
                 </div>
