@@ -9,7 +9,7 @@ angular.module('myApp.actualizarInformacion', ['ngRoute'])
   });
 }])
 
-.controller('actualizarInformacionCtrl', ['$route','$mdDialog','$location', '$q', '$scope','$log','$rootScope','$localStorage','$sessionStorage','contratistasPorContratante',function($route,$mdDialog,$location, $q, $scope,$log,$rootScope,$localStorage,$sessionStorage,contratistasPorContratante) {
+.controller('actualizarInformacionCtrl', ['$route','$mdDialog','$location', '$q', '$scope','$log','$rootScope','$localStorage','$sessionStorage','contratistasPorContratante','actualizarInfo',function($route,$mdDialog,$location, $q, $scope,$log,$rootScope,$localStorage,$sessionStorage,contratistasPorContratante,actualizarInfo) {
 
 if ("undefined" === typeof $localStorage.userLogeado && "undefined" === typeof $localStorage.contratanteLogeado){
          $mdDialog.show(
@@ -213,6 +213,7 @@ else{
                                   contratista.emailContacto=emailContacto
                                }
     console.log(contratista);
+    actualizarInfo.save(contratista);
     $route.reload();
     $mdDialog.show(
      $mdDialog.alert()

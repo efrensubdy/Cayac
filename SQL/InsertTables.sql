@@ -22,7 +22,7 @@ INSERT INTO ciudad VALUES(7,"Leticia");
 INSERT INTO ciudad VALUES (8,"Villavicencio");
 INSERT INTO ciudad VALUES (9,"Medellín");
 INSERT INTO ciudad VALUES(10,"Cartagena");
-INSERT INTO ciudad VALUES(11,"Cauca");
+INSERT INTO ciudad VALUES(11,"Popayan");
 INSERT INTO ciudad VALUES (12,"Manizales");
 INSERT INTO ciudad VALUES (13,"Florencia");
 INSERT INTO ciudad VALUES (14,"Yopal");
@@ -43,7 +43,7 @@ INSERT INTO ciudad VALUES (27,"Sincelejo");
 INSERT INTO ciudad VALUES (28,"Ibague");
 INSERT INTO ciudad VALUES (29,"Mitu");
 INSERT INTO ciudad VALUES (30,"Puerto Carreño");
-INSERT INTO ciudad VALUES (31,"Cauca");
+
 
 
  
@@ -56,27 +56,28 @@ INSERT INTO departamento VALUES(6,"Valle del Cauca",5);
 INSERT INTO departamento VALUES(7,"Amazonas",7);
 INSERT INTO departamento VALUES(8,"Meta",8);
 INSERT INTO departamento VALUES (9,"Antioquia",9);
-INSERT INTO departamento VALUES (11,"Cuaca",11);
-INSERT INTO departamento VALUES (12,"Caldas",12);
-INSERT INTO departamento VALUES (13,"Caqueta",13);
-INSERT INTO departamento VALUES (14,"Casanare",14);
-INSERT INTO departamento VALUES (15,"Cesar",15);
-INSERT INTO departamento VALUES (16,"Choco",16);
-INSERT INTO departamento VALUES (17,"Cordoba",17);
-INSERT INTO departamento VALUES (18,"Guanía",18);
-INSERT INTO departamento VALUES (19,"Huila",19);
-INSERT INTO departamento VALUES (20,"Nariño",20);
-INSERT INTO departamento VALUES (21,"Norte de Santander",21);
-INSERT INTO departamento VALUES (22,"Putumayo",22);
-INSERT INTO departamento VALUES (23,"Quindio",23);
-INSERT INTO departamento VALUES (24,"Risaralda",24);
+INSERT INTO departamento VALUES (10,"Cauca",11);
+INSERT INTO departamento VALUES (11,"Caldas",12);
+INSERT INTO departamento VALUES (12,"Caqueta",13);
+INSERT INTO departamento VALUES (13,"Casanare",14);
+INSERT INTO departamento VALUES (14,"Cesar",15);
+INSERT INTO departamento VALUES (15,"Choco",16);
+INSERT INTO departamento VALUES (16,"Cordoba",17);
+INSERT INTO departamento VALUES (17,"Guanía",18);
+INSERT INTO departamento VALUES (18,"Huila",19);
+INSERT INTO departamento VALUES (19,"Nariño",20);
+INSERT INTO departamento VALUES (20,"Norte de Santander",21);
+INSERT INTO departamento VALUES (21,"Putumayo",22);
+INSERT INTO departamento VALUES (22,"Quindio",23);
+INSERT INTO departamento VALUES (23,"Risaralda",24);
 INSERT INTO departamento VALUES (25,"San Andrés",25);
-INSERT INTO departamento VALUES (26,"Santander",26);
-INSERT INTO departamento VALUES (27,"Sucre",27);
-INSERT INTO departamento VALUES (28,"Tolima",28);
-INSERT INTO departamento VALUES (29,"Vaupes",29);
-INSERT INTO departamento VALUES (30,"Vichada",30);
-INSERT INTO departamento VALUES (31,"Popayan",31);
+INSERT INTO departamento VALUES (25,"Santander",26);
+INSERT INTO departamento VALUES (26,"Sucre",27);
+INSERT INTO departamento VALUES (27,"Tolima",28);
+INSERT INTO departamento VALUES (28,"Vaupes",29);
+INSERT INTO departamento VALUES (29,"Vichada",30);
+INSERT INTO departamento values (30,"Bolivar",10)
+
 
 
 
