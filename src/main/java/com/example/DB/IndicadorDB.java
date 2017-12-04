@@ -32,8 +32,8 @@ public class IndicadorDB {
         ps.setFloat(10,indicador.getIncidencia());
         ps.setFloat(11,indicador.getAusentismo());
         ps.setInt(12,indicador.getIdContratista());
-        ps.setInt(13,indicador.getIdContratante());
-        ps.setInt(14,indicador.getYear());
+        ps.setInt(13,indicador.getYear());
+        ps.setInt(14,indicador.getId());
         ps.execute();
         ps.close();
         con.close();

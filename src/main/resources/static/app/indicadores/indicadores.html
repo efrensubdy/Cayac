@@ -24,9 +24,10 @@
                             <div class="table-responsive">
                                 <table class="table table-bordered table-hover table-condensed">
                                     <tbody>
-                                    <tr >
+                                    <tr class="titulos" >
                                         <th >Nombre de Empresa</th>
                                         <th >Mes</th>
+                                        <th>Año</th>
                                         <th>Detalle</th>
 
                                     </tr>
@@ -37,9 +38,51 @@
 
                                         </td>
                                         <td>
+                                            {{todo.year}}
+                                        </td>
+                                        <td>
                                            <button class="btn btn-primary" ng-click="showAlert($event,todo)">
                                                Detalles
                                            </button>
+                                        </td>
+                                    </tr>
+
+                                    </tbody>
+
+                                </table>
+
+                            </div>
+                        </div>
+                    </div>
+                    <br>
+                    <div class="container" ng-show="bandera3">
+                        <div class="col-xs-9">
+                            <label class="titulos"><b>ACTUALIZAR INDICADORES</b></label>
+                            <p>EN LA SIGUIENTE TABLA ECONTRARÁ LOS INDICADORES QUE HAY EN EL SOFTWARE ACTUALICE EL QUE NECESITE</p>
+                            <br>
+                            <div class="table-responsive">
+                                <table class="table table-bordered table-hover table-condensed">
+                                    <tbody>
+                                    <tr class="titulos" >
+                                        <th >Nombre de Empresa</th>
+                                        <th >Mes</th>
+                                        <th>Año</th>
+                                        <th>Detalle</th>
+
+                                    </tr>
+                                    <tr ng-repeat="todo in table1 | orderBy:propertyName:reverse">
+                                        <td >{{todo.nombreContra}}</td>
+                                        <td >
+                                            {{todo.mes}}
+
+                                        </td>
+                                        <td>
+                                            {{todo.year}}
+                                        </td>
+                                        <td>
+                                            <button class="btn btn-primary" ng-click="showAlert2($event,todo)">
+                                                Actualizar
+                                            </button>
                                         </td>
                                     </tr>
 
@@ -120,7 +163,7 @@
                         </div>
                         <div class="col-sm-6">
 
-                            <input class="form-control" type="number" name="frecuencia" id="frecuencia" placeholder="numero de frecuencia" ng-model="frecuencia">
+                          <input class="form-control" type="number" name="frecuencia" id="frecuencia" placeholder="numero de frecuencia" ng-model="frecuencia">
 
                         </div>
                     </div>

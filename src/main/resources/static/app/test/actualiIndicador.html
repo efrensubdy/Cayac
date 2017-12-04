@@ -1,0 +1,105 @@
+<md-dialog id="attribute-dialog" aria-label="Detalle">
+    <form>
+        <md-toolbar>
+            <div class="md-toolbar-tools">
+                <h1>Detalles</h1>
+                <span flex></span>
+                <md-button class="md-icon-button" ng-click="cancel()">
+                    <md-icon md-font-library="material-icons">highlight_off</md-icon>
+                </md-button>
+            </div>
+        </md-toolbar>
+        <md-dialog-content>
+            <md-tabs md-dynamic-height md-border-bottom>
+                <md-tab label="Info">
+                    <md-content class="md-padding">
+                        <div class="md-dialog-content">
+                            <table class="table table-sm   table-bordered table-hover table-condensed  text-justify">
+                                <thead>
+                                <tr class="titulos">
+                                    <th>Contenido</th>
+                                    <th>Información</th>
+                                    <th>Actualizar</th>
+                                </tr>
+                                <tbody>
+                                <tr class="texto">
+                                    <td><b>Nombre de Contratista</b> </td>
+                                    <td>{{client.nombreContra}}</td>
+                                    <td><input class="form-control" id="disabledInput" type="text" value="{{client.nombreContra}}" placeholder="Disabled input here..." disabled></td>
+                                </tr>
+                                <tr class="texto">
+                                    <td><b> Periodo</b></td>
+                                    <td>{{client.mes}}</td>
+                                    <td><md-select aria-label="simpleSelect2" class="titulos" ng-model="mes" placeholder="seleccione el mes" ng-change="simple()">
+                                        <md-option ng-value="todo" ng-repeat="todo in meses">{{todo.name}}</md-option>
+
+                                    </md-select></td>
+                                </tr>
+                                <tr class="texto">
+                                    <td><b> Año</b></td>
+                                    <td>{{client.year}}</td>
+                                    <td><md-select aria-label="simpleSelect3" class="titulos" ng-model="year" placeholder="seleccione el año">
+                                        <md-option ng-value="todo" ng-repeat="todo in years">{{todo.name}}</md-option>
+
+                                    </md-select></td>
+                                </tr>
+                                <tr class="texto">
+                                    <td><b>Responsable</b></td>
+                                    <td>{{client.responsable}}</td>
+                                    <td><input class="form-control" type="text" name="responsable" id="responsable" placeholder="Responsable del Contratista" ng-model="responsable"></td>
+                                </tr>
+                                <tr class="texto">
+                                    <td><b>Actividad Operacionales</b> </td>
+                                    <td>{{client.actividad}}</td>
+                                    <td> <input class="form-control" type="text" name="actividad" id="actividad" placeholder="actividad del Contratista" ng-model="actividad"></td>
+                                </tr>
+                                <tr class="texto">
+                                    <td><b>Departamento</b> </td>
+                                    <td>{{client.departamento}}</td>
+                                    <td><input class="form-control" type="text" name="departamento" id="departamento" placeholder="departamento Responsable " ng-model="departamento"></td>
+                                </tr>
+                                <tr class="texto">
+                                    <td><b>Severidad de los Accidentes Laborales</b> </td>
+                                    <td>{{client.severidad}}</td>
+                                    <td><input class="form-control" type="number" name="severidad" id="severidad" placeholder="numero de severidad" ng-model="severidad"></td>
+                                </tr>
+                                <tr class="texto">
+                                    <td><b> Frecuencia de los Accidentes Laborales </b> </td>
+                                    <td>{{client.frecuencia}}</td>
+                                    <td><input class="form-control" type="number" name="frecuencia" id="frecuencia" placeholder="numero de frecuencia" ng-model="frecuencia"></td>
+                                </tr>
+                                <tr class="texto">
+                                    <td><b> Mortalidad de los Accidentes Laborales </b> </td>
+                                    <td>{{client.mortalidad}}</td>
+                                    <td><input class="form-control" type="number" name="mortalidad" id="mortalidad" placeholder="numero de mortalidad" ng-model="mortalidad"></td>
+                                </tr>
+                                <tr class="texto">
+                                    <td><b> Prevalencia de la Enfermedad Laboral </b> </td>
+                                    <td>{{client.prevalencia}}</td>
+                                    <td><input class="form-control" type="number" name="prevalencia" id="prevalencia" placeholder="numero de prevalencia" ng-model="prevalencia"></td>
+                                </tr>
+                                <tr class="texto">
+                                    <td><b> Incidencia de la Enfermedad Laboral </b> </td>
+                                    <td>{{client.incidencia}}</td>
+                                    <td><input class="form-control" type="number" name="incidencia" id="incidencia" placeholder="numero de icidencia" ng-model="incidencia"></td>
+                                </tr>
+                                <tr class="texto">
+                                    <td><b> Ausentismo</b> </td>
+                                    <td>{{client.ausentismo}}</td>
+                                    <td> <input class="form-control" type="number" name="ausentismo" id="ausentismo" placeholder="numero de ausentismo" ng-model="ausentismo"></td>
+                                </tr>
+                                </tbody>
+                                </thead>
+                            </table>
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    <button class="btn btn-primary center-block" ng-click="add($event,responsable,departamento,mes.name,actividad,severidad,frecuencia,mortalidad,prevalencia,incidencia,ausentismo,year.name,client)">Agregar indicadores</button>
+                                </div>
+                            </div>
+                        </div>
+                    </md-content>
+                </md-tab>
+            </md-tabs>
+        </md-dialog-content>
+    </form>
+</md-dialog>

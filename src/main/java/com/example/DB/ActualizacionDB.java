@@ -2,6 +2,7 @@ package com.example.DB;
 
 import com.example.Models.Conexion;
 import com.example.Models.Contratista;
+import com.example.Models.Indicador;
 import com.example.Models.Usuario;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -49,5 +50,38 @@ public class ActualizacionDB {
 
 
     }
+    public void actualizarIndicadorContratista(Indicador indicador)throws SQLException,ClassNotFoundException{
+
+        String sql="UPDATE Indicadores set  periodo = ? , responsable = ? , departamento = ?, actividad = ?, severidad = ?, frecuencia = ?,mortalidad = ?,prevalencia = ?,incidencia = ?,ausentismo = ?,idContratista = ?,año = ? where id= ?";
+        Connection con = Conexion.conection();
+        PreparedStatement ps=con.prepareStatement(sql);
+
+        ps.setString(1,indicador.getMes());
+        ps.setString(2,indicador.getResponsable());
+        ps.setString(3,indicador.getDepartamento());
+        ps.setString(4,indicador.getActividad());
+        ps.setFloat(5,indicador.getSeveridad());
+        ps.setFloat(6,indicador.getFrecuencia());
+        ps.setFloat(7,indicador.getMortalidad());
+        ps.setFloat(8,indicador.getPrevalencia());
+        ps.setFloat(9,indicador.getIncidencia());
+        ps.setFloat(10,indicador.getAusentismo());
+        ps.setInt(11,indicador.getIdContratista());;
+        ps.setInt(12,indicador.getYear());
+        ps.setInt(13,indicador.getId());
+        ps.executeUpdate();
+        ps.close();
+        con.close();
+
+
+
+    }
+
+
+
+
+
+
+
 
 }

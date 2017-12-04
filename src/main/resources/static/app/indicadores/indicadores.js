@@ -9,7 +9,7 @@ angular.module('myApp.indicadores', ['ngRoute'])
   });
 }])
 
-.controller('indicadoresCtrl', ['$location', '$q', '$scope','$log','$rootScope','$localStorage','$sessionStorage','$mdDialog','indicador','indContr',function($location, $q, $scope,$log,$rootScope,$localStorage,$sessionStorage,$mdDialog,indicador,indContr) {
+.controller('indicadoresCtrl', ['$location', '$q', '$scope','$log','$rootScope','$localStorage','$sessionStorage','$mdDialog','$route','indicador','indContr','actualizarIndicador',function($location, $q, $scope,$log,$rootScope,$localStorage,$sessionStorage,$mdDialog,$route,indicador,indContr,actualizarIndicador) {
 if ("undefined" === typeof $localStorage.userLogeado && "undefined" === typeof $localStorage.contratanteLogeado){
          $mdDialog.show(
                           $mdDialog.alert()
@@ -31,6 +31,7 @@ $scope.name=$localStorage.userLogeado.nombreEmpresa;
 $scope.opciones=[
  { id: 1, name: 'AGREGAR INDICADORES'},
  { id: 2, name: 'CONSULTAR INDICADORES'},
+ { id:3,  name: 'ACTULIZAR INDICADOR'}
 
 ];
 $scope.years=[
@@ -58,13 +59,20 @@ $scope.simple2 = function(item){
         case 1:
         $scope.bandera1=true;
         $scope.bandera2=false;
+        $scope.bandera3= false;
 
         break;
         case 2:
         $scope.bandera1=false;
         $scope.bandera2=true;
+        $scope.bandera3=false
         $scope.table=indContr.query({idContratista:$localStorage.userLogeado.idContratista,idContratante:$localStorage.userLogeado.idContratante})
         break;
+        case 3:
+        $scope.bandera1=false;
+        $scope.bandera2=false;
+        $scope.bandera3=true;
+        $scope.table1=indContr.query({idContratista:$localStorage.userLogeado.idContratista,idContratante:$localStorage.userLogeado.idContratante})
 
    }
 
@@ -144,6 +152,7 @@ $scope.add = function(ev,contraName,responsable,departamento,mes,actividad,sever
 }
 $scope.showAlert=function(ev,client){
             $rootScope.client=client
+
             $mdDialog.show({
                   //Controlador del mensajes con operaciones definido en la parte de abajo
                   controller: DialogController2,
@@ -156,6 +165,26 @@ $scope.showAlert=function(ev,client){
                                 })
 
           }
+
+
+$scope.showAlert2=function(ev,client){
+            $rootScope.client=client
+            $rootScope.meses =$scope.meses;
+            $rootScope.years=$scope.years
+            $mdDialog.show({
+                  //Controlador del mensajes con operaciones definido en la parte de abajo
+                  controller: DialogController,
+                   //permite la comunicacion con el html que despliega el boton requisitos
+                    templateUrl: 'test/actualiIndicador.html',
+                    parent: angular.element(document.body),
+                    targetEvent: ev,
+                     clickOutsideToClose:true,
+                     fullscreen: $scope.customFullscreen // Only for -xs, -sm breakpoints.
+                                })
+
+ }
+
+
 
  function DialogController2($scope, $mdDialog, $rootScope){
             $scope.client= $rootScope.client;
@@ -173,7 +202,167 @@ $scope.showAlert=function(ev,client){
 
            }
 
+ function DialogController($scope, $mdDialog, $rootScope,$route){
+            $scope.client= $rootScope.client;
 
+            $scope.meses =$rootScope.meses
+          $scope.years = $rootScope.years
+
+            $scope.hide = function() {
+                         $mdDialog.hide();
+                       };
+                       //funcion para cerral el mensaje
+             $scope.cancel = function() {
+                         $mdDialog.cancel();
+                       };
+
+
+             $scope.add =function(ev,responsable,departamento,mes,actividad,severidad,frecuencia,mortalidad,prevalencia,incidencia,ausentismo,year,client){
+                 if("undefined" == typeof responsable && "undefined" == typeof departamento && "undefined" == typeof mes && "undefined" == typeof actividad && "undefined" == typeof severidad && "undefined" == typeof frecuencia && "undefined" == typeof mortalidad && "undefined" == typeof prevalencia && "undefined" == typeof icidencia && "undefined" == typeof ausentismo && "undefined" == typeof year  ){
+
+                        $mdDialog.show(
+                          $mdDialog.alert()
+                            .parent(angular.element(document.querySelector('#popupContainer')))
+                            .clickOutsideToClose(true)
+                            .title('Debe registrar al menos un dato')
+                            .textContent('Recuerde llenar todos los campos y poner correos validos.')
+                            .ariaLabel('Alert Dialog Demo')
+                            .ok('intente de nuevo!')
+                            .targetEvent(ev)
+                                            );
+                }
+                else{
+                 var indicador = new Indicador();
+                 console.log(client)
+                 if (responsable == client.responsable || "undefined" == typeof responsable ){
+
+                      indicador.responsable =client.responsable
+                 }
+                 else{
+
+                     indicador.responsable=responsable
+                 }
+                 if (departamento == client.departamento || "undefined" == typeof departamento ){
+
+                      indicador.departamento =client.departamento
+                  }
+                  else{
+
+                      indicador.departamento=departamento
+                  }
+                  if (mes == client.mes || "undefined" == typeof mes ){
+
+                        indicador.mes =client.mes
+                    }
+                    else{
+
+                        indicador.mes=mes
+                    }
+                  if (actividad == client.actividad || "undefined" == typeof actividad ){
+
+                      indicador.actividad =client.actividad
+                  }
+                  else{
+
+                      indicador.actividad=actividad
+                  }
+                  if (severidad == client.severidad || "undefined" == typeof severidad ){
+
+                        indicador.severidad =client.severidad
+                    }
+                    else{
+
+                        indicador.severidad=severidad
+                    }
+                    if (frecuencia == client.frecuencia || "undefined" == typeof frecuencia ){
+
+                        indicador.frecuencia =client.frecuencia
+                    }
+                    else{
+
+                        indicador.frecuencia=frecuencia
+                    }
+                    if (mortalidad == client.mortalidad || "undefined" == typeof mortalidad ){
+
+                        indicador.mortalidad =client.mortalidad
+                    }
+                    else{
+
+                        indicador.mortalidad=mortalidad
+                    }
+                    if (prevalencia == client.prevalencia || "undefined" == typeof prevalencia ){
+
+                        indicador.prevalencia =client.prevalencia
+                    }
+                    else{
+
+                        indicador.prevalencia=prevalencia
+                    }
+
+                     if (incidencia == client.incidencia || "undefined" == typeof incidencia ){
+
+                        indicador.incidencia =client.incidencia
+                    }
+                    else{
+
+                        indicador.icidencia=icidencia
+                    }
+                     if (ausentismo == client.ausentismo || "undefined" == typeof ausentismo ){
+
+                    indicador.ausentismo =client.ausentismo
+                                     }
+                     else{
+
+                         indicador.ausentismo=ausentismo
+                     }
+                      if (year == client.year || "undefined" == typeof year ){
+
+                     indicador.year =client.year
+                                      }
+                      else{
+
+                          indicador.year=year
+                      }
+
+
+                  indicador.idContratista=$localStorage.userLogeado.idContratista;
+                  indicador.id = client.id;
+                  console.log(indicador);
+                 actualizarIndicador.save(indicador);
+                 $mdDialog.show(
+                      $mdDialog.alert()
+                         .parent(angular.element(document.querySelector('#popupContainer')))
+                         .clickOutsideToClose(true)
+                         .title('Exito !!')
+                         .textContent('Puede revisar nuevamente o consultar sus indicadores.')
+                         .ariaLabel('Alert Dialog Demo')
+                         .ok('ok!')
+                         .targetEvent(ev)
+                                         );
+
+
+
+
+
+
+                }
+                 $route.reload();
+
+
+             }
+
+
+
+
+           }
+
+
+
+           function Indicador(){
+
+
+
+           }
 
 
 

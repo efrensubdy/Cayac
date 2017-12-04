@@ -123,7 +123,7 @@ $mdDialog.show(
 }
 else{
         var contratista = new Contratista();
-        if (nombreEmpresa == ciclo.nombreEmpresa){
+        if (nombreEmpresa == ciclo.nombreEmpresa || "undefined" == typeof nombreEmpresa ){
 
             contratista.nombreEmpresa =ciclo.nombreEmpresa
         }
@@ -131,7 +131,7 @@ else{
 
             contratista.nombreEmpresa=nombreEmpresa
         }
-         if (nit == ciclo.nit){
+         if (nit == ciclo.nit || "undefined" == typeof nit){
 
             contratista.nit=ciclo.nit
          }
@@ -139,7 +139,7 @@ else{
 
             contratista.nit=nit
          }
-         if (nombreDeGerenteGeneral == ciclo.nombreDeGerenteGeneral){
+         if (nombreDeGerenteGeneral == ciclo.nombreDeGerenteGeneral || "undefined" == typeof nombreDeGerenteGeneral ){
 
                      contratista.nombreDeGerenteGeneral=ciclo.nombreDeGerenteGeneral
                   }
@@ -147,16 +147,17 @@ else{
 
                      contratista.nombreDeGerenteGeneral=nombreDeGerenteGeneral
                   }
-          if (ar == ciclo.arl){
+          if (ar == ciclo.arl || "undefined" == typeof ar){
 
-               contratista.arl=ciclo.arl
+               contratista.arl=$scope.arls[ciclo.arl-1].name;
+
             }
            else{
 
             contratista.arl=ar
                         }
 
-        if (direccion == ciclo.direccion){
+        if (direccion == ciclo.direccion || "undefined" == typeof direccion){
 
            contratista.direccion=ciclo.direccion
         }
@@ -164,15 +165,17 @@ else{
 
                contratista.direccion=direccion
             }
-         if (dpto == $scope.departamento){
+         if (dpto == $scope.departamento || "undefined" == typeof dpto){
 
-           contratista.departamento=ciclo.departamento
+           contratista.departamento=$scope.departamentos[ciclo.departamento-1].name;
+
+
         }
       else{
 
            contratista.departamento=dpto
         }
-     if (telefono == $scope.telefono){
+     if (telefono == $scope.telefono || "undefined" == typeof telefono){
 
                 contratista.telefono=ciclo.telefono
              }
@@ -180,7 +183,7 @@ else{
             console.log("hubo cambio")
             contratista.telefono=telefono
          }
-          if (personContacto == $scope.personContacto){
+          if (personContacto == $scope.personContacto || "undefined" == typeof personContacto){
 
              contratista.personContacto=ciclo.personContacto
           }
@@ -188,7 +191,7 @@ else{
 
             contratista.personContacto=personContacto
               }
-         if (cargoPersonaContacto == $scope.cargoPersonaContacto){
+         if (cargoPersonaContacto == $scope.cargoPersonaContacto || "undefined" == typeof cargoPersonaContacto){
 
               contratista.cargoPersonaContacto=ciclo.cargoPersonaContacto
            }
@@ -196,7 +199,7 @@ else{
 
               contratista.cargoPersonaContacto=cargoPersonaContacto
            }
-        if (telefonoPersonaContacto == $scope.telefonoPersonaContacto){
+        if (telefonoPersonaContacto == $scope.telefonoPersonaContacto || "undefined" == typeof telefonoPersonaContacto ){
 
                   contratista.telefonoPersonaContacto=ciclo.telefonoPersonaContacto
                }
@@ -204,7 +207,7 @@ else{
 
                   contratista.cargoPersonaContacto=telefonoPersonaContacto
                }
-        if (emailContacto == $scope.emailContacto){
+        if (emailContacto == $scope.emailContacto || "undefined" == typeof emailContacto){
 
               contratista.emailContacto=ciclo.emailContacto
            }
@@ -214,7 +217,7 @@ else{
                                }
     contratista.id = ciclo.id
     console.log(contratista);
-    actualizarInfo.save(contratista);
+   actualizarInfo.save(contratista);
 
     $mdDialog.show(
      $mdDialog.alert()
@@ -223,7 +226,7 @@ else{
         .title('Exito !!')
         .textContent('Puede revisar nuevamente o consultar a sus contratistas.')
         .ariaLabel('Alert Dialog Demo')
-        .ok('intente de nuevo!')
+        .ok('ok!')
         .targetEvent(ev)
                         );
 
