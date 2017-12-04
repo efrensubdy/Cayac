@@ -2,6 +2,8 @@ package com.example.Controllers;
 
 import com.example.Models.Accion;
 import com.example.Models.Contratista;
+import com.example.Services.ManejadorDeActualizacion;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -17,7 +19,8 @@ import java.util.logging.Logger;
 @RequestMapping(value="/app/actualizacionDeInfo")
 public class ActualizacionDeInfoController {
 
-
+    @Autowired
+    public ManejadorDeActualizacion manejadorDeActualizacion;
 
     @RequestMapping(value ="Registro",method = RequestMethod.POST)
     public ResponseEntity<?> agregarIndicador(@RequestBody Contratista contratista){
@@ -26,7 +29,7 @@ public class ActualizacionDeInfoController {
         try {
             //obtener datos que se enviarán a través del API
 
-            System.out.println(contratista.getNombreEmpresa() + "/" + contratista.getDepartamento() + "/" + contratista.getArl());
+            manejadorDeActualizacion.actualizacionInformacionContratista(contratista);
             a = new ResponseEntity<>(HttpStatus.ACCEPTED);
         } catch (Exception ex) {
             Logger.getLogger(Controller.class.getName()).log(Level.SEVERE, null, ex);

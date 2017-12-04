@@ -94,7 +94,6 @@ public class ContratistasBD {
         consultarContratistas();
         String sql = "INSERT INTO contratista (nombreEmpresa,nit,codigoCIIU,nombreGerente,email,arl,direccion,telefono,duracion,departamento,fecha_Creacion,fecha_modificacion,password,idContratante,personaContacto,cargoPer,telefonoCon,emailContacto,idservicioAContratar) VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
         Connection con =  Conexion.conection();
-        nuevoContratista.setId(tamañoTabla + 1);
         nuevoContratista.setCodigoCIIU(String.valueOf(Integer.valueOf(actividadEconomicaBD.findAactivdad(Integer.valueOf(nuevoContratista.codigoCIIU)))));
         nuevoContratista.setDepartamento(String.valueOf(departamentoDB.findAactivdad(nuevoContratista.getDepartamento())));
         nuevoContratista.setArl(String.valueOf(arlBD.findArl(nuevoContratista.getArl())));

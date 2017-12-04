@@ -198,7 +198,7 @@ else{
            }
         if (telefonoPersonaContacto == $scope.telefonoPersonaContacto){
 
-                  contratista.cargoPersonaContacto=ciclo.telefonoPersonaContacto
+                  contratista.telefonoPersonaContacto=ciclo.telefonoPersonaContacto
                }
          else{
 
@@ -212,9 +212,10 @@ else{
 
                                   contratista.emailContacto=emailContacto
                                }
+    contratista.id = ciclo.id
     console.log(contratista);
     actualizarInfo.save(contratista);
-    $route.reload();
+
     $mdDialog.show(
      $mdDialog.alert()
         .parent(angular.element(document.querySelector('#popupContainer')))
@@ -228,9 +229,7 @@ else{
 
 
 }
-
-
-
+ $route.reload();
 
 }
 function Contratista(){
