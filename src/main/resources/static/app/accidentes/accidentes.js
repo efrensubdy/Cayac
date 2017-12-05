@@ -32,6 +32,7 @@ $scope.bandera2=false;
 $scope.opciones=[
  { id: 1, name: 'REGISTRAR ACCIDENTES'},
  { id: 2, name: 'CONSULTAR ACCIDENTES REGISTRADOS'},
+ { id: 3, name: 'ACTUALIZAR ACCIDENTE REGISTRADOS'},
 
 ];
 $scope.lugar=[
@@ -194,14 +195,21 @@ $scope.simple2 = function(item){
         case 1:
         $scope.bandera1=true;
         $scope.bandera2=false;
+        $scope.bandera3=false;
 
         break;
         case 2:
         $scope.bandera1=false;
         $scope.bandera2=true;
+        $scope.bandera3=false;
         $scope.tablaAcc=accPorContra.query({idContratista:$localStorage.userLogeado.idContratista,idContratante:$localStorage.userLogeado.idContratante});
 
         break;
+        case 3:
+        $scope.bandera1=false;
+        $scope.bandera2=false;
+        $scope.bandera3=true;
+         $scope.tablaAccidentes=accPorContra.query({idContratista:$localStorage.userLogeado.idContratista,idContratante:$localStorage.userLogeado.idContratante});
 
    }
 }
@@ -312,6 +320,36 @@ $scope.showAlert=function(ev,client){
                                 })
 
           }
+$scope.showAlert2=function(ev,client){
+            $rootScope.client=client;
+            $rootScope.lugar=$scope.lugar;
+            $rootScope.dias=$scope.dias;
+            $rootScope.tipoDeAccidente=$scope.tipoDeAccidente;
+            $rootScope.horas=$scope.horas;
+            $rootScope.sitio=$scope.sitio;
+            $rootScope.lesiones=$scope.lesiones;
+            $rootScope.mecanismos=$scope.mecanismos;
+            $rootScope.partes=$scope.partes;
+            $rootScope.agentes=$scope.agentes;
+            $rootScope.jornadas=$scope.jornadas;
+            $rootScope.sinos=$scope.sinos;
+            $rootScope.sinos2=$scope.sinos2;
+            $rootScope.sexo=$scope.sexo;
+            $rootScope.zona=$scope.zona;
+            $rootScope.tipoDeIdentificacion=$scope.tipoDeIdentificacion;
+            $mdDialog.show({
+                              //Controlador del mensajes con operaciones definido en la parte de abajo
+              controller: DialogController,
+               //permite la comunicacion con el html que despliega el boton requisitos
+                    templateUrl: 'test/actualizarAcci.html',
+                    parent: angular.element(document.body),
+                    targetEvent: ev,
+                     clickOutsideToClose:true,
+                     fullscreen: $scope.customFullscreen // Only for -xs, -sm breakpoints.
+                            })
+
+
+ }
  function DialogController2($scope, $mdDialog, $rootScope){
             $scope.client= $rootScope.client;
 
@@ -323,6 +361,345 @@ $scope.showAlert=function(ev,client){
                          $mdDialog.cancel();
                        };
 
+
+
+
+           }
+function DialogController($scope, $mdDialog, $rootScope){
+            $scope.client= $rootScope.client;
+            $scope.lugar=$rootScope.lugar;
+            $scope.dias= $rootScope.dias;
+            $scope.tipoDeAccidente=$rootScope.tipoDeAccidente;
+            $scope.horas= $rootScope.horas;
+            $scope.sitio=$rootScope.sitio;
+            $scope.lesiones=$rootScope.lesiones;
+            $scope.mecanismos=$rootScope.mecanismos;
+            $scope.partes=$rootScope.partes;
+            $scope.agentes=$rootScope.agentes;
+            $scope.jornadas=$rootScope.jornadas;
+            $scope.sinos=$rootScope.sinos;
+            $scope.sinos2=$rootScope.sinos2;
+            $scope.sexo=$rootScope.sexo;
+            $scope.zona=$rootScope.zona;
+            $scope.tipoDeIdentificacion=$rootScope.tipoDeIdentificacion;
+
+
+            $scope.hide = function() {
+                         $mdDialog.hide();
+                       };
+                       //funcion para cerral el mensaje
+             $scope.cancel = function() {
+                         $mdDialog.cancel();
+                       };
+
+
+  $scope.add = function(ev,textArea,primerApellido,segundoApellido,primerNombre,segundoNombre,identificacion,numero,nacimiento,sexo,departamento,muni,zonas,cargo,ingreso,acci,hora,diaSe,jornada,sino,tipoA,lugari,depa,mun,zon,si2,tipoB,lesion,mecanismo,parte,agente,client){
+                console.log(client)
+                if ("undefined" == typeof textArea && "undefined" == typeof primerApellido && "undefined" == typeof segundoApellido && "undefined" == typeof primerNombre && "undefined" == typeof segundoNombre &&"undefined" == typeof identificacion &&"undefined" == typeof numero &&"undefined" == typeof nacimiento && "undefined" == typeof sexo &&  "undefined" == typeof departamento && "undefined" == typeof muni &&"undefined" == typeof zonas &&"undefined" == typeof cargo && "undefined" == typeof ingreso &&  "undefined" == typeof accidente && "undefined" == typeof hora && "undefined" == typeof diaSe && "undefined" == typeof jornada && "undefined" == typeof sino && "undefined" == typeof tipoA && "undefined" == typeof lugari && "undefined" == typeof depa && "undefined" == typeof mun && "undefined" == typeof zon && "undefined" == typeof si2 && "undefined" == typeof tipoB && "undefined" == typeof lesion && "undefined" == typeof mecanismo && "undefined" == typeof parte && "undefined" == typeof agente ){
+                     $mdDialog.show(
+                              $mdDialog.alert()
+                                .parent(angular.element(document.querySelector('#popupContainer')))
+                                .clickOutsideToClose(true)
+                                .title('Debe registrar al menos un dato')
+                                .textContent('Recuerde llenar todos los campos')
+                                .ariaLabel('Alert Dialog Demo')
+                                .ok('intente de nuevo!')
+                                .targetEvent(ev)
+                      );
+
+
+                }
+                else{
+                    var acciden =new Accidente();
+                    acciden.id=client.id;
+                    if (textArea == client.descripcion || "undefined" == typeof textArea ){
+
+                          acciden.textArea =client.descripcion;
+                     }
+                     else{
+
+                         acciden.textArea=textArea
+                     }
+                     if (primerApellido == client.primerApellido || "undefined" == typeof primerApellido ){
+
+                           acciden.primerApellido =client.primerApellido;
+                      }
+
+                      else{
+
+                          acciden.primerApellido=primerApellido
+                      }
+
+                       if (segundoApellido == client.segundoApellido || "undefined" == typeof segundoApellido ){
+
+                             acciden.segundoApellido =client.segundoApellido;
+                        }
+
+                        else{
+
+                            acciden.segundoApellido=segundoApellido
+                        }
+
+                   if (primerNombre == client.primerNombre || "undefined" == typeof primerNombre ){
+
+                        acciden.primerNombre =client.primerNombre;
+                   }
+
+                   else{
+
+                       acciden.primerNombre=primerNombre
+                   }
+                   if (segundoNombre == client.segundoNombre || "undefined" == typeof segundoNombre ){
+
+                           acciden.segundoNombre =client.segundoNombre;
+                      }
+
+                      else{
+
+                          acciden.segundoNombre=segundoNombre
+                      }
+
+                   if (identificacion == client.identificacion || "undefined" == typeof identificacion ){
+
+                          acciden.identificacion =client.identificacion;
+                     }
+
+                     else{
+
+                         acciden.identificacion=identificacion
+                     }
+                     if (numero == client.numero || "undefined" == typeof numero ){
+
+                           acciden.numero =client.numero;
+                      }
+
+                      else{
+
+                          acciden.numero=numero
+                      }
+                      if (nacimiento == client.nacimiento || "undefined" == typeof nacimiento ){
+
+                             acciden.nacimiento =client.nacimiento;
+                        }
+
+                        else{
+
+                            acciden.nacimiento=nacimiento
+                        }
+                        if (sexo == client.sexo || "undefined" == typeof sexo ){
+
+                             acciden.sexo =client.sexo;
+                        }
+
+                        else{
+
+                            acciden.sexo=sexo
+                        }
+                        if (sexo == client.departamento || "undefined" == typeof departamento ){
+
+                             acciden.departamento =client.departamento;
+                        }
+
+                        else{
+
+                            acciden.departamento=departamento
+                        }
+                        if (muni == client.muni || "undefined" == typeof muni ){
+
+                             acciden.muni =client.muni;
+                        }
+
+                        else{
+
+                            acciden.muni=muni
+                        }
+                        if (zonas == client.zonas || "undefined" == typeof zonas ){
+
+                             acciden.zonas =client.zonas;
+                        }
+
+                        else{
+
+                            acciden.zonas=zonas
+                        }
+                        if (cargo == client.cargo || "undefined" == typeof cargo ){
+
+                             acciden.cargo =client.cargo;
+                        }
+
+                        else{
+
+                            acciden.cargo=cargo
+                        }
+                         if (ingreso == client.ingreso || "undefined" == typeof ingreso ){
+
+                                 acciden.ingreso =client.ingreso;
+                            }
+
+                            else{
+
+                                acciden.ingreso=ingreso
+                            }
+
+
+                         if (acci == client.accidente || "undefined" == typeof acci ){
+
+                                 acciden.accidente =client.accidente;
+                            }
+
+                            else{
+
+                                acciden.accidente=acci
+                            }
+
+                         if (hora == client.hora || "undefined" == typeof hora ){
+
+                              acciden.hora =client.hora;
+                         }
+
+                         else{
+
+                             acciden.hora=hora
+                         }
+                         if (diaSe == client.diaSe || "undefined" == typeof diaSe ){
+
+                               acciden.diaSe =client.diaSe;
+                          }
+
+                          else{
+
+                              acciden.diaSe=diaSe
+                          }
+                         if (jornada == client.jornada || "undefined" == typeof jornada ){
+
+                                acciden.jornada =client.jornada;
+                           }
+
+                           else{
+
+                               acciden.jornada=jornada
+                           }
+                           if (sino == client.sino || "undefined" == typeof sino ){
+
+                                   acciden.sino =client.sino;
+                              }
+
+                              else{
+
+                                  acciden.sino=sino
+                              }
+                            if (tipoA == client.tipoA || "undefined" == typeof tipoA ){
+
+                                  acciden.tipoA =client.tipoA;
+                             }
+
+                             else{
+
+                                 acciden.tipoA=tipoA
+                             }
+                             if (lugari == client.lugari || "undefined" == typeof lugari ){
+
+                                   acciden.lugari =client.lugari;
+                              }
+
+                              else{
+
+                                  acciden.lugari=lugari
+                              }
+                              if (depa == client.depa || "undefined" == typeof depa ){
+
+                                     acciden.depa =client.depa;
+                                }
+
+                                else{
+
+                                    acciden.depa=depa
+                                }
+                                if (mun == client.mun || "undefined" == typeof mun ){
+
+                                     acciden.mun =client.mun;
+                                }
+
+                                else{
+
+                                    acciden.mun=mun
+                                }
+                                if (zon == client.zon || "undefined" == typeof zon ){
+
+                                         acciden.zon =client.zon;
+                                    }
+
+                                    else{
+
+                                        acciden.zon=zon
+                                    }
+                               if (si2 == client.si2 || "undefined" == typeof si2 ){
+
+                                    acciden.si2 =client.si2;
+                               }
+
+                               else{
+
+                                   acciden.si2=si2
+                               }
+                               if (tipoB == client.tipoB || "undefined" == typeof tipoB ){
+
+                                       acciden.tipoB =client.tipoB;
+                                  }
+
+                                  else{
+
+                                      acciden.tipoB=tipoB
+                                  }
+                               if (lesion == client.lesion || "undefined" == typeof lesion ){
+
+                                      acciden.lesion =client.lesion;
+                                 }
+
+                                 else{
+
+                                     acciden.lesion=lesion
+                                 }
+                                 if (mecanismo == client.mecanismo || "undefined" == typeof mecanismo ){
+
+                                       acciden.mecanismo =client.mecanismo;
+                                  }
+
+                                  else{
+
+                                      acciden.mecanismo=mecanismo
+                                  }
+                                  if (parte == client.parte || "undefined" == typeof parte ){
+
+                                         acciden.parte =client.parte;
+                                    }
+
+                                    else{
+
+                                        acciden.parte=parte
+                                    }
+                                  if (agente == client.agente || "undefined" == typeof agente ){
+
+                                       acciden.agente =client.agente;
+                                  }
+
+                                  else{
+
+                                      acciden.agente=agente
+                                  }
+
+                     console.log(acciden);
+
+
+                }
+
+
+
+           }
+
+           }
+
+           function Accidente(){
 
 
 

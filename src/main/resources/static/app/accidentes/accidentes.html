@@ -134,7 +134,7 @@
                              </div>
                              <div class="col-sm-3">
                                  <p class="titulos">CARGO</p>
-                                 <input class="form-control" ng-model="cargo" placeholder="Segundo Nombre">
+                                 <input class="form-control" ng-model="cargo" placeholder="cargo">
                              </div>
                          </div>
                          <br>
@@ -311,7 +311,7 @@
                          <br>
                          <div class="row">
                              <div class="col-sm-12">
-                                 <button class="btn btn-primary center-block" ng-click="add($event,textArea,primerApellido,segundoApellido,primerNombre,segundoNombre,identificacion,numero,nacimiento | date:'yyyy-MM-dd',sex,departamento,muni,zonas,cargo,ingreso | date:'yyyy-MM-dd',accidente | date:'yyyy-MM-dd',hora,diaSe,jornada,sino,tipoA,lugari,depa,mun,zon,si2,tipoB,lesion,mecanismo,parte,agente)">REGISTRAR ACTIVIDAD</button>
+                                 <button class="btn btn-primary center-block" ng-click="add($event,textArea,primerApellido,segundoApellido,primerNombre,segundoNombre,identificacion,numero,nacimiento | date:'yyyy-MM-dd',sex,departamento,muni,zonas,cargo,ingreso | date:'yyyy-MM-dd',accidente | date:'yyyy-MM-dd',hora,diaSe,jornada,sino,tipoA,lugari,depa,mun,zon,si2,tipoB,lesion,mecanismo,parte,agente)">REGISTRAR ACCIDENTE</button>
                              </div>
 
 
@@ -351,6 +351,40 @@
                             </div>
                         </div>
                     </div>
+                    <div class="container" ng-show="bandera3">
+                        <div class="col-xs-9">
+                            <label class="titulos">ACTUALIZAR ACCIDENTES</label>
+                            <div class="table-responsive">
+                                <table class="table table-bordered table-hover table-condensed">
+                                    <tbody>
+                                    <tr class="titulos" >
+                                        <th >Nombre de Accidentado</th>
+                                        <th>Apellido Accidentado</th>
+                                        <th >Análisis</th>
+
+                                    </tr>
+                                    <tr class="texto" ng-repeat="todo in tablaAccidentes | orderBy:propertyName:reverse">
+                                        <td >{{todo.primerNombre}}</td>
+                                        <td>{{todo.primerApellido}}</td>
+                                        <td >
+                                            <button  class="btn btn-primary" ng-click="showAlert2($event,todo)" >
+                                                Detalle
+                                            </button>
+
+                                        </td>
+                                    </tr>
+
+                                    </tbody>
+
+                                </table>
+
+                            </div>
+
+
+                        </div>
+
+
+                </div>
                 </div>
             </div>
 
@@ -360,5 +394,6 @@
 
     </div>
 </div>
-</div>
+
+
 

@@ -1,0 +1,315 @@
+<md-dialog id="attribute-dialog" aria-label="Detalle">
+    <form>
+        <md-toolbar>
+            <div class="md-toolbar-tools">
+                <h1>Detalles</h1>
+                <span flex></span>
+                <md-button class="md-icon-button" ng-click="cancel()">
+                    <md-icon md-font-library="material-icons">highlight_off</md-icon>
+                </md-button>
+            </div>
+        </md-toolbar>
+        <md-dialog-content>
+            <md-tabs md-dynamic-height md-border-bottom>
+                <md-tab label="II.INFORMACIÓN PERSONA">
+                    <md-content class="md-padding">
+                        <div class="md-dialog-content">
+                            <table class="table table-sm   table-bordered table-hover table-condensed  text-justify">
+                                <thead>
+                                <tr class="titulos">
+                                    <th>Contenido</th>
+                                    <th>Información</th>
+                                    <th>Actualizar</th>
+                                </tr>
+                                <tbody>
+                                <tr class="texto">
+                                    <td><b>Descripcion</b> </td>
+                                    <td>{{client.descripcion}}</td>
+                                    <td><textarea class="form-control texto" rows="5" id="comment" ng-model="textArea"></textarea></td>
+                                </tr>
+                                <tr class="texto">
+                                    <td><b> Primer Apellido</b></td>
+                                    <td>{{client.primerApellido}}</td>
+                                    <td> <input class="form-control" ng-model="primerApellido" placeholder="Primer Apellido"></td>
+                                </tr>
+                                <tr class="texto">
+                                    <td><b> Segundo Apellido</b></td>
+                                    <td>{{client.segundoApellido}}</td>
+                                    <td> <input class="form-control" ng-model="segundoApellido" placeholder="Segundo Apellido"></td>
+                                </tr>
+                                <tr class="texto">
+                                    <td><b>Primer Nombre</b></td>
+                                    <td>{{client.primerNombre}}</td>
+                                    <td><input class="form-control" ng-model="primerNombre" placeholder="Primer Nombre"></td>
+                                </tr>
+                                <tr class="texto">
+                                    <td><b>Segundo Nombre </b> </td>
+                                    <td>{{client.segundoNombre}}</td>
+                                    <td><input class="form-control" ng-model="segundoNombre" placeholder="Segundo Nombre"></td>
+                                </tr>
+                                <tr class="texto">
+                                    <td><b>Tipo de Identificacion</b> </td>
+                                    <td>{{client.identificacion}}</td>
+                                    <td><md-select aria-label="simpleSelect2" class="titulos" placeholder="Escoger Opcion" ng-model="identificacion" >
+                                        <md-option ng-value="todo.name" ng-repeat="todo in tipoDeIdentificacion">{{todo.name}}</md-option>
+
+                                    </md-select></td>
+                                </tr>
+                                <tr class="texto">
+                                    <td><b>Número</b> </td>
+                                    <td>{{client.numero}}</td>
+                                    <td> <input type="number" class="form-control" ng-model="numero" placeholder=""></td>
+                                </tr>
+                                <tr class="texto">
+                                    <td><b> Fecha de Nacimiento</b> </td>
+                                    <td>{{client.nacimiento}}</td>
+                                    <td><input type="date" class="form-control" ng-model="nacimiento" placeholder="fecha de nacimiento"></td>
+                                </tr>
+                                <tr class="texto">
+                                    <td><b> Sexo </b> </td>
+                                    <td>{{client.sexo}}</td>
+                                    <td> <md-select aria-label="simpleSelect3" class="titulos" placeholder="Escoger Opcion" ng-model="sex" >
+                                        <md-option ng-value="todo.name" ng-repeat="todo in sexo">{{todo.name}}</md-option>
+
+                                    </md-select></td>
+                                </tr>
+                                <tr class="texto">
+                                    <td><b> Departamento de Origen </b> </td>
+                                    <td>{{client.departamento}}</td>
+                                    <td><md-select aria-label="simpleSelect4" class="titulos" placeholder="departamento de su empresa" ng-model="departamento"  style="min-width: 200px;">
+                                        <md-option value="Bogotá D.C">Bogotá D.C</md-option>
+                                        <md-option value="La Guajira">La Guajira</md-option>
+                                        <md-option value="Magdalena">Magdalena</md-option>
+                                        <md-option value="Guaviare">Guaviare</md-option>
+                                        <md-option value="Boyaca">Boyaca</md-option>
+                                        <md-option value="Valle del Cauca">Valle del Cauca</md-option>
+                                        <md-option value="Amazonas">Amazonas</md-option>
+                                        <md-option value="Meta">Meta</md-option>
+                                        <md-option value="Antioquia">Antioquia</md-option>
+                                        <md-option value="Cuaca">Cuaca</md-option>
+                                        <md-option value="Caldas">Caldas</md-option>
+                                        <md-option value="Caqueta">Caqueta</md-option>
+                                        <md-option value="Casanare">Casanare</md-option>
+                                        <md-option value="Cesar">Cesar</md-option>
+                                        <md-option value="Choco">Choco</md-option>
+                                        <md-option value="Cordoba">Cordoba</md-option>
+                                        <md-option value="Guanía">Guanía</md-option>
+                                        <md-option value="Huila">Huila</md-option>
+                                        <md-option value="Nariño">Nariño</md-option>
+                                        <md-option value="Norte de Santander">Norte de Santander</md-option>
+                                        <md-option value="Putumayo">Putumayo</md-option>
+                                        <md-option value="Quindio">Quindio</md-option>
+                                        <md-option value="San Andrés">San Andrés</md-option>
+                                        <md-option value="Santander">Santander</md-option>
+                                        <md-option value="Sucre">Sucre</md-option>
+                                        <md-option value="Tolima">Tolima</md-option>
+                                        <md-option value="Vaupes">Vaupes</md-option>
+                                        <md-option value="Vichada">Vichada</md-option>
+                                        <md-option value="Popayan">Popayan</md-option>
+                                    </md-select></td>
+                                </tr>
+                                <tr class="texto">
+                                    <td><b> Municipio de Origen </b> </td>
+                                    <td>{{client.muni}}</td>
+                                    <td> <input type="text" class="form-control" ng-model="muni" placeholder="Municipio"></td>
+                                </tr>
+                                <tr class="texto">
+                                    <td><b> Zona de Origen</b> </td>
+                                    <td>{{client.zonas}}</td>
+                                    <td><md-select aria-label="simpleSelect5" class="titulos" placeholder="zona" ng-model="zonas" data-placeholder="">
+                                        <md-option ng-value="todo.name" ng-repeat="todo in zona">{{todo.name}}</md-option>
+
+                                    </md-select></td>
+                                </tr>
+                                <tr class="texto">
+                                    <td><b> Cargo de Accidentado</b> </td>
+                                    <td>{{client.cargo}}</td>
+                                    <td><input class="form-control" ng-model="cargo" placeholder="cargo"></td>
+                                </tr>
+                                <tr class="texto">
+                                    <td><b>Fecha de Ingreso a la Empresa</b> </td>
+                                    <td>{{client.ingreso}}</td>
+                                    <td> <input type="date" class="form-control" ng-model="ingreso"></td>
+                                </tr>
+                                </tbody>
+                                </thead>
+                            </table>
+                        </div>
+                    </md-content>
+                </md-tab>
+                <md-tab label="III.SOBRE EL ACCIDENTE">
+                    <md-content class="md-padding">
+                        <div class="md-dialog-content">
+                            <table class="table table-sm   table-bordered table-hover table-condensed  text-justify">
+                                <thead>
+                                <tr class="titulos">
+                                    <th>Contenido</th>
+                                    <th>Información</th>
+                                    <th>Actualizar</th>
+                                </tr>
+                                <tbody>
+                                <tr class="texto">
+                                    <td><b>Fecha del Accidente</b> </td>
+                                    <td>{{client.accidente}}</td>
+                                    <td> <input type="date" class="form-control" ng-model="acci"></td>
+                                </tr>
+                                <tr class="texto">
+                                    <td><b>Hora del Accidente</b></td>
+                                    <td>{{client.hora}}</td>
+                                    <td><md-select aria-label="simpleSelect6"  class="titulos" placeholder="hora" ng-model="hora" >
+                                        <md-option ng-value="todo.name" ng-repeat="todo in horas">{{todo.name}}</md-option>
+
+                                    </md-select></td>
+                                </tr>
+                                <tr class="texto">
+                                    <td><b> Día de la semana del Accidente</b></td>
+                                    <td>{{client.diaSe}}</td>
+                                    <td><md-select aria-label="simpleSelect7" class="titulos" placeholder="Día" ng-model="diaSe" >
+                                        <md-option ng-value="todo.name" ng-repeat="todo in dias">{{todo.name}}</md-option>
+
+                                    </md-select></td>
+                                </tr>
+                                <tr class="texto">
+                                    <td><b>Jornada del Accidente</b></td>
+                                    <td>{{client.jornada}}</td>
+                                    <td><md-select aria-label="simpleSelect8" class="titulos" placeholder="jornada" ng-model="jornada">
+                                        <md-option ng-value="todo.name" ng-repeat="todo in jornadas">{{todo.name}}</md-option>
+
+                                    </md-select></td>
+                                </tr>
+                                <tr class="texto">
+                                    <td><b>Estaba realizando su labor habitual ?</b></td>
+                                    <td>{{client.sino}}</td>
+                                    <td><md-select aria-label="simpleSelect9" class="titulos" ng-model="sino" placeholder="escoja">
+                                        <md-option ng-value="todo.name" ng-repeat="todo in sinos">{{todo.name}}</md-option>
+
+                                    </md-select></td>
+                                </tr>
+                                <tr class="texto">
+                                    <td><b>Tipo de Accidente </b> </td>
+                                    <td>{{client.tipoA}}</td>
+                                    <td> <md-select aria-label="simpleSelect10" class="titulos" placeholder="tipo" ng-model="tipoA" >
+                                        <md-option ng-value="todo.name" ng-repeat="todo in tipoDeAccidente">{{todo.name}}</md-option>
+
+                                    </md-select></td>
+                                </tr>
+                                <tr class="texto">
+                                    <td><b>Lugar donde Ocurre el accidente</b> </td>
+                                    <td>{{client.lugari}}</td>
+                                    <td><md-select aria-label="simpleSelect11" class="titulos" ng-model="lugari" placeholder="lugar">
+                                        <md-option ng-value="todo.name" ng-repeat="todo in lugar">{{todo.name}}</md-option>
+
+                                    </md-select></td>
+                                </tr>
+                                <tr class="texto">
+                                    <td><b>Departamento donde Ocurre el Accidente</b> </td>
+                                    <td>{{client.depa}}</td>
+                                    <td><md-select aria-label="simpleSelect12" class="titulos" placeholder="departamento de su empresa" ng-model="depa"  style="min-width: 200px;">
+                                        <md-option value="Bogotá D.C">Bogotá D.C</md-option>
+                                        <md-option value="La Guajira">La Guajira</md-option>
+                                        <md-option value="Magdalena">Magdalena</md-option>
+                                        <md-option value="Guaviare">Guaviare</md-option>
+                                        <md-option value="Boyaca">Boyaca</md-option>
+                                        <md-option value="Valle del Cauca">Valle del Cauca</md-option>
+                                        <md-option value="Amazonas">Amazonas</md-option>
+                                        <md-option value="Meta">Meta</md-option>
+                                        <md-option value="Antioquia">Antioquia</md-option>
+                                        <md-option value="Cuaca">Cuaca</md-option>
+                                        <md-option value="Caldas">Caldas</md-option>
+                                        <md-option value="Caqueta">Caqueta</md-option>
+                                        <md-option value="Casanare">Casanare</md-option>
+                                        <md-option value="Cesar">Cesar</md-option>
+                                        <md-option value="Choco">Choco</md-option>
+                                        <md-option value="Cordoba">Cordoba</md-option>
+                                        <md-option value="Guanía">Guanía</md-option>
+                                        <md-option value="Huila">Huila</md-option>
+                                        <md-option value="Nariño">Nariño</md-option>
+                                        <md-option value="Norte de Santander">Norte de Santander</md-option>
+                                        <md-option value="Putumayo">Putumayo</md-option>
+                                        <md-option value="Quindio">Quindio</md-option>
+                                        <md-option value="San Andrés">San Andrés</md-option>
+                                        <md-option value="Santander">Santander</md-option>
+                                        <md-option value="Sucre">Sucre</md-option>
+                                        <md-option value="Tolima">Tolima</md-option>
+                                        <md-option value="Vaupes">Vaupes</md-option>
+                                        <md-option value="Vichada">Vichada</md-option>
+                                        <md-option value="Popayan">Popayan</md-option>
+                                    </md-select></td>
+                                </tr>
+                                <tr class="texto">
+                                    <td><b> Municipio donde Ocurre el Accidente </b> </td>
+                                    <td>{{client.mun}}</td>
+                                    <td><input type="text" class="form-control" ng-model="mun" placeholder=""></td>
+                                </tr>
+                                <tr class="texto">
+                                    <td><b> Zona donde Ocurre el Accidente </b> </td>
+                                    <td>{{client.zon}}</td>
+                                    <td> <md-select aria-label="simpleSelect13" class="titulos" ng-model="zon" placeholder="zona">
+                                        <md-option ng-value="todo.name" ng-repeat="todo in zona">{{todo.name}}</md-option>
+
+                                    </md-select></td>
+                                </tr>
+                                <tr class="texto">
+                                    <td><b> Causo La Muerte al Trabajador </b> </td>
+                                    <td>{{client.si2}}</td>
+                                    <td> <md-select aria-label="simpleSelect14" class="titulos"  ng-model="si2" placeholder="opcion">
+                                        <md-option ng-value="todo.name" ng-repeat="todo in sinos2">{{todo.name}}</md-option>
+
+                                    </md-select></td>
+                                </tr>
+                                <tr class="texto">
+                                    <td><b>Sitio donde ocurre el Accidente </b> </td>
+                                    <td>{{client.tipoB}}</td>
+                                    <td><md-select aria-label="simpleSelect15" class="tiulos" ng-model="tipoB" placeholder="sitio">
+                                        <md-option ng-value="todo.name" ng-repeat="todo in sitio">{{todo.name}}</md-option>
+
+                                    </md-select></td>
+                                </tr>
+                                <tr class="texto">
+                                    <td><b> Tipo de Lesión</b> </td>
+                                    <td>{{client.lesion}}</td>
+                                    <td> <md-select aria-label="simpleSelect16" class="titulos" ng-model="lesion" placeholder="tipo">
+                                        <md-option ng-value="todo.name" ng-repeat="todo in lesiones">{{todo.name}}</md-option>
+
+                                    </md-select></td>
+                                </tr>
+                                <tr class="texto">
+                                    <td><b> Mecanismo o forma del Accidente</b> </td>
+                                    <td>{{client.mecanismo}}</td>
+                                    <td><md-select aria-label="simpleSelect17" class="titulos" ng-model="mecanismo" placeholder="mecanismo">
+                                        <md-option ng-value="todo.name" ng-repeat="todo in mecanismos">{{todo.name}}</md-option>
+
+                                    </md-select></td>
+                                </tr>
+                                <tr class="texto">
+                                    <td><b> Parte del Cuerpo Afectada</b> </td>
+                                    <td>{{client.parte}}</td>
+                                    <td><md-select aria-label="simpleSelect18" class="titulos" ng-model="parte" placeholder="parte">
+                                        <md-option ng-value="todo.name" ng-repeat="todo in partes">{{todo.name}}</md-option>
+
+                                    </md-select></td>
+                                </tr>
+                                <tr class="texto">
+                                    <td><b> Agente del Accidente</b> </td>
+                                    <td>{{client.agente}}</td>
+                                    <td><md-select aria-label="simpleSelect19" class="titulos" ng-model="agente" placeholder="agente">
+                                        <md-option ng-value="todo.name" ng-repeat="todo in agentes">{{todo.name}}</md-option>
+
+                                    </md-select></td>
+                                </tr>
+                                </tbody>
+                                </thead>
+                            </table>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <button class="btn btn-primary center-block" ng-click="add($event,textArea,primerApellido,segundoApellido,primerNombre,segundoNombre,identificacion,numero,nacimiento | date:'yyyy-MM-dd',sex,departamento,muni,zonas,cargo,ingreso | date:'yyyy-MM-dd',acci | date:'yyyy-MM-dd',hora,diaSe,jornada,sino,tipoA,lugari,depa,mun,zon,si2,tipoB,lesion,mecanismo,parte,agente,client)">Actualizar Accidentes</button>
+                            </div>
+                        </div>
+                    </md-content>
+                </md-tab>
+
+            </md-tabs>
+        </md-dialog-content>
+    </form>
+</md-dialog>
