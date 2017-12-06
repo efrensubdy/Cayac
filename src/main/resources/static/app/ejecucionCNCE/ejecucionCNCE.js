@@ -127,7 +127,7 @@ angular.module('myApp.ejecucionCNCE', ['ngRoute'])
            $scope.bandera=false;
            $scope.bandera2=false;
            $scope.bandera3=false;
-           $scope.aprobar=function(){
+           $scope.aprobar=function(ev){
 
                  aproba.save({idContratista:$rootScope.user.id,idContratante:$localStorage.contratanteLogeado.idContratante})
                  $mdDialog.show(
