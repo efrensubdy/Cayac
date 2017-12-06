@@ -1,0 +1,452 @@
+<md-dialog id="attribute-dialog" aria-label="Cumplidos">
+    <form>
+        <md-toolbar>
+            <div class="md-toolbar-tools">
+                <h1>Detalle de Estandares</h1>
+                <span flex></span>
+                <md-button class="md-icon-button" ng-click="cancel()">
+                    <md-icon md-font-library="material-icons">highlight_off</md-icon>
+                </md-button>
+            </div>
+        </md-toolbar>
+        <md-dialog-content>
+            <md-tabs md-dynamic-height md-border-bottom>
+                <md-tab label="I. PLANEAR">
+                    <md-content class="md-padding">
+                        <div class="md-dialog-content">
+                            <p class="titulos">I. PLANEAR</p>
+                            <table class="table table-bordered table-hover table-condensed">
+                                <tbody>
+                                <tr class="titulos" >
+                                    <th colspan="3" >
+                                        1.   RECURSOS (10%)
+
+                                    </th>
+
+
+
+                                </tr>
+                                <tr class="texto">
+
+                                    <td >E1.1 Estándar: Recursos financieros, técnicos humanos y de otra índole (4%)
+                                    </td>
+                                    <td>
+
+                                        <label>TOTAL ACTUAL</label>
+                                        <p>{{client.recursos}} %</p>
+                                    </td>
+                                    <td>
+                                        <label> ACTUALIZAR</label>
+                                        <input type="number" class="form-control" ng-model="recursos">
+
+                                    </td>
+                                </tr>
+                                <tr class="texto">
+                                    <td >E1.2 Estándar: Capacitación  en el Sistema de Gestión de la Seguridad y Salud (6%)
+
+                                    </td>
+                                    <td>
+
+                                        <label>TOTAL ACTUAL</label>
+                                        <p>{{client.capacitacion}}%</p>
+                                    </td>
+                                    <td>
+                                        <label>ACTUALIZAR</label>
+                                        <input type="number" class="form-control" ng-model="capacitacion">
+
+                                    </td>
+
+                                </tr>
+                                </tbody>
+
+                            </table>
+                            <br>
+                            <table class="table table-bordered table-hover table-condensed">
+                                <tbody>
+                                <tr class="titulos" >
+                                    <th colspan="3" >
+                                        2. GESTIÓN INTEGRAL DEL SISTEMA DE LA SEGURIDAD Y SALUD EN EL TRABAJO (15%)
+
+                                    </th>
+
+
+                                </tr>
+                                <tr class="texto">
+
+                                    <td >E2.1 Estándar: Política de Seguridad y Salud en el Trabajo (1%)
+
+                                    </td>
+                                    <td>
+
+                                        <label>TOTAL ACTUAL</label>
+                                        <p>{{client.politica}} %</p>
+                                    </td>
+                                    <td>
+                                        <label>ACTUALIZAR</label>
+                                        <input type="number" class="form-control" ng-model="politica">
+
+                                    </td>
+                                </tr>
+                                <tr class="texto">
+                                    <td >E2.2 Estándar: Objetivos del Sistema de Gestión de la Seguridad y Salud en el Trabajo SG-SST (1%)
+                                    </td>
+                                    <td>
+                                        <label>TOTAL ACTUAL</label>
+                                        <p>{{client.objetivos}}%</p>
+                                    </td>
+                                    <td>
+                                        <label>ACTUALIZAR</label>
+                                        <input type="number" class="form-control" ng-model="objetivos">
+
+                                    </td>
+
+                                </tr>
+                                <tr class="texto">
+                                    <td >E2.3 Estándar: Evaluación inicial del Sistema de Gestión – Seguridad y Salud en el Trabajo (1%)
+
+                                    </td>
+                                    <td>
+                                        <label>TOTAL ACTUAL</label>
+                                        <p>{{client.evaInicial}}%</p>
+                                    </td>
+                                    <td>
+                                        <label>ACTUALIZAR</label>
+                                        <input type="number" class="form-control" ng-model="evaInicial">
+
+
+                                    </td>
+                                </tr>
+                                <tr class="texto">
+                                    <td >E2.4 Estándar: Plan Anual de Trabajo (2%)
+                                    </td>
+                                    <td>
+                                        <label>TOTAL ACTUAL</label>
+                                        <p>{{client.planAnual}}%</p>
+                                    </td>
+                                    <td>
+                                        <label>ACTUALIZAR</label>
+                                        <input type="number" class="form-control" ng-model="planAnual">
+
+                                    </td>
+
+                                </tr>
+                                <tr class="texto">
+                                    <td >E2.5 Estándar: Conservación de la documentación (2%)
+                                    </td>
+                                    <td>
+                                        <label>TOTAL ACTUAL</label>
+                                        <p>{{client.documen}}%</p>
+                                    </td>
+                                    <td>
+                                        <label>ACTUALIZAR</label>
+                                        <input type="number" class="form-control" ng-model="documen">
+
+                                    </td>
+
+                                </tr>
+                                <tr class="texto">
+                                    <td >E2.6 Estándar: Rendición de cuentas (1%)
+
+                                    </td>
+                                    <td>
+                                        <label>TOTAL ACTUAL</label>
+                                        <p>{{client.cuentas}}%</p>
+                                    </td>
+                                    <td>
+                                        <label>ACTUALIZAR</label>
+                                        <input type="number" class="form-control" ng-model="cuentas">
+                                    </td>
+
+                                </tr>
+                                <tr class="texto">
+                                    <td >E2.7 Estándar: Normatividad nacional vigente y aplicable en materia de seguridad y salud en el trabajo. (2%)
+
+
+                                    </td>
+                                    <td>
+                                        <label>TOTAL ACTUAL</label>
+                                        <p>{{client.normatividad}}%</p>
+                                    </td>
+                                    <td>
+                                        <label>ACTUALIZAR</label>
+                                        <input type="number" class="form-control" ng-model="normatividad">
+                                    </td>
+
+                                </tr>
+                                <tr class="texto">
+                                    <td >E2.8 Estándar:Mecanismos de comunicación. (1%)
+                                    </td>
+                                    <td>
+                                        <label>TOTAL ACTUAL</label>
+                                        <p>{{client.mecanismos}}%</p>
+                                    </td>
+                                    <td>
+                                        <label>ACTUALIZAR</label>
+                                        <input type="number" class="form-control" ng-model="mecanismos">
+
+                                    </td>
+
+                                </tr>
+                                <tr class="texto">
+                                    <td >E2.9 Estándar: Adquisiciones (1%)
+                                    </td>
+                                    <td>
+                                        <label>TOTAL ACTUAL</label>
+                                        <p>{{client.adquisiones}}%</p>
+                                    </td>
+                                    <td>
+                                        <label>ACTUALIZAR</label>
+                                        <input type="number" class="form-control" ng-model="adquisiones">
+
+                                    </td>
+                                </tr>
+                                <tr class="texto">
+                                    <td >E2.10 Estándar: Contratación (2%)
+
+                                    </td>
+                                    <td>
+                                        <label>TOTAL ACTUAL</label>
+                                        <p>{{client.contrataciones}}%</p>
+                                    </td>
+                                    <td>
+                                        <label>ACTUALIZAR</label>
+                                        <input type="number" class="form-control" ng-model="contrataciones">
+                                    </td>
+                                </tr>
+                                <tr class="texto">
+                                    <td >E2.11 Estándar: Gestión del cambio (1%)
+
+                                    </td>
+                                    <td>
+                                        <label>TOTAL ACTUAL</label>
+                                        <p>{{client.cambios}}%</p>
+                                    </td>
+                                    <td>
+                                        <label>ACTUALIZAR</label>
+                                        <input type="number" class="form-control" ng-model="cambios">
+                                    </td>
+
+                                </tr>
+                                </tbody>
+
+                            </table>
+
+
+                        </div>
+                    </md-content>
+                </md-tab>
+                <md-tab label="II. HACER">
+                    <md-content class="md-padding">
+                        <div class="md-dialog-content" >
+                            <p class="titulos">II. HACER
+                            </p>
+                            <table class="table table-bordered table-hover table-condensed">
+                                <tbody>
+                                <tr class="titulos" >
+                                    <th colspan="3" >
+                                        3.   GESTION DE LA SALUD (20%)
+
+                                    </th>
+
+
+                                </tr>
+                                <tr class="texto">
+
+                                    <td >E3.1 Estándar: Condiciones de salud en el trabajo (9%)
+
+                                    </td>
+                                    <td>
+                                        <label>TOTAL ACTUAL</label>
+                                        <p>{{client.condiciones}}%</p>
+                                    </td>
+                                    <td>
+                                        <label>ACTUALIZAR</label>
+                                        <input type="number" class="form-control" ng-model="condiciones">
+                                    </td>
+                                </tr>
+                                <tr class="texto">
+                                    <td >E3.2 Estándar: Registro, reporte e investigación de las enfermedades laborales, incidentes y accidentes del trabajo (5%)
+                                    </td>
+                                    <td>
+                                        <label>TOTAL ACTUAL</label>
+                                        <p>{{client.registro}}%</p>
+                                    </td>
+                                    <td>
+                                        <label>ACTUALIZAR</label>
+                                        <input type="number" class="form-control" ng-model="registro">
+
+                                    </td>
+
+                                </tr>
+                                <tr class="texto">
+                                    <td >E3.3 Estándar: Mecanismos de vigilancia de las condiciones de salud de los trabajadores (6%)
+
+                                    </td>
+                                    <td>
+                                        <label>TOTAL ACTUAL</label>
+                                        <p>{{client.vigilancia}}%</p>
+                                    </td>
+                                    <td>
+                                        <label>ACTUALIZAR</label>
+                                        <input type="number" class="form-control" ng-model="vigilancia">
+                                    </td>
+
+                                </tr>
+                                </tbody>
+
+                            </table>
+                            <br>
+                            <table class="table table-bordered table-hover table-condensed">
+                                <tbody>
+                                <tr class="titulos" >
+                                    <th colspan="3" >
+                                        4.   GESTION DE PELIGROS Y RIESGOS (30%)
+
+                                    </th>
+
+
+                                </tr>
+                                <tr class="texto">
+
+                                    <td >E4.1 Estándar: Identificación de peligros, evaluación y valoración de los riesgos (15%)
+
+                                    </td>
+                                    <td>
+                                        <label>TOTAL ACTUAL</label>
+                                        <p>{{client.peligros}}</p>
+                                    </td>
+                                    <td>
+                                        <label>ACTUALIZAR</label>
+                                        <input type="number" class="form-control" ng-model="peligros">
+
+                                    </td>
+                                </tr>
+                                <tr class="texto">
+                                    <td >E4.2 Estándar: Medidas de prevención y control para intervenir los peligros /riesgos (15%)
+                                    </td>
+                                    <td>
+                                        <label>TOTAL ACTUAL</label>
+                                        <p>{{client.prevencion}}%</p>
+                                    </td>
+                                    <td>
+                                        <label>ACTUALIZAR</label>
+                                        <input type="number" class="form-control" ng-model="prevencion">
+                                    </td>
+
+                                </tr>
+                                </tbody>
+
+                            </table>
+                            <br>
+                            <table class="table table-bordered table-hover table-condensed">
+                                <tbody>
+                                <tr class="titulos" >
+                                    <th colspan="3" >
+                                        5.   GESTION DE AMENAZAS (10%)
+                                    </th>
+
+
+                                </tr>
+                                <tr class="texto">
+
+                                    <td >E5.1 Estándar: Plan de prevención, preparación y respuesta ante emergencias (10%)
+
+
+                                    </td>
+                                    <td>
+                                        <label>TOTAL ACTUAL</label>
+                                        <p>{{client.planPrevencion}}%</p>
+                                    </td>
+                                    <td>
+                                        <label>ACTUALIZAR</label>
+                                        <input type="number" class="form-control" ng-model="planPrevencion">
+                                    </td>
+                                </tr>
+                                </tr>
+                                </tbody>
+
+                            </table>
+
+                        </div>
+
+                    </md-content>
+                </md-tab>
+                <md-tab label="III.VERIFICAR Y  IV. ACTUAR">
+                    <md-content class="md-padding">
+                        <div class="md-dialog-content" >
+                            <p class="titulos">III.VERIFICAR
+                            </p>
+                            <table class="table table-bordered table-hover table-condensed">
+                                <tbody>
+                                <tr class="titulos" >
+                                    <th colspan="3" >
+                                        6. VERIFICACIÓN DEL SISTEMA DE GESTION EN SEGURIDAD Y SALUD EN EL TRABAJO (5%)
+
+                                    </th>
+
+
+                                </tr>
+                                <tr class="texto">
+
+                                    <td >E6.1 Estándar: Gestión y resultados del SG-SST (5%)
+
+
+
+                                    </td>
+                                    <td>
+                                        <label>TOTAL ACTUAL</label>
+                                        <p>{{client.gestion}}%</p>
+                                    </td>
+                                    <td>
+                                        <label>ACTUALIZAR</label>
+                                        <input type="number" class="form-control" ng-model="gestion">
+                                    </td>
+                                </tr>
+                                </tr>
+                                </tbody>
+
+                            </table>
+                            <br>
+                            <p class="titulos">IV. ACTUAR
+                            </p>
+                            <table class="table table-bordered table-hover table-condensed">
+                                <tbody>
+                                <tr class="titulos" >
+                                    <th colspan="3" >
+                                        7.   MEJORAMIENTO (10%)
+
+
+                                    </th>
+
+
+                                </tr>
+                                <tr class="texto">
+
+                                    <td >E7.1 Estándar: Acciones preventivas y correctivas con base en los resultados del SG- SST. (10%)
+                                    </td>
+                                    <td>
+                                        <label>TOTAL ACTUAL</label>
+                                        <p>{{client.accionesPreven}}%</p>
+                                    </td>
+                                    <td>
+                                        <label>ACTUALIZAR</label>
+                                        <input type="number" class="form-control" ng-model="accionesPreven">
+                                    </td>
+                                </tr>
+                                </tr>
+                                </tbody>
+
+                            </table>
+                            <br>
+                            <button class="btn btn-primary center-block" ng-click="add($event,recursos,capacitacion,politica,objetivos,evaInicial,planAnual,documen,cuentas,normatividad,mecanismos,adquisiones,contrataciones,cambios,condiciones,registro,vigilancia,peligros,prevencion,planPrevencion,gestion,accionesPreven,client)">ACTUALIZAR ESTANDAR</button>
+
+
+                        </div>
+
+                    </md-content>
+                </md-tab>
+            </md-tabs>
+
+        </md-dialog-content>
+    </form>
+</md-dialog>

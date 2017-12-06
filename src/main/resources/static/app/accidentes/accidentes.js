@@ -9,7 +9,7 @@ angular.module('myApp.accidentes', ['ngRoute'])
   });
 }])
 
-.controller('accidentesCtrl', ['$location','$timeout', '$q', '$scope','$log','$rootScope','$localStorage','$sessionStorage','$mdDialog','acciDente','accPorContra',function($location,$timeout, $q, $scope,$log,$rootScope,$localStorage,$sessionStorage,$mdDialog,acciDente,accPorContra) {
+.controller('accidentesCtrl', ['$location','$timeout', '$q', '$scope','$log','$rootScope','$localStorage','$sessionStorage','$mdDialog','$route','acciDente','accPorContra','actualizarAccidentes',function($location,$timeout, $q, $scope,$log,$rootScope,$localStorage,$sessionStorage,$mdDialog,$route,acciDente,accPorContra,actualizarAccidentes) {
 if ("undefined" === typeof $localStorage.userLogeado && "undefined" === typeof $localStorage.contratanteLogeado){
          $mdDialog.show(
                           $mdDialog.alert()
@@ -394,7 +394,7 @@ function DialogController($scope, $mdDialog, $rootScope){
 
 
   $scope.add = function(ev,textArea,primerApellido,segundoApellido,primerNombre,segundoNombre,identificacion,numero,nacimiento,sexo,departamento,muni,zonas,cargo,ingreso,acci,hora,diaSe,jornada,sino,tipoA,lugari,depa,mun,zon,si2,tipoB,lesion,mecanismo,parte,agente,client){
-                console.log(client)
+
                 if ("undefined" == typeof textArea && "undefined" == typeof primerApellido && "undefined" == typeof segundoApellido && "undefined" == typeof primerNombre && "undefined" == typeof segundoNombre &&"undefined" == typeof identificacion &&"undefined" == typeof numero &&"undefined" == typeof nacimiento && "undefined" == typeof sexo &&  "undefined" == typeof departamento && "undefined" == typeof muni &&"undefined" == typeof zonas &&"undefined" == typeof cargo && "undefined" == typeof ingreso &&  "undefined" == typeof accidente && "undefined" == typeof hora && "undefined" == typeof diaSe && "undefined" == typeof jornada && "undefined" == typeof sino && "undefined" == typeof tipoA && "undefined" == typeof lugari && "undefined" == typeof depa && "undefined" == typeof mun && "undefined" == typeof zon && "undefined" == typeof si2 && "undefined" == typeof tipoB && "undefined" == typeof lesion && "undefined" == typeof mecanismo && "undefined" == typeof parte && "undefined" == typeof agente ){
                      $mdDialog.show(
                               $mdDialog.alert()
@@ -412,13 +412,15 @@ function DialogController($scope, $mdDialog, $rootScope){
                 else{
                     var acciden =new Accidente();
                     acciden.id=client.id;
+                    acciden.idContratista=$localStorage.userLogeado.idContratista;
+                    acciden.idContratante=$localStorage.userLogeado.idContratante;
                     if (textArea == client.descripcion || "undefined" == typeof textArea ){
 
-                          acciden.textArea =client.descripcion;
+                          acciden.descripcion =client.descripcion;
                      }
                      else{
 
-                         acciden.textArea=textArea
+                         acciden.descripcion=textArea
                      }
                      if (primerApellido == client.primerApellido || "undefined" == typeof primerApellido ){
 
@@ -689,6 +691,20 @@ function DialogController($scope, $mdDialog, $rootScope){
                                   }
 
                      console.log(acciden);
+                     actualizarAccidentes.save(acciden);
+                     $mdDialog.show(
+                           $mdDialog.alert()
+                              .parent(angular.element(document.querySelector('#popupContainer')))
+                              .clickOutsideToClose(true)
+                              .title('Exito !!')
+                              .textContent('Puede revisar nuevamente o consultar sus indicadores.')
+                              .ariaLabel('Alert Dialog Demo')
+                              .ok('ok!')
+                              .targetEvent(ev)
+                                              );
+                      $route.reload();
+
+
 
 
                 }

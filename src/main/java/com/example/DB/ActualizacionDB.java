@@ -1,9 +1,6 @@
 package com.example.DB;
 
-import com.example.Models.Conexion;
-import com.example.Models.Contratista;
-import com.example.Models.Indicador;
-import com.example.Models.Usuario;
+import com.example.Models.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -70,6 +67,92 @@ public class ActualizacionDB {
         ps.setInt(12,indicador.getYear());
         ps.setInt(13,indicador.getId());
         ps.executeUpdate();
+        ps.close();
+        con.close();
+
+
+
+    }
+    public void actualizarAccidentesContratistas(Accidente accidente)throws SQLException,ClassNotFoundException{
+
+        String sql="UPDATE accidentes set descripcion = ?,primerApellido = ?,segundoApellido = ?,primerNombre = ?,segundoNombre = ?,identificacion = ?,numero = ?,nacimiento = ?,sexo = ?,departamento = ?,muni = ?,zonas = ?,cargo = ?,ingreso = ?,accidente = ?,hora = ?,diaSe = ?,jornada = ?,sino = ?,tipoA = ?,lugari = ?,depa = ?,mun = ?,zon = ?,si2 = ?,tipoB = ?,lesion = ?,mecanismo = ?,parte = ?,agente = ?,idContratista = ?,idContratante = ? WHERE id =?";
+        Connection con = Conexion.conection();
+        PreparedStatement ps=con.prepareStatement(sql);
+        ps.setString(1,accidente.getDescripcion());
+        ps.setString(2,accidente.getPrimerApellido());
+        ps.setString(3,accidente.getSegundoApellido());
+        ps.setString(4,accidente.getPrimerNombre());
+        ps.setString(5,accidente.getSegundoNombre());
+        ps.setString(6,accidente.getIdentificacion());
+        ps.setInt(7,accidente.getNumero());
+        ps.setDate(8,accidente.getNacimiento());
+        ps.setString(9,accidente.getSexo());
+        ps.setString(10,accidente.getDepartamento());
+        ps.setString(11,accidente.getMuni());
+        ps.setString(12,accidente.getZonas());
+        ps.setString(13,accidente.getCargo());
+        ps.setDate(14,accidente.getIngreso());
+        ps.setDate(15,accidente.getAccidente());
+        ps.setString(16,accidente.getHora());
+        ps.setString(17,accidente.getDiaSe());
+        ps.setString(18,accidente.getJornada());
+        ps.setString(19,accidente.getSino());
+        ps.setString(20,accidente.getTipoA());
+        ps.setString(21,accidente.getLugari());
+        ps.setString(22,accidente.getDepa());
+        ps.setString(23,accidente.getMun());
+        ps.setString(24,accidente.getZon());
+        ps.setString(25,accidente.getSi2());
+        ps.setString(26,accidente.getTipoB());
+        ps.setString(27,accidente.getLesion());
+        ps.setString(28,accidente.getMecanismo());
+        ps.setString(29,accidente.getParte());
+        ps.setString(30,accidente.getAgente());
+        ps.setInt(31,accidente.getIdContratista());
+        ps.setInt(32,accidente.getIdContratante());
+        ps.setInt(33,accidente.getId());
+        ps.execute();
+        ps.close();
+        con.close();
+
+
+
+
+
+    }
+    public void actualizarEstandarMinimoDeContratista(EstandarMinimo estandarMinimo)throws SQLException,ClassNotFoundException{
+        java.util.Date utilDate = new Date();
+        java.sql.Date date = new java.sql.Date(utilDate.getTime());
+        estandarMinimo.setFechaDeRegistro(date);
+        String sql="UPDATE estandaresMinimos set recursos = ?,capacitacion = ?,politica = ?,objetivos = ?,evaInicial = ?,planAnual = ?,documen = ?,cuentas = ?,normatividad = ?,mecanismos = ?,adquisiones = ?,contrataciones = ?,cambios = ?,condiciones = ?,registro = ?,vigilancia = ?,peligros = ?,prevencion= ?,planPrevencion = ?,gestion = ?,accionesPreven = ?,idContratista = ?,idContratante = ?,fechaDeRegistro = ? where id = ? ";
+        Connection con = Conexion.conection();
+        PreparedStatement ps=con.prepareStatement(sql);
+        ps.setFloat(1,estandarMinimo.getRecursos());
+        ps.setFloat(2,estandarMinimo.getCapacitacion());
+        ps.setFloat(3,estandarMinimo.getPolitica());
+        ps.setFloat(4,estandarMinimo.getObjetivos());
+        ps.setFloat(5,estandarMinimo.getEvaInicial());
+        ps.setFloat(6,estandarMinimo.getPlanAnual());
+        ps.setFloat(7,estandarMinimo.getDocumen());
+        ps.setFloat(8,estandarMinimo.getCuentas());
+        ps.setFloat(9,estandarMinimo.getNormatividad());
+        ps.setFloat(10,estandarMinimo.getMecanismos());
+        ps.setFloat(11,estandarMinimo.getAdquisiones());
+        ps.setFloat(12,estandarMinimo.getContrataciones());
+        ps.setFloat(13,estandarMinimo.getCambios());
+        ps.setFloat(14,estandarMinimo.getCondiciones());
+        ps.setFloat(15,estandarMinimo.getRegistro());
+        ps.setFloat(16,estandarMinimo.getVigilancia());
+        ps.setFloat(17,estandarMinimo.getPeligros());
+        ps.setFloat(18,estandarMinimo.getPrevencion());
+        ps.setFloat(19,estandarMinimo.getPlanPrevencion());
+        ps.setFloat(20,estandarMinimo.getGestion());
+        ps.setFloat(21,estandarMinimo.getAccionesPreven());
+        ps.setInt(22,estandarMinimo.getIdContratista());
+        ps.setInt(23,estandarMinimo.getIdContratante());
+        ps.setDate(24,estandarMinimo.getFechaDeRegistro());
+        ps.setInt(25,estandarMinimo.getId());
+        ps.execute();
         ps.close();
         con.close();
 

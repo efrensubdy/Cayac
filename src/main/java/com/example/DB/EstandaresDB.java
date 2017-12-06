@@ -64,6 +64,7 @@ public class EstandaresDB {
             EstandarMinimo estandarMinimo=new EstandarMinimo();
             estandarMinimo.setId(rs.getInt("id"));
             estandarMinimo.setRecursos(rs.getFloat("recursos"));
+            estandarMinimo.setCapacitacion(rs.getFloat("capacitacion"));
             estandarMinimo.setPolitica(rs.getFloat("politica"));
             estandarMinimo.setObjetivos(rs.getFloat("objetivos"));
             estandarMinimo.setEvaInicial(rs.getFloat("evaInicial"));
