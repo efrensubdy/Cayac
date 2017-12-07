@@ -81,4 +81,20 @@ public class ActualizacionDeInfoController {
         }
         return a;
     }
+    @RequestMapping(value ="RegistroPlanDeTrabajo",method = RequestMethod.POST)
+    public ResponseEntity<?> actualizarPlanDeTrabajoContrtista(@RequestBody PlanDeTrabajo planDeTrabajo){
+
+        ResponseEntity a;
+        try {
+            //obtener datos que se enviarán a través del API
+
+            manejadorDeActualizacion.actualizacionInformacionPlanDeTrabajoContratista(planDeTrabajo);
+            a = new ResponseEntity<>(HttpStatus.ACCEPTED);
+        } catch (Exception ex) {
+            Logger.getLogger(Controller.class.getName()).log(Level.SEVERE, null, ex);
+            return new ResponseEntity<>("Error bla bla bla",HttpStatus.NOT_FOUND);
+        }
+        return a;
+    }
+
 }

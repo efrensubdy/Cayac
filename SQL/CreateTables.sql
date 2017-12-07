@@ -337,6 +337,7 @@ CREATE TABLE `planDeTrabajo` (
   `evidencia` VARCHAR(500) DEFAULT NULL,
   `idContratista` INT(11) NOT NULL,
   `fechaDeRegistro` DATE NOT NULL,
+  `year` VARCHAR(20) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `Actividad_Contratista` (`idContratista`),
   CONSTRAINT `Actividad_Contratista` FOREIGN KEY (`idContratista`) REFERENCES `contratista` (`idContratista`)

@@ -9,7 +9,7 @@ angular.module('myApp.planDeTrabajo', ['ngRoute'])
   });
 }])
 
-.controller('planDeTrabajoCtrl', ['$location', '$q', '$scope','$http','$log','$rootScope','$localStorage','$sessionStorage','plandeTrabajo','actividadPlan','fileUpload','$mdDialog',function($location, $q, $scope,$http,$log,$rootScope,$localStorage,$sessionStorage,plandeTrabajo,actividadPlan,fileUpload,$mdDialog) {
+.controller('planDeTrabajoCtrl', ['$location', '$q', '$scope','$http','$log','$rootScope','$localStorage','$sessionStorage','$route','plandeTrabajo','actividadPlan','fileUpload','actualizarPlanDeTrabajo','$mdDialog',function($location, $q, $scope,$http,$log,$rootScope,$localStorage,$sessionStorage,$route,plandeTrabajo,actividadPlan,fileUpload,actualizarPlanDeTrabajo,$mdDialog) {
 if ("undefined" === typeof $localStorage.userLogeado && "undefined" === typeof $localStorage.contratanteLogeado){
          $mdDialog.show(
                           $mdDialog.alert()
@@ -26,8 +26,8 @@ if ("undefined" === typeof $localStorage.userLogeado && "undefined" === typeof $
 
 }
 var q=function(idContratante, idContratista){
-                      //var url= "http://localhost:8080/app/planDeTrabajo/aprobado/"+idContratista+"/"+idContratante ;
-                      var url= "http://ec2-35-163-21-208.us-west-2.compute.amazonaws.com:8080/app/planDeTrabajo/aprobado/"+idContratista+"/"+idContratante ;
+                      var url= "http://localhost:8080/app/planDeTrabajo/aprobado/"+idContratista+"/"+idContratante ;
+                      //var url= "http://ec2-35-163-21-208.us-west-2.compute.amazonaws.com:8080/app/planDeTrabajo/aprobado/"+idContratista+"/"+idContratante ;
                        var a;
                     a=$http.get(url).then(function(response) {
                                     $scope.objeto=response.data;
@@ -79,11 +79,22 @@ $scope.meses=[
     {id:1,nombre:'REGISTRAR ACTIVIDADES'},
     {id:2,nombre:'SUBIR SOPORTES'},
     {id:3,nombre:'CONSULTAR ACTIVIDADES'},
+    {id:4,nombre:'ACTUALIZAR ACTIVIDADES'},
 
 
   ];
-  $scope.simple=function(){
+  $scope.simple=function(mes,year){
+        if("undefined" !== typeof mes && "undefined" !== typeof year  ){
         $scope.banderaActividad=true;
+        $scope.bandera1=false;
+        $scope.bandera4=false;
+        $scope.bandera3=false;
+        $scope.bandera5=false;
+        $scope.opcion= undefined;
+        }
+        else{
+            $scope.banderaActividad=false;
+        }
 
   }
   $scope.op=function(item,mes,year){
@@ -92,12 +103,14 @@ $scope.meses=[
                $scope.bandera1=true;
                $scope.bandera4=false;
                $scope.bandera3=false;
+               $scope.bandera5=false;
                break;
             case 2:
                $scope.table2=actividadPlan.query({idContratista:$localStorage.userLogeado.idContratista,mes:mes.name,year:year.name});
                $scope.bandera4=true;
                $scope.bandera1=false;
                $scope.bandera3=false;
+                 $scope.bandera5=false;
                break;
            case 3:
                $scope.table3=actividadPlan.query({idContratista:$localStorage.userLogeado.idContratista,mes:mes.name,year:year.name});
@@ -105,7 +118,16 @@ $scope.meses=[
 
                $scope.bandera3=true;
                $scope.bandera1=false;
+                 $scope.bandera5=false;
                break;
+           case 4:
+               $scope.bandera4=false;
+               $scope.bandera3=false;
+               $scope.bandera1=false;
+               $scope.bandera5=true;
+               $scope.tableActividades=actividadPlan.query({idContratista:$localStorage.userLogeado.idContratista,mes:mes.name,year:year.name});
+
+                break;
 
          }
 
@@ -127,6 +149,7 @@ $scope.meses=[
            .ok('ok!')
            .targetEvent(ev)
        );
+       $route.reload();
 
     }
     else{
@@ -140,6 +163,7 @@ $scope.meses=[
                    .ok('ok!')
                    .targetEvent(ev)
                );
+         $route.reload();
 
 
 
@@ -179,6 +203,109 @@ $scope.meses=[
            );
 
     }
+
+  }
+  $scope.actual = function(ev,client){
+
+   $rootScope.client = client;
+   $rootScope.meses = $scope.meses;
+   $rootScope.years = $scope.years;
+   $mdDialog.show({
+                     //Controlador del mensajes con operaciones definido en la parte de abajo
+                     controller: DialogController,
+                      //permite la comunicacion con el html que despliega el boton requisitos
+                       templateUrl: 'test/actualiPlanDeTrabajo.html',
+                       parent: angular.element(document.body),
+                       targetEvent: ev,
+                        clickOutsideToClose:true,
+                        fullscreen: $scope.customFullscreen // Only for -xs, -sm breakpoints.
+      })
+
+
+
+
+
+
+  }
+  function DialogController($scope, $mdDialog, $rootScope){
+              $scope.client=$rootScope.client;
+              $scope.meses=$rootScope.meses;
+              $scope.years =$rootScope.years;
+
+              $scope.hide = function() {
+                           $mdDialog.hide();
+                         };
+                         //funcion para cerral el mensaje
+               $scope.cancel = function() {
+                           $mdDialog.cancel();
+                         };
+
+               $scope.add =function (ev,fechaInicio,fechaFin,nombre,mes,year,client){
+                        var actividad = new Actividad();
+                        console.log(client)
+                        actividad.id =client.id;
+                        actividad.idContratista = $localStorage.userLogeado.idContratista;
+
+                        if (nombre == client.nombre || "undefined" == typeof nombre ){
+
+                              actividad.nombre =client.nombre
+                         }
+                         else{
+
+                             actividad.nombre=nombre
+                         }
+                         if (fechaInicio == client.fechaInicio || "undefined" == typeof fechaInicio ){
+
+                               actividad.fechaInicio =client.fechaInicio
+                          }
+                          else{
+
+                              actividad.fechaInicio=fechaInicio
+                          }
+                          if (fechaFin == client.fechaFin || "undefined" == typeof fechaFin ){
+
+                                 actividad.fechaFin =client.fechaFin
+                            }
+                            else{
+
+                                actividad.fechaFin=fechaFin
+                            }
+                           if (mes == client.mes || "undefined" == typeof mes ){
+
+                                actividad.mes =client.mes
+                           }
+                           else{
+
+                               actividad.mes=mes
+                           }
+                           if (year == client.year || "undefined" == typeof year ){
+
+                               actividad.year =client.year
+                          }
+                          else{
+
+                              actividad.year=year
+                          }
+
+                         console.log(actividad)
+                         actualizarPlanDeTrabajo.save(actividad)
+                          $mdDialog.show(
+                               $mdDialog.alert()
+                                  .parent(angular.element(document.querySelector('#popupContainer')))
+                                  .clickOutsideToClose(true)
+                                  .title('Exito !!')
+                                  .textContent('Puede revisar nuevamente o consultar sus Actividades.')
+                                  .ariaLabel('Alert Dialog Demo')
+                                  .ok('ok!')
+                                  .targetEvent(ev)
+                          );
+                         $route.reload();
+               }
+
+
+  }
+  function Actividad (){
+
 
   }
 

@@ -1,0 +1,66 @@
+<md-dialog id="attribute-dialog" aria-label="Detalle">
+    <form>
+        <md-toolbar>
+            <div class="md-toolbar-tools">
+                <h1>Detalles</h1>
+                <span flex></span>
+                <md-button class="md-icon-button" ng-click="cancel()">
+                    <md-icon md-font-library="material-icons">highlight_off</md-icon>
+                </md-button>
+            </div>
+        </md-toolbar>
+        <md-dialog-content>
+            <md-tabs md-dynamic-height md-border-bottom>
+                <md-tab label="Info">
+                    <md-content class="md-padding">
+                        <div class="md-dialog-content">
+                            <div class="table-responsive">
+                                <table class="table table-sm   table-bordered table-hover table-condensed  text-justify">
+                                    <thead>
+                                    <tr class="titulos">
+                                        <th>Información Actividad</th>
+                                        <th>Actualizar</th>
+                                    </tr>
+                                    <tbody>
+                                    <tr class="texto">
+                                        <td>{{client.nombre}}</td>
+                                        <td><input class="form-control" ng-model="nombre" placeholder="nombre de la actividad"></td>
+                                    </tr>
+                                    <tr class="texto">
+                                        <td>{{client.mes}}</td>
+                                        <td><md-select aria-label="simpleSelect2" class="titulos" ng-model="mes" placeholder="seleccione el mes" ng-change="simple()">
+                                            <md-option ng-value="todo" ng-repeat="todo in meses">{{todo.name}}</md-option>
+
+                                        </md-select></td>
+                                    </tr>
+                                    <tr class="texto">
+                                        <td>{{client.year}}</td>
+                                        <td><md-select aria-label="simpleSelect3" class="titulos" ng-model="year" placeholder="seleccione el año">
+                                            <md-option ng-value="todo" ng-repeat="todo in years">{{todo.name}}</md-option>
+
+                                        </md-select></td>
+                                    </tr>
+                                    <tr class="texto">
+                                        <td>{{client.fechaInicio}}</td>
+                                        <td><input type="date"  class="form-control"  ng-model="fechaInicio" placeholder="Fecha Iniciación" ng-required="true"></td>
+                                    </tr>
+                                    <tr class="texto">
+                                        <td>{{client.fechaFin}}</td>
+                                        <td><input type="date"  class="form-control"  ng-model="fechaFin" placeholder="Fecha Fin" ng-required="true"></td>
+                                    </tr>
+                                    </tbody>
+                                    </thead>
+                                </table>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    <button class="btn btn-primary center-block" ng-click="add($event,fechaInicio | date:'yyyy-MM-dd',fechaFin | date:'yyyy-MM-dd',nombre,mes.name,year.name,client)">Actualizar Indicadores</button>
+                                </div>
+                            </div>
+                        </div>
+                    </md-content>
+                </md-tab>
+            </md-tabs>
+        </md-dialog-content>
+    </form>
+</md-dialog>

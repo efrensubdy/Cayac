@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import java.sql.Types;
 import java.util.Date;
 
 @Service
@@ -152,6 +153,27 @@ public class ActualizacionDB {
         ps.setInt(23,estandarMinimo.getIdContratante());
         ps.setDate(24,estandarMinimo.getFechaDeRegistro());
         ps.setInt(25,estandarMinimo.getId());
+        ps.execute();
+        ps.close();
+        con.close();
+
+
+
+    }
+    public void actualizarPlanDeTrabajoDeContratista(PlanDeTrabajo plan)throws SQLException,ClassNotFoundException{
+
+        java.util.Date utilDate = new Date();
+        java.sql.Date date = new java.sql.Date(utilDate.getTime());
+        String sql="UPDATE planDeTrabajo set mes= ?,actividad = ?,fechaInicio = ?,fechaFin = ?,idContratista = ?,fechaDeRegistro = ?,year = ?";
+        Connection con =  Conexion.conection();
+        PreparedStatement ps=con.prepareStatement(sql);
+        ps.setString(1,plan.getMes());
+        ps.setString(2,plan.getNombre());
+        ps.setDate(3,plan.getFechaInicio());
+        ps.setDate(4,plan.getFechaFin());
+        ps.setInt(5,plan.getIdContratista());
+        ps.setDate(6,date);
+        ps.setInt(7,plan.getYear());
         ps.execute();
         ps.close();
         con.close();

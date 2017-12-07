@@ -2,10 +2,7 @@ package com.example.Services;
 
 import com.example.Beans.AdministradorDeActualizaciones;
 import com.example.DB.ActualizacionDB;
-import com.example.Models.Accidente;
-import com.example.Models.Contratista;
-import com.example.Models.EstandarMinimo;
-import com.example.Models.Indicador;
+import com.example.Models.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -32,5 +29,10 @@ public class ManejadorDeActualizacion implements AdministradorDeActualizaciones{
     @Override
     public void actualizacionInformacionEstandarContratista(EstandarMinimo estandarMinimo) throws SQLException, ClassNotFoundException {
         actualizacionDB.actualizarEstandarMinimoDeContratista(estandarMinimo);
+    }
+
+    @Override
+    public void actualizacionInformacionPlanDeTrabajoContratista(PlanDeTrabajo planDeTrabajo) throws SQLException, ClassNotFoundException {
+        actualizacionDB.actualizarPlanDeTrabajoDeContratista(planDeTrabajo);
     }
 }
