@@ -181,6 +181,23 @@ public class ActualizacionDB {
 
 
     }
+    public void actulizarNoConformidad(NoConformidad noConformidad)throws SQLException,ClassNotFoundException{
+        System.out.println(noConformidad.noConformidad);
+        String sql = "UPDATE noConformidad  set noConformidad = ?,mes = ?,year = ?";
+        Connection con =  Conexion.conection();
+        PreparedStatement ps = con.prepareStatement(sql);
+        ps.setString(1,noConformidad.getNoConformidad());
+        ps.setString(2,noConformidad.getMes());
+        ps.setInt(3,noConformidad.getYear());
+        ps.execute();
+        ps.close();
+        con.close();
+
+
+
+
+
+    }
 
 
 

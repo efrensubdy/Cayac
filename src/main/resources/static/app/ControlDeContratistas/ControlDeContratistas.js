@@ -16,6 +16,7 @@ $scope.bandera =false;
 $scope.showAlert= function (ev,client){
     console.log(client)
     $scope.arl=$scope.arls[client.arl-1]
+    console.log($scope.arl)
     $scope.departamento=$scope.departamentos[client.departamento-1];
      $rootScope.client=client
      $rootScope.arl=$scope.arl;

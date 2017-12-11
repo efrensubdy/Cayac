@@ -23,7 +23,7 @@
                                     </tr>
                                     <tbody>
                                     <tr class="texto">
-                                        <td>{{client.nombre}}</td>
+                                        <td>{{client.noConformidad}}</td>
                                         <td><input class="form-control" ng-model="nombre" placeholder="nombre de la actividad"></td>
                                     </tr>
                                     <tr class="texto">
@@ -40,21 +40,14 @@
 
                                         </md-select></td>
                                     </tr>
-                                    <tr class="texto">
-                                        <td>{{client.fechaInicio}}</td>
-                                        <td><input type="date"  class="form-control"  ng-model="fechaInicio" placeholder="Fecha Iniciación" ng-required="true"></td>
-                                    </tr>
-                                    <tr class="texto">
-                                        <td>{{client.fechaFin}}</td>
-                                        <td><input type="date"  class="form-control"  ng-model="fechaFin" placeholder="Fecha Fin" ng-required="true"></td>
-                                    </tr>
+
                                     </tbody>
                                     </thead>
                                 </table>
                             </div>
                             <div class="row">
                                 <div class="col-sm-12">
-                                    <button class="btn btn-primary center-block" ng-click="add($event,fechaInicio | date:'yyyy-MM-dd',fechaFin | date:'yyyy-MM-dd',nombre,mes.name,year.name,client)">Actualizar Actividad</button>
+                                    <button class="btn btn-primary center-block" ng-click="add($event,nombre,mes.name,year.name,client)">Actualizar No Conformidad</button>
                                 </div>
                             </div>
                         </div>

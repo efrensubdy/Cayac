@@ -1,0 +1,44 @@
+<md-dialog id="attribute-dialog" aria-label="Detalle">
+    <form>
+        <md-toolbar>
+            <div class="md-toolbar-tools">
+                <h1>Detalles</h1>
+                <span flex></span>
+                <md-button class="md-icon-button" ng-click="cancel()">
+                    <md-icon md-font-library="material-icons">highlight_off</md-icon>
+                </md-button>
+            </div>
+        </md-toolbar>
+        <md-dialog-content>
+            <md-tabs md-dynamic-height md-border-bottom>
+                <md-tab label="Info">
+                    <md-content class="md-padding">
+                        <div class="md-dialog-content">
+                            <div class="table-responsive">
+                                <table class="table table-sm   table-bordered table-hover table-condensed  text-justify">
+                                    <thead>
+                                    <tr class="titulos">
+                                        <th>Información Actividad</th>
+                                        <th>Actualizar</th>
+                                    </tr>
+                                    <tbody>
+                                    <tr class="texto">
+                                        <td>{{causa.causa}}</td>
+                                        <td><input class="form-control" ng-model="nombre" placeholder="nombre de la actividad"></td>
+                                    </tr>
+                                    </tbody>
+                                    </thead>
+                                </table>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    <button class="btn btn-primary center-block" ng-click="add($event,nombre,causa)">Actualizar Causas</button>
+                                </div>
+                            </div>
+                        </div>
+                    </md-content>
+                </md-tab>
+            </md-tabs>
+        </md-dialog-content>
+    </form>
+</md-dialog>

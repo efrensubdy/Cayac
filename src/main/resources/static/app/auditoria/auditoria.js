@@ -9,7 +9,7 @@ angular.module('myApp.auditoria', ['ngRoute'])
   });
 }])
 
-.controller('auditoriaCtrl', ['$http','$location', '$q', '$scope','$log','$rootScope','$localStorage','$sessionStorage','$mdDialog','auditoriaContratis','noConformidad','noPorContra','causa','caPorContra','fileUpload','accionContra','registroDeAccion','accionConRegistro','accionSinRegistro','cierre','noConforCerradas','noPorContraAuditoria','noConforCerradasConAuditoria',function($http,$location, $q, $scope,$log,$rootScope,$localStorage,$sessionStorage,$mdDialog,auditoriaContratis,noConformidad,noPorContra,causa,caPorContra,fileUpload,accionContra,registroDeAccion,accionConRegistro,accionSinRegistro,cierre,noConforCerradas,noPorContraAuditoria,noConforCerradasConAuditoria) {
+.controller('auditoriaCtrl', ['$http','$location', '$q', '$scope','$log','$rootScope','$localStorage','$sessionStorage','$mdDialog','$route','auditoriaContratis','noConformidad','noPorContra','causa','caPorContra','fileUpload','accionContra','registroDeAccion','accionConRegistro','accionSinRegistro','cierre','noConforCerradas','noPorContraAuditoria','noConforCerradasConAuditoria','actualizarNoConformidad',function($http,$location, $q, $scope,$log,$rootScope,$localStorage,$sessionStorage,$mdDialog,$route,auditoriaContratis,noConformidad,noPorContra,causa,caPorContra,fileUpload,accionContra,registroDeAccion,accionConRegistro,accionSinRegistro,cierre,noConforCerradas,noPorContraAuditoria,noConforCerradasConAuditoria,actualizarNoConformidad) {
 if ("undefined" === typeof $localStorage.userLogeado && "undefined" === typeof $localStorage.contratanteLogeado){
          $mdDialog.show(
                           $mdDialog.alert()
@@ -48,6 +48,9 @@ $scope.c2=false;
 $scope.indicador=false;
 $scope.indiCierre=false;
 $scope.auditoras=false;
+$scope.banderaActualiNo=false;
+$scope.banderaActualiCa=false;
+$scope.causaActualizada=false;
 var q=function(idNoConformidad, idContratista){
                       //var url= "http://localhost:8080/app/cierre/isClose/"+idNoConformidad+"/"+idContratista;
                       var url= "http://ec2-35-163-21-208.us-west-2.compute.amazonaws.com:8080/app/cierre/isClose/"+idNoConformidad+"/"+idContratista;
@@ -69,7 +72,10 @@ $scope.opciones=[
  { id: 4, name: 'CONSULTAR NO CONFORMIDADES'},
  { id: 5, name: 'CONSULTAR CAUSAS'},
  { id: 6, name: 'CONSULTAR ACCIONES'},
+ {id:9, name:'ACTUALIZAR NO CONFORMIDAD'},
+ {id:10, name:'ACTUALIZAR CAUSAS'},
  {id:8, name:'CUMPLIMIENTO DE PROGRAMA'},
+
 
 ];
 
@@ -141,6 +147,9 @@ $scope.simple= function(item){
               $scope.indicador=false;
               $scope.indiCierre=false;
               $scope.auditoras=false;
+              $scope.banderaActualiNo=false;
+              $scope.banderaActualiCa=false;
+              $scope.causaActualizada=false;
             break;
             case 2:
             $scope.bandera1=false;
@@ -168,6 +177,9 @@ $scope.simple= function(item){
             $scope.indicador=false;
             $scope.indiCierre=false;
             $scope.auditoras=false;
+            $scope.banderaActualiNo=false;
+            $scope.banderaActualiCa=false;
+            $scope.causaActualizada=false;
            break;
             case 3:
             $scope.bandera1=false;
@@ -195,6 +207,9 @@ $scope.simple= function(item){
             $scope.indicador=false;
             $scope.indiCierre=false;
             $scope.auditoras=false;
+            $scope.banderaActualiNo=false;
+            $scope.banderaActualiCa=false;
+            $scope.causaActualizada=false;
             break;
             case 4:
             $scope.bandera1=false;
@@ -221,6 +236,9 @@ $scope.simple= function(item){
             $scope.indicador=false;
             $scope.indiCierre=false;
             $scope.auditoras=false;
+            $scope.banderaActualiNo=false;
+            $scope.banderaActualiCa=false;
+            $scope.causaActualizada=false;
             break;
             case 5:
             $scope.bandera1=false;
@@ -248,6 +266,9 @@ $scope.simple= function(item){
             $scope.indicador=false;
             $scope.indiCierre=false;
             $scope.auditoras=false;
+            $scope.banderaActualiNo=false;
+            $scope.banderaActualiCa=false;
+            $scope.causaActualizada=false;
             break;
             case 6:
             $scope.bandera1=false;
@@ -275,6 +296,9 @@ $scope.simple= function(item){
             $scope.indicador=false;
             $scope.indiCierre=false;
             $scope.auditoras=false;
+            $scope.banderaActualiNo=false;
+            $scope.banderaActualiCa=false;
+            $scope.causaActualizada=false;
             break;
 
             case 7:
@@ -303,6 +327,9 @@ $scope.simple= function(item){
             $scope.indicador=false;
             $scope.indiCierre=false;
             $scope.auditoras=false;
+            $scope.banderaActualiNo=false;
+            $scope.banderaActualiCa=false;
+            $scope.causaActualizada=false;
             break;
             case 8:
             $scope.bandera1=false;
@@ -329,7 +356,70 @@ $scope.simple= function(item){
              $scope.indicador=false;
              $scope.indiCierre=false;
              $scope.auditoras=false;
+             $scope.banderaActualiNo=false;
+             $scope.banderaActualiCa=false;
+             $scope.causaActualizada=false;
             break;
+            case 9:
+                $scope.bandera1=false;
+                $scope.bandera2=false;
+                $scope.bandera3=false;
+                $scope.bandera4=false;
+                $scope.bandera5=false;
+                $scope.bandera6=false;
+                $scope.bandera7=false;
+                $rootScope.bandera8=false;
+                $scope.take=false;
+                $scope.take2=false;
+                $scope.take3=false;
+                $rootScope.bandera9=false;
+                $rootScope.bandera10=false;
+                $scope.bandera11=false;
+                $scope.bandera12=false;
+                $scope.bandera13=false;
+                $scope.take4=false;
+                 $scope.bandera14=false;
+                 $scope.c1=false;
+                 $scope.c2=false;
+                 $scope.takeC1 = false;
+                 $scope.indicador=false;
+                 $scope.indiCierre=false;
+                 $scope.auditoras=false;
+                 $scope.banderaActualiNo=true;
+                 $scope.listadoDeNoConformidades=noPorContra.query({idContratista:$localStorage.userLogeado.idContratista});
+                 $scope.banderaActualiCa=false;
+                 $scope.causaActualizada=false;
+                break;
+        case 10:
+                $scope.bandera1=false;
+                $scope.bandera2=false;
+                $scope.bandera3=false;
+                $scope.bandera4=false;
+                $scope.bandera5=false;
+                $scope.bandera6=false;
+                $scope.bandera7=false;
+                $rootScope.bandera8=false;
+                $scope.take=false;
+                $scope.take2=false;
+                $scope.take3=false;
+                $rootScope.bandera9=false;
+                $rootScope.bandera10=false;
+                $scope.bandera11=false;
+                $scope.bandera12=false;
+                $scope.bandera13=false;
+                $scope.take4=false;
+                 $scope.bandera14=false;
+                 $scope.c1=false;
+                 $scope.c2=false;
+                 $scope.takeC1 = false;
+                 $scope.indicador=false;
+                 $scope.indiCierre=false;
+                 $scope.auditoras=false;
+                 $scope.banderaActualiNo=false;
+                 $scope.banderaActualiCa=true;
+                 $scope.listadoDeNoConformidades=noPorContra.query({idContratista:$localStorage.userLogeado.idContratista});
+                 $scope.causaActualizada=false;
+                        break;
        }
 
  }
@@ -646,8 +736,41 @@ $scope.cerrarNoConformidad=function(item){
       }
 
  }
+ $scope.showAlert = function(ev,client){
+            $rootScope.client = client;
+               $rootScope.meses = $scope.meses;
+               $rootScope.years = $scope.years;
+
+        $mdDialog.show({
+                                      //Controlador del mensajes con operaciones definido en la parte de abajo
+                                      controller: DialogController2,
+                                       //permite la comunicacion con el html que despliega el boton requisitos
+                                       templateUrl: 'test/actualiNoConformidad.html',
+                                       parent: angular.element(document.body),
+                                       targetEvent: ev,
+                                       clickOutsideToClose:true,
+                                       fullscreen: $scope.customFullscreen // Only for -xs, -sm breakpoints.
+                          })
+
+
+ }
+ $scope.showAlertCausas = function(ev,causa){
+    $rootScope.causa = causa;
+    $mdDialog.show({
+                                          //Controlador del mensajes con operaciones definido en la parte de abajo
+                  controller: DialogController3,
+                   //permite la comunicacion con el html que despliega el boton requisitos
+                   templateUrl: 'test/actualiCausas.html',
+                   parent: angular.element(document.body),
+                   targetEvent: ev,
+                   clickOutsideToClose:true,
+                   fullscreen: $scope.customFullscreen // Only for -xs, -sm breakpoints.
+      })
+
+ }
 
  function DialogController($scope, $mdDialog, $rootScope, $http) {
+
       $scope.show=function(){
          $mdDialog.cancel();
      }
@@ -670,6 +793,100 @@ $scope.cerrarNoConformidad=function(item){
 
 
  }
+ function DialogController2($scope, $mdDialog, $rootScope, $http,$route) {
+         $scope.client=$rootScope.client;
+         $scope.meses=$rootScope.meses;
+         $scope.years =$rootScope.years;
+       $scope.show=function(){
+          $mdDialog.cancel();
+      }
+      $scope.hide = function() {
+                             $mdDialog.hide();
+
+                           };
+                           //funcion para cerral el mensaje
+        $scope.cancel = function() {
+                             $mdDialog.cancel();
+                             $rootScope.bandera8=false;
+
+                           };
+
+        $scope.add = function(ev,nombre,mes,year,client){
+            var noConformidadActualizada =new NoConformidad();
+            noConformidadActualizada.id =client.id;
+            if (nombre == client.noConformidad || "undefined" == typeof nombre ){
+
+                   noConformidadActualizada.noConformidad =client.noConformidad
+              }
+              else{
+
+                  noConformidadActualizada.noConformidad=nombre
+              }
+              if (mes == client.mes || "undefined" == typeof mes ){
+
+                     noConformidadActualizada.mes =client.mes
+                }
+                else{
+
+                    noConformidadActualizada.mes= mes
+                }
+                if (year == client.year || "undefined" == typeof year ){
+
+                     noConformidadActualizada.year =client.year
+                }
+                else{
+
+                    noConformidadActualizada.year= year
+                }
+
+            console.log(noConformidadActualizada);
+            actualizarNoConformidad.save(noConformidadActualizada)
+             $mdDialog.show(
+                                           $mdDialog.alert()
+                                              .parent(angular.element(document.querySelector('#popupContainer')))
+                                              .clickOutsideToClose(true)
+                                              .title('Exito !!')
+                                              .textContent('Puede revisar nuevamente o consultar sus No Conformidades.')
+                                              .ariaLabel('Alert Dialog Demo')
+                                              .ok('ok!')
+                                              .targetEvent(ev)
+                                      );
+             $route.reload();
+        }
+
+
+  }
+  function DialogController3($scope, $mdDialog, $rootScope, $http , $route) {
+        $scope.causa = $rootScope.causa;
+        $scope.add = function(ev,nombre,causa){
+
+
+
+        }
+        $scope.show=function(){
+           $mdDialog.cancel();
+       }
+       $scope.hide = function() {
+                              $mdDialog.hide();
+
+                            };
+                            //funcion para cerral el mensaje
+         $scope.cancel = function() {
+                              $mdDialog.cancel();
+                              $rootScope.bandera8=false;
+
+                            };
+
+   }
+  $scope.simpleActualizar = function(opcionActualizar){
+   $scope.tablaDeCausas=caPorContra.query({idContratista:$localStorage.userLogeado.idContratista,idNoConformidad:opcionActualizar.id})
+   $scope.causaActualizada =true;
+
+  }
+  function NoConformidad (){
+
+
+    }
 
 
 }])

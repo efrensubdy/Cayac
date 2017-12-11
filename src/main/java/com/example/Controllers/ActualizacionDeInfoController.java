@@ -96,5 +96,21 @@ public class ActualizacionDeInfoController {
         }
         return a;
     }
+    @RequestMapping(value ="RegistroNoConformidad",method = RequestMethod.POST)
+    public ResponseEntity<?> actualizarNoConformidadContrtista(@RequestBody NoConformidad noConformidad){
+
+        ResponseEntity a;
+        try {
+            //obtener datos que se enviarán a través del API
+
+
+            manejadorDeActualizacion.actualizacionInformacionNoConformidadContratista(noConformidad);
+            a = new ResponseEntity<>(HttpStatus.ACCEPTED);
+        } catch (Exception ex) {
+            Logger.getLogger(Controller.class.getName()).log(Level.SEVERE, null, ex);
+            return new ResponseEntity<>("Error bla bla bla",HttpStatus.NOT_FOUND);
+        }
+        return a;
+    }
 
 }

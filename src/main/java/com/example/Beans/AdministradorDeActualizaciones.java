@@ -10,4 +10,5 @@ public interface AdministradorDeActualizaciones {
     public void actualizacionInformacionAccidenteContratista(Accidente accidente)throws SQLException,ClassNotFoundException;
     public void actualizacionInformacionEstandarContratista(EstandarMinimo estandarMinimo)throws SQLException,ClassNotFoundException;
     public void actualizacionInformacionPlanDeTrabajoContratista(PlanDeTrabajo planDeTrabajo)throws SQLException,ClassNotFoundException;
+    public void actualizacionInformacionNoConformidadContratista(NoConformidad noConformidad)throws SQLException,ClassNotFoundException;
 }

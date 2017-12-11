@@ -318,6 +318,69 @@
                         </div>
 
                         </div>
+                    <div class="row" ng-show="banderaActualiNo">
+                        <label class="titulos">ACTUALIZAR NO CONFORMIDADES</label>
+                        <br>
+                        <div class="table-responsive">
+                            <p class="titulos">EN LA SIGUIENTE TABLA ENCONTRARÁ LAS NO CONFORMIDADES REGISTRADAS</p>
+                            <br>
+                            <table class="table table-bordered table-hover table-condensed">
+                                <tbody>
+                                <tr  class="titulos">
+                                    <th >#</th>
+                                    <th >Descripcion</th>
+                                    <th>Mes</th>
+                                    <th>Año</th>
+                                    <th>Actualizar</th>
+
+                                </tr>
+                                <tr ng-repeat="todo in listadoDeNoConformidades">
+                                    <td >{{todo.id}}</td>
+                                    <td >{{todo.noConformidad}}</td>
+                                    <td>{{todo.mes}}</td>
+                                    <td>
+                                        {{todo.year}}
+                                    </td>
+                                    <td>
+                                        <button class="btn btn-primary" ng-click="showAlert($event,todo)">Actualizar</button>
+                                    </td>
+                                </tr>
+                                </tbody>
+
+                            </table>
+
+                        </div>
+
+
+                    </div>
+                    <div class="row" ng-show="banderaActualiCa">
+                        <label class="titulos">ACTUALIZAR CAUSAS</label>
+                        <br>
+                        <p >ESCOJA UNA DE LAS NO CONFORMIDADES DE LO CONTRATRIO NO PODRÁ ACTULIZAR CAUSAS</p>
+                        <md-select aria-label="simpleSelectActualizacion" class="titulos" ng-model="opcionActualizar" placeholder="seleccione la no conformidad" ng-change="simpleActualizar(opcionActualizar)" >
+                            <md-option ng-value="todo" ng-repeat="todo in listadoDeNoConformidades">{{todo.noConformidad}}</md-option>
+                        </md-select>
+                        <br>
+                        <div class="table-responsive" ng-show="causaActualizada">
+                            <p class="titulos">EN LA SIGUIENTE TABLA ENCONTRARÁ LAS CAUSAS PERTENECIENTES A LA NO CONFORMIDAD ESCOGIDA</p>
+                            <br>
+                            <table class="table table-bordered table-hover table-condensed">
+                                <tbody>
+                                <tr  class="titulos">
+                                    <th >Causa</th>
+                                    <th>Actualizar</th>
+                                </tr>
+                                <tr ng-repeat="todo in tablaDeCausas">
+                                    <td >{{todo.causa}}</td>
+                                    <td><button class="btn btn-primary" ng-click="showAlertCausas($event,todo)">Actualizar</button></td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+
+
+                    </div>
 
                     </div>
                 </div>
