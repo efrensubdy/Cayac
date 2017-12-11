@@ -403,6 +403,7 @@ CREATE TABLE `seguridadsocial` (
   `cambios` VARCHAR(500) NOT NULL,
   `tipo1` VARCHAR(50) NOT NULL,
   `tipo2` VARCHAR(50) NOT NULL,
+  `year` INT(100) DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `contratista` (`idContratista`),
   KEY `contratante` (`idContratante`),
