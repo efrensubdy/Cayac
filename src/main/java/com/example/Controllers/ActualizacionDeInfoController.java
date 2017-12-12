@@ -112,5 +112,37 @@ public class ActualizacionDeInfoController {
         }
         return a;
     }
+    @RequestMapping(value ="RegistroCausa",method = RequestMethod.POST)
+    public ResponseEntity<?> actualizarCausaContrtista(@RequestBody Causa causa){
+
+        ResponseEntity a;
+        try {
+            //obtener datos que se enviarán a través del API
+
+
+            manejadorDeActualizacion.actualizacionInformacionCausaContratista(causa);
+            a = new ResponseEntity<>(HttpStatus.ACCEPTED);
+        } catch (Exception ex) {
+            Logger.getLogger(Controller.class.getName()).log(Level.SEVERE, null, ex);
+            return new ResponseEntity<>("Error bla bla bla",HttpStatus.NOT_FOUND);
+        }
+        return a;
+    }
+    @RequestMapping(value ="RegistroAccion",method = RequestMethod.POST)
+    public ResponseEntity<?> actualizarAccionContrtista(@RequestBody Accion accion){
+
+        ResponseEntity a;
+        try {
+            //obtener datos que se enviarán a través del API
+
+            manejadorDeActualizacion.actualizacionInformacionAccionContratista(accion);
+
+            a = new ResponseEntity<>(HttpStatus.ACCEPTED);
+        } catch (Exception ex) {
+            Logger.getLogger(Controller.class.getName()).log(Level.SEVERE, null, ex);
+            return new ResponseEntity<>("Error bla bla bla",HttpStatus.NOT_FOUND);
+        }
+        return a;
+    }
 
 }

@@ -454,6 +454,12 @@ angular.module('services.listFactory', ['ngRoute','ngResource'])
           .factory('actualizarNoConformidad', function($resource) {
                                                                return $resource('/app/actualizacionDeInfo/RegistroNoConformidad/:id');
                                                            })
+           .factory('actualizarCausa', function($resource) {
+                                                                          return $resource('/app/actualizacionDeInfo/RegistroCausa/:id');
+                                                                      })
+            .factory('actualizarAccion', function($resource) {
+                                                                                     return $resource('/app/actualizacionDeInfo/RegistroAccion/:id');
+                                                                                 })
         .factory('indicador', function($resource) {
                                                    return $resource('/app/indicador/Indicadores/:id');
                                                })

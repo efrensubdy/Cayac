@@ -183,12 +183,13 @@ public class ActualizacionDB {
     }
     public void actulizarNoConformidad(NoConformidad noConformidad)throws SQLException,ClassNotFoundException{
         System.out.println(noConformidad.noConformidad);
-        String sql = "UPDATE noConformidad  set noConformidad = ?,mes = ?,year = ?";
+        String sql = "UPDATE noConformidad  set noConformidad = ?,mes = ?,year = ? where id= ?";
         Connection con =  Conexion.conection();
         PreparedStatement ps = con.prepareStatement(sql);
         ps.setString(1,noConformidad.getNoConformidad());
         ps.setString(2,noConformidad.getMes());
         ps.setInt(3,noConformidad.getYear());
+        ps.setInt(4,noConformidad.getId());
         ps.execute();
         ps.close();
         con.close();
@@ -198,6 +199,31 @@ public class ActualizacionDB {
 
 
     }
+    public void actulizarCausa(Causa causa)throws SQLException,ClassNotFoundException{
+        System.out.println(causa.causa);
+        String sql = "UPDATE causa set causa =? where id = ?";
+        Connection con =  Conexion.conection();
+        PreparedStatement ps = con.prepareStatement(sql);
+        ps.setString(1,causa.getCausa());
+        ps.setInt(2,causa.getId());
+        ps.execute();
+        ps.close();
+        con.close();
+    }
+    public void actulizarAccion(Accion accion)throws SQLException,ClassNotFoundException{
+        java.util.Date utilDate = new Date();
+        java.sql.Date date = new java.sql.Date(utilDate.getTime());
+        String sql = "UPDATE  accion  set nombre = ?, date = ?  WHERE id = ?";
+        Connection con = Conexion.conection();
+        PreparedStatement ps = con.prepareStatement(sql);
+        ps.setString(1, accion.getNombre());
+        ps.setDate(2,date);
+        ps.setInt(3,accion.getId());
+        ps.execute();
+        ps.close();
+        con.close();
+    }
+
 
 
 

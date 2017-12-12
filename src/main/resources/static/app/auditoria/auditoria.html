@@ -119,14 +119,12 @@
                             <table class="table table-bordered table-hover table-condensed">
                                 <tbody>
                                 <tr  class="titulos">
-                                    <th >#</th>
                                     <th >Descripcion</th>
                                     <th>Mes</th>
                                     <th>Año</th>
 
                                 </tr>
                                 <tr ng-repeat="todo in listadoDeNoConformidades">
-                                    <td >{{todo.id}}</td>
                                     <td >{{todo.noConformidad}}</td>
                                     <td>{{todo.mes}}</td>
                                     <td>
@@ -182,13 +180,11 @@
                             <table class="table table-bordered table-hover table-condensed">
                                 <tbody>
                                 <tr  class="titulos">
-                                    <th >id</th>
                                     <th>Nombre</th>
                                     <th>Fecha</th>
                                     <th>Registro</th>
                                 </tr>
                                 <tr ng-repeat="todo in tableAcciones">
-                                    <td >{{todo.id}}</td>
                                     <td>{{todo.nombre}}</td>
                                     <td>{{todo.date}}</td>
                                     <td>
@@ -327,7 +323,6 @@
                             <table class="table table-bordered table-hover table-condensed">
                                 <tbody>
                                 <tr  class="titulos">
-                                    <th >#</th>
                                     <th >Descripcion</th>
                                     <th>Mes</th>
                                     <th>Año</th>
@@ -335,7 +330,6 @@
 
                                 </tr>
                                 <tr ng-repeat="todo in listadoDeNoConformidades">
-                                    <td >{{todo.id}}</td>
                                     <td >{{todo.noConformidad}}</td>
                                     <td>{{todo.mes}}</td>
                                     <td>
@@ -377,6 +371,47 @@
                                 </tbody>
                             </table>
                         </div>
+
+
+
+                    </div>
+                    <div class="row" ng-show="banderaActualiAcc">
+                        <label class="titulos">ACTUALIZAR ACCIONES</label>
+                        <br>
+                        <p >ESCOJA UNA DE LAS NO CONFORMIDADES DE LO CONTRATRIO NO PODRÁ ACTULIZAR LAS ACCIONES</p>
+                        <md-select aria-label="simpleSelectActualizacionII" class="titulos" ng-model="opcionActualizarII" placeholder="seleccione la no conformidad" ng-change="simpleActualizarII(opcionActualizarII)" >
+                            <md-option ng-value="todo" ng-repeat="todo in listadoDeNoConformidades">{{todo.noConformidad}}</md-option>
+                        </md-select>
+
+                        <br>
+                        <br>
+                        <div ng-show="despliegueDeCausas">
+                            <p  class="texto">ESCOJA LA CAUSA SOBRE LAS CUAL ESTA LIGADA LAS ACCION QUE VA A ACTULIZAR</p>
+                            <md-select aria-label="simpleSelect15" class="titulos" ng-model="causaActaCC" placeholder="seleccione la causa" ng-change="takAcc(causaActaCC)">
+                                <md-option ng-value="todo" ng-repeat="todo in tablaDeCausas">{{todo.causa}}</md-option>
+                            </md-select>
+                        </div>
+                        <br>
+                        <div class="table-responsive" ng-show="despliegueDeAcciones">
+                            <p class="titulos">EN LA SIGUIENTE TABLA ENCONTRARÁ LAS ACCIONES PERTENECIENTES A LA CAUSA ESCOGIDA</p>
+                            <br>
+                            <table class="table table-bordered table-hover table-condensed">
+                                <tbody>
+                                <tr  class="titulos">
+                                    <th>Nombre</th>
+                                    <th>Fecha</th>
+                                    <th>Actualizar</th>
+                                </tr>
+                                <tr ng-repeat="todo in tableAcciones">
+                                    <td>{{todo.nombre}}</td>
+                                    <td>{{todo.date}}</td>
+                                    <td><button class="btn btn-primary" ng-click="showAlertAcciones($event,todo)">Actualizar</button></td>
+
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
 
 
 

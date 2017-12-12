@@ -568,7 +568,7 @@ CREATE TABLE `accion` (
   `idContratista` INT(11) NOT NULL,
   `idCausa` INT(11) NOT NULL,
   `nombre` VARCHAR(500) NOT NULL,
-  `registro` VARCHAR(500) NOT NULL,
+  `registro` VARCHAR(500) DEFAULT NULL,
   `date` DATE NOT NULL,
   PRIMARY KEY (`id`),
   KEY `idContratista_Accion` (`idContratista`),
