@@ -135,6 +135,10 @@ angular.module('services.listFactory', ['ngRoute','ngResource'])
                                   return $resource('/app/estandares/estandaresContra/:idContratista/:idContratante')
 
                                         })
+            .factory('exam', function($resource) {
+                                             return $resource('/app/example/estandaresContra/:idContratista/:idContratante')
+
+                                                   })
           .factory('estByMonthYear', function($resource) {
                                             return $resource('/app/estandares/byMonthAndYear/:month/:year')
 
@@ -466,6 +470,9 @@ angular.module('services.listFactory', ['ngRoute','ngResource'])
         .factory('estandar', function($resource) {
                                                            return $resource('/app/estandares/minimos/:id');
                                                        })
+         .factory('example', function($resource) {
+                                                                    return $resource('/app/example/minimos/:id');
+                                                                })
         .factory('acciDente', function($resource) {
                                                            return $resource('/app/accidente/acci/:id');
                                                        })

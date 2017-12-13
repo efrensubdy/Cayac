@@ -45,6 +45,7 @@ angular.module('myApp.subirDocumentosEstaticos', ['ngRoute'])
                        .ok('ok!')
                         .targetEvent(ev)
                                                );
+                        $route.reload();
 
             }
             else{
@@ -59,6 +60,7 @@ angular.module('myApp.subirDocumentosEstaticos', ['ngRoute'])
                             .targetEvent(ev)
 
                  );
+                  $route.reload();
 
             }
 
@@ -81,6 +83,7 @@ angular.module('myApp.subirDocumentosEstaticos', ['ngRoute'])
                                .ok('ok!')
                                 .targetEvent(ev)
                                                        );
+                     $route.reload();
                     }
                     else{
                           $mdDialog.show(
@@ -94,6 +97,7 @@ angular.module('myApp.subirDocumentosEstaticos', ['ngRoute'])
                                   .targetEvent(ev)
 
                           );
+                           $route.reload();
 
                     }
 

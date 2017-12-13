@@ -103,8 +103,8 @@ public class SeguridadSocialBD {
          ps.setInt(3,seguridadSocial.getIdContratante());
          ps.execute();
          con.close();
-         File f=seguridadSocial.getArchivos().get(1);
-         File f2=seguridadSocial.getArchivos().get(2);
+         File f=seguridadSocial.getArchivos().get(0);
+         File f2=seguridadSocial.getArchivos().get(1);
          File y=new File("src/main/resources/static/app/Repository/Contratista/"+seguridadSocial.getIdContratista()+"/dinamico/"+seguridadSocial.getMes()+"personal" +"."+fileType2);
          File y1=new File("src/main/resources/static/app/Repository/Contratista/"+seguridadSocial.getIdContratista()+"/dinamico/"+seguridadSocial.getMes()+"SS" +"."+fileType);
          FileUtils.moveFile(f,y);
