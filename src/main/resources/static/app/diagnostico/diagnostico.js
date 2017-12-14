@@ -50,6 +50,9 @@ $rootScope.resultado = 0;
   ];
   $rootScope.preguntas = $scope.preguntas;
 
+   $scope.closeModel= function(){
+           document.getElementById('id01').style.display='none';
+   }
 
   $scope.analizar = function(nombreEmpresa,nombreEmpleado,telefono,email){
         $scope.resultado=parseInt($scope.answers.primeraPregunta) + parseInt($scope.answers.segundaPregunta) + parseInt($scope.answers.terceraPregunta) + parseInt($scope.answers.cuartaPregunta) + parseInt($scope.answers.quintaPregunta) + parseInt($scope.answers.sextaPregunta) + parseInt($scope.answers.septimaPregunta) + parseInt($scope.answers.octavaPregunta) + parseInt($scope.answers.novenaPregunta)  + parseInt($scope.answers.decimaPregunta)  + parseInt($scope.answers.decimoPrimeraPregunta) + parseInt( $scope.answers.decimoSegundaPregunta) + parseInt($scope.answers.decimoTerceraPregunta) + parseInt($scope.answers.decimoCuartaPregunta) + parseInt($scope.answers.decimoQuintaPregunta) + parseInt($scope.answers.decimoSextaPregunta) + parseInt($scope.answers.decimoSeptimaPregunta);
@@ -60,7 +63,15 @@ $rootScope.resultado = 0;
         $scope.answers.telefono=telefono;
         $scope.answers.email=email;
 
-        diagnostico.save($scope.answers);
+        diagnostico.save($scope.answers,function(){
+
+        },function(err){
+             $scope.bandera01 = true;
+                     document.getElementById('id01').style.display='block';
+
+
+
+        });
         $rootScope.answers = $scope.answers;
         $rootScope.global =$scope.global
 

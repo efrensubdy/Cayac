@@ -1,12 +1,12 @@
 
-<div>
 <div  ng-controller="actualizarInformacionCtrl as ctrl">
     <div class="w3-container w3-center">
         <div class="container align-middle text-center">
             <div class="row">
                 <div class="col-xs-9">
+
                     <h4 class="titulos" ><b>MODIFIQUE LA INFORMACIÓN DE SU CONTRATISTA</b></h4>
-                    <p class="texto"><b>DEBERÁ LLENAR ÚNICAMENTE LOS CAMPOS QUE DESEA MODIFICAR SI LOS DATOS QUE DESA CAMBIAR NO SE ENCUENTRAN DEBERÁ COMUNICARSE CON SEQ </p>
+                    <p class="texto"><b>DEBERÁ LLENAR ÚNICAMENTE LOS CAMPOS QUE DESEA MODIFICAR SI LOS DATOS QUE DESEA CAMBIAR NO SE ENCUENTRAN DEBERÁ COMUNICARSE CON SEQ </b></p>
                     <div class="row">
                         <div class="col-sm-12">
                             <div layout="column" layout-align="center center">
@@ -27,6 +27,7 @@
                                 <th>Información</th>
                                 <th>Modificar Campo</th>
                             </tr>
+                            </thead>
                             <tbody>
                             <tr class="texto">
                                 <td><b>Nombre de Empresa</b> </td>
@@ -133,7 +134,7 @@
                             </tr>
 
                             </tbody>
-                            </thead>
+
 
                         </table>
                         <div class="row">
@@ -144,11 +145,38 @@
                         </div>
 
                     </div>
+                    <div id="id01" class="w3-modal" ng-show="bandera1">
+                        <div class="w3-modal-content w3-card-4 w3-animate-zoom" style="max-width:200px;max-height:300px">
+
+                            <div class="w3-center"><br>
+                                <span ng-click="closeModel()" class="w3-button w3-xlarge w3-hover-red w3-display-topright" title="Close Modal">&times;</span>
+                                <i class="fa fa-refresh fa-spin" style="font-size:60px;color:indigo;text-shadow:2px 2px 4px #000000;"></i>
+
+
+                            </div>
+
+                            <form class="w3-container" >
+                                <div class="w3-section">
+                                    <div class="w3-row w3-center">
+                                        <label><b>Error</b></label>
+
+                                    </div>
+                                    <div class="w3-row w3-center">
+                                        <p><b>Comuniquese con SEQ</b></p>
+                                    </div>
+                                    <br>
+                                    <div class="w3-row w3-center">
+                                        <button class="w3-button w3-indigo w3-padding w3-round" type="submit" ng-click="closeModel()">ok</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
                 </div>
             </div>
             </div>
-
     </div>
 </div>
-</div>
+
+
 

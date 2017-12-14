@@ -9,7 +9,7 @@ angular.module('myApp.accidentes', ['ngRoute'])
   });
 }])
 
-.controller('accidentesCtrl', ['$location','$timeout', '$q', '$scope','$log','$rootScope','$localStorage','$sessionStorage','$mdDialog','$route','acciDente','accPorContra','actualizarAccidentes',function($location,$timeout, $q, $scope,$log,$rootScope,$localStorage,$sessionStorage,$mdDialog,$route,acciDente,accPorContra,actualizarAccidentes) {
+.controller('accidentesCtrl', ['$location','$timeout', '$q', '$scope','$log','$rootScope','$localStorage','$sessionStorage','$mdDialog','$route','$window','acciDente','accPorContra','actualizarAccidentes',function($location,$timeout, $q, $scope,$log,$rootScope,$localStorage,$sessionStorage,$mdDialog,$route,$window,acciDente,accPorContra,actualizarAccidentes) {
 if ("undefined" === typeof $localStorage.userLogeado && "undefined" === typeof $localStorage.contratanteLogeado){
          $mdDialog.show(
                           $mdDialog.alert()
@@ -28,7 +28,7 @@ if ("undefined" === typeof $localStorage.userLogeado && "undefined" === typeof $
 
 $scope.bandera1=false;
 $scope.bandera2=false;
-
+$scope.bandera01=false;
 $scope.opciones=[
  { id: 1, name: 'REGISTRAR ACCIDENTES'},
  { id: 2, name: 'CONSULTAR ACCIDENTES REGISTRADOS'},
@@ -202,23 +202,49 @@ $scope.simple2 = function(item){
         $scope.bandera1=false;
         $scope.bandera2=true;
         $scope.bandera3=false;
-        $scope.tablaAcc=accPorContra.query({idContratista:$localStorage.userLogeado.idContratista,idContratante:$localStorage.userLogeado.idContratante});
+        $scope.tablaAcc=accPorContra.query({idContratista:$localStorage.userLogeado.idContratista,idContratante:$localStorage.userLogeado.idContratante},function(){
+
+        },function(err){
+            $scope.bandera01 = true;
+            document.getElementById('id01').style.display='block';
+
+        }
+
+        );
 
         break;
         case 3:
         $scope.bandera1=false;
         $scope.bandera2=false;
         $scope.bandera3=true;
-         $scope.tablaAccidentes=accPorContra.query({idContratista:$localStorage.userLogeado.idContratista,idContratante:$localStorage.userLogeado.idContratante});
+         $scope.tablaAccidentes=accPorContra.query({idContratista:$localStorage.userLogeado.idContratista,idContratante:$localStorage.userLogeado.idContratante},function(){
+
+         },function(err){
+                $scope.bandera01 = true;
+                document.getElementById('id01').style.display='block';
+
+         });
 
    }
 }
+$scope.closeModel= function(){
+        document.getElementById('id01').style.display='none';
+  }
 
 $scope.add=function(ev,textArea,primerApellido,segundoApellido,primerNombre,segundoNombre,identificacion,numero,nacimiento,sexo,departamento,muni,zonas,cargo,ingreso,accidente,hora,diaSe,jornada,sino,tipoA,lugari,depa,mun,zon,si2,tipoB,lesion,mecanismo,parte,agente){
 
 if ("undefined" !== typeof textArea && "undefined" !== typeof primerApellido && "undefined" !== typeof segundoApellido && "undefined" !== typeof primerNombre && "undefined" !== typeof segundoNombre &&"undefined" !== typeof identificacion &&"undefined" !== typeof numero &&"undefined" !== typeof nacimiento && "undefined" !== typeof sexo &&  "undefined" !== typeof departamento && "undefined" !== typeof muni &&"undefined" !== typeof zonas &&"undefined" !== typeof cargo && "undefined" !== typeof ingreso &&  "undefined" !== typeof accidente && "undefined" !== typeof hora && "undefined" !== typeof diaSe && "undefined" !== typeof jornada && "undefined" !== typeof sino && "undefined" !== typeof tipoA && "undefined" !== typeof lugari && "undefined" !== typeof depa && "undefined" !== typeof mun && "undefined" !== typeof zon && "undefined" !== typeof si2 && "undefined" !== typeof tipoB && "undefined" !== typeof lesion && "undefined" !== typeof mecanismo && "undefined" !== typeof parte && "undefined" !== typeof agente ){
     var acciden={descripcion:textArea,primerApellido:primerApellido,segundoApellido:segundoApellido,primerNombre:primerApellido,segundoNombre:segundoNombre,identificacion:identificacion,numero:numero,nacimiento:nacimiento,sexo:sexo,departamento:departamento,muni:muni,zonas:zonas,cargo:cargo,ingreso:ingreso,accidente:accidente,hora:hora,diaSe:diaSe,jornada:jornada,sino:sino,tipoA:tipoA,lugari:lugari,depa:depa,mun:mun,zon:zon,si2:si2,tipoB:tipoB,lesion:lesion,mecanismo:mecanismo,parte:parte,agente:agente,idContratista:$localStorage.userLogeado.idContratista,idContratante:$localStorage.userLogeado.idContratante};
-    acciDente.save(acciden);
+    acciDente.save(acciden,function(){
+
+
+    },function(err){
+         $scope.bandera01 = true;
+         document.getElementById('id01').style.display='block';
+
+
+     }
+    );
     $mdDialog.show(
          $mdDialog.alert()
            .parent(angular.element(document.querySelector('#popupContainer')))
@@ -365,7 +391,7 @@ $scope.showAlert2=function(ev,client){
 
 
            }
-function DialogController($scope, $mdDialog, $rootScope){
+function DialogController($scope, $mdDialog, $rootScope,$window){
             $scope.client= $rootScope.client;
             $scope.lugar=$rootScope.lugar;
             $scope.dias= $rootScope.dias;
@@ -391,6 +417,9 @@ function DialogController($scope, $mdDialog, $rootScope){
              $scope.cancel = function() {
                          $mdDialog.cancel();
                        };
+             $scope.closeModel= function(){
+                     document.getElementById('id01').style.display='none';
+               }
 
 
   $scope.add = function(ev,textArea,primerApellido,segundoApellido,primerNombre,segundoNombre,identificacion,numero,nacimiento,sexo,departamento,muni,zonas,cargo,ingreso,acci,hora,diaSe,jornada,sino,tipoA,lugari,depa,mun,zon,si2,tipoB,lesion,mecanismo,parte,agente,client){
@@ -691,7 +720,14 @@ function DialogController($scope, $mdDialog, $rootScope){
                                   }
 
                      console.log(acciden);
-                     actualizarAccidentes.save(acciden);
+                     actualizarAccidentes.save(acciden,function(){
+
+
+                        },function(err){
+                            $window.alert("No se pudo actualizar, Comuniquese con SEQ ");
+
+                            }
+                        );
                      $mdDialog.show(
                            $mdDialog.alert()
                               .parent(angular.element(document.querySelector('#popupContainer')))

@@ -9,8 +9,8 @@ angular.module('myApp.actualizarInformacion', ['ngRoute'])
   });
 }])
 
-.controller('actualizarInformacionCtrl', ['$route','$mdDialog','$location', '$q', '$scope','$log','$rootScope','$localStorage','$sessionStorage','contratistasPorContratante','actualizarInfo',function($route,$mdDialog,$location, $q, $scope,$log,$rootScope,$localStorage,$sessionStorage,contratistasPorContratante,actualizarInfo) {
-
+.controller('actualizarInformacionCtrl', ['$route','$mdDialog','$location', '$q', '$scope','$log','$rootScope','$localStorage','$sessionStorage','$window','contratistasPorContratante','actualizarInfo',function($route,$mdDialog,$location, $q, $scope,$log,$rootScope,$localStorage,$sessionStorage,$window,contratistasPorContratante,actualizarInfo) {
+$scope.bandera1 = false;
 if ("undefined" === typeof $localStorage.userLogeado && "undefined" === typeof $localStorage.contratanteLogeado){
          $mdDialog.show(
                           $mdDialog.alert()
@@ -104,6 +104,15 @@ $scope.departamento=$scope.departamentos[$scope.client.departamento-1];
 }
 $scope.listado = contratistasPorContratante.query({"idContratante":$localStorage.contratanteLogeado.idContratante})
 
+$scope.closeModel= function(){
+
+        document.getElementById('id01').style.display='none';
+  }
+var openModel = function(){
+      $scope.bandera1= true;
+      document.getElementById('id01').style.display='block';
+
+}
 
 $scope.add =function(ev,nombreEmpresa,nit,nombreDeGerenteGeneral,ar,direccion,dpto,telefono,personContacto,cargoPersonaContacto,telefonoPersonaContacto,emailContacto,ciclo){
 if("undefined" == typeof nombreEmpresa && "undefined" == typeof nit &&  "undefined" == typeof nombreDeGerenteGeneral &&  "undefined" == typeof ar && "undefined" == typeof direccion && "undefined" == typeof dpto &&  "undefined" == typeof telefono &&  "undefined" == typeof personContacto && "undefined" == typeof cargoPersonaContacto && "undefined" == typeof telefonoPersonaContacto && "undefined" == typeof emailContacto){
@@ -217,10 +226,21 @@ else{
                                }
     contratista.id = ciclo.id
     console.log(contratista);
-   actualizarInfo.save(contratista);
+   actualizarInfo.save(contratista,function(){
 
-    $mdDialog.show(
-     $mdDialog.alert()
+
+    },function(err){
+        console.log("llegue rapidito")
+        openModel()
+        $window.alert("No se pudo actualizar, Comuniquese con SEQ ");
+
+
+
+   }
+   )
+
+   $mdDialog.show(
+       $mdDialog.alert()
         .parent(angular.element(document.querySelector('#popupContainer')))
         .clickOutsideToClose(true)
         .title('Exito !!')
@@ -228,13 +248,14 @@ else{
         .ariaLabel('Alert Dialog Demo')
         .ok('ok!')
         .targetEvent(ev)
-                        );
+                      );
 
 
 }
  $route.reload();
 
 }
+
 function Contratista(){
 
 
