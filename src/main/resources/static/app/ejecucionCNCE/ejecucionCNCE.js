@@ -40,9 +40,20 @@ angular.module('myApp.ejecucionCNCE', ['ngRoute'])
 
 
         }
+         $scope.closeModel= function(){
+                   document.getElementById('id01').style.display='none';
+           }
         $scope.add=function(ev,contrato){
                 if("undefined" !== typeof contrato){
-                $scope.listillo=finalesDefinitivos.query({idContratante:$localStorage.contratanteLogeado.idContratante,idContrato:contrato})
+                $scope.listillo=finalesDefinitivos.query({idContratante:$localStorage.contratanteLogeado.idContratante,idContrato:contrato},function(){
+
+                },function(err){
+                     $scope.bandera01 = true;
+                     document.getElementById('id01').style.display='block';
+
+
+
+                })
                 $scope.flag=true;
                 $rootScope.idCategoria=$scope.idCategoria
                 $rootScope.idContrato=$scope.idContrato
@@ -69,10 +80,35 @@ angular.module('myApp.ejecucionCNCE', ['ngRoute'])
 
            $rootScope.user=client;
            $rootScope.idClient=client.id;
-           $rootScope.listadoCSP=psC.query({idFinalista:client.idFinalista,idCategoria:client.idCategoria,idContratante:$localStorage.contratanteLogeado.idContratante});
-           $rootScope.listadoCEP=peC.query({idFinalista:client.idFinalista,idCategoria:client.idCategoria,idContratante:$localStorage.contratanteLogeado.idContratante});
-           $rootScope.listadoNCSP=psNC.query({idFinalista:client.idFinalista,idCategoria:client.idCategoria,idContratante:$localStorage.contratanteLogeado.idContratante});
-           $rootScope.listadoNCEP=peNC.query({idFinalista:client.idFinalista,idCategoria:client.idCategoria,idContratante:$localStorage.contratanteLogeado.idContratante});
+           $rootScope.listadoCSP=psC.query({idFinalista:client.idFinalista,idCategoria:client.idCategoria,idContratante:$localStorage.contratanteLogeado.idContratante},function(){
+
+           },function(err){
+                 $scope.bandera01 = true;
+                 document.getElementById('id01').style.display='block';
+
+
+
+           });
+           $rootScope.listadoCEP=peC.query({idFinalista:client.idFinalista,idCategoria:client.idCategoria,idContratante:$localStorage.contratanteLogeado.idContratante},function(){
+           },function(err){
+                $scope.bandera01 = true;
+                document.getElementById('id01').style.display='block';
+
+           });
+           $rootScope.listadoNCSP=psNC.query({idFinalista:client.idFinalista,idCategoria:client.idCategoria,idContratante:$localStorage.contratanteLogeado.idContratante},function(){
+           },function(err){
+                $scope.bandera01 = true;
+                document.getElementById('id01').style.display='block';
+
+           });
+           $rootScope.listadoNCEP=peNC.query({idFinalista:client.idFinalista,idCategoria:client.idCategoria,idContratante:$localStorage.contratanteLogeado.idContratante},function(){
+
+           },function(err){
+                $scope.bandera01 = true;
+                document.getElementById('id01').style.display='block';
+
+
+           });
 
            $mdDialog.show({
             //Controlador del mensajes con operaciones definido en la parte de abajo
@@ -96,8 +132,8 @@ angular.module('myApp.ejecucionCNCE', ['ngRoute'])
 
            $scope.idClient=$rootScope.idClient
            var q=function(idContratante, idContratista){
-                                 //var url= "http://localhost:8080/app/planDeTrabajo/aprobado/"+idContratista+"/"+idContratante ;
-                                 var url= "http://ec2-35-163-21-208.us-west-2.compute.amazonaws.com:8080/app/planDeTrabajo/aprobado/"+idContratista+"/"+idContratante ;
+                                 var url= "http://localhost:8080/app/planDeTrabajo/aprobado/"+idContratista+"/"+idContratante ;
+                                 //var url= "http://ec2-35-163-21-208.us-west-2.compute.amazonaws.com:8080/app/planDeTrabajo/aprobado/"+idContratista+"/"+idContratante ;
                                   var a;
                                a=$http.get(url).then(function(response) {
                                                $scope.o=response.data;
