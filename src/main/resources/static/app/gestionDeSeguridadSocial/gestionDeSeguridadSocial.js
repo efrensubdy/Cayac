@@ -60,11 +60,25 @@ $scope.years=[
      { id: 26, name: 2026},
                 ];
 
-$scope.listado=contratosEnEjecucion.query({idContratante:$localStorage.contratanteLogeado.idContratante});
+
+ $scope.closeModel= function(){
+                   document.getElementById('id01').style.display='none';
+  }
+$scope.listado=contratosEnEjecucion.query({idContratante:$localStorage.contratanteLogeado.idContratante},function(){
+},function(err){
+    $scope.bandera01 = true;
+     document.getElementById('id01').style.display='block';
+
+});
 $scope.flag=false
 $scope.add=function(ev,contrato,mes,year){
                 if("undefined" !== typeof contrato && "undefined" !== typeof year && "undefined" !== typeof mes){
-                $scope.listillo=finalesDefinitivos.query({idContratante:$localStorage.contratanteLogeado.idContratante,idContrato:contrato.idContrato})
+                $scope.listillo=finalesDefinitivos.query({idContratante:$localStorage.contratanteLogeado.idContratante,idContrato:contrato.idContrato},function(){
+                },function(err){
+                    $scope.bandera01 = true;
+                    document.getElementById('id01').style.display='block';
+
+                })
                 $scope.flag=true;
                 }
                 else{

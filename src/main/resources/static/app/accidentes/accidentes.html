@@ -7,12 +7,6 @@
                 <div class="col-xs-9">
                 <div class="container">
                     <div class="col-xs-9">
-                    <h4 class="text-primary"><b>ACCIDENTES</b></h4>
-                        <p class="texto">ESCOJA UNA DE LAS OPCIONES PRESENTADAS A CONTINUACIÓN</p>
-                        <md-select aria-label="simpleSelect1" class="titulos" placeholder="Escoger Opcion " ng-model="opcion"  ng-change="simple2(opcion)">
-                            <md-option ng-value="todo" ng-repeat="todo in opciones">{{todo.name}}</md-option>
-
-                        </md-select>
                         <div id="id01" class="w3-modal" ng-show="bandera01">
                             <div class="w3-modal-content w3-card-4 w3-animate-zoom" style="max-width:200px;max-height:300px">
 
@@ -40,6 +34,13 @@
                                 </form>
                             </div>
                         </div>
+                    <h4 class="text-primary"><b>ACCIDENTES</b></h4>
+                        <p class="texto">ESCOJA UNA DE LAS OPCIONES PRESENTADAS A CONTINUACIÓN</p>
+                        <md-select aria-label="simpleSelect1" class="titulos" placeholder="Escoger Opcion " ng-model="opcion"  ng-change="simple2(opcion)">
+                            <md-option ng-value="todo" ng-repeat="todo in opciones">{{todo.name}}</md-option>
+
+                        </md-select>
+
 
 
                     </div>

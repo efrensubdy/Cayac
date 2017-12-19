@@ -27,6 +27,9 @@ if ("undefined" === typeof $localStorage.userLogeado && "undefined" === typeof $
         }
 $scope.bandera1=false;
 $scope.bandera2=false;
+ $scope.closeModel= function(){
+                   document.getElementById('id01').style.display='none';
+           }
 $scope.opciones=[
  { id: 1, name: 'AGREGAR ESTANDAR'},
  { id: 2, name: 'CONSULTAR ESTANDAR'},
@@ -46,13 +49,23 @@ $scope.simple2 = function(item){
         $scope.bandera1=false;
         $scope.bandera2=true;
         $scope.bandera3=false
-        $scope.listadoEstandaresMinimos=estContr.query({idContratista:$localStorage.userLogeado.idContratista,idContratante:$localStorage.userLogeado.idContratante})
+        $scope.listadoEstandaresMinimos=estContr.query({idContratista:$localStorage.userLogeado.idContratista,idContratante:$localStorage.userLogeado.idContratante},function(){
+        },function(err){
+            $scope.bandera01 = true;
+            document.getElementById('id01').style.display='block';
+
+         })
         break;
         case 3:
         $scope.bandera1=false;
         $scope.bandera2=false;
         $scope.bandera3=true
-        $scope.listadoDeActualizaciones=estContr.query({idContratista:$localStorage.userLogeado.idContratista,idContratante:$localStorage.userLogeado.idContratante})
+        $scope.listadoDeActualizaciones=estContr.query({idContratista:$localStorage.userLogeado.idContratista,idContratante:$localStorage.userLogeado.idContratante},function(){
+        },function(err){
+            $scope.bandera01 = true;
+            document.getElementById('id01').style.display='block';
+
+        })
 
    }
 
@@ -63,7 +76,13 @@ $scope.add =function(ev,recursos,capacitacion,politica,objetivos,evaInicial,plan
 if ("undefined" !== typeof recursos && "undefined" !== typeof capacitacion && "undefined" !== typeof politica && "undefined" !== typeof objetivos && "undefined" !== typeof evaInicial && "undefined" !== typeof planAnual && "undefined" !== typeof documen && "undefined" !== typeof cuentas && "undefined" !== typeof normatividad && "undefined" !== typeof mecanismos && "undefined" !== typeof adquisiones && "undefined" !== typeof contrataciones && "undefined" !== typeof cambios && "undefined" !== typeof condiciones && "undefined" !== typeof registro && "undefined" !== typeof vigilancia && "undefined" !== typeof peligros && "undefined" !== typeof prevencion && "undefined" !== typeof planPrevencion && "undefined" !== typeof gestion && "undefined" !== typeof accionesPreven){
     if(recursos <= 4 && capacitacion <= 6 && politica <= 1 && objetivos <= 1 && evaInicial <= 1 && planAnual <= 2 && documen <= 2 && cuentas <= 1 && normatividad <= 2 && mecanismos <= 1  && adquisiones <= 1 &&  contrataciones <= 2 && cambios <= 1 && condiciones <= 9 && registro <= 5 && vigilancia <= 6 && peligros <= 15 && prevencion <= 15 && planPrevencion <= 10  && gestion <= 5 && accionesPreven <= 10 ){
         var estandarMin={"recursos":recursos,"capacitacion":capacitacion,"politica":politica,"objetivos":objetivos,"evaInicial":evaInicial,"planAnual":planAnual,"documen":documen,"cuentas":cuentas,"normatividad":normatividad,"mecanismos":mecanismos,"adquisiones":adquisiones,"contrataciones":contrataciones,"cambios":cambios,"condiciones":condiciones,"registro":registro,"vigilancia":vigilancia,"peligros":peligros,"prevencion":prevencion,"planPrevencion":planPrevencion,"gestion":gestion,"accionesPreven":accionesPreven,"idContratista":$localStorage.userLogeado.idContratista,"idContratante":$localStorage.userLogeado.idContratante}
-        estandar.save(estandarMin);
+        estandar.save(estandarMin,function(){
+
+        },function(err){
+             $scope.bandera01 = true;
+             document.getElementById('id01').style.display='block';
+
+        });
         $mdDialog.show(
                 $mdDialog.alert()
                 .parent(angular.element(document.querySelector('#popupContainer')))
@@ -206,6 +225,7 @@ $scope.showAlert=function(ev,client){
                $scope.cancel = function() {
                            $mdDialog.cancel();
                          };
+
 
                $scope.add = function(ev,recursos,capacitacion,politica,objetivos,evaInicial,planAnual,documen,cuentas,normatividad,mecanismos,adquisiones,contrataciones,cambios,condiciones,registro,vigilancia,peligros,prevencion,planPrevencion,gestion,accionesPreven,client){
                    if ("undefined" == typeof recursos && "undefined" == typeof capacitacion && "undefined" == typeof politica && "undefined" == typeof objetivos && "undefined" == typeof evaInicial && "undefined" == typeof planAnual && "undefined" == typeof documen && "undefined" == typeof cuentas && "undefined" == typeof normatividad && "undefined" == typeof mecanismos && "undefined" == typeof adquisiones && "undefined" == typeof contrataciones && "undefined" == typeof cambios && "undefined" == typeof condiciones && "undefined" == typeof registro && "undefined" == typeof vigilancia && "undefined" == typeof peligros && "undefined" == typeof prevencion && "undefined" == typeof planPrevencion && "undefined" == typeof gestion && "undefined" == typeof accionesPreven){
@@ -406,7 +426,16 @@ $scope.showAlert=function(ev,client){
                                               .ok('ok!')
                                               .targetEvent(ev)
                                                               );
-                     actualizarEstandar.save(estandar);
+                     actualizarEstandar.save(estandar,function(){
+
+                     },function(err){
+                         $rootScope.bandera01 = true;
+                          document.getElementById('id01').style.display='block';
+                          console.log("dhdfuifgiudffgd")
+
+
+
+                     });
                      $route.reload();
 
 

@@ -25,7 +25,14 @@ angular.module('myApp.ejecucionCNCE', ['ngRoute'])
 
 
         }
-        $scope.listado=contratosEnEjecucion.query({idContratante:$localStorage.contratanteLogeado.idContratante})
+        $scope.closeModel= function(){
+                           document.getElementById('id01').style.display='none';
+          }
+        $scope.listado=contratosEnEjecucion.query({idContratante:$localStorage.contratanteLogeado.idContratante},function(){
+        },function(err){
+                 $scope.bandera01 = true;
+                 document.getElementById('id01').style.display='block';
+        })
         $scope.flag=false;
         $scope.seleccionados=[];
         $scope.propertyName = 'cumplidos';

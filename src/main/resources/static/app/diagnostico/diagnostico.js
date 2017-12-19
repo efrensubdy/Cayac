@@ -67,7 +67,7 @@ $rootScope.resultado = 0;
 
         },function(err){
              $scope.bandera01 = true;
-                     document.getElementById('id01').style.display='block';
+             document.getElementById('id01').style.display='block';
 
 
 

@@ -31,10 +31,25 @@ $scope.ocultarTodo=function(){
     $scope.flag=false;
     $scope.bandera3=false;
 }
-$scope.listado=contratosEnEjecucion.query({idContratante:$localStorage.contratanteLogeado.idContratante});
+ $scope.closeModel= function(){
+                   document.getElementById('id01').style.display='none';
+           }
+$scope.listado=contratosEnEjecucion.query({idContratante:$localStorage.contratanteLogeado.idContratante},function(){
+},function(err){
+
+$scope.bandera01 = true;
+ document.getElementById('id01').style.display='block';
+
+});
 $scope.add=function(ev,contrato){
                 if("undefined" !== typeof contrato){
-                $scope.listillo=finalesDefinitivos.query({idContratante:$localStorage.contratanteLogeado.idContratante,idContrato:contrato})
+                $scope.listillo=finalesDefinitivos.query({idContratante:$localStorage.contratanteLogeado.idContratante,idContrato:contrato},function(){
+                },function(err){
+                    $scope.bandera01 = true;
+                    document.getElementById('id01').style.display='block';
+
+
+                });
                 $scope.flag=true;
                 $scope.bandera3=false;
                 }
