@@ -72,22 +72,53 @@ $scope.ocultarTodo=function(){
     $scope.banderaSinSoporte=false;
 
 }
+ $scope.closeModel= function(){
+     document.getElementById('id01').style.display='none';
+      }
 $scope.add = function(notificacion,mes,year){
 
     switch(notificacion.id){
         case 1:
 
         $scope.banderaSinSoporte=true;
-        $scope.noti=notifacionSinRegistro.query({idContratante:$localStorage.contratanteLogeado.idContratante,mes:mes.name,year:year.name})
+        $scope.noti=notifacionSinRegistro.query({idContratante:$localStorage.contratanteLogeado.idContratante,mes:mes.name,year:year.name},function(list){
+            if (list.length ==0){
+                 $scope.bandera02 = true;
+                 document.getElementById('id02').style.display='block'
+
+            }
+        },function(err){
+             $scope.bandera01 = true;
+             document.getElementById('id01').style.display='block'
+
+        })
         break;
         case 2:
 
         $scope.banderaSinSoporte=true;
-        $scope.noti=notifacionSinSoporte.query({idContratante:$localStorage.contratanteLogeado.idContratante,mes:mes.name,year:year.name})
+        $scope.noti=notifacionSinSoporte.query({idContratante:$localStorage.contratanteLogeado.idContratante,mes:mes.name,year:year.name},function(list){
+
+
+        },function(err){
+            $scope.bandera01 = true;
+            document.getElementById('id01').style.display='block'
+
+
+        })
         break;
         case 3:
         $scope.banderaSinSoporte=true;
-         $scope.noti=sRIndi.query({idContratante:$localStorage.contratanteLogeado.idContratante,mes:mes.name,year:year.name})
+         $scope.noti=sRIndi.query({idContratante:$localStorage.contratanteLogeado.idContratante,mes:mes.name,year:year.name},function(list){
+            if (list.length==0){
+                            $scope.bandera03 = true;
+                            document.getElementById('id03').style.display='block'
+
+                         }
+         },function(err){
+            $scope.bandera01 = true;
+            document.getElementById('id01').style.display='block'
+
+         })
 
 
     }

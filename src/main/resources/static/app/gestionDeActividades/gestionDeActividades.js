@@ -25,6 +25,7 @@ if ("undefined" === typeof $localStorage.userLogeado && "undefined" === typeof $
 
 
 }
+
 var q=function(idContratante, idContratista){
 
  //var url= "http://localhost:8080/app/planDeTrabajo/aprobado/"+idContratista+"/"+idContratante ;
@@ -37,6 +38,7 @@ var q=function(idContratante, idContratista){
   })
      return a;
                   }
+
 
 $scope.meses=[
  { id: 1, name: 'ENERO'},
@@ -72,6 +74,7 @@ $scope.meses=[
       { id: 25, name: 2024},
       { id: 26, name: 2026},
                  ];
+
 $scope.listado=contratosEnEjecucion.query({idContratante:$localStorage.contratanteLogeado.idContratante},function(){
 },function(err){
     $scope.bandera01 = true;
@@ -117,21 +120,57 @@ $scope.add=function(ev,contrato,mes,year){
 
 
 $scope.showAlert=function(ev, client,mes,year){
-        $rootScope.client=client;
-        $rootScope.lista1= actividadConSoporte.query({idContratista:client.id,mes:mes.name,year:year.name})
-        $rootScope.lista2= actividadSinSoporte.query({idContratista:client.id,mes:mes.name,year:year.name})
+        c(client,mes,year);
         $rootScope.mes=mes;
         $rootScope.year=year;
-        $mdDialog.show({
-            //Controlador del mensajes con operaciones definido en la parte de abajo
-            controller: DialogController,
-             //permite la comunicacion con el html que despliega el boton requisitos
-            templateUrl: 'test/cumplidoActividad.html',
-            parent: angular.element(document.body),
-            targetEvent: ev,
-            clickOutsideToClose:true,
-            fullscreen: $scope.customFullscreen // Only for -xs, -sm breakpoints.
-        })
+
+             $mdDialog.show({
+                        //Controlador del mensajes con operaciones definido en la parte de abajo
+                        controller: DialogController,
+                         //permite la comunicacion con el html que despliega el boton requisitos
+                        templateUrl: 'test/cumplidoActividad.html',
+                        parent: angular.element(document.body),
+                        targetEvent: ev,
+                        clickOutsideToClose:true,
+                        fullscreen: $scope.customFullscreen // Only for -xs, -sm breakpoints.
+                    })
+
+
+
+
+}
+
+
+var c=function(client,mes,year){
+        $rootScope.client=client;
+        $rootScope.lista1= actividadConSoporte.query({idContratista:client.id,mes:mes.name,year:year.name},function(list){
+          if (list.length ==0){
+
+          $scope.bandera02 = true;
+          document.getElementById('id02').style.display='block';
+          }
+
+        },function(err){
+            $scope.bandera01 = true;
+            document.getElementById('id01').style.display='block';
+
+
+        });
+        $rootScope.lista2= actividadSinSoporte.query({idContratista:client.id,mes:mes.name,year:year.name},function(list){
+          if (list.length ==0){
+
+                   $scope.bandera02 = true;
+                    document.getElementById('id02').style.display='block';
+                    }
+        },function(err){
+            $scope.bandera01 = true;
+             document.getElementById('id01').style.display='block';
+
+
+
+        });
+
+
 
 
 }
@@ -184,6 +223,7 @@ function DialogController($scope, $mdDialog, $rootScope, $http) {
 
 
 }
+
 
 
 

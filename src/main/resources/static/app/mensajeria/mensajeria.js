@@ -26,9 +26,21 @@ angular.module('myApp.mensajeria', ['ngRoute'])
 
     }
     $scope.trash=false;
+    $scope.closeModel= function(){
+                       document.getElementById('id01').style.display='none';
+      }
+
+    $scope.listadoMensajes=mensajeContr.query({idContratista:$localStorage.userLogeado.idContratista,idContratante:$localStorage.userLogeado.idContratante},function(list){
+         if (list.length==0){
+              $scope.bandera02 = true;
+              document.getElementById('id02').style.display='block'
+              }
+    },function(err){
+        $scope.bandera01 = true;
+        document.getElementById('id01').style.display='block'
 
 
-    $scope.listadoMensajes=mensajeContr.query({idContratista:$localStorage.userLogeado.idContratista,idContratante:$localStorage.userLogeado.idContratante});
+    });
      $scope.deleteMessagesList=[];
 
 
@@ -126,7 +138,14 @@ function DialogController($scope, $mdDialog, $rootScope, $http) {
      };
     $scope.envio=function(item){
         var mensaje={mensaje:item,idContratante:$localStorage.userLogeado.idContratante,idContratista:$localStorage.userLogeado.idContratista,nombreEmpresa:$localStorage.userLogeado.nombreEmpresa}
-        mensajeContratante.save(mensaje);
+        mensajeContratante.save(mensaje,function(){
+
+        },function(err){
+            $rootScope.bandera01 = true;
+            document.getElementById('id01').style.display='block'
+
+
+        });
         $scope.textArea= '';
         $scope.mensaje=false;
 

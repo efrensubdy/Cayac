@@ -25,6 +25,9 @@ if ("undefined" === typeof $localStorage.userLogeado && "undefined" === typeof $
 
 
 }
+ $scope.closeModel= function(){
+                   document.getElementById('id01').style.display='none';
+           }
 $scope.bandera1=false;
 $scope.bandera2=false;
 $scope.name=$localStorage.userLogeado.nombreEmpresa;
@@ -66,13 +69,39 @@ $scope.simple2 = function(item){
         $scope.bandera1=false;
         $scope.bandera2=true;
         $scope.bandera3=false
-        $scope.table=indContr.query({idContratista:$localStorage.userLogeado.idContratista,idContratante:$localStorage.userLogeado.idContratante})
+        $scope.table=indContr.query({idContratista:$localStorage.userLogeado.idContratista,idContratante:$localStorage.userLogeado.idContratante},function(list){
+            if(list.length ==0){
+                $scope.bandera02 = true;
+                     document.getElementById('id02').style.display='block';
+
+
+            }
+        },function(err){
+            $scope.bandera01 = true;
+             document.getElementById('id01').style.display='block'
+
+
+
+        })
         break;
         case 3:
         $scope.bandera1=false;
         $scope.bandera2=false;
         $scope.bandera3=true;
-        $scope.table1=indContr.query({idContratista:$localStorage.userLogeado.idContratista,idContratante:$localStorage.userLogeado.idContratante})
+        $scope.table1=indContr.query({idContratista:$localStorage.userLogeado.idContratista,idContratante:$localStorage.userLogeado.idContratante},function(list){
+        if(list.length ==0){
+                $scope.bandera02 = true;
+                document.getElementById('id02').style.display='block';
+
+
+        }
+        },function(err){
+             $scope.bandera01 = true;
+             document.getElementById('id01').style.display='block'
+
+
+
+        })
 
    }
 
@@ -97,7 +126,11 @@ $scope.add = function(ev,contraName,responsable,departamento,mes,actividad,sever
 
     if("undefined" !== typeof contraName && "undefined" !== typeof responsable && "undefined" !== typeof departamento && "undefined" !== typeof mes && "undefined" !== typeof actividad && "undefined" !== typeof severidad && "undefined" !== typeof frecuencia && "undefined" !== typeof mortalidad && "undefined" !== typeof prevalencia && "undefined" !== typeof icidencia && "undefined" !== typeof ausentismo && "undefined" !== typeof year  ){
          var indicadori ={"nombreContra":contraName,"mes":mes.name,"responsable":responsable,"departamento":departamento,"actividad":actividad,"severidad":severidad,"frecuencia":frecuencia,"mortalidad":mortalidad,"prevalencia":prevalencia,"incidencia":icidencia,"ausentismo":ausentismo,"idContratista":$localStorage.userLogeado.idContratista,"idContratante":$localStorage.userLogeado.idContratante,"year":year.name}
-       indicador.save(indicadori);
+       indicador.save(indicadori,function(){
+       },function(err){
+             $scope.bandera01 = true;
+                          document.getElementById('id01').style.display='block';
+       });
          $mdDialog.show(
                               $mdDialog.alert()
                                 .parent(angular.element(document.querySelector('#popupContainer')))

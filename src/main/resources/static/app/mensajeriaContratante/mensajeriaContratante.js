@@ -25,10 +25,24 @@ angular.module('myApp.mensajeriaContratante', ['ngRoute'])
 
 
     }
+    $scope.closeModel= function(){
+                           document.getElementById('id01').style.display='none';
+          }
     $scope.trash=false;
 
 
-    $scope.listadoMensajes=mensajeCtante.query({idContratante:$localStorage.contratanteLogeado.idContratante});
+    $scope.listadoMensajes=mensajeCtante.query({idContratante:$localStorage.contratanteLogeado.idContratante},function(list){
+         if (list.length==0){
+                      $scope.bandera02 = true;
+                      document.getElementById('id02').style.display='block'
+                      }
+    },function(err){
+         $rootScope.bandera01 = true;
+         document.getElementById('id01').style.display='block'
+
+
+
+    });
      $scope.deleteMessagesList=[];
 
 
@@ -127,7 +141,14 @@ $scope.showAlert2=function(ev){
 }
 function DialogController2($scope, $mdDialog, $rootScope, $http) {
 
-   $scope.listado = contratistasPorContratante.query({"idContratante":$localStorage.contratanteLogeado.idContratante})
+   $scope.listado = contratistasPorContratante.query({"idContratante":$localStorage.contratanteLogeado.idContratante},function(){
+   },function(err){
+    $rootScope.bandera01 = true;
+     document.getElementById('id01').style.display='block'
+
+
+
+   })
     $scope.mensaje2=false;
     $scope.show=function(){
            $scope.mensaje=true;
@@ -144,7 +165,13 @@ function DialogController2($scope, $mdDialog, $rootScope, $http) {
          $scope.envio = function(textArea,client){
 
             var mensaje={mensaje:textArea,idContratante:$localStorage.contratanteLogeado.idContratante,idContratista:client.id}
-            mensajeContratista.save(mensaje);
+            mensajeContratista.save(mensaje,function(){
+            },function(err){
+                $rootScope.bandera01 = true;
+                document.getElementById('id01').style.display='block'
+
+
+            });
             $scope.mensaje = false;
             $scope.mensaje2=true
 

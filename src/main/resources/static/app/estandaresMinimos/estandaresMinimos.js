@@ -49,7 +49,12 @@ $scope.simple2 = function(item){
         $scope.bandera1=false;
         $scope.bandera2=true;
         $scope.bandera3=false
-        $scope.listadoEstandaresMinimos=estContr.query({idContratista:$localStorage.userLogeado.idContratista,idContratante:$localStorage.userLogeado.idContratante},function(){
+        $scope.listadoEstandaresMinimos=estContr.query({idContratista:$localStorage.userLogeado.idContratista,idContratante:$localStorage.userLogeado.idContratante},function(list){
+          if (list.length==0){
+               $scope.bandera02 = true;
+               document.getElementById('id02').style.display='block'
+               }
+
         },function(err){
             $scope.bandera01 = true;
             document.getElementById('id01').style.display='block';
@@ -60,7 +65,11 @@ $scope.simple2 = function(item){
         $scope.bandera1=false;
         $scope.bandera2=false;
         $scope.bandera3=true
-        $scope.listadoDeActualizaciones=estContr.query({idContratista:$localStorage.userLogeado.idContratista,idContratante:$localStorage.userLogeado.idContratante},function(){
+        $scope.listadoDeActualizaciones=estContr.query({idContratista:$localStorage.userLogeado.idContratista,idContratante:$localStorage.userLogeado.idContratante},function(list){
+            if (list.length==0){
+                           $scope.bandera02 = true;
+                           document.getElementById('id02').style.display='block'
+            }
         },function(err){
             $scope.bandera01 = true;
             document.getElementById('id01').style.display='block';

@@ -90,7 +90,14 @@ $scope.cambiarOpcion = function(notificacion){
 }
 $scope.byMonthAndYear=function(mes,year){
 
-$scope.listadoEstandaresMinimos=estByMonthYear.query({month:mes.id,year:year.name});
+$scope.listadoEstandaresMinimos=estByMonthYear.query({month:mes.id,year:year.name},function(){
+},function(err){
+    $scope.bandera01 = true;
+    document.getElementById('id01').style.display='block';
+
+
+
+});
 $scope.bandera3=true;
 
 }
@@ -128,7 +135,19 @@ $scope.resul=function(){
 }
 $scope.traerEstandares=function(item){
 
-$scope.listadoEstandaresMinimos=estContr.query({idContratista:item.id,idContratante:$localStorage.contratanteLogeado.idContratante})
+$scope.listadoEstandaresMinimos=estContr.query({idContratista:item.id,idContratante:$localStorage.contratanteLogeado.idContratante},function(lista){
+
+        if (lista.length == 0){
+            $scope.bandera02 = true;
+            document.getElementById('id02').style.display='block'
+        }
+
+
+
+},function(err){
+    $scope.bandera01 = true;
+    document.getElementById('id01').style.display='block';
+})
 $scope.bandera2=true
 }
 $scope.showAlert=function(ev,client){

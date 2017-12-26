@@ -43,7 +43,8 @@ $scope.bandera01 = true;
 });
 $scope.add=function(ev,contrato){
                 if("undefined" !== typeof contrato){
-                $scope.listillo=finalesDefinitivos.query({idContratante:$localStorage.contratanteLogeado.idContratante,idContrato:contrato},function(){
+                $scope.listillo=finalesDefinitivos.query({idContratante:$localStorage.contratanteLogeado.idContratante,idContrato:contrato},function(list){
+
                 },function(err){
                     $scope.bandera01 = true;
                     document.getElementById('id01').style.display='block';
@@ -70,7 +71,17 @@ $scope.add=function(ev,contrato){
 
 $scope.traerAccidentes=function(client){
 $rootScope.client=client;
-$scope.accidentes=accPorContra.query({idContratista:client.id,idContratante:$localStorage.contratanteLogeado.idContratante});
+$scope.accidentes=accPorContra.query({idContratista:client.id,idContratante:$localStorage.contratanteLogeado.idContratante},function(list){
+    if (list.length==0){
+     $scope.bandera02 = true;
+     document.getElementById('id02').style.display='block'
+     }
+},function(err){
+
+    $scope.bandera01 = true;
+    document.getElementById('id01').style.display='block'
+
+});
 $scope.bandera3=true;
 
 

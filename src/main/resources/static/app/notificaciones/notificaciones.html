@@ -6,6 +6,81 @@
                 <div class="col-sm-12">
 
                     <div class="col-xs-9">
+                        <div id="id01" class="w3-modal" ng-show="bandera01">
+                            <div class="w3-modal-content w3-card-4 w3-animate-zoom" style="max-width:200px;max-height:300px">
+
+                                <div class="w3-center"><br>
+                                    <span onclick="document.getElementById('id01').style.display='none'" class="w3-button w3-xlarge w3-hover-red w3-display-topright" title="Close Modal">&times;</span>
+                                    <i class="fa fa-refresh fa-spin" style="font-size:60px;color:indigo;text-shadow:2px 2px 4px #000000;"></i>
+
+
+                                </div>
+
+                                <form class="w3-container" >
+                                    <div class="w3-section">
+                                        <div class="w3-row w3-center">
+                                            <label><b>Error</b></label>
+
+                                        </div>
+                                        <div class="w3-row w3-center">
+                                            <p><b>Comuniquese con SEQ</b></p>
+                                        </div>
+                                        <br>
+                                        <div class="w3-row w3-center">
+                                            <button class="w3-button w3-indigo w3-padding w3-round" type="submit" ng-click="closeModel()">ok</button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                        <div id="id02" class="w3-modal" ng-show="bandera02">
+                            <div class="w3-modal-content w3-card-4 w3-animate-zoom" style="max-width:200px;max-height:300px">
+
+                                <div class="w3-center"><br>
+                                    <span onclick="document.getElementById('id02').style.display='none'" class="w3-button w3-xlarge w3-hover-red w3-display-topright" title="Close Modal">&times;</span>
+                                    <i class="fa fa-line-chart" style="font-size:60px;color:indigo;text-shadow:2px 2px 4px #000000;"></i>
+
+
+                                </div>
+
+                                <form class="w3-container" >
+                                    <div class="w3-section">
+                                        <div class="w3-row w3-center">
+                                            <label><b>Vacio</b></label>
+
+                                        </div>
+                                        <div class="w3-row w3-center">
+                                            <p><b>Todos los Contratistas ya han registrado actividades, para este periodo</b></p>
+                                        </div>
+                                        <br>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                        <div id="id03" class="w3-modal" ng-show="bandera03">
+                            <div class="w3-modal-content w3-card-4 w3-animate-zoom" style="max-width:200px;max-height:300px">
+
+                                <div class="w3-center"><br>
+                                    <span onclick="document.getElementById('id03').style.display='none'" class="w3-button w3-xlarge w3-hover-red w3-display-topright" title="Close Modal">&times;</span>
+                                    <i class="fa fa-bar-chart" style="font-size:60px;color:indigo;text-shadow:2px 2px 4px #000000;"></i>
+
+
+                                </div>
+
+                                <form class="w3-container" >
+                                    <div class="w3-section">
+                                        <div class="w3-row w3-center">
+                                            <label><b>Vacio</b></label>
+
+                                        </div>
+                                        <div class="w3-row w3-center">
+                                            <p><b>Todos los Contratistas ya han registrado indicadores, para este periodo</b></p>
+                                        </div>
+                                        <br>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
                         <div class="col-sm-12">
                             <label class="titulos">LA PESTAÑA NOTIFICACIONES LE AYUDARÁ A ENTERARSE SOBRE EL COMPÓRTAMIENTO DE SU CONTRATISTA FRENTE A LAS ACTIVDADES</label>
 

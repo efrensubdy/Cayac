@@ -100,7 +100,18 @@ $scope.resul=function(){
 }
 $scope.showAlert=function(ev, client,mes,year){
 $rootScope.client=client;
-$rootScope.listadoSeguridad=seguriContratante.query({idContratista:client.id,mes:mes.name,year:year.name});
+$rootScope.listadoSeguridad=seguriContratante.query({idContratista:client.id,mes:mes.name,year:year.name},function(lista){
+    if (lista.length == 0){
+         $scope.bandera02 = true;
+             document.getElementById('id02').style.display='block';
+
+    }
+
+},function(err){
+     $scope.bandera01 = true;
+     document.getElementById('id01').style.display='block';
+
+});
 $rootScope.mes=mes;
 $rootScope.year=year;
 $mdDialog.show({
