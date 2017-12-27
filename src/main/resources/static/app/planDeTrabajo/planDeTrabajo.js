@@ -26,8 +26,8 @@ if ("undefined" === typeof $localStorage.userLogeado && "undefined" === typeof $
 
 }
 var q=function(idContratante, idContratista){
-                      //var url= "http://localhost:8080/app/planDeTrabajo/aprobado/"+idContratista+"/"+idContratante ;
-                      var url= "http://ec2-35-163-21-208.us-west-2.compute.amazonaws.com:8080/app/planDeTrabajo/aprobado/"+idContratista+"/"+idContratante ;
+                      var url= "http://localhost:8080/app/planDeTrabajo/aprobado/"+idContratista+"/"+idContratante ;
+                      //var url= "http://ec2-35-163-21-208.us-west-2.compute.amazonaws.com:8080/app/planDeTrabajo/aprobado/"+idContratista+"/"+idContratante ;
                        var a;
                     a=$http.get(url).then(function(response) {
                                     $scope.objeto=response.data;
@@ -39,7 +39,9 @@ q($localStorage.userLogeado.idContratante,$localStorage.userLogeado.idContratist
 
 
 
-
+$scope.closeModel= function(){
+   document.getElementById('id01').style.display='none';
+ }
 
 $scope.meses=[
  { id: 1, name: 'ENERO'},
@@ -106,14 +108,32 @@ $scope.meses=[
                $scope.bandera5=false;
                break;
             case 2:
-               $scope.table2=actividadPlan.query({idContratista:$localStorage.userLogeado.idContratista,mes:mes.name,year:year.name});
+               $scope.table2=actividadPlan.query({idContratista:$localStorage.userLogeado.idContratista,mes:mes.name,year:year.name},function(list){
+                    if (list.length==0){
+                                   $scope.bandera02 = true;
+                                   document.getElementById('id02').style.display='block'
+                    }
+               },function(err){
+                    $scope.bandera01 = true;
+                    document.getElementById('id01').style.display='block';
+
+               });
                $scope.bandera4=true;
                $scope.bandera1=false;
                $scope.bandera3=false;
                  $scope.bandera5=false;
                break;
            case 3:
-               $scope.table3=actividadPlan.query({idContratista:$localStorage.userLogeado.idContratista,mes:mes.name,year:year.name});
+               $scope.table3=actividadPlan.query({idContratista:$localStorage.userLogeado.idContratista,mes:mes.name,year:year.name},function(list){
+                        if (list.length==0){
+                           $scope.bandera02 = true;
+                           document.getElementById('id02').style.display='block'
+                        }
+               },function(err){
+                    $scope.bandera01 = true;
+                    document.getElementById('id01').style.display='block';
+
+               });
                $scope.bandera4=false;
 
                $scope.bandera3=true;
@@ -125,7 +145,16 @@ $scope.meses=[
                $scope.bandera3=false;
                $scope.bandera1=false;
                $scope.bandera5=true;
-               $scope.tableActividades=actividadPlan.query({idContratista:$localStorage.userLogeado.idContratista,mes:mes.name,year:year.name});
+               $scope.tableActividades=actividadPlan.query({idContratista:$localStorage.userLogeado.idContratista,mes:mes.name,year:year.name},function(list){
+                    if (list.length==0){
+                       $scope.bandera02 = true;
+                       document.getElementById('id02').style.display='block'
+                    }
+               },function(err){
+                     $scope.bandera01 = true;
+                     document.getElementById('id01').style.display='block';
+
+               });
 
                 break;
 
@@ -135,7 +164,13 @@ $scope.meses=[
   $scope.add=function(ev,fechaInicio,fechaFin,nombre,mes,year){
     if ("undefined" !== typeof nombre &&"undefined" !== typeof mes && "undefined" !== typeof fechaInicio && "undefined" !== typeof fechaFin && "undefined" !== typeof year ){
     var plan={"nombre":nombre,"mes":mes,"fechaInicio":fechaInicio,"fechaFin":fechaFin,"idContratista":$localStorage.userLogeado.idContratista,"year":year};
-    plandeTrabajo.save(plan);
+    plandeTrabajo.save(plan,function(){
+
+    },function(err){
+
+
+
+    });
     $scope.nombre='';
     $scope.fechaInicio='';
     $scope.fechaFin='';

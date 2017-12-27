@@ -158,7 +158,12 @@ function DialogController($scope, $mdDialog, $rootScope, $http) {
     $scope.envio=function(item){
 
         var mensaje={mensaje:item,idContratante:$localStorage.contratanteLogeado.idContratante,idContratista:$scope.client.id}
-        mensajeContratista.save(mensaje);
+        mensajeContratista.save(mensaje,function(){
+        },function(err){
+            $scope.bandera01 = true;
+            document.getElementById('id01').style.display='block'
+
+        });
         $scope.textArea= '';
         $scope.mensaje=false;
 
@@ -166,7 +171,11 @@ function DialogController($scope, $mdDialog, $rootScope, $http) {
     $scope.envio2=function(item){
 
             var mensaje={mensaje:item,idContratante:$localStorage.contratanteLogeado.idContratante,idContratista:$scope.client.idContratista}
-            mensajeContratista.save(mensaje);
+            mensajeContratista.save(mensaje,function(){
+            },function(err){
+                $scope.bandera01 = true;
+                document.getElementById('id01').style.display='block'
+            });
             $scope.textArea= '';
             $scope.mensaje=false;
 
