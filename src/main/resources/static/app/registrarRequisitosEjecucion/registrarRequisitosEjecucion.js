@@ -147,8 +147,16 @@ angular.module('myApp.registrarRequisitosEjecucion', ['ngRoute'])
 
                 break;
                 case "2":
-                $scope.defPreviosSugeridos=defPreviosSugeridos.query({idContratante:$localStorage.contratanteLogeado.idContratante,idCategoria:$rootScope.idCategoria});
-                $scope.defPreviosExtras=defPreviosExtras.query({idContratante:$localStorage.contratanteLogeado.idContratante,idCategoria:$rootScope.idCategoria});
+                $scope.defPreviosSugeridos=defPreviosSugeridos.query({idContratante:$localStorage.contratanteLogeado.idContratante,idCategoria:$rootScope.idCategoria},function(){
+                },function(err){
+                    $scope.bandera01 = true;
+                     document.getElementById('id01').style.display='block';
+                });
+                $scope.defPreviosExtras=defPreviosExtras.query({idContratante:$localStorage.contratanteLogeado.idContratante,idCategoria:$rootScope.idCategoria},function(){
+                },function(err){
+                     $scope.bandera01 = true;
+                     document.getElementById('id01').style.display='block';
+                });
 
 
                 $scope.lonPrevio=false;

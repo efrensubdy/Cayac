@@ -21,7 +21,7 @@ public class PlanDeTrabajoBD {
 
 
 public void agregarPlanDeTrabajo(PlanDeTrabajo plan)throws SQLException,ClassNotFoundException{
-    System.out.println(plan.getNombre());
+
     java.util.Date utilDate = new Date();
     java.sql.Date date = new java.sql.Date(utilDate.getTime());
     String sql="INSERT INTO planDeTrabajo (mes,actividad,fechaInicio,fechaFin,evidencia,idContratista,fechaDeRegistro,year) VALUES (?,?,?,?,?,?,?,?)";
@@ -79,7 +79,7 @@ public boolean tieneAprobacion( int idContratista,int idContratante)throws SQLEx
     }
 
 public void agregarAprobacion(Aprobacion aprobacion)throws SQLException,ClassNotFoundException{
-    System.out.println("dcsddsfsd");
+
     String sql="INSERT INTO Aprobacion (idContratista,idContratante) VALUES (?,?)";
     Connection con =Conexion.conection();
     PreparedStatement ps=con.prepareStatement(sql);
@@ -91,7 +91,7 @@ public void agregarAprobacion(Aprobacion aprobacion)throws SQLException,ClassNot
 
 }
     public void agregarAprobaciondePlanDeTrabajo(Aprobacion aprobacion)throws SQLException,ClassNotFoundException{
-        System.out.println("plan de trabajo");
+
        String sql="INSERT INTO aprobarplandetrabajo (mes,idContratista,idContratante,year) VALUES (?,?,?,?)";
         Connection con =Conexion.conection();
         PreparedStatement ps=con.prepareStatement(sql);

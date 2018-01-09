@@ -26,8 +26,8 @@ if ("undefined" === typeof $localStorage.userLogeado && "undefined" === typeof $
 
 }
 var q=function(idContratante, idContratista){
-                      var url= "http://localhost:8080/app/planDeTrabajo/aprobado/"+idContratista+"/"+idContratante ;
-                      //var url= "http://ec2-35-163-21-208.us-west-2.compute.amazonaws.com:8080/app/planDeTrabajo/aprobado/"+idContratista+"/"+idContratante ;
+                    //  var url= "http://localhost:8080/app/planDeTrabajo/aprobado/"+idContratista+"/"+idContratante ;
+                      var url= "http://ec2-35-163-21-208.us-west-2.compute.amazonaws.com:8080/app/planDeTrabajo/aprobado/"+idContratista+"/"+idContratante ;
                        var a;
                     a=$http.get(url).then(function(response) {
                                     $scope.objeto=response.data;
@@ -167,7 +167,9 @@ $scope.meses=[
     plandeTrabajo.save(plan,function(){
 
     },function(err){
-
+        console.log(err);
+        $scope.bandera01 = true;
+        document.getElementById('id01').style.display='block';
 
 
     });

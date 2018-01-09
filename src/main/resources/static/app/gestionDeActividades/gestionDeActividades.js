@@ -9,7 +9,7 @@ angular.module('myApp.gestionDeActividades', ['ngRoute'])
   });
 }])
 
-.controller('gestionDeActividadesCtrl', ['$http','$mdDialog','$location', '$q', '$scope','$log','$rootScope','$localStorage','$sessionStorage','contratosEnEjecucion','finalesDefinitivos','actividadConSoporte','actividadSinSoporte','aprobaPLanDeTrabajo',function($http,$mdDialog,$location, $q, $scope,$log,$rootScope,$localStorage,$sessionStorage,contratosEnEjecucion,finalesDefinitivos,actividadConSoporte,actividadSinSoporte,aprobaPLanDeTrabajo) {
+.controller('gestionDeActividadesCtrl', ['$http','$mdDialog','$location', '$q', '$scope','$log','$rootScope','$localStorage','$sessionStorage','contratosEnEjecucion','finalesDefinitivos','actividadConSoporte','actividadSinSoporte','aprobaPLanDeTrabajo','$route',function($http,$mdDialog,$location, $q, $scope,$log,$rootScope,$localStorage,$sessionStorage,contratosEnEjecucion,finalesDefinitivos,actividadConSoporte,actividadSinSoporte,aprobaPLanDeTrabajo,$route) {
 if ("undefined" === typeof $localStorage.userLogeado && "undefined" === typeof $localStorage.contratanteLogeado){
          $mdDialog.show(
                           $mdDialog.alert()
@@ -28,8 +28,8 @@ if ("undefined" === typeof $localStorage.userLogeado && "undefined" === typeof $
 
 var q=function(idContratante, idContratista){
 
- //var url= "http://localhost:8080/app/planDeTrabajo/aprobado/"+idContratista+"/"+idContratante ;
- var url= "http://ec2-35-163-21-208.us-west-2.compute.amazonaws.com:8080/app/planDeTrabajo/aprobado/"+idContratista+"/"+idContratante ;
+ var url= "http://localhost:8080/app/planDeTrabajo/aprobado/"+idContratista+"/"+idContratante ;
+ //var url= "http://ec2-35-163-21-208.us-west-2.compute.amazonaws.com:8080/app/planDeTrabajo/aprobado/"+idContratista+"/"+idContratante ;
   var a;
     a=$http.get(url).then(function(response) {
                $rootScope.o=response.data;
@@ -176,13 +176,13 @@ var c=function(client,mes,year){
 }
 
 
-function DialogController($scope, $mdDialog, $rootScope, $http) {
+function DialogController($scope, $mdDialog, $rootScope, $http,$route) {
  $scope.listadoActividad=$rootScope.lista1;
  $scope.listadoActividad2=$rootScope.lista2;
 
  var q=function(idContratante, idContratista,mes,year){
-                       //var url= "http://localhost:8080/app/planDeTrabajo/aprobadoPlanDeTrabajo/"+idContratista+"/"+idContratante +"/"+mes +"/"+year;
-                       var url= "http://ec2-35-163-21-208.us-west-2.compute.amazonaws.com:8080/app/planDeTrabajo/aprobadoPlanDeTrabajo/"+idContratista+"/"+idContratante +"/"+mes +"/"+year;
+                       var url= "http://localhost:8080/app/planDeTrabajo/aprobadoPlanDeTrabajo/"+idContratista+"/"+idContratante +"/"+mes +"/"+year;
+                       //var url= "http://ec2-35-163-21-208.us-west-2.compute.amazonaws.com:8080/app/planDeTrabajo/aprobadoPlanDeTrabajo/"+idContratista+"/"+idContratante +"/"+mes +"/"+year;
 
                         var a;
                      a=$http.get(url).then(function(response) {
@@ -197,6 +197,7 @@ function DialogController($scope, $mdDialog, $rootScope, $http) {
 
         var aprobadin={"idContratista":$rootScope.client.id,"idContratante":$localStorage.contratanteLogeado.idContratante,"mes":$rootScope.mes.name,"year":$rootScope.year.name}
         aprobaPLanDeTrabajo.save(aprobadin);
+        $route.reload();
         $mdDialog.show(
                              $mdDialog.alert()
                                .parent(angular.element(document.querySelector('#popupContainer')))
