@@ -162,6 +162,7 @@ $scope.meses=[
 
   }
   $scope.add=function(ev,fechaInicio,fechaFin,nombre,mes,year){
+    console.log($localStorage.userLogeado);
     if ("undefined" !== typeof nombre &&"undefined" !== typeof mes && "undefined" !== typeof fechaInicio && "undefined" !== typeof fechaFin && "undefined" !== typeof year ){
     var plan={"nombre":nombre,"mes":mes,"fechaInicio":fechaInicio,"fechaFin":fechaFin,"idContratista":$localStorage.userLogeado.idContratista,"year":year};
     plandeTrabajo.save(plan,function(){
