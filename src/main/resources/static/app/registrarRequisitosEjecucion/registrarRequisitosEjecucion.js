@@ -172,8 +172,8 @@ angular.module('myApp.registrarRequisitosEjecucion', ['ngRoute'])
                 });
                 $scope.defPreviosExtras=defPreviosExtras.query({idContratante:$localStorage.contratanteLogeado.idContratante,idCategoria:$rootScope.idCategoria},function(lista){
                         if (lista.length ==0){
-                            $scope.bandera02 = true;
-                            document.getElementById('id02').style.display='block'
+                          //  $scope.bandera02 = true;
+                           // document.getElementById('id02').style.display='block'
 
                                            }
                 },function(err){
