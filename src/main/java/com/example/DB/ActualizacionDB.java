@@ -164,7 +164,7 @@ public class ActualizacionDB {
 
         java.util.Date utilDate = new Date();
         java.sql.Date date = new java.sql.Date(utilDate.getTime());
-        String sql="UPDATE planDeTrabajo set mes= ?,actividad = ?,fechaInicio = ?,fechaFin = ?,idContratista = ?,fechaDeRegistro = ?,year = ? where idContratista =?";
+        String sql="UPDATE planDeTrabajo set mes= ?,actividad = ?,fechaInicio = ?,fechaFin = ?,idContratista = ?,fechaDeRegistro = ?,year = ? where id =?";
         Connection con =  Conexion.conection();
         PreparedStatement ps=con.prepareStatement(sql);
         ps.setString(1,plan.getMes());
@@ -174,7 +174,7 @@ public class ActualizacionDB {
         ps.setInt(5,plan.getIdContratista());
         ps.setDate(6,date);
         ps.setInt(7,plan.getYear());
-        ps.setInt(8,plan.getIdContratista());
+        ps.setInt(8,plan.getId());
         ps.execute();
         ps.close();
         con.close();
