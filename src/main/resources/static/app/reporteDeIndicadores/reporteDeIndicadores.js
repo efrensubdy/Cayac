@@ -70,16 +70,28 @@ $scope.meses=[
 
             ];
 
+$scope.closeModel= function(){
+   document.getElementById('id01').style.display='none';
+ }
 $scope.soporteDeMes=function(mes,year){
-        $scope.reporMes=repMes.query({idContratante:$localStorage.contratanteLogeado.idContratante,mes:mes.name,year:year.name})
+        $scope.reporMes=repMes.query({idContratante:$localStorage.contratanteLogeado.idContratante,mes:mes.name,year:year.name},function(){
+        },function(err){
+             $scope.bandera01 = true;
+             document.getElementById('id01').style.display='block';
+        })
         $scope.bandera1=true;
           $scope.bandera2=false;
 
 }
 $scope.soporteDeYear=function(year){
-        $scope.reporYear=repYear.query({idContratante:$localStorage.contratanteLogeado.idContratante,year:year.name})
+        $scope.reporYear=repYear.query({idContratante:$localStorage.contratanteLogeado.idContratante,year:year.name},function(){
+        },function(err){
+             $scope.bandera01 = true;
+             document.getElementById('id01').style.display='block';
+
+        })
           $scope.bandera1=false;
-                  $scope.bandera2=true;
+          $scope.bandera2=true;
 
 }
 $scope.simple=function(opcion){

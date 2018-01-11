@@ -29,7 +29,11 @@ if ("undefined" === typeof $localStorage.userLogeado && "undefined" === typeof $
 //mandandolo a la fabrica que cambia la contraseña de los contratantes
 $scope.add=function(ev,contra,password){
         var user={"idContratista":$localStorage.userLogeado.idContratista,"password":password};
-        loginContratista.save(user);
+        loginContratista.save(user,function(){
+        },function(err){
+            $scope.bandera01 = true;
+            document.getElementById('id01').style.display='block';
+        });
         $scope.contra='';
         $scope.password='';
          $mdDialog.show(
@@ -44,4 +48,7 @@ $scope.add=function(ev,contra,password){
                            );
 
         }
+         $scope.closeModel= function(){
+                            document.getElementById('id01').style.display='none';
+                          }
 }]);

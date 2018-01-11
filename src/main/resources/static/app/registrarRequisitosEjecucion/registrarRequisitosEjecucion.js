@@ -44,6 +44,9 @@ angular.module('myApp.registrarRequisitosEjecucion', ['ngRoute'])
              $scope.reverse = ($scope.propertyName === propertyName) ? !$scope.reverse : false;
              $scope.propertyName = propertyName;
          };
+         $scope.closeModel= function(){
+            document.getElementById('id01').style.display='none';
+          }
 
          $scope.banderaCategoria1=false;
          $scope.banderaCategoria2=false;
@@ -136,8 +139,17 @@ angular.module('myApp.registrarRequisitosEjecucion', ['ngRoute'])
                     $scope.linea1=true;
 
                   }
-                   $scope.listadoPrevioExtra=previosExtras.query({idContratante:$localStorage.contratanteLogeado.idContratante,idCategoria:$scope.idCategoria})
-                  $scope.listadoPrevioSugerido=previos.query({idContratante:$localStorage.contratanteLogeado.idContratante,idCategoria:$scope.idCategoria});
+                   $scope.listadoPrevioExtra=previosExtras.query({idContratante:$localStorage.contratanteLogeado.idContratante,idCategoria:$scope.idCategoria},function(){
+                   },function(err){
+                        $scope.bandera01 = true;
+                        document.getElementById('id01').style.display='block';
+                   })
+                  $scope.listadoPrevioSugerido=previos.query({idContratante:$localStorage.contratanteLogeado.idContratante,idCategoria:$scope.idCategoria},function(){
+                  },function(err){
+                     $scope.bandera01 = true;
+                     document.getElementById('id01').style.display='block';
+
+                  });
 
 
                   $scope.mensajillo1=false;
@@ -147,12 +159,23 @@ angular.module('myApp.registrarRequisitosEjecucion', ['ngRoute'])
 
                 break;
                 case "2":
-                $scope.defPreviosSugeridos=defPreviosSugeridos.query({idContratante:$localStorage.contratanteLogeado.idContratante,idCategoria:$rootScope.idCategoria},function(){
+                $scope.defPreviosSugeridos=defPreviosSugeridos.query({idContratante:$localStorage.contratanteLogeado.idContratante,idCategoria:$rootScope.idCategoria},function(lista){
+
+                    if (lista.length ==0){
+                             $scope.bandera02 = true;
+                             document.getElementById('id02').style.display='block'
+
+                    }
                 },function(err){
                     $scope.bandera01 = true;
                      document.getElementById('id01').style.display='block';
                 });
-                $scope.defPreviosExtras=defPreviosExtras.query({idContratante:$localStorage.contratanteLogeado.idContratante,idCategoria:$rootScope.idCategoria},function(){
+                $scope.defPreviosExtras=defPreviosExtras.query({idContratante:$localStorage.contratanteLogeado.idContratante,idCategoria:$rootScope.idCategoria},function(lista){
+                        if (lista.length ==0){
+                            $scope.bandera02 = true;
+                            document.getElementById('id02').style.display='block'
+
+                                           }
                 },function(err){
                      $scope.bandera01 = true;
                      document.getElementById('id01').style.display='block';
@@ -341,7 +364,11 @@ angular.module('myApp.registrarRequisitosEjecucion', ['ngRoute'])
            for (var i=0;i<total;i++){
                var requisitoObligatorio={"idContratante":$localStorage.contratanteLogeado.idContratante,"idCategoria":$rootScope.idCategoria,"idRequisito":lista[i].numero};
 
-               insertarPrevioSugerido.save(requisitoObligatorio);
+               insertarPrevioSugerido.save(requisitoObligatorio,function(){
+               },function(err){
+                     $scope.bandera01 = true;
+                      document.getElementById('id01').style.display='block';
+               });
 
            }
           }
@@ -351,7 +378,11 @@ angular.module('myApp.registrarRequisitosEjecucion', ['ngRoute'])
               for (var i=0;i<total;i++){
                 var requisitoExtra={"idContratante":$localStorage.contratanteLogeado.idContratante,"idCategoria":$rootScope.idCategoria,"idRequisito":lista[i].id};
 
-                 insertarPrevioExtra.save(requisitoExtra);
+                 insertarPrevioExtra.save(requisitoExtra,function(){
+                 },function(err){
+                    $scope.bandera01 = true;
+                    document.getElementById('id01').style.display='block';
+                 });
 
               }
            }
@@ -361,7 +392,12 @@ angular.module('myApp.registrarRequisitosEjecucion', ['ngRoute'])
                var total=lista.length;
                 for (var i=0;i<total;i++){
 
-                       eliminarPS.remove({"idContratante":$localStorage.contratanteLogeado.idContratante,"idRequisito":lista[i].idRequisito});
+                       eliminarPS.remove({"idContratante":$localStorage.contratanteLogeado.idContratante,"idRequisito":lista[i].idRequisito},function(){
+                       },function(err){
+                             $scope.bandera01 = true;
+                            document.getElementById('id01').style.display='block';
+
+                       });
 
                 }
 
@@ -369,7 +405,12 @@ angular.module('myApp.registrarRequisitosEjecucion', ['ngRoute'])
             var eliminarPreviosExtras=function(lista){
                 var total=lista.length;
                 for (var i=0;i<total;i++){
-                    eliminarPE.remove({"idContratante":$localStorage.contratanteLogeado.idContratante,"idRequisito":lista[i].idRequisito});
+                    eliminarPE.remove({"idContratante":$localStorage.contratanteLogeado.idContratante,"idRequisito":lista[i].idRequisito},function(){
+                    },function(err){
+                        $scope.bandera01 = true;
+                        document.getElementById('id01').style.display='block';
+
+                    });
 
                  }
 

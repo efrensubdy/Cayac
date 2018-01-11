@@ -384,12 +384,13 @@ CREATE TABLE `aprobarplandetrabajo` (
   `mes` VARCHAR(50) NOT NULL,
   `idContratista` INT(11) NOT NULL,
   `idContratante` INT(11) NOT NULL,
+  `year` INT(50) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `fk_Contratista` (`idContratista`),
   KEY `fk_Contratante` (`idContratante`),
   CONSTRAINT `fk_Contratante` FOREIGN KEY (`idContratante`) REFERENCES `contratante` (`idContratante`),
   CONSTRAINT `fk_Contratista` FOREIGN KEY (`idContratista`) REFERENCES `contratista` (`idContratista`)
-) ENGINE=INNODB DEFAULT CHARSET=latin1;
+) ENGINE=INNODB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
 
 
 CREATE TABLE `seguridadsocial` (

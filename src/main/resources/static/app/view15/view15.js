@@ -27,7 +27,12 @@ if ("undefined" === typeof $localStorage.userLogeado && "undefined" === typeof $
         }
 
 $scope.fecha={}
-$scope.listado=contratos.query({idContratante:$localStorage.contratanteLogeado.idContratante})
+$scope.listado=contratos.query({idContratante:$localStorage.contratanteLogeado.idContratante},function(){
+},function(err){
+    $scope.bandera01 = true;
+     document.getElementById('id01').style.display='block';
+
+})
 $scope.nombreClick=false;
 $scope.permisoTable=false;
 $scope.permisoFecha=false;
@@ -47,15 +52,26 @@ $scope.function1=function(){
 
 }
 $scope.loadContratos=function(){
-     $scope.listado=contratos.query({idContratante:$localStorage.contratanteLogeado.idContratante})
+     $scope.listado=contratos.query({idContratante:$localStorage.contratanteLogeado.idContratante},function(){
+     },function(err){
+         $scope.bandera01 = true;
+         document.getElementById('id01').style.display='block';
+     })
 }
 
 $scope.detalle=function(ev,item){
     detalle(ev,item);
 }
+$scope.closeModel= function(){
+     document.getElementById('id01').style.display='none';
+ }
 $scope.buscar=function(ev,a,b){
 if("undefined" !== typeof a && "undefined" !== typeof b ){
-$scope.listado= fechaContrato.query({fechaInicio:a,fechaFin:b,idContratante:$localStorage.contratanteLogeado.idContratante});
+$scope.listado= fechaContrato.query({fechaInicio:a,fechaFin:b,idContratante:$localStorage.contratanteLogeado.idContratante},function(){
+},function(err){
+    $scope.bandera01 = true;
+    document.getElementById('id01').style.display='block';
+});
 $scope.permisoFecha=true;
 }
 else{

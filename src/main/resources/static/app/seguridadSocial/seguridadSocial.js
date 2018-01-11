@@ -76,11 +76,18 @@ $scope.years=[
             case 2:
             $scope.banderaMes= false;
             $scope.bandera2=true;
-            $scope.tablaSeguridadSocial=sPorContra.query({idContratista:$localStorage.userLogeado.idContratista});
+            $scope.tablaSeguridadSocial=sPorContra.query({idContratista:$localStorage.userLogeado.idContratista},function(){
+            },function(err){
+                $scope.bandera01 = true;
+                document.getElementById('id01').style.display='block';
+            });
             break;
        }
 
  }
+ $scope.closeModel= function(){
+    document.getElementById('id01').style.display='none';
+  }
 $scope.subirArchivo = function(ev,file,file2,mes,textArea,year){
      if("undefined" !== typeof file && "undefined" !== typeof file2 && "undefined" !== typeof mes && "undefined" !== typeof textArea && "undefined" !== typeof year &&  file.name != file2.name ){
     //var uploadUrl = 'http://localhost:8080/app/seguridadSocial/'+ $localStorage.userLogeado.idContratista + "/"+ $localStorage.userLogeado.idContratante +  "/"+ mes.name +  "/"+ textArea +  "/"+ year.name;

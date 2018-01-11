@@ -9,7 +9,7 @@ angular.module('myApp.planDeTrabajo', ['ngRoute'])
   });
 }])
 
-.controller('planDeTrabajoCtrl', ['$location', '$q', '$scope','$http','$log','$rootScope','$localStorage','$sessionStorage','$route','plandeTrabajo','actividadPlan','fileUpload','actualizarPlanDeTrabajo','$mdDialog',function($location, $q, $scope,$http,$log,$rootScope,$localStorage,$sessionStorage,$route,plandeTrabajo,actividadPlan,fileUpload,actualizarPlanDeTrabajo,$mdDialog) {
+.controller('planDeTrabajoCtrl', ['$location', '$q', '$scope','$http','$log','$rootScope','$localStorage','$sessionStorage','$route','plandeTrabajo','actividadPlan','fileUpload','actualizarPlanDeTrabajo','$mdDialog','$route',function($location, $q, $scope,$http,$log,$rootScope,$localStorage,$sessionStorage,$route,plandeTrabajo,actividadPlan,fileUpload,actualizarPlanDeTrabajo,$mdDialog,$route) {
 if ("undefined" === typeof $localStorage.userLogeado && "undefined" === typeof $localStorage.contratanteLogeado){
          $mdDialog.show(
                           $mdDialog.alert()
@@ -225,6 +225,7 @@ $scope.meses=[
                                        .targetEvent(ev)
                                    );
 
+    $route.reload();
     }
     else{
 
@@ -238,7 +239,7 @@ $scope.meses=[
                .ok('ok!')
                .targetEvent(ev)
            );
-
+    $route.reload();
     }
 
   }

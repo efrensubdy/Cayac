@@ -62,6 +62,9 @@ if("undefined" !== typeof contrato){
      $scope.flag=false;
 
  }
+ $scope.closeModel= function(){
+             document.getElementById('id01').style.display='none';
+           }
 
  $scope.showAlert2=function(ev,client){
             $rootScope.client=client

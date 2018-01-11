@@ -76,13 +76,22 @@ $scope.departamentos =[
 
                     ];
 $scope.loadContratos=function(){
-     $scope.listado=contratosEnEjecucion.query({idContratante:$localStorage.contratanteLogeado.idContratante});
+     $scope.listado=contratosEnEjecucion.query({idContratante:$localStorage.contratanteLogeado.idContratante},function(){
+     },function(err){
+        $scope.bandera01 = true;
+        document.getElementById('id01').style.display='block';
+     });
 }
 $scope.ocultarTodo=function(){
     $scope.flag=false;
 
 }
- $scope.listado=contratosEnEjecucion.query({idContratante:$localStorage.contratanteLogeado.idContratante})
+ $scope.listado=contratosEnEjecucion.query({idContratante:$localStorage.contratanteLogeado.idContratante},function(){
+ },function(err){
+    $scope.bandera01 = true;
+     document.getElementById('id01').style.display='block';
+
+ })
         $scope.seleccionados=[];
         $scope.propertyName = 'nombreEmpresa';
         $scope.reverse = true;
@@ -93,7 +102,12 @@ $scope.ocultarTodo=function(){
 
          $scope.add=function(ev,contrato){
                         if("undefined" !== typeof contrato){
-                        $scope.listado2=finalesDefinitivos.query({idContratante:$localStorage.contratanteLogeado.idContratante,idContrato:contrato.idContrato});
+                        $scope.listado2=finalesDefinitivos.query({idContratante:$localStorage.contratanteLogeado.idContratante,idContrato:contrato.idContrato},function(){
+                        },function(err){
+                            $scope.bandera01 = true;
+                            document.getElementById('id01').style.display='block';
+
+                        });
                         $scope.flag=true;
                         }
                         else{

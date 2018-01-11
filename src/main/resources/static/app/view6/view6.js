@@ -30,7 +30,11 @@ if ("undefined" === typeof $localStorage.userLogeado && "undefined" === typeof $
 $scope.add=function(ev,contra,password){
 
         var user={"idContratante":$localStorage.contratanteLogeado.idContratante,"password":password};
-       loginContratante.save(user);
+       loginContratante.save(user,function(){
+       },function(err){
+            $scope.bandera01 = true;
+            document.getElementById('id01').style.display='block';
+       });
         $scope.contra='';
         $scope.password='';
          $mdDialog.show(
@@ -45,4 +49,7 @@ $scope.add=function(ev,contra,password){
                            );
 
         }
+         $scope.closeModel= function(){
+                    document.getElementById('id01').style.display='none';
+                  }
 }]);
