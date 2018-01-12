@@ -203,7 +203,11 @@ $scope.simple2 = function(item){
         $scope.bandera2=true;
         $scope.bandera3=false;
         $scope.tablaAcc=accPorContra.query({idContratista:$localStorage.userLogeado.idContratista,idContratante:$localStorage.userLogeado.idContratante},function(){
+                 if (lista.length ==0){
+                       $scope.bandera02 = true;
+                       document.getElementById('id02').style.display='block'
 
+                                                           }
         },function(err){
             $scope.bandera01 = true;
             document.getElementById('id01').style.display='block';
