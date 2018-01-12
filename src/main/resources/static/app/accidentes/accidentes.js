@@ -202,7 +202,7 @@ $scope.simple2 = function(item){
         $scope.bandera1=false;
         $scope.bandera2=true;
         $scope.bandera3=false;
-        $scope.tablaAcc=accPorContra.query({idContratista:$localStorage.userLogeado.idContratista,idContratante:$localStorage.userLogeado.idContratante},function(){
+        $scope.tablaAcc=accPorContra.query({idContratista:$localStorage.userLogeado.idContratista,idContratante:$localStorage.userLogeado.idContratante},function(list){
                  if (lista.length ==0){
                        $scope.bandera02 = true;
                        document.getElementById('id02').style.display='block'
