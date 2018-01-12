@@ -5,68 +5,65 @@
         <div class="container align-middle text-center">
             <div class="row">
                 <div class="col-xs-9">
+                    <div id="id02" class="w3-modal" ng-show="bandera02">
+                        <div class="w3-modal-content w3-card-4 w3-animate-zoom" style="max-width:200px;max-height:300px">
+
+                            <div class="w3-center"><br>
+                                <span onclick="document.getElementById('id02').style.display='none'" class="w3-button w3-xlarge w3-hover-red w3-display-topright" title="Close Modal">&times;</span>
+                                <i class="fa fa-bar-chart" style="font-size:60px;color:indigo;text-shadow:2px 2px 4px #000000;"></i>
+
+
+                            </div>
+
+                            <form class="w3-container" >
+                                <div class="w3-section">
+                                    <div class="w3-row w3-center">
+                                        <label><b>Vacio</b></label>
+
+                                    </div>
+                                    <div class="w3-row w3-center">
+                                        <p><b>No hay Registro de Accidentes</b></p>
+                                    </div>
+                                    <br>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                    <div id="id01" class="w3-modal" ng-show="bandera01">
+                        <div class="w3-modal-content w3-card-4 w3-animate-zoom" style="max-width:200px;max-height:300px">
+
+                            <div class="w3-center"><br>
+                                <span onclick="document.getElementById('id01').style.display='none'" class="w3-button w3-xlarge w3-hover-red w3-display-topright" title="Close Modal">&times;</span>
+                                <i class="fa fa-refresh fa-spin" style="font-size:60px;color:indigo;text-shadow:2px 2px 4px #000000;"></i>
+
+
+                            </div>
+
+                            <form class="w3-container" >
+                                <div class="w3-section">
+                                    <div class="w3-row w3-center">
+                                        <label><b>Error</b></label>
+
+                                    </div>
+                                    <div class="w3-row w3-center">
+                                        <p><b>Comuniquese con SEQ</b></p>
+                                    </div>
+                                    <br>
+                                    <div class="w3-row w3-center">
+                                        <button class="w3-button w3-indigo w3-padding w3-round" type="submit" ng-click="closeModel()">ok</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
                 <div class="container">
                     <div class="col-xs-9">
-                        <div id="id02" class="w3-modal" ng-show="bandera02">
-                            <div class="w3-modal-content w3-card-4 w3-animate-zoom" style="max-width:200px;max-height:300px">
-
-                                <div class="w3-center"><br>
-                                    <span onclick="document.getElementById('id02').style.display='none'" class="w3-button w3-xlarge w3-hover-red w3-display-topright" title="Close Modal">&times;</span>
-                                    <i class="fa fa-bar-chart" style="font-size:60px;color:indigo;text-shadow:2px 2px 4px #000000;"></i>
-
-
-                                </div>
-
-                                <form class="w3-container" >
-                                    <div class="w3-section">
-                                        <div class="w3-row w3-center">
-                                            <label><b>Vacio</b></label>
-
-                                        </div>
-                                        <div class="w3-row w3-center">
-                                            <p><b>No hay Registro de Accidentes</b></p>
-                                        </div>
-                                        <br>
-                                    </div>
-                                </form>
-                            </div>
-                        </div>
-                        <div id="id01" class="w3-modal" ng-show="bandera01">
-                            <div class="w3-modal-content w3-card-4 w3-animate-zoom" style="max-width:200px;max-height:300px">
-
-                                <div class="w3-center"><br>
-                                    <span onclick="document.getElementById('id01').style.display='none'" class="w3-button w3-xlarge w3-hover-red w3-display-topright" title="Close Modal">&times;</span>
-                                    <i class="fa fa-refresh fa-spin" style="font-size:60px;color:indigo;text-shadow:2px 2px 4px #000000;"></i>
-
-
-                                </div>
-
-                                <form class="w3-container" >
-                                    <div class="w3-section">
-                                        <div class="w3-row w3-center">
-                                            <label><b>Error</b></label>
-
-                                        </div>
-                                        <div class="w3-row w3-center">
-                                            <p><b>Comuniquese con SEQ</b></p>
-                                        </div>
-                                        <br>
-                                        <div class="w3-row w3-center">
-                                            <button class="w3-button w3-indigo w3-padding w3-round" type="submit" ng-click="closeModel()">ok</button>
-                                        </div>
-                                    </div>
-                                </form>
-                            </div>
-                        </div>
                     <h4 class="text-primary"><b>ACCIDENTES</b></h4>
                         <p class="texto">ESCOJA UNA DE LAS OPCIONES PRESENTADAS A CONTINUACIÓN</p>
                         <md-select aria-label="simpleSelect1" class="titulos" placeholder="Escoger Opcion " ng-model="opcion"  ng-change="simple2(opcion)">
                             <md-option ng-value="todo" ng-repeat="todo in opciones">{{todo.name}}</md-option>
 
                         </md-select>
-
-
-
                     </div>
                 </div>
                 <br>
