@@ -1,15 +1,19 @@
 
 <div  ng-controller="View13Ctrl" class="w3-container">
+    <div class="w3-container">
+    <label class="w3-center titulos">REGISTRE SU PROYECTO</label>
+    <br>
+    </div>
     <div class="container ">
         <div class="row">
             <div class="col-xs-9">
             <div class="col-sm-12">
-                <label class="w3-center titulos">REGISTRE SU PROYECTO</label>
+                <label class="w3-center titulos">INFORMACIÓN DEL PROYECTO</label>
                 <p></p>
 
             </div>
             <div class="col-sm-6">
-                <label class="titulos" for="email">TIPO DE CONTRATO</label>
+                <label class="titulos" for="email">TIPO DE PROYECTO</label>
                 <select class="form-control" ng-model="contrato.tipoContrato" placeholder="Escoja el tipo de Contrato">
                     <option ng-value="todo.name" ng-repeat="todo in options">{{ todo.name }}</option>
                 </select>
@@ -17,7 +21,7 @@
             </div>
             <div class="col-sm-6">
 
-                <label class="titulos" >NOMBRE DEL CONTRATO</label>
+                <label class="titulos" >NOMBRE DEL PROTECTO</label>
                 <input ng-model="contrato.nombreContrato" type="text" class="form-control" id="email">
 
             </div>
@@ -25,10 +29,40 @@
             </div>
 
     </div>
+    <br>
+    <br>
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-9">
 
+                <div class="col-sm-4">
+
+                    <label class="titulos">FECHA DE INICIO DE PROYECTO</label>
+                    <input type="date"  class="form-control"  ng-model="contrato.fechaInicio" md-placeholder="Fecha Iniciación " ng-required="true">
+
+                </div>
+                <div class="col-sm-4">
+
+                    <label class="titulos">FECHA DE FIN DE PROYECTO</label>
+                    <input type="date" class="form-control"   ng-model="contrato.fechaFin" md-placeholder="Fecha Iniciación " ng-required="true">
+                </div>
+                <div class="col-sm-4">
+                    <label class="titulos">FECHA DE INICIO DE ACTIVIDADES</label>
+                    <input type="date" class="form-control" ng-model="contrato.fechaInicioDeActividades" md-placeholder="Fecha Iniciación " ng-required="true">
+                    <p></p>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <br>
+    <br>
     <div class="container">
         <form>
             <div class="col-xs-9">
+                <label class="titulos">INFORMACIÓN DEL CONTRATISTA</label>
+                <br>
+                <label>LOS ARCHIVOS DEBEN SER EN FORMATO .PDF Y NO EXCEDER LOS 20MB</label>
             <div class="form-group">
 
                 <label class="titulos">RUT</label>
@@ -52,29 +86,7 @@
         </form>
     </div>
     
-    <div class="container">
-        <div class="row">
-            <div class="col-xs-9">
-                <div class="col-sm-4">
 
-                    <label class="titulos">FECHA DE INICIO DE CONTRATO</label>
-                    <input type="date"  class="form-control"  ng-model="contrato.fechaInicio" md-placeholder="Fecha Iniciación " ng-required="true">
-
-                </div>
-                <div class="col-sm-4">
-
-                    <label class="titulos">FECHA DE FIN DE CONTRATO</label>
-                    <input type="date" class="form-control"   ng-model="contrato.fechaFin" md-placeholder="Fecha Iniciación " ng-required="true">
-                </div>
-                <div class="col-sm-4">
-                    <label class="titulos">FECHA DE INICIO DE ACTIVIDADES</label>
-                    <input type="date" class="form-control" ng-model="contrato.fechaInicioDeActividades" md-placeholder="Fecha Iniciación " ng-required="true">
-                    <p></p>
-                    </div>
-
-            </div>
-                </div>
-        </div>
         <br>
         <div class="row">
             <div class="col-xs-9">

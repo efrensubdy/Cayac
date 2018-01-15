@@ -9,7 +9,7 @@ angular.module('myApp.view13', ['ngRoute'])
   });
 }])
 
-.controller('View13Ctrl', ['$location','$localStorage','$sessionStorage','$scope','$rootScope','$http','$mdDialog','nuevoContrato','fileUpload','$q','contratoUpload',function($location,$localStorage,$sessionStorage,$scope,$rootScope,$http,$mdDialog,nuevoContrato,fileUpload,$q,contratoUpload) {
+.controller('View13Ctrl', ['$location','$localStorage','$sessionStorage','$scope','$rootScope','$http','$mdDialog','$route','nuevoContrato','fileUpload','$q','contratoUpload',function($location,$localStorage,$sessionStorage,$scope,$rootScope,$http,$mdDialog,$route,nuevoContrato,fileUpload,$q,contratoUpload) {
 
 if ("undefined" === typeof $localStorage.userLogeado && "undefined" === typeof $localStorage.contratanteLogeado){
                  $mdDialog.show(
@@ -36,15 +36,15 @@ $scope.options = [
 
 $scope.add=function(ev,a,b,c){
 
-
-
-
    if("undefined" !== typeof $scope.contrato.nombreContrato && "undefined" !== typeof a  && "undefined" !== typeof b  && "undefined" !== typeof c  && "undefined" !== typeof $scope.contrato.tipoContrato && "undefined" !== typeof $scope.myFile && "undefined" !== typeof $scope.myFile2 && "undefined" !== typeof $scope.myFile3 && $scope.myFile.name != $scope.myFile2.name && $scope.myFile.name != $scope.myFile3.name && $scope.myFile2.name != $scope.myFile3.name ){
             $scope.listaDocumentos=[];
+
+            if(a < b && c>=a && c<=b ){
             var contrato={"nombreContrato":$scope.contrato.nombreContrato,"fechaInicio":a,"fechaFin":b,"fechaInicioActividades":c,"idContratante":$localStorage.contratanteLogeado.idContratante,"tipoContrato":$scope.contrato.tipoContrato}
             var fechaInicio=contrato.fechaInicio.toString();
             var fechaFin=contrato.fechaFin.toString();
             var fechaInicioActividades=contrato.fechaInicioActividades.toString();
+
 
             //var uploadUrl = "http://localhost:8080/app/contratos/" + contrato.nombreContrato + "/" + fechaInicio + "/" + fechaFin + "/" + fechaInicioActividades + "/" +contrato.idContratante + "/" +contrato.tipoContrato;
             var uploadUrl = "http://ec2-35-163-21-208.us-west-2.compute.amazonaws.com:8080/app/contratos/" + contrato.nombreContrato + "/" + fechaInicio + "/" + fechaFin + "/" + fechaInicioActividades + "/" +contrato.idContratante + "/" +contrato.tipoContrato;
@@ -56,7 +56,7 @@ $scope.add=function(ev,a,b,c){
             $scope.listaDocumentos.push($scope.myFile2);
             $scope.listaDocumentos.push($scope.myFile3);
 
-            contratoUpload.uploadFileToUrl($scope.listaDocumentos,uploadUrl);
+           contratoUpload.uploadFileToUrl($scope.listaDocumentos,uploadUrl);
 
             $scope.contrato.nombreContrato='';
             $scope.contrato.fechaInicio='';
@@ -66,31 +66,50 @@ $scope.add=function(ev,a,b,c){
 
             $mdDialog.show(
                  $mdDialog.alert()
-                         .parent(angular.element(document.querySelector('#popupContainer')))
-                         .clickOutsideToClose(true)
-                         .title('Exito')
-                         .textContent('Contrato totalmente registrado')
-                         .ariaLabel('Alert Dialog Demo')
-                         .ok('Revise sus contratos!')
-                         .targetEvent(ev)
+                 .parent(angular.element(document.querySelector('#popupContainer')))
+                 .clickOutsideToClose(true)
+                 .title('Exito')
+                 .textContent('Contrato totalmente registrado')
+                 .ariaLabel('Alert Dialog Demo')
+                 .ok('Revise sus contratos!')
+                 .targetEvent(ev)
              );
+             $route.reload();
+             }
+             else{
+                $mdDialog.show(
+                    $mdDialog.alert()
+                    .parent(angular.element(document.querySelector('#popupContainer')))
+                    .clickOutsideToClose(true)
+                    .title('ERROR')
+                    .textContent('Las Fechas registradas son erroneas')
+                    .ariaLabel('Alert Dialog Demo')
+                    .ok('Revise nuevamente!')
+                    .targetEvent(ev)
+                 );
+                $route.reload();
+
+
+
+             }
     }
     else{
        $mdDialog.show(
                         $mdDialog.alert()
-                                .parent(angular.element(document.querySelector('#popupContainer')))
-                                .clickOutsideToClose(true)
-                                .title('ERROR')
-                                .textContent('Algún dato es incorrecto, sin llenar, recuerde que los archivos no deben ser iguales')
-                                .ariaLabel('Alert Dialog Demo')
-                                .ok('Revise nuevamente!')
-                                .targetEvent(ev)
+                        .parent(angular.element(document.querySelector('#popupContainer')))
+                        .clickOutsideToClose(true)
+                        .title('ERROR')
+                        .textContent('Algún dato es incorrecto, sin llenar, recuerde que los archivos no deben ser iguales')
+                        .ariaLabel('Alert Dialog Demo')
+                        .ok('Revise nuevamente!')
+                        .targetEvent(ev)
                     );
        $scope.contrato.nombreContrato='';
-                   $scope.contrato.fechaInicio='';
-                   $scope.contrato.tipoContrato='';
-                   $scope.contrato.fechaFin='';
-                   $scope.contrato.fechaInicioDeActividades='';
+       $scope.contrato.fechaInicio='';
+       $scope.contrato.tipoContrato='';
+       $scope.contrato.fechaFin='';
+       $scope.contrato.fechaInicioDeActividades='';
+       $route.reload();
 
 
 
