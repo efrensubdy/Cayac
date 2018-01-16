@@ -93,12 +93,13 @@ public class EstandaresDB {
 
         return estandarMinimos;
     }
-    public List<EstandarMinimo>consultarEstandaresMinimosCompletos(int mes,int year)throws ClassNotFoundException,SQLException{
+    public List<EstandarMinimo>consultarEstandaresMinimosCompletos(int mes,int year,int idContratante)throws ClassNotFoundException,SQLException{
         List<EstandarMinimo> estandarMinimos=new LinkedList<>();
-        String sql="SELECT  * FROM estandaresMinimos AS es INNER JOIN  contratista AS c ON es.idContratista=c.idContratista INNER JOIN finalista AS f ON f.idContratista = c.idContratista INNER JOIN contrato AS con ON f.idFinalista = con.idFinalista   WHERE MONTH(fechaDeRegistro)= ? AND YEAR(fechaDeRegistro)= ? ;";
+        String sql="SELECT  * FROM estandaresMinimos AS es INNER JOIN  contratista AS c ON es.idContratista=c.idContratista INNER JOIN finalista AS f ON f.idContratista = c.idContratista INNER JOIN contrato AS con ON f.idFinalista = con.idFinalista   WHERE MONTH(fechaDeRegistro)= ? AND YEAR(fechaDeRegistro)= ? AND c.idContratante = ? ;";
         PreparedStatement ps = Conexion.conection().prepareStatement(sql);
         ps.setInt(1,mes);
         ps.setInt(2,year);
+        ps.setInt(3,idContratante);
         ResultSet rs = ps.executeQuery();
         while (rs.next()) {
             EstandarMinimo estandarMinimo=new EstandarMinimo();

@@ -49,13 +49,13 @@ public class EstandaresController {
         }
         return a;
     }
-    @RequestMapping(value = "byMonthAndYear/{month}/{year}", method = RequestMethod.GET)
-    public ResponseEntity<?>estandaresByMonthAndYear(@PathVariable int month, @PathVariable int year){
+    @RequestMapping(value = "byMonthAndYear/{month}/{year}/{idContratante}", method = RequestMethod.GET)
+    public ResponseEntity<?>estandaresByMonthAndYear(@PathVariable int month, @PathVariable int year,@PathVariable int idContratante){
 
         ResponseEntity a;
         try {
             //obtener datos que se enviarán a través del API
-            a = new ResponseEntity<>(manejadorDeEstandares.consultarEstandarMinimoByMonthAndYear(month, year),HttpStatus.ACCEPTED);
+            a = new ResponseEntity<>(manejadorDeEstandares.consultarEstandarMinimoByMonthAndYear(month, year,idContratante),HttpStatus.ACCEPTED);
 
         } catch (Exception ex) {
             Logger.getLogger(Controller.class.getName()).log(Level.SEVERE, null, ex);

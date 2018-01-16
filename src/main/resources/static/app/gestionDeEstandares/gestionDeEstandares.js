@@ -90,7 +90,7 @@ $scope.cambiarOpcion = function(notificacion){
 }
 $scope.byMonthAndYear=function(mes,year){
 
-$scope.listadoEstandaresMinimos=estByMonthYear.query({month:mes.id,year:year.name},function(){
+$scope.listadoEstandaresMinimos=estByMonthYear.query({month:mes.id,year:year.name,idContratante:$localStorage.contratanteLogeado.idContratante},function(){
 },function(err){
     $scope.bandera01 = true;
     document.getElementById('id01').style.display='block';

@@ -140,7 +140,7 @@ angular.module('services.listFactory', ['ngRoute','ngResource'])
 
                                                    })
           .factory('estByMonthYear', function($resource) {
-                                            return $resource('/app/estandares/byMonthAndYear/:month/:year')
+                                            return $resource('/app/estandares/byMonthAndYear/:month/:year/:idContratante')
 
                                                   })
            .factory('indMes', function($resource) {

@@ -36,6 +36,6 @@ public interface AdministradorDeEstandares {
      * @throws ClassNotFoundException
      * @throws SQLException
      */
-    public List<EstandarMinimo>consultarEstandarMinimoByMonthAndYear(int mes,int year)throws ClassNotFoundException,SQLException;
+    public List<EstandarMinimo>consultarEstandarMinimoByMonthAndYear(int mes,int year,int idContratante)throws ClassNotFoundException,SQLException;
 
 }
