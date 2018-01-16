@@ -86,7 +86,9 @@ angular.module('services.listFactory', ['ngRoute','ngResource'])
          .factory('activity', function($resource) {
                         return $resource('/app/contract/activity/:id');
                     })
-
+         .factory('correos', function($resource) {
+                                 return $resource('/app/contract/correos');
+                             })
         //Fabrica que trar los contratistas pertenecientes al contrato mandado como parametro
         .factory('contratantesContrato', function($resource) {
                             return $resource('/app/contractor/:idContratante/:idContrato');

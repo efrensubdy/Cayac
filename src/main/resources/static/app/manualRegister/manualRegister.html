@@ -14,13 +14,12 @@
             <div class="col-sm-6">
 
                 <label>Asignar un contrato al contratista</label>
-                <input class="form-control" type="text"  placeholder="A que contrato pertenece el contratista" name="contrato" list="contrat" ng-model="contrato">
-                <datalist id="contrat">
-                    <select name="contrat" ng-model="select">
-                        <option value="" disabled selected>Escoja El contrato al que va pertenecer su contratista</option>
-                        <option ng-repeat="todo in listado"  value="{{todo.idContrato}}" ng-model="selectedOption">{{todo.nombreContrato}}</option>
-                    </select>
-                </datalist>
+                <div layout="column" layout-align="center center">
+                    <md-select aria-label="simpleSelect1" class="titulos" placeholder="Asignar Contrato" ng-model="contrato"  style="min-width: 200px;" ng-change="resul()">
+                        <md-option ng-value="contrato" ng-repeat="contrato in listado">{{contrato.nombreContrato}}</md-option>
+                    </md-select>
+                    <p class="md-caption titulos">El Contrato escogido fue {{ contrato ? contrato.nombreContrato : 'Nadie todavía' }}</p>
+                </div>
                 </div>
             <div class="col-sm-6">
                 <label for="nombreEmpresa">Nombre de la  Empresa Contratista</label>
@@ -34,11 +33,13 @@
             <div class="col-sm-6">
 
                 <label for="email">Correo Electrónico para ingresar a Cayac</label>
-                <input class="form-control" type="email" name="email" id="email"  placeholder="email please.."  ng-model="email" >
+                <input class="form-control" type="email" name="email" id="email"  placeholder="email please.."  ng-model="email" ng-change="buscarCorreos(email,correos)">
+                <p class="md-caption titulos">{{ email ? email : '' }} {{message}}</p>
             </div>
             <div class="col-sm-6">
                 <label>Contraseña para Cayac</label>
                 <input class="form-control" type="password" name="pasword" placeholder="nueva Contraseña.." ng-model="password">
+
             </div>
         </div>
         </div>

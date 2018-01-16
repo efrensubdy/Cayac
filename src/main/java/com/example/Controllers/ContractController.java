@@ -41,7 +41,7 @@ public class ContractController {
      * @return ENTIDAD COON TODOS LOS CONTRATISTAS
      */
 
-    @RequestMapping(method = RequestMethod.GET)
+    @RequestMapping(value = "correos",method = RequestMethod.GET)
     public ResponseEntity<?> manejadorDeObtencionDeContratistas(){
     try {
         //obtener datos que se enviarán a través del API

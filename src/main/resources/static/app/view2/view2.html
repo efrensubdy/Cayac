@@ -10,13 +10,12 @@
     <div class="col-sm-6">
       <div class="col-xs-9">
       <label>Asigne al candidato un servicio</label>
-      <input class="form-control" type="text"  placeholder="A que contrato pertenece el contratista" name="contrato" list="contrat" ng-model="contrato">
-      <datalist id="contrat">
-        <select name="contrat" ng-model="select">
-          <option value="" disabled selected>Escoja El Servicio al que va pertenecer su contratista</option>
-          <option ng-repeat="todo in listado"  value="{{todo.id}}" ng-model="selectedOption">{{todo.nombre}}</option>
-        </select>
-      </datalist>
+        <div layout="column" layout-align="center center">
+          <md-select aria-label="simpleSelect1" class="titulos" placeholder="Asignar Servicio" ng-model="contrato"  style="min-width: 200px;">
+            <md-option ng-value="contrato" ng-repeat="contrato in listado">{{contrato.nombre}}</md-option>
+          </md-select>
+          <p class="md-caption titulos">El Servicio escogido fue {{ contrato ? contrato.nombre : 'Nadie todavía' }}</p>
+        </div>
       </div>
     </div>
     <div class="col-sm-6">

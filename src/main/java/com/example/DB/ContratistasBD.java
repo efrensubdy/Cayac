@@ -261,7 +261,7 @@ public class ContratistasBD {
             con.setIdContrato(rs.getInt("idservicioAContratar"));
             con.setIdCategoria(traerCategoria(rs.getInt("idContratista")));
             con.setPassword(rs.getString("password"));
-            //con.setCumplidos(obtenerCumplidos(rs.getInt("idContratista"),con.getIdCategoria(),con.getContratante()));
+
             contratistas.add(con);
         }
 
