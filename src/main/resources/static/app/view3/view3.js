@@ -227,6 +227,10 @@ angular.module('myApp.view3', ['ngRoute'])
                               agregarBaseDatosSugeridos($scope.listadoSugerido);
                               agregarBaseExtras($scope.listadoExtra);
                               $scope.mensajillo=false;
+                              $scope.listadoSugerido=[];
+                              $scope.listadoAllSugerido=[];
+                              $scope.listadoExtra=[];
+                              $scope.listadoAllExtra=[];
                               $mdDialog.show(
                                           $mdDialog.alert()
                                           .parent(angular.element(document.querySelector('#popupContainer')))
@@ -249,6 +253,10 @@ angular.module('myApp.view3', ['ngRoute'])
 
                               agregarBaseDatosSugeridos($scope.listadoAllSugerido);
                               agregarBaseExtras($scope.listadoAllExtra);
+                              $scope.listadoSugerido=[];
+                              $scope.listadoAllSugerido=[];
+                              $scope.listadoExtra=[];
+                              $scope.listadoAllExtra=[];
                                $mdDialog.show(
                                     $mdDialog.alert()
                                     .parent(angular.element(document.querySelector('#popupContainer')))
@@ -354,6 +362,8 @@ angular.module('myApp.view3', ['ngRoute'])
                         $scope.eliminar=function(ev){
                                                 eliminarSugeridos($scope.listadoSugeridoE);
                                                 eliminarExtras($scope.listadoExtraE);
+                                                $scope.listadoSugeridoE=[];
+                                                $scope.listadoExtraE=[];
 
 
                         };

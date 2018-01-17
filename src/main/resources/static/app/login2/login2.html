@@ -13,7 +13,7 @@
       <input id="password" type="password" class="form-control" name="password" placeholder="Contraseña" ng-model="password">
     </div>
       <br>
-        <button class="button button1 btn-block" type="submit" ng-click="add($event)">Iniciar Sesion</button>
+        <button class="button button1 btn-block" type="submit" ng-click="add($event,email,password)">Iniciar Sesión</button>
       <div class="progress" ng-show="progressBandera">
         <div class="progress-bar progress-bar-info  progress-bar-striped" role="progressbar" aria-valuenow="{{value}}" aria-valuemin="0" aria-valuemax="100" style="width:{{value}}%">
          {{value}}% Completado

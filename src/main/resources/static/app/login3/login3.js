@@ -75,10 +75,26 @@ var url2="http://ec2-35-163-21-208.us-west-2.compute.amazonaws.com:8080/app/logi
                          }).then(w);
 
       }
-      $scope.add=function(ev){
+      $scope.add=function(ev,email,password){
+       if("undefined" !== typeof email && "undefined" !== typeof password ){
        $scope.progressBandera=true;
        $scope.value=20
         auntenticado(ev);
+        }
+        else{
+            $mdDialog.show(
+                $mdDialog.alert()
+                  .parent(angular.element(document.querySelector('#popupContainer')))
+                  .clickOutsideToClose(true)
+                  .title('Error')
+                  .textContent('Los datos ingresados no pueden ser vacios.')
+                  .ariaLabel('Alert Dialog Demo')
+                  .ok('Intente de Nuevo!')
+                  .targetEvent(ev)
+              );
+
+
+        }
 
 
       }
