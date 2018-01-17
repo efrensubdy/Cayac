@@ -728,6 +728,16 @@ $scope.cerrarNoConformidad=function(item,ev){
     if("undefined" !== typeof item){
         var object ={idContratista:$localStorage.userLogeado.idContratista,causa:item,idNoConformidad:$rootScope.noConformidadActual.id}
         causa.save(object);
+        $mdDialog.show(
+               $mdDialog.alert()
+                  .parent(angular.element(document.querySelector('#popupContainer')))
+                  .clickOutsideToClose(true)
+                  .title('Exito !!')
+                  .textContent('Causa registrada,ahora podrá consultarla.')
+                  .ariaLabel('Alert Dialog Demo')
+                  .ok('ok!')
+                  .targetEvent(ev)
+          );
         $route.reload();
 
      }
@@ -793,6 +803,16 @@ $scope.cerrarNoConformidad=function(item,ev){
     if("undefined" !== typeof textArea){
     var object ={idContratista:$localStorage.userLogeado.idContratista,noConformidad:textArea,mes:$rootScope.mes.name,year:$rootScope.year.name,idAuditoria:$rootScope.item.id}
     noConformidad.save(object);
+    $mdDialog.show(
+                   $mdDialog.alert()
+                      .parent(angular.element(document.querySelector('#popupContainer')))
+                      .clickOutsideToClose(true)
+                      .title('Exito !!')
+                      .textContent('No Coformidad registrada,ahora podrá consultarla.')
+                      .ariaLabel('Alert Dialog Demo')
+                      .ok('ok!')
+                      .targetEvent(ev)
+              );
     $route.reload();
 
       }
