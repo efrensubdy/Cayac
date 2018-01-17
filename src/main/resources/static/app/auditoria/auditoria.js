@@ -55,7 +55,7 @@ $scope.banderaActualiAcc = false;
 $scope.despliegueDeCausas = false;
 $scope.despliegueDeAcciones = false;
 var q=function(idNoConformidad, idContratista){
-                      //var url= "http://localhost:8080/app/cierre/isClose/"+idNoConformidad+"/"+idContratista;
+                     // var url= "http://localhost:8080/app/cierre/isClose/"+idNoConformidad+"/"+idContratista;
                       var url= "http://ec2-35-163-21-208.us-west-2.compute.amazonaws.com:8080/app/cierre/isClose/"+idNoConformidad+"/"+idContratista;
 
                        var a;
@@ -682,7 +682,7 @@ $scope.simple= function(item){
                                                .targetEvent(ev)
                                            );
 
-
+        $route.reload();
 
     }
     else{
@@ -696,6 +696,7 @@ $scope.simple= function(item){
                         .ok('intente de nuevo!')
                         .targetEvent(ev)
                     );
+         $route.reload();
 
 
     }
@@ -704,10 +705,21 @@ $scope.simple= function(item){
 
  }
 
-$scope.cerrarNoConformidad=function(item){
+$scope.cerrarNoConformidad=function(item,ev){
 
     var cie ={idContratista:$localStorage.userLogeado.idContratista,idNoConformidad:item.id};
     cierre.save(cie);
+    $mdDialog.show(
+                            $mdDialog.alert()
+                            .parent(angular.element(document.querySelector('#popupContainer')))
+                            .clickOutsideToClose(true)
+                            .title('Cerrada')
+                            .textContent('La no conformidad se ecuentra cerrada.')
+                            .ariaLabel('Alert Dialog Demo')
+                            .ok('ok!')
+                            .targetEvent(ev)
+                        );
+    $route.reload();
 
 
 }
