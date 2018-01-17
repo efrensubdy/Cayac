@@ -728,16 +728,7 @@ $scope.cerrarNoConformidad=function(item,ev){
     if("undefined" !== typeof item){
         var object ={idContratista:$localStorage.userLogeado.idContratista,causa:item,idNoConformidad:$rootScope.noConformidadActual.id}
         causa.save(object);
-        $mdDialog.show({
-                              //Controlador del mensajes con operaciones definido en la parte de abajo
-                              controller: DialogController,
-                               //permite la comunicacion con el html que despliega el boton requisitos
-                               templateUrl: 'test/mensajeDeca.html',
-                               parent: angular.element(document.body),
-                               targetEvent: ev,
-                               clickOutsideToClose:true,
-                               fullscreen: $scope.customFullscreen // Only for -xs, -sm breakpoints.
-                  })
+        $route.reload();
 
      }
     else{
@@ -751,12 +742,10 @@ $scope.cerrarNoConformidad=function(item,ev){
                             .ok('intente de nuevo!')
                             .targetEvent(ev)
                         );
+        $route.reload();
 
 
     }
- $rootScope.text='';
-
-
 
  }
 
@@ -804,18 +793,7 @@ $scope.cerrarNoConformidad=function(item,ev){
     if("undefined" !== typeof textArea){
     var object ={idContratista:$localStorage.userLogeado.idContratista,noConformidad:textArea,mes:$rootScope.mes.name,year:$rootScope.year.name,idAuditoria:$rootScope.item.id}
     noConformidad.save(object);
-    $scope.textInput = '';
-
-     $mdDialog.show({
-                      //Controlador del mensajes con operaciones definido en la parte de abajo
-                      controller: DialogController,
-                       //permite la comunicacion con el html que despliega el boton requisitos
-                       templateUrl: 'test/mensajeDeNo.html',
-                       parent: angular.element(document.body),
-                       targetEvent: ev,
-                       clickOutsideToClose:true,
-                       fullscreen: $scope.customFullscreen // Only for -xs, -sm breakpoints.
-          })
+    $route.reload();
 
       }
       else{
@@ -829,6 +807,7 @@ $scope.cerrarNoConformidad=function(item,ev){
                     .ok('intente de nuevo!')
                     .targetEvent(ev)
                 );
+         $route.reload();
 
       }
 
@@ -893,6 +872,7 @@ $scope.cerrarNoConformidad=function(item,ev){
        $scope.cancel = function() {
                             $mdDialog.cancel();
                             $rootScope.bandera8=false;
+                            $rootScope.textInput = '';
                             
                           };
 
