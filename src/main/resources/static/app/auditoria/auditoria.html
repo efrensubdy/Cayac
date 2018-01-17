@@ -58,9 +58,10 @@
                                 <br>
                                 <br>
                                 <label class="texto">ESCRIBA LA NO CONFORMIDAD</label>
-                                <textarea class="form-control texto"  id="comment" ng-model="textArea"></textarea>
+                                <input type="text" class="form-control" ng-model="textInput">
+
                                 <br>
-                                <button type="button" class="btn btn-primary center-block" ng-click="noConfor($event,textArea)" >agregar</button>
+                                <button type="button" class="btn btn-primary center-block" ng-click="noConfor($event,textInput)" >agregar</button>
                             </div>
                         </div>
                     </div>

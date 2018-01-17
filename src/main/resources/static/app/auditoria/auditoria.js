@@ -801,14 +801,11 @@ $scope.cerrarNoConformidad=function(item,ev){
 
  }
  $scope.noConfor=function(ev,textArea){
-    $scope.textArea="mnnbnbjhgjguytuttytu";
-
     if("undefined" !== typeof textArea){
     var object ={idContratista:$localStorage.userLogeado.idContratista,noConformidad:textArea,mes:$rootScope.mes.name,year:$rootScope.year.name,idAuditoria:$rootScope.item.id}
     noConformidad.save(object);
+    $scope.textInput = '';
 
-
-    textArea='';
      $mdDialog.show({
                       //Controlador del mensajes con operaciones definido en la parte de abajo
                       controller: DialogController,
