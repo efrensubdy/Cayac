@@ -9,7 +9,7 @@ angular.module('myApp.registroServicio', ['ngRoute'])
   });
 }])
 
-.controller('registroServicioCtrl', ['$location', '$q', '$scope','$log','$rootScope','$localStorage','$sessionStorage','registroServ','$mdDialog',function($location, $q, $scope,$log,$rootScope,$localStorage,$sessionStorage,registroServ,$mdDialog) {
+.controller('registroServicioCtrl', ['$location', '$q', '$scope','$log','$rootScope','$localStorage','$sessionStorage','$route','registroServ','$mdDialog',function($location, $q, $scope,$log,$rootScope,$localStorage,$sessionStorage,$route,registroServ,$mdDialog) {
 if ("undefined" === typeof $localStorage.userLogeado && "undefined" === typeof $localStorage.contratanteLogeado){
          $mdDialog.show(
                           $mdDialog.alert()
@@ -41,6 +41,7 @@ $scope.add=function(ev){
                                           .ok('Registre Candidatos!')
                                           .targetEvent(ev)
                                       );
+        $route.reload();
     }
     else{
             $mdDialog.show(
@@ -53,6 +54,7 @@ $scope.add=function(ev){
                                   .ok('intente de nuevo!')
                                   .targetEvent(ev)
                               );
+            $route.reload();
     }
 
 
