@@ -9,7 +9,7 @@ angular.module('myApp.manualRegister', ['ngRoute'])
   });
 }])
 
-.controller('manualRegisterCtrl', ['$localStorage','$sessionStorage','$location','$scope','$rootScope','$mdDialog','finalistas','registroManualFinalista','contratosEjecucion','activity','correos',function($localStorage,$sessionStorage,$location,$scope,$rootScope,$mdDialog,finalistas,registroManualFinalista,contratosEjecucion,activity,correos) {
+.controller('manualRegisterCtrl', ['$localStorage','$sessionStorage','$location','$scope','$rootScope','$mdDialog','$route','finalistas','registroManualFinalista','contratosEjecucion','activity','correos',function($localStorage,$sessionStorage,$location,$scope,$rootScope,$mdDialog,$route,finalistas,registroManualFinalista,contratosEjecucion,activity,correos) {
     if ("undefined" === typeof $localStorage.userLogeado && "undefined" === typeof $localStorage.contratanteLogeado){
              $mdDialog.show(
                               $mdDialog.alert()
@@ -99,18 +99,20 @@ angular.module('myApp.manualRegister', ['ngRoute'])
                        .ok('mire a sus candidatos!')
                        .targetEvent(ev)
                    );
+        $route.reload();
         }
         else{
             $mdDialog.show(
-                      $mdDialog.alert()
-                        .parent(angular.element(document.querySelector('#popupContainer')))
-                        .clickOutsideToClose(true)
-                        .title('Algún dato quedo mal registrado')
-                        .textContent('Recuerde llenar todos los campos y poner correos validos.')
-                        .ariaLabel('Alert Dialog Demo')
-                        .ok('intente de nuevo!')
-                        .targetEvent(ev)
-                                        );
+                     $mdDialog.alert()
+                    .parent(angular.element(document.querySelector('#popupContainer')))
+                    .clickOutsideToClose(true)
+                    .title('Algún dato quedo mal registrado')
+                    .textContent('Recuerde llenar todos los campos y poner correos validos.')
+                    .ariaLabel('Alert Dialog Demo')
+                    .ok('intente de nuevo!')
+                    .targetEvent(ev)
+            );
+            $route.reload();
 
 
 

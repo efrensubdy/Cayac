@@ -10,7 +10,7 @@ angular.module('myApp.view2', ['ngRoute'])
 }])
 
 
-.controller('View2Ctrl', ['$localStorage','$sessionStorage','$mdDialog','$location','$rootScope','$scope', 'contratistas','contratosEjecucion','activity','serviciosAContrar','correos', function ($localStorage,$sessionStorage,$mdDialog,$location,$rootScope,$scope, contratistas,contratosEjecucion,activity,serviciosAContrar,correos)  {
+.controller('View2Ctrl', ['$localStorage','$sessionStorage','$mdDialog','$location','$rootScope','$scope','$route', 'contratistas','contratosEjecucion','activity','serviciosAContrar','correos', function ($localStorage,$sessionStorage,$mdDialog,$location,$rootScope,$scope,$route,contratistas,contratosEjecucion,activity,serviciosAContrar,correos)  {
       if ("undefined" === typeof $localStorage.userLogeado && "undefined" === typeof $localStorage.contratanteLogeado){
                $mdDialog.show(
                                 $mdDialog.alert()
@@ -91,6 +91,7 @@ angular.module('myApp.view2', ['ngRoute'])
         $scope.emailContacto=''
         $scope.contrato='';
         $scope.label='';
+
         $mdDialog.show(
                      $mdDialog.alert()
                        .parent(angular.element(document.querySelector('#popupContainer')))
@@ -101,7 +102,7 @@ angular.module('myApp.view2', ['ngRoute'])
                        .ok('mire a sus candidatos!')
                        .targetEvent(ev)
                    );
-
+        $route.reload();
         }
         else{
          $mdDialog.show(
@@ -114,6 +115,7 @@ angular.module('myApp.view2', ['ngRoute'])
                                 .ok('intente de nuevo!')
                                 .targetEvent(ev)
                             );
+         $route.reload();
 
 
 
