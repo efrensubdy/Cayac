@@ -9,30 +9,28 @@
                     <div class="row">
                         <div class="col-sm-6">
                             <label class="titulos">CONTRATOS DISPONIBLES</label>
-                            <input class="form-control" type="text"  placeholder="A que contrato pertenece el contratista" name="contrato" list="contrat" ng-model="contrato">
-                            <datalist id="contrat">
-                                <select name="contrat" ng-model="select">
-                                    <option value="" disabled selected>Escoja El contrato al que va pertenecer su contratista</option>
-                                    <option ng-repeat="todo in listado"  value="{{todo.idContrato}}" ng-model="selectedOption">{{todo.nombreContrato}}</option>
-                                </select>
-                            </datalist>
+                            <div layout="column" layout-align="center center">
+                                <md-select aria-label="simpleSelect1" class="titulos" placeholder="Asignar Contrato" ng-model="contrato"  style="min-width: 200px;">
+                                    <md-option ng-value="contrato" ng-repeat="contrato in listado">{{contrato.nombreContrato}}</md-option>
+                                </md-select>
+                                <p class="md-caption titulos">El Contrato escogido fue {{ contrato ? contrato.nombreContrato : 'Nadie todavía' }}</p>
+                            </div>
 
                         </div>
                         <div class="col-sm-6">
                             <label class="titulos">FINALISTAS DISPONIBLES</label>
-                            <input class="form-control" type="text"  placeholder="A que contrato pertenece el contratista" name="selc" list="selc" ng-model="selecc">
-                            <datalist id="selc">
-                                <select name="selc" ng-model="select">
-                                    <option value="" disabled selected>Escoja El contrato al que va pertenecer su contratista</option>
-                                    <option ng-repeat="todo in listado2"  value="{{todo.idFinalista}}" ng-model="selectedOption">{{todo.nombreEmpresa}}</option>
-                                </select>
-                            </datalist>
+                            <div layout="column" layout-align="center center">
+                                <md-select aria-label="simpleSelect1" class="titulos" placeholder="Asignar Finalista" ng-model="selecc"  style="min-width: 200px;" >
+                                    <md-option ng-value="todo" ng-repeat="todo in listado2">{{todo.nombreEmpresa}}</md-option>
+                                </md-select>
+                                <p class="md-caption titulos">El Finalista escogido fue {{ todo ? todo.nombreEmpresa : 'Nadie todavía' }}</p>
+                            </div>
                         </div>
 
                     </div>
                     <br>
                     <br>
-                    <button class="btn btn-primary" ng-click="asignar($event,contrato,selecc)">ASIGNAR</button>
+                    <button class="btn btn-primary" ng-click="asignar($event,contrato.idContrato,selecc.idFinalista)">ASIGNAR</button>
                 </div>
             </div>
 
