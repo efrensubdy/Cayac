@@ -9,7 +9,7 @@ angular.module('myApp.view9', ['ngRoute'])
   });
 }])
 
-.controller('View9Ctrl', ['$location','$localStorage','$sessionStorage','$http','$parse','$scope','$rootScope','$mdDialog','rObligatorio','rExtra','imagenes','fileUpload','obtainExtension','rEstadoR','rEstadoE',function($location,$localStorage,$sessionStorage,$http,$parse,$scope,$rootScope,$mdDialog,rObligatorio,rExtra,imagenes,fileUpload,obtainExtension,rEstadoR,rEstadoE) {
+.controller('View9Ctrl', ['$location','$localStorage','$sessionStorage','$http','$parse','$scope','$rootScope','$mdDialog','$route','rObligatorio','rExtra','imagenes','fileUpload','obtainExtension','rEstadoR','rEstadoE',function($location,$localStorage,$sessionStorage,$http,$parse,$scope,$rootScope,$mdDialog,$route,rObligatorio,rExtra,imagenes,fileUpload,obtainExtension,rEstadoR,rEstadoE) {
         if ("undefined" === typeof $localStorage.userLogeado && "undefined" === typeof $localStorage.contratanteLogeado){
                  $mdDialog.show(
                                   $mdDialog.alert()
@@ -63,20 +63,22 @@ angular.module('myApp.view9', ['ngRoute'])
                        .ok('ok!')
                         .targetEvent(ev)
                                                );
+            $route.reload();
 
             }
             else{
-                   $mdDialog.show(
-                     $mdDialog.alert()
-                      .parent(angular.element(document.querySelector('#popupContainer')))
-                      .clickOutsideToClose(true)
-                       .title('No subido !!!')
-                       .textContent('Su archivo no  se he subido correctamente.')
-                       .ariaLabel('Alert Dialog Demo')
-                       .ok('ok!')
-                        .targetEvent(ev)
+              $mdDialog.show(
+                   $mdDialog.alert()
+                   .parent(angular.element(document.querySelector('#popupContainer')))
+                   .clickOutsideToClose(true)
+                   .title('No subido !!!')
+                   .textContent('Su archivo no  se he subido correctamente.')
+                   .ariaLabel('Alert Dialog Demo')
+                   .ok('ok!')
+                    .targetEvent(ev)
 
-                                                    );
+               );
+               $route.reload();
 
 
 
@@ -93,31 +95,32 @@ angular.module('myApp.view9', ['ngRoute'])
                     var uploadUrl = 'http://ec2-35-163-21-208.us-west-2.compute.amazonaws.com:8080/app/documento/'+ $localStorage.userLogeado.idContratista+ "/"+ item.id;
                     fileUpload.uploadFileToUrl(file, uploadUrl);
                     $mdDialog.show(
-                     $mdDialog.alert()
+                       $mdDialog.alert()
                       .parent(angular.element(document.querySelector('#popupContainer')))
-                                          .clickOutsideToClose(true)
-                                           .title('Subido !!!')
-                                           .textContent('Su archivo se he subido correctamente.')
-                                           .ariaLabel('Alert Dialog Demo')
-                                           .ok('ok!')
-                                            .targetEvent(ev)
+                      .clickOutsideToClose(true)
+                      .title('Subido !!!')
+                      .textContent('Su archivo se he subido correctamente.')
+                      .ariaLabel('Alert Dialog Demo')
+                      .ok('ok!')
+                      .targetEvent(ev)
 
-                                                    );
+                      );
+                      $route.reload();
 
                     }
                     else{
                         $mdDialog.show(
-                                             $mdDialog.alert()
-                                              .parent(angular.element(document.querySelector('#popupContainer')))
-                                                                  .clickOutsideToClose(true)
-                                                                   .title('No subido !!!')
-                                                                   .textContent('Su archivo no  se he subido correctamente.')
-                                                                   .ariaLabel('Alert Dialog Demo')
-                                                                   .ok('ok!')
-                                                                    .targetEvent(ev)
+                              $mdDialog.alert()
+                              .parent(angular.element(document.querySelector('#popupContainer')))
+                              .clickOutsideToClose(true)
+                              .title('No subido !!!')
+                              .textContent('Su archivo no  se he subido correctamente.')
+                              .ariaLabel('Alert Dialog Demo')
+                              .ok('ok!')
+                              .targetEvent(ev)
 
-                                                                            );
-
+                        );
+                        $route.reload();
 
 
                     }
