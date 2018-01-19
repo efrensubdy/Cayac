@@ -224,6 +224,22 @@ public class ActualizacionDB {
         ps.close();
         con.close();
     }
+    public void actualizarServicioAContratar(ServicioAContratar servicioAContratar)throws SQLException,ClassNotFoundException{
+        System.out.println(servicioAContratar.getNombre());
+        String sql = "UPDATE  servicioacontratar  set nombre = ?, tipo = ?  WHERE id = ?";
+        Connection con = Conexion.conection();
+        PreparedStatement ps = con.prepareStatement(sql);
+        ps.setString(1,servicioAContratar.getNombre());
+        ps.setString(2,servicioAContratar.getTipo());
+        ps.setInt(3,servicioAContratar.getId());
+        ps.execute();
+        ps.close();
+        con.close();
+
+
+
+
+    }
 
 
 

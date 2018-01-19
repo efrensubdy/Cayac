@@ -144,5 +144,20 @@ public class ActualizacionDeInfoController {
         }
         return a;
     }
+    @RequestMapping(value ="RegistroServicio",method = RequestMethod.POST)
+    public ResponseEntity<?> actualizarServicioContratante(@RequestBody ServicioAContratar servicioAContratar){
+
+        ResponseEntity a;
+        try {
+            //obtener datos que se enviarán a través del API
+
+           manejadorDeActualizacion.actualizarInformacionServicioContratista(servicioAContratar);
+            a = new ResponseEntity<>(HttpStatus.ACCEPTED);
+        } catch (Exception ex) {
+            Logger.getLogger(Controller.class.getName()).log(Level.SEVERE, null, ex);
+            return new ResponseEntity<>("Error bla bla bla",HttpStatus.NOT_FOUND);
+        }
+        return a;
+    }
 
 }

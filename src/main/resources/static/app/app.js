@@ -53,6 +53,7 @@ angular.module('myApp', [
   'myApp.ControlDeContratistas',
   'myApp.actualizarInformacion',
   'myApp.consultarServicios',
+  'myApp.actualizarServicios',
   'services.listFactory',
   'myApp.version'
 ]).

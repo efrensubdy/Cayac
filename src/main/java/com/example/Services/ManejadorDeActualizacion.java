@@ -50,4 +50,9 @@ public class ManejadorDeActualizacion implements AdministradorDeActualizaciones{
     public void actualizacionInformacionAccionContratista(Accion accion) throws SQLException, ClassNotFoundException {
         actualizacionDB.actulizarAccion(accion);
     }
+
+    @Override
+    public void actualizarInformacionServicioContratista(ServicioAContratar servicioAContratar) throws SQLException, ClassNotFoundException {
+        actualizacionDB.actualizarServicioAContratar(servicioAContratar);
+    }
 }

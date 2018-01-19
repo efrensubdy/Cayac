@@ -71,4 +71,13 @@ public interface AdministradorDeActualizaciones {
      * @throws ClassNotFoundException
      */
     public void actualizacionInformacionAccionContratista(Accion accion)throws SQLException,ClassNotFoundException;
+
+    /**
+     * Método que actualiza la información del servicio a contratar
+     * @param servicioAContratar objeto con la información que se va actualizar
+     * @throws SQLException
+     * @throws ClassNotFoundException
+     */
+    public void actualizarInformacionServicioContratista(ServicioAContratar servicioAContratar)throws SQLException,ClassNotFoundException;
+
 }

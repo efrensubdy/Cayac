@@ -466,6 +466,11 @@ angular.module('services.listFactory', ['ngRoute','ngResource'])
             .factory('actualizarAccion', function($resource) {
                                                                                      return $resource('/app/actualizacionDeInfo/RegistroAccion/:id');
                                                                                  })
+
+            .factory('actualizarServicio', function($resource) {
+                                                                                                 return $resource('/app/actualizacionDeInfo/RegistroServicio/:id');
+                                                                                             })
+
         .factory('indicador', function($resource) {
                                                    return $resource('/app/indicador/Indicadores/:id');
                                                })
