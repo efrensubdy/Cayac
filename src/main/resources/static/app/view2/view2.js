@@ -10,7 +10,7 @@ angular.module('myApp.view2', ['ngRoute'])
 }])
 
 
-.controller('View2Ctrl', ['$localStorage','$sessionStorage','$mdDialog','$location','$rootScope','$scope', 'contratistas','contratosEjecucion','activity','serviciosAContrar', function ($localStorage,$sessionStorage,$mdDialog,$location,$rootScope,$scope, contratistas,contratosEjecucion,activity,serviciosAContrar)  {
+.controller('View2Ctrl', ['$localStorage','$sessionStorage','$mdDialog','$location','$rootScope','$scope', 'contratistas','contratosEjecucion','activity','serviciosAContrar','correos', function ($localStorage,$sessionStorage,$mdDialog,$location,$rootScope,$scope, contratistas,contratosEjecucion,activity,serviciosAContrar,correos)  {
       if ("undefined" === typeof $localStorage.userLogeado && "undefined" === typeof $localStorage.contratanteLogeado){
                $mdDialog.show(
                                 $mdDialog.alert()
@@ -28,6 +28,37 @@ angular.module('myApp.view2', ['ngRoute'])
       }
       $scope.listado=serviciosAContrar.query({idContratante:$localStorage.contratanteLogeado.idContratante})
       $scope.listini=activity.query();
+      $scope.correos =correos.query();
+      $scope.buscarCorreos =function(email,lista){
+                  var a = false;
+
+                  if("undefined" !== typeof email){
+
+                  for(var i=0;i<lista.length;i++){
+                      console.log(lista[i].email == email)
+                      if(lista[i].email == email){
+
+                            a= true;
+                      }
+                  }
+
+                   if(a){
+                   $scope.message="Ya se ecuentra registrado";
+                   }
+
+                   else if(email.length==0 && !a){
+                      $scope.message="";
+
+                   }
+                   else{
+                   $scope.message="Es valido";
+                   }
+                  }
+                  else{
+                       $scope.message = "";
+                  }
+
+            }
       $scope.options = [
                           { id: 0, name: 'MENOS DE UN MES' },
                           { id: 1, name: 'MAS DE TRES MESES' },

@@ -30,7 +30,8 @@
       <div class="col-sm-6">
         <div class="col-xs-9">
         <label for="email">Correo Electrónico para ingresar a Cayac</label>
-        <input class="form-control" type="email" name="email" id="email"  placeholder="email please.."  ng-model="email" >
+        <input class="form-control" type="email" name="email" id="email"  placeholder="email please.."  ng-model="email" ng-change="buscarCorreos(email,correos)">
+          <p class="md-caption titulos">{{ email ? email : '' }} {{message}}</p>
         </div>
       </div>
       <div class="col-sm-6">
