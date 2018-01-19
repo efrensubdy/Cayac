@@ -120,8 +120,8 @@ angular.module('myApp.view10', ['ngRoute'])
            }
            $scope.agregarFinalista=function(ev){
 
-                  var finalista={idContratista:$rootScope.cliente.id,idContrato:$rootScope.idContrato}
-                  finalistas.save(finalista);
+                 var finalista={idContratista:$rootScope.cliente.id,idContrato:$rootScope.idContrato.id}
+                 finalistas.save(finalista);
                   $mdDialog.show(
                      $mdDialog.alert()
                      .parent(angular.element(document.querySelector('#popupContainer')))
