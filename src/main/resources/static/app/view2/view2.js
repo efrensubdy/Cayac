@@ -35,7 +35,7 @@ angular.module('myApp.view2', ['ngRoute'])
                   if("undefined" !== typeof email){
 
                   for(var i=0;i<lista.length;i++){
-                      console.log(lista[i].email == email)
+
                       if(lista[i].email == email){
 
                             a= true;
