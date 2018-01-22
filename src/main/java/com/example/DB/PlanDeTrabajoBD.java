@@ -290,6 +290,7 @@ public List<PlanDeTrabajo>consultarActividadesdelPlanDeTrabajo(int idContratista
     }
     public List<Contratista> sinRegistrodeActividad(int idContratante,String mes, int year)throws SQLException,ClassNotFoundException{
         List<Contratista> contratistaList=new LinkedList<>();
+        List<Contratista> finalContratistaList=new LinkedList<>();
         String sql="SELECT co.idContratista,co.nombreEmpresa,co.nit,co.codigoCIIU,co.nombreGerente,co.email,co.arl,co.direccion,co.telefono,co.duracion,co.departamento,co.idContratante,co.personaContacto,co.cargoPer,co.telefonoCon,co.emailContacto  FROM contratista AS co INNER JOIN Aprobacion AS a ON a.idContratista=co.idContratista WHERE co.idContratante = ? ;";
         PreparedStatement ps = Conexion.conection().prepareStatement(sql);
         ps.setInt(1,idContratante);
@@ -317,6 +318,7 @@ public List<PlanDeTrabajo>consultarActividadesdelPlanDeTrabajo(int idContratista
         for (Contratista contra:contratistaList){
             String sql2="SELECT COUNT(*) AS registro FROM planDeTrabajo WHERE  idContratista= ? AND mes= ? AND year = ?  ; ";
             PreparedStatement ps2 = Conexion.conection().prepareStatement(sql2);
+            System.out.println(contra.getId());
             ps2.setInt(1,contra.getId());
             ps2.setString(2,mes);
             ps2.setInt(3,year);
@@ -325,16 +327,18 @@ public List<PlanDeTrabajo>consultarActividadesdelPlanDeTrabajo(int idContratista
             while (rs2.next()){
 
                 registro=rs2.getInt("registro");
+                System.out.println(registro);
 
             }
-            if (registro!=0){
-               contratistaList.remove(contra);
+            if (registro==0){
+
+                finalContratistaList.add(contra);
 
             }
 
         }
         ps.close();
-        return contratistaList;
+        return finalContratistaList;
     }
     public boolean consultarRegistro(int id,int idContratista) throws SQLException, ClassNotFoundException {
         boolean flag=false;
