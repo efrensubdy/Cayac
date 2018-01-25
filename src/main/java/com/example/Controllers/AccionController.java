@@ -30,6 +30,15 @@ import java.util.logging.Logger;
 public class AccionController {
     @Autowired
     public ManejadorDeAcciones manejadorDeAcciones;
+
+    /**
+     *
+     * @param idContratista
+     * @param idCausa
+     * @param id
+     * @param request
+     * @return
+     */
     @RequestMapping(path = "/{idContratista}/{idCausa}/{id}",method = RequestMethod.POST)
     public ResponseEntity<?> InsertarImagen(@PathVariable Integer idContratista, @PathVariable Integer idCausa, @PathVariable Integer id
             , MultipartHttpServletRequest request){

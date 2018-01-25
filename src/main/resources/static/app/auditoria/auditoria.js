@@ -160,7 +160,6 @@ $scope.simple= function(item){
             break;
             case 2:
             $scope.bandera1=false;
-            $scope.bandera2=true;
             $scope.bandera3=false;
             $scope.bandera4=false;
             $scope.bandera5=false;
@@ -787,9 +786,8 @@ $scope.cerrarNoConformidad=function(item,ev){
         );
 
     }
+    }
 
-
- }
  $scope.agregarNo=function(item,mes,year){
     $rootScope.bandera8=true;
     $rootScope.item=item;

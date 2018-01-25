@@ -1,0 +1,449 @@
+
+<div>
+    <div  ng-controller="auditoria2.0Ctrl as ctrl">
+        <div class="w3-container w3-center">
+            <div class="container align-middle text-center">
+                <div class="row">
+                    <div class="col-xs-9">
+                        <h4 class="titulos"><b>AUDITORIA </b></h4>
+                        <p class="texto"><b>EN ESTE ESPACIO PODRÁ REALIZAR MÚLTIPLES OPERACIONES SOBRE LAS AUDITORIAS </b></p>
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <p >ESCOJA LO QUE QUIERE HACER</p>
+                                <md-select aria-label="simpleSelect1" class="titulos" ng-model="opcion" placeholder="seleccione opción" ng-change="AnalisisDeInfo(opcion)">
+                                    <md-option ng-value="todo" ng-repeat="todo in opciones">{{todo.name}}</md-option>
+                                </md-select>
+                                <br>
+                            </div>
+                        </div>
+                        <div class="row" ng-show="registrar">
+                            <label >ESCOJA LO QUE QUIERE REGISTRAR</label>
+                            <md-select aria-label="simpleSelect1" class="titulos" ng-model="opcionRegistrar" placeholder="seleccione opción" ng-change="AnalisisDeInfoRegistrar(opcionRegistrar)">
+                                <md-option ng-value="todo" ng-repeat="todo in opcionesRegistrar">{{todo.name}}</md-option>
+                            </md-select>
+                        </div>
+                        <div class="row" ng-show="actualizar">
+                            <label >ESCOJA LO QUE QUIERE ACTUALIZAR</label>
+                            <md-select aria-label="simpleSelect1" class="titulos" ng-model="opcionActualizar" placeholder="seleccione opción" ng-change="AnalisisDeInfoActualizar(opcionActualizar)">
+                                <md-option ng-value="todo" ng-repeat="todo in opcionesActualizar">{{todo.name}}</md-option>
+                            </md-select>
+                        </div>
+                        <div class="row" ng-show="consultar">
+                            <label >ESCOJA LO QUE QUIERE CONSULTAR</label>
+                            <md-select aria-label="simpleSelect1" class="titulos" ng-model="opcionConsultar" placeholder="seleccione opción" ng-change="AnalisisDeInfoConsultar(opcionConsultar)">
+                                <md-option ng-value="todo" ng-repeat="todo in opcionesConsultar">{{todo.name}}</md-option>
+                            </md-select>
+                        </div>
+                        <div class="row" ng-show="opcionRegistrar1">
+                            <label class="titulos">REGISTRAR NO CONFORMIDADES</label>
+                            <p class="texto">PRIMERO REVISE SI TIENE UNA AUDITORIA</p>
+                            <div class="col-sm-6">
+                                <p class="titulos">AÑO REPORTADO</p>
+                                <md-select aria-label="simpleSelect2" class="titulos" ng-model="year" placeholder="seleccione el año">
+                                    <md-option ng-value="todo" ng-repeat="todo in years">{{todo.name}}</md-option>
+
+                                </md-select>
+                            </div>
+                            <div class="col-sm-6">
+                                <p class="titulos">PERIODO REPORTADO</p>
+                                <md-select aria-label="simpleSelect3" class="titulos" ng-model="mes" placeholder="seleccione el mes" >
+                                    <md-option ng-value="todo" ng-repeat="todo in meses">{{todo.name}}</md-option>
+                                </md-select>
+                                <br>
+                            </div>
+                            <button type="button" class="btn btn-primary align-middle" ng-click="consultarAuditoria($event,mes,year)">Consultar</button>
+                            <br>
+                            <div class="col-sm-12"  ng-show="auditoria">
+                                <br>
+                                <div  class="w3-col">
+                                    <md-select aria-label="simpleSelect3" class="titulos" ng-model="auditoriaElegida" placeholder="seleccione la auditoria" ng-change="registroDeNoConformidades(auditoriaElegida)">
+                                        <md-option ng-value="todo" ng-repeat="todo in tableAuditorias"> Auditoria del {{todo.fecha}}</md-option>
+                                    </md-select>
+                                </div>
+                                <br>
+                                <br>
+                                <div class="w3-col" ng-show="registroNoConformidad">
+                                    <a href="{{auditoriaElegida.auditoria}}" download><i class="fa fa-file-pdf-o" style="font-size:60px;text:titulos"></i></a>
+                                    <br>
+                                    <p class="titulos">SI LO DESEA DESCARGUE LA AUDITORIA , HACIENDO CLICK EN EL ARCHIVO</p>
+                                    <br>
+
+                                    <label class="texto">ESCRIBA LA NO CONFORMIDAD</label>
+                                    <input type="text" class="form-control" ng-model="textInput">
+
+                                    <br>
+                                    <button type="button" class="btn btn-primary center-block" ng-click="registrarNoConformidad($event,textInput,auditoriaElegida)">agregar</button>
+                                </div>
+
+                        </div>
+
+                    </div>
+                    <div class="row" ng-show="opcionRegistrar2">
+                        <br>
+                        <label class="titulos">REGISTRAR CAUSAS</label>
+                        <p  class="texto">ESCOJA UNA DE LAS NO CONFORMIDADES DE LO CONTRATRIO NO PODRÁ AGREGAR CAUSAS</p>
+                        <md-select aria-label="simpleSelect4" class="titulos" ng-model="noConformidadParaRegistroDeCausas" placeholder="seleccione la no conformidad " ng-change="registroDeCausas(noConformidadParaRegistroDeCausas)">
+                            <md-option ng-value="todo" ng-repeat="todo in listadoDeNoConformidades">{{todo.noConformidad}}</md-option>
+                        </md-select>
+                        <br>
+                        <div class="row" ng-show="banderaRegristroCausas">
+                            <br>
+
+                            <label class="texto">ESCRIBA LA CAUSA DE ESTA NO CONFORMIDAD</label>
+                            <textarea class="form-control texto" ng-model="text"></textarea>
+                            <br>
+                            <button type="button" class="btn btn-primary center-block" ng-click="causa($event,text,noConformidadParaRegistroDeCausas)" >agregar</button>
+                        </div>
+
+
+                    </div>
+                    <div class="titulos" ng-show="opcionRegistrar3">
+                        <br>
+                        <label class="titulos">REGISTRAR ACCIONES</label>
+
+                        <p  class="texto">ESCOJA UNA DE LAS NO CONFORMIDADES DE LO CONTRATRIO NO SE  DESPLEGARÁN LAS CAUSAS</p>
+                        <md-select aria-label="simpleSelect6" class="titulos" ng-model="noConformidadParaRegistroDeAcciones" placeholder="seleccione la no conformidad" ng-change="despliegueDeCausasParaAcciones(noConformidadParaRegistroDeAcciones)">
+                            <md-option ng-value="todo" ng-repeat="todo in listadoDeNoConformidades">{{todo.noConformidad}}</md-option>
+                        </md-select>
+                        <br>
+                        <div ng-show="causasParaAcciones">
+                            <p  class="texto">ESCOJA LA CAUSA QUE SE VERÁ AFECTADA CON LA ACCIÓN</p>
+                            <md-select aria-label="simpleSelect7" class="titulos" ng-model="causaParaRegistroDeAcciones" data-placeholder="seleccione la causa" ng-change="despliegueDeInput(causaParaRegistroDeAcciones)">
+                                <md-option ng-value="todo" ng-repeat="todo in tablaDeCausas">{{todo.causa}}</md-option>
+                            </md-select>
+                        </div>
+                        <br>
+                        <div ng-show="inputRegistroDeAccion">
+                            <div class="col-sm-12">
+                                <label class="titulos">NOMBRE DE LA ACCIÓN QUE VA A REALIZAR</label>
+                                <input type="text" class="form-control" ng-model="nombreAccion">
+                            </div>
+                            <div class="col-sm-12">
+                                <br>
+                                <button type="button" class="btn btn-primary center-block" ng-click="salvarAccion(causaParaRegistroDeAcciones,nombreAccion,$event)" >agregar</button>
+                            </div>
+
+
+                        </div>
+                    </div>
+                    <br>
+                     <div class="row" ng-show="opcionRegistrar4">
+                            <label class="titulos">SUBA LOS SOPORTES A LAS ACCIONES QUE REALIZO</label>
+                            <p  class="texto">ESCOJA UNA DE LAS NO CONFORMIDADES PARA DESPLEGAR LAS CAUSAS</p>
+                            <md-select aria-label="simpleSelect11" class="titulos" ng-model="opcion8" placeholder="seleccione la no conformidad" ng-change="simple8(opcion8)">
+                                <md-option ng-value="todo" ng-repeat="todo in listadoDeNoConformidades">{{todo.noConformidad}}</md-option>
+                            </md-select>
+                            <br>
+                         <div ng-show="take4">
+                             <p  class="texto">ESCOJA LA CAUSA SOBRE LAS CUALES REGISTRO  LAS ACCIONES</p>
+                             <md-select aria-label="simpleSelect12" class="titulos" ng-model="opcion9" placeholder="seleccione la causa mes" ng-change="simple9(opcion9)">
+                                 <md-option ng-value="todo" ng-repeat="todo in tablaDeCausas">{{todo.causa}}</md-option>
+                             </md-select>
+                         </div>
+                         <br>
+                         <div class="table-responsive" ng-show="bandera13">
+                             <table class="table table-bordered table-hover table-condensed">
+                                 <tbody>
+                                 <tr  class="titulos">
+                                     <th>Nombre</th>
+                                     <th>Registro</th>
+                                     <th>Fecha</th>
+                                     <th>Registrar o Actualizar soporte</th>
+                                 </tr>
+                                 <tr ng-repeat="todo in tableAcciones">
+                                     <td>{{todo.nombre}}</td>
+                                     <td>
+                                         <div ng-show="{{todo.estado}}" class="w3-col" style="width:50px"><a href="{{todo.registro2}}" download><i class="w3-xxlarge fa fa-check-square"></i></a></div>
+                                         <div ng-show="{{!todo.estado}}" class="w3-col" style="width:50px"><a href="{{todo.registro2}}" download><i class="w3-xxlarge fa fa-exclamation-triangle"></i></a></div>
+
+                                     </td>
+                                     <td>{{todo.date}}</td>
+                                     <td><input class="form-control" type="file" file-model="myFile"/></file-model>
+                                         <br>
+                                         <button type="button" class="btn btn-primary center-block" ng-click="salvarAccion2(opcion9,myFile,todo,$event)" >agregar</button>
+                                     </td>
+                                 </tr>
+                                 </tbody>
+                             </table>
+                         </div>
+
+                        </div>
+                        <br>
+                        <div class="row" ng-show="opcionConsultar1">
+                            <label class="titulos">CONSULTAR NO CONFORMIDADES</label>
+                            <br>
+                            <div class="table-responsive">
+                                <p class="titulos">EN LA SIGUIENTE TABLA ENCONTRARÁ LAS NO CONFORMIDADES REGISTRADAS</p>
+                                <br>
+                                <table class="table table-bordered table-hover table-condensed">
+                                    <tbody>
+                                    <tr  class="titulos">
+                                        <th >Descripcion</th>
+                                        <th>Mes</th>
+                                        <th>Año</th>
+
+                                    </tr>
+                                    <tr ng-repeat="todo in listadoDeNoConformidades">
+                                        <td >{{todo.noConformidad}}</td>
+                                        <td>{{todo.mes}}</td>
+                                        <td>
+                                            {{todo.year}}
+                                        </td>
+                                    </tr>
+                                    </tbody>
+
+                                </table>
+
+                            </div>
+                        </div>
+                        <div class="row" ng-show="opcionConsultar2">
+                            <label class="titulos">CONSULTAR CAUSAS</label>
+                            <p >ESCOJA UNA DE LAS NO CONFORMIDADES DE LO CONTRATRIO NO PODRÁ AGREGAR CAUSAS</p>
+                            <md-select aria-label="simpleSelect8" class="titulos" ng-model="noConformidadParaTabla" placeholder="seleccione la no conformidad" ng-change="despliegueTablaCausas(noConformidadParaTabla)">
+                                <md-option ng-value="todo" ng-repeat="todo in listadoDeNoConformidades">{{todo.noConformidad}}</md-option>
+                            </md-select>
+                            <br>
+                            <div class="table-responsive" ng-show="tablaDeCausas">
+                                <p class="titulos">EN LA SIGUIENTE TABLA ENCONTRARÁ LAS CAUSAS PERTENECIENTES A LA NO CONFORMIDAD ESCOGIDA</p>
+                                <br>
+                                <table class="table table-bordered table-hover table-condensed">
+                                    <tbody>
+                                    <tr  class="titulos">
+                                        <th >Causa</th>
+                                    </tr>
+                                    <tr ng-repeat="todo in tablaDeCausas">
+                                        <td >{{todo.causa}}</td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <div class="row" ng-show="opcionConsultar3">
+                            <label class="titulos">CONSULTAR ACCIONES</label>
+                            <p  class="texto">ESCOJA UNA DE LAS NO CONFORMIDADES PARA DESPLEGAR LAS CAUSAS</p>
+                            <md-select aria-label="simpleSelect9" class="titulos" ng-model="noConformidadesDeConsultat3" placeholder="seleccione la no conformidad" ng-change="simple6(noConformidadesDeConsultat3)">
+                                <md-option ng-value="todo" ng-repeat="todo in listadoDeNoConformidades">{{todo.noConformidad}}</md-option>
+                            </md-select>
+                            <br>
+                            <div ng-show="depliegueDeCausasOpcionConsulta">
+                                <p  class="texto">ESCOJA LA CAUSA SOBRE LAS CUALES CONSULTARA  LAS ACCIONES</p>
+                                <md-select aria-label="simpleSelect10" class="titulos" ng-model="opcion7" data-placeholder="seleccione la causa" ng-change="simple7(opcion7)">
+                                    <md-option ng-value="todo" ng-repeat="todo in tablaDeCausas">{{todo.causa}}</md-option>
+                                </md-select>
+                            </div>
+                            <br>
+
+                            <div class="table-responsive" ng-show="despliegueDeTablaAccionesOpcionConsulta">
+                                <p class="titulos">EN LA SIGUIENTE TABLA ENCONTRARÁ LAS ACCIONES PERTENECIENTES A LA CAUSA ESCOGIDA</p>
+                                <br>
+                                <table class="table table-bordered table-hover table-condensed">
+                                    <tbody>
+                                    <tr  class="titulos">
+                                        <th>Nombre</th>
+                                        <th>Fecha</th>
+                                        <th>Registro</th>
+                                    </tr>
+                                    <tr ng-repeat="todo in tableAcciones">
+                                        <td>{{todo.nombre}}</td>
+                                        <td>{{todo.date}}</td>
+                                        <td>
+                                            <div ng-show="{{todo.estado}}" class="w3-col" style="width:50px"><a href="{{todo.registro2}}" download><i class="w3-xxlarge fa fa-check-square"></i></a></div>
+                                            <div ng-show="{{!todo.estado}}" class="w3-col" style="width:50px"><a href="{{todo.registro2}}" download><i class="w3-xxlarge fa fa-exclamation-triangle"></i></a></div>
+
+                                        </td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+
+
+                        </div>
+                        <div class="row" ng-show="opcionConsultar4">
+                            <label class="titulos">CUMPLIMIENTO DE PROGRAMA </label>
+                            <p  class="texto">ESCOJA UNA DE LAS OPCIONES A CONTINUACIÓN</p>
+                            <md-select aria-label="simpleSelect13" class="titulos" ng-model="opcionC" placeholder="seleccione una opción" ng-change="simpleOpCionC(opcionC)">
+                                <md-option ng-value="todo" ng-repeat="todo in opcionesDeCumplimiento">{{todo.name}}</md-option>
+                            </md-select>
+                            <br>
+                            <div class="row" ng-show="c1">
+                                <p  class="texto">ESCOJA UNA DE LAS NO CONFORMIDADES PARA DESPLEGAR LAS CAUSAS</p>
+                                <md-select aria-label="simpleSelect14" class="titulos" ng-model="opcionC1" data-placeholder="seleccione la no conformidad" ng-change="simpleC1(opcionC1)">
+                                    <md-option ng-value="todo" ng-repeat="todo in listadoDeNoConformidades">{{todo.noConformidad}}</md-option>
+                                </md-select>
+                                <br>
+                                <div ng-show="takec1">
+                                    <p  class="texto">ESCOJA LA CAUSA SOBRE LAS CUALES REGISTRO  LAS ACCIONES</p>
+                                    <md-select aria-label="simpleSelect15" class="titulos" ng-model="op10" placeholder="seleccione la causa" ng-change="tak(op10)">
+                                        <md-option ng-value="todo" ng-repeat="todo in tablaDeCausas">{{todo.causa}}</md-option>
+                                    </md-select>
+                                </div>
+                                <br>
+                                <div class="eq-c titulos" ng-show="indicador">
+                                    <i> INDICADOR DE CUMPLIMIENTO DE PLAN DE ACCIÓN  =</i>
+                                    <div class="fraction">
+                                        <span class="fup"><i>TOTAL DE ACCIONES EJECUTADAS</i></span>
+                                        <span class="bar">/</span>
+                                        <span class="fdn"><i>TOTAL DE ACCIONES  PLANTEADAS</i></span>
+                                    </div>
+                                    * 100 % = {{(accionConRegistro.length / (accionConRegistro.length + accionSinRegistro.length))* 100 }} %
+                                    <br>
+                                    <br>
+                                    <button class="btn btn-primary center-block" ng-click="cerrarNoConformidad(opcionC1,$event)" ng-hide="objeto" ng-show="!objeto">CERRAR LA NO CONFORMIDAD</button>
+                                </div>
+
+                            </div>
+                            <div class="row" ng-show="c2">
+                                <div class="col-sm-6">
+                                    <label>SELECCIONE EL MES DE LA AUDITORIA</label>
+                                    <md-select aria-label="simpleSelect16" class="titulos" ng-model="mes" data-placeholder="seleccione el mes" ng-change="ocultarTodo()" >
+                                        <md-option ng-value="todo" ng-repeat="todo in meses">{{todo.name}}</md-option>
+
+                                    </md-select>
+                                </div>
+                                <div class="col-sm-6">
+                                    <label>SELECCIONE EL AÑO DE LA AUDITORIA</label>
+                                    <md-select aria-label="simpleSelect17" class="titulos" ng-model="year" data-placeholder="seleccione el mes" ng-change="ocultarTodo()">
+                                        <md-option ng-value="todo" ng-repeat="todo in years">{{todo.name}}</md-option>
+
+                                    </md-select>
+                                </div>
+                                <br>
+                                <div class="col-sm-12">
+                                    <br>
+                                    <button class="btn btn-primary center-block" ng-click="consultarAuditoria2(mes,year)">BUSCAR</button>
+                                </div>
+                                <br>
+                                <div class="col-sm-12" ng-show="auditoras">
+                                    <br>
+                                    <label>A CONTINUACIÓN ENCONTRARÁ UNA LISTA CON LAS AUDITORIAS DISPONIBLES</label>
+                                    <md-select aria-label="simpleSelect18" class="titulos" ng-model="auditoria" placeholder="seleccione una auditoria" ng-change="cambiarOpcion(auditoria)" >
+                                        <md-option ng-value="todo" ng-repeat="todo in tableContra">{{todo.fecha}}</md-option>
+
+                                    </md-select>
+                                </div>
+                                <div class="eq-c titulos" ng-show="indiCierre">
+                                    <i> INDICADOR DE CIERRE DE NO CONFORMIDADES  =</i>
+                                    <div class="fraction">
+                                        <span class="fup"><i>TOTAL DE NO CONFORMIDADES CERRADAS</i></span>
+                                        <span class="bar">/</span>
+                                        <span class="fdn"><i>TOTAL DE NO CONFORMIDADES PLANTEADAS</i></span>
+                                    </div>
+                                    * 100 % = {{(listadoNoConforCerradas.length / listadoDeNoConformidades.length)* 100 }} %
+                                    <br>
+                                    <br>
+                                </div>
+
+                            </div>
+
+
+                        </div>
+                        <div class="row" ng-show="banderaActualiNo">
+                            <label class="titulos">ACTUALIZAR NO CONFORMIDADES</label>
+                            <br>
+                            <div class="table-responsive">
+                                <p class="titulos">EN LA SIGUIENTE TABLA ENCONTRARÁ LAS NO CONFORMIDADES REGISTRADAS</p>
+                                <br>
+                                <table class="table table-bordered table-hover table-condensed">
+                                    <tbody>
+                                    <tr  class="titulos">
+                                        <th >Descripcion</th>
+                                        <th>Mes</th>
+                                        <th>Año</th>
+                                        <th>Actualizar</th>
+
+                                    </tr>
+                                    <tr ng-repeat="todo in listadoDeNoConformidades">
+                                        <td >{{todo.noConformidad}}</td>
+                                        <td>{{todo.mes}}</td>
+                                        <td>
+                                            {{todo.year}}
+                                        </td>
+                                        <td>
+                                            <button class="btn btn-primary" ng-click="showAlert($event,todo)">Actualizar</button>
+                                        </td>
+                                    </tr>
+                                    </tbody>
+
+                                </table>
+
+                            </div>
+
+
+                        </div>
+                        <div class="row" ng-show="banderaActualiCa">
+                            <label class="titulos">ACTUALIZAR CAUSAS</label>
+                            <br>
+                            <p >ESCOJA UNA DE LAS NO CONFORMIDADES DE LO CONTRATRIO NO PODRÁ ACTULIZAR CAUSAS</p>
+                            <md-select aria-label="simpleSelectActualizacion" class="titulos" ng-model="opcionActualizar" placeholder="seleccione la no conformidad" ng-change="simpleActualizar(opcionActualizar)" >
+                                <md-option ng-value="todo" ng-repeat="todo in listadoDeNoConformidades">{{todo.noConformidad}}</md-option>
+                            </md-select>
+                            <br>
+                            <div class="table-responsive" ng-show="causaActualizada">
+                                <p class="titulos">EN LA SIGUIENTE TABLA ENCONTRARÁ LAS CAUSAS PERTENECIENTES A LA NO CONFORMIDAD ESCOGIDA</p>
+                                <br>
+                                <table class="table table-bordered table-hover table-condensed">
+                                    <tbody>
+                                    <tr  class="titulos">
+                                        <th >Causa</th>
+                                        <th>Actualizar</th>
+                                    </tr>
+                                    <tr ng-repeat="todo in tablaDeCausas">
+                                        <td >{{todo.causa}}</td>
+                                        <td><button class="btn btn-primary" ng-click="showAlertCausas($event,todo)">Actualizar</button></td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+
+
+
+                        </div>
+                        <div class="row" ng-show="banderaActualiAcc">
+                            <label class="titulos">ACTUALIZAR ACCIONES</label>
+                            <br>
+                            <p >ESCOJA UNA DE LAS NO CONFORMIDADES DE LO CONTRATRIO NO PODRÁ ACTULIZAR LAS ACCIONES</p>
+                            <md-select aria-label="simpleSelectActualizacionII" class="titulos" ng-model="opcionActualizarII" placeholder="seleccione la no conformidad" ng-change="simpleActualizarII(opcionActualizarII)" >
+                                <md-option ng-value="todo" ng-repeat="todo in listadoDeNoConformidades">{{todo.noConformidad}}</md-option>
+                            </md-select>
+
+                            <br>
+                            <br>
+                            <div ng-show="despliegueDeCausas">
+                                <p  class="texto">ESCOJA LA CAUSA SOBRE LAS CUAL ESTA LIGADA LAS ACCION QUE VA A ACTULIZAR</p>
+                                <md-select aria-label="simpleSelect15" class="titulos" ng-model="causaActaCC" placeholder="seleccione la causa" ng-change="takAcc(causaActaCC)">
+                                    <md-option ng-value="todo" ng-repeat="todo in tablaDeCausas">{{todo.causa}}</md-option>
+                                </md-select>
+                            </div>
+                            <br>
+                            <div class="table-responsive" ng-show="despliegueDeAcciones">
+                                <p class="titulos">EN LA SIGUIENTE TABLA ENCONTRARÁ LAS ACCIONES PERTENECIENTES A LA CAUSA ESCOGIDA</p>
+                                <br>
+                                <table class="table table-bordered table-hover table-condensed">
+                                    <tbody>
+                                    <tr  class="titulos">
+                                        <th>Nombre</th>
+                                        <th>Fecha</th>
+                                        <th>Actualizar</th>
+                                    </tr>
+                                    <tr ng-repeat="todo in tableAcciones">
+                                        <td>{{todo.nombre}}</td>
+                                        <td>{{todo.date}}</td>
+                                        <td><button class="btn btn-primary" ng-click="showAlertAcciones($event,todo)">Actualizar</button></td>
+
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+
+
+
+
+                        </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+</div>
+

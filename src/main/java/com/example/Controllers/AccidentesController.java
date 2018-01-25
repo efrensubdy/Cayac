@@ -21,6 +21,12 @@ public class AccidentesController {
 
     @Autowired
     public ManejadorDeAccidentes manejadorDeAccidentes;
+
+    /**
+     * Método que recibe el objeto Accidente a través de un post al Api
+     * @param accidente objeto con la información del registro del accidente
+     * @return cuando el objeto se registre entrega esto 200 o aceptado
+     */
     @RequestMapping(value ="acci",method = RequestMethod.POST)
     public ResponseEntity<?> agregarIndicador(@RequestBody Accidente accidente){
 
@@ -36,6 +42,13 @@ public class AccidentesController {
         }
         return a;
     }
+
+    /**
+     * Método que obtine todos los accidentes del contratista
+     * @param idContratista identificador del contratista en la base de datos
+     * @param idContratante identificador del contratante en la base de datos
+     * @return Regresa respuesta de Spring con la lsita de accidentes del contratista
+     */
     @RequestMapping(value = "accxContra/{idContratista}/{idContratante}", method = RequestMethod.GET)
     public ResponseEntity<?>obtenerAccidentesPorContratista(@PathVariable int idContratista, @PathVariable int idContratante){
 

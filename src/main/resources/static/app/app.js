@@ -41,6 +41,7 @@ angular.module('myApp', [
   'myApp.gestionDeSeguridadSocial',
   'myApp.registroDeAuditoria',
   'myApp.auditoria',
+  'myApp.auditoria2.0',
   'myApp.gestionAuditoria',
   'myApp.login',
   'myApp.login2',
