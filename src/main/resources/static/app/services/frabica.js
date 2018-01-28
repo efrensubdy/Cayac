@@ -3,21 +3,20 @@ angular.module('services.listFactory', ['ngRoute','ngResource'])
 
 
      //fabrica qie se utiliza para usar datos de prueba que no tienen persistencia
-     .service('fileUpload', ['$http', function ($http) {
+     .service('fileUpload', ['$http','$window',function ($http,$window) {
              this.uploadFileToUrl = function(file, uploadUrl){
                  var fd = new FormData();
-                 console.log("llego");
                  fd.append('file', file);
                  $http.post(uploadUrl, fd, {
                      transformRequest: angular.identity,
                      headers: {'Content-Type': undefined}
                  })
                  .then(function(){
-                     console.log("sirvio---------------------------------------------------------------");
+                     $window.alert("El archivo esta disponible para su uso");
                  });
              }
          }])
-      .service('contratoUpload', ['$http', function ($http) {
+      .service('contratoUpload', ['$http','$window',function ($http,window) {
                    this.uploadFileToUrl = function(list,uploadUrl){
                        var fd = new FormData();
                         for (var i in list) {
@@ -25,13 +24,13 @@ angular.module('services.listFactory', ['ngRoute','ngResource'])
                          fd.append("file"+i,list[i]);
                         }
 
-                       console.log("llego");
+
                        $http.post(uploadUrl, fd,{
                            transformRequest: angular.identity,
                            headers: {'Content-Type': undefined}
                        })
                        .then(function(){
-                           console.log("sirvio---------------------------------------------------------------");
+                           $window.alert("El archivo esta disponible para su uso");
                        });
                    }
                }])
