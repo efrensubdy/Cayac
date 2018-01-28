@@ -1,13 +1,15 @@
 package com.example.Controllers;
 
-import com.example.Models.Accidente;
 import com.example.Models.Diagnostico;
 import com.example.Services.ManejadorDeDiagnosticos;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RestController;
 
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -20,8 +22,14 @@ import java.util.logging.Logger;
 public class DiagnosticoController {
     @Autowired
     public ManejadorDeDiagnosticos manejadorDeDiagnosticos;
+
+    /**
+     * Método que se encarga de registrar un diagnostico en la base de datos
+     * @param diagnostico objeto de tipo diagnóstico
+     * @return ACCEPTED si el diagnostico se registra
+     */
     @RequestMapping(value ="diag",method = RequestMethod.POST)
-    public ResponseEntity<?> agregarIndicador(@RequestBody Diagnostico diagnostico){
+    public ResponseEntity<?> agregarDiagnostico(@RequestBody Diagnostico diagnostico){
 
         ResponseEntity a;
         try {
@@ -35,6 +43,11 @@ public class DiagnosticoController {
         }
         return a;
     }
+
+    /**
+     * Método que trae todos los diagnosticos al gerente de la empresa
+     * @return Listado con objetos de tipo Diagnostico con la información de los diagnosticos en la base de datos
+     */
     @RequestMapping(value = "diagnosticoGerencia", method = RequestMethod.GET)
     public ResponseEntity<?>indicadoresPorContratista(){
 

@@ -1,7 +1,6 @@
 package com.example.Controllers;
 
 import com.example.Models.Accidente;
-import com.example.Models.Indicador;
 import com.example.Services.ManejadorDeAccidentes;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -13,7 +12,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 /**
- * Created by HSEQ on 11/10/2017.
+ * Controlador de Accidentes
  */
 @RestController
 @RequestMapping(value="/app/accidente")
@@ -28,7 +27,7 @@ public class AccidentesController {
      * @return cuando el objeto se registre entrega esto 200 o aceptado
      */
     @RequestMapping(value ="acci",method = RequestMethod.POST)
-    public ResponseEntity<?> agregarIndicador(@RequestBody Accidente accidente){
+    public ResponseEntity<?> agergarAccidente(@RequestBody Accidente accidente){
 
         ResponseEntity a;
         try {

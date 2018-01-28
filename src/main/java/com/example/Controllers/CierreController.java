@@ -1,6 +1,5 @@
 package com.example.Controllers;
 
-import com.example.Models.Causa;
 import com.example.Models.Cierre;
 import com.example.Services.ManejadorDeAcciones;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,8 +19,14 @@ import java.util.logging.Logger;
 public class CierreController {
     @Autowired
     public ManejadorDeAcciones manejadorDeAcciones;
+
+    /**
+     * Mètodo que se encarga de registrar el cierre de una No Conformidad
+     * @param cierre objeto de tipo cierre con la información del cierre
+     * @return ACCEPTED si el cierre se registra en la base de datos
+     */
     @RequestMapping(value ="registro",method = RequestMethod.POST)
-    public ResponseEntity<?> agregarCausa(@RequestBody Cierre cierre){
+    public ResponseEntity<?> agregarCierre(@RequestBody Cierre cierre){
 
         ResponseEntity a;
         try {
@@ -35,8 +40,15 @@ public class CierreController {
         }
         return a;
     }
+
+    /**
+     * Método que se encargar de consultar si encuentra cerrada la noConformidad
+     * @param idNoConformidad identificador de la noConformidad que se quiere cerrar
+     * @param idContratista identificador del contratista al que se le cerro la No Conformidad
+     * @return
+     */
     @RequestMapping(value = "isClose/{idNoConformidad}/{idContratista}", method = RequestMethod.GET)
-    public ResponseEntity<?>obtenerAprobacionDeContratisttas(@PathVariable int idNoConformidad, @PathVariable int idContratista){
+    public ResponseEntity<?>actividadIsClose(@PathVariable int idNoConformidad, @PathVariable int idContratista){
 
         ResponseEntity a;
         try {
@@ -49,6 +61,12 @@ public class CierreController {
         }
         return a;
     }
+
+    /**
+     * Método que trae las NoConformidades cerradas por contratistas
+     * @param idContratista identificador del contratista
+     * @return Listado de objetos con tipo NoConformidad con las no conformidades cerradas
+     */
     @RequestMapping(value = "isCl/{idContratista}", method = RequestMethod.GET)
     public ResponseEntity<?>obtenerCerradas(@PathVariable int idContratista){
 
@@ -63,6 +81,13 @@ public class CierreController {
         }
         return a;
     }
+
+    /**
+     * Método que trae las NoConformidades cerradas por contratistas y auditora
+     * @param idContratista identificador del contratista
+     * @param idAuditoria identificador de la auditoria a quien pertencen las no conformidades
+     * @return lista con las no conformidades cerradas pertenecientes a la auditoria
+     */
     @RequestMapping(value = "isCl/{idContratista}/{idAuditoria}", method = RequestMethod.GET)
     public ResponseEntity<?>obtenerCerradas(@PathVariable int idContratista,@PathVariable int idAuditoria){
 

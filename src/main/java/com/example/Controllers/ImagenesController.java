@@ -37,7 +37,13 @@ private ManejoDeContratistasBD manejoDeContratistasBD;
     public void setManejoDeContratistasBD(ManejoDeContratistasBD manejoDeContratistasBD) {
         this.manejoDeContratistasBD = manejoDeContratistasBD;
     }
-
+    /**
+     * Método que se encarga de registrar el soporte de un requisito extra en la base de datos
+     * @param idContratista identificador del contratista
+     * @param idRequisitoSugerido identificador el requisito
+     * @param request Documento asociado al soporte  del requisito
+     * @return
+     */
     @RequestMapping(path = "/{idContratista}/{idRequisitoSugerido}",method = RequestMethod.POST)
     public ResponseEntity<?> InsertarImagen(@PathVariable Integer idContratista,@PathVariable Integer idRequisitoSugerido
             , MultipartHttpServletRequest request){
@@ -75,7 +81,12 @@ private ManejoDeContratistasBD manejoDeContratistasBD;
         }
         return a;
     }
-
+    /**
+     * Método que convierte un objeto de tipo Multipart en un objeto de tipo File
+     * @param file archivo que se desea transformar
+     * @return objeto de tipo File con la información del objeto de tipo Multipart
+     * @throws IOException excepción de tipo archivos
+     */
     private File convert(MultipartFile file) throws IOException {
         File convFile = new File(file.getOriginalFilename());
         convFile.createNewFile();

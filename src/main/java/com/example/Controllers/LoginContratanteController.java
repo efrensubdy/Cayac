@@ -38,6 +38,12 @@ public class LoginContratanteController {
         this.bandera = bandera;
     }
 
+    /**
+     * Método que se encarga del inicio de sesión del contratante
+     * @param email correo con el que se va iniciar la sesión
+     * @param password contraseña con la que va iniciar la sesión
+     * @return objeto con el que inica la sesión
+     */
     @RequestMapping(value = "/{email}/{password}", method = RequestMethod.GET)
     public ResponseEntity<?> loginContratante(@PathVariable String email,@PathVariable  String password){
 
@@ -54,6 +60,13 @@ public class LoginContratanteController {
         }
 
     }
+
+    /**
+     * Método que se encarga de traer el identificador de un contratante
+     * @param email correo con el que se consultar el identificador
+     * @param password con el que se consultar el identificador
+     * @return el identificador del contratante
+     */
     @RequestMapping(value = "id/{email}/{password}", method = RequestMethod.GET)
     public ResponseEntity<?> geIdContratante(@PathVariable String email,@PathVariable  String password){
 
@@ -69,6 +82,13 @@ public class LoginContratanteController {
         }
 
     }
+
+    /**
+     * Método que se encarga de traer el objeto con el detalle del contratante
+     * @param email correo con el que se consultar el el detalle
+     * @param password con el que se consultar el identificador
+     * @return el objeto con el detalle del contratante
+     */
     @RequestMapping(value = "categoria/{email}/{password}", method = RequestMethod.GET)
     public ResponseEntity<?> getContratante(@PathVariable String email,@PathVariable  String password){
 
@@ -84,6 +104,12 @@ public class LoginContratanteController {
         }
 
     }
+
+    /**
+     * Método con el se actualiza la contraseña del contratante
+     * @param user usuario con la información que se va a acutalizar
+     * @return  ACCEPTED si se actualiza la contraseña
+     */
     @RequestMapping(method = RequestMethod.POST)
     public ResponseEntity<?>actualizarContraseña(@RequestBody Usuario user){
 

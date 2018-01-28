@@ -13,7 +13,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 /**
- * Created by HSEQ on 30/03/2017.
+ * Controlador de Contratantes
  */
 @RestController
 @RequestMapping(value="/app/contractor")
@@ -28,6 +28,12 @@ public class ContractorController {
     public void setManejoDeContratanteBD(ManejoDeContratanteBD manejoDeContratanteBD) {
         this.manejoDeContratanteBD = manejoDeContratanteBD;
     }
+
+    /**
+     * Obtener los servicios que pertenecen al contratante
+     * @param idContratante identificador del contratante a quien pertenecen los servicios
+     * @return Listado con los servicios a contratar del contratante
+     */
     @RequestMapping(value = "servicioaContratar/{idContratante}", method = RequestMethod.GET)
     public ResponseEntity<?> obtenerServ(@PathVariable int idContratante) {
 
@@ -42,6 +48,12 @@ public class ContractorController {
         }
         return a;
     }
+
+    /**
+     * Método obtiene los servicios a conratar con el contratista
+     * @param idContratante identificador del contratante a quien pertencen los servicios a contratar
+     * @return Listado con todos los servicios a contratar
+     */
     @RequestMapping(value = "servicioConContratista/{idContratante}", method = RequestMethod.GET)
     public ResponseEntity<?> obtenerServConContratista(@PathVariable int idContratante) {
 
@@ -217,6 +229,12 @@ public class ContractorController {
         return a;
     }
 
+    /**
+     * Método qie registra un contratante en la base de datos
+     * @param contratante objeto con la información del contratante que se desea registrar
+     * @return ACCEPTED si el objeto se registra en la base de datos
+     */
+
     @RequestMapping(method = RequestMethod.POST)
     public ResponseEntity<?>registrarContratante(@RequestBody Contratante contratante){
 
@@ -232,6 +250,12 @@ public class ContractorController {
         }
         return a;
     }
+
+    /**
+     * Método que se encarga de registrar un servicio a contratar en la base de datos
+     * @param servicioAContratar objeto con la información del servicio a contratar que se va registrar
+     * @return ACCEPTED si se registrar el servicioAContratar en la base de datos
+     */
     @RequestMapping(value ="serAContratar",method = RequestMethod.POST)
     public ResponseEntity<?>registrarServicioAContratar(@RequestBody ServicioAContratar servicioAContratar){
 

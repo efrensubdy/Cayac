@@ -1,6 +1,5 @@
 package com.example.Controllers;
 
-import com.example.Models.Aprobacion;
 import com.example.Models.NoConformidad;
 import com.example.Services.ManejoDeNoConformidades;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,6 +20,11 @@ public class NoConformidadController {
     @Autowired
     public ManejoDeNoConformidades manejoDeNoConformidades;
 
+    /**
+     * Método que registra la NoConformidad en la base de datos
+     * @param noConformidad objeto con la información de la noConformidad que se va a registrar
+     * @return ACCEPTED si se registra la no conformidad
+     */
     @RequestMapping(value ="registro",method = RequestMethod.POST)
     public ResponseEntity<?> agregarNoConformidad(@RequestBody NoConformidad noConformidad){
 
@@ -36,6 +40,12 @@ public class NoConformidadController {
         }
         return a;
     }
+
+    /**
+     * Método que se encarga de traer las no conformidades pertenecientes a un contratistas
+     * @param idContratista identificador del contratista al que pertencen las no conformidades
+     * @return Listado con objetos de tipo NoConformidad que pertenezcan al contratista
+     */
     @RequestMapping(value = "porContra/{idContratista}", method = RequestMethod.GET)
     public ResponseEntity<?>obtenerNoConformidadesPorContratista(@PathVariable int idContratista){
 
@@ -50,6 +60,13 @@ public class NoConformidadController {
         }
         return a;
     }
+
+    /**
+     * Método que se encarga de traer las no conformidades pertenecientes a un contratistas y una auditoria
+     * @param idContratista identificador del contratista al que pertencen las no conformidades
+     * @param idAuditoria identificador de la auditoria a la que pertenecen las no conformidades
+     * @return Listado con objetos de tipo NoConformidad que pertenezcan al contratista
+     */
     @RequestMapping(value = "porContra/{idContratista}/{idAuditoria}", method = RequestMethod.GET)
     public ResponseEntity<?>obtenerNoConformidadesPorContratistayAuditoria(@PathVariable int idContratista, @PathVariable int idAuditoria){
 

@@ -29,6 +29,14 @@ public class DocumentosEstaticosController {
     @Autowired
     public ManejoDeDocumentosDeEjecucion manejoDeDocumentosDeEjecucion;
 
+    /**
+     * Método que se encarga registrar un requisito de ejecución en la base de datos
+     * @param idFinalista identificador del contratista a quien pertenece el requisito
+     * @param idRequisito identificador del requisito al que pertenece el requisito
+     * @param idContratista identificador del contratista al que pertence el contratista
+     * @param request con el soporte del registro del requisito
+     * @return ACCEPTED si se registra el soporte
+     */
     @RequestMapping(path = "/{idFinalista}/{idRequisito}/{idContratista}/previoSugerido",method = RequestMethod.POST)
     public ResponseEntity<?> InsertarDocumentoPrevioSugerido(@PathVariable Integer idFinalista, @PathVariable Integer idRequisito,@PathVariable Integer idContratista
             , MultipartHttpServletRequest request){
@@ -54,7 +62,14 @@ public class DocumentosEstaticosController {
         }
         return a;
     }
-
+    /**
+     * Método que se encarga registrar un requisito extra de ejecución en la base de datos
+     * @param idFinalista identificador del contratista a quien pertenece el requisito
+     * @param idRequisito identificador del requisito al que pertenece el requisito
+     * @param idContratista identificador del contratista al que pertence el contratista
+     * @param request con el soporte del registro del requisito
+     * @return ACCEPTED si se registra el soporte
+     */
     @RequestMapping(path = "/{idFinalista}/{idRequisito}/{idContratista}/previoExtra",method = RequestMethod.POST)
     public ResponseEntity<?> InsertarDocumentoPrevioExtra(@PathVariable Integer idFinalista, @PathVariable Integer idRequisito,@PathVariable Integer idContratista
             , MultipartHttpServletRequest request){
@@ -82,7 +97,12 @@ public class DocumentosEstaticosController {
     }
 
 
-
+    /**
+     * Método que convierte un objeto de tipo Multipart en un objeto de tipo File
+     * @param file archivo que se desea transformar
+     * @return objeto de tipo File con la información del objeto de tipo Multipart
+     * @throws IOException excepción de tipo archivos
+     */
     private File convert(MultipartFile file) throws IOException {
         File convFile = new File(file.getOriginalFilename());
         convFile.createNewFile();

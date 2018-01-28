@@ -19,6 +19,13 @@ import java.util.logging.Logger;
 public class LimitController {
     @Autowired
     ManejoDeContratistasBD manejoDeContratistasBD;
+
+    /**
+     * Método que se encarga de obtener las fechas limites de un contratante específico
+     * @param idContratante identificador del contratante que registra la fecha limite
+     * @param idCategoria identificador de la categoria
+     * @return
+     */
     @RequestMapping(value="{idContratante}/{idCategoria}" ,method = RequestMethod.GET)
     public ResponseEntity<?> responseResource(@PathVariable int idContratante, @PathVariable int idCategoria){
 
@@ -34,6 +41,12 @@ public class LimitController {
         }
         return a;
     }
+
+    /**
+     * Método que se encarga de traer todas las fechas que pertenecen a un contratante
+     * @param idContratante identificador del contratante
+     * @return Listado con todas las fechas limites del contratante
+     */
     @RequestMapping(value="limit/{idContratante}" ,method = RequestMethod.GET)
     public ResponseEntity<?> fechalimite(@PathVariable int idContratante){
 
@@ -49,6 +62,12 @@ public class LimitController {
         }
         return a;
     }
+
+    /**
+     * Método que se encarga de registrar la fecha limite de los soportes de selección
+     * @param fechaLimite objeto con la información de la fecha limite
+     * @return ACCEPTED si registra correctamente
+     */
     @RequestMapping(method = RequestMethod.POST)
     public ResponseEntity<?>registrarFechaLimite(@RequestBody FechaLimite fechaLimite){
 

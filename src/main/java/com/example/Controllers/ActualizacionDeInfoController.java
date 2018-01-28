@@ -14,6 +14,9 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+/**
+ * Controlador de Actualizaciones
+ */
 @RestController
 @RequestMapping(value="/app/actualizacionDeInfo")
 public class ActualizacionDeInfoController {
@@ -21,6 +24,11 @@ public class ActualizacionDeInfoController {
     @Autowired
     public ManejadorDeActualizacion manejadorDeActualizacion;
 
+    /**
+     * Método que se encarga de actualizar la información del contratista
+     * @param contratista objeto del tipo Contratista con la información actualizada
+     * @return ACCEPTED si el objeto efectivamente se actualiza en la base de datos
+     */
     @RequestMapping(value ="Registro",method = RequestMethod.POST)
     public ResponseEntity<?> actualizarInfoContratista(@RequestBody Contratista contratista){
 
@@ -36,6 +44,11 @@ public class ActualizacionDeInfoController {
         }
         return a;
     }
+    /**
+     * Método que se encarga de actualizar la información del indicador
+     * @param indicador objeto del tipo Indicador con la información actualizada
+     * @return ACCEPTED si el objeto efectivamente se actualiza en la base de datos
+     */
     @RequestMapping(value ="RegistroIndicador",method = RequestMethod.POST)
     public ResponseEntity<?> actualizarIndicadorContrtista(@RequestBody Indicador indicador){
 
@@ -51,6 +64,11 @@ public class ActualizacionDeInfoController {
         }
         return a;
     }
+    /**
+     * Método que se encarga de actualizar la información del accidente
+     * @param accidente objeto del tipo Indicador con la información actualizada
+     * @return ACCEPTED si el objeto efectivamente se actualiza en la base de datos
+     */
     @RequestMapping(value ="RegistroAccidente",method = RequestMethod.POST)
     public ResponseEntity<?> actualizarAccidenteContrtista(@RequestBody Accidente accidente){
 
@@ -66,8 +84,13 @@ public class ActualizacionDeInfoController {
         }
         return a;
     }
+    /**
+     * Método que se encarga de actualizar la información del Estandar Mínimo
+     * @param estandarMinimo objeto del tipo Indicador con la información actualizada
+     * @return ACCEPTED si el objeto efectivamente se actualiza en la base de datos
+     */
     @RequestMapping(value ="RegistroEstandar",method = RequestMethod.POST)
-    public ResponseEntity<?> actualizarAccidenteContrtista(@RequestBody EstandarMinimo estandarMinimo){
+    public ResponseEntity<?> actualizarEstandaContrtista(@RequestBody EstandarMinimo estandarMinimo){
 
         ResponseEntity a;
         try {
@@ -81,8 +104,13 @@ public class ActualizacionDeInfoController {
         }
         return a;
     }
+    /**
+     * Método que se encarga de actualizar la información de la actividad del plan de trabajo
+     * @param planDeTrabajo objeto del tipo PlanDeTrabajo con la información actualizada de actividad
+     * @return ACCEPTED si el objeto efectivamente se actualiza en la base de datos
+     */
     @RequestMapping(value ="RegistroPlanDeTrabajo",method = RequestMethod.POST)
-    public ResponseEntity<?> actualizarPlanDeTrabajoContrtista(@RequestBody PlanDeTrabajo planDeTrabajo){
+    public ResponseEntity<?> actualizarPlanDeTrabajoContratista(@RequestBody PlanDeTrabajo planDeTrabajo){
 
         ResponseEntity a;
         try {
@@ -96,6 +124,11 @@ public class ActualizacionDeInfoController {
         }
         return a;
     }
+    /**
+     * Método que se encarga de actualizar la información de la No Conformidad
+     * @param noConformidad objeto del tipo NoConformidad con la información actualizada
+     * @return ACCEPTED si el objeto efectivamente se actualiza en la base de datos
+     */
     @RequestMapping(value ="RegistroNoConformidad",method = RequestMethod.POST)
     public ResponseEntity<?> actualizarNoConformidadContrtista(@RequestBody NoConformidad noConformidad){
 
@@ -112,6 +145,11 @@ public class ActualizacionDeInfoController {
         }
         return a;
     }
+    /**
+     * Método que se encarga de actualizar la información de la Causa
+     * @param causa objeto del tipo Causa con la información actualizada
+     * @return ACCEPTED si el objeto efectivamente se actualiza en la base de datos
+     */
     @RequestMapping(value ="RegistroCausa",method = RequestMethod.POST)
     public ResponseEntity<?> actualizarCausaContrtista(@RequestBody Causa causa){
 
@@ -128,6 +166,11 @@ public class ActualizacionDeInfoController {
         }
         return a;
     }
+    /**
+     * Método que se encarga de actualizar la información de la accion
+     * @param accion objeto del tipo Accion con la información actualizada
+     * @return ACCEPTED si el objeto efectivamente se actualiza en la base de datos
+     */
     @RequestMapping(value ="RegistroAccion",method = RequestMethod.POST)
     public ResponseEntity<?> actualizarAccionContrtista(@RequestBody Accion accion){
 
@@ -144,6 +187,11 @@ public class ActualizacionDeInfoController {
         }
         return a;
     }
+    /**
+     * Método que se encarga de actualizar la información del ServicioAContratar
+     * @param servicioAContratar objeto del tipo ServicioAContratar con la información actualizada
+     * @return ACCEPTED si el objeto efectivamente se actualiza en la base de datos
+     */
     @RequestMapping(value ="RegistroServicio",method = RequestMethod.POST)
     public ResponseEntity<?> actualizarServicioContratante(@RequestBody ServicioAContratar servicioAContratar){
 

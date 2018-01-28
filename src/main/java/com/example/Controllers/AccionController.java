@@ -1,10 +1,7 @@
 package com.example.Controllers;
 
-import com.example.Models.Accidente;
 import com.example.Models.Accion;
-import com.example.Models.SeguridadSocial;
 import com.example.Services.ManejadorDeAcciones;
-import com.example.Services.ManejadorDeCausas;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -17,13 +14,11 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.Iterator;
-import java.util.LinkedList;
-import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
 /**
- * Created by HSEQ on 26/10/2017.
+ * Controlador de Acciones
  */
 @RestController
 @RequestMapping(value="/app/accion")
@@ -32,15 +27,15 @@ public class AccionController {
     public ManejadorDeAcciones manejadorDeAcciones;
 
     /**
-     *
-     * @param idContratista
-     * @param idCausa
-     * @param id
-     * @param request
-     * @return
+     *Método para registrar un documento asociado a la acción registrada
+     * @param idContratista identificador del contratista que registro la acción
+     * @param idCausa identidificador de la causa a la que pertenece la acción
+     * @param id identificador de la acción que se registro
+     * @param request que contiene el documento
+     * @return Accpeted si efectivamente se registra el documento tanto en la base de datos como en el repositorio
      */
     @RequestMapping(path = "/{idContratista}/{idCausa}/{id}",method = RequestMethod.POST)
-    public ResponseEntity<?> InsertarImagen(@PathVariable Integer idContratista, @PathVariable Integer idCausa, @PathVariable Integer id
+    public ResponseEntity<?> RegistraroActualizarSoporteDeAccion(@PathVariable Integer idContratista, @PathVariable Integer idCausa, @PathVariable Integer id
             , MultipartHttpServletRequest request){
 
         ResponseEntity a;
@@ -66,6 +61,13 @@ public class AccionController {
         }
         return a;
     }
+
+    /**
+     * Método que obtine todas las acciones pertenecientes a un contratista específico
+     * @param idContratista identificador del contratista al que pertenecen las acciones
+     * @param idCausa identificador de la causa a la que pertenece la acción
+     * @return
+     */
     @RequestMapping(value = "porContra/{idContratista}/{idCausa}", method = RequestMethod.GET)
     public ResponseEntity<?>obtenerAccionesPorContratista(@PathVariable int idContratista,@PathVariable int idCausa){
 
@@ -80,6 +82,13 @@ public class AccionController {
         }
         return a;
     }
+
+    /**
+     * Método que obtiene todas lacciones de un contratista que tienen un registro en el repositorio
+     * @param idContratista identificador del contratista a quien pertenecen las acciones
+     * @param idCausa identificador de la causa a la cual estan asociadas las acciones
+     * @return una lista de objetos de tipo acción con las acciones que tienen un documento asociado en el repositorio
+     */
     @RequestMapping(value = "conRegistro/{idContratista}/{idCausa}", method = RequestMethod.GET)
     public ResponseEntity<?>obtenerAccionesPorContratistaConRegistro(@PathVariable int idContratista,@PathVariable int idCausa){
 
@@ -94,6 +103,13 @@ public class AccionController {
         }
         return a;
     }
+
+    /**
+     * Método que obtiene todas lacciones de un contratista que no tienen un registro en el repositorio
+     * @param idContratista identificador del contratista a quien pertenecen las acciones
+     * @param idCausa identificador de la causa a la cual estan asociadas las acciones
+     * @return una lista de objetos de tipo acción con las acciones que no tienen un documento asociado en el repositorio
+     */
     @RequestMapping(value = "sinRegistro/{idContratista}/{idCausa}", method = RequestMethod.GET)
     public ResponseEntity<?>obtenerAccionesPorContratistaSinRegistro(@PathVariable int idContratista,@PathVariable int idCausa){
 
@@ -108,8 +124,14 @@ public class AccionController {
         }
         return a;
     }
+
+    /**
+     * Método que agrega una acción a la base de datos
+     * @param accion objeto con la información que se va registrar en la base de datos
+     * @return accepted si el objeto y su información efectivamente se registran en la base de datos
+     */
     @RequestMapping(value ="Registro",method = RequestMethod.POST)
-    public ResponseEntity<?> agregarIndicador(@RequestBody Accion accion){
+    public ResponseEntity<?> agregarAccion(@RequestBody Accion accion){
 
         ResponseEntity a;
         try {
@@ -124,7 +146,12 @@ public class AccionController {
         return a;
     }
 
-
+    /**
+     * Método que convierte un objeto de tipo Multipart en un objeto de tipo File
+     * @param file archivo que se desea transformar
+     * @return objeto de tipo File con la información del objeto de tipo Multipart
+     * @throws IOException excepción de tipo archivos
+     */
     private File convert(MultipartFile file) throws IOException {
         File convFile = new File(file.getOriginalFilename());
         convFile.createNewFile();

@@ -21,6 +21,14 @@ import java.util.logging.Logger;
 public class CumplimientoEjecucionController {
     @Autowired
     public ManejoDeCumplimientoBD manejoDeCumplimientoBD;
+
+    /**
+     * Método que obtiene todos los requisitos previos con un documento asociado en el repositorio
+     * @param idFinalista identificador del finalista al que se le aplicaron los requisitos
+     * @param idCategoria identificador de la categoria a la que pertencen los requisitos
+     * @param idContratante identificador del contratante que requiere los requisitos
+     * @return
+     */
     @RequestMapping(value = "previoSugeridoCumplido/{idFinalista}/{idCategoria}/{idContratante}", method = RequestMethod.GET)
     public ResponseEntity<?> obtenerRequiPrevioCumplido(@PathVariable("idFinalista") int idFinalista, @PathVariable("idCategoria")int idCategoria, @PathVariable("idContratante")int idContratante ){
 
@@ -35,6 +43,13 @@ public class CumplimientoEjecucionController {
         }
         return a;
     }
+    /**
+     * Método que obtiene todos los requisitos previos sin un  documento asociado en el repositorio
+     * @param idFinalista identificador del finalista al que se le aplicaron los requisitos
+     * @param idCategoria identificador de la categoria a la que pertencen los requisitos
+     * @param idContratante identificador del contratante que requiere los requisitos
+     * @return
+     */
     @RequestMapping(value = "previoSugeridoNoCumplido/{idFinalista}/{idCategoria}/{idContratante}", method = RequestMethod.GET)
     public ResponseEntity<?> obtenerPrevioSugeridoNoCumplido(@PathVariable("idFinalista") int idFinalista, @PathVariable("idCategoria")int idCategoria, @PathVariable("idContratante")int idContratante ){
 
@@ -49,6 +64,13 @@ public class CumplimientoEjecucionController {
         }
         return a;
     }
+    /**
+     * Método que obtiene todos los requisitos Extras con un documento asociado en el repositorio
+     * @param idFinalista identificador del finalista al que se le aplicaron los requisitos
+     * @param idCategoria identificador de la categoria a la que pertencen los requisitos
+     * @param idContratante identificador del contratante que requiere los requisitos
+     * @return
+     */
 
     @RequestMapping(value = "previoSugeridoExtraCumplido/{idFinalista}/{idCategoria}/{idContratante}", method = RequestMethod.GET)
     public ResponseEntity<?> obtenerRequiPrevioExtraCumplido(@PathVariable("idFinalista") int idFinalista, @PathVariable("idCategoria")int idCategoria, @PathVariable("idContratante")int idContratante ){
@@ -64,6 +86,13 @@ public class CumplimientoEjecucionController {
         }
         return a;
     }
+    /**
+     * Método que obtiene todos los requisitos Extras sin un  documento asociado en el repositorio
+     * @param idFinalista identificador del finalista al que se le aplicaron los requisitos
+     * @param idCategoria identificador de la categoria a la que pertencen los requisitos
+     * @param idContratante identificador del contratante que requiere los requisitos
+     * @return
+     */
 
     @RequestMapping(value = "previoSugeridoExtraNoCumplido/{idFinalista}/{idCategoria}/{idContratante}", method = RequestMethod.GET)
     public ResponseEntity<?> obtenerRequiPrevioExtraNoCumplido(@PathVariable("idFinalista") int idFinalista, @PathVariable("idCategoria")int idCategoria, @PathVariable("idContratante")int idContratante ){

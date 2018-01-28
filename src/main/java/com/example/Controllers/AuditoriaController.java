@@ -1,7 +1,6 @@
 package com.example.Controllers;
 
 import com.example.Models.Auditoria;
-import com.example.Models.SeguridadSocial;
 import com.example.Services.ManejadorDeAuditoria;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -24,15 +23,25 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 /**
- * Created by HSEQ on 23/10/2017.
+ * Controlador de Auditorias
  */
 @RestController
 @RequestMapping(value="/app/auditoria")
 public class AuditoriaController {
     @Autowired
     public ManejadorDeAuditoria manejadorDeAuditoria;
+
+    /**
+     * Mètodo que se encarga de registrar o acutalizar el soporte de la auditoria tanto en la base de datos como el repostorio documental
+     * @param idContratista identificador del contratista a quien se le hizo la auditoria
+     * @param idContratante identificador del contratante quien registra la auditora
+     * @param mes en el que se realiza la auditoria
+     * @param year en el que se realiza la auditoria
+     * @param request con el Documento o soporte asociado
+     * @return ACCEPTED si efectivamente se registra el documento en la base de datos y el repositorio
+     */
     @RequestMapping(path = "/{idContratista}/{idContratante}/{mes}/{year}",method = RequestMethod.POST)
-    public ResponseEntity<?> InsertarImagen(@PathVariable Integer idContratista, @PathVariable Integer idContratante, @PathVariable String mes, @PathVariable int year
+    public ResponseEntity<?> registrarOActualizarSoporteDeAuditoria(@PathVariable Integer idContratista, @PathVariable Integer idContratante, @PathVariable String mes, @PathVariable int year
             , MultipartHttpServletRequest request){
 
         ResponseEntity a;
@@ -62,6 +71,12 @@ public class AuditoriaController {
         }
         return a;
     }
+
+    /**
+     * Método que se encarga de traer las auditorias asociadas a un contratante específico
+     * @param idContratante identificador del contratante a quien pertenecen las auditorias
+     * @return lista de objetos de tipo Auditoria con las auditorias pertenecientes al contratante
+     */
     @RequestMapping(value = "audi/{idContratante}", method = RequestMethod.GET)
     public ResponseEntity<?>obtenerAuditoriasPorContratante( @PathVariable int idContratante){
 

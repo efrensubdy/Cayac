@@ -22,6 +22,12 @@ public class eliminarController {
     @Autowired
     public ManejoDeEliminaciones manejoDeEliminaciones;
 
+    /**
+     * Método que se encarga de eliminar los requistos de ejecución
+     * @param idRequisito identificador del requisito que se quiere eliminar
+     * @param idContratante identificador del contratante
+     * @return ACCEPTED si el método se elimina
+     */
     @RequestMapping(value="eliminarPS/{idRequisito}/{idContratante}",method = RequestMethod.DELETE)
     public ResponseEntity<?> EliminarPrevioSugerido(@PathVariable int idRequisito, @PathVariable int idContratante){
 
@@ -37,6 +43,12 @@ public class eliminarController {
         }
         return a;
     }
+    /**
+     * Método que se encarga de eliminar los requistos extras de ejecución
+     * @param idRequisito identificador del requisito extra que se quiere eliminar
+     * @param idContratante identificador del contratante
+     * @return ACCEPTED si el método se elimina
+     */
     @RequestMapping(value="eliminarPE/{idRequisito}/{idContratante}",method = RequestMethod.DELETE)
     public ResponseEntity<?> EliminarPrevioextra(@PathVariable int idRequisito, @PathVariable int idContratante){
 

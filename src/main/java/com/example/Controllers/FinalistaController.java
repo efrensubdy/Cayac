@@ -21,6 +21,12 @@ public class FinalistaController {
     @Autowired
     public ManejoDeFinalistaBD manejoDeFinalistaBD;
 
+    /**
+     * Método que obtienen todos los candidatos posible a ser contratista
+     * @param idContratante identificador del contratante a que pertencen los candidatos
+     * @param idContrato identificador del contrato
+     * @return Lista con todos los candidatos posibles
+     */
     @RequestMapping(value = "/{idContratante}/{idContrato}", method = RequestMethod.GET)
     public ResponseEntity<?>obtenerClientePorId(@PathVariable int idContratante,@PathVariable int idContrato){
 
@@ -35,6 +41,13 @@ public class FinalistaController {
         }
         return a;
     }
+
+    /**
+     * Método que trae los finalistas del contratante
+     * @param idContratante identificador del contratante a que pertence el finalista
+     * @param idContrato identificador del contrato al que pertenece el finalista
+     * @return
+     */
     @RequestMapping(value = "definitivo/{idContratante}/{idContrato}", method = RequestMethod.GET)
     public ResponseEntity<?>obtenerFinalistas(@PathVariable int idContratante,@PathVariable int idContrato){
 
@@ -49,6 +62,12 @@ public class FinalistaController {
         }
         return a;
     }
+
+    /**
+     * Método que se encarga de traer Finalistas de selección
+     * @param idContratante identificador del contratante
+     * @return Listado con todos los finalistas de selección
+     */
     @RequestMapping(value = "deSeleccion/{idContratante}", method = RequestMethod.GET)
     public ResponseEntity<?>obtenerFinalistasDeSeleccion(@PathVariable int idContratante){
 
@@ -63,6 +82,13 @@ public class FinalistaController {
         }
         return a;
     }
+
+    /**
+     * Obtiene todos los requisitos del contratista de la fase de ejecución
+     * @param idContratante identificador del contratante que aplicó los requistos
+     * @param idCategoria identificador de la categoria a la que pertenece los contratistas
+     * @return Listado con todos los requisitos a los que
+     */
     @RequestMapping(value = "previosSugeridos/{idContratante}/{idCategoria}", method = RequestMethod.GET)
     public ResponseEntity<?>obtenePreviosSugeridos(@PathVariable int idContratante,@PathVariable int idCategoria){
 
@@ -77,6 +103,13 @@ public class FinalistaController {
         }
         return a;
     }
+
+    /**
+     * Obtiene todos los requisitos extras del contratista de la fase de ejecución
+     * @param idContratante identificador del contratante que aplicó los requistos
+     * @param idCategoria identificador de la categoria a la que pertenece los contratistas
+     * @return
+     */
     @RequestMapping(value = "previosExtras/{idContratante}/{idCategoria}", method = RequestMethod.GET)
     public ResponseEntity<?>obtenePreviosExtras(@PathVariable int idContratante,@PathVariable int idCategoria){
 
@@ -92,6 +125,12 @@ public class FinalistaController {
         return a;
     }
 
+    /**
+     * Método que registra a un finalista que viene de la selección
+     * @param finalista con la información del candidato que se volverá contratista
+     * @return
+     */
+
     @RequestMapping(method = RequestMethod.POST)
     public ResponseEntity<?> nuevoFinalista(@RequestBody Finalista finalista){
         ResponseEntity a;
@@ -106,6 +145,12 @@ public class FinalistaController {
         }
         return a;
     }
+
+    /**
+     * Método que se encarga de llevar un objeto de tipo contratista a la fase de ejecución
+     * @param contratista objeto con la información del contratista que se va a registrar
+     * @return ACCEPTED si se registra el contratista
+     */
     @RequestMapping(value="manual",method = RequestMethod.POST)
     public ResponseEntity<?> registroManual(@RequestBody Contratista contratista){
         ResponseEntity a;
@@ -120,6 +165,11 @@ public class FinalistaController {
         }
         return a;
     }
+    /**
+     * Método que se encarga de llevar un objeto de tipo contratista a la fase de ejecución desde la fase de selección
+     * @param finalista objeto con la información del contratista que se va a registrar
+     * @return ACCEPTED si se registra el contratista
+     */
     @RequestMapping(value="selecFin",method = RequestMethod.POST)
     public ResponseEntity<?> registroManual(@RequestBody Finalista finalista){
         ResponseEntity a;

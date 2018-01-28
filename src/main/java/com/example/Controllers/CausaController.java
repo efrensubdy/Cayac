@@ -1,7 +1,6 @@
 package com.example.Controllers;
 
 import com.example.Models.Causa;
-import com.example.Models.NoConformidad;
 import com.example.Services.ManejadorDeCausas;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -13,13 +12,19 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 /**
- * Created by HSEQ on 25/10/2017.
+ * Controlador de Causas
  */
 @RestController
 @RequestMapping(value="/app/causa")
 public class CausaController {
     @Autowired
     public ManejadorDeCausas manejadorDeCausas;
+
+    /**
+     * Método que se encarga de registrar la causa en la base de datos
+     * @param causa obejto de tipo Causa con la información que se va a registrar
+     * @return ACCEPTED si el objeto se registra en la base de datos
+     */
     @RequestMapping(value ="registro",method = RequestMethod.POST)
     public ResponseEntity<?> agregarCausa(@RequestBody Causa causa){
 
@@ -35,8 +40,15 @@ public class CausaController {
         }
         return a;
     }
+
+    /**
+     * Método quie se encarga de consultar las causas asociadas a un contratista
+     * @param idContratista identificador del contratista a quien pertenecen las causas
+     * @param idNoConformidad identificador de la no conformidad a quien pertecen las causas
+     * @return lista con todas las causas asociadas al contratista
+     */
     @RequestMapping(value = "porContra/{idContratista}/{idNoConformidad}", method = RequestMethod.GET)
-    public ResponseEntity<?>obtenerAprobacionDeContratisttas(@PathVariable int idContratista,@PathVariable int idNoConformidad){
+    public ResponseEntity<?>obtenerCausasPorContratista(@PathVariable int idContratista,@PathVariable int idNoConformidad){
 
         ResponseEntity a;
         try {

@@ -6,7 +6,6 @@
 package com.example.Controllers;
 
 import com.example.Models.Contratista;
-import com.example.Models.Usuario;
 import com.example.Services.ManejoDeContratistasBD;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -19,7 +18,7 @@ import java.util.logging.Logger;
 
 /**
  *
- * @author Efren Fenrnadez
+ *
  * Controlador de Contratistas
  */
 @RestController

@@ -1,20 +1,18 @@
 package com.example.Controllers;
 
-import com.example.Models.Contratante;
 import com.example.Models.Contrato;
-import com.example.Models.Imagenes;
 import com.example.Services.ManejoDeContratoBD;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.*;
-import org.springframework.web.multipart.MultipartException;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
-import org.springframework.web.multipart.MultipartResolver;
 
-import javax.servlet.http.HttpServletRequest;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -35,8 +33,13 @@ public class ContratoController {
     @Autowired
     public ManejoDeContratoBD manejoDeContratoBD;
 
+    /**
+     * Métod que obtiene todos los contratos pertenecientesal contratante
+     * @param idContratante identificador del contratante que desea consultar los contratos
+     * @return
+     */
     @RequestMapping(value = "/{idContratante}", method = RequestMethod.GET)
-    public ResponseEntity<?> obtenerRequiCumplido(@PathVariable int idContratante) {
+    public ResponseEntity<?> obtenerContratos(@PathVariable int idContratante) {
 
         ResponseEntity a;
         try {
@@ -50,6 +53,11 @@ public class ContratoController {
         return a;
     }
 
+    /**
+     * Método que obtiene todos los contratos en ejecución
+     * @param idContratante identificador dle contratante al que pertencen los contratantes
+     * @return Listado con todos los contratos pertencientes al contratante
+     */
     @RequestMapping(value = "ejecucion/{idContratante}", method = RequestMethod.GET)
     public ResponseEntity<?> obtenerContratosEjecucion(@PathVariable Integer idContratante) {
 
@@ -64,6 +72,11 @@ public class ContratoController {
         }
         return a;
     }
+    /**
+     * Método que obtiene todos los contratos en ejecución
+     * @param idContratante identificador dle contratante al que pertencen los contratantes
+     * @return Listado con todos los contratos pertencientes al contratante
+     */
     @RequestMapping(value = "enEjecucion/{idContratante}", method = RequestMethod.GET)
     public ResponseEntity<?> obtenerContratosEnEjecucion(@PathVariable Integer idContratante) {
 
@@ -79,6 +92,11 @@ public class ContratoController {
         return a;
     }
 
+    /**
+     * Método que se encarga de traer el detalle de un contrato a través de su nombre
+     * @param nombreContrato nombre del contrato
+     * @return el detalle del contrato en un objeto
+     */
     @RequestMapping(value = "id/{nombreContrato}", method = RequestMethod.GET)
     public ResponseEntity<?> porNombre(@PathVariable int nombreContrato) {
 
@@ -96,6 +114,13 @@ public class ContratoController {
 
     }
 
+    /**
+     * Método que se encarga de trar todos los contratos que se encuentran en una rango de fechas
+     * @param fechaInicio rango de inicio de los contratos que se van a consultar
+     * @param fechaFin rango de fin de los contratos que se requieren renuciar
+     * @param idContratante identificador del contratante a quien pertenecen los contratos
+     * @return Listado con los contratos pertencientes al rango y al contratante
+     */
     @RequestMapping(value = "fecha/{fechaInicio}/{fechaFin}/{idContratante}", method = RequestMethod.GET)
     public ResponseEntity<?> porFecha(@PathVariable String fechaInicio, @PathVariable String fechaFin,@PathVariable int idContratante) {
 
@@ -117,6 +142,17 @@ public class ContratoController {
 
     }
 
+    /**
+     * Metodo que se encarga de registrar un archivo en la base de datos
+     * @param nombreContrato nombre del contrato que se va a registrar
+     * @param fechaInicio feche de inicio del contrato
+     * @param fechaFin fecha de fin del contrato
+     * @param fechaInicioActividades Fecha de inicio de actividades del contrato
+     * @param idContratante identificador del contratante
+     * @param tipoContrato tipo de contrato
+     * @param request con los documentos asociados al contrato
+     * @return ACCEPTED si se registra el contrato
+     */
     @RequestMapping(value="{nombreContrato}/{fechaInicio}/{fechaFin}/{fechaInicioActividades}/{idContratante}/{tipoContrato}", method = RequestMethod.POST)
     public ResponseEntity<?> registrarContrato(@PathVariable String nombreContrato,@PathVariable String fechaInicio,@PathVariable String fechaFin,@PathVariable String fechaInicioActividades ,@PathVariable Integer idContratante,@PathVariable String tipoContrato,
                                                MultipartHttpServletRequest request) {
@@ -162,6 +198,15 @@ public class ContratoController {
         }
         return a;
     }
+
+    /**
+     * Método que encarga de actualizar el rut del contrato
+     * @param idContratante identificador del contratante
+     * @param fechaInicio fehca de Inicio del Contrato
+     * @param idContrato indentificador del contrato
+     * @param request con el documento que se va actualizar
+     * @return
+     */
     @RequestMapping(value="rut/{idContratante}/{fechaInicio}/{idContrato}", method = RequestMethod.POST)
     public ResponseEntity<?>actualizarRut(@PathVariable int idContratante,@PathVariable String fechaInicio,@PathVariable int idContrato,
                                                MultipartHttpServletRequest request) {
@@ -198,6 +243,14 @@ public class ContratoController {
         }
         return a;
     }
+    /**
+     * Método que encarga de actualizar el Camara de Comercio del contrato
+     * @param idContratante identificador del contratante
+     * @param fechaInicio fehca de Inicio del Contrato
+     * @param idContrato indentificador del contrato
+     * @param request con el documento que se va actualizar
+     * @return
+     */
     @RequestMapping(value="camaraDeComercio/{idContratante}/{fechaInicio}/{idContrato}", method = RequestMethod.POST)
     public ResponseEntity<?>actualizarCamaraDeComercio(@PathVariable int idContratante,@PathVariable String fechaInicio,@PathVariable int idContrato,
                                           MultipartHttpServletRequest request) {
@@ -229,6 +282,14 @@ public class ContratoController {
         }
         return a;
     }
+    /**
+     * Método que encarga de actualizar la cedula del representante del contrato
+     * @param idContratante identificador del contratante
+     * @param fechaInicio fehca de Inicio del Contrato
+     * @param idContrato indentificador del contrato
+     * @param request con el documento que se va actualizar
+     * @return
+     */
     @RequestMapping(value="cedulaDelRepresentante/{idContratante}/{fechaInicio}/{idContrato}", method = RequestMethod.POST)
     public ResponseEntity<?>actualizarCedulaDelRepresentante(@PathVariable int idContratante,@PathVariable String fechaInicio,@PathVariable int idContrato,
                                                        MultipartHttpServletRequest request) {
@@ -261,7 +322,12 @@ public class ContratoController {
         return a;
     }
 
-
+    /**
+     * Método que convierte un objeto de tipo Multipart en un objeto de tipo File
+     * @param file archivo que se desea transformar
+     * @return objeto de tipo File con la información del objeto de tipo Multipart
+     * @throws IOException excepción de tipo archivos
+     */
     private File convert(MultipartFile file) throws IOException {
         File convFile = new File(file.getOriginalFilename());
         convFile.createNewFile();

@@ -20,8 +20,14 @@ import java.util.logging.Logger;
 public class EstandaresController {
  @Autowired
  public ManejadorDeEstandares manejadorDeEstandares;
+
+    /**
+     * Método que se encarga de registrar los estandares mínimoa
+     * @param estandarMinimo objeto con la información que se va registrar
+     * @return ACCEPTED si el estandar minimo se registra correctamente
+     */
     @RequestMapping(value ="minimos",method = RequestMethod.POST)
-    public ResponseEntity<?> agregarIndicador(@RequestBody EstandarMinimo estandarMinimo){
+    public ResponseEntity<?> agregarEstandarMinimo(@RequestBody EstandarMinimo estandarMinimo){
 
         ResponseEntity a;
         try {
@@ -35,6 +41,13 @@ public class EstandaresController {
         }
         return a;
     }
+
+    /**
+     * Método que se encarga de consultar los estandares mínimos por contratista
+     * @param idContratista identificador del contratista a quien pertenece los estandares mínimos
+     * @param idContratante identificador del contratante del que pertence el contratista
+     * @return Listado de objetos de tipo EstandarMinimo con la información que se requiere consultar
+     */
     @RequestMapping(value = "estandaresContra/{idContratista}/{idContratante}", method = RequestMethod.GET)
     public ResponseEntity<?>estandaresPorContratista(@PathVariable int idContratista, @PathVariable int idContratante){
 
@@ -49,6 +62,14 @@ public class EstandaresController {
         }
         return a;
     }
+
+    /**
+     * Método que trae todos los estandares mínimnos que pertenecen al mes y al año específico
+     * @param month mes que se requiere el detalle
+     * @param year año que se requiere el detalle
+     * @param idContratante identificador del contratante que require el reporte
+     * @return
+     */
     @RequestMapping(value = "byMonthAndYear/{month}/{year}/{idContratante}", method = RequestMethod.GET)
     public ResponseEntity<?>estandaresByMonthAndYear(@PathVariable int month, @PathVariable int year,@PathVariable int idContratante){
 
