@@ -147,7 +147,7 @@ var c=function(client,mes,year){
           if (list.length ==0){
 
           $scope.bandera02 = true;
-          document.getElementById('id02').style.display='block';
+          //document.getElementById('id02').style.display='block';
           }
 
         },function(err){
@@ -160,7 +160,7 @@ var c=function(client,mes,year){
           if (list.length ==0){
 
                    $scope.bandera02 = true;
-                    document.getElementById('id02').style.display='block';
+                  //  document.getElementById('id02').style.display='block';
                     }
         },function(err){
             $scope.bandera01 = true;
