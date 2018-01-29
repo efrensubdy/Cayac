@@ -7,7 +7,6 @@ import org.springframework.stereotype.Service;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
-import java.sql.Types;
 import java.util.Date;
 
 @Service
@@ -17,6 +16,13 @@ public class ActualizacionDB {
 
     @Autowired
     public  ContratistasBD contratistasBD;
+
+    /**
+     * Método que actualiza la información del contratista
+     * @param nuevoContratista contratista con la información
+     * @throws SQLException
+     * @throws ClassNotFoundException
+     */
     public void actualizarInfoContratista(Contratista nuevoContratista) throws SQLException, ClassNotFoundException {
         int nivelDeRiesgo=contratistasBD.obtenerNivelDeRiesgo(nuevoContratista.getCodigoCIIU());
         Usuario nuevoUsuario =new Usuario();
@@ -48,6 +54,13 @@ public class ActualizacionDB {
 
 
     }
+
+    /**
+     * Método que actualiza la información del indicador
+     * @param indicador con la información que se va actualizar
+     * @throws SQLException
+     * @throws ClassNotFoundException
+     */
     public void actualizarIndicadorContratista(Indicador indicador)throws SQLException,ClassNotFoundException{
 
         String sql="UPDATE Indicadores set  periodo = ? , responsable = ? , departamento = ?, actividad = ?, severidad = ?, frecuencia = ?,mortalidad = ?,prevalencia = ?,incidencia = ?,ausentismo = ?,idContratista = ?,año = ? where id= ?";
@@ -74,6 +87,12 @@ public class ActualizacionDB {
 
 
     }
+    /**
+     * Método que actualiza la información del accidente
+     * @param accidente con la información que se va actualizar
+     * @throws SQLException
+     * @throws ClassNotFoundException
+     */
     public void actualizarAccidentesContratistas(Accidente accidente)throws SQLException,ClassNotFoundException{
 
         String sql="UPDATE accidentes set descripcion = ?,primerApellido = ?,segundoApellido = ?,primerNombre = ?,segundoNombre = ?,identificacion = ?,numero = ?,nacimiento = ?,sexo = ?,departamento = ?,muni = ?,zonas = ?,cargo = ?,ingreso = ?,accidente = ?,hora = ?,diaSe = ?,jornada = ?,sino = ?,tipoA = ?,lugari = ?,depa = ?,mun = ?,zon = ?,si2 = ?,tipoB = ?,lesion = ?,mecanismo = ?,parte = ?,agente = ?,idContratista = ?,idContratante = ? WHERE id =?";
@@ -121,6 +140,12 @@ public class ActualizacionDB {
 
 
     }
+    /**
+     * Método que actualiza la información del estandarMinimo
+     * @param estandarMinimo con la información que se va actualizar
+     * @throws SQLException
+     * @throws ClassNotFoundException
+     */
     public void actualizarEstandarMinimoDeContratista(EstandarMinimo estandarMinimo)throws SQLException,ClassNotFoundException{
         java.util.Date utilDate = new Date();
         java.sql.Date date = new java.sql.Date(utilDate.getTime());
@@ -160,6 +185,12 @@ public class ActualizacionDB {
 
 
     }
+    /**
+     * Método que actualiza la información del plan de trabajo
+     * @param plan con la información que se va actualizar
+     * @throws SQLException
+     * @throws ClassNotFoundException
+     */
     public void actualizarPlanDeTrabajoDeContratista(PlanDeTrabajo plan)throws SQLException,ClassNotFoundException{
 
         java.util.Date utilDate = new Date();
@@ -182,6 +213,12 @@ public class ActualizacionDB {
 
 
     }
+    /**
+     * Método que actualiza la información de la noConformidad
+     * @param noConformidad con la información que se va actualizar
+     * @throws SQLException
+     * @throws ClassNotFoundException
+     */
     public void actulizarNoConformidad(NoConformidad noConformidad)throws SQLException,ClassNotFoundException{
         System.out.println(noConformidad.noConformidad);
         String sql = "UPDATE noConformidad  set noConformidad = ?,mes = ?,year = ? where id= ?";
@@ -200,6 +237,13 @@ public class ActualizacionDB {
 
 
     }
+    /**
+     * Método que actualiza la información de la causa
+     * @param causa con la información que se va actualizar
+     * @throws SQLException
+     * @throws ClassNotFoundException
+     */
+
     public void actulizarCausa(Causa causa)throws SQLException,ClassNotFoundException{
         System.out.println(causa.causa);
         String sql = "UPDATE causa set causa =? where id = ?";
@@ -211,6 +255,13 @@ public class ActualizacionDB {
         ps.close();
         con.close();
     }
+    /**
+     * Método que actualiza la información de la accion
+     * @param accion con la información que se va actualizar
+     * @throws SQLException
+     * @throws ClassNotFoundException
+     */
+
     public void actulizarAccion(Accion accion)throws SQLException,ClassNotFoundException{
         java.util.Date utilDate = new Date();
         java.sql.Date date = new java.sql.Date(utilDate.getTime());
@@ -224,6 +275,12 @@ public class ActualizacionDB {
         ps.close();
         con.close();
     }
+    /**
+     * Método que actualiza la información de la servicioAContratar
+     * @param servicioAContratar con la información que se va actualizar
+     * @throws SQLException
+     * @throws ClassNotFoundException
+     */
     public void actualizarServicioAContratar(ServicioAContratar servicioAContratar)throws SQLException,ClassNotFoundException{
         System.out.println(servicioAContratar.getNombre());
         String sql = "UPDATE  servicioacontratar  set nombre = ?, tipo = ?  WHERE id = ?";

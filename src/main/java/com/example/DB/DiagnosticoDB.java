@@ -1,6 +1,5 @@
 package com.example.DB;
 
-import com.example.Models.ARL;
 import com.example.Models.Conexion;
 import com.example.Models.Diagnostico;
 import org.springframework.stereotype.Service;
@@ -14,8 +13,14 @@ import java.util.List;
 
 @Service
 public class DiagnosticoDB {
+    /**
+     * Método que se encarga de registrar diagnostico en la base de datos
+     * @param diagnostico obejto con la información del diagnostico
+     * @throws SQLException
+     * @throws ClassNotFoundException
+     */
     public void insertarDiagnostico(Diagnostico diagnostico)throws SQLException,ClassNotFoundException{
-        //System.out.println(diagnostico.nombreEmpresa);
+
         String sql = "INSERT INTO  diagnostico(nombreEmpresa,nombreEmpleado,telefono,email,primeraPregunta,SegundaPregunta,terceraPregunta,cuartaPregunta,quintaPregunta,sextaPregunta,septimaPregunta,octavaPregunta,novenaPregunta,decimaPregunta,decimoPrimeraPregunta,decimoSegundaPregunta,decimoTerceraPregunta,decimoCuartaPregunta,decimoQuintaPregunta,decimoSextaPregunta,decimoSeptimaPregunta) VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
         Connection con =  Conexion.conection();
         PreparedStatement ps = con.prepareStatement(sql);
@@ -44,7 +49,14 @@ public class DiagnosticoDB {
         ps.close();
         con.close();
 }
-public List<Diagnostico>traerDiagnosticosParaGerencia()throws SQLException,ClassNotFoundException {
+
+    /**
+     * Método que trae todos los diagnosticos hechos en el software
+     * @return lISTADO con todos los diagnosticos
+     * @throws SQLException
+     * @throws ClassNotFoundException
+     */
+    public List<Diagnostico>traerDiagnosticosParaGerencia()throws SQLException,ClassNotFoundException {
 List<Diagnostico> diagnosticoList=new LinkedList<>();
 
     String sql ="SELECT * FROM  diagnostico";

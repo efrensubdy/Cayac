@@ -2,7 +2,6 @@ package com.example.DB;
 
 import com.example.Models.Conexion;
 import com.example.Models.EstandarMinimo;
-import com.example.Models.Indicador;
 import org.springframework.stereotype.Service;
 
 import java.sql.Connection;
@@ -18,6 +17,12 @@ import java.util.List;
  */
 @Service
 public class EstandaresDB {
+    /**
+     * Método que se encarga de registrar el estandarMinimo en la base de datos
+     * @param estandarMinimo objeto con la información que se va registrar
+     * @throws ClassNotFoundException
+     * @throws SQLException
+     */
     public void insertarEstandarMinimo(EstandarMinimo estandarMinimo)throws ClassNotFoundException,SQLException{
         java.util.Date utilDate = new Date();
         java.sql.Date date = new java.sql.Date(utilDate.getTime());
@@ -53,6 +58,15 @@ public class EstandaresDB {
         ps.close();
         con.close();
     }
+
+    /**
+     * Método que se encarga de traer los estandares mínimos del contratista
+     * @param idContratista identificador del contratista
+     * @param idContratante identificador del contratante
+     * @return Listado con los estandares Mínimos pertenecientes al contratista
+     * @throws ClassNotFoundException
+     * @throws SQLException
+     */
     public List<EstandarMinimo>consultarEstandaresMinimosPorContratista(int idContratista,int idContratante)throws ClassNotFoundException,SQLException{
         List<EstandarMinimo> estandarMinimos=new LinkedList<>();
         String sql="SELECT * FROM estandaresMinimos WHERE idContratista = ? AND idContratante = ? ";
@@ -93,6 +107,16 @@ public class EstandaresDB {
 
         return estandarMinimos;
     }
+
+    /**
+     * Método que trae los estandares mínimos en un determinado lapzo de tiempos
+     * @param mes mes en el que se requiere el reporte
+     * @param year año en el que se requiere el reporte
+     * @param idContratante  identificador del contratante que requiere el reporte
+     * @return Listado con todos los estandares mínimos con nombre de la empresa realizados en ese tiempo
+     * @throws ClassNotFoundException
+     * @throws SQLException
+     */
     public List<EstandarMinimo>consultarEstandaresMinimosCompletos(int mes,int year,int idContratante)throws ClassNotFoundException,SQLException{
         List<EstandarMinimo> estandarMinimos=new LinkedList<>();
         String sql="SELECT  * FROM estandaresMinimos AS es INNER JOIN  contratista AS c ON es.idContratista=c.idContratista INNER JOIN finalista AS f ON f.idContratista = c.idContratista INNER JOIN contrato AS con ON f.idFinalista = con.idFinalista   WHERE MONTH(fechaDeRegistro)= ? AND YEAR(fechaDeRegistro)= ? AND c.idContratante = ? ;";

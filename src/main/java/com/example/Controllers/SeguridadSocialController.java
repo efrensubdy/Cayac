@@ -1,8 +1,6 @@
 package com.example.Controllers;
 
-import com.example.Models.Documento;
 import com.example.Models.SeguridadSocial;
-import com.example.Services.ManejoDeContratistasBD;
 import com.example.Services.ManejoDeSeguridadSocial;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -33,6 +31,16 @@ public class SeguridadSocialController {
     @Autowired
     public ManejoDeSeguridadSocial manejoDeSeguridadSocial;
 
+    /**
+     * Método que se encarga de registrar la seguridad social de un contratista
+     * @param idContratista identificador de CONTRATISTA a quien pertencen la seguridad social
+     * @param idContratante identificador de CONTRATANTE a quien pertenece el contratista
+     * @param mes de pago de seguridad social
+     * @param cambios mensaje en cambios referente al mes y año con respecto al personal
+     * @param year de pago de seguridad social
+     * @param request Documentos para la seguridad personal , pago de seguridad social
+     * @return ACCEPTED si se reigstra en la base de datos y el repositorio documental
+     */
     @RequestMapping(path = "/{idContratista}/{idContratante}/{mes}/{cambios}/{year}",method = RequestMethod.POST)
     public ResponseEntity<?> InsertarImagen(@PathVariable Integer idContratista, @PathVariable Integer idContratante,@PathVariable String mes,@PathVariable String cambios,@PathVariable int year
             , MultipartHttpServletRequest request){
@@ -65,8 +73,14 @@ public class SeguridadSocialController {
         }
         return a;
     }
+
+    /**
+     * Método que trae las seguridades sociales pertenecientes al contratista
+     * @param idContratista
+     * @return Listado con objetos de tipo Seguridad Social
+     */
     @RequestMapping(value = "segContra/{idContratista}", method = RequestMethod.GET)
-    public ResponseEntity<?>indicadoresPorContratista(@PathVariable int idContratista){
+    public ResponseEntity<?>seguridadSocialPorContratista(@PathVariable int idContratista){
 
         ResponseEntity a;
         try {
@@ -79,6 +93,14 @@ public class SeguridadSocialController {
         }
         return a;
     }
+
+    /**
+     * Método que trae la seguridad social al contratante de un contratista en tiempo específico
+     * @param idContratista identificador del contratista que se requiere en reporte
+     * @param mes en el que se requiere el reporte
+     * @param year en el que se requiere el reporte
+     * @return Listado con la seguridad social del contratante
+     */
     @RequestMapping(value = "socialContratante/{idContratista}/{mes}/{year}", method = RequestMethod.GET)
     public ResponseEntity<?>seguridadSocialContratante(@PathVariable int idContratista,@PathVariable String mes,@PathVariable int year){
 
@@ -93,6 +115,12 @@ public class SeguridadSocialController {
         }
         return a;
     }
+    /**
+     * Método que convierte un objeto de tipo Multipart en un objeto de tipo File
+     * @param file archivo que se desea transformar
+     * @return objeto de tipo File con la información del objeto de tipo Multipart
+     * @throws IOException excepción de tipo archivos
+     */
     private File convert(MultipartFile file) throws IOException {
         File convFile = new File(file.getOriginalFilename());
         convFile.createNewFile();

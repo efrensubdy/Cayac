@@ -28,6 +28,12 @@ public class RequisitosExtrasController {
         this.manejoDeUsuariosBD = manejoDeUsuariosBD;
     }
 
+    /**
+     * Método que trae todos los requisitos extras al contratante
+     * @param idContratante identificador del contratante que aplico los requisitos
+     * @param idCategoria identificador de la categoria que pertenecen los contratistas
+     * @return listado de objetos  con los posibles requisitos para esa categora
+     */
     @RequestMapping(value="{idContratante}/{idCategoria}/extras",method = RequestMethod.GET)
     public ResponseEntity<?> obtenerRequisitosExtrasObligatiorios(@PathVariable int idContratante,@PathVariable int idCategoria){
 
@@ -42,6 +48,12 @@ public class RequisitosExtrasController {
         }
         return a;
     }
+
+    /**
+     * Método que registra un requisito extra como definitivo
+     * @param requisitoExtra que se volverá definitivo
+     * @return ACCEPTED SI SE REGISTRA EL REQUISITO
+     */
     @RequestMapping(method = RequestMethod.POST)
     public ResponseEntity<?>agregarExtraObligatorios(@RequestBody RequisitoExtra requisitoExtra){
 
@@ -57,6 +69,13 @@ public class RequisitosExtrasController {
         }
         return a;
     }
+
+    /**
+     * Método que se encarga de eliminar requisitos extras
+     * @param idRequisito identificador de requisito que se requiere elimninar
+     * @param idContratante identificador del contratante que elimina el requisito
+     * @return ACCEPTED sose elimina efectivamente el requisito
+     */
     @RequestMapping(value="eliminar/{idRequisito}/{idContratante}",method = RequestMethod.DELETE)
     public ResponseEntity<?>EliminarExtra(@PathVariable int idRequisito,@PathVariable int idContratante){
 

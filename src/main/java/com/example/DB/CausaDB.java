@@ -16,21 +16,41 @@ import java.util.List;
  */
 @Service
 public class CausaDB {
-
+    /**
+     * Método que se encarga de registrar la causa en la bse de datos
+     * @param causa
+     * @throws SQLException
+     * @throws ClassNotFoundException
+     */
     public void insertarCausa(Causa causa)throws SQLException,ClassNotFoundException{
         System.out.println(causa.getCausa());
+        //Se prepara la consulta
         String sql = "INSERT INTO  causa(causa,idContratista,idNoConformidad) VALUES(?,?,?)";
+        //Se establece la conexión
         Connection con =  Conexion.conection();
+        //Se ejecuta la sentecia
         PreparedStatement ps = con.prepareStatement(sql);
+        //Se establecen los parametros
         ps.setString(1,causa.getCausa());
         ps.setInt(2,causa.getIdContratista());
         ps.setInt(3,causa.getIdNoConformidad());
+        //Se ejectua
         ps.execute();
+        //Se cierra la conexión
         ps.close();
         con.close();
 
 
     }
+
+    /**
+     * Método que trae las causas que pertencen las no conformidades de un contratistaespecíficos
+     * @param idContratista identificador del contratista
+     * @param idNoConformidad identifcador de la no conformidad
+     * @return Listado con todas las causas que pertencen a la no conformidad y al contratista
+     * @throws SQLException
+     * @throws ClassNotFoundException
+     */
     public List<Causa> traerCausasPorContratista(int idContratista,int idNoConformidad)throws SQLException,ClassNotFoundException{
         List<Causa>causaList=new LinkedList<>();
         String sql ="SELECT * FROM  causa WHERE idContratista = ? and idNoConformidad=?";

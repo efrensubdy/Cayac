@@ -27,7 +27,12 @@ public class RequisitosObligatoriosController {
     public void setManejoDeUsuariosBD(ManejoDeUsuariosBD manejoDeUsuariosBD) {
         this.manejoDeUsuariosBD = manejoDeUsuariosBD;
     }
-
+    /**
+     * Método que trae todos los requisitos  al contratante
+     * @param idContratante identificador del contratante que aplico los requisitos
+     * @param idCategoria identificador de la categoria que pertenecen los contratistas
+     * @return listado de objetos  con los posibles requisitos para esa categora
+     */
     @RequestMapping(value="{idContratante}/{idCategoria}/obligatorio",method = RequestMethod.GET)
     public ResponseEntity<?> obtenerRequisitosObligatorios(@PathVariable int idContratante,@PathVariable int idCategoria){
 
@@ -42,6 +47,11 @@ public class RequisitosObligatoriosController {
         }
         return a;
     }
+    /**
+     * Método que registra un requisito como definitivo
+     * @param requisitoObligatorio que se volverá definitivo
+     * @return ACCEPTED SI SE REGISTRA EL REQUISITO
+     */
     @RequestMapping(method = RequestMethod.POST)
     public ResponseEntity<?>agregarObligatorio(@RequestBody RequisitoObligatorio requisitoObligatorio){
 
@@ -57,6 +67,12 @@ public class RequisitosObligatoriosController {
         }
         return a;
     }
+    /**
+     * Método que se encarga de eliminar requisitos extras
+     * @param idRequisito identificador de requisito que se requiere elimninar
+     * @param idContratante identificador del contratante que elimina el requisito
+     * @return ACCEPTED sose elimina efectivamente el requisito
+     */
     @RequestMapping(value="eliminar/{idRequisito}/{idContratante}",method = RequestMethod.DELETE)
     public ResponseEntity<?>EliminarObligatorio(@PathVariable int idRequisito,@PathVariable int idContratante){
 
