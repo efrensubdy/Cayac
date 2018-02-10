@@ -17,11 +17,18 @@ import java.util.List;
 
 @Service
 public class CumplimientoEjecucionDB {
-
-
-
+    /**
+     * Método que trae los requisitos con un documento asociado en la base de datos , cumplidos
+     * @param idFinalista identificador del contratista
+     * @param idCategoria identifcador de la categoria a la que pertenece el contratista
+     * @param idContratante identificador del contratante
+     * @return Listado con los requisitos que tenga un documento asociado
+     * @throws SQLException
+     * @throws ClassNotFoundException
+     */
     public List<RequisitoObligatorio> requisitosCumplidosPreviosSugeridos(int idFinalista, int idCategoria, int idContratante)throws SQLException,ClassNotFoundException{
         List<RequisitoObligatorio>requisitoObligatoriosLisT=new LinkedList<>();
+        //Setencia sql que compara dos tablas con left join y comparar que hay en unba tabla que otra no tiene
         String sql="select rs.idrequisitosdeejecuiondefsugeridosestaticosprevio,i.idFinalista,r.requisito,r.idRequisitosDeEjecuionSugeridosEstaticosPrevio,i.tipo from (requisitosdeejecuiondefsugeridosestaticosprevio as rs inner join requisitosdeejecuionsugeridosestaticosprevio as r on rs.idRequsito =r.idRequisitosDeEjecuionSugeridosEstaticosPrevio and rs.idCategoria= ? and rs.idContratante= ?) left join documentosestaticospreviosobli as i  on  rs.idCategoria= ? and i.idFinalista= ? and rs.idContratante= ? and rs.idrequisitosdeejecuiondefsugeridosestaticosprevio=i.idRequisito where i.idFinalista is not  null;";
         PreparedStatement ps= Conexion.conection().prepareStatement(sql);
         ps.setInt(1,idCategoria);
@@ -43,6 +50,15 @@ public class CumplimientoEjecucionDB {
         return requisitoObligatoriosLisT;
     }
 
+    /**
+     * Método que trae los requisitos sin  un documento asociado en la base de datos ,no  cumplidos
+     * @param idFinalista identificador del contratista
+     * @param idCategoria identifcador de la categoria a la que pertenece el contratista
+     * @param idContratante identificador del contratante
+     * @return Listado con los requisitos que no  tenga un documento asociado
+     * @throws SQLException
+     * @throws ClassNotFoundException
+     */
     public List<RequisitoObligatorio> requisitosNoCumplidosSugeridosPrevios(int idFinalista, int idCategoria, int idContratante)throws SQLException,ClassNotFoundException{
         List<RequisitoObligatorio>requisitoObligatoriosLisT=new LinkedList<>();
         String sql="select rs.idrequisitosdeejecuiondefsugeridosestaticosprevio,i.idFinalista,r.requisito,r.idRequisitosDeEjecuionSugeridosEstaticosPrevio,i.tipo from (requisitosdeejecuiondefsugeridosestaticosprevio as rs inner join requisitosdeejecuionsugeridosestaticosprevio as r on rs.idRequsito =r.idRequisitosDeEjecuionSugeridosEstaticosPrevio and rs.idCategoria= ? and rs.idContratante= ?) left join documentosestaticospreviosobli as i  on  rs.idCategoria= ? and i.idFinalista= ? and rs.idContratante= ? and rs.idrequisitosdeejecuiondefsugeridosestaticosprevio=i.idRequisito where i.idFinalista is   null;";
@@ -65,6 +81,15 @@ public class CumplimientoEjecucionDB {
         ps.close();
         return requisitoObligatoriosLisT;
     }
+    /**
+     * Método que trae los requisitos extras con un documento asociado en la base de datos , cumplidos
+     * @param idFinalista identificador del contratista
+     * @param idCategoria identifcador de la categoria a la que pertenece el contratista
+     * @param idContratante identificador del contratante
+     * @return Listado con los requisitos extras  que tenga un documento asociado
+     * @throws SQLException
+     * @throws ClassNotFoundException
+     */
     public List<RequisitoExtra>requisitosExtrasPreviosCumplidos(int idFinalista, int idCategoria, int idContratante)throws SQLException,ClassNotFoundException{
         List<RequisitoExtra>requisitosExtrasLisT=new LinkedList<>();
         String sql="select re.idrequisitosdeejecuiondefextrasestaticosprevio,d.idFinalista,r.idRequisitosDeEjecuionSugeridosextrasPrevio,r.requisito,d.tipo from (requisitosdeejecuiondefextrasestaticosprevio as re inner join requisitosdeejecuionextrasestaticosprevio as r on re.idRequisito =r.idRequisitosDeEjecuionSugeridosextrasPrevio and re.idCategoria=? and re.idContratante=?) left join documentosestaticospreviosextras as d  on re.idCategoria=? and d.idFinalista=? and re.idContratante= ? and re.idrequisitosdeejecuiondefextrasestaticosprevio=d.idRequisito\n" +
@@ -88,6 +113,15 @@ public class CumplimientoEjecucionDB {
         ps.close();
         return requisitosExtrasLisT;
     }
+    /**
+     * Método que trae los requisitos sin  un documento asociado en la base de datos ,no  cumplidos
+     * @param idFinalista identificador del contratista
+     * @param idCategoria identifcador de la categoria a la que pertenece el contratista
+     * @param idContratante identificador del contratante
+     * @return Listado con los requisitos que no  tenga un documento asociado
+     * @throws SQLException
+     * @throws ClassNotFoundException
+     */
     public List<RequisitoExtra>requisitosExtrasPreviosNoCumplidos(int idFinalista, int idCategoria, int idContratante)throws SQLException,ClassNotFoundException{
         List<RequisitoExtra>requisitosExtrasLisT=new LinkedList<>();
         String sql="select re.idrequisitosdeejecuiondefextrasestaticosprevio,d.idFinalista,r.idRequisitosDeEjecuionSugeridosextrasPrevio,r.requisito from (requisitosdeejecuiondefextrasestaticosprevio as re inner join requisitosdeejecuionextrasestaticosprevio as r on re.idRequisito =r.idRequisitosDeEjecuionSugeridosextrasPrevio and re.idCategoria=? and re.idContratante=?) left join documentosestaticospreviosextras as d  on re.idCategoria=? and d.idFinalista=? and re.idContratante= ? and re.idrequisitosdeejecuiondefextrasestaticosprevio=d.idRequisito\n" +

@@ -18,6 +18,14 @@ import java.util.Date;
  */
 @Service
 public class DocumentosEjecucionDB {
+    /**
+     * Consulta un registro de un documento  en el repositorio y en la base de datos
+     * @param requisito identificador del requerimiento con un documento asociado en el repositorio
+     * @param idFinalista identificador del contratista a quien pertenece el documento
+     * @return true / false si tiene documento asociado
+     * @throws SQLException
+     * @throws ClassNotFoundException
+     */
     public boolean consultarRegistroDocumentoPrevioSugerido(int requisito,int idFinalista) throws SQLException, ClassNotFoundException {
     boolean flag=false;
         String sql ="select count(*) as registro from documentosestaticospreviosobli where idRequisito= ? and idFinalista=?;";
@@ -39,6 +47,14 @@ public class DocumentosEjecucionDB {
 
         return flag;
     }
+    /**
+     * Consulta un registro de un documento  extra en el repositorio y en la base de datos
+     * @param requisito identificador del requerimiento con un documento asociado en el repositorio extra
+     * @param idFinalista identificador del contratista a quien pertenece el documento
+     * @return true / false si tiene documento asociado
+     * @throws SQLException
+     * @throws ClassNotFoundException
+     */
     public boolean consultarRegistroDocumentoPrevioExtra(int requisito,int idFinalista) throws SQLException, ClassNotFoundException {
         boolean flag=false;
         String sql ="select count(*) as registro from documentosestaticospreviosextras where idRequisito= ? and idFinalista=?;";
@@ -61,6 +77,13 @@ public class DocumentosEjecucionDB {
         return flag;
     }
 
+    /**
+     * Insertar Documentos en la base de datos ------>
+     * @param documentoPrevio objeto con la informacion del documento
+     * @throws SQLException
+     * @throws ClassNotFoundException
+     * @throws IOException
+     */
     public void insertarDocumentoPrevioSugerido(DocumentoPrevio documentoPrevio) throws SQLException, ClassNotFoundException, IOException {
         System.out.println(documentoPrevio.getFile());
 
@@ -115,6 +138,13 @@ public class DocumentosEjecucionDB {
         }
 
     }
+    /**
+     * Insertar Documentos  extras en la base de datos ------>
+     * @param documentoPrevio objeto con la informacion del documento extra
+     * @throws SQLException
+     * @throws ClassNotFoundException
+     * @throws IOException
+     */
     public void insertarDocumentoPrevioExtra(DocumentoPrevio documentoPrevio) throws SQLException, ClassNotFoundException, IOException {
 
 
@@ -170,7 +200,11 @@ public class DocumentosEjecucionDB {
 
 
     }
-
+    /**
+     * Se obtiene la extensión del archivo
+     * @param fullName archivo que se quiere saber la extensión
+     * @return String con la extensión
+     */
     private  String getFileExtension(File fullName) {
         String fileName = fullName.getName();
         int dotIndex = fileName.lastIndexOf('.');

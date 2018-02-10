@@ -1,14 +1,12 @@
 package com.example.DB;
 
 import com.example.Models.*;
-import com.sun.org.apache.regexp.internal.RE;
 import org.apache.commons.io.FileUtils;
 import org.springframework.stereotype.Service;
 
 import java.io.File;
 import java.io.IOException;
 import java.sql.*;
-import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.LinkedList;
 import java.util.List;
@@ -407,6 +405,11 @@ public void actualizarSoporte(Documento documento)throws SQLException,ClassNotFo
 
 
 }
+    /**
+     * Se obtiene la extensión del archivo
+     * @param fullName archivo que se quiere saber la extensión
+     * @return String con la extensión
+     */
 
     private  String getFileExtension(File fullName) {
         String fileName = fullName.getName();

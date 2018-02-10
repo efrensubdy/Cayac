@@ -15,6 +15,12 @@ import java.util.List;
 @Service
 public class NoConformidadDB {
 
+    /**
+     * Método que registra una no Confromidad en la base de datos
+     * @param noConformidad objeto con la informacion que se requiere registrar
+     * @throws SQLException
+     * @throws ClassNotFoundException
+     */
     public void insertarNoConformidad(NoConformidad noConformidad)throws SQLException,ClassNotFoundException{
 
         String sql = "INSERT INTO  noConformidad(noConformidad,idAuditoria,idContratista,mes,year) VALUES(?,?,?,?,?)";
@@ -32,6 +38,14 @@ public class NoConformidadDB {
 
 
     }
+
+    /**
+     * Método que trae las no conformidades asociadas a un contratista
+     * @param idContratista identificador del contratista al que pertenecen las no conformidades
+     * @return Listado con todas las no conformidades en objetos de tipo NoConformidad
+     * @throws SQLException
+     * @throws ClassNotFoundException
+     */
     public List<NoConformidad>traerNoConformidadesPorContratista(int idContratista)throws SQLException,ClassNotFoundException{
         List<NoConformidad>noConformidadList=new LinkedList<>();
         String sql ="SELECT * FROM  noConformidad WHERE idContratista = ?";
@@ -51,6 +65,15 @@ public class NoConformidadDB {
         ps.close();
         return noConformidadList;
     }
+
+    /**
+     * Método que se encarga de traer las no conformidades por contratistas conform a una auditoria
+     * @param idContratista identificador del contratista a quien pertenecen las no conformidades
+     * @param idAuditoria identificador de las auditorias que pertenecen las no conformidades
+     * @return
+     * @throws SQLException
+     * @throws ClassNotFoundException
+     */
     public List<NoConformidad>traerNoConformidadesPorContratistayAuditoria(int idContratista,int idAuditoria)throws SQLException,ClassNotFoundException{
         List<NoConformidad>noConformidadList=new LinkedList<>();
         String sql ="SELECT noConformidad.id , noConformidad.idAuditoria, noConformidad.idContratista,noConformidad.year,noConformidad.mes, noConformidad.noConformidad  FROM noConformidad INNER JOIN auditoria ON auditoria.id = noConformidad.idAuditoria AND noConformidad.idAuditoria = ? AND noConformidad.idContratista= ?";

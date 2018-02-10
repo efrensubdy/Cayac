@@ -34,6 +34,14 @@ public class FinalistDB {
     public FinalistDB()throws SQLException,ClassNotFoundException{
 
     }
+
+    /**
+     * Método que se encarga de insertar un finalista en la base de datos y crear las subcarpetas del repositorio se usa para pasar de selección a ejecución
+     * @param finalista objeto con la información del finalista que se va registrar en la base de datos
+     * @throws SQLException
+     * @throws ClassNotFoundException
+     * @throws IOException
+     */
     public void insertarFinalista2(Finalista finalista)throws SQLException,ClassNotFoundException,IOException{
         java.util.Date utilDate = new Date();
         java.sql.Date date = new java.sql.Date(utilDate.getTime());
@@ -72,6 +80,13 @@ public class FinalistDB {
         }
 
     }
+    /**
+     * Método que se encarga de insertar un finalista en la base de datos y crear las subcarpetas del repositorio se usa para pasar de selección a ejecución
+     * @param finalista objeto con la información del finalista que se va registrar en la base de datos
+     * @throws SQLException
+     * @throws ClassNotFoundException
+     * @throws IOException
+     */
     public void insertarFinalista(Finalista finalista)throws SQLException,ClassNotFoundException,IOException{
         java.util.Date utilDate = new Date();
         java.sql.Date date = new java.sql.Date(utilDate.getTime());
@@ -112,11 +127,27 @@ public class FinalistDB {
         int idFinalista=traerIdFinalista(finalista.getIdContratista());
         updateContrato(idFinalista,finalista.getIdContrato());
     }
+
+    /**
+     * Método que se encarga de insertar un finalista en la base de datos y crear las subcarpetas del repositorio se usa para pasar de selección a ejecución
+     * @param finalista objeto con la información del finalista que se va registrar en la base de datos
+     * @throws SQLException
+     * @throws ClassNotFoundException
+     * @throws IOException
+     */
     public void insertarFinalistaDeSeleccion(Finalista finalista)throws SQLException,ClassNotFoundException{
         updateContrato(finalista.getIdFinalista(),finalista.getIdContrato());
 
 
     }
+
+    /**
+     * Método que se encarga de actualizar un contrato con el dientificador del finalistaque paso de selección a ejecución
+     * @param idFinalista identificador del contratista que ahora estará en ejecución
+     * @param idContrato identificador del contrato
+     * @throws SQLException
+     * @throws ClassNotFoundException
+     */
     public void  updateContrato(int idFinalista,int idContrato)throws SQLException,ClassNotFoundException{
         String sql = "UPDATE  contrato set idFinalista = ? where idContrato =? ";
         System.out.println(idFinalista);
@@ -129,6 +160,14 @@ public class FinalistDB {
         con.close();
 
     }
+
+    /**
+     * Método que se encarga de traer el identificador de un contratista
+     * @param idContratista  idContratista de seleccion
+     * @return int con el numero de finalista que se busca
+     * @throws SQLException
+     * @throws ClassNotFoundException
+     */
     public int traerIdFinalista(int idContratista)throws SQLException,ClassNotFoundException {
         int a =0;
         String sql ="select idFinalista from finalista where idContratista = ? ";
@@ -145,6 +184,15 @@ public class FinalistDB {
         Conexion.conection().close();
         return a;
     }
+
+    /**
+     * Método que se encargar de traer los no finalistas que se ecuentren en la base de datos
+     * @param idContrante identificador del contratante a quien pertencen los candidatos
+     * @param idContrato identificador del contrato alque pertenece el candidato
+     * @return Listado con el contratista asociado
+     * @throws ClassNotFoundException
+     * @throws SQLException
+     */
     public  List<Contratista> consultarNoFinalistas(int idContrante,int idContrato) throws ClassNotFoundException, SQLException{
         List<Contratista> contratistas = new LinkedList<>();
         String sql ="select t1.idContratista,t1.nombreEmpresa,t1.nit,t1.codigoCIIU,t1.nombreGerente,t1.email,t1.password,t1.arl,t1.direccion,t1.telefono,t1.duracion,t1.departamento,t1.idContratante,t1.personaContacto,t1.cargoPer,t1.telefonoCon,t1.emailContacto,t1.idservicioAContratar  FROM  contratista as t1 left join finalista as t2 on t1.idContratista=t2.idContratista where t2.idContratista is null  and t1.idContratante = ? and t1.idservicioAContratar = ?";
@@ -180,6 +228,15 @@ public class FinalistDB {
         Conexion.conection().close();
         return contratistas;
     }
+
+    /**
+     * Método que se encargar de traer los no finalistas que se ecuentren en la base de datos
+     * @param idContrante identificador del contratante a quien pertencen los Contratistas
+     * @param idContrato identificador del contrato alque pertenece el Contratista
+     * @return Listado con el contratista asociado
+     * @throws ClassNotFoundException
+     * @throws SQLException
+     */
     public  List<Contratista> consultarFinalistas(int idContrante,int idContrato) throws ClassNotFoundException, SQLException{
         List<Contratista> contratistas = new LinkedList<>();
         String sql ="SELECT t2.idFinalista, t1.idContratista,t1.nombreEmpresa,t1.nit,t1.codigoCIIU,t1.nombreGerente,t1.email,t1.password,t1.arl,t1.direccion,t1.telefono,t1.duracion,t1.departamento,t1.idContratante,t1.personaContacto,t1.cargoPer,t1.telefonoCon,t1.emailContacto,t3.idContrato  FROM  (contratista AS t1 LEFT JOIN finalista AS t2 ON t1.idContratista=t2.idContratista) INNER JOIN contrato AS t3 ON t3.idFinalista=t2.idFinalista  WHERE t2.idContratista IS NOT NULL AND t1.idContratante= ? AND t3.idContrato= ? ";
@@ -217,6 +274,14 @@ public class FinalistDB {
         Conexion.conection().close();
         return contratistas;
     }
+
+    /**
+     * Metodo que consulta todos los finalistas de seleccion
+     * @param idContrante ibdentificador delcontratante que requiere el reporte
+     * @return Listado con objetos de tipo contratista ccon los finalistas de seleccion
+     * @throws ClassNotFoundException
+     * @throws SQLException
+     */
     public  List<Contratista> consultarFinalistasSeleccion(int idContrante) throws ClassNotFoundException, SQLException{
         List<Contratista> contratistas = new LinkedList<>();
         String sql ="SELECT t2.idFinalista, t1.idContratista,t1.nombreEmpresa,t1.nit,t1.codigoCIIU,t1.nombreGerente,t1.email,t1.arl,t1.direccion,t1.telefono,t1.duracion,t1.departamento,t1.idContratante,t1.personaContacto,t1.cargoPer,t1.telefonoCon,t1.emailContacto,t3.idContrato     FROM  (contratista AS t1 LEFT JOIN finalista AS t2 ON t1.idContratista=t2.idContratista) LEFT JOIN contrato AS t3 ON t3.idFinalista=t2.idFinalista WHERE t3.idFinalista IS NULL AND t1.idContratante = ? AND t2.idFinalista IS NOT NULL;";
@@ -252,6 +317,14 @@ public class FinalistDB {
         Conexion.conection().close();
         return contratistas;
     }
+
+    /**
+     * Método que se encarga de llevar a un contratista directamnente a la parte de ejecución
+     * @param contratista  objeto con la información del contratista
+     * @throws SQLException
+     * @throws ClassNotFoundException
+     * @throws IOException
+     */
     public void registroManual(Contratista contratista) throws SQLException, ClassNotFoundException, IOException {
         contratistasBD.nuevoContratistaManual(contratista);
         Contratista contra=contratistasBD.getContratista(contratista.nombreEmpresa);
@@ -265,6 +338,15 @@ public class FinalistDB {
 
 
     }
+
+    /**
+     *
+     * @param idContratante identificador del contratante
+     * @param idCategoria identificador de la categoria a la cual aplican los requisitos
+     * @return Método que se encarga de llenar los requisitos que puede aplicar el contratante
+     * @throws SQLException
+     * @throws ClassNotFoundException
+     */
     public List<Requisito> llenarRequisitosPrevios(int idContratante,int idCategoria) throws SQLException, ClassNotFoundException {
         List<Requisito> requisitos=new LinkedList<>();
         String sql ="select  t1.idRequisitosDeEjecuionSugeridosEstaticosPrevio,t1.requisito from (requisitosdeejecuionsugeridosestaticosprevio as t1 ) left join requisitosdeejecuiondefsugeridosestaticosprevio as t2 on t1.idRequisitosDeEjecuionSugeridosEstaticosPrevio=t2.idRequsito and t2.idContratante= ?\n" +
@@ -283,7 +365,16 @@ public class FinalistDB {
         Conexion.conection().close();
         return requisitos;
 
+
     }
+    /**
+     *
+     * @param idContratante identificador del contratante
+     * @param idCategoria identificador de la categoria a la cual aplican los requisitos extras
+     * @return Método que se encarga de llenar los requisitos extras que puede aplicar el contratante
+     * @throws SQLException
+     * @throws ClassNotFoundException
+     */
         public List<RequisitoExtra> llenarRequisitosExtrasPrevios(int idContratante, int idCategoria) throws SQLException, ClassNotFoundException {
         List <RequisitoExtra> requisitosExtras=new LinkedList<>();
         String sql ="select t1.idRequisitosDeEjecuionSugeridosextrasPrevio,t1.requisito from (requisitosdeejecuionextrasestaticosprevio as t1) left join requisitosdeejecuiondefextrasestaticosprevio as t2 on t1.idRequisitosDeEjecuionSugeridosextrasPrevio=t2.idRequisito and t2.idContratante= ?\n" +
@@ -305,6 +396,12 @@ public class FinalistDB {
 
     }
 
+    /**
+     * Método que se encarga de registrar un requisito en la base de datos
+     * @param nuevoRequisitoPrevioSugerido objeto con la informacion del requisito que se va volver definitivo
+     * @throws SQLException
+     * @throws ClassNotFoundException
+     */
     public void insertarPrevioSugerido(RequisitoObligatorio nuevoRequisitoPrevioSugerido)throws SQLException,ClassNotFoundException{
         String sql = "INSERT INTO requisitosdeejecuiondefsugeridosestaticosprevio (idContratante,idCategoria,idRequsito) VALUES(?,?,?)";
         Connection con =  Conexion.conection();
@@ -320,6 +417,12 @@ public class FinalistDB {
 
 
     }
+    /**
+     * Método que se encarga de registrar un requisito extra en la base de datos
+     * @param nuevoRequisitoPrevioExtra objeto con la informacion del requisito extra que se va volver definitivo
+     * @throws SQLException
+     * @throws ClassNotFoundException
+     */
     public void insertarPrevioExtra(RequisitoExtra nuevoRequisitoPrevioExtra)throws SQLException,ClassNotFoundException{
         String sql = "INSERT INTO requisitosdeejecuiondefextrasestaticosprevio(idContratante,idCategoria,idRequisito) VALUES(?,?,?)";
         Connection con =  Conexion.conection();
@@ -334,6 +437,15 @@ public class FinalistDB {
 
 
     }
+
+    /**
+     * Método que trae los requisitos definitivos al contratante
+     * @param idContratante identificador del contratante
+     * @param idCategoria identificador de la categoria a la cual pertenecen los requisitos
+     * @return Listado con los requisitos definitivos aplicados por el contratante
+     * @throws ClassNotFoundException
+     * @throws SQLException
+     */
     public List<RequisitoObligatorio>requisitosPreviosDefinitivosSugeridos(int idContratante,int idCategoria)throws ClassNotFoundException, SQLException{
         List<RequisitoObligatorio>requisitoObligatorioList=new LinkedList<>();
         String sql ="select DISTINCT ro.idrequisitosdeejecuiondefsugeridosestaticosprevio,ro.idContratante,r.idCategoria, ro.idRequsito,r.requisito from requisitosdeejecuiondefsugeridosestaticosprevio as ro inner join requisitosdeejecuionsugeridosestaticosprevio as r where ro.idRequsito=r.idRequisitosDeEjecuionSugeridosEstaticosPrevio and ro.idContratante= ? and ro.idCategoria= ?; ";
@@ -355,6 +467,14 @@ public class FinalistDB {
         return requisitoObligatorioList;
 
     }
+    /**
+     * Método que trae los requisitos definitivos al contratante
+     * @param idContratante identificador del contratante
+     * @param idCategoria identificador de la categoria a la cual pertenecen los requisitos extras
+     * @return Listado con los requisitos definitivos extras aplicados por el contratante
+     * @throws ClassNotFoundException
+     * @throws SQLException
+     */
     public List<RequisitoExtra>requisitosPreviosDefinitivosExtras(int idContratante, int idCategoria)throws ClassNotFoundException, SQLException{
         List<RequisitoExtra>requisitoExtrasList=new LinkedList<>();
         String sql ="select DISTINCT ro.idrequisitosdeejecuiondefextrasestaticosprevio, ro.idContratante,ro.idCategoria, ro.idRequisito,r.requisito from requisitosdeejecuiondefextrasestaticosprevio as ro inner join requisitosdeejecuionextrasestaticosprevio as r where ro.idRequisito=r.idRequisitosDeEjecuionSugeridosextrasPrevio and ro.idContratante= ? and ro.idCategoria= ?;";
@@ -376,6 +496,16 @@ public class FinalistDB {
         return requisitoExtrasList;
 
     }
+
+    /**
+     * Método que trae el estado de los requisitos al contratista que fueron aplicados para el
+     * @param idContratante identificador del contratante
+     * @param idCategoria identificador de la categoria a la que el contratista pertenece
+     * @param idFinalista identificador del contratista
+     * @return Listado con los requisitos aplicados al contratista
+     * @throws SQLException
+     * @throws ClassNotFoundException
+     */
     public List<RequisitoObligatorio>estadoDeRequisitosPreviosSugeridos(int idContratante ,int idCategoria,int idFinalista)throws SQLException,ClassNotFoundException{
         List<RequisitoObligatorio>requisitoObligatoriosLisT=new LinkedList<>();
         String sql="select DISTINCT  re.idrequisitosdeejecuiondefsugeridosestaticosprevio,r.idRequisitosDeEjecuionSugeridosEstaticosPrevio,r.requisito,d.estado,d.contenido  from (requisitosdeejecuiondefsugeridosestaticosprevio as re inner join requisitosdeejecuionsugeridosestaticosprevio as r on  re.idRequsito =r.idRequisitosDeEjecuionSugeridosEstaticosPrevio and re.idCategoria= ? and re.idContratante= ?) left join documentosestaticospreviosobli as d  on re.idCategoria= ? and d.idFinalista= ? and re.idrequisitosdeejecuiondefsugeridosestaticosprevio=d.idRequisito\n" +
@@ -404,6 +534,15 @@ public class FinalistDB {
         Conexion.conection().close();
         return requisitoObligatoriosLisT;
     }
+    /**
+     * Método que trae el estado de los requisitos extras  al contratista que fueron aplicados para el
+     * @param idContratante identificador del contratante
+     * @param idCategoria identificador de la categoria a la que el contratista pertenece
+     * @param idFinalista identificador del contratista
+     * @return Listado con los requisitos extras  aplicados al contratista
+     * @throws SQLException
+     * @throws ClassNotFoundException
+     */
 
     public List<RequisitoExtra>estadoRequisitosPreviosExtras(int idContratante ,int idCategoria,int idFinalista)throws SQLException,ClassNotFoundException{
         List<RequisitoExtra>requisitosExtrasLisT=new LinkedList<>();

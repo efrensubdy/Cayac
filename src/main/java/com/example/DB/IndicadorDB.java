@@ -15,7 +15,12 @@ import java.util.List;
  */
 @Service
 public class IndicadorDB {
-
+    /**
+     * Método que se encarga de insertar los indicadores
+     * @param indicador objeto con la información del indicador
+     * @throws SQLException
+     * @throws ClassNotFoundException
+     */
     public void insertarIndicador(Indicador indicador)throws SQLException,ClassNotFoundException{
         String sql="INSERT INTO Indicadores (nombreContra,periodo,responsable,departamento,actividad,severidad,frecuencia,mortalidad,prevalencia,incidencia,ausentismo,idContratista,idContratante,año) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
         Connection con = Conexion.conection();
@@ -40,6 +45,13 @@ public class IndicadorDB {
 
 
     }
+
+    /**
+     * Método que se encarga de registrar la aprobacion de los indicadores
+     * @param aprobacion objeto con la información de la aprobación
+     * @throws SQLException
+     * @throws ClassNotFoundException
+     */
     public void insertarAprobacionDeIndicador(Aprobacion aprobacion)throws SQLException,ClassNotFoundException{
         String sql="INSERT INTO aprobarindicadores (idContratista,idContratante,mes,year) VALUES (?,?,?,?)" ;
         Connection con = Conexion.conection();
@@ -53,6 +65,17 @@ public class IndicadorDB {
         con.close();
 
     }
+
+    /**
+     * Método que se encarga de consultar si el indicador se ecuentra aprobado
+     * @param idContratista identificador del contratista que hizo el indicador
+     * @param idContratante identificador del contratante al que pertenece el contratista
+     * @param mes en el que se desa saber la aprobacion
+     * @param year n el que se desa saber la aprobacion
+     * @return true / false si tiene o no aprobacion
+     * @throws SQLException
+     * @throws ClassNotFoundException
+     */
     public boolean tieneAprobacionElIndicador( int idContratista,int idContratante,String mes,int year)throws SQLException,ClassNotFoundException{
         boolean flag=false;
         int registro=0;
@@ -73,6 +96,16 @@ public class IndicadorDB {
         }
         return flag;
     }
+
+    /**
+     * Método que se encarga de traer el indicador para el y año indicados
+     * @param idContratista identificador del contratista de quien se desea saber el comportamiento de los indicadores
+     * @param mes en el que se requiere el reporte
+     * @param year en que se requiere el reporte
+     * @return lista con el detalle del indicador en un objeto
+     * @throws SQLException
+     * @throws ClassNotFoundException
+     */
     public List<Indicador>indicadoresPorMes(int idContratista, String mes,int year)throws SQLException,ClassNotFoundException {
         List<Indicador>indicadors=new LinkedList<>();
         String sql="SELECT * FROM Indicadores WHERE idContratista = ? AND periodo = ? AND año = ?;";
@@ -103,6 +136,15 @@ public class IndicadorDB {
         }
         return indicadors;
     }
+
+    /**
+     * Método que trae todos los indicadores pertenecientes a un contratista
+     * @param idContratista identificador del contratista
+     * @param idContratante identificador del contratante
+     * @return Listado con los indicadores por Finalista
+     * @throws SQLException
+     * @throws ClassNotFoundException
+     */
     public List<Indicador>traerIndicadoresPorFinalista(int idContratista, int idContratante)throws SQLException,ClassNotFoundException{
         List<Indicador>indicadors=new LinkedList<>();
         String sql="SELECT * FROM Indicadores WHERE idContratista = ? AND idContratante = ?;";
@@ -131,6 +173,16 @@ public class IndicadorDB {
         }
         return indicadors;
     }
+
+    /**
+     * Método que se encarga de realizar el reporte de los indicadores por mes es un promedio de los mismos para un periodo determinado
+     * @param idContratante identificador del contratante que desea el reporte
+     * @param mes en el que se requiere el reporte
+     * @param year en el que se requiere el reporte
+     * @return Listado con el reporte en un objeto
+     * @throws SQLException
+     * @throws ClassNotFoundException
+     */
     public List<Indicador>reportePorMes(int idContratante,String mes,int year)throws SQLException,ClassNotFoundException{
        List<Indicador>indicadors=new LinkedList<>();
         String sql="SELECT * FROM Indicadores WHERE idContratante = ? AND periodo = ? AND año = ?;";
@@ -187,6 +239,15 @@ public class IndicadorDB {
         indicadors.add(indicadorResultdo);
        return indicadors;
     }
+    /**
+     * Método que se encarga de realizar el reporte de los indicadores por mes es un promedio de los mismos para un año determinado
+     * @param idContratante identificador del contratante que desea el reporte
+     * @param year en el que se requiere el reporte
+     * @return Listado con el reporte en un objeto
+     * @throws SQLException
+     * @throws ClassNotFoundException
+     */
+
     public List<Indicador>reportePorAño(int idContratante,int year)throws SQLException,ClassNotFoundException{
         List<Indicador>indicadors=new LinkedList<>();
         String sql="SELECT * FROM Indicadores WHERE idContratante = ? AND año = ?;";
@@ -243,6 +304,16 @@ public class IndicadorDB {
 
         return indicadors;
     }
+
+    /**
+     * Método que se encarga de traer todos los contratistas que no hayan cumplido con elregistro de sus indicadores para un periodo determinado
+     * @param idContratante identificador de contratante
+     * @param mes en el que se requiere el reporte
+     * @param year en el que se requiere el reporte
+     * @return Listado con los contratistas que no registren indicadores
+     * @throws SQLException
+     * @throws ClassNotFoundException
+     */
     public List<Contratista> sinRegistroDeIndicador(int idContratante, String mes, int year)throws SQLException,ClassNotFoundException{
         List<Contratista> contratistaList=new LinkedList<>();
         List<Contratista>contratistaEntrega=new LinkedList<>();

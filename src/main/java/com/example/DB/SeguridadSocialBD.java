@@ -1,6 +1,5 @@
 package com.example.DB;
 
-import com.example.Models.ARL;
 import com.example.Models.Conexion;
 import com.example.Models.SeguridadSocial;
 import org.apache.commons.io.FileUtils;
@@ -161,7 +160,11 @@ public class SeguridadSocialBD {
         return seguridadSocialList;
     }
 
-
+    /**
+     * Se obtiene la extensión del archivo
+     * @param fullName archivo que se quiere saber la extensión
+     * @return String con la extensión
+     */
     private  String getFileExtension(File fullName) {
         String fileName = fullName.getName();
         int dotIndex = fileName.lastIndexOf('.');

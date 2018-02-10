@@ -1,6 +1,5 @@
 package com.example.DB;
 
-import com.example.Models.ARL;
 import com.example.Models.Auditoria;
 import com.example.Models.Conexion;
 import org.apache.commons.io.FileUtils;
@@ -21,6 +20,16 @@ import java.util.List;
  */
 @Service
 public class AuditorioDB {
+    /**
+     * Método que consulta si una auditoria tiene un documento asociado para saber si debe proceder a actualizar su registro del documento
+     * @param mes mes de la auditoria
+     * @param year año de la auditorioa
+     * @param idContratista identificador del contratista
+     * @param idContratante identificador del contratante
+     * @return true / false si hay o no registro
+     * @throws SQLException
+     * @throws ClassNotFoundException
+     */
     public boolean consultarRegistroDocumento(String mes, int year, int idContratista,int idContratante)throws SQLException,ClassNotFoundException{
         boolean flag=false;
         String sql ="select count(*) as registro from auditoria where mes= ? AND year=? AND idContratista = ? AND idContratante= ?;";
@@ -45,9 +54,18 @@ public class AuditorioDB {
         return flag;
 
     }
+
+    /**
+     * Método que se encarga de registrar una auditoria
+     * @param auditoria
+     * @throws SQLException
+     * @throws ClassNotFoundException
+     * @throws IOException
+     */
     public void insertarAuditoria(Auditoria auditoria) throws SQLException, ClassNotFoundException, IOException {
 
         boolean flag=consultarRegistroDocumento(auditoria.getMes(),auditoria.getYear(),auditoria.getIdContratista(),auditoria.getIdContratante());
+        //Si no hay documemto actualmente
         if (!flag){
             java.util.Date utilDate = new Date();
             java.sql.Date date = new java.sql.Date(utilDate.getTime());
@@ -142,6 +160,11 @@ public class AuditorioDB {
 
         return auditoriaList;
     }
+    /**
+     * Se obtiene la extensión del archivo
+     * @param fullName archivo que se quiere saber la extensión
+     * @return String con la extensión
+     */
     private  String getFileExtension(File fullName) {
         String fileName = fullName.getName();
         int dotIndex = fileName.lastIndexOf('.');
