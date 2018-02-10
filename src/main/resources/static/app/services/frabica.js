@@ -225,7 +225,8 @@ angular.module('services.listFactory', ['ngRoute','ngResource'])
              //Fabrica que trae las acciones con registro                                                          })
             .factory('accionSinRegistro', function($resource) {
                                                                           return $resource('/app/accion/sinRegistro/:idContratista/:idCausa');
-          //Fabrica que trae las no coformidades que esten cerradas con registro                                                             })
+                                                                     })
+           //Fabrica que trae las no coformidades que esten cerradas con registro
         .factory('noConforCerradas', function($resource) {
                                                return $resource('/app/cierre/isCl/:idContratista');
                                                                               })
