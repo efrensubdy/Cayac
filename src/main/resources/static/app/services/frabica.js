@@ -222,7 +222,8 @@ angular.module('services.listFactory', ['ngRoute','ngResource'])
          //Fabrica que trae las acciones con registro
           .factory('accionConRegistro', function($resource) {
                                                                           return $resource('/app/accion/conRegistro/:idContratista/:idCausa');
-             //Fabrica que trae las acciones con registro                                                          })
+                                                                  })
+             //Fabrica que trae las acciones con registro
             .factory('accionSinRegistro', function($resource) {
                                                                           return $resource('/app/accion/sinRegistro/:idContratista/:idCausa');
                                                                      })
