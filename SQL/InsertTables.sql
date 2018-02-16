@@ -71,13 +71,12 @@ INSERT INTO departamento VALUES (21,"Putumayo",22);
 INSERT INTO departamento VALUES (22,"Quindio",23);
 INSERT INTO departamento VALUES (23,"Risaralda",24);
 INSERT INTO departamento VALUES (25,"San Andrés",25);
-INSERT INTO departamento VALUES (25,"Santander",26);
-INSERT INTO departamento VALUES (26,"Sucre",27);
-INSERT INTO departamento VALUES (27,"Tolima",28);
-INSERT INTO departamento VALUES (28,"Vaupes",29);
-INSERT INTO departamento VALUES (29,"Vichada",30);
-INSERT INTO departamento values (30,"Bolivar",10)
-
+INSERT INTO departamento VALUES (26,"Santander",26);
+INSERT INTO departamento VALUES (27,"Sucre",27);
+INSERT INTO departamento VALUES (28,"Tolima",28);
+INSERT INTO departamento VALUES (29,"Vaupes",29);
+INSERT INTO departamento VALUES (30,"Vichada",30);
+INSERT INTO departamento values (31,"Bolivar",10);
 
 
 
@@ -118,9 +117,7 @@ INSERT INTO extras VALUES (12,"PRUEBA PARA EC2 R4 Categoria 4",4,2);
   LOAD DATA LOCAL INFILE "/Users/acer/Documents/requisitosSeleccion.csv" INTO TABLE requisitos
  FIELDS TERMINATED BY ';'
  LINES TERMINATED BY '\n'; 
- LOAD DATA LOCAL INFILE "/Users/User/Documents/requisitosSeleccion.csv" INTO TABLE requisitos
- FIELDS TERMINATED BY ';'
- LINES TERMINATED BY '\n'; 
+
  
  
  LOAD DATA LOCAL INFILE "/Users/acer/Documents/requerimientos.csv" INTO TABLE requisitosdeejecuionsugeridosestaticosprevio
@@ -128,10 +125,6 @@ INSERT INTO extras VALUES (12,"PRUEBA PARA EC2 R4 Categoria 4",4,2);
  LINES TERMINATED BY '\n'; 
   
  
-INSERT INTO  requisitosdeejecuionsugeridosestaticosprevio (requisito,idCategoria,idContratante) VALUES ("ACTA DE INICIO DE ACTIVIDADES",1);
-INSERT INTO  requisitosdeejecuionsugeridosestaticosprevio (requisito,idCategoria,idContratante) VALUES ("ACTA DE INICIO DE ACTIVIDADES",2);
-INSERT INTO  requisitosdeejecuionsugeridosestaticosprevio (requisito,idCategoria,idContratante) VALUES ("ACTA DE INICIO DE ACTIVIDADES",3);
-INSERT INTO  requisitosdeejecuionsugeridosestaticosprevio (requisito,idCategoria) VALUES ("ACTA DE INICIO DE ACTIVIDADES",4);
  
  INSERT INTO requisitosdeejecuionextrasestaticosprevio(requisito,idCategoria,idContratante) VALUES ("REQUISITO PREVIO ESTATICO EXTRA 1 Contratante 2",1,2);
  INSERT INTO requisitosdeejecuionextrasestaticosprevio(requisito,idCategoria,idContratante) VALUES ("REQUISITO PREVIO ESTATICO EXTRA 2 Contratante 2",2,2);

@@ -373,6 +373,7 @@ angular.module('myApp.registrarRequisitosEjecucion', ['ngRoute'])
 
           var agregarBaseDatosPreviosSugeridos=function(lista){
            var total=lista.length;
+           console.log(lista);
            for (var i=0;i<total;i++){
                var requisitoObligatorio={"idContratante":$localStorage.contratanteLogeado.idContratante,"idCategoria":$rootScope.idCategoria,"idRequisito":lista[i].numero};
 
@@ -387,12 +388,13 @@ angular.module('myApp.registrarRequisitosEjecucion', ['ngRoute'])
 
           var agregarBaseDatosPreviosExtras=function(lista){
            var total=lista.length;
+           console.log(lista)
               for (var i=0;i<total;i++){
                 var requisitoExtra={"idContratante":$localStorage.contratanteLogeado.idContratante,"idCategoria":$rootScope.idCategoria,"idRequisito":lista[i].id};
 
                  insertarPrevioExtra.save(requisitoExtra,function(){
                  },function(err){
-                    $scope.bandera01 = true;
+                   $scope.bandera01 = true;
                     document.getElementById('id01').style.display='block';
                  });
 

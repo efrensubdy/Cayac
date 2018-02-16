@@ -47,7 +47,7 @@ $scope.add=function(ev,a,b,c){
 
 
             //var uploadUrl = "http://localhost:8080/app/contratos/" + contrato.nombreContrato + "/" + fechaInicio + "/" + fechaFin + "/" + fechaInicioActividades + "/" +contrato.idContratante + "/" +contrato.tipoContrato;
-            var uploadUrl = "http://ec2-35-163-21-208.us-west-2.compute.amazonaws.com:8080/app/contratos/" + contrato.nombreContrato + "/" + fechaInicio + "/" + fechaFin + "/" + fechaInicioActividades + "/" +contrato.idContratante + "/" +contrato.tipoContrato;
+           var uploadUrl = "http://ec2-35-163-21-208.us-west-2.compute.amazonaws.com:8080/app/contratos/" + contrato.nombreContrato + "/" + fechaInicio + "/" + fechaFin + "/" + fechaInicioActividades + "/" +contrato.idContratante + "/" +contrato.tipoContrato;
 
             var file=$scope.myFile;
             var file2=$scope.myFile2;

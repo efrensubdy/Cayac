@@ -165,12 +165,13 @@ CREATE TABLE `requisitos` (
 ) ENGINE=INNODB DEFAULT CHARSET=utf8;
 
 CREATE TABLE `extras` (
-  `idExtras` INT(11) NOT NULL,
-  `Extrascol` VARCHAR(500) NOT NULL,
-  `idCategoria` INT(11) NOT NULL,
-  PRIMARY KEY (`idExtras`),
-  KEY `Extra_Categorioa_idx` (`idCategoria`)
-) ENGINE=INNODB DEFAULT CHARSET=utf8;
+   `idExtras` int(11) NOT NULL,
+   `Extrascol` varchar(500) NOT NULL,
+   `idCategoria` int(11) NOT NULL,
+   `idContratante` int(11) NOT NULL,
+   PRIMARY KEY (`idExtras`),
+   KEY `Extra_Categorioa_idx` (`idCategoria`)
+ ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 CREATE TABLE `requisitosdeejecuionsugeridosestaticosprevio` (
   `idRequisitosDeEjecuionSugeridosEstaticosPrevio` INT(11) NOT NULL AUTO_INCREMENT,
@@ -182,14 +183,14 @@ CREATE TABLE `requisitosdeejecuionsugeridosestaticosprevio` (
 ) ENGINE=INNODB DEFAULT CHARSET=utf8;
 
 CREATE TABLE `requisitosdeejecuionextrasestaticosprevio` (
-  `idRequisitosDeEjecuionSugeridosextrasPrevio` INT(11) NOT NULL AUTO_INCREMENT,
-  `requisito` VARCHAR(500) NOT NULL,
-  `idCategoria` INT(11) NOT NULL,
-  PRIMARY KEY (`idRequisitosDeEjecuionSugeridosextrasPrevio`),
-  KEY `REEEP_CATEGORIA_idx` (`idCategoria`),
-  CONSTRAINT `REEEP_CATEGORIA` FOREIGN KEY (`idCategoria`) REFERENCES `categoria` (`idCategoria`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=INNODB DEFAULT CHARSET=utf8;
-
+   `idRequisitosDeEjecuionSugeridosextrasPrevio` int(11) NOT NULL AUTO_INCREMENT,
+   `requisito` varchar(500) NOT NULL,
+   `idCategoria` int(11) NOT NULL,
+   `idContratante` int(11) NOT NULL,
+   PRIMARY KEY (`idRequisitosDeEjecuionSugeridosextrasPrevio`),
+   KEY `REEEP_CATEGORIA_idx` (`idCategoria`),
+   CONSTRAINT `REEEP_CATEGORIA` FOREIGN KEY (`idCategoria`) REFERENCES `categoria` (`idCategoria`) ON DELETE NO ACTION ON UPDATE NO ACTION
+ ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 CREATE TABLE `requisitosobligatoriossugeridos` (
   `idRequisitosObligatorios` INT(11) NOT NULL AUTO_INCREMENT,
