@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="es" ng-app="myApp">
+
 <head>
 
   <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
@@ -86,389 +87,482 @@
 </head>
 
 <body class="bg">
-<header>
-  <div class="container clearfix pull-left">
-    <div class="row">
+  <header>
+    <div class="container clearfix pull-left">
+      <div class="row">
         <div class="col-sm-6 col-md-4 col-lg-2">
           <br>
           <img class="img-responsive" src="img/cayac.png" alt="Lights">
         </div>
-    </div>
-  </div>
-</header>
-
-<div class="navbar">
-<nav id="mainNav" class="navbar  navbar-inverse navbar-fixed-top affix-top">
-  <div class="container-fluid">
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#myNavbar">
-      </button>
-      <a class="navbar-brand kaushan neon header-t" style="color: white" href="#">Cayac!</a>
-    </div>
-    <div class="collapse navbar-collapse" id="myNavbar">
-      <ul class="nav navbar-nav navbar-left">
-
-         <span class="navbar-text "  ng-show="bandera2">
-            <b class="text-primary">   Bienvenido {{nombreEmpresa}} </b>
-        </span>
-        <span class="navbar-text "  ng-show="bandera">
-            <b class="text-primary">   Bienvenido {{nombreEmpresaContratante}} </b>
-        </span>
-        <span class="navbar-text "  ng-show="bandera3">
-            <b class="text-primary">   Bienvenido {{nombreAdmin}} </b>
-        </span>
-        <li ng-show="bandera" class="btn-toolbar"> <div class="btn-toolbar">
-          <div class="btn-group navbar-btn">
-            <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            Objeto del Proyecto
-            </button>
-            <ul class="dropdown-menu">
-              <li><a class="text-primary" ng-show="bandera" href="#!/registroServicio">Registrar Servicio a Contratar</a> </li>
-              <li><a class="text-primary"  ng-show="bandera"  href="#!/view13">Registrar Proyecto</a></li>
-              <li><a class="text-primary" ng-show="bandera" href="#!/consultarServicios">Consultar Servicios</a></li>
-              <li><a class="text-primary"  ng-show="bandera"  href="#!/view15">Consultar Proyecto</a></li>
-              <li><a class="text-primary" ng-show="bandera" href="#!/actualizacionDeContrato">Actualizar Proyecto</a></li>
-              <li><a class="text-primary" ng-show="bandera" href="#!/actualizarServicios">Actualizar Servicios</a></li>
-
-            </ul>
-          </div>
-        </div>
-        </li>
-        <li role="separator" class="divider"></li>
-        <li ng-show="bandera" class="btn-toolbar"> <div class="btn-toolbar">
-          <div class="btn-group navbar-btn">
-            <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              Selección
-            </button>
-            <ul class="dropdown-menu">
-              <li class="dropdown-submenu">
-                <a class="text-primary">Gestión de Requisitos</a>
-                <ul class="dropdown-menu">
-
-                  <li><a class="text-primary" ng-show="bandera" href="#!/view10">Revision de Requisitos</a> </li>
-
-                 <li><a class="text-primary"   ng-show="bandera" class="example" href="#!/view3">Registrar Requisitos</a> </li>
-
-                </ul>
-              </li>
-              <li role="separator" class="divider"></li>
-              <li  class="dropdown-submenu">
-                <a class="text-primary">Gestión de Candidatos</a>
-                <ul class="dropdown-menu">
-                <li><a class="text-primary"  ng-show="bandera" class="example" href="#!/view2">Registrar Candidatos</a></li>
-                <li><a class="text-primary"  ng-show="bandera" class="example" href="#!/view14">Consultar Candidatos</a></li>
-                  <li><a class="text-primary" ng-show="bandera" href="#!/aCFinSelec">Agregar Proyecto a finalista de selección</a></li>
-                </ul>
-              </li>
-            </ul>
-          </div>
-          </div>
-        </li>
-        <li ng-show="bandera" class="btn-toolbar"> <div class="btn-toolbar">
-          <div class="btn-group navbar-btn">
-            <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              Ejecución
-            </button>
-            <ul class="dropdown-menu">
-              <li class="dropdown-submenu">
-                <a class="text-primary" >Gestión de Proyecto</a>
-                <ul class="dropdown-menu">
-                  <li><a class="text-primary"  ng-show="bandera" class="example" href="#!/ejecucionCNCE">Gestión  de Documentos</a> </li>
-                  <li><a class="text-primary"  ng-show="bandera" class="example" href="#!/gestionDeActividades">Gestión de Actividades</a></li>
-                  <li><a class="text-primary" ng-show="bandera" class="example" href="#!/gestionDeIndicadores">Gestión de Indicadores</a></li>
-                  <li><a class="text-primary" ng-show="bandera" class="example" href="#!/gestionDeAccidentes">Gestión de Accidentes </a></li>
-                  <li><a class="text-primary" ng-show="bandera" class="example" href="#!/gestionDeEstandares">Gestión de Estandares </a></li>
-                  <li><a class="text-primary" ng-show="bandera" class="example" href="#!/gestionDeSeguridadSocial">Gestión de Seguridad Social </a></li>
-
-                </ul>
-              </li>
-              <li role="separator" class="divider"></li>
-              <li  class="dropdown-submenu">
-                <a class="text-primary" >Gestión de Contratista</a>
-                <ul class="dropdown-menu">
-                 <li><a  class="text-primary" ng-show="bandera" class="example" href="#!/manualRegister">Registro Manual</a></li>
-                 <li><a class="text-primary"  ng-show="bandera" class="example" href="#!/view12">Consultar Contratistas</a></li>
-                </ul>
-              </li>
-              <li role="separator" class="divider"></li>
-              <li><a class="text-primary"  ng-show="bandera" class="example" href="#!/registrarRequisitosEjecucion">Registro de Requisitos</a></li>
-            </ul>
-          </div>
-        </div>
-        </li>
-        <li ng-show="bandera" class="btn-toolbar"> <div class="btn-toolbar">
-          <div class="btn-group navbar-btn">
-            <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              Auditoria
-            </button>
-            <ul class="dropdown-menu">
-              <li class="dropdown-submenu">
-                <a class="text-primary">Gestión de Auditoria</a>
-                <ul class="dropdown-menu">
-                  <li><a class="text-primary" ng-show="bandera" href="#!/registroDeAuditoria">Registro de Auditoria</a> </li>
-                  <li><a class="text-primary" ng-show="bandera" href="#!/gestionAuditoria">Revisión de Auditoria</a></li>
-                </ul>
-              </li>
-            </ul>
-          </div>
-        </div>
-        </li>
-      </ul>
-      <ul class="nav navbar-nav navbar-right">
-
-        <button  ng-controller="logout" ng-show="bandera" class="btn btn-primary navbar-btn"
-                 ng-click="close()" >Cerrar sesíon</button>
-        <button  ng-controller="logout" ng-show="bandera2" class="btn btn-primary navbar-btn"
-                 ng-click="close2()" >Cerrar sesíon</button>
-        <button  ng-controller="logout" ng-show="bandera3" class="btn btn-primary navbar-btn"
-                 ng-click="close3()" >Cerrar sesíon</button>
-      </ul>
-    </div>
-  </div>
-</nav>
-</div>
-
-
-<div class="w3-container">
-<div class="row">
-  <div class="col-xs-3 col-sm3 col-md-2 col-lg-2 ">
-    <div class="panel panel-default ">
-      <div class="panel-heading">
-        <div class="w3-container mypanel">
-        <div class="row">
-          <div class="col-sm-1 col-md-1 col-lg-1">
-            <span class="glyphicon glyphicon-globe" style="color:primary"></span>
-          </div>
-          <div class=" col-xs-1 col-sm-1 col-md-1 col-lg-1">
-            <label class="titulos">Navegación</label>
-          </div>
-        </div>
-        </div>
-      </div>
-      <div class="panel-body mypanel">
-        <ul class="nav nav-pills nav-stacked ">
-          <li ng-show="bandera||bandera2" role="presentation">
-            <a href="#!/view1">
-              <div class="row">
-                <div class="col-sm-1"><span class="	glyphicon glyphicon-home"></span></div>
-                <div class="col-sm-1">Inicio</div>
-              </div>
-            </a>
-          </li>
-          <li ng-show="bandera" role="presentation">
-            <a href="#!/view6">
-              <div class="row">
-                <div class="col-sm-1"><span class="glyphicon glyphicon-wrench"></span></div>
-                <div class="col-sm-1">Cambiar Contraseña</div>
-              </div>
-            </a>
-          </li>
-          <li ng-show="bandera2" role="presentation">
-            <a href="#!/view7">
-              <div class="row">
-                <div class="col-sm-1"><span class="glyphicon glyphicon-wrench"></span></div>
-                <div class="col-sm-1">Cambiar Contraseña</div>
-              </div>
-            </a>
-          </li>
-          <li ng-show="bandera4" role="presentation">
-            <a href="#!/revisionDeDiagnostico">
-              <div class="row">
-                <div class="col-sm-1"><span class="glyphicon glyphicon-scale"></span></div>
-                <div class="col-sm-1">Diagnostico</div>
-              </div>
-            </a>
-          </li>
-          <li ng-show="bandera3" role="presentation">
-            <a href="#!/view4">
-              <div class="row">
-                <div class="col-sm-1"><span class="glyphicon glyphicon-registration-mark"></span></div>
-                <div class="col-sm-1">Registrar Contratantes</div>
-              </div>
-            </a>
-          </li>
-          <li ng-show="bandera3" role="presentation">
-            <a href="#!/controlDeContratantes">
-              <div class="row">
-                <div class="col-sm-1"><span class="glyphicon glyphicon-list-alt"></span></div>
-                <div class="col-sm-1">Control de Contratantes</div>
-              </div>
-            </a>
-          </li>
-          <li ng-show="bandera3" role="presentation">
-            <a href="#!/ControlDeContratistas">
-              <div class="row">
-                <div class="col-sm-1"><span class="	glyphicon glyphicon-road"></span></div>
-                <div class="col-sm-1">Control de Contratistas</div>
-              </div>
-            </a>
-          </li>
-          <li ng-show="banderaEjecucion" role="presentation">
-            <a href="#!/mensajeria">
-              <div class="row">
-                <div class="col-sm-1"><span class="	glyphicon glyphicon-comment"></span></div>
-                <div class="col-sm-1">Mensajeria</div>
-              </div>
-            </a>
-          </li>
-          <li ng-show="bandera" role="presentation">
-            <a href="#!/actualizarInformacion">
-              <div class="row">
-                <div class="col-sm-1"><span class="	glyphicon glyphicon-cog"></span></div>
-                <div class="col-sm-1">Modificar Información</div>
-              </div>
-            </a>
-          </li>
-          <li ng-show="bandera" role="presentation">
-            <a href="#!/mensajeriaContratante">
-              <div class="row">
-                <div class="col-sm-1"><span class="	glyphicon glyphicon-comment"></span></div>
-                <div class="col-sm-1">Mensajeria</div>
-              </div>
-            </a>
-          </li>
-          <li ng-show="banderaEjecucion" role="presentation">
-            <a href="#!/facturacion">
-              <div class="row">
-                <div class="col-sm-1"><span class="glyphicon glyphicon-usd"></span></div>
-                <div class="col-sm-1">Facturación</div>
-              </div>
-            </a>
-          </li>
-          <li ng-show="banderaEjecucion" role="presentation">
-            <a href="#!/subirDocumentosEstaticos">
-              <div class="row">
-                <div class="col-sm-1"><span class="glyphicon glyphicon-file"></span></div>
-                <div class="col-sm-1">Documentos</div>
-              </div>
-            </a>
-          </li>
-          <li ng-show="banderaEjecucion" role="presentation">
-            <a href="#!/planDeTrabajo">
-              <div class="row">
-                <div class="col-sm-1"><span class="	glyphicon glyphicon-briefcase"></span></div>
-                <div class="col-sm-1">Plan de Trabajo</div>
-              </div>
-            </a>
-          </li>
-          <li ng-show="banderaEjecucion" role="presentation">
-            <a href="#!/auditoria2.0">
-              <div class="row">
-                <div class="col-sm-1"><span class="glyphicon glyphicon-signal"></span></div>
-                <div class="col-sm-1">Auditoria</div>
-              </div>
-            </a>
-          </li>
-          <li ng-show="banderaEjecucion" role="presentation">
-            <a href="#!/indicadores">
-              <div class="row">
-                <div class="col-sm-1"><span class="	glyphicon glyphicon-stats"></span></div>
-                <div class="col-sm-1">Indicadores</div>
-              </div>
-            </a>
-          </li>
-          <li ng-show="bandera" role="presentation">
-            <a href="#!/reporteDeIndicadores">
-              <div class="row">
-                <div class="col-sm-1"><span class="	glyphicon glyphicon-stats"></span></div>
-                <div class="col-sm-1">Reporte de Indicadores</div>
-              </div>
-            </a>
-          </li>
-          <li ng-show="banderaEjecucion" role="presentation">
-            <a href="#!/seguridadSocial">
-              <div class="row">
-                <div class="col-sm-1"><span class="glyphicon glyphicon-plus"></span></div>
-                <div class="col-sm-1">Seguridad Social</div>
-              </div>
-            </a>
-          </li>
-          <li ng-show="banderaEjecucion" role="presentation">
-            <a href="#!/estandaresMinimos">
-              <div class="row">
-                <div class="col-sm-1"><span class="glyphicon glyphicon-equalizer"></span></div>
-                <div class="col-sm-1">Estandares Mínimos</div>
-              </div>
-            </a>
-          </li>
-          <li ng-show="banderaEjecucion" role="presentation">
-            <a href="#!/accidentes">
-              <div class="row">
-                <div class="col-sm-1"><span class="	glyphicon glyphicon-alert"></span></div>
-                <div class="col-sm-1">Accidentes</div>
-              </div>
-            </a>
-          </li>
-
-
-          <li ng-show="bandera" role="presentation">
-            <a href="#!/notificaciones">
-              <div class="row">
-                <div class="col-sm-1"><span class="glyphicon glyphicon-send"></span></div>
-                <div class="col-sm-1">Notificaciones</div>
-              </div>
-            </a>
-          </li>
-          <li ng-show="bandera2 && !banderaEjecucion" role="presentation">
-            <a href="#!/view9">
-              <div class="row">
-                <div class="col-sm-1"><span class="glyphicon glyphicon-duplicate"></span></div>
-                <div class="col-sm-1">Soportes Seleccion</div>
-              </div>
-            </a>
-          </li>
-          <li ng-hide="bandera||bandera2||bandera3 ||banderaEjecucion">
-            <a href="#!/inicio">
-              <div class="row">
-                <div class="col-sm-1"><span class="glyphicon glyphicon-eye-open"></span></div>
-                <div class="col-sm-1">Inicio Cayac</div>
-              </div>
-            </a></li>
-          <li ng-hide="bandera||bandera2||bandera3 ||banderaEjecucion">
-            <a href="#!/diagnostico">
-              <div class="row">
-                <div class="col-sm-1"><span class="glyphicon glyphicon glyphicon-gift"></span></div>
-                <div class="col-sm-1">Diagnóstico</div>
-              </div>
-            </a></li>
-        </ul>
-
       </div>
     </div>
+  </header>
+
+  <div class="navbar">
+    <nav id="mainNav" class="navbar  navbar-inverse navbar-fixed-top affix-top">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#myNavbar">
+          </button>
+          <a class="navbar-brand kaushan neon header-t" style="color: white">Cayac!</a>
+        </div>
+        <div class="collapse navbar-collapse" id="myNavbar">
+          <ul class="nav navbar-nav navbar-left">
+
+            <span class="navbar-text " ng-show="bandera2">
+              <b class="text-primary"> Bienvenido {{nombreEmpresa}} </b>
+            </span>
+            <span class="navbar-text " ng-show="bandera">
+              <b class="text-primary"> Bienvenido {{nombreEmpresaContratante}} </b>
+            </span>
+            <span class="navbar-text " ng-show="bandera3">
+              <b class="text-primary"> Bienvenido {{nombreAdmin}} </b>
+            </span>
+            <li ng-show="bandera" class="btn-toolbar">
+              <div class="btn-toolbar">
+                <div class="btn-group navbar-btn">
+                  <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Objeto del Proyecto
+                  </button>
+                  <ul class="dropdown-menu">
+                    <li>
+                      <a class="text-primary" ng-show="bandera" href="#!/registroServicio">Registrar Servicio a Contratar</a>
+                    </li>
+                    <li>
+                      <a class="text-primary" ng-show="bandera" href="#!/view13">Registrar Proyecto</a>
+                    </li>
+                    <li>
+                      <a class="text-primary" ng-show="bandera" href="#!/consultarServicios">Consultar Servicios</a>
+                    </li>
+                    <li>
+                      <a class="text-primary" ng-show="bandera" href="#!/view15">Consultar Proyecto</a>
+                    </li>
+                    <li>
+                      <a class="text-primary" ng-show="bandera" href="#!/actualizacionDeContrato">Actualizar Proyecto</a>
+                    </li>
+                    <li>
+                      <a class="text-primary" ng-show="bandera" href="#!/actualizarServicios">Actualizar Servicios</a>
+                    </li>
+
+                  </ul>
+                </div>
+              </div>
+            </li>
+            <li role="separator" class="divider"></li>
+            <li ng-show="bandera" class="btn-toolbar">
+              <div class="btn-toolbar">
+                <div class="btn-group navbar-btn">
+                  <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Selección
+                  </button>
+                  <ul class="dropdown-menu">
+                    <li class="dropdown-submenu">
+                      <a class="text-primary">Gestión de Candidatos</a>
+                      <ul class="dropdown-menu">
+                        <li>
+                          <a class="text-primary" ng-show="bandera" class="example" href="#!/view2">Registrar Candidatos</a>
+                        </li>
+                        <li>
+                          <a class="text-primary" ng-show="bandera" class="example" href="#!/view14">Consultar Candidatos</a>
+                        </li>
+                        <li>
+                          <a class="text-primary" ng-show="bandera" href="#!/aCFinSelec">Agregar Proyecto a finalista de selección</a>
+                        </li>
+                      </ul>
+                    </li>
+                    <li role="separator" class="divider"></li>
+                    <li class="dropdown-submenu">
+                      <a class="text-primary">Gestión de Requisitos</a>
+                      <ul class="dropdown-menu">
+
+                        <li>
+                          <a class="text-primary" ng-show="bandera" href="#!/view10">Revision de Requisitos</a>
+                        </li>
+
+                        <li>
+                          <a class="text-primary" ng-show="bandera" class="example" href="#!/view3">Registrar Requisitos</a>
+                        </li>
+
+                      </ul>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </li>
+            <li ng-show="bandera" class="btn-toolbar">
+              <div class="btn-toolbar">
+                <div class="btn-group navbar-btn">
+                  <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Ejecución
+                  </button>
+                  <ul class="dropdown-menu">
+                    <li>
+                      <a class="text-primary" ng-show="bandera" class="example" href="#!/registrarRequisitosEjecucion">Registro de Requisitos</a>
+                    </li>
+
+                    <li role="separator" class="divider"></li>
+                    <li class="dropdown-submenu">
+                      <a class="text-primary">Gestión de Contratista</a>
+                      <ul class="dropdown-menu">
+                        <li>
+                          <a class="text-primary" ng-show="bandera" class="example" href="#!/manualRegister">Registro Manual</a>
+                        </li>
+                        <li>
+                          <a class="text-primary" ng-show="bandera" class="example" href="#!/view12">Consultar Contratistas</a>
+                        </li>
+                      </ul>
+                    </li>
+                    <li role="separator" class="divider"></li>
+                    <li class="dropdown-submenu">
+                      <a class="text-primary">Gestión de Proyecto</a>
+                      <ul class="dropdown-menu">
+                        <li>
+                          <a class="text-primary" ng-show="bandera" class="example" href="#!/ejecucionCNCE">Gestión de Documentos</a>
+                        </li>
+                        <li>
+                          <a class="text-primary" ng-show="bandera" class="example" href="#!/gestionDeActividades">Gestión de Actividades</a>
+                        </li>
+                        <li>
+                          <a class="text-primary" ng-show="bandera" class="example" href="#!/gestionDeIndicadores">Gestión de Indicadores</a>
+                        </li>
+                        <li>
+                          <a class="text-primary" ng-show="bandera" class="example" href="#!/gestionDeAccidentes">Gestión de Accidentes </a>
+                        </li>
+                        <li>
+                          <a class="text-primary" ng-show="bandera" class="example" href="#!/gestionDeEstandares">Gestión de Estandares </a>
+                        </li>
+                        <li>
+                          <a class="text-primary" ng-show="bandera" class="example" href="#!/gestionDeSeguridadSocial">Gestión de Seguridad Social </a>
+                        </li>
+
+                      </ul>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </li>
+            <li ng-show="bandera" class="btn-toolbar">
+              <div class="btn-toolbar">
+                <div class="btn-group navbar-btn">
+                  <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Auditoria
+                  </button>
+                  <ul class="dropdown-menu">
+                    <li class="dropdown-submenu">
+                      <a class="text-primary">Gestión de Auditoria</a>
+                      <ul class="dropdown-menu">
+                        <li>
+                          <a class="text-primary" ng-show="bandera" href="#!/registroDeAuditoria">Registro de Auditoria</a>
+                        </li>
+                        <li>
+                          <a class="text-primary" ng-show="bandera" href="#!/gestionAuditoria">Revisión de Auditoria</a>
+                        </li>
+                      </ul>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </li>
+          </ul>
+          <ul class="nav navbar-nav navbar-right">
+
+            <button ng-controller="logout" ng-show="bandera" class="btn btn-primary navbar-btn" ng-click="close()">Cerrar sesíon</button>
+            <button ng-controller="logout" ng-show="bandera2" class="btn btn-primary navbar-btn" ng-click="close2()">Cerrar sesíon</button>
+            <button ng-controller="logout" ng-show="bandera3" class="btn btn-primary navbar-btn" ng-click="close3()">Cerrar sesíon</button>
+          </ul>
+        </div>
+      </div>
+    </nav>
   </div>
-  <div class="col-xs-9 col-sm-10 col-md-10 col-lg-10">
 
-    <div  ng-view></div>
+
+  <div class="w3-container">
+    <div class="row">
+      <div class="col-xs-3 col-sm3 col-md-2 col-lg-2 ">
+        <div class="panel panel-default ">
+          <div class="panel-heading">
+            <div class="w3-container mypanel">
+              <div class="row">
+                <div class="col-sm-1 col-md-1 col-lg-1">
+                  <span class="glyphicon glyphicon-globe" style="color:primary"></span>
+                </div>
+                <div class=" col-xs-1 col-sm-1 col-md-1 col-lg-1">
+                  <label class="titulos">Navegación</label>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="panel-body mypanel">
+            <ul class="nav nav-pills nav-stacked ">
+              <li ng-show="bandera||bandera2" role="presentation">
+                <a href="#!/view1">
+                  <div class="row">
+                    <div class="col-sm-1">
+                      <span class="	glyphicon glyphicon-home"></span>
+                    </div>
+                    <div class="col-sm-1">Inicio</div>
+                  </div>
+                </a>
+              </li>
+              <li ng-show="bandera" role="presentation">
+                <a href="#!/view6">
+                  <div class="row">
+                    <div class="col-sm-1">
+                      <span class="glyphicon glyphicon-wrench"></span>
+                    </div>
+                    <div class="col-sm-1">Cambiar Contraseña</div>
+                  </div>
+                </a>
+              </li>
+              <li ng-show="bandera2" role="presentation">
+                <a href="#!/view7">
+                  <div class="row">
+                    <div class="col-sm-1">
+                      <span class="glyphicon glyphicon-wrench"></span>
+                    </div>
+                    <div class="col-sm-1">Cambiar Contraseña</div>
+                  </div>
+                </a>
+              </li>
+              <li ng-show="bandera4" role="presentation">
+                <a href="#!/revisionDeDiagnostico">
+                  <div class="row">
+                    <div class="col-sm-1">
+                      <span class="glyphicon glyphicon-scale"></span>
+                    </div>
+                    <div class="col-sm-1">Diagnostico</div>
+                  </div>
+                </a>
+              </li>
+              <li ng-show="bandera3" role="presentation">
+                <a href="#!/view4">
+                  <div class="row">
+                    <div class="col-sm-1">
+                      <span class="glyphicon glyphicon-registration-mark"></span>
+                    </div>
+                    <div class="col-sm-1">Registrar Contratantes</div>
+                  </div>
+                </a>
+              </li>
+              <li ng-show="bandera3" role="presentation">
+                <a href="#!/controlDeContratantes">
+                  <div class="row">
+                    <div class="col-sm-1">
+                      <span class="glyphicon glyphicon-list-alt"></span>
+                    </div>
+                    <div class="col-sm-1">Control de Contratantes</div>
+                  </div>
+                </a>
+              </li>
+              <li ng-show="bandera3" role="presentation">
+                <a href="#!/ControlDeContratistas">
+                  <div class="row">
+                    <div class="col-sm-1">
+                      <span class="	glyphicon glyphicon-road"></span>
+                    </div>
+                    <div class="col-sm-1">Control de Contratistas</div>
+                  </div>
+                </a>
+              </li>
+              <li ng-show="banderaEjecucion" role="presentation">
+                <a href="#!/mensajeria">
+                  <div class="row">
+                    <div class="col-sm-1">
+                      <span class="	glyphicon glyphicon-comment"></span>
+                    </div>
+                    <div class="col-sm-1">Mensajeria</div>
+                  </div>
+                </a>
+              </li>
+              <li ng-show="bandera" role="presentation">
+                <a href="#!/actualizarInformacion">
+                  <div class="row">
+                    <div class="col-sm-1">
+                      <span class="	glyphicon glyphicon-cog"></span>
+                    </div>
+                    <div class="col-sm-1">Modificar Información</div>
+                  </div>
+                </a>
+              </li>
+              <li ng-show="bandera" role="presentation">
+                <a href="#!/mensajeriaContratante">
+                  <div class="row">
+                    <div class="col-sm-1">
+                      <span class="	glyphicon glyphicon-comment"></span>
+                    </div>
+                    <div class="col-sm-1">Mensajeria</div>
+                  </div>
+                </a>
+              </li>
+              <li ng-show="banderaEjecucion" role="presentation">
+                <a href="#!/facturacion">
+                  <div class="row">
+                    <div class="col-sm-1">
+                      <span class="glyphicon glyphicon-usd"></span>
+                    </div>
+                    <div class="col-sm-1">Facturación</div>
+                  </div>
+                </a>
+              </li>
+              <li ng-show="banderaEjecucion" role="presentation">
+                <a href="#!/subirDocumentosEstaticos">
+                  <div class="row">
+                    <div class="col-sm-1">
+                      <span class="glyphicon glyphicon-file"></span>
+                    </div>
+                    <div class="col-sm-1">Documentos</div>
+                  </div>
+                </a>
+              </li>
+              <li ng-show="banderaEjecucion" role="presentation">
+                <a href="#!/planDeTrabajo">
+                  <div class="row">
+                    <div class="col-sm-1">
+                      <span class="	glyphicon glyphicon-briefcase"></span>
+                    </div>
+                    <div class="col-sm-1">Plan de Trabajo</div>
+                  </div>
+                </a>
+              </li>
+              <li ng-show="banderaEjecucion" role="presentation">
+                <a href="#!/auditoria2.0">
+                  <div class="row">
+                    <div class="col-sm-1">
+                      <span class="glyphicon glyphicon-signal"></span>
+                    </div>
+                    <div class="col-sm-1">Auditoria</div>
+                  </div>
+                </a>
+              </li>
+              <li ng-show="banderaEjecucion" role="presentation">
+                <a href="#!/indicadores">
+                  <div class="row">
+                    <div class="col-sm-1">
+                      <span class="	glyphicon glyphicon-stats"></span>
+                    </div>
+                    <div class="col-sm-1">Indicadores</div>
+                  </div>
+                </a>
+              </li>
+              <li ng-show="bandera" role="presentation">
+                <a href="#!/reporteDeIndicadores">
+                  <div class="row">
+                    <div class="col-sm-1">
+                      <span class="	glyphicon glyphicon-stats"></span>
+                    </div>
+                    <div class="col-sm-1">Reporte de Indicadores</div>
+                  </div>
+                </a>
+              </li>
+              <li ng-show="banderaEjecucion" role="presentation">
+                <a href="#!/seguridadSocial">
+                  <div class="row">
+                    <div class="col-sm-1">
+                      <span class="glyphicon glyphicon-plus"></span>
+                    </div>
+                    <div class="col-sm-1">Seguridad Social</div>
+                  </div>
+                </a>
+              </li>
+              <li ng-show="banderaEjecucion" role="presentation">
+                <a href="#!/estandaresMinimos">
+                  <div class="row">
+                    <div class="col-sm-1">
+                      <span class="glyphicon glyphicon-equalizer"></span>
+                    </div>
+                    <div class="col-sm-1">Estandares Mínimos</div>
+                  </div>
+                </a>
+              </li>
+              <li ng-show="banderaEjecucion" role="presentation">
+                <a href="#!/accidentes">
+                  <div class="row">
+                    <div class="col-sm-1">
+                      <span class="	glyphicon glyphicon-alert"></span>
+                    </div>
+                    <div class="col-sm-1">Accidentes</div>
+                  </div>
+                </a>
+              </li>
+
+
+              <li ng-show="bandera" role="presentation">
+                <a href="#!/notificaciones">
+                  <div class="row">
+                    <div class="col-sm-1">
+                      <span class="glyphicon glyphicon-send"></span>
+                    </div>
+                    <div class="col-sm-1">Notificaciones</div>
+                  </div>
+                </a>
+              </li>
+              <li ng-show="bandera2 && !banderaEjecucion" role="presentation">
+                <a href="#!/view9">
+                  <div class="row">
+                    <div class="col-sm-1">
+                      <span class="glyphicon glyphicon-duplicate"></span>
+                    </div>
+                    <div class="col-sm-1">Soportes Seleccion</div>
+                  </div>
+                </a>
+              </li>
+              <li ng-hide="bandera||bandera2||bandera3 ||banderaEjecucion">
+                <a href="#!/inicio">
+                  <div class="row">
+                    <div class="col-sm-1">
+                      <span class="glyphicon glyphicon-eye-open"></span>
+                    </div>
+                    <div class="col-sm-1">Inicio Cayac</div>
+                  </div>
+                </a>
+              </li>
+              <li ng-hide="bandera||bandera2||bandera3 ||banderaEjecucion">
+                <a href="#!/diagnostico">
+                  <div class="row">
+                    <div class="col-sm-1">
+                      <span class="glyphicon glyphicon glyphicon-gift"></span>
+                    </div>
+                    <div class="col-sm-1">Diagnóstico</div>
+                  </div>
+                </a>
+              </li>
+            </ul>
+
+          </div>
+        </div>
+      </div>
+      <div class="col-xs-9 col-sm-10 col-md-10 col-lg-10">
+
+        <div ng-view></div>
+      </div>
+
+    </div>
+
   </div>
 
-</div>
 
-</div>
-
-
-<br>
-<br>
-<br>
-<br>
-<br>
-<footer>
-  <div class="navbar navbar-default">
-    <div class="col-sm-4 text-center">
-      <label class="titulos">© 2017 - SEQ CONSULTORES LTDA.</label>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <footer>
+    <div class="navbar navbar-default">
+      <div class="col-sm-4 text-center">
+        <label class="titulos">© 2017 - SEQ CONSULTORES LTDA.</label>
+      </div>
+      <div class="col-sm-4 text-center">
+        <h4 class="titulos">Contactenos</h4>
+        <p class="titulos">Linea Telefónica 68330</p>
+      </div>
+      <div class="col-sm-4 text-justify-center titulos">
+        <i class="fa fa-facebook-official w3-hover-opacity w3-large"></i>
+        <i class="fa fa-twitter w3-hover-opacity w3-large"></i>
+        <i class="fa fa-linkedin w3-hover-opacity w3-large"></i>
+      </div>
     </div>
-    <div class="col-sm-4 text-center">
-      <h4 class="titulos">Contactenos</h4>
-      <p class="titulos">Linea Telefónica 68330</p>
-    </div>
-    <div class="col-sm-4 text-justify-center titulos">
-      <i class="fa fa-facebook-official w3-hover-opacity w3-large"></i>
-      <i class="fa fa-twitter w3-hover-opacity w3-large"></i>
-      <i class="fa fa-linkedin w3-hover-opacity w3-large"></i>
-    </div>
-  </div>
-</footer>
+  </footer>
 
 </body>
+
 </html>
-
-

@@ -55,6 +55,7 @@ public class CumplimientoEjecucionController {
 
         ResponseEntity a;
         try {
+            System.out.println("No subido  Categoria"+idCategoria+" Contratante "+idContratante+" Finalista "+idFinalista);
             //obtener datos que se enviarán a través del API
             a = new ResponseEntity<>(manejoDeCumplimientoBD.requisitosNoCumplidosSugeridosPrevios(idFinalista, idCategoria, idContratante), HttpStatus.ACCEPTED);
 

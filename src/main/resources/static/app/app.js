@@ -66,7 +66,6 @@ $qProvider.errorOnUnhandledRejections(false);
 
 .controller('logout',['$rootScope','$scope', '$http','$location','$localStorage','$sessionStorage',function($rootScope,$scope,$http,$location,$localStorage,$sessionStorage)  {
    $scope.$storage = $localStorage;
-
    if ("undefined" === typeof $localStorage.userLogeado && "undefined" !== typeof $localStorage.contratanteLogeado && $localStorage.contratanteLogeado.rol=="Contratante" && $localStorage.contratanteLogeado.idContratante != 3  ) {
        console.log("AT THIS MOMENT I'M CONTRACTOR")
 

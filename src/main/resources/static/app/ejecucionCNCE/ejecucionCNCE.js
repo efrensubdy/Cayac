@@ -127,6 +127,11 @@ angular.module('myApp.ejecucionCNCE', ['ngRoute'])
              clickOutsideToClose:true,
                                  fullscreen: $scope.customFullscreen // Only for -xs, -sm breakpoints.
                                })
+             console.log($scope.listadoNCSP);
+             console.log($scope.client.idFinalista)
+              console.log($scope.client.idCategoria)
+              console.log($localStorage.contratanteLogeado.idContratante)
+
 
 
          }
@@ -136,6 +141,9 @@ angular.module('myApp.ejecucionCNCE', ['ngRoute'])
            $scope.listadoCEP=$rootScope.listadoCEP;
            $scope.listadoNCSP=$rootScope.listadoNCSP
            $scope.listadoNCEP=$rootScope.listadoNCEP
+
+
+
 
            $scope.idClient=$rootScope.idClient
            var q=function(idContratante, idContratista){
@@ -253,6 +261,7 @@ angular.module('myApp.ejecucionCNCE', ['ngRoute'])
 
 
          }
+
 
 
 
