@@ -27,8 +27,8 @@ if ("undefined" === typeof $localStorage.userLogeado && "undefined" === typeof $
 }
 $scope.banderaConsulta=false;
 var q=function(idContratante, idContratista,mes,year){
-                      //var url= "http://localhost:8080/app/planDeTrabajo/aprobadoPlanDeTrabajo/"+idContratista+"/"+idContratante +"/"+mes +"/"+year ;
-                      var url= "http://ec2-35-163-21-208.us-west-2.compute.amazonaws.com:8080/app/planDeTrabajo/aprobadoPlanDeTrabajo/"+idContratista+"/"+idContratante +"/"+mes +"/"+year ;
+                      //var url= "http://localhost:8081/app/planDeTrabajo/aprobadoPlanDeTrabajo/"+idContratista+"/"+idContratante +"/"+mes +"/"+year ;
+                      var url= "http://ec2-35-163-21-208.us-west-2.compute.amazonaws.com:8081/app/planDeTrabajo/aprobadoPlanDeTrabajo/"+idContratista+"/"+idContratante +"/"+mes +"/"+year ;
 
                        var a;
                     a=$http.get(url).then(function(response) {
@@ -39,8 +39,8 @@ var q=function(idContratante, idContratista,mes,year){
           return a;
        }
 var k=function(idContratante, idContratista,mes,year){
-                      //var url= "http://localhost:8080/app/indicador/aprobadoIndicador/"+idContratista+"/"+idContratante +"/"+mes +"/"+year ;
-                      var url= "http://ec2-35-163-21-208.us-west-2.compute.amazonaws.com:8080/app/indicador/aprobadoIndicador/"+idContratista+"/"+idContratante +"/"+mes +"/"+year ;
+                      //var url= "http://localhost:8081/app/indicador/aprobadoIndicador/"+idContratista+"/"+idContratante +"/"+mes +"/"+year ;
+                      var url= "http://ec2-35-163-21-208.us-west-2.compute.amazonaws.com:8081/app/indicador/aprobadoIndicador/"+idContratista+"/"+idContratante +"/"+mes +"/"+year ;
 
                        var a;
                     a=$http.get(url).then(function(response) {

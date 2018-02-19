@@ -31,8 +31,8 @@ angular.module('myApp.subirDocumentosEstaticos', ['ngRoute'])
        $scope.agregarEstaticosSugeridosPrevios = function(ev,item) {
             if ("undefined" !== typeof $scope.myDocSugeridoPrevio){
             var file = $scope.myDocSugeridoPrevio;
-            //var uploadUrl = 'http://localhost:8080/app/docEstaticos/'+ $localStorage.userLogeado.idFinalista + "/"+ item.id + "/"+ $localStorage.userLogeado.idContratista + "/previoSugerido" ;
-            var uploadUrl = 'http://ec2-35-163-21-208.us-west-2.compute.amazonaws.com:8080/app/docEstaticos/'+ $localStorage.userLogeado.idFinalista + "/"+ item.id + "/"+ $localStorage.userLogeado.idContratista + "/previoSugerido" ;
+            //var uploadUrl = 'http://localhost:8081/app/docEstaticos/'+ $localStorage.userLogeado.idFinalista + "/"+ item.id + "/"+ $localStorage.userLogeado.idContratista + "/previoSugerido" ;
+            var uploadUrl = 'http://ec2-35-163-21-208.us-west-2.compute.amazonaws.com:8081/app/docEstaticos/'+ $localStorage.userLogeado.idFinalista + "/"+ item.id + "/"+ $localStorage.userLogeado.idContratista + "/previoSugerido" ;
 
             fileUpload.uploadFileToUrl(file, uploadUrl);
             $mdDialog.show(
@@ -70,8 +70,8 @@ angular.module('myApp.subirDocumentosEstaticos', ['ngRoute'])
                     if ("undefined" !== typeof $scope.myDocExtraPrevio){
                     var file = $scope.myDocExtraPrevio;
 
-                 //   var uploadUrl = 'http://localhost:8080/app/docEstaticos/'+ $localStorage.userLogeado.idFinalista + "/"+ item.id + "/"+ $localStorage.userLogeado.idContratista + "/previoExtra" ;
-                    var uploadUrl = 'http://ec2-35-163-21-208.us-west-2.compute.amazonaws.com:8080/app/docEstaticos/'+ $localStorage.userLogeado.idFinalista + "/"+ item.id + "/"+ $localStorage.userLogeado.idContratista + "/previoExtra" ;
+                 //   var uploadUrl = 'http://localhost:8081/app/docEstaticos/'+ $localStorage.userLogeado.idFinalista + "/"+ item.id + "/"+ $localStorage.userLogeado.idContratista + "/previoExtra" ;
+                    var uploadUrl = 'http://ec2-35-163-21-208.us-west-2.compute.amazonaws.com:8081/app/docEstaticos/'+ $localStorage.userLogeado.idFinalista + "/"+ item.id + "/"+ $localStorage.userLogeado.idContratista + "/previoExtra" ;
                     fileUpload.uploadFileToUrl(file, uploadUrl);
                     $mdDialog.show(
                               $mdDialog.alert()

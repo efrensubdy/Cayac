@@ -55,8 +55,8 @@ $scope.banderaActualiAcc = false;
 $scope.despliegueDeCausas = false;
 $scope.despliegueDeAcciones = false;
 var q=function(idNoConformidad, idContratista){
-                     // var url= "http://localhost:8080/app/cierre/isClose/"+idNoConformidad+"/"+idContratista;
-                      var url= "http://ec2-35-163-21-208.us-west-2.compute.amazonaws.com:8080/app/cierre/isClose/"+idNoConformidad+"/"+idContratista;
+                     // var url= "http://localhost:8081/app/cierre/isClose/"+idNoConformidad+"/"+idContratista;
+                      var url= "http://ec2-35-163-21-208.us-west-2.compute.amazonaws.com:8081/app/cierre/isClose/"+idNoConformidad+"/"+idContratista;
 
                        var a;
                     a=$http.get(url).then(function(response) {
@@ -666,8 +666,8 @@ $scope.simple= function(item){
  $scope.salvarAccion2 = function(op,file,item,ev){
 
     if("undefined" !== typeof file && "undefined" !== typeof op && "undefined" !== typeof op ){
-        //var uploadUrl = 'http://localhost:8080/app/accion/'+ $localStorage.userLogeado.idContratista + "/"+ op.id + "/"+ item.id
-        var uploadUrl = 'http://ec2-35-163-21-208.us-west-2.compute.amazonaws.com:8080/app/accion/'+ $localStorage.userLogeado.idContratista + "/"+ op.id + "/"+ item.id ;
+        //var uploadUrl = 'http://localhost:8081/app/accion/'+ $localStorage.userLogeado.idContratista + "/"+ op.id + "/"+ item.id
+        var uploadUrl = 'http://ec2-35-163-21-208.us-west-2.compute.amazonaws.com:8081/app/accion/'+ $localStorage.userLogeado.idContratista + "/"+ op.id + "/"+ item.id ;
 
         fileUpload.uploadFileToUrl(file,uploadUrl);
             $mdDialog.show(

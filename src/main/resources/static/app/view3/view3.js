@@ -388,8 +388,8 @@ angular.module('myApp.view3', ['ngRoute'])
 
 
                           var q=function(idContratante, idCategoria){
-                                     //var url= "http://localhost:8080/app/limites/"+idContratante+"/"+idCategoria ;
-                                      var url= "http://ec2-35-163-21-208.us-west-2.compute.amazonaws.com:8080/app/limites/"+idContratante+"/"+idCategoria ;
+                                     //var url= "http://localhost:8081/app/limites/"+idContratante+"/"+idCategoria ;
+                                      var url= "http://ec2-35-163-21-208.us-west-2.compute.amazonaws.com:8081/app/limites/"+idContratante+"/"+idCategoria ;
                                      $http.get(url).then(function(response) {
                                                    if(response.data.flag){
                                                   $scope.objeto=response.data;

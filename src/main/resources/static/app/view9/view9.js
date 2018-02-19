@@ -27,8 +27,8 @@ angular.module('myApp.view9', ['ngRoute'])
         }
         $scope.file = "";
            var q=function(idContratante, idCategoria){
-                       //var url= "http://localhost:8080/app/limites/"+idContratante+"/"+idCategoria ;
-                       var url= "http://ec2-35-163-21-208.us-west-2.compute.amazonaws.com:8080/app/limites/"+idContratante+"/"+idCategoria ;
+                       //var url= "http://localhost:8081/app/limites/"+idContratante+"/"+idCategoria ;
+                       var url= "http://ec2-35-163-21-208.us-west-2.compute.amazonaws.com:8081/app/limites/"+idContratante+"/"+idCategoria ;
                        $http.get(url).then(function(response) {
                                      if(response.data.flag){
                                     $scope.objeto=response.data;
@@ -50,8 +50,8 @@ angular.module('myApp.view9', ['ngRoute'])
             if ("undefined" !== typeof $scope.myFile){
             var file = $scope.myFile;
 
-            //var uploadUrl = 'http://localhost:8080/app/imagenes/'+ $localStorage.userLogeado.idContratista + "/"+ item.id;
-            var uploadUrl = 'http://ec2-35-163-21-208.us-west-2.compute.amazonaws.com:8080/app/imagenes/'+ $localStorage.userLogeado.idContratista + "/"+ item.id;
+            //var uploadUrl = 'http://localhost:8081/app/imagenes/'+ $localStorage.userLogeado.idContratista + "/"+ item.id;
+            var uploadUrl = 'http://ec2-35-163-21-208.us-west-2.compute.amazonaws.com:8081/app/imagenes/'+ $localStorage.userLogeado.idContratista + "/"+ item.id;
             fileUpload.uploadFileToUrl(file, uploadUrl);
             $mdDialog.show(
                       $mdDialog.alert()
@@ -91,8 +91,8 @@ angular.module('myApp.view9', ['ngRoute'])
                     var file = $scope.myFile;
                     if ("undefined" !== typeof $scope.myFile){
 
-                   // var uploadUrl = 'http://localhost:8080/app/documento/'+ $localStorage.userLogeado.idContratista+ "/"+ item.id;
-                    var uploadUrl = 'http://ec2-35-163-21-208.us-west-2.compute.amazonaws.com:8080/app/documento/'+ $localStorage.userLogeado.idContratista+ "/"+ item.id;
+                   // var uploadUrl = 'http://localhost:8081/app/documento/'+ $localStorage.userLogeado.idContratista+ "/"+ item.id;
+                    var uploadUrl = 'http://ec2-35-163-21-208.us-west-2.compute.amazonaws.com:8081/app/documento/'+ $localStorage.userLogeado.idContratista+ "/"+ item.id;
                     fileUpload.uploadFileToUrl(file, uploadUrl);
                     $mdDialog.show(
                        $mdDialog.alert()

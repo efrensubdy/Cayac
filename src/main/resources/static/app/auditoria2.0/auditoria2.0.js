@@ -118,8 +118,8 @@ $scope.opcionesDeCumplimiento=[
  $scope.indicador=false;
  $scope.auditoras=false;
  var q=function(idNoConformidad, idContratista){
-                      // var url= "http://localhost:8080/app/cierre/isClose/"+idNoConformidad+"/"+idContratista;
-                      var url= "http://ec2-35-163-21-208.us-west-2.compute.amazonaws.com:8080/app/cierre/isClose/"+idNoConformidad+"/"+idContratista;
+                      // var url= "http://localhost:8081/app/cierre/isClose/"+idNoConformidad+"/"+idContratista;
+                      var url= "http://ec2-35-163-21-208.us-west-2.compute.amazonaws.com:8081/app/cierre/isClose/"+idNoConformidad+"/"+idContratista;
                         var a;
                      a=$http.get(url).then(function(response) {
                                      $scope.objeto= response.data;
@@ -1013,8 +1013,8 @@ $scope.consultarAuditoria=function(ev,mes,year){
        $scope.salvarAccion2 = function(op,file,item,ev){
 
            if("undefined" !== typeof file && "undefined" !== typeof op && "undefined" !== typeof op ){
-               //var uploadUrl = 'http://localhost:8080/app/accion/'+ $localStorage.userLogeado.idContratista + "/"+ op.id + "/"+ item.id
-               var uploadUrl = 'http://ec2-35-163-21-208.us-west-2.compute.amazonaws.com:8080/app/accion/'+ $localStorage.userLogeado.idContratista + "/"+ op.id + "/"+ item.id ;
+               //var uploadUrl = 'http://localhost:8081/app/accion/'+ $localStorage.userLogeado.idContratista + "/"+ op.id + "/"+ item.id
+               var uploadUrl = 'http://ec2-35-163-21-208.us-west-2.compute.amazonaws.com:8081/app/accion/'+ $localStorage.userLogeado.idContratista + "/"+ op.id + "/"+ item.id ;
                 console.log(file) ;
                 console.log(op.id);
                 console.log(item.id);

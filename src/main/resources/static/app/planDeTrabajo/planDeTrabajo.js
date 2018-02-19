@@ -26,8 +26,8 @@ if ("undefined" === typeof $localStorage.userLogeado && "undefined" === typeof $
 
 }
 var q=function(idContratante, idContratista){
-                    //  var url= "http://localhost:8080/app/planDeTrabajo/aprobado/"+idContratista+"/"+idContratante ;
-                      var url= "http://ec2-35-163-21-208.us-west-2.compute.amazonaws.com:8080/app/planDeTrabajo/aprobado/"+idContratista+"/"+idContratante ;
+                    //  var url= "http://localhost:8081/app/planDeTrabajo/aprobado/"+idContratista+"/"+idContratante ;
+                      var url= "http://ec2-35-163-21-208.us-west-2.compute.amazonaws.com:8081/app/planDeTrabajo/aprobado/"+idContratista+"/"+idContratante ;
                        var a;
                     a=$http.get(url).then(function(response) {
                                     $scope.objeto=response.data;
@@ -211,8 +211,8 @@ $scope.meses=[
   $scope.subirDocumento=function(ev,item,file){
 
     if ("undefined" !== typeof file){
-    //var uploadUrl = 'http://localhost:8080/app/planDeTrabajo/'+ item.id + "/"+ $localStorage.userLogeado.idContratista;
-    var uploadUrl = 'http://ec2-35-163-21-208.us-west-2.compute.amazonaws.com:8080/app/planDeTrabajo/'+ item.id + "/"+ $localStorage.userLogeado.idContratista;
+    //var uploadUrl = 'http://localhost:8081/app/planDeTrabajo/'+ item.id + "/"+ $localStorage.userLogeado.idContratista;
+    var uploadUrl = 'http://ec2-35-163-21-208.us-west-2.compute.amazonaws.com:8081/app/planDeTrabajo/'+ item.id + "/"+ $localStorage.userLogeado.idContratista;
 
     fileUpload.uploadFileToUrl(file,uploadUrl);
     $mdDialog.show(
