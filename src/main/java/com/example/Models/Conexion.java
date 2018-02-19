@@ -12,8 +12,8 @@ import java.sql.SQLException;
 public class Conexion {
 
 	private static final String JDBC_DRIVER = "com.mysql.jdbc.Driver";
-	private static final String DB_URL = "jdbc:mysql://seqmysql.cgle3ujtslg6.us-west-2.rds.amazonaws.com/seq_cayac";
-	//private static final String DB_URL = "jdbc:mysql://seqmysql.cgle3ujtslg6.us-west-2.rds.amazonaws.com/seq_cayac_capacitaciones";
+	//private static final String DB_URL = "jdbc:mysql://seqmysql.cgle3ujtslg6.us-west-2.rds.amazonaws.com/seq_cayac";
+	private static final String DB_URL = "jdbc:mysql://seqmysql.cgle3ujtslg6.us-west-2.rds.amazonaws.com/seq_cayac_capacitaciones";
 	//private static final String DB_URL = "jdbc:mysql://seqmysql.cgle3ujtslg6.us-west-2.rds.amazonaws.com/seq_cayac_pruebas";
 	private static final String DB_USER = "devopsSEQ";
 	private static final String DB_PASSWORD = "VbW3ra4L5VbpnJJk";
